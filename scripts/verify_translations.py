@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Verifies localization files to contain all the keys
+# Detects possibly outdated translations using Git blame
+# Fills missing translations with the English texts, so the player will at least see some text
+
 import os
 from pathlib import Path
 from typing import NamedTuple
