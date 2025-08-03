@@ -120,3 +120,4 @@ Param/Value/FF937503=  ///
 Unit/Name/ColonistTransport=Transporter der Liga /// Dominion Transport
 Param/Value/12092994=
 Param/Value/53FE3F9F=Anniversary_TRaynor_01erhalten /// Anniversary_TRaynor_01 granted
+Param/Value/EB9D7884=Destroy the Dominion Transport

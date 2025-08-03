@@ -65,3 +65,52 @@ Param/Value/F4BE622E=Gegnerische Einheiten getötet /// Enemy Troops Killed
 Param/Value/FA5D3671=Landungsobservation /// Docking Observation
 ﻿Button/Tooltip/Virophage=Verseucht in der Nähe befindliche Garnisonen der Liga. Kann, falls vernichtet, von Verseuchern erneut platziert werden. /// Infests nearby Dominion Garrisons. Can be re-implanted by an Infestor if destroyed.
 Param/Expression/C56EE2DC=Maximale beherrschte Einheiten = ~A~ /// Max Dominated Units = ~A~
+DOCSTR_0000=~A~/8
+MapInfo/Player00/Name=
+Param/Value/03C5ECD4=Build a Supply Depot near Science Facilities
+Param/Value/1197FE3E=Spawn a Creep Tumor next to this Science Facility to infest it.
+Param/Value/21AD3128=Warp in Pylon Nearby
+Param/Value/2220E479=protoss
+Param/Value/2C725ABF=Move an Infestor here to Infest the Garrison.
+Param/Value/31EDE754=Move Ghost Here
+Param/Value/3303AF08=Science Facility
+Param/Value/392ADB06=<c val="FFFFFF">Build a <c val="FF9800">Supply Depot</c> nearby to supply this Science Facility.</c>
+Param/Value/3B19AF4B=Take Control of Garrisons with a High Templar, Signifier,<n/>Ascendant or Dark Archon
+Param/Value/3D544F3F=Build a Supply Depot next to this Science Facility.
+Param/Value/48FB5989=Take Control of Garrisons<n/>with an Ascendant
+Param/Value/48FFA1A3=Infest All Garrisons with Infestors
+Param/Value/4F23C0B6=Move Infestor Here
+Param/Value/4F7F99ED=Psi Broadcaster
+Param/Value/5732BCCA=Infestor
+Param/Value/61AD4F81= Must Survive
+Param/Value/67BE8352=<c val="FFFFFF">Penis.</c>
+Param/Value/6C2AFB50=Move Templar Here
+Param/Value/6DC475CE=Science Facility
+Param/Value/6EBC2BE8=Take Control of Garrisons<n/>with a Ghost or Spectre
+Param/Value/70509B75=Warp in a Pylon next to this Science Facility.
+Param/Value/70F82FF6=Warp in a Pylon near Science Facilities
+Param/Value/763EACA5=Science Facility
+Param/Value/7AB59958=Psi-Indoctrinator
+Param/Value/81625F01=At least 1
+Param/Value/8E195C1A=Science Facility
+Param/Value/93007DEC=<c val="FFFFFF">Warp in a <c val="FF9800">Pylon</c> nearby to power this Science Facility.</c>
+Param/Value/96C7FD2C=Build a Supply Depot next to this Science Facility.
+Param/Value/99C41C7F=<c val="FFFFFF">Warp in a <c val="FF9800">Pylon</c> nearby to power this Science Facility.</c>
+Param/Value/9B54992B=terran
+Param/Value/B11ED99F=Ascendant
+Param/Value/B56AB610=Warp in a Pylon next to this Science Facility.
+Param/Value/B57FE730=<c val="FFFFFF">Build a <c val="FF9800">Supply Depot</c> nearby to supply this Science Facility.</c>
+Param/Value/B5A33700=Move an Ascendant, High Templar, Signifier or Dark Archon here to take over the Garrison.
+Param/Value/B851DF09=Science Facility
+Param/Value/B92BC6FA=zerg or neutral
+Param/Value/BE151C6D=Ghost or Spectre
+Param/Value/C46B9084=Move an Infestor here to Infest the Garrison.
+Param/Value/D0D012B5=Science Facility
+Param/Value/DBA7D140=Penis.
+Param/Value/E05CBE70=Move Templar Here
+Param/Value/E8C6E78C=Move a Ghost or Spectre here to infiltrate the Garrison.
+Param/Value/EFFE72BE=Move an Ascendant, High Templar, Signifier or Dark Archon here to take over the Garrison.
+Param/Value/F1166AFE=Move Infestor Here
+Param/Value/F254F903=<c val="FFFFFF">Spawn a <c val="FF9800">Creep Tumor</c> nearby to infest this Science Facility.</c>
+Param/Value/F66A64E1=Build Supply Depot Nearby
+Param/Value/FB44386C=Take Control of Garrisons<n/>with a Ghost or Spectre

@@ -79,3 +79,7 @@ Param/Value/3E937DF7=Anniversary_ZExpedition03 erhalten /// Anniversary_ZExpedit
 RequirementNode/Tooltip/And3031542424CountUpgradeHotSHaveSwarmlingCompleteOnlyCountUpgradeHotSHaveRaptorCompleteOnly=Habe den Raptor Strang /// Have Raptor Strain
 RequirementNode/Tooltip/And3031542424NotCountUpgradeHotSHaveRaptorCompleteOnlyCountUpgradeHotSHaveSwarmlingCompleteOnly=Habe den Raptor Strang /// Have Raptor Strain
 RequirementNode/Tooltip/And3031542424NotCountUpgradeHotSHaveSwarmlingCompleteOnlyCountUpgradeHotSHaveRaptorCompleteOnly=Habe den Raptor Strang /// Have Raptor Strain
+﻿Button/Name/AP_BirthMorphling=Birth Morphling
+Button/Name/AP_Infestor=Birth Infestor
+Button/Tooltip/AP_BirthMorphling=Intermediary unit. Cannot attack, low health, slow movement, even slower off creep. <n/><n/>Can morph into any advanced Zerg unit (Baneling, Lurker, Brood Lord, etc).
+Param/Value/0F4B4616=Grow even stronger

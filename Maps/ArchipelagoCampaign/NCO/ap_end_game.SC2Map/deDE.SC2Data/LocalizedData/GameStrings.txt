@@ -51,3 +51,8 @@ Param/Value/DDE68672=Xanthos zerstört /// Xanthos Destroyed
 Param/Value/E3CB01B6=AKTIV /// ACTIVE
 Param/Value/E5763D85=X /// X
 Param/Value/E8BE0B30=Wegpunkte gelöscht /// Waypoints Cleared
+Param/Value/9485C4D8=Disable different Xanthos Subsystems
+Param/Value/B7FD3FF2=<s val="ObjectivePanelFailed">Protect the Hyperion<n/>Attack alongside Hyperion until it times out</s>
+Param/Value/B8165260=Destroy Orbital Commands
+Param/Value/D6BBF9C3=Protect the Hyperion<n/><s val="ModLeftSize12">Attack alongside Hyperion until it times out</s>
+Param/Value/ECFFBC1A=Protect the Hyperion<n/><s val="ModLeftSize12">Attack alongside Hyperion until it times out</s>

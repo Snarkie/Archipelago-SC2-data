@@ -77,3 +77,5 @@ Param/Value/75631DBD=Die Tal'darim haben Desintegrationsfeld-Generatoren erricht
 Param/Value/B5C53F3B=Die Tal'darim setzen ein Mutterschiff ein um das Artefakt zu schützen. Zerstören Sie es! /// The Tal'darim have deployed a Mothership to guard the Artifact. Destroy it!
 Param/Value/BE2DF526=Zerstören Sie die Desintegrationsfeld-Generatoren /// Destroy Rip Field Generators
 Param/Value/D1875F24=Retten Sie gefangene Protoss /// Rescue Protoss Prisoners
+﻿ConversationState/StoryTips/AP_Maw_Zerg=NEW TO AP: Maw of the Void (Zerg)
+ConversationState/StoryTips/Tychus02_RelicShrines/Info/Description=For the Zerg version of this map, some extra resource nodes have been placed in various places on the map (mostly within Rip Fields).<n/><n/>Additionally, burrowed units are now immune to Rip Fields. This change applies to all versions of the map, but mostly only matters for the Zerg, so... there you go.

@@ -98,3 +98,11 @@ Param/Value/F1AEE3F5=Sekundäre <c val="00FFFF">Produktionsstruktur</c>. Warpt <
 Param/Value/F8D811CE=Zeratuls Schiff /// Zeratul's Vessel
 Param/Value/FC0F917E=Protoss Gefangene /// Protoss Captives
 Param/Value/FCAC5425=Alle ihre Gebäude wurden zerstört. /// All of your structures have been destroyed.
+Param/Value/31F4EEE5=Free Second Captive Zerg
+Param/Value/466755C0=Fixing position
+Param/Value/499FC3E1=Free First Captive Zerg
+Param/Value/C19FC40F=Free Final Captive Terrans
+Param/Value/DDFCDE26=Free Second Captive Terrans
+Param/Value/E2E8A2E9=Eliminate the Zerg
+Param/Value/F2B35562=Free Final Captive Zerg
+Param/Value/F68656E9=Free First Captive Terrans

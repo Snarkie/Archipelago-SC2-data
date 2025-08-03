@@ -97,3 +97,5 @@ Unit/Name/InfestedMercHaven=Bar /// Bar
 Water/Name/Template 1=Vorlage 1 /// Template 1
 ﻿DocInfo/Author=Blizzard Entertainment
 Param/Expression/90D448AA=Viking Kills = ~A~ /// Viking Kills = ~A~
+Param/Value/3F2506C0=Debug Mode is ON. Apply Malignant Creep fix with -fix
+Param/Value/4C86BCDE=Applying Malignant Creep fix

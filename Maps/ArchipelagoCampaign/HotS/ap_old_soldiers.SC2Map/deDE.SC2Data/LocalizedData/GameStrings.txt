@@ -52,3 +52,4 @@ Param/Value/F6A02474=Gebäude vor Nuklearschlag zerstört /// Structures Destroy
 Param/Value/FFDEE948=Tipps /// Tips
 ﻿DocInfo/Author=Blizzard Entertainment
 Param/Value/B8F89E53=Anniversary_ZChar03 erhalten /// Anniversary_ZChar03 granted
+Param/Value/5254AA30=Clear Expansion Areas

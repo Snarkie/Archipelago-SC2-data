@@ -84,3 +84,11 @@ Param/Value/558C3EE5=<s val="ObjRewardSummary_Protoss">Versorgen Sie verlassene 
 Param/Value/693D0B04=Versorgen Sie verlassene Gebäude mit Energie /// Power-up Abandoned Structures
 Param/Value/ACA4539D=Zerstöre die feindlichen Unterstützungsbasen /// Destroy Enemy Support Bases
 Param/Value/D0E36002=checks verbleibend /// checks left
+Param/Value/54320562=Repair Abandoned Structures
+Param/Value/59038F16=
+Param/Value/603F8E8E=
+Param/Value/A90652CE=Bring a Creep Tumor next to <n/>Abandoned Structures
+Param/Value/B8277803=
+Param/Value/BB1448D3=Defeat Maar
+Param/Value/D1BECFB0=Destroy Southwest Nexus
+Param/Value/FA4823DA=Destroy the enemy support bases in order to provide more resources for our cause

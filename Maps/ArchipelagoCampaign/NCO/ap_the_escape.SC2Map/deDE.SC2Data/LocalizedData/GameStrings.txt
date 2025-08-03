@@ -67,3 +67,6 @@ Param/Value/EE90A735=Feindliche Truppen /// Enemy Trooper
 Param/Value/F222D370=Codename: Stone /// Codename: Stone
 Param/Value/F8BC641E=Entkomme. /// Escape.
 Param/Value/FE74AAF3=Stone /// Stone
+Param/Value/656EEC1F=DEBUG: Victory
+Param/Value/9818CE10=DEBUG: Skip to Stage 3
+Param/Value/A861A3F9=DEBUG: Skip to Stage 2

@@ -60,3 +60,4 @@ Param/Value/F24A798E=Noch 10 Minuten /// 10 Minutes Remaining
 Unit/Name/PrimalLocustFlying=Aasschrecke /// Carrion Locust
 ﻿DocInfo/Author=Blizzard Entertainment
 Param/Value/99E32C1D=Anniversary_ZZerus02 erhalten /// Anniversary_ZZerus02 granted
+Param/Value/D216AD78=DEBUG: Skip to Base

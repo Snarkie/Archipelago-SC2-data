@@ -84,3 +84,5 @@ Unit/Name/XelNagaDoor=Xel'Naga-Tempel /// Xel'Naga Temple
 ﻿DocInfo/Author=Blizzard Entertainment
 Param/Value/47D5A648=Anniversary_TTychus02 erhalten /// Anniversary_TTychus02 granted
 Param/Value/EF67845A=Finden Sie Protoss-Relikte /// Find Protoss Relics
+Param/Value/100F61B2=Destroy the Protoss Bases
+Param/Value/F05E2F77=

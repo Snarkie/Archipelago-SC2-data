@@ -46,3 +46,11 @@ Param/Value/F0E21AB9=Gallschleudern eingesetzt /// Bile Launchers Deployed
 Param/Value/FE2D95A7=Nächste Landung in: /// Next Landing In:
 ﻿DocInfo/Author=Blizzard Entertainment
 Param/Expression/2679F798=AnniversaryAchievementTermDominionStructuresDestroyed = ~A~ /// AnniversaryAchievementTermDominionStructuresDestroyed = ~A~
+Param/Value/13F8EA8C=Don't Lose 3 Particle Cannons
+Param/Value/66CC0E06=Particle Cannon
+Param/Value/7791C6E4=Defend Laser Drills
+Param/Value/AC34EF7D=Defeat Kill Teams
+Param/Value/CA73E4A5=Clear Expansions
+Param/Value/D334E62E=Don't Lose 3 Laser Drills
+Param/Value/D336B934=Defend Particle Cannons
+Param/Value/E70C031B=Laser Drill

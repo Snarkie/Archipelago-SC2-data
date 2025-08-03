@@ -95,3 +95,5 @@ Param/Value/1B42C517=
 Param/Value/6F5E40BB=Vernichten Sie die Zerg-Verseuchung /// Destroy the Zerg Infestation
 Param/Value/938EB678=Finden Sie zusätzliche Resourcen /// Find Additional Resources
 Param/Value/FAC71E9A=Beschützen Sie Kolonistenbasen vor der Verseuchung /// Prevent Colony Bases from Infestation
+Param/Value/0534D9FE=Debug mode is ACTIVE. Type a color to begin infesting that player
+Param/Value/B6D456AA=Broodlord bugfix

@@ -64,3 +64,5 @@ Param/Value/FB5B0A62=Ihre gefrorenen Wunden stammen eindeutig von psionischen Kl
 Param/Value/7A9CC845=Anniversary_ZExpedition01 erhalten /// Anniversary_ZExpedition01 granted
 Param/Value/B811D8B8=Schwarmcluster wiederhergestellt /// Hive Cluster Recovered
 Param/Value/C5DC69B4=Finde Nafashs Überreste /// Find Nafash Corpse
+Param/Value/137EE48E=Destroy unfrozen structures
+Param/Value/C4F6CB83=Find Base

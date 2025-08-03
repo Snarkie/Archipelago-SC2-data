@@ -27,3 +27,7 @@ Param/Value/B1A62AF0=Zerg Angriff /// Zerg Attack
 Param/Value/C2A4FFEA=Zerg Angriff /// Zerg Attack
 Param/Value/D41A9ED5=Admiral Horners Basis wurde zerstört. /// Admiral Horner's base has been destroyed.
 Param/Value/FE76F69E=Terranische Liga Strukturen verloren: /// Dominion Structures Lost:
+Param/Value/6303DBB3=Kill the Brutalisk
+Param/Value/A5E6ECDB=Protect Horner's Base
+Param/Value/D13E0754=Collect All Gas Pickups
+Param/Value/F5BBC007=Destroy Zerg Base

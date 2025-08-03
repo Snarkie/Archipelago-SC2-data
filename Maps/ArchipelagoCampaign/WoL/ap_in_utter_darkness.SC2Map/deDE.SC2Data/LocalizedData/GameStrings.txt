@@ -95,3 +95,5 @@ Param/Value/E35E7BFA=Oh Oh, Artanis! /// Uh Oh, Artanis!
 Param/Value/EC556E9B=Tu es /// Do It
 Param/Value/ECAEF3DC=Können wir das hier beschleunigen? /// Can We Hurry This Up?
 Param/Value/F2B57BDD=Maaaan, ich hab noch andere Sachen zu tun /// Man, I Have Things To Do
+Param/Value/5DC2C474=Defend Until the End
+Param/Value/E0F3C816=There is no hope left for the protoss race. Avenge your fallen by slaying zerg and hybrid forces until the last protoss is no more.

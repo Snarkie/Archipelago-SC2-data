@@ -82,3 +82,5 @@ Unit/Name/SpaceArmoredGenerator=Verbindung zum Gefängnistrakt /// Prison Deck C
 Unit/Name/UmojanLabGenerator=Stromgenerator /// Power Generator
 ﻿Button/Tooltip/HybridDoorsWideRight=Sicherheitstor. Zerstören, um fortzufahren. /// Security gate. Destroy it to progress.
 Param/Expression/AA54613F=Verseuchte Terraner Kills = ~A~ /// Parasitic Dominated Terran Kills = ~A~
+Param/Value/2AC78F78=DEBUG: Victory
+Param/Value/7FA2C4A0=DEBUG: Skip to Stage 2

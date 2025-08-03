@@ -114,3 +114,7 @@ Param/Value/42F0EBEC=
 Param/Value/62B67181=%NumberDead% /// %NumberDead%
 Param/Value/7594386A=Sammeln Sie Kokon-DNS /// Collect Chrysalis DNA
 Param/Value/E27BA2C4=Es dürfen keine %NumberDead% Kolonisten sterben /// Do Not Let %NumberDead% Colonists Die
+Param/Value/24E3DD38=Don't allow ANY colonist deaths
+Param/Value/3023A115=Destroy the eastern Zerg base
+Param/Value/98F73E2A=Destroy the western Zerg base
+Param/Value/C627BED4=

@@ -48,3 +48,5 @@ Param/Value/F74B6456=Von Raynor's Raiders getötete Gegner /// Raynor's Raiders 
 Unit/Name/Factory=Fabrik /// Factory
 Unit/Name/GateControlUnit=Brückenkontrolle /// Bridge Control
 ﻿DocInfo/Author=Blizzard Entertainment
+Param/Value/55A6BA50=Trash the Odin before it is sent to attack Jim
+Param/Value/E73D7FBA=Defeat Odin

@@ -97,3 +97,9 @@ Unit/Name/WarPig=Umojanischer Space-Marine /// Umojan Marine
 Param/Expression/EA0AD572=Einheiten verbleibend: ~A~ /// Units left: ~A~
 Param/Value/09630C86=<s val="SwarmReticleTerranEnemy">Zerquetschenden Griff verwenden</s> /// <s val="SwarmReticleTerranEnemy">Use Crushing Grip</s>
 Param/Value/49BA07CB=Feinde gesichtet /// Enemy Sighted
+Param/Value/27068088=DEBUG: Skip to Section 4
+Param/Value/3EE3E03D=DEBUG: Skip to Section 3
+Param/Value/AC3F32EF=DEBUG: Skip to Boss
+Param/Value/BD30545F=Have Kerrigan talk about her abilities
+Param/Value/DE73085D=DEBUG: Victory
+Param/Value/F4358EE7=DEBUG: Skip to Section 2
