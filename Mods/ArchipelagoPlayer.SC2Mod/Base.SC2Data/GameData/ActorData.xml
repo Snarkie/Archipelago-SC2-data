@@ -136,6 +136,12 @@
         <DamageMap index="None" Model="VikingFighterAttackDamage" Sound="VikingFighterAttackDamage" ModelReaction="VikingFighterAttackDamageReaction"/>
         <DamageMap index="Shield" Sound="VikingFighterAttackDamageShield" ModelReaction="VikingFighterAttackDamageReactionShield"/>
     </CActorAction>
+    <CActorAction id="AP_DevastatorTurretAttackBase" default="1" parent="GenericAttackNoCreateBase">
+        <Missile value="AP_DevastatorTurretAttackMissile"/>
+        <ContainerAssets Sound="AP_DevastatorTurret_AttackLaunch"/>
+        <LaunchAssets Sound="AP_DevastatorTurret_AttackLaunch"/>
+        <ImpactMap index="None" Sound="AP_DevastatorTurret_AttackImpact"/>
+    </CActorAction>
     <CActorUnit default="1" id="AP_TechLabBase" parent="TerranBuildingEx">
         <Aliases value="_UnitLarge"/>
         <Macros value="TerranAttachmentAnims"/>
@@ -3290,6 +3296,14 @@
         </Wireframe>
     </CActorUnit>
     <CActorAction id="AP_VultureAttack" parent="GenericAttack" effectImpact="AP_VultureU" effectLaunch="AP_Vulture"/>
+    <CActorAction id="AP_VultureAttackMoving" parent="GenericAttack" effectImpact="AP_VultureU" effectLaunch="AP_VultureMoving">
+        <LaunchAssets Model="AP_VultureAttackLaunch" Sound="AP_VultureAttackLaunch"/>
+        <Missile value="AP_VultureAttackMissile"/>
+        <ImpactMap index="None" Model="AP_VultureAttackImpact" Sound="AP_VultureAttackImpact" ModelReaction="AP_VultureAttackImpactReaction"/>
+        <ImpactMap index="Shield" Sound="AP_VultureAttackImpactShield" ModelReaction="AP_VultureAttackImpactReactionShield"/>
+        <DamageMap index="None" Model="AP_VultureAttackDamage" Sound="AP_VultureAttackDamage" ModelReaction="AP_VultureAttackDamageReaction"/>
+        <DamageMap index="Shield" Sound="AP_VultureAttackDamageShield" ModelReaction="AP_VultureAttackDamageReactionShield"/>
+    </CActorAction>
     <CActorMissile id="AP_VultureAttackMissile" parent="GenericAttackMissile" unitName="AP_VultureWeapon"/>
     <CActorAction id="AP_VultureSpiderMineAttack" parent="GenericAttack" effectAttack="AP_VultureSpiderMinesDamage">
         <ShieldFlashType value="Header"/>
@@ -5110,8 +5124,11 @@
         <Macros value="UnloadDropAnim"/>
         <On Terms="UnitBirth.AP_GhostResourceEfficiency" Send="Create"/>
         <On Terms="ActorCreation; ModelVariation 0" Send="ModelSwap Ghost"/>
-        <On Terms="ActorCreation; ModelVariation 1" Send="Create AP_GhostAlternate"/>
-        <On Terms="ActorCreation; ModelVariation 1" Send="Destroy"/>
+        <On Terms="ActorCreation; ModelVariation 1; ValidateUnit AP_IsGhostSetToMale" Send="ModelSwap Ghost"/>
+        <On Terms="ActorCreation; ModelVariation 1; !ValidateUnit AP_IsGhostSetToMale" Send="Create AP_GhostAlternate"/>
+        <On Terms="ActorCreation; ModelVariation 1; !ValidateUnit AP_IsGhostSetToMale" Send="Destroy"/>
+        <On Terms="Behavior.AP_GhostMorphToFemale.On" Send="Create AP_GhostAlternate"/>
+        <On Terms="Behavior.AP_GhostMorphToFemale.On" Send="Destroy"/>
         <On Terms="Abil.AP_TacNukeStrike.SourceCastStart" Send="AnimPlay SpellA Spell,A"/>
         <On Terms="Abil.AP_TacNukeStrike.SourceCastStop" Send="AnimClear SpellA"/>
         <On Terms="Abil.AP_TacNukeStrike.SourceChannelStart" Send="AnimPlay SpellB Spell,B PlayForever"/>
@@ -5187,6 +5204,8 @@
     <CActorUnit id="AP_GhostAlternate" parent="GenericUnitBase" unitName="AP_GhostAlternate">
         <Aliases value="_UnitSmall"/>
         <Macros value="UnloadDropAnim"/>
+        <On Terms="Behavior.AP_GhostMorphToMale.On" Send="Create AP_Ghost"/>
+        <On Terms="Behavior.AP_GhostMorphToMale.On" Send="Destroy"/>
         <On Terms="AbilMorph.*.Start; MorphTo AP_GhostAlternate" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphTo AP_GhostNova" Send="Destroy"/>
         <On Terms="Abil.AP_TacNukeStrike.SourceCastStart" Send="AnimPlay SpellA Spell,A"/>
@@ -5241,11 +5260,11 @@
         <AbilSoundArray AbilCmd="AP_TacNukeStrike,Execute" Sound="GhostAlternate_NuclearStrikeVO"/>
         <BarOffset value="50"/>
         <BarWidth value="42"/>
+        <HighlightTooltip value="Unit/Name/AP_Ghost"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-ghostfemale.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-dom-femaleghost.dds"/>
-        <HighlightTooltip value="Unit/Name/AP_GhostAlternate"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
         <SelectAbilCmd value="AP_EMP,Execute"/>
         <SoundArray index="Ready" value="GhostAlternate_Ready"/>
@@ -31003,9 +31022,13 @@
         <On Terms="ActorDestruction" Target="AP_DevastatorTurretProtectRange" Send="Destroy"/>
     </CActorModel>
     <CActorModel id="AP_DevastatorTurretBuild" parent="TerranBuildingBuildSmall"/>
-    <CActorAction id="AP_DevastatorTurretAttack" parent="GenericAttack" effectImpact="AP_DevastatorTurretDamage" effectLaunch="AP_DevastatorTurretLM">
-        <LaunchAssets Sound="AP_DevastatorTurret_AttackLaunch"/>
+    <CActorAction id="AP_DevastatorTurretAttack" parent="AP_DevastatorTurretAttackBase" effectImpact="AP_DevastatorTurretDamage">
+        <On Terms="Effect.AP_DevastatorTurretLM.Start; At Caster; !ValidateEffect AP_HaveDevastatorTurretSlow" Send="Create"/>
         <ImpactMap index="None" Sound="AP_DevastatorTurret_AttackImpact"/>
+    </CActorAction>
+    <CActorAction id="AP_DevastatorTurretAttackUpgraded" parent="AP_DevastatorTurretAttackBase" effectImpact="AP_DevastatorTurretDamage">
+        <On Terms="Effect.AP_DevastatorTurretLM.Start; At Caster; ValidateEffect AP_HaveDevastatorTurretSlow" Send="Create"/>
+        <ImpactMap index="None" Sound="AP_DevastatorTurret_AttackImpact" Model="MarauderUpgradedAttackImpact"/>
     </CActorAction>
     <CActorMissile id="AP_DevastatorTurretAttackMissile" parent="GenericAttackMissile" unitName="AP_DevastatorTurretMissile"/>
     <CActorRange id="AP_DevastatorTurretProtectRange" parent="RangeWeapon" weapon="AP_DevastatorTurretWeapon">
@@ -45222,4 +45245,5 @@
         <Up value="0.000000,0.000000,1.000000"/>
         <IsLocal value="1"/>
     </CActorSiteOpRotationExplicit>
+    
 </Catalog>

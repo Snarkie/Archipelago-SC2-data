@@ -7707,4 +7707,16 @@
         <Compare value="GT"/>
         <Behavior value="AP_ElderProbePowerSource"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorPlayerRequirement id="AP_HaveDevastatorTurretSlow">
+        <Find value="1"/>
+        <Value value="AP_HaveDevastatorTurretSlow"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="AP_IsGhostSetToMale">
+        <Value value="1"/>
+        <Behavior value="AP_GhostMorphToMale"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AP_IsGhostSetToFemale">
+        <Value value="1"/>
+        <Behavior value="AP_GhostMorphToFemale"/>
+    </CValidatorUnitCompareBehaviorCount>
 </Catalog>
