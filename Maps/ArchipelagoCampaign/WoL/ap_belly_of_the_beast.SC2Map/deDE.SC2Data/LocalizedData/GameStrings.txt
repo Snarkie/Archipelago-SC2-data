@@ -111,7 +111,7 @@ Water/Name/Template 2=Vorlage 2 /// Template 2
 Param/Expression/E821EAA3=Heiße Bettey Kills = ~A~ /// Flaming Betty Kills = ~A~
 Param/Value/21224AA7=Rette die terranischen Trupps /// Rescue Dominion Teams
 Param/Value/83FD56F1=Rette die Unterstützung, die Warfield zur Hilfe gesendet hat /// Rescue the support that Warfield sent us to help
-Param/Value/1B9B3072=DEBUG: Victory
-Param/Value/375BADA8=DEBUG: Skip to Stage 4
-Param/Value/7D7C311E=DEBUG: Skip to Stage 2
-Param/Value/E414420C=DEBUG: Skip to Stage 3
+Param/Value/1B9B3072=DEBUG: Sieg /// DEBUG: Victory
+Param/Value/375BADA8=DEBUG: Zu Stufe 4 springen /// DEBUG: Skip to Stage 4
+Param/Value/7D7C311E=DEBUG: Zu Stufe 2 springen /// DEBUG: Skip to Stage 2
+Param/Value/E414420C=DEBUG: Zu Stufe 3 springen /// DEBUG: Skip to Stage 3

@@ -72,4 +72,4 @@ Param/Value/FD0C270E=Der Odin muss überleben. /// Odin Must Survive
 Param/Expression/D027731D=Mit WBFs durchgeführte Reparaturen am Odin = ~A~ /// SCV Healing Performed On Odin = ~A~
 Param/Value/65CF8966=Finde Vernichtergewebeproben /// Find Devourer Tissue Samples
 Param/Value/9C67BB40=Anniversary_THorner_03 erhalten /// Anniversary_THorner_03 granted
-Upgrade/Name/AP_ProtossOdin=AP_ProtossOdin
+Upgrade/Name/AP_ProtossOdin=AP_ProtossOdin /// AP_ProtossOdin

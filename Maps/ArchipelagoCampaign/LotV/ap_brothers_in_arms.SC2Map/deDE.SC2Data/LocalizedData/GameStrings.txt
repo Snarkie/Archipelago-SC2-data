@@ -44,10 +44,11 @@ Param/Value/E0597AB5=Valerian baut Außenposten
 Param/Value/E33DBD09=Forschungseinrichtung
 Param/Value/EBCE1BCE=Störung aktiv
 Param/Value/F0011FBE=Schlüsselstein-Sockel
-Param/Value/F96ABEF8=Hybrid-Störungen überstanden:Param/Value/0D08BF76=Win in under 15 Minutes
-Param/Value/4C37B3C8=Kill 55 enemy structures<n/><s val="ModLeftSize12">during a single disruption</s>
-Param/Value/7CEFF0AB=Secure Valerian's Forward Positions
-Param/Value/D8CB65EF=Do not lose more than 5 Allied Buildings
-Param/Value/E5679D4C=<s val="ObjectivePanelFailed">Kill 55 enemy structures<n/>during a single disruption</s>
-Param/Value/EB3AB16D=Kill 55 Enemy Structures<n/><s val="ModLeftSize12">during a single Disruption</s>
-Param/Value/FED1B1A9=Secure Raynor's Forward Positions
+Param/Value/F96ABEF8=Hybrid-Störungen überstanden:
+Param/Value/0D08BF76=Gewinnen Sie in weniger als 15 Minuten /// Win in under 15 Minutes
+Param/Value/4C37B3C8=Zerstören Sie 55 feindliche Strukturen<n/><s val="ModLeftSize12">während einer einzigen Störung</s> /// Kill 55 enemy structures<n/><s val="ModLeftSize12">during a single disruption</s>
+Param/Value/7CEFF0AB=Sichern Sie Valerians offensive Stellungen /// Secure Valerian's Forward Positions
+Param/Value/D8CB65EF=Verlieren Sie nicht mehr als 5 verbündete Gebäude /// Do not lose more than 5 Allied Buildings
+Param/Value/E5679D4C=<s val="ObjectivePanelFailed">Zerstören Sie 55 feindliche Strukturen<n/>während einer einzigen Störung</s> /// <s val="ObjectivePanelFailed">Kill 55 enemy structures<n/>during a single disruption</s>
+Param/Value/EB3AB16D=Zerstören Sie 55 feindliche Strukturen<n/><s val="ModLeftSize12">während einer einzigen Störung</s> /// Kill 55 Enemy Structures<n/><s val="ModLeftSize12">during a single Disruption</s>
+Param/Value/FED1B1A9=Sichern Sie Raynors offensive Stellungen /// Secure Raynor's Forward Positions

@@ -26,5 +26,5 @@ Param/Value/B77EF82E=Nexuspunkt /// Nexus Point
 Param/Value/B8916A75=Bewege die Plattform nach rechts /// Move Platform Right
 Param/Value/EE2AA4F3=Resourcenvorräte gefunden /// Resource Pallets Found
 Param/Value/F89E74E8=5 Days /// 5 Days
-Param/Value/40F072C1=Rally All SCVs
-Param/Value/D3D5264A=Rally All Drones
+Param/Value/40F072C1=WBFs sammeln /// Rally All SCVs
+Param/Value/D3D5264A=Drohnen sammeln /// Rally All Drones

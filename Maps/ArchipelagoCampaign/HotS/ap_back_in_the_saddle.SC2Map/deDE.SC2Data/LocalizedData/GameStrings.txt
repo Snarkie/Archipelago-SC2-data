@@ -93,13 +93,13 @@ Param/Value/F4FFC5CC=Erreichen Sie diese Position, bevor die Tür sich schließt
 Param/Value/FD34C93B=<s val="SwarmReticleTerranEnemy">Trümmer zerstören</s> /// <s val="SwarmReticleTerranEnemy">Destroy Debris</s>
 Param/Value/FF783F03=Bewegen Sie Kerrigan hierher /// Move Kerrigan Here
 Unit/Name/WarPig=Umojanischer Space-Marine /// Umojan Marine
-﻿DocInfo/Author=Blizzard Entertainment
+DocInfo/Author=Blizzard Entertainment
 Param/Expression/EA0AD572=Einheiten verbleibend: ~A~ /// Units left: ~A~
 Param/Value/09630C86=<s val="SwarmReticleTerranEnemy">Zerquetschenden Griff verwenden</s> /// <s val="SwarmReticleTerranEnemy">Use Crushing Grip</s>
 Param/Value/49BA07CB=Feinde gesichtet /// Enemy Sighted
-Param/Value/27068088=DEBUG: Skip to Section 4
-Param/Value/3EE3E03D=DEBUG: Skip to Section 3
-Param/Value/AC3F32EF=DEBUG: Skip to Boss
-Param/Value/BD30545F=Have Kerrigan talk about her abilities
-Param/Value/DE73085D=DEBUG: Victory
-Param/Value/F4358EE7=DEBUG: Skip to Section 2
+Param/Value/27068088=DEBUG: Zu Stufe 4 springen /// DEBUG: Skip to Section 4
+Param/Value/3EE3E03D=DEBUG: Zu Stufe 3 springen /// DEBUG: Skip to Section 3
+Param/Value/AC3F32EF=DEBUG: Zum Boss springen /// DEBUG: Skip to Boss
+Param/Value/BD30545F=Lass Kerrigan über ihre Fähigkeiten reden /// Have Kerrigan talk about her abilities
+Param/Value/DE73085D=DEBUG: Sieg /// DEBUG: Victory
+Param/Value/F4358EE7=DEBUG: Zu Stufe 2 springen /// DEBUG: Skip to Section 2

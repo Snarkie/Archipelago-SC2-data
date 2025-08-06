@@ -41,16 +41,16 @@ Param/Value/CD92A6CE=Rak'Shir /// Rak'Shir
 Param/Value/CF72EB02=Nexuspunkt /// Nexus Point
 Param/Value/F1FA574E=Alarak gewinnt /// Alarak Winning
 Param/Value/F626910D=Slayn Elementar /// Slayn Elemental
-Param/Value/F751B7D8=Gegner ünterstützen Malash /// Enemies supporting Malash
+Param/Value/F751B7D8=Gegner unterstützen Malash /// Enemies supporting Malash
 Param/Value/F936CD59=Grube der Opferung /// Pit of Sacrifice
 Param/Value/FEC99CE4=Gegnerische Nexusse zerstört /// Enemy Nexuses Destroyed
-﻿Behavior/Name/AP_PitAlarakLifeRegen=Bionic Aura
-Behavior/Tooltip/AP_PitAlarakLifeRegen=This unit is regenerating life at an increased rate.
-DocInfo/Name=Rak'Shir
-Effect/Name/AP_PitAlarakLifeRegenAuraAB=Pit Alarak Life Regen Aura AB
-Effect/Name/AP_PitAlarakLifeRegenAuraRestore=Pit Alarak Life Regen Aura Restore
-Effect/Name/AP_PitAlarakLifeRegenAuraSearch=Pit Alarak Life Regen Aura Search
-Effect/Name/AP_PitAlarakLifeRegenSet=Pit Alarak Life Regen Set
-Param/Value/05F728F0=Kill Nexuses
-Param/Value/276D5D0A=Win in under 15 minutes
-Param/Value/3EA19308=Collect all Resource Pickups<n/><s val="ModLeftSize12">at the northern Shrine</s>
+Behavior/Name/AP_PitAlarakLifeRegen=Bionische Aura /// Bionic Aura
+Behavior/Tooltip/AP_PitAlarakLifeRegen=Diese Einheit stellt mit einer erhöhten Rate Trefferpunkte wieder her. /// This unit is regenerating life at an increased rate.
+DocInfo/Name=Rak'Shir /// Rak'Shir
+Effect/Name/AP_PitAlarakLifeRegenAuraAB=Pit Alarak Life Regen Aura AB /// Pit Alarak Life Regen Aura AB
+Effect/Name/AP_PitAlarakLifeRegenAuraRestore=Pit Alarak Life Regen Aura Restore /// Pit Alarak Life Regen Aura Restore
+Effect/Name/AP_PitAlarakLifeRegenAuraSearch=Pit Alarak Life Regen Aura Search /// Pit Alarak Life Regen Aura Search
+Effect/Name/AP_PitAlarakLifeRegenSet=Pit Alarak Life Regen Set /// Pit Alarak Life Regen Set
+Param/Value/05F728F0=Zerstören Sie Nexusse /// Kill Nexuses
+Param/Value/276D5D0A=Gewinnen Sie in weniger als 15 Minuten /// Win in under 15 minutes
+Param/Value/3EA19308=Sammeln Sie alle Resourcencontainer<n/><s val="ModLeftSize12">am nördlichen Schrein</s> /// Collect all Resource Pickups<n/><s val="ModLeftSize12">at the northern Shrine</s>

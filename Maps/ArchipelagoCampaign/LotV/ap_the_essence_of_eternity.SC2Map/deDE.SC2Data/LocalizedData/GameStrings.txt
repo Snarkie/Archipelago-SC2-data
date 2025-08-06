@@ -60,5 +60,5 @@ Param/Value/EE26E0B0=Feindliche Streitkräfte /// Enemy Forces
 Param/Value/EFF7E0E2=Streitkräfte bedroht /// Forces Under Threat
 Param/Value/F4150FC4=% /// %
 Param/Value/FF89513D=Kerrigan wurde getötet! /// Kerrigan has been killed!
-Param/Value/C9B1CB13=Destroy Void Thrasher Waves
-Param/Value/F9AA913A=No more than 15 Kerrigan Kills
+Param/Value/C9B1CB13=Zerstören Sie Wellen von Leerenmolochen /// Destroy Void Thrasher Waves
+Param/Value/F9AA913A=Nicht mehr als 15 Kills mit Kerrigan /// No more than 15 Kerrigan Kills

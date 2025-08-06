@@ -65,9 +65,9 @@ Water/Name/Template 1=Vorlage 1 /// Template 1
 ﻿Actor/Name/ExplosivesFodder1=Explosives Futter 1 /// Explosives Fodder 1
 Param/Expression/80B7A938=Feindliche Einheiten durch Atomraketen getötet = ~A~ /// Enemy units killed by nukes = ~A~
 Param/Value/448BBC79=
-Param/Value/49045CBD=DEBUG: Free second Prisoners
-Param/Value/52E2AF3B=DEBUG: Skip to Section 3
-Param/Value/602E668C=DEBUG: Free first Prisoners
-Param/Value/68AEB691=DEBUG: Victory
-Param/Value/9B76C4AF=DEBUG: Skip to Section 2
-Param/Value/CECCCDBD=Clear Forward Positions
+Param/Value/49045CBD=DEBUG: Befreien Sie die zweite Gruppe Gefangener /// DEBUG: Free second Prisoners
+Param/Value/52E2AF3B=DEBUG: Zu Sektion 3 springen /// DEBUG: Skip to Section 3
+Param/Value/602E668C=DEBUG: Befreien Sie die erste Gruppe Gefangener /// DEBUG: Free first Prisoners
+Param/Value/68AEB691=DEBUG: Sieg /// DEBUG: Victory
+Param/Value/9B76C4AF=DEBUG: Zu Sektion 2 springen /// DEBUG: Skip to Section 2
+Param/Value/CECCCDBD=Räumen Sie offensive Positionen /// Clear Forward Positions

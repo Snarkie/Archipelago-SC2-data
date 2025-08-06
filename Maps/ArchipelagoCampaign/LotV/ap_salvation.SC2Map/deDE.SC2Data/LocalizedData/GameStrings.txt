@@ -60,4 +60,4 @@ Param/Value/F696110E=Goldene Armada /// Golden Armada
 Param/Value/F93A4566=Karax zieht sich zurück /// Karax Retreat
 Param/Value/FB883A0A=Goldene Armada /// Golden Armada
 Param/Value/FF53E780=Näherrückender Angriff /// Incoming Attack
-Param/Value/DD787D3A=Kill the Brutalisk
+Param/Value/DD787D3A=Töten Sie den Brutalisk /// Kill the Brutalisk

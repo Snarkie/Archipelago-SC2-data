@@ -32,5 +32,5 @@ Param/Value/D699C068=Deaktiviertes Schloss
 Param/Value/DB7CBD4A=Inaktiv
 Param/Value/FA384C6D=Einheiten mit "Gravitonstrahl" emporgehoben
 LoadingScreen/Tip=Einheiten sterben, wenn sie getötet werden. /// Units die when they are killed.
-Param/Value/00DD99AD=Destroy the Terran Main Base
-Param/Value/DDED970B=Destroy the Protoss Main Base
+Param/Value/00DD99AD=Zerstören Sie die Hauptbasis der Terraner /// Destroy the Terran Main Base
+Param/Value/DDED970B=Zerstören Sie die Hauptbasis der Protoss /// Destroy the Protoss Main Base

@@ -55,4 +55,4 @@ Param/Expression/68C5D54E=AnniversaryAchievementTermNerazimPylonsFound = ~A~ ///
 Param/Expression/916E8589=AnniversaryAchievementTermNerazimPylonsFound = ~A~ /// AnniversaryAchievementTermNerazimPylonsFound = ~A~
 Param/Expression/CC5F28EF=AnniversaryAchievementTermNerazimPylonsFound = ~A~ /// AnniversaryAchievementTermNerazimPylonsFound = ~A~
 Param/Expression/ED110766=AnniversaryAchievementTermNerazimPylonsFound = ~A~ /// AnniversaryAchievementTermNerazimPylonsFound = ~A~
-Param/Value/5946B801=Reach the Base
+Param/Value/5946B801=Erreichen Sie die Basis /// Reach the Base

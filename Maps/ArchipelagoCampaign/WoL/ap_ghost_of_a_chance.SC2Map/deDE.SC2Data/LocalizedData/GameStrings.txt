@@ -133,9 +133,9 @@ Param/Value/FB1B8DF8=Psi-Indoktrinator /// Psi-Indoctrinator
 Param/Value/FB69C60D=Terrazintank /// Terrazine Tank
 Param/Value/FC30DF85=Durch kontrollierte Gegner getötete Einheiten /// Units Killed with Domination
 Param/Value/FF44D336=
-﻿DocInfo/Author=Blizzard Entertainment
+DocInfo/Author=Blizzard Entertainment
 Param/Expression/C6908CC9=Phantom Kills durch Rächer = ~A~ /// Spectre Kills by Reapers = ~A~
-Param/Value/0480BEF7=DEBUG: Skip to Section 2
-Param/Value/4972DBFD=DEBUG: Arming selected Silo
-Param/Value/755F6DE5=DEBUG: Skip to Section 3
-Param/Value/F9C7BF28=DEBUG: Victory
+Param/Value/0480BEF7=DEBUG: Zu Sektion 2 springen /// DEBUG: Skip to Section 2
+Param/Value/4972DBFD=DEBUG: Nuklearsilo scharf machen /// DEBUG: Arming selected Silo
+Param/Value/755F6DE5=DEBUG: Zu Sektion 3 springen /// DEBUG: Skip to Section 3
+Param/Value/F9C7BF28=DEBUG: Sieg /// DEBUG: Victory
