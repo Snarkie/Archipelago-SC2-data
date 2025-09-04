@@ -1,2 +1,3 @@
-Light/Name/MarSara=Mar Sara
+﻿Light/Name/MarSara=Mar Sara
 Light/Name/NewFolsom=New Folsom
+Validator/Name/AP_CasterNotBattling=AP_CasterNotBattling
