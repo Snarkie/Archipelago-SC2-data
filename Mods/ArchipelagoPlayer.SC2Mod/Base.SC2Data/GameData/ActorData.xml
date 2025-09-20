@@ -1549,6 +1549,11 @@
         <On Terms="TimerExpired; TimerName KnockbackDelay" Target="_Unit" Send="AnimClear PsionicLiftKnockback"/>
         <On Terms="TimerExpired; TimerName KnockbackDelay" Send="Destroy"/>
     </CActorSimple>
+    <CActorModel default="1" id="AP_SpawningMutantLarva" parent="ModelAddition">
+        <Model value="LarvaSuperEgg"/>
+        <On Terms="Behavior.AP_QueenSpawnLarvaTimer.On" Send="Create"/>
+        <On Terms="Behavior.AP_QueenSpawnLarvaTimer.Off" Send="AnimBracketStop BSD"/>
+    </CActorModel>
     <CActorSound id="AP_NydusWormTransportLoadSound" parent="SoundOneShot">
         <On Terms="AbilTransport.AP_NydusWormTransport.TransportLoad" Send="Create"/>
         <On Terms="AbilTransport.AP_NydusWormTransport.TransportUnload" Send="Create"/>
@@ -2522,10 +2527,10 @@
     <CActorUnit id="AP_InfestedMedic" parent="AP_MedicBase" unitName="AP_InfestedMedic">
         <On Terms="Behavior.AP_MercGroundDrop.Create" Send="Create AP_MercMedicDropModel"/>
         <On Terms="ActorCreation" Send="SetScale 1.100000"/>
-        <On Terms="Abil.AP_MercMedicHeal.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.AP_MercMedicHeal.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="Abil.AP_MercMedicHealPlusMech.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.AP_MercMedicHealPlusMech.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="Abil.AP_InfestedMedicMercHeal.SourceChannelStart" Send="AnimPlay Spell Attack PlayForever -1.000000 -1.000000 0.300000 AsTimeScale"/>
+        <On Terms="Abil.AP_InfestedMedicMercHeal.SourceChannelStop" Send="AnimClear Spell"/>
+        <On Terms="Abil.AP_InfestedMedicMercHealPlusMech.SourceChannelStart" Send="AnimPlay Spell Attack PlayForever -1.000000 -1.000000 0.300000 AsTimeScale"/>
+        <On Terms="Abil.AP_InfestedMedicMercHealPlusMech.SourceChannelStop" Send="AnimClear Spell"/>
         <PortraitModel value="AP_InfestedMedic_Portrait"/>
         <Model value="AP_InfestedMedic"/>
         <DeathArray index="Normal" ModelLink="AP_InfestedMedicDeath" SoundLink="AP_Medic_Explode"/>
@@ -2554,6 +2559,32 @@
         <VitalNames index="Shields" value="Vital/ZergShields"/>
         <WireframeShieldColor value="255,0,128,0"/>
     </CActorUnit>
+    <CActorBeamSimple id="AP_InfestedMedicMercHealBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="Effect.AP_InfestedMedicMercHeal.TargetStart" Send="Create"/>
+        <On Terms="Effect.AP_InfestedMedicMercHealPlusMech.TargetStart" Send="Create"/>
+        <On Terms="Effect.AP_InfestedMedicMercHeal.TargetStop" Send="Destroy"/>
+        <On Terms="Effect.AP_InfestedMedicMercHealPlusMech.TargetStop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,100,0 4.000000}"/>
+        <HostForProps Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <Model value="AP_MedicHealBeam"/>
+        <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachHardPoint AP_SOpInfestedMedicBeamOffset"/>
+        <HostImpact Subject="_Unit" Scope="Target" Actor="Find"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorModel id="AP_InfestedMedicMercHealModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="$Birth PlayForever"/>
+        <On Terms="Effect.AP_InfestedMedicMercHeal.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.AP_InfestedMedicMercHealPlusMech.TargetStart; At Target" Send="Create"/>
+        <On Terms="Effect.AP_InfestedMedicMercHeal.TargetStop; At Target" Send="Destroy"/>
+        <On Terms="Effect.AP_InfestedMedicMercHealPlusMech.TargetStop; At Target" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,150,0 3.000000}"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="AP_MedicHealModel"/>
+    </CActorModel>
     <CActorModel id="AP_MercMedicDropModel" parent="AP_MercDropModelBase">
         <On Terms="ActorCreation" Send="SetScale 0.800000"/>
     </CActorModel>
@@ -2802,6 +2833,10 @@
         <On Terms="Abil.AP_MengskMedicHeal.TargetChannelStop" Send="Destroy"/>
         <On Terms="Abil.AP_MengskMedicHealPlusMech.TargetChannelStart" Send="Create"/>
         <On Terms="Abil.AP_MengskMedicHealPlusMech.TargetChannelStop" Send="Destroy"/>
+        <On Terms="Abil.AP_InfestedMedicMercHeal.TargetChannelStart" Send="Create"/>
+        <On Terms="Abil.AP_AP_InfestedMedicMercHeal.TargetChannelStop" Send="Destroy"/>
+        <On Terms="Abil.AP_InfestedMedicMercHealPlusMech.TargetChannelStart" Send="Create"/>
+        <On Terms="Abil.AP_InfestedMedicMercHealPlusMech.TargetChannelStop" Send="Destroy"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="ActorCreation" Send="Create AP_MedicHealSoundStart"/>
         <On Terms="ActorDestruction" Send="Create AP_MedicHealSoundStop"/>
@@ -18445,6 +18480,8 @@
         <On Terms="AbilMorph.*.Cancel; MorphTo AP_ImpalerDen" Send="AnimPlay Rebirth Build,D,Start 0 0.000000 0.000000 0.300000 AsDuration"/>
         <On Terms="Effect.HydraliskDenMorphFinishDummy.Start" Send="StatusSet MorphAnim 1"/>
         <On Terms="Effect.HydraliskDenMorphFinishDummy.Start" Send="AnimClear Waiting"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_LurkerDen; AnimPlaying Morph" Send="Create AP_LurkerDen"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_LurkerDen; AnimPlaying Morph" Send="Destroy"/>
         <Model value="HydraliskDen"/>
         <BuildModel value="HydraliskDen"/>
         <DeathArray index="Normal" ModelLink="HydraliskDenDeath" SoundLink="HydraliskDen_Explode"/>
@@ -19909,8 +19946,6 @@
     </CActorUnit>
     <CActorSound id="AP_K5FurySound" parent="SoundOneShot"/>
     <CActorEventMacro id="AP_KerriganCosmeticMacro">
-        <On Terms="ActorCreation; ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="SetTeamColor 234,0,255 234,0,255"/>
-        <On Terms="ActorCreation; !ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="SetTeamColor 255,128,0 255,128,0"/>
         <On Terms="ActorCreation; ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="SetWalkAnimMoveSpeed 1.1992"/>
         <On Terms="ActorCreation; !ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="SetWalkAnimMoveSpeed 2"/>
         <On Terms="ActorCreation; ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="ModelSwap AP_InfestedKerrigan"/>
@@ -19918,10 +19953,8 @@
         <On Terms="UnitPortrait.*.Customize; !ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="PortraitCustomize AP_KerriganGhostPortrait AP_KerriganGhostPortrait"/>
         <On Terms="UnitPortrait.*.Customize; ValidatePlayer AP_HaveKerriganInfestedCosmetic" Send="PortraitCustomize AP_KerriganPrimalPortrait AP_KerriganPrimalPortrait"/>
         <On Terms="Upgrade.AP_KerriganInfestedCosmetic.Add" Send="SetWalkAnimMoveSpeed 1.1992"/>
-        <On Terms="Upgrade.AP_KerriganInfestedCosmetic.Add" Send="SetTeamColor 234,0,255 234,0,255"/>
         <On Terms="Upgrade.AP_KerriganInfestedCosmetic.Add" Send="ModelSwap AP_InfestedKerrigan"/>
         <On Terms="Upgrade.AP_KerriganInfestedCosmetic.Remove" Send="SetWalkAnimMoveSpeed 2"/>
-        <On Terms="Upgrade.AP_KerriganInfestedCosmetic.Remove" Send="SetTeamColor 255,128,0 255,128,0"/>
         <On Terms="Upgrade.AP_KerriganInfestedCosmetic.Remove" Send="ModelSwap AP_KerriganGhost00"/>
     </CActorEventMacro>
     <CActorEventMacro id="AP_KerriganSpells">
@@ -20125,7 +20158,9 @@
     <CActorSound id="AP_KerriganX1_Ready_Queen" parent="SoundOneShot"/>
     <CActorSound id="AP_KerriganX1_Ready_Primal" parent="SoundOneShot"/>
     <CActorModel id="AP_KerriganHeroGlow" parent="ModelAddition"/>
-    <CActorModel id="AP_KerriganHeroGlowPurple" parent="ModelAddition"/>
+    <CActorModel id="AP_KerriganHeroGlowPurple" parent="ModelAddition">
+        <Model value="AP_KerriganHeroGlow"/>
+    </CActorModel>
     <CActorModel id="AP_KerriganPrimalPortraitAddition" parent="CompositePortraitAddition"/>
     <CActorPortrait id="AP_KerriganPrimalPortrait" parent="CompositePortrait"/>
     <CActorModel id="AP_KerriganGhostPortraitAddition" parent="CompositePortraitAddition"/>
@@ -24106,7 +24141,7 @@
         <Model value="RoachWarrenBuild"/>
     </CActorModel>
     <CActorSound id="AP_QueenSpawnLarvaLarvaLandSound" parent="SoundOneShot">
-        <On Terms="UnitDeath.LarvaReleaseMissile" Send="Create"/>
+        <On Terms="UnitDeath.AP_LarvaReleaseMissile" Send="Create"/>
         <Sound value="Queen_SpawnLarvaLarvaLand"/>
     </CActorSound>
     <CActorModel id="AP_SOAAutomatedAssimilatorBeam" parent="ModelAnimationStyleContinuous">
@@ -43974,6 +44009,7 @@
         <On Terms="TimerExpired; TimerName AP_VulcanBlaster" Send="HostSiteOpsRemove ::Host AP_SOpScoutTaldarimRotatorUp"/>
         <On Terms="TimerExpired; TimerName AP_VulcanBlaster" Target="AP_ScoutTaldarimAttachment" Send="ModelSwap AP_ScoutTaldarimAttachment 255 PredecessorDestroyImmediate"/>
         <On Terms="WeaponStart.AP_ScoutTaldarimAir.AttackStart" Send="AnimBracketStart Attack Attack"/>
+		<AbilSoundArray AbilCmd="AP_ScoutTaldarimVulcanBlaster,Execute" Sound="AP_TaldarimScout_Ability"/>
         <Model value="AP_ScoutTaldarim"/>
         <BuildModel value="AP_ScoutMPWarpIn"/>
         <DeathArray index="Normal" ModelLink="AP_ScoutTaldarimDeath" SoundLink="AP_Scout_Explode"/>
@@ -43987,12 +44023,13 @@
         <HeroIcon value="AP\Assets\Textures\btn-unit-protoss-scout.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
         <NameOffset value="40"/>
-        <SoundArray index="Ready" value="AP_ScoutMP_Ready"/>
-        <SoundArray index="Help" value="AP_ScoutMP_Help"/>
-        <SoundArray index="What" value="AP_ScoutMP_What"/>
-        <SoundArray index="Yes" value="AP_ScoutMP_Yes"/>
-        <SoundArray index="Attack" value="AP_ScoutMP_Attack"/>
-        <SoundArray index="Pissed" value="AP_ScoutMP_Pissed"/>
+        <SoundArray index="Ready" value="AP_TaldarimScout_Ready"/>
+        <SoundArray index="Help" value="AP_TaldarimScout_Help"/>
+        <SoundArray index="What" value="AP_TaldarimScout_What"/>
+        <SoundArray index="Yes" value="AP_TaldarimScout_Yes"/>
+        <SoundArray index="Attack" value="AP_TaldarimScout_Attack"/>
+        <SoundArray index="Pissed" value="AP_TaldarimScout_Pissed"/>
+		<SoundArray index="Movement" value="Scout_Movement"/>
         <UnitIcon value="AP\Assets\Textures\btn-unit-protoss-scouttaldarim.dds"/>
         <Wireframe>
             <Image value="AP\Assets\Textures\wireframe-protoss-scouttaldarim.dds"/>
@@ -44073,7 +44110,8 @@
         <On Terms="Signal.*.Train" Send="Create AP_ScoutTaldarimTrainAttachment"/>
         <On Terms="Signal.*.Train" Target="AP_ScoutTaldarimWarpinAttachment" Send="Destroy"/>
         <On Terms="Signal.*.TrainEnd" Target="AP_ScoutTrainAttachment" Send="AnimBracketStop BSD"/>
-        <On Terms="Signal.*.TrainEnd" Target="AP_ScoutTaldarimTrainAttachment" Send="AnimBracketStop BSD"/>
+        <On Terms="Signal.*.TrainEnd" Target="AP_ScoutTaldarimTrainAttachment" Send="AnimBracketStop BSD"/>]
+		<AbilSoundArray AbilCmd="AP_ScoutTaldarimVulcanBlaster,Execute" Sound="AP_TaldarimScout_Ability"/>
         <BuildModel value="AP_ScoutMPWarpIn"/>
         <DeathArray index="Normal" ModelLink="AP_ScoutTaldarimDeath" SoundLink="AP_Scout_Explode"/>
         <PlacementModel value="AP_ScoutPlacement"/>
@@ -44087,12 +44125,13 @@
         <HeroIcon value="AP\Assets\Textures\btn-unit-protoss-scout.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
         <NameOffset value="40"/>
-        <SoundArray index="Ready" value="AP_ScoutMP_Ready"/>
-        <SoundArray index="Help" value="AP_ScoutMP_Help"/>
-        <SoundArray index="What" value="AP_ScoutMP_What"/>
-        <SoundArray index="Yes" value="AP_ScoutMP_Yes"/>
-        <SoundArray index="Attack" value="AP_ScoutMP_Attack"/>
-        <SoundArray index="Pissed" value="AP_ScoutMP_Pissed"/>
+        <SoundArray index="Ready" value="AP_TaldarimScout_Ready"/>
+        <SoundArray index="Help" value="AP_TaldarimScout_Help"/>
+        <SoundArray index="What" value="AP_TaldarimScout_What"/>
+        <SoundArray index="Yes" value="AP_TaldarimScout_Yes"/>
+        <SoundArray index="Attack" value="AP_TaldarimScout_Attack"/>
+        <SoundArray index="Pissed" value="AP_TaldarimScout_Pissed"/>
+		<SoundArray index="Movement" value="Scout_Movement"/>
         <UnitIcon value="AP\Assets\Textures\btn-unit-protoss-scouttaldarim.dds"/>
         <Wireframe>
             <Image value="AP\Assets\Textures\wireframe-protoss-scouttaldarim.dds"/>
@@ -45245,5 +45284,28 @@
         <Up value="0.000000,0.000000,1.000000"/>
         <IsLocal value="1"/>
     </CActorSiteOpRotationExplicit>
-    
+    <CActorModel id="AP_SpawningMutantLarva1" parent="AP_SpawningMutantLarva">
+        <HostSiteOps Ops="SOpAttachHardPoint01"/>
+    </CActorModel>
+    <CActorModel id="AP_SpawningMutantLarva2" parent="AP_SpawningMutantLarva">
+        <HostSiteOps Ops="SOpAttachHardPoint02"/>
+    </CActorModel>
+    <CActorModel id="AP_SpawningMutantLarva3" parent="AP_SpawningMutantLarva">
+        <HostSiteOps Ops="SOpAttachHardPoint03"/>
+    </CActorModel>
+    <CActorModel id="AP_SpawningMutantLarva4" parent="AP_SpawningMutantLarva">
+        <HostSiteOps Ops="SOpAttachHardPoint04"/>
+    </CActorModel>
+    <CActorSound id="AP_QueenSpawnLarvaLaunchSound" parent="SoundOneShot">
+        <Sound value="Queen_SpawnLarvaLaunch"/>
+        <On Terms="Effect.AP_SpawnMutantLarvaApplyTimerBehavior.Start" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="AP_QueenSpawnLarvaLarvaBirthSound" parent="SoundOneShot">
+        <Sound value="Queen_SpawnLarvaLarvaBirth"/>
+        <On Terms="Behavior.AP_QueenSpawnLarva.Create" Send="Create"/>
+    </CActorSound>
+    <CActorSiteOpLocalOffset id="AP_SOpInfestedMedicBeamOffset">
+        <EditorCategories value=""/>
+        <LocalOffset value="0.600000,-0.300000,0.000000"/>
+    </CActorSiteOpLocalOffset>
 </Catalog>

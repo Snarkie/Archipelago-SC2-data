@@ -2154,6 +2154,7 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockHercules (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     TechTreeAbilityAllow(lp_player, AbilityCommand("AP_StarportAddOns", 3), true);
+    TechTreeAbilityAllow(lp_player, AbilityCommand("AP_StarportAddOns", 0), true);
     TechTreeAbilityAllow(lp_player, AbilityCommand("AP_TerranBuild", 11), true);
     if ((TechTreeUpgradeCount(lp_player, "AP_InternalFusionModuleHercules", c_techCountCompleteOnly) == 0)) {
         TechTreeAbilityAllow(lp_player, AbilityCommand("AP_TerranBuild", 15), true);
@@ -9920,6 +9921,50 @@ void libABFE498B_gf_AP_Triggers_giveResearchCost (int lp_player, int lp_level) {
     }
 }
 
+void libABFE498B_gf_AP_Triggers_Debug_reviveKerrigan (int lp_player) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_unit = lib15EF4C78_gf_AP_Player_getKerriganUnit(lp_player);
+    if ((lv_unit == null)) {
+        return ;
+    }
+
+    if ((UnitIsAlive(lv_unit) == false)) {
+        lib15EF4C78_gf_ReviveHeroInstantly(1, lib15EF4C78_ge_HeroUnit_Kerrigan, false);
+    }
+    else {
+        return ;
+    }
+    Wait(0.0625, c_timeGame);
+    if ((UnitIsAlive(lv_unit) == false)) {
+        Wait(2.0, c_timeGame);
+        lib15EF4C78_gf_ReviveHeroInstantly(1, lib15EF4C78_ge_HeroUnit_Kerrigan, false);
+    }
+    else {
+        return ;
+    }
+    Wait(0.0625, c_timeGame);
+    if ((UnitIsAlive(lv_unit) == false)) {
+        UnitRevive(lv_unit);
+        UnitSetPropertyFixed(lv_unit, c_unitPropLifePercent, 100.0);
+    }
+    else {
+        return ;
+    }
+    Wait(0.0625, c_timeGame);
+    if ((UnitIsAlive(lv_unit) == false)) {
+        TriggerDebugOutput(1, StringExternal("Param/Value/lib_ABFE498B_23272ED1"), true);
+    }
+    else {
+        return ;
+    }
+}
+
 bool libABFE498B_gf_AP_Triggers_checkSoA (int lp_player, int lp_mode, bool lp_nobuildsection) {
     // Variable Declarations
     int lv_currentPlayer;
@@ -10080,6 +10125,8 @@ bool auto_libABFE498B_gf_AP_Triggers_resetBase_TriggerFunc (bool testConds, bool
     }
     libNtve_gf_PlayerRemoveCooldown(lp_player, "Abil/AP_ElderProbeWarpin");
     PlayerAddCooldown(lp_player, "Abil/AP_ElderProbeWarpin", 60.0);
+    lib15EF4C78_gf_AP_Player_updateTownHalls();
+    lib15EF4C78_gf_AP_Player_checkPrimaryTownHall(lp_player);
     lib15EF4C78_gf_AP_Player_clearZerglingRespawnChargesFromPlayer(lp_player);
     PlayerAddChargeUsed(lp_player, "Abil/AP_ElderProbeReconstruction", 5.0);
     if ((TechTreeUpgradeCount(lp_player, "AP_ZergStructureRapidRegen", c_techCountCompleteOnly) >= 1)) {
@@ -10774,6 +10821,7 @@ bool libABFE498B_gt_AP_Triggers_Debug_clearQueue_Func (bool testConds, bool runA
     }
 
     TriggerDebugOutput(1, (StringExternal("Param/Value/lib_ABFE498B_4073FE0C")), true);
+    TriggerDebugOutput(1, (StringExternal("Param/Value/lib_ABFE498B_61157F91")), true);
     TriggerQueueClear(c_triggerQueueRetain);
     return true;
 }
@@ -10783,6 +10831,41 @@ void libABFE498B_gt_AP_Triggers_Debug_clearQueue_Init () {
     libABFE498B_gt_AP_Triggers_Debug_clearQueue = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_clearQueue_Func");
     TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_clearQueue, c_playerAny, "-clear", true);
     TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_clearQueue, c_playerAny, "-c", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_skipTransmissions
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_skipTransmissions_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    const int auto014580F1_n = 10;
+    int auto014580F1_i;
+
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, (StringExternal("Param/Value/lib_ABFE498B_C2E7DE3B")), true);
+    for (auto014580F1_i = 1; auto014580F1_i <= auto014580F1_n; auto014580F1_i += 1) {
+        TransmissionClearAll();
+        Wait(0.1, c_timeReal);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_skipTransmissions_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_skipTransmissions = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_skipTransmissions_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_skipTransmissions, c_playerAny, "-skip", true);
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_skipTransmissions, c_playerAny, "-s", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10850,6 +10933,33 @@ void libABFE498B_gt_AP_Triggers_Debug_resetBase_Init () {
     libABFE498B_gt_AP_Triggers_Debug_resetBase = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_resetBase_Func");
     TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_resetBase, c_playerAny, "-reset", true);
     TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_resetBase, c_playerAny, "-resetbase", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_reviveHeroes
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, StringExternal("Param/Value/lib_ABFE498B_963EE8BA"), true);
+    libABFE498B_gf_AP_Triggers_Debug_reviveKerrigan(EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_reviveHeroes = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_reviveHeroes, c_playerAny, "-revive", true);
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_reviveHeroes, c_playerAny, "-r", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10945,8 +11055,10 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_activateDebugMode_Init();
     libABFE498B_gt_AP_Triggers_Debug_takeControl_Init();
     libABFE498B_gt_AP_Triggers_Debug_clearQueue_Init();
+    libABFE498B_gt_AP_Triggers_Debug_skipTransmissions_Init();
     libABFE498B_gt_AP_Triggers_Debug_reapplyDefaultBehaviors_Init();
     libABFE498B_gt_AP_Triggers_Debug_resetBase_Init();
+    libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Init();
     libABFE498B_gt_AP_Triggers_tradeStructureBuilt_Init();
     libABFE498B_gt_AP_Triggers_InitSoA_Init();
 }

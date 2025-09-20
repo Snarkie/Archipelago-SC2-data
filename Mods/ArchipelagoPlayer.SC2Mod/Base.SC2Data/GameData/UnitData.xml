@@ -386,6 +386,14 @@
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <!--Override-->
+        <AbilArray index="2" Link="AP_InfestedMedicMercHeal"/>
+        <AbilArray index="3" Link="AP_InfestedMedicMercHealPlusMech"/>
+        <!--Override-->
+        <CardLayouts index="0">
+            <LayoutButtons index="6" Face="AP_InfestedMedicMercHeal" Type="AbilCmd" AbilCmd="AP_InfestedMedicMercHealPlusMech,Execute" Row="2" Column="0"/>
+            <LayoutButtons index="7" Face="AP_InfestedMedicMercHeal" Type="AbilCmd" AbilCmd="AP_InfestedMedicMercHeal,Execute" Row="2" Column="0"/>
+        </CardLayouts>
     </CUnit>
     <CUnit id="AP_MedicSCBWOpticFlare@Missile" parent="MISSILE_INVULNERABLE">
         <Race value="BWTe"/>
@@ -7834,6 +7842,7 @@
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <WeaponArray Link="AP_TwinIbiksCannon" Turret="AP_PlanetaryFortress"/>
         <WeaponArray Link="AP_TwinIbiksCannonAir" Turret="AP_PlanetaryFortress"/>
         <CardLayouts>
@@ -7913,6 +7922,7 @@
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <WeaponArray Link="AP_TwinIbiksCannonFlying" Turret="AP_PlanetaryFortress"/>
         <WeaponArray Link="AP_TwinIbiksCannonAirFlying" Turret="AP_PlanetaryFortress"/>
         <CardLayouts>
@@ -10171,6 +10181,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="AP_MULE">
         <DeathRevealRadius value="3"/>
@@ -10300,6 +10311,7 @@
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <CardLayouts>
             <LayoutButtons Face="SCV" Type="AbilCmd" AbilCmd="AP_CommandCenterTrain,Train1" Row="0" Column="0"/>
             <LayoutButtons Face="Lift" Type="AbilCmd" AbilCmd="AP_OrbitalLiftOff,0" Row="2" Column="3"/>
@@ -10334,6 +10346,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="AP_OrbitalCommandFlying">
         <DeathRevealRadius value="3"/>
@@ -10379,6 +10392,7 @@
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <CardLayouts>
             <LayoutButtons Face="Land" Type="AbilCmd" AbilCmd="AP_OrbitalCommandLand,0" Row="2" Column="3"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -10459,6 +10473,7 @@
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <EffectArray index="Create" value="AP_CCCreateSet"/>
         <EffectArray index="Birth" value="AP_CCBirthSet"/>
         <CardLayouts>
@@ -10505,6 +10520,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="AP_CommandCenterFlying">
         <Name value="Unit/Name/CommandCenter"/>
@@ -10546,6 +10562,7 @@
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <CardLayouts>
             <LayoutButtons Face="Land" Type="AbilCmd" AbilCmd="AP_CommandCenterLand,0" Row="2" Column="3"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -15951,6 +15968,7 @@
         <BehaviorArray Link="AP_FakePowerUser"/>
         <BehaviorArray Link="AP_SOARadar"/>
         <BehaviorArray Link="AP_GameTime5Seconds"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <WeaponArray Turret="AP_Nexus"/>
         <EffectArray index="Create" value="AP_NexusCreateSet"/>
         <EffectArray index="Birth" value="AP_NexusBirthSet"/>
@@ -15999,6 +16017,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="AP_MothershipCoreWeaponWeapon" parent="MISSILE">
         <Race value="Prot"/>
@@ -18285,6 +18304,7 @@
         <BehaviorArray Link="AP_makeCreep8x6"/>
         <BehaviorArray Link="AP_SpawnLarva"/>
         <BehaviorArray Link="AP_ZergBuildingDies9"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <!--        <BehaviorArray Link="QueenofVenomHatcherySearch"/>-->
         <!-- The Behavior doesn't exist -->
         <BehaviorArray Link="AP_makeCreep8x6Enhanced"/>
@@ -18330,6 +18350,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="Lair">
         <!-- Override -->
@@ -18339,6 +18360,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="Hive">
         <!-- Override -->
@@ -18348,6 +18370,7 @@
         <AbilArray Link="AP_ZerglingRespawn"/>
         <AbilArray Link="AP_ZerglingRespawnCounter"/>
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
+        <BehaviorArray Link="AP_TownHall"/>
     </CUnit>
     <CUnit id="AP_Hatchery">
         <DeathRevealRadius value="3"/>
@@ -18411,6 +18434,7 @@
         <BehaviorArray Link="AP_HatcheryDoubleQueue"/>
         <BehaviorArray Link="AP_SISCVBuildChargeUpgradeIndicator"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <EffectArray index="Create" value="HatcheryCreateSet"/>
         <EffectArray index="Birth" value="HatcheryBirthSet"/>
         <CardLayouts>
@@ -18503,6 +18527,7 @@
         <BehaviorArray Link="AP_makeCreep8x6"/>
         <BehaviorArray Link="AP_SpawnLarva"/>
         <BehaviorArray Link="AP_ZergBuildingDies9"/>
+        <BehaviorArray Link="AP_TownHall"/>
         <!--        <BehaviorArray Link="QueenofVenomHatcherySearch"/>-->
         <!-- The Behavior doesn't exist -->
         <BehaviorArray Link="AP_makeCreep8x6Enhanced"/>
@@ -22887,6 +22912,7 @@
         <BehaviorArray Link="AP_SIInfestedBunkerAutoSpawner"/>
         <BehaviorArray Link="AP_SIBunkerArmorUpgradeIndicator"/>
         <BehaviorArray Link="AP_SIInfestedBunkerImprovedCargoUpgradeIndicator"/>
+        <BehaviorArray Link="AP_ZergCreepStomachIndicator"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
         <EffectArray index="Create" value="AP_SIInfestedBunkerCreation"/>
         <CardLayouts>
@@ -22898,9 +22924,10 @@
             <LayoutButtons Face="AP_SIInfestedBunkerSpawnInfestedMarine" Type="AbilCmd" AbilCmd="AP_SIInfestedBunkerTrainMarine,0" Row="0" Column="0"/>
             <LayoutButtons Face="AttackRedirect" Type="AbilCmd" AbilCmd="AP_AttackRedirect,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AP_SIBunkerRegenerativePlating" Type="Passive" Requirements="AP_HaveSIBunkerLifeRegen" Row="1" Column="1"/>
-            <LayoutButtons Face="AP_ZergCreepStomach" Type="Passive" Requirements="AP_HaveZergCreepStomach" Row="1" Column="3"/>
+<!--            <LayoutButtons Face="AP_ZergCreepStomach" Type="Passive" Requirements="AP_HaveZergCreepStomach" Row="1" Column="3"/>-->
             <LayoutButtons Face="AP_ZergExcavatingClaws" Type="Passive" Requirements="AP_HaveZergExcavatingClaws" Row="1" Column="2"/>
-            <LayoutButtons Face="AP_SIStukovPlaceHordeRally" Type="AbilCmd" AbilCmd="AP_SIStukovPlaceHordeRally,Execute" Row="1" Column="4"/>
+            <LayoutButtons Face="SetBunkerRallyPoint" Type="AbilCmd" AbilCmd="AP_SIInfestedBunkerRally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons Face="AP_SIStukovPlaceHordeRally" Type="AbilCmd" AbilCmd="AP_SIStukovPlaceHordeRally,Execute" Row="1" Column="3"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="AP_StopRedirect,Execute" Row="0" Column="1"/>
             <LayoutButtons Face="Halt" Type="AbilCmd" AbilCmd="BuildInProgress,Halt" Row="2" Column="3"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5CancelToSelection,CancelLast" Row="2" Column="4"/>
@@ -22966,6 +22993,7 @@
         <BehaviorArray Link="AP_DisableRedirect"/>
         <BehaviorArray Link="AP_SIBunkerArmorUpgradeIndicator"/>
         <BehaviorArray Link="AP_SIInfestedBunkerImprovedCargoUpgradeIndicator"/>
+        <BehaviorArray Link="AP_ZergCreepStomachIndicator"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
         <WeaponArray Link="AP_InfestedBunkerHiddenRealUprootedWeapon"/>
         <EffectArray index="Create" value="AP_SIInfestedBunkerCreation"/>
@@ -22983,7 +23011,7 @@
             <LayoutButtons Face="AP_SIInfestedBunkerInfestedMarineSpawner" Type="Passive" Behavior="AP_SIInfestedBunkerAutoSpawner" Requirements="AP_MustBeRooted" Row="1" Column="0"/>
 <!--            keeping the spawner behavior for regen to replicate the disabled-while-uprooted visual-->
             <LayoutButtons Face="AP_SIBunkerRegenerativePlating" Type="Passive" Requirements="AP_HaveSIBunkerLifeRegenMustBeRooted" Row="1" Column="1"/>
-            <LayoutButtons Face="AP_ZergCreepStomach" Type="Passive" Requirements="AP_HaveZergCreepStomach" Row="1" Column="3"/>
+<!--            <LayoutButtons Face="AP_ZergCreepStomach" Type="Passive" Requirements="AP_HaveZergCreepStomach" Row="1" Column="3"/>-->
             <LayoutButtons Face="AP_ZergExcavatingClaws" Type="Passive" Requirements="AP_HaveZergExcavatingClaws" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1.25"/>
@@ -23187,6 +23215,7 @@
         <RepairTime value="65"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
+        <AbilArray Link="Rally"/>
         <AbilArray Link="AP_SIBarracksTrain"/>
         <AbilArray Link="AP_SIBarracksLiftOff"/>
         <AbilArray Link="AP_SIStukovPlaceHordeRally"/>
@@ -23201,7 +23230,8 @@
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="4"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
             <!--            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="SIBarracksAddOns2,30" Row="2" Column="4"/>-->
-            <LayoutButtons Face="AP_SIStukovPlaceHordeRally" Type="AbilCmd" AbilCmd="AP_SIStukovPlaceHordeRally,Execute" Row="1" Column="4"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons Face="AP_SIStukovPlaceHordeRally" Type="AbilCmd" AbilCmd="AP_SIStukovPlaceHordeRally,Execute" Row="1" Column="3"/>
             <LayoutButtons Face="SelectBuilder" Type="SelectBuilder" Row="1" Column="3"/>
             <LayoutButtons Face="AP_SIInfestedMarine" Type="AbilCmd" AbilCmd="AP_SIBarracksTrain,0" Row="0" Column="0"/>
         </CardLayouts>

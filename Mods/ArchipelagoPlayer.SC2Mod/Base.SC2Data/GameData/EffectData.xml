@@ -10145,6 +10145,7 @@
         <EditorCategories value="Race:Zerg"/>
         <ImpactLocation Value="TargetUnit"/>
         <Flags index="NoVitalAbsorbShields" value="1"/>
+        <Flags index="Live" value="1"/>
         <Amount value="1"/>
         <LeechFraction index="Energy" value="2"/>
     </CEffectDamage>
@@ -10154,6 +10155,7 @@
         <EditorCategories value="Race:Zerg"/>
         <ImpactLocation Value="TargetUnit"/>
         <Flags index="NoVitalAbsorbShields" value="1"/>
+        <Flags index="Live" value="1"/>
         <Amount value="25"/>
         <LeechFraction index="Energy" value="2"/>
     </CEffectDamage>
@@ -10163,6 +10165,7 @@
         <EditorCategories value="Race:Zerg"/>
         <ImpactLocation Value="TargetUnit"/>
         <Flags index="NoVitalAbsorbShields" value="1"/>
+        <Flags index="Live" value="1"/>
         <Amount value="5"/>
         <LeechFraction index="Energy" value="2"/>
     </CEffectDamage>
@@ -13641,6 +13644,11 @@
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="AP_QueenBurstHeal"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AP_QueenBirth">
+        <ValidatorArray index="0" value=""/>
+        <EditorCategories value="Race:Zerg"/>
+        <Behavior value="AP_QueenBirthUnburrow"/>
+    </CEffectApplyBehavior>
     <CEffectDamage id="AP_Talons" parent="DU_WEAP">
         <EditorCategories value="Race:Zerg"/>
         <Kind value="Ranged"/>
@@ -16839,7 +16847,7 @@
     </CEffectDamage>
     <CEffectApplyBehavior id="AP_SpawnMutantLarvaApplyTimerBehavior">
         <ValidatorArray index="0" value="IsHatcheryLairOrHive"/>
-        <ValidatorArray value="AP_NotSpawningMutantLarva"/>
+        <ValidatorArray value="NotSpawningMutantLarva"/>
         <ValidatorArray value="NotContaminated"/>
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="AP_QueenSpawnLarvaTimer"/>
@@ -24543,4 +24551,29 @@
         <Upgrades Upgrade="AP_CellDivisionToggleOff" Count="-1"/>
         <Upgrades Upgrade="AP_CellDivisionToggle" Count="1"/>
     </CEffectModifyPlayer>
+    <CEffectSet id="AP_LarvaRelease">
+        <EditorCategories value="Race:Zerg"/>
+        <EffectArray value="AP_SpawnMutantLarvaRemoveSpawnBehavior"/>
+        <EffectArray value="AP_LarvaReleaseLM"/>
+        <EffectArray value="MakePrecursor"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="AP_LarvaReleaseLM">
+        <EditorCategories value="Race:Zerg"/>
+        <FinishEffect value="RemovePrecursor"/>
+        <AmmoUnit value="AP_LarvaReleaseMissile"/>
+        <LaunchLocation Value="CasterUnit"/>
+    </CEffectLaunchMissile>
+    <CEffectCreateHealer id="AP_InfestedMedicMercHeal">
+        <Name value="Effect/Name/AP_heal"/>
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="HiddenCompareAB"/>
+        <ValidatorArray value="HiddenCompareBA"/>
+        <ValidatorArray value="NotVortexd"/>
+        <ValidatorArray value="AP_UnitIsBiologicalOrMechanical"/>
+        <Marker Link="Effect/AP_heal"/>
+        <DrainVital value="Energy"/>
+        <DrainVitalCostFactor value="0.25"/>
+        <RechargeVitalRate value="12"/>
+    </CEffectCreateHealer>
 </Catalog>

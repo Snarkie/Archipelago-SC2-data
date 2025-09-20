@@ -69,6 +69,9 @@ void lib15EF4C78_InitVariables () {
     }
     lib15EF4C78_gv_supplicantWarpTrainActualUnitCost = UnitTypeGetCost("AP_Supplicant", c_unitCostMinerals);
     lib15EF4C78_gv_supplicantWarpTrainActualCommand = AbilityCommand("AP_WarpGateTrainSupplicantTrue", 11);
+    for (init_i = 0; init_i <= 20; init_i += 1) {
+        lib15EF4C78_gv_aP_Player_TownHalls[init_i] = UnitGroupEmpty();
+    }
     for (init_i = 0; init_i <= lib15EF4C78_gv_aP_Player_TOWN_HALL_ID_COUNT; init_i += 1) {
         lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[init_i] = "";
     }
@@ -263,7 +266,42 @@ void lib15EF4C78_InitCustomScript () {
 
 // Presets
 // Functions
-void lib15EF4C78_gf_Stukov_NewBunkerUnitProcess (unit lp_newUnit) {
+void lib15EF4C78_gf_AP_Player_initInitialInfestedBunkersForPlayer (int lp_player) {
+    // Variable Declarations
+    unit lv_cargoUnit;
+    unitgroup lv_unitGroup;
+
+    // Automatic Variable Declarations
+    unitgroup auto30739062_g;
+    int auto30739062_u;
+    unit auto30739062_var;
+    unitgroup autoC10D933C_g;
+    int autoC10D933C_u;
+
+    // Variable Initialization
+    lv_unitGroup = UnitGroupEmpty();
+
+    // Implementation
+    lv_unitGroup = UnitGroup("AP_SIInfestedBunker", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupAddUnitGroup(lv_unitGroup, UnitGroup("AP_SIInfestedBunkerUprooted", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    auto30739062_g = lv_unitGroup;
+    auto30739062_u = UnitGroupCount(auto30739062_g, c_unitCountAll);
+    for (;; auto30739062_u -= 1) {
+        auto30739062_var = UnitGroupUnitFromEnd(auto30739062_g, auto30739062_u);
+        if (auto30739062_var == null) { break; }
+        UnitCargoCreate(auto30739062_var, "AP_SIInfestedTrooper", 6);
+        autoC10D933C_g = UnitCargoLastCreatedGroup();
+        autoC10D933C_u = UnitGroupCount(autoC10D933C_g, c_unitCountAll);
+        for (;; autoC10D933C_u -= 1) {
+            lv_cargoUnit = UnitGroupUnitFromEnd(autoC10D933C_g, autoC10D933C_u);
+            if (lv_cargoUnit == null) { break; }
+            lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(auto30739062_var, lv_cargoUnit);
+        }
+        ActorSend(libNtve_gf_MainActorofUnit(auto30739062_var), "CreepEngulfmentStartTransition");
+    }
+}
+
+void lib15EF4C78_gf_Stukov_NewBunkerUnitProcess (unit lp_bunker, unit lp_newUnit) {
     // Variable Declarations
     unit lv_unit;
     int lv_player;
@@ -280,23 +318,33 @@ void lib15EF4C78_gf_Stukov_NewBunkerUnitProcess (unit lp_newUnit) {
     }
 
     UnitGroupAdd(lib15EF4C78_gv_stukov_HordeGroup, lp_newUnit);
-    lib15EF4C78_gf_Stukov_SingleUnitGoToRally(lv_unit, true);
+    lib15EF4C78_gf_Stukov_SingleUnitGoToRally(lv_unit, true, UnitRallyPointTargetPoint(lp_bunker, 1, 1));
 }
 
-void lib15EF4C78_gf_Stukov_SingleUnitGoToRally (unit lp_rallyingUnit, bool lp_overrideExistingOrders) {
+void lib15EF4C78_gf_Stukov_SingleUnitGoToRally (unit lp_rallyingUnit, bool lp_overrideExistingOrders, point lp_overrideRallyPoint) {
+    // Variable Declarations
+    point lv_rallyPoint;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_rallyPoint = lib15EF4C78_gv_stukov_RallyPoint[UnitGetOwner(lp_rallyingUnit)];
+
     // Implementation
-    if ((lib15EF4C78_gv_stukov_RallyPoint != null) && ((lp_overrideExistingOrders == true) || (UnitOrderCount(lp_rallyingUnit) == 0))) {
-        UnitIssueOrder(lp_rallyingUnit, OrderTargetingPoint(AbilityCommand("move", 3), lib15EF4C78_gv_stukov_RallyPoint), c_orderQueueReplace);
+    if ((lp_overrideRallyPoint != null)) {
+        lv_rallyPoint = lp_overrideRallyPoint;
+    }
+
+    if ((lv_rallyPoint != null) && ((lp_overrideExistingOrders == true) || (UnitOrderCount(lp_rallyingUnit) == 0))) {
+        UnitIssueOrder(lp_rallyingUnit, OrderTargetingPoint(AbilityCommand("move", 3), lv_rallyPoint), c_orderQueueReplace);
     }
 
 }
 
-void lib15EF4C78_gf_Stukov_HordeGoToRally () {
+void lib15EF4C78_gf_Stukov_HordeGoToRally (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    if ((lib15EF4C78_gv_stukov_RallyPoint != null)) {
-        UnitGroupIssueOrder(lib15EF4C78_gv_stukov_HordeGroup, OrderTargetingPoint(AbilityCommand("move", 3), lib15EF4C78_gv_stukov_RallyPoint), c_orderQueueReplace);
+    if ((lib15EF4C78_gv_stukov_RallyPoint[lp_player] != null)) {
+        UnitGroupIssueOrder(UnitGroupFilterPlayer(lib15EF4C78_gv_stukov_HordeGroup, lp_player, 0), OrderTargetingPoint(AbilityCommand("move", 3), lib15EF4C78_gv_stukov_RallyPoint[lp_player]), c_orderQueueReplace);
     }
 
 }
@@ -1370,6 +1418,7 @@ void lib15EF4C78_gf_PU_GPSetUnit (unit lp_casterUnit) {
     UnitGroupAdd(lib15EF4C78_gv_pU_GPCasterGroup, lp_casterUnit);
     libNtve_gf_SetDialogItemUnitGroup(lib15EF4C78_gv_pU_GPCmdPanel, lib15EF4C78_gv_pU_GPCasterGroup, PlayerGroupAll());
     lib15EF4C78_gf_PU_GPVitalsUpdate();
+    TriggerEnable(lib15EF4C78_gt_PU_GPVitalChanges, true);
 }
 
 void lib15EF4C78_gf_ShowSpearofAdunUI (bool lp_showHide, fixed lp_duration) {
@@ -1749,48 +1798,15 @@ text lib15EF4C78_gf_PC_PerkTargetingText (string lp_campaignPerk, int lp_stage) 
 }
 
 bool lib15EF4C78_gf_AP_Player_isTownHall (unit lp_building) {
-    // Variable Declarations
-    int lv_index;
-    string lv_id;
-
     // Automatic Variable Declarations
-    const int auto228951E5_ae = lib15EF4C78_gv_aP_Player_TOWN_HALL_ID_COUNT;
-    const int auto228951E5_ai = 1;
-
-    // Variable Initialization
-    lv_id = "";
-
     // Implementation
-    lv_index = 0;
-    for ( ; ( (auto228951E5_ai >= 0 && lv_index <= auto228951E5_ae) || (auto228951E5_ai < 0 && lv_index >= auto228951E5_ae) ) ; lv_index += auto228951E5_ai ) {
-        if ((UnitGetType(lp_building) == (lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[lv_index]))) {
-            return true;
-        }
-
-    }
-    return false;
+    return UnitHasBehavior2(lp_building, "AP_TownHall");
 }
 
 unitgroup lib15EF4C78_gf_AP_Player_getTownHalls (int lp_player) {
-    // Variable Declarations
-    int lv_index;
-    string lv_id;
-    unitgroup lv_candidateBuildings;
-
     // Automatic Variable Declarations
-    const int auto0B2837B3_ae = lib15EF4C78_gv_aP_Player_TOWN_HALL_ID_COUNT;
-    const int auto0B2837B3_ai = 1;
-
-    // Variable Initialization
-    lv_id = "";
-    lv_candidateBuildings = UnitGroupEmpty();
-
     // Implementation
-    lv_index = 0;
-    for ( ; ( (auto0B2837B3_ai >= 0 && lv_index <= auto0B2837B3_ae) || (auto0B2837B3_ai < 0 && lv_index >= auto0B2837B3_ae) ) ; lv_index += auto0B2837B3_ai ) {
-        UnitGroupAddUnitGroup(lv_candidateBuildings, UnitGroup((lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[lv_index]), lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    }
-    return lv_candidateBuildings;
+    return lib15EF4C78_gv_aP_Player_TownHalls[lp_player];
 }
 
 unit lib15EF4C78_gf_AP_Player_getPrimaryTownHall (int lp_player) {
@@ -1899,6 +1915,34 @@ void lib15EF4C78_gf_AP_Player_setPrimaryTownHallPreferredLocation (int lp_player
     lib15EF4C78_gv_aP_Player_PrimaryTownHallPreferredLocation[lp_player] = lp_point;
 }
 
+void lib15EF4C78_gf_AP_Player_updateTownHalls () {
+    // Variable Declarations
+    unitgroup lv_group;
+    int lv_currentPlayer;
+
+    // Automatic Variable Declarations
+    unitgroup auto8BD1D3DD_g;
+    int auto8BD1D3DD_u;
+    unit auto8BD1D3DD_var;
+
+    // Variable Initialization
+    lv_group = UnitGroupEmpty();
+
+    // Implementation
+    lv_group = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto8BD1D3DD_g = lv_group;
+    auto8BD1D3DD_u = UnitGroupCount(auto8BD1D3DD_g, c_unitCountAll);
+    for (;; auto8BD1D3DD_u -= 1) {
+        auto8BD1D3DD_var = UnitGroupUnitFromEnd(auto8BD1D3DD_g, auto8BD1D3DD_u);
+        if (auto8BD1D3DD_var == null) { break; }
+        lv_currentPlayer = UnitGetOwner(auto8BD1D3DD_var);
+        if ((lib15EF4C78_gf_AP_Player_isTownHall(auto8BD1D3DD_var) == true) && (UnitGroupHasUnit(lib15EF4C78_gv_aP_Player_TownHalls[lv_currentPlayer], auto8BD1D3DD_var) != true)) {
+            UnitGroupAdd(lib15EF4C78_gv_aP_Player_TownHalls[lv_currentPlayer], auto8BD1D3DD_var);
+        }
+
+    }
+}
+
 void lib15EF4C78_gf_AP_Player_checkPrimaryTownHall (int lp_player) {
     // Variable Declarations
     unit lv_primaryBuilding;
@@ -1913,10 +1957,6 @@ void lib15EF4C78_gf_AP_Player_checkPrimaryTownHall (int lp_player) {
             UnitBehaviorAdd(lv_primaryBuilding, "AP_ZerglingRespawnPrimary", lv_primaryBuilding, 1);
         }
 
-        return ;
-    }
-
-    if ((UnitGroupCount(lib15EF4C78_gf_AP_Player_getTownHalls(lp_player), c_unitCountAlive) <= 0)) {
         return ;
     }
 
@@ -3553,33 +3593,20 @@ bool lib15EF4C78_gf_AP_Player_MercCompoundNoChargeLimit (int lp_player, int lp_m
 void lib15EF4C78_gf_AP_Player_MercCompoundUpdateAvailableCount (int lp_player) {
     // Variable Declarations
     int lv_index;
-    int lv_readyInfantryCount;
-    int lv_readyVehiclesCount;
-    int lv_readyStarshipsCount;
-    int lv_readyBroodWarCount;
-    int lv_readySC2Count;
-    int lv_readyInfestedCount;
+    int[lib15EF4C78_gv_aP_Player_MERC_COOLDOWN_LINK_SIZE + 1] lv_readyCount;
     string lv_cooldownLink;
     abilcmd lv_abiltyCommand;
     int lv_infoArrayIndex;
     int lv_mercenaryClass;
-    int lv_untitledVariable001;
 
     // Automatic Variable Declarations
     const int auto2A6816A0_ae = lib15EF4C78_gv_aP_Player_MERC_COOLDOWN_LINK_SIZE;
     const int auto2A6816A0_ai = 1;
-    int auto43FC3C45_val;
 
     // Variable Initialization
     lv_cooldownLink = "";
 
     // Implementation
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundInfantryCounterNothingReady", 0);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundStarshipsCounterNothingReady", 0);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundVehiclesCounterNothingReady", 0);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundBroodWarCounterNothingReady", 0);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundSC2CounterNothingReady", 0);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundInfestedCounterNothingReady", 0);
     lv_index = 0;
     for ( ; ( (auto2A6816A0_ai >= 0 && lv_index <= auto2A6816A0_ae) || (auto2A6816A0_ai < 0 && lv_index >= auto2A6816A0_ae) ) ; lv_index += auto2A6816A0_ai ) {
         lv_abiltyCommand = lib15EF4C78_gv_aP_Player_MercAbilityCommands[lv_index];
@@ -3587,58 +3614,35 @@ void lib15EF4C78_gf_AP_Player_MercCompoundUpdateAvailableCount (int lp_player) {
         lv_mercenaryClass = lib15EF4C78_gv_aP_Player_MercType[lv_index];
         lv_infoArrayIndex = lib15EF4C78_gv_aP_Player_MercAbilityInfoArrayIndex[lv_index];
         if ((TechTreeAbilityIsAllowed(lp_player, lv_abiltyCommand) == true) && (PlayerGetCooldown(lp_player, lv_cooldownLink) <= 0.0) && ((lib15EF4C78_gf_AP_Player_MercCompoundNoChargeLimit(lp_player, lv_mercenaryClass) == true) || (PlayerGetChargeUsed(lp_player, lib15EF4C78_gv_aP_Player_MercCooldownLinks[lv_index]) < CatalogFieldValueGetAsInt(c_gameCatalogAbil, lib15EF4C78_gv_aP_Player_MercAbility[lv_index], "InfoArray[" + IntToString(lv_infoArrayIndex) + "].Charge.CountMax", lp_player)))) {
-            auto43FC3C45_val = lv_mercenaryClass;
-            if (auto43FC3C45_val == lib15EF4C78_ge_AP_Player_MercenaryType_BROODWAR) {
-                lv_readyBroodWarCount = (lv_readyBroodWarCount + 1);
-            }
-            else if (auto43FC3C45_val == lib15EF4C78_ge_AP_Player_MercenaryType_SCTWO) {
-                lv_readySC2Count = (lv_readySC2Count + 1);
-            }
-            else if (auto43FC3C45_val == lib15EF4C78_ge_AP_Player_MercenaryType_INFESTED) {
-                lv_readyInfestedCount = (lv_readyInfestedCount + 1);
-            }
-            else if (auto43FC3C45_val == lib15EF4C78_ge_AP_Player_MercenaryType_INFANTRY) {
-                lv_readyInfantryCount = (lv_readyInfantryCount + 1);
-            }
-            else if (auto43FC3C45_val == lib15EF4C78_ge_AP_Player_MercenaryType_VEHICLE) {
-                lv_readyVehiclesCount = (lv_readyVehiclesCount + 1);
-            }
-            else if (auto43FC3C45_val == lib15EF4C78_ge_AP_Player_MercenaryType_STARSHIP) {
-                lv_readyStarshipsCount = (lv_readyStarshipsCount + 1);
-            }
-            else {
-            }
+            lv_readyCount[(lv_mercenaryClass)] += 1;
         }
 
     }
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundInfantryCounter", lv_readyInfantryCount);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundVehiclesCounter", lv_readyVehiclesCount);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundStarshipsCounter", lv_readyStarshipsCount);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundBroodWarCounter", lv_readyBroodWarCount);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundSC2Counter", lv_readySC2Count);
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundInfestedCounter", lv_readyInfestedCount);
-    if ((lv_readyInfantryCount == 0)) {
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundInfantryCounterNothingReady", 1);
-    }
+    lv_mercenaryClass = lib15EF4C78_ge_AP_Player_MercenaryType_INFANTRY;
+    lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade(lp_player, lv_mercenaryClass, lv_readyCount[(lv_mercenaryClass)]);
+    lv_mercenaryClass = lib15EF4C78_ge_AP_Player_MercenaryType_VEHICLE;
+    lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade(lp_player, lv_mercenaryClass, lv_readyCount[(lv_mercenaryClass)]);
+    lv_mercenaryClass = lib15EF4C78_ge_AP_Player_MercenaryType_STARSHIP;
+    lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade(lp_player, lv_mercenaryClass, lv_readyCount[(lv_mercenaryClass)]);
+    lv_mercenaryClass = lib15EF4C78_ge_AP_Player_MercenaryType_SCTWO;
+    lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade(lp_player, lv_mercenaryClass, lv_readyCount[(lv_mercenaryClass)]);
+    lv_mercenaryClass = lib15EF4C78_ge_AP_Player_MercenaryType_BROODWAR;
+    lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade(lp_player, lv_mercenaryClass, lv_readyCount[(lv_mercenaryClass)]);
+    lv_mercenaryClass = lib15EF4C78_ge_AP_Player_MercenaryType_INFESTED;
+    lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade(lp_player, lv_mercenaryClass, lv_readyCount[(lv_mercenaryClass)]);
+}
 
-    if ((lv_readyBroodWarCount == 0)) {
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundBroodWarCounterNothingReady", 1);
-    }
+void lib15EF4C78_gf_AP_Player_MercCompoundUpdateCountUpgrade (int lp_player, int lp_mercType, int lp_readyCount) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_readyCount != lib15EF4C78_gv_aP_Player_MercReadyCount[lp_player][(lp_mercType)])) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[(lp_mercType)], 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[(lp_mercType)], lp_readyCount);
+        lib15EF4C78_gv_aP_Player_MercReadyCount[lp_player][(lp_mercType)] = lp_readyCount;
+        if ((lp_readyCount == 0)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[(lp_mercType)], 1);
+        }
 
-    if ((lv_readySC2Count == 0)) {
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundSC2CounterNothingReady", 1);
-    }
-
-    if ((lv_readyInfestedCount == 0)) {
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergMercCompoundInfestedCounterNothingReady", 1);
-    }
-
-    if ((lv_readyVehiclesCount == 0)) {
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundVehiclesCounterNothingReady", 1);
-    }
-
-    if ((lv_readyStarshipsCount == 0)) {
-        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MercCompoundStarshipsCounterNothingReady", 1);
     }
 
 }
@@ -3839,7 +3843,7 @@ void lib15EF4C78_gf_AP_Player_ReapplyDefaultBehaviorsToUnit (unit lp_unit) {
     lv_index = 0;
     for ( ; ( (auto01D20A2A_ai >= 0 && lv_index <= auto01D20A2A_ae) || (auto01D20A2A_ai < 0 && lv_index >= auto01D20A2A_ae) ) ; lv_index += auto01D20A2A_ai ) {
         lv_behavior = (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lp_unit), "BehaviorArray[" + IntToString(lv_index) + "].Link", UnitGetOwner(lp_unit)));
-        if ((lv_behavior != null) && (lv_behavior != "") && (lv_behavior != "PowerUserBaseDefenseSmall") && (lv_behavior != "PowerUserQueueSmall") && (lv_behavior != "PowerUserQueue") && (lv_behavior != "AP_ZerglingRespawnControllerRebirth") && (lv_behavior != "AP_ZerglingRespawnControllerSearch") && (lv_behavior != "AP_HarvestableVespeneGeyserGasZerg") && (lv_behavior != "AP_HarvestableVespeneGeyserGasProtoss") && (lv_behavior != "AP_HarvestableVespeneGeyserGas") && (lv_behavior != "AP_HarvestableRichVespeneGeyserGas")) {
+        if ((lv_behavior != null) && (lv_behavior != "") && (lv_behavior != "PowerUserBaseDefenseSmall") && (lv_behavior != "PowerUserQueueSmall") && (lv_behavior != "PowerUserQueue") && (lv_behavior != "AP_ZerglingRespawnControllerRebirth") && (lv_behavior != "AP_ZerglingRespawnControllerSearch") && (lv_behavior != "AP_HarvestableVespeneGeyserGasZerg") && (lv_behavior != "AP_HarvestableVespeneGeyserGasProtoss") && (lv_behavior != "AP_HarvestableVespeneGeyserGas") && (lv_behavior != "AP_HarvestableRichVespeneGeyserGas") && (lv_behavior != "AP_SpawnLarva") && (lv_behavior != "SpawnLarva") && (lv_behavior != "QueenSpawnLarva")) {
             UnitBehaviorRemove(lp_unit, lv_behavior, c_unitBehaviorCountAll);
             UnitBehaviorAdd(lp_unit, lv_behavior, lp_unit, 1);
         }
@@ -4288,15 +4292,23 @@ void lib15EF4C78_gt_ApplyZergStructureRapidRegen_Init () {
 // Trigger: Stukov_InfestedBunkerRegister
 //--------------------------------------------------------------------------------------------------
 bool lib15EF4C78_gt_Stukov_InfestedBunkerRegister_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_caster;
+    int lv_player;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_player = UnitGetOwner(lv_caster);
+
     // Actions
     if (!runActions) {
         return true;
     }
 
-    UnitGroupAdd(lib15EF4C78_gv_stukov_BunkerGroup, EventPlayerEffectUsedUnit(c_effectUnitCaster));
-    if ((lib15EF4C78_gv_stukov_RallyPoint != null)) {
-        UnitGroupIssueOrder(lib15EF4C78_gv_stukov_BunkerGroup, OrderTargetingPoint(AbilityCommand("AP_SIInfestedBunkerRally", 0), lib15EF4C78_gv_stukov_RallyPoint), c_orderQueueReplace);
+    UnitGroupAdd(lib15EF4C78_gv_stukov_BunkerGroup, lv_caster);
+    if ((lib15EF4C78_gv_stukov_RallyPoint[lv_player] != null)) {
+        UnitGroupIssueOrder(UnitGroupFilterPlayer(lib15EF4C78_gv_stukov_BunkerGroup, lv_player, 0), OrderTargetingPoint(AbilityCommand("AP_SIInfestedBunkerRally", 0), lib15EF4C78_gv_stukov_RallyPoint[lv_player]), c_orderQueueReplace);
     }
 
     return true;
@@ -4305,7 +4317,7 @@ bool lib15EF4C78_gt_Stukov_InfestedBunkerRegister_Func (bool testConds, bool run
 //--------------------------------------------------------------------------------------------------
 void lib15EF4C78_gt_Stukov_InfestedBunkerRegister_Init () {
     lib15EF4C78_gt_Stukov_InfestedBunkerRegister = TriggerCreate("lib15EF4C78_gt_Stukov_InfestedBunkerRegister_Func");
-    TriggerAddEventPlayerEffectUsed(lib15EF4C78_gt_Stukov_InfestedBunkerRegister, 1, "AP_SIInfestedBunkerCreation");
+    TriggerAddEventPlayerEffectUsed(lib15EF4C78_gt_Stukov_InfestedBunkerRegister, c_playerAny, "AP_SIInfestedBunkerCreation");
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4342,7 +4354,7 @@ bool lib15EF4C78_gt_Stukov_InfestedBunkerInitialSpawn_Func (bool testConds, bool
         for (;; auto0C07B99A_u -= 1) {
             lv_unit = UnitGroupUnitFromEnd(auto0C07B99A_g, auto0C07B99A_u);
             if (lv_unit == null) { break; }
-            lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(lv_unit);
+            lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(EventUnitProgressUnit(), lv_unit);
         }
     }
 
@@ -4383,8 +4395,8 @@ bool lib15EF4C78_gt_Stukov_InfestedBunkerAutoLoad_Func (bool testConds, bool run
         lv_newUnit = UnitCargoLastCreated();
     }
     else {
-        if ((lib15EF4C78_gv_stukov_RallyPoint != null)) {
-            lv_position = libNtve_gf_PointOffsetTowardsPoint(lv_position, 1.0, lib15EF4C78_gv_stukov_RallyPoint);
+        if ((lib15EF4C78_gv_stukov_RallyPoint[lv_player] != null)) {
+            lv_position = libNtve_gf_PointOffsetTowardsPoint(lv_position, 1.0, lib15EF4C78_gv_stukov_RallyPoint[lv_player]);
         }
         else {
             lv_position = PointWithOffset(lv_position, 0.0, -0.5);
@@ -4393,7 +4405,7 @@ bool lib15EF4C78_gt_Stukov_InfestedBunkerAutoLoad_Func (bool testConds, bool run
         lv_newUnit = UnitLastCreated();
         SoundPlayOnUnitForPlayer(SoundLink("Medivac_Unload", 0), lv_player, PlayerGroupAll(), lv_bunker, 0.0, 100.0, 0.0);
     }
-    lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(lv_newUnit);
+    lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(lv_bunker, lv_newUnit);
     return true;
 }
 
@@ -4413,28 +4425,34 @@ bool lib15EF4C78_gt_Stukov_InfestedBunkerUnloadRally_Func (bool testConds, bool 
         return true;
     }
 
-    lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    lib15EF4C78_gf_Stukov_NewBunkerUnitProcess(EventPlayerEffectUsedUnit(c_effectUnitCaster), EventPlayerEffectUsedUnit(c_effectUnitTarget));
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
 void lib15EF4C78_gt_Stukov_InfestedBunkerUnloadRally_Init () {
     lib15EF4C78_gt_Stukov_InfestedBunkerUnloadRally = TriggerCreate("lib15EF4C78_gt_Stukov_InfestedBunkerUnloadRally_Func");
-    TriggerAddEventPlayerEffectUsed(lib15EF4C78_gt_Stukov_InfestedBunkerUnloadRally, 1, "AP_SIInfestedBunkerBunkerUnloadSet");
+    TriggerAddEventPlayerEffectUsed(lib15EF4C78_gt_Stukov_InfestedBunkerUnloadRally, c_playerAny, "AP_SIInfestedBunkerBunkerUnloadSet");
 }
 
 //--------------------------------------------------------------------------------------------------
 // Trigger: Stukov_HordeWaveCreated
 //--------------------------------------------------------------------------------------------------
 bool lib15EF4C78_gt_Stukov_HordeWaveCreated_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_barracks;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_barracks = UnitGetOriginalCaster(UnitGetOriginalCaster(EventUnitCreatedUnit()));
+
     // Actions
     if (!runActions) {
         return true;
     }
 
     UnitGroupAdd(lib15EF4C78_gv_stukov_HordeGroup, EventUnitCreatedUnit());
-    lib15EF4C78_gf_Stukov_SingleUnitGoToRally(EventUnitCreatedUnit(), false);
+    lib15EF4C78_gf_Stukov_SingleUnitGoToRally(EventUnitCreatedUnit(), false, UnitRallyPointTargetPoint(lv_barracks, 1, 1));
     return true;
 }
 
@@ -4448,22 +4466,32 @@ void lib15EF4C78_gt_Stukov_HordeWaveCreated_Init () {
 // Trigger: Stukov_RallyPlaced
 //--------------------------------------------------------------------------------------------------
 bool lib15EF4C78_gt_Stukov_RallyPlaced_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_caster;
+    int lv_player;
+    unit lv_unit;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_player = UnitGetOwner(lv_caster);
+
     // Actions
     if (!runActions) {
         return true;
     }
 
-    lib15EF4C78_gv_stukov_RallyTarget = null;
-    lib15EF4C78_gv_stukov_RallyPoint = EventPlayerEffectUsedPoint(c_effectLocationTargetPoint);
-    if ((lib15EF4C78_gv_stukov_RallyBeaconUnit != null)) {
-        UnitRemove(lib15EF4C78_gv_stukov_RallyBeaconUnit);
+    lib15EF4C78_gv_stukov_RallyTarget[lv_player] = null;
+    lib15EF4C78_gv_stukov_RallyPoint[lv_player] = EventPlayerEffectUsedPoint(c_effectLocationTargetPoint);
+    if ((lib15EF4C78_gv_stukov_RallyBeaconUnit[lv_player] != null)) {
+        UnitRemove(lib15EF4C78_gv_stukov_RallyBeaconUnit[lv_player]);
     }
 
-    libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_SIStukovRallyBeaconPsiEmitterPoint", c_unitCreateIgnorePlacement, 0, lib15EF4C78_gv_stukov_RallyPoint);
-    lib15EF4C78_gv_stukov_RallyBeaconUnit = UnitLastCreated();
-    UnitGroupIssueOrder(lib15EF4C78_gv_stukov_BunkerGroup, OrderTargetingPoint(AbilityCommand("AP_SIInfestedBunkerRally", 0), lib15EF4C78_gv_stukov_RallyPoint), c_orderQueueReplace);
-    lib15EF4C78_gf_Stukov_HordeGoToRally();
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_SIStukovRallyBeaconPsiEmitterPoint", c_unitCreateIgnorePlacement, 0, lib15EF4C78_gv_stukov_RallyPoint[lv_player]);
+    lib15EF4C78_gv_stukov_RallyBeaconUnit[lv_player] = UnitLastCreated();
+    UnitGroupIssueOrder(UnitGroupFilterPlayer(lib15EF4C78_gv_stukov_BunkerGroup, lv_player, 0), OrderTargetingPoint(AbilityCommand("AP_SIInfestedBunkerRally", 0), lib15EF4C78_gv_stukov_RallyPoint[lv_player]), c_orderQueueReplace);
+    UnitGroupIssueOrder(UnitGroup("AP_SIBarracks", lv_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("Rally", 0), lib15EF4C78_gv_stukov_RallyPoint[lv_player]), c_orderQueueReplace);
+    lib15EF4C78_gf_Stukov_HordeGoToRally(lv_player);
     return true;
 }
 
@@ -4529,7 +4557,7 @@ bool lib15EF4C78_gt_AP_Stukov_InfestedSiegeTankDeath_Func (bool testConds, bool 
         UnitSetState(UnitLastCreated(), c_unitStateUsingSupply, false);
         UnitBehaviorAddPlayer(UnitLastCreated(), "AP_SIBarracksTrainTimedLife", lv_player, 1);
         UnitGroupAdd(lib15EF4C78_gv_stukov_HordeGroup, UnitLastCreated());
-        lib15EF4C78_gf_Stukov_SingleUnitGoToRally(UnitLastCreated(), false);
+        lib15EF4C78_gf_Stukov_SingleUnitGoToRally(UnitLastCreated(), false, null);
     }
     return true;
 }
@@ -6665,6 +6693,13 @@ void lib15EF4C78_gt_PU_GPInit_Init () {
 //--------------------------------------------------------------------------------------------------
 bool lib15EF4C78_gt_PU_GPVitalChanges_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(lib15EF4C78_gv_pU_GPUnit) == true))) {
+            return false;
+        }
+    }
+
     // Actions
     if (!runActions) {
         return true;
@@ -6677,6 +6712,7 @@ bool lib15EF4C78_gt_PU_GPVitalChanges_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void lib15EF4C78_gt_PU_GPVitalChanges_Init () {
     lib15EF4C78_gt_PU_GPVitalChanges = TriggerCreate("lib15EF4C78_gt_PU_GPVitalChanges_Func");
+    TriggerEnable(lib15EF4C78_gt_PU_GPVitalChanges, false);
     TriggerAddEventUnitProperty(lib15EF4C78_gt_PU_GPVitalChanges, UnitRefFromVariable("lib15EF4C78_gv_pU_GPUnit"), c_unitPropEnergy);
 }
 
@@ -7010,59 +7046,15 @@ void lib15EF4C78_gt_CreepTumorBuild_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AP_Player_TownHall_ArrayInit
+// Trigger: AP_Player_checkPrimaryTownHallPeriodic
 //--------------------------------------------------------------------------------------------------
-bool lib15EF4C78_gt_AP_Player_TownHall_ArrayInit_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((TriggerGetExecCount(TriggerGetCurrent()) == 0))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[0] = "AP_CommandCenter";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[1] = "AP_OrbitalCommand";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[2] = "AP_PlanetaryFortress";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[3] = "AP_CommandCenterFlying";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[4] = "AP_OrbitalCommandFlying";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[5] = "AP_PlanetaryFortressFlying";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[6] = "AP_Hatchery";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[7] = "AP_Lair";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[8] = "AP_Hive";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[9] = "AP_Nexus";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[10] = "CommandCenter";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[11] = "OrbitalCommand";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[12] = "PlanetaryFortress";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[13] = "CommandCenterFlying";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[14] = "OrbitalCommandFlying";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[15] = "Hatchery";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[16] = "Lair";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[17] = "Hive";
-    lib15EF4C78_gv_aP_Player_TOWN_HALL_IDS[18] = "Nexus";
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void lib15EF4C78_gt_AP_Player_TownHall_ArrayInit_Init () {
-    lib15EF4C78_gt_AP_Player_TownHall_ArrayInit = TriggerCreate("lib15EF4C78_gt_AP_Player_TownHall_ArrayInit_Func");
-    TriggerAddEventMapInit(lib15EF4C78_gt_AP_Player_TownHall_ArrayInit);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: AP_Player_CheckPrimaryTownHallPeriodic
-//--------------------------------------------------------------------------------------------------
-bool lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic_Func (bool testConds, bool runActions) {
+bool lib15EF4C78_gt_AP_Player_checkPrimaryTownHallPeriodic_Func (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_currentPlayer;
 
     // Automatic Variable Declarations
-    playergroup auto12CBA6AB_g;
+    const int auto972048E4_ae = 20;
+    const int auto972048E4_ai = 1;
 
     // Variable Initialization
 
@@ -7071,20 +7063,21 @@ bool lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic_Func (bool testConds,
         return true;
     }
 
-    auto12CBA6AB_g = PlayerGroupAll();
-    lv_currentPlayer = -1;
-    while (true) {
-        lv_currentPlayer = PlayerGroupNextPlayer(auto12CBA6AB_g, lv_currentPlayer);
-        if (lv_currentPlayer < 0) { break; }
-        lib15EF4C78_gf_AP_Player_checkPrimaryTownHall(lv_currentPlayer);
+    lib15EF4C78_gf_AP_Player_updateTownHalls();
+    lv_currentPlayer = 1;
+    for ( ; ( (auto972048E4_ai >= 0 && lv_currentPlayer <= auto972048E4_ae) || (auto972048E4_ai < 0 && lv_currentPlayer >= auto972048E4_ae) ) ; lv_currentPlayer += auto972048E4_ai ) {
+        if ((UnitGroupCount(lib15EF4C78_gv_aP_Player_TownHalls[lv_currentPlayer], c_unitCountAlive) > 0)) {
+            lib15EF4C78_gf_AP_Player_checkPrimaryTownHall(lv_currentPlayer);
+        }
+
     }
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic_Init () {
-    lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic = TriggerCreate("lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic_Func");
-    TriggerAddEventTimePeriodic(lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic, 0.5, c_timeGame);
+void lib15EF4C78_gt_AP_Player_checkPrimaryTownHallPeriodic_Init () {
+    lib15EF4C78_gt_AP_Player_checkPrimaryTownHallPeriodic = TriggerCreate("lib15EF4C78_gt_AP_Player_checkPrimaryTownHallPeriodic_Func");
+    TriggerAddEventTimePeriodic(lib15EF4C78_gt_AP_Player_checkPrimaryTownHallPeriodic, 2.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9180,12 +9173,15 @@ bool lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts_Func (bool testConds, boo
         return true;
     }
 
-    autoF96DA51A_g = PlayerGroupAll();
+    autoF96DA51A_g = PlayerGroupActive();
     lv_player = -1;
     while (true) {
         lv_player = PlayerGroupNextPlayer(autoF96DA51A_g, lv_player);
         if (lv_player < 0) { break; }
-        lib15EF4C78_gf_AP_Player_MercCompoundUpdateAvailableCount(lv_player);
+        if ((PlayerType(lv_player) == c_playerTypeUser)) {
+            lib15EF4C78_gf_AP_Player_MercCompoundUpdateAvailableCount(lv_player);
+        }
+
     }
     return true;
 }
@@ -9194,6 +9190,55 @@ bool lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts_Func (bool testConds, boo
 void lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts_Init () {
     lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts = TriggerCreate("lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts_Func");
     TriggerAddEventTimePeriodic(lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts, 1.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Player_MercCompoundSetupCounts
+//--------------------------------------------------------------------------------------------------
+bool lib15EF4C78_gt_AP_Player_MercCompoundSetupCounts_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_index;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((TriggerGetExecCount(TriggerGetCurrent()) == 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_index = lib15EF4C78_ge_AP_Player_MercenaryType_INFANTRY;
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[lv_index] = "AP_MercCompoundInfantryCounter";
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[lv_index] = "AP_MercCompoundInfantryCounterNothingReady";
+    lv_index = lib15EF4C78_ge_AP_Player_MercenaryType_VEHICLE;
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[lv_index] = "AP_MercCompoundVehiclesCounter";
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[lv_index] = "AP_MercCompoundVehiclesCounterNothingReady";
+    lv_index = lib15EF4C78_ge_AP_Player_MercenaryType_STARSHIP;
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[lv_index] = "AP_MercCompoundStarshipsCounter";
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[lv_index] = "AP_MercCompoundStarshipsCounterNothingReady";
+    lv_index = lib15EF4C78_ge_AP_Player_MercenaryType_SCTWO;
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[lv_index] = "AP_ZergMercCompoundSC2Counter";
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[lv_index] = "AP_ZergMercCompoundSC2CounterNothingReady";
+    lv_index = lib15EF4C78_ge_AP_Player_MercenaryType_BROODWAR;
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[lv_index] = "AP_ZergMercCompoundBroodWarCounter";
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[lv_index] = "AP_ZergMercCompoundBroodWarCounterNothingReady";
+    lv_index = lib15EF4C78_ge_AP_Player_MercenaryType_INFESTED;
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgrades[lv_index] = "AP_ZergMercCompoundInfestedCounter";
+    lib15EF4C78_gv_aP_Player_MercReadyCountUpgradesEmpty[lv_index] = "AP_ZergMercCompoundInfestedCounterNothingReady";
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib15EF4C78_gt_AP_Player_MercCompoundSetupCounts_Init () {
+    lib15EF4C78_gt_AP_Player_MercCompoundSetupCounts = TriggerCreate("lib15EF4C78_gt_AP_Player_MercCompoundSetupCounts_Func");
+    TriggerAddEventMapInit(lib15EF4C78_gt_AP_Player_MercCompoundSetupCounts);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9542,8 +9587,7 @@ void lib15EF4C78_InitTriggers () {
     lib15EF4C78_gt_InstigatorReconstructionCooldownRecovery_Init();
     lib15EF4C78_gt_SlayerInit_Init();
     lib15EF4C78_gt_CreepTumorBuild_Init();
-    lib15EF4C78_gt_AP_Player_TownHall_ArrayInit_Init();
-    lib15EF4C78_gt_AP_Player_CheckPrimaryTownHallPeriodic_Init();
+    lib15EF4C78_gt_AP_Player_checkPrimaryTownHallPeriodic_Init();
     lib15EF4C78_gt_AP_Player_MindControlRemoveLeash_Init();
     lib15EF4C78_gt_AP_Player_MindControlRemoveAi_Init();
     lib15EF4C78_gt_AP_Player_MindControlEmitEvent_Init();
@@ -9592,6 +9636,7 @@ void lib15EF4C78_InitTriggers () {
     lib15EF4C78_gt_AP_Player_onNightHawkTrained_Init();
     lib15EF4C78_gt_AP_Player_Merc_ArrayInit_Init();
     lib15EF4C78_gt_AP_Player_MercCompoundUpdateCounts_Init();
+    lib15EF4C78_gt_AP_Player_MercCompoundSetupCounts_Init();
     lib15EF4C78_gt_AP_Player_MercCompoundOnMercUse_Init();
     lib15EF4C78_gt_AP_Player_Terran_MercCompoundTabSetInfantry_Init();
     lib15EF4C78_gt_AP_Player_Terran_MercCompoundTabSetVehicles_Init();

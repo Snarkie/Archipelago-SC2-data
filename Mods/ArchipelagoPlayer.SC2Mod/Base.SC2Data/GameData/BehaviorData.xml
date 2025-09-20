@@ -4644,7 +4644,7 @@
         <Alignment value="Positive"/>
         <BehaviorFlags index="Permanent" value="1"/>
         <DisableValidatorArray value="AP_UseGhostOcularImplants"/>
-        <InfoIcon value="Assets\Textures\btn-techupgrade-terran-ocularimplants.dds"/>
+        <InfoIcon value="AP\Assets\Textures\btn-techupgrade-terran-ocularimplants.dds"/>
         <Name value="Button/Name/AP_OcularImplants"/>
         <Tooltip value="Button/Tooltip/AP_OcularImplants"/>
     </CBehaviorBuff>
@@ -4678,7 +4678,7 @@
         <!-- Indicator of passive upgrade - full command card -->
         <Alignment value="Positive"/>
         <BehaviorFlags index="Permanent" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-techupgrade-terran-impalerrounds.dds"/>
+        <InfoIcon value="AP\Assets\Textures\btn-techupgrade-terran-impalerrounds-color.dds"/>
         <DisableValidatorArray value="AP_HaveImpalerRounds"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_ScienceVesselSCBWEMPShockwave@Decloak">
@@ -4741,7 +4741,7 @@
     <CBehaviorBuff id="AP_GhostResourceEfficiencyMorph">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Requirements value="AP_HaveResourceEfficiencyGhost"/>
+        <Requirements value="AP_HaveGhostBargainBinPrices"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
         <Duration value="0.1"/>
         <ExpireEffect value="AP_GhostResourceEfficiencyMorph"/>
@@ -4749,7 +4749,7 @@
     <CBehaviorBuff id="AP_SpectreResourceEfficiencyMorph">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Requirements value="AP_HaveResourceEfficiencySpectre"/>
+        <Requirements value="AP_HaveSpectreBargainBinPrices"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
         <Duration value="0.1"/>
         <ExpireEffect value="AP_SpectreResourceEfficiencyMorph"/>
@@ -9679,6 +9679,13 @@
         <InfoIcon value="Assets\Textures\btn-upgrade-zerg-stukov-bunkerupgradeii_14.dds"/>
         <DisableValidatorArray value="AP_HaveSIInfestedBunkerImprovedCargo"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_ZergCreepStomachIndicator">
+        <!-- Indicator of passive upgrade -->
+        <Alignment value="Positive"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-creepspread.dds"/>
+        <DisableValidatorArray value="AP_HaveZergCreepStomach"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AP_AcidSporeVents">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
@@ -10605,5 +10612,17 @@
     <CBehaviorBuff id="AP_GhostMorphToFemale">
         <Duration value="1"/>
         <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_QueenBirthUnburrow">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Zerg"/>
+        <Duration value="0.8"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_TownHall">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
 </Catalog>

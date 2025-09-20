@@ -2705,6 +2705,8 @@
         <EffectArray Reference="Effect,AP_heal,RechargeVitalRate" Value="1"/>
         <EffectArray Operation="Set" Reference="Effect,AP_MercMedicHeal,DrainVitalCostFactor" Value="0.19"/>
         <EffectArray Reference="Effect,AP_MercMedicHeal,RechargeVitalRate" Value="2"/>
+        <EffectArray Operation="Set" Reference="Effect,AP_InfestedMedicMercHeal,DrainVitalCostFactor" Value="0.19"/>
+        <EffectArray Reference="Effect,AP_InfestedMedicMercHeal,RechargeVitalRate" Value="2"/>
         <EffectArray Operation="Set" Reference="Effect,AP_MedicMengskHealL1,DrainVitalCostFactor" Value="0.19"/>
         <EffectArray Reference="Effect,AP_MedicMengskHealL1,RechargeVitalRate" Value="2"/>
         <EffectArray Operation="Set" Reference="Effect,AP_MedicMengskHealL2,DrainVitalCostFactor" Value="0.19"/>
@@ -13302,7 +13304,10 @@
         <EffectArray Operation="Subtract" Reference="Unit,AP_Ghost,CostResource[Vespene]" Value="25"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_GhostResourceEfficiency,CostResource[Minerals]" Value="25"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_GhostResourceEfficiency,CostResource[Vespene]" Value="25"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train3].Unit[0]" Value="AP_GhostResourceEfficiency"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengsk,CostResource[Minerals]" Value="25"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengsk,CostResource[Vespene]" Value="75"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengskResourceEfficiency,CostResource[Minerals]" Value="25"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengskResourceEfficiency,CostResource[Vespene]" Value="75"/>
         <AffectedUnitArray value="AP_Ghost"/>
     </CUpgrade>
     <CUpgrade id="AP_GhostBargainBinPrices">
@@ -13312,13 +13317,20 @@
         <EffectArray Operation="Subtract" Reference="Unit,AP_GhostResourceEfficiency,CostResource[Minerals]" Value="100"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_GhostResourceEfficiency,CostResource[Vespene]" Value="50"/>
         <EffectArray Reference="Unit,AP_GhostResourceEfficiency,Food" Value="1"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train3].Unit[0]" Value="AP_GhostResourceEfficiency"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengsk,CostResource[Minerals]" Value="100"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengsk,CostResource[Vespene]" Value="150"/>
+        <EffectArray Reference="Unit,AP_GhostMengsk,Food" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengskResourceEfficiency,CostResource[Minerals]" Value="100"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GhostMengskResourceEfficiency,CostResource[Vespene]" Value="150"/>
+        <EffectArray Reference="Unit,AP_GhostMengskResourceEfficiency,Food" Value="2"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_EliteBarracksTrain,InfoArray[Train2].Unit[0]" Value="AP_GhostMengskResourceEfficiency"/>
     </CUpgrade>
     <CUpgrade id="AP_ResourceEfficiencySpectre">
         <EffectArray Operation="Subtract" Reference="Unit,AP_Spectre,CostResource[Minerals]" Value="25"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_Spectre,CostResource[Vespene]" Value="25"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_SpectreResourceEfficiency,CostResource[Minerals]" Value="25"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_SpectreResourceEfficiency,CostResource[Vespene]" Value="25"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train7].Unit[0]" Value="AP_SpectreResourceEfficiency"/>
         <AffectedUnitArray value="AP_Spectre"/>
     </CUpgrade>
     <CUpgrade id="AP_SpectreBargainBinPrices">
@@ -13328,6 +13340,7 @@
         <EffectArray Operation="Subtract" Reference="Unit,AP_SpectreResourceEfficiency,CostResource[Minerals]" Value="100"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_SpectreResourceEfficiency,CostResource[Vespene]" Value="50"/>
         <EffectArray Reference="Unit,AP_SpectreResourceEfficiency,Food" Value="1"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train7].Unit[0]" Value="AP_SpectreResourceEfficiency"/>
     </CUpgrade>
     <CUpgrade id="AP_FirebatInfernalPreIgniter">
         <Flags index="UpgradeCheat" value="0"/>
@@ -13369,6 +13382,10 @@
         <EffectArray Reference="Abil,AP_MercMedicHeal,AutoCastRange" Value="2"/>
         <EffectArray Reference="Abil,AP_MercMedicHealPlusMech,Range[0]" Value="2"/>
         <EffectArray Reference="Abil,AP_MercMedicHealPlusMech,AutoCastRange" Value="2"/>
+        <EffectArray Reference="Abil,AP_InfestedMedicMercHeal,Range[0]" Value="2"/>
+        <EffectArray Reference="Abil,AP_InfestedMedicMercHeal,AutoCastRange" Value="2"/>
+        <EffectArray Reference="Abil,AP_InfestedMedicMercHealPlusMech,Range[0]" Value="2"/>
+        <EffectArray Reference="Abil,AP_InfestedMedicMercHealPlusMech,AutoCastRange" Value="2"/>
         <EffectArray Reference="Abil,AP_MengskMedicHeal,Range[0]" Value="2"/>
         <EffectArray Reference="Abil,AP_MengskMedicHeal,AutoCastRange" Value="2"/>
         <EffectArray Reference="Abil,AP_MengskMedicHealPlusMech,Range[0]" Value="2"/>
@@ -17447,15 +17464,27 @@
         <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,InfoArray[Build27].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,InfoArray[Build28].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,InfoArray[Build29].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build6].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build7].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build8].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build9].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build20].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build22].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build23].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build24].Time" Value="0.975"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build25].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build6].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build7].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build8].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build9].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build20].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build22].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build23].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build24].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build25].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_BarracksAddOns,InfoArray[Build1].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_BarracksAddOns,InfoArray[Build2].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_BarracksAddOns,InfoArray[Build3].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_FactoryAddOns,InfoArray[Build1].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_FactoryAddOns,InfoArray[Build2].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_FactoryAddOns,InfoArray[Build3].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_StarportAddOns,InfoArray[Build1].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_StarportAddOns,InfoArray[Build2].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_StarportAddOns,InfoArray[Build3].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ZergBuild,InfoArray[Build1].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ZergBuild,InfoArray[Build2].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ZergBuild,InfoArray[Build3].Time" Value="0.975"/>
@@ -17479,6 +17508,30 @@
         <EffectArray Operation="Multiply" Reference="Abil,AP_SIAdvancedBuild,InfoArray[Build11].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_SIAdvancedBuild,InfoArray[Build12].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_SIAdvancedBuild,InfoArray[Build15].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_SIFactoryAddOns,InfoArray[Build1].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_SIStarportAddOns,InfoArray[Build1].Time" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLair,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLair,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLair,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToHive,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToHive,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToHive,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.975"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ProtossBuild,InfoArray[Build1].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ProtossBuild,InfoArray[Build2].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ProtossBuild,InfoArray[Build3].Time" Value="0.975"/>
@@ -17529,15 +17582,27 @@
         <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,InfoArray[Build27].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,InfoArray[Build28].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,InfoArray[Build29].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build6].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build7].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build8].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build9].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build20].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build22].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build23].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build24].Time" Value="0.07951729"/>
-        <EffectArray Operation="Multiply" Reference="Abil,AP_TerranBuild,AP_TrooperMengskBuild[Build25].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build6].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build7].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build8].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build9].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build20].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build22].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build23].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build24].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_TrooperMengskBuild,InfoArray[Build25].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_BarracksAddOns,InfoArray[Build1].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_BarracksAddOns,InfoArray[Build2].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_BarracksAddOns,InfoArray[Build4].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_FactoryAddOns,InfoArray[Build1].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_FactoryAddOns,InfoArray[Build2].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_FactoryAddOns,InfoArray[Build4].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_StarportAddOns,InfoArray[Build1].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_StarportAddOns,InfoArray[Build2].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_StarportAddOns,InfoArray[Build4].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToPlanetaryFortress,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ZergBuild,InfoArray[Build1].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ZergBuild,InfoArray[Build2].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ZergBuild,InfoArray[Build3].Time" Value="0.07951729"/>
@@ -17561,6 +17626,30 @@
         <EffectArray Operation="Multiply" Reference="Abil,AP_SIAdvancedBuild,InfoArray[Build11].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_SIAdvancedBuild,InfoArray[Build12].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_SIAdvancedBuild,InfoArray[Build15].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_SIFactoryAddOns,InfoArray[Build1].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_SIStarportAddOns,InfoArray[Build1].Time" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLair,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLair,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLair,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToHive,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToHive,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToHive,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpire,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireBroodlord,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToGreaterSpireViper,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Abils].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Actor].DurationArray[Duration]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Facing].DurationArray[Delay]" Value="0.07951729"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_UpgradeToLurkerDen,InfoArray[0].SectionArray[Stats].DurationArray[Delay]" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ProtossBuild,InfoArray[Build1].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ProtossBuild,InfoArray[Build2].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_ProtossBuild,InfoArray[Build3].Time" Value="0.07951729"/>
@@ -17674,6 +17763,7 @@
     <CUpgrade id="AP_SupplicantSacrifice2"/>
     <CUpgrade id="AP_WeaponArmorResearchSpeedup">
         <MaxLevel value="127"/>
+        <Icon value="AP\Assets\Textures\btn-upgrade-increasedupgraderesearchspeed.dds"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research3].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research4].Time" Value="0.975"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research5].Time" Value="0.975"/>
@@ -17787,6 +17877,7 @@
     </CUpgrade>
     <CUpgrade id="AP_WeaponArmorResearchSpeedup100Stack">
         <MaxLevel value="127"/>
+        <Icon value="AP\Assets\Textures\btn-upgrade-increasedupgraderesearchspeed.dds"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research3].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research4].Time" Value="0.07951729"/>
         <EffectArray Operation="Multiply" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research5].Time" Value="0.07951729"/>
@@ -17900,6 +17991,7 @@
     </CUpgrade>
     <CUpgrade id="AP_WeaponArmorResearchCost">
         <MaxLevel value="127"/>
+        <Icon value="AP\Assets\Textures\btn-upgrade-reducedupgraderesearchcost.dds"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research3].Resource[Minerals]" Value="1"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research3].Resource[Vespene]" Value="1"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research4].Resource[Minerals]" Value="1"/>
@@ -18123,6 +18215,7 @@
     </CUpgrade>
     <CUpgrade id="AP_WeaponArmorResearchCost100Stack">
         <MaxLevel value="127"/>
+        <Icon value="AP\Assets\Textures\btn-upgrade-reducedupgraderesearchcost.dds"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research3].Resource[Minerals]" Value="100"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research3].Resource[Vespene]" Value="100"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_EngineeringBayResearch,InfoArray[Research4].Resource[Minerals]" Value="100"/>

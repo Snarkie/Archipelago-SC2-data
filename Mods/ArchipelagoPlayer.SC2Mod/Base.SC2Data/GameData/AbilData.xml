@@ -7033,13 +7033,13 @@
             <Button DefaultButtonFace="ProtossGroundWeaponsLevel1" State="Restricted" Requirements="AP_LearnProtossGroundWeapon1"/>
         </InfoArray>
         <InfoArray index="Research2" Time="190" Upgrade="AP_ProtossGroundWeaponsLevel2">
-            <Resource index="Minerals" value="175"/>
-            <Resource index="Vespene" value="175"/>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="ProtossGroundWeaponsLevel2" State="Restricted" Requirements="AP_LearnProtossGroundWeapon2"/>
         </InfoArray>
         <InfoArray index="Research3" Time="220" Upgrade="AP_ProtossGroundWeaponsLevel3">
-            <Resource index="Minerals" value="250"/>
-            <Resource index="Vespene" value="250"/>
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
             <Button DefaultButtonFace="ProtossGroundWeaponsLevel3" State="Restricted" Requirements="AP_LearnProtossGroundWeapon3"/>
         </InfoArray>
         <InfoArray index="Research4" Time="160" Upgrade="AP_ProtossGroundArmorsLevel1">
@@ -7048,58 +7048,58 @@
             <Button DefaultButtonFace="ProtossGroundArmorLevel1" State="Restricted" Requirements="AP_LearnProtossGroundArmor1"/>
         </InfoArray>
         <InfoArray index="Research5" Time="190" Upgrade="AP_ProtossGroundArmorsLevel2">
-            <Resource index="Minerals" value="175"/>
-            <Resource index="Vespene" value="175"/>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="ProtossGroundArmorLevel2" State="Restricted" Requirements="AP_LearnProtossGroundArmor2"/>
         </InfoArray>
         <InfoArray index="Research6" Time="220" Upgrade="AP_ProtossGroundArmorsLevel3">
-            <Resource index="Minerals" value="250"/>
-            <Resource index="Vespene" value="250"/>
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
             <Button DefaultButtonFace="ProtossGroundArmorLevel3" State="Restricted" Requirements="AP_LearnProtossGroundArmor3"/>
         </InfoArray>
         <InfoArray index="Research7" Time="160" Upgrade="AP_ProtossShieldsLevel1">
-            <Resource index="Minerals" value="200"/>
-            <Resource index="Vespene" value="200"/>
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="ProtossShieldsLevel1" State="Restricted" Requirements="AP_LearnProtossShield1"/>
         </InfoArray>
         <InfoArray index="Research8" Time="190" Upgrade="AP_ProtossShieldsLevel2">
-            <Resource index="Minerals" value="300"/>
-            <Resource index="Vespene" value="300"/>
+            <Resource index="Minerals" value="225"/>
+            <Resource index="Vespene" value="225"/>
             <Button DefaultButtonFace="ProtossShieldsLevel2" State="Restricted" Requirements="AP_LearnProtossShield2"/>
         </InfoArray>
         <InfoArray index="Research9" Time="220" Upgrade="AP_ProtossShieldsLevel3">
-            <Resource index="Minerals" value="400"/>
-            <Resource index="Vespene" value="400"/>
+            <Resource index="Minerals" value="300"/>
+            <Resource index="Vespene" value="300"/>
             <Button DefaultButtonFace="ProtossShieldsLevel3" State="Restricted" Requirements="AP_LearnProtossShield3"/>
         </InfoArray>
         <InfoArray index="Research10" Time="250" Upgrade="AP_ProtossGroundWeaponsLevel4">
-            <Resource index="Minerals" value="325"/>
-            <Resource index="Vespene" value="325"/>
+            <Resource index="Minerals" value="250"/>
+            <Resource index="Vespene" value="250"/>
             <Button DefaultButtonFace="AP_ProtossGroundWeaponsLevel4" State="Restricted" Requirements="AP_LearnProtossGroundWeapon4"/>
         </InfoArray>
         <InfoArray index="Research11" Time="280" Upgrade="AP_ProtossGroundWeaponsLevel5">
-            <Resource index="Minerals" value="400"/>
-            <Resource index="Vespene" value="400"/>
+            <Resource index="Minerals" value="300"/>
+            <Resource index="Vespene" value="300"/>
             <Button DefaultButtonFace="AP_ProtossGroundWeaponsLevel5" State="Restricted" Requirements="AP_LearnProtossGroundWeapon5"/>
         </InfoArray>
         <InfoArray index="Research12" Time="250" Upgrade="AP_ProtossGroundArmorsLevel4">
-            <Resource index="Minerals" value="325"/>
-            <Resource index="Vespene" value="325"/>
+            <Resource index="Minerals" value="250"/>
+            <Resource index="Vespene" value="250"/>
             <Button DefaultButtonFace="AP_ProtossGroundArmorLevel4" State="Restricted" Requirements="AP_LearnProtossGroundArmor4"/>
         </InfoArray>
         <InfoArray index="Research13" Time="280" Upgrade="AP_ProtossGroundArmorsLevel5">
-            <Resource index="Minerals" value="400"/>
-            <Resource index="Vespene" value="400"/>
+            <Resource index="Minerals" value="300"/>
+            <Resource index="Vespene" value="300"/>
             <Button DefaultButtonFace="AP_ProtossGroundArmorLevel5" State="Restricted" Requirements="AP_LearnProtossGroundArmor5"/>
         </InfoArray>
         <InfoArray index="Research14" Time="250" Upgrade="AP_ProtossShieldsLevel4">
-            <Resource index="Minerals" value="500"/>
-            <Resource index="Vespene" value="500"/>
+            <Resource index="Minerals" value="375"/>
+            <Resource index="Vespene" value="375"/>
             <Button DefaultButtonFace="AP_ProtossShieldsLevel4" State="Restricted" Requirements="AP_LearnProtossShield4"/>
         </InfoArray>
         <InfoArray index="Research15" Time="280" Upgrade="AP_ProtossShieldsLevel5">
-            <Resource index="Minerals" value="600"/>
-            <Resource index="Vespene" value="600"/>
+            <Resource index="Minerals" value="450"/>
+            <Resource index="Vespene" value="450"/>
             <Button DefaultButtonFace="AP_ProtossShieldsLevel5" State="Restricted" Requirements="AP_LearnProtossShield5"/>
         </InfoArray>
     </CAbilResearch>
@@ -9119,6 +9119,7 @@
             <Flags index="AutoCast" value="1"/>
             <Flags index="AutoCastOn" value="1"/>
             <Flags index="IgnorePlacement" value="1"/>
+            <Flags index="InheritRally" value="1"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilMorph id="StarportReactorMorph">
@@ -10696,19 +10697,19 @@
         <InfoArray Unit="AP_Thor"/>
     </CAbilMorph>
     <CAbilMorph id="AP_GhostResourceEfficiencyMorph">
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ghost" Requirements="AP_HaveResourceEfficiencyGhost"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ghost" Requirements="AP_HaveGhostBargainBinPrices"/>
         <Flags index="Automatic" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <InfoArray Unit="AP_GhostResourceEfficiency"/>
     </CAbilMorph>
     <CAbilMorph id="AP_GhostMengskResourceEfficiencyMorph">
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ghost" Requirements="AP_HaveResourceEfficiencyGhost"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ghost" Requirements="AP_HaveGhostBargainBinPrices"/>
         <Flags index="Automatic" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <InfoArray Unit="AP_GhostMengskResourceEfficiency"/>
     </CAbilMorph>
     <CAbilMorph id="AP_SpectreResourceEfficiencyMorph">
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Spectre" Requirements="AP_HaveResourceEfficiencySpectre"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Spectre" Requirements="AP_HaveSpectreBargainBinPrices"/>
         <Flags index="Automatic" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <InfoArray Unit="AP_SpectreResourceEfficiency"/>
@@ -11043,7 +11044,7 @@
     <CAbilTrain id="AP_TrainQueen">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <Activity value="UI/Spawning"/>
-        <InfoArray index="Train1" Time="30" Effect="QueenBirth">
+        <InfoArray index="Train1" Time="30" Effect="AP_QueenBirth">
             <Button DefaultButtonFace="AP_Queen" Requirements="AP_HaveSpawningPool">
                 <Flags index="ToSelection" value="1"/>
             </Button>
@@ -14212,7 +14213,7 @@
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="AP_SIStukovPlaceHordeRallyCP"/>
         <Flags index="RequireTargetVision" value="0"/>
-        <Flags index="Smart" value="1"/>
+<!--        <Flags index="Smart" value="1"/>-->
         <Flags index="Transient" value="1"/>
         <Range value="500"/>
         <Arc value="360"/>
@@ -14967,4 +14968,40 @@
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_ZergMercCellDivisionOff" Requirements="AP_HaveCellDivisionToggle"/>
     </CAbilEffectInstant>
+    <CAbilEffectTarget id="AP_InfestedMedicMercHeal">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <Flags index="PassengerAcquirePassengers" value="1"/>
+        <TargetFilters value="Ground,Biological,Visible;Self,Enemy,Air,Structure,Missile,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSAlliancePassive"/>
+            <SortArray value="TSDistance"/>
+            <SortArray value="TSLifeFraction"/>
+        </TargetSorts>
+        <Range value="2"/>
+        <SmartValidatorArray value="healSmartTargetFilters"/>
+        <SmartValidatorArray value="NotWarpingIn"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="healCasterMinEnergy"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <Marker Link="Abil/MedivacHeal"/>
+        <UseMarkerArray index="Approach" value="0"/>
+        <UseMarkerArray index="Prep" value="0"/>
+        <AINotifyEffect value="MedivacHeal"/>
+        <DefaultError value="RequiresHealTarget"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_InfestedMedicMercHeal" Requirements="AP_NotHaveAdaptiveMedPacks"/>
+        <AcquireAttackers value="1"/>
+        <FollowRange value="1.5"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="AP_InfestedMedicMercHealPlusMech" parent="AP_InfestedMedicMercHeal">
+        <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,UnderConstruction,Dead,Hidden"/>
+        <CmdButtonArray index="Execute" Requirements="AP_HaveAdaptiveMedPacks"/>
+    </CAbilEffectTarget>
 </Catalog>
