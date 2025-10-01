@@ -1172,6 +1172,7 @@
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_VultureQueue3,0" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.625"/>
+        <InnerRadius value="0.5"/>
         <SeparationRadius value="0.625"/>
         <CargoSize value="2"/>
         <ScoreMake value="75"/>
@@ -1261,6 +1262,7 @@
             <LayoutButtons Face="AP_GoliathShapedHull" Type="Passive" Requirements="AP_HaveGoliathShapedHull" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="0.6875"/>
+        <InnerRadius value="0.5"/>
         <SeparationRadius value="0.65"/>
         <CargoSize value="2"/>
         <ScoreMake value="200"/>
@@ -16252,7 +16254,7 @@
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="0.75"/>
-        <InnerRadius value="0.75"/>
+        <InnerRadius value="0.5625"/>
         <CargoSize value="4"/>
         <ScoreKill value="450"/>
         <ScoreResult value="BuildOrder"/>
@@ -30805,7 +30807,7 @@
         <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="125"/>
-        <CostResource index="Vespene" value="50"/>
+        <CostResource index="Vespene" value="75"/>
         <RepairTime value="50"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="attack"/>
@@ -30814,6 +30816,7 @@
         <AbilArray Link="AP_InfBullfrogTransport"/>
         <AbilArray Link="AP_InfBullfrogLeapUnload"/>
         <AbilArray Link="AP_InfBullfrogLeap"/>
+        <AbilArray Link="AP_BullfrogAllAboard"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -30829,12 +30832,13 @@
             <LayoutButtons Face="AP_InfBullfrogLeap" Type="AbilCmd" AbilCmd="AP_InfBullfrogLeap,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="AP_InfBullfrogLoad" Type="AbilCmd" AbilCmd="AP_InfBullfrogTransport,0" Row="2" Column="2"/>
             <LayoutButtons Face="AP_InfBullfrogUnloadAll" Type="AbilCmd" AbilCmd="AP_InfBullfrogTransport,2" Row="2" Column="3"/>
+            <LayoutButtons Face="AP_BullfrogAllAboard" Type="AbilCmd" AbilCmd="AP_BullfrogAllAboard,Execute" Row="1" Column="4"/>
         </CardLayouts>
-        <Radius value="1"/>
-        <SeparationRadius value="1"/>
-        <InnerRadius value="1"/>
+        <Radius value="0.75"/>
+        <SeparationRadius value="0.75"/>
+        <InnerRadius value="0.75"/>
         <CargoSize value="8"/>
-        <SubgroupPriority value="17"/>
+        <SubgroupPriority value="19"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/AP_ZergUnitsGround"/>
         <GlossaryPriority value="146"/>
@@ -30843,11 +30847,12 @@
         <RankDisplay value="Always"/>
         <PushPriority value="11"/>
         <AlliedPushPriority value="1"/>
+        <WeaponArray Link="AP_BullfrogSpit"/>
     </CUnit>
     <CUnit id="AP_SICocoonInfestedBullfrog" parent="AP_SICocoon">
         <Food value="-2"/>
         <CostResource index="Minerals" value="125"/>
-        <CostResource index="Vespene" value="50"/>
+        <CostResource index="Vespene" value="75"/>
         <AbilArray Link="AP_SIMorphtoInfestedBullfrog"/>
         <CardLayouts>
             <LayoutButtons Face="AP_InfestedBullfrog" Type="AbilCmd" AbilCmd="AP_SIMorphtoInfestedBullfrog,Train1" Row="0" Column="0"/>
@@ -30871,5 +30876,9 @@
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <LeaderAlias value=""/>
         <HotkeyAlias value=""/>
+    </CUnit>
+    <CUnit id="AP_BullfrogSpitWeapon" parent="MISSILE">
+        <Race value="Zerg"/>
+        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
     </CUnit>
 </Catalog>
