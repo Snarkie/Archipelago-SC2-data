@@ -8952,7 +8952,7 @@
     <CUpgrade id="AP_HotSRapidMetamorph">
         <Flags index="UpgradeCheat" value="0"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_MorphZerglingToBaneling,InfoArray[Train1].Time" Value="8.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,AP_MorphlingToBaneling,InfoArray[Train1].Time" Value="8.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AP_MorphlingToBaneling,InfoArray[Train1].Time" Value="19.000000"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_Baneling,CostResource[Vespene]" Value="15"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_BanelingBurrowed,CostResource[Vespene]" Value="15"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
@@ -11529,6 +11529,7 @@
         <EffectArray Reference="Unit,AP_CreepTumorBurrowed,Sight" Value="8"/>
         <EffectArray Reference="Unit,AP_CreepTumorUsed,Sight" Value="8"/>
         <EffectArray Reference="Abil,AP_CreepTumorBuild,Range" Value="3"/>
+        <EffectArray Reference="Abil,AP_EchidnaCreepBuild,Range" Value="3"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="AP_K5GasBonuses">
