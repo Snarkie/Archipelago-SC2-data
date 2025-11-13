@@ -58,6 +58,7 @@ Param/Value/A29FEDAC=Nyduswurm /// Nydus Worm
 Param/Value/A74E1FDD=/2) (Forschung) /// /2) (Research)
 Param/Value/A757EA7E=
 Param/Value/AA8F352E=Obelisken mit Energie versorgt /// Obelisks Powered
+Param/Value/ABE56DCE=Erschaffe Kriechertumore /// Spawns Creep Tumors
 Param/Value/B631B19D=
 Param/Value/BDB2696E=2 /// 2
 Param/Value/C4B2628D=Bringen Sie Zeratul zu den Nervensträngen des Overmind ( /// Bring Zeratul to the Overmind Tendrils (

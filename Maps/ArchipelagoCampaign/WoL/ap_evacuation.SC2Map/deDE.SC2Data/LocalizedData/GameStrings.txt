@@ -64,6 +64,7 @@ Param/Value/6DC383E8=Verlorene Gebäude =  /// Structures Lost =
 Param/Value/6FE5598C=Start 4 /// Take off 4
 Param/Value/706D16F7=Ein Kolonieschiff ist gestartet /// A colony ship has taken off
 Param/Value/7206DCA9=Es sind zu viele Kolonisten gestorben. /// Too many colonists have died.
+Param/Value/7552B9FA=DEBUG: Springe zur Eskortenphase /// DEBUG: Skip to Escort Phase
 Param/Value/75A746D2=Der Planet Agria wird von den Zerg überrannt. Bringen Sie Ihre Streitkräfte zur Siedlung, wo die überlebenden Kolonisten sind. /// The planet Agria is being overrun by the zerg. Get your forces to the settlement where the surviving colonists are holding out.
 Param/Value/7D1971F1=Hansons Siedlung /// Hanson's Colony
 Param/Value/81E5BD63=Ein Kolonieschiff wurde zerstört. /// A colonist ship has been destroyed.
@@ -90,6 +91,7 @@ Param/Value/D744ABDE= (%NumberKilled% Tote) ///  (%NumberKilled% Dead)
 Param/Value/D82AA183=Sammeln Sie Kokon-DNS /// Collect Chrysalis DNA
 Param/Value/D8E396B5=Sammeln Sie Kokon-DNS ( /// Collect Chrysalis DNA (
 Param/Value/DA0F59F5=Eskortieren Sie Kolonisten zu den Kolonieschiffen ( /// Escort Colonists to the Colony Ships (
+Param/Value/DC97A119=DEBUG: Sieg /// DEBUG: Victory
 Param/Value/DD307E0C=Kolonisten in Bewegung:  /// Colonists on the move: 
 Param/Value/DF826BD2=Start 3 /// Take off 3
 Param/Value/E0B8EF62= (%NumberKilled% Tote) ///  (%NumberKilled% Dead)
