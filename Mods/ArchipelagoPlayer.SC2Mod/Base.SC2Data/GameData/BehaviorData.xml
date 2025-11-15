@@ -5284,45 +5284,6 @@
         <Modification DecelerationBonus="1000"/>
         <Duration value="1"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_PhotonOvercharge">
-        <InfoIcon value="Assets\Textures\btn-ability-protoss-purify.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="60"/>
-        <Modification Detect="15.5">
-            <WeaponArray Link="AP_MothershipCoreWeapon" Turret="AP_Pylon"/>
-        </Modification>
-        <TimeScaleSource Value="Global"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MothershipCoreDisableAttack">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification>
-            <WeaponDisableArray value="AP_MothershipCorePhotonWeapon"/>
-        </Modification>
-        <!--WeaponDisableArray value="AP_MothershipPurifyWeapon"/-->
-        <DisableValidatorArray value="AP_HasMothershipCoreWeapon"/>
-        <DisableValidatorArray value="AP_NoMothershipCorePurifyNexus"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MothershipCorePhotonWeapon">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Duration value="25"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MothershipCorePhoton">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <ModifyFlags index="SuppressMoving" value="1"/>
-            <StateFlags index="SuppressEnergyRegen" value="1"/>
-            <AbilLinkDisableArray value="move"/>
-            <AbilLinkDisableArray value="MothershipCorePurifyNexus"/>
-            <AbilLinkDisableArray value="MorphToMothership"/>
-            <AbilLinkDisableArray value="MothershipCoreEnergize"/>
-            <AbilLinkDisableArray value="MothershipCoreMassRecall"/>
-            <AbilLinkDisableArray value="MothershipCoreWeapon"/>
-            <WeaponEnableArray value="MothershipCoreWeapon"/>
-            <WeaponDisableArray value="RepulsorCannon"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_HercBanelingImmunity">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>

@@ -22308,10 +22308,6 @@
         <On Terms="Effect.AP_TimeFieldAiurCreatePersistent.Start" Send="SetScale 1.5000"/>
         <On Terms="Effect.AP_TimeFieldAiurCreatePersistent.Stop" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Send="SetTintColor {30,70,255 2.000000}"/>
-        <On Terms="ModelEvent; ModelEventName SoundStart" Send="Create GuardianShieldSoundBirth"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopStart" Send="Create GuardianShieldSoundLoop"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Target="GuardianShieldSoundLoop" Send="Destroy"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Send="Create GuardianShieldSoundDeath"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Macros value="GlobalLoopMacro"/>
         <Inherits index="TeamColor" value="1"/>
@@ -22328,10 +22324,6 @@
         <On Terms="Effect.AP_TimeFieldPurifierCoreCreatePersistent.Stop" Send="AnimBracketStop SSD"/>
         <On Terms="ActorCreation" Send="SetTintColor {110,255,10 2.000000}"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName SSD" Send="Destroy"/>
-        <On Terms="ModelEvent; ModelEventName SoundStart" Send="Create GuardianShieldSoundBirth"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopStart" Send="Create GuardianShieldSoundLoop"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Target="GuardianShieldSoundLoop" Send="Destroy"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Send="Create GuardianShieldSoundDeath"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Macros value="GlobalLoopMacro"/>
         <Inherits index="TeamColor" value="1"/>
@@ -22344,10 +22336,6 @@
         <On Terms="Effect.AP_TimeFieldTaldarimCreatePersistent.Start" Send="SetScale 1.31100"/>
         <On Terms="Effect.AP_TimeFieldTaldarimCreatePersistent.Stop" Send="AnimBracketStop SSD"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName SSD" Send="Destroy"/>
-        <On Terms="ModelEvent; ModelEventName SoundStart" Send="Create GuardianShieldSoundBirth"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopStart" Send="Create GuardianShieldSoundLoop"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Target="GuardianShieldSoundLoop" Send="Destroy"/>
-        <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Send="Create GuardianShieldSoundDeath"/>
         <HostSiteOps Ops="SOpShadow"/>
         <Macros value="GlobalLoopMacro"/>
         <Inherits index="TeamColor" value="1"/>
@@ -22406,6 +22394,22 @@
         <On Terms="Effect.AP_TimeFieldTaldarimCreatePersistent.Stop" Send="Destroy"/>
         <Sound value="Mothership_TimeWarpLoop"/>
     </CActorSound>
+    <CActorSound id="AP_TimeFieldLaunch" parent="SoundOneShot">
+        <On Terms="Effect.AP_TimeFieldAiurCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldAiurCoreCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldPurifierCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldPurifierCoreCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldTaldarimCreatePersistent.Start" Send="Create"/>
+        <Sound value="Mothership_TimeWarpLaunch"/>
+    </CActorSound>
+    <CActorSound id="AP_TimeFieldEnd" parent="SoundOneShot">
+        <On Terms="Effect.AP_TimeFieldAiurCreatePersistent.Stop" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldAiurCoreCreatePersistent.Stop" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldPurifierCreatePersistent.Stop" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldPurifierCoreCreatePersistent.Stop" Send="Create"/>
+        <On Terms="Effect.AP_TimeFieldTaldarimCreatePersistent.Stop" Send="Create"/>
+        <Sound value="Mothership_TimeWarpEnd"/>
+    </CActorSound>
     <CActorModel id="AP_TimeFieldAiurImpactModel" parent="ModelAnimationStyleOneShot">
         <Terms value="Cap 1"/>
         <Inherits index="CloakEffect" value="1"/>
@@ -22440,32 +22444,6 @@
     <CActorSplat id="AP_MothershipCoreNexusRecallCursorSplat">
         <Remove Terms="Abil.AP_MothershipCoreNexusRecall.Cursor" Send="Create"/>
     </CActorSplat>
-    <CActorModel id="AP_MothershipCorePhotonOvercharge" parent="ModelAnimationStyleContinuous">
-        <On Terms="Behavior.AP_PhotonOvercharge.On" Send="Create"/>
-        <On Terms="Behavior.AP_PhotonOvercharge.Off" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
-        <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpAttachOverhead"/>
-        <Inherits index="CloakEffect" value="1"/>
-        <Inherits index="TeamColor" value="1"/>
-    </CActorModel>
-    <CActorRange id="AP_MothershipCorePhotonOverchargeRange">
-        <EditorCategories value=""/>
-        <On Terms="Abil.AP_MothershipCorePhotonOvercharge.TargetOn" Send="Create"/>
-        <On Terms="Abil.AP_MothershipCorePhotonOvercharge.TargetOff" Send="Destroy"/>
-        <Range value="10.000000"/>
-        <Icon value="Assets\Textures\radaricon2.dds"/>
-    </CActorRange>
-    <CActorRange id="AP_MothershipCorePhotonWeaponRange">
-        <On Terms="Behavior.AP_PhotonOvercharge.On" Send="Create"/>
-        <On Terms="Behavior.AP_PhotonOvercharge.Off" Send="Destroy"/>
-        <On Terms="Behavior.AP_MothershipCorePhotonWeapon.On" Send="Create"/>
-        <On Terms="Behavior.AP_MothershipCorePhotonWeapon.Off" Send="Destroy"/>
-        <Icon value="Assets\Textures\RadarIcon2.dds"/>
-        <IconArcLength value="3.250000"/>
-        <Inherits index="Visibility" value="0"/>
-        <FogVisibility value="Visible"/>
-    </CActorRange>
     <CActorAction id="AP_MothershipCoreAttack" parent="GenericAttack" effectImpact="AP_MothershipCoreRepulsorCannonDamage" effectLaunch="AP_MothershipCorePlasmaDisruptorLaunchMissile">
         <LaunchAssets Sound="PhotonCannon_AttackLaunch"/>
         <ImpactMap index="None" Sound="PhotonCannon_AttackImpact"/>
@@ -24406,11 +24384,8 @@
         <Macros value="TerrainSquibAnimations"/>
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
-        <!--        <On Terms="Abil.Vortex.SourceCastStart" Send="$Spell"/>-->
         <On Terms="Effect.AP_SOAMothershipBlinkCP.Start" Send="SetOpacity 0.050000 0.375000"/>
         <On Terms="Effect.AP_SOAMothershipBlinkTeleport.Stop" Send="SetOpacity 1.000000 0.625000"/>
-        <!--        <On Terms="Abil.MassRecall.SourceCastStart" Send="$Spell"/>-->
-        <!--        <On Terms="Effect.MothershipMassRecallTeleport.Start" Send="CombatRevealClearTimers"/>-->
         <On Terms="UnitBirth.AP_MothershipPurifierPowerSource" Send="Create"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create AP_Mothership_Land"/>
         <On Terms="Behavior.AP_PlanetCracker.On" Send="AnimBracketStart AR Stand,Work,Start Stand,Work Stand,Work,End"/>
@@ -24427,10 +24402,6 @@
         <On Terms="Abil.AP_PlanetCracker.SourcePrepStart" Send="$Spell"/>
         <On Terms="Abil.AP_PlanetCracker.SourceCastStart" Send="SetScale 0.100000 0.400000"/>
         <On Terms="Abil.AP_PlanetCracker.SourceCastStop" Send="SetScale 1.000000 0.400000"/>
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceCastStart" Send="SetScale 0.010000 0.500000"/>-->
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceCastStart" Send="Create MothershipCoreTeleportOut"/>-->
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceFinishStart" Send="Create MothershipCoreTeleportIn"/>-->
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceCastStart" Send="TimerSet 0.500000 ShrinkDelay"/>-->
         <On Terms="TimerExpired; TimerName ShrinkDelay" Target="::Main" Send="SetScale 1.000000 0.500000"/>
         <On Terms="Behavior.WarpInEffect.On" Send="ModelSwap AP_MothershipTaldarimWarpInStargateBig"/>
         <On Terms="Behavior.WarpInEffect.On" Send="$Spell"/>
@@ -24513,11 +24484,8 @@
         <Macros value="TerrainSquibAnimations"/>
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
-        <!--        <On Terms="Abil.Vortex.SourceCastStart" Send="$Spell"/>-->
         <On Terms="Effect.AP_SOAMothershipBlinkCP.Start" Send="SetOpacity 0.050000 0.375000"/>
         <On Terms="Effect.AP_SOAMothershipBlinkTeleport.Stop" Send="SetOpacity 1.000000 0.625000"/>
-        <!--        <On Terms="Abil.MassRecall.SourceCastStart" Send="$Spell"/>-->
-        <!--        <On Terms="Effect.MothershipMassRecallTeleport.Start" Send="CombatRevealClearTimers"/>-->
         <On Terms="UnitHeightUpdate.*.Land" Send="Create AP_Mothership_Land"/>
         <On Terms="Behavior.AP_AstralRestorationCaster.On" Send="AnimBracketStart AR Stand,Work,Start Stand,Work Stand,Work,End"/>
         <On Terms="Behavior.AP_AstralRestorationCaster.Off" Send="AnimBracketStop AR"/>
@@ -24529,10 +24497,6 @@
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCoreAiur" Send="Create AP_MothershipCoreUpgradeToMothershipEnd2"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCoreAiur" Send="Create AP_MothershipCoreUpgradeToMothershipEnd3"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCoreAiur" Send="Create AP_MothershipCoreUpgradeToMothershipEndHit"/>
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceCastStart" Send="SetScale 0.010000 0.500000"/>-->
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceCastStart" Send="Create MothershipCoreTeleportOut"/>-->
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceFinishStart" Send="Create MothershipCoreTeleportIn"/>-->
-        <!--        <On Terms="Abil.MothershipCoreTeleport.SourceCastStart" Send="TimerSet 0.500000 ShrinkDelay"/>-->
         <On Terms="Abil.AP_BatteryOverchargeUpgrade.SourceCastStart" Send="$Spell"/>
         <On Terms="TimerExpired; TimerName ShrinkDelay" Target="::Main" Send="SetScale 1.000000 0.500000"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCoreAiur; ValidatePlayer AP_HaveAiurMothershipEnergyRegenAura" Send="ModelSwap AP_AiurMothershipUpgrade"/>
