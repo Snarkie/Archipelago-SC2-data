@@ -6425,7 +6425,7 @@ bool gt_MidCleanup_Func (bool testConds, bool runActions) {
     for ( ; ( (auto04E5D757_ai >= 0 && lv_i <= auto04E5D757_ae) || (auto04E5D757_ai < 0 && lv_i >= auto04E5D757_ae) ) ; lv_i += auto04E5D757_ai ) {
         VisRevealerEnable(gv_visiblilityRevealers[lv_i], false);
     }
-    PlayerModifyPropertyInt(gv_pLAYER_01_USER, c_playerPropSuppliesMade, c_playerPropOperSetTo, 200);
+    PlayerModifyPropertyInt(gv_pLAYER_01_USER, c_playerPropSuppliesMade, c_playerPropOperAdd, 200);
     if ((gv_midCinematicCompleted == true)) {
         lv_fadeDuration = 1.5;
     }
