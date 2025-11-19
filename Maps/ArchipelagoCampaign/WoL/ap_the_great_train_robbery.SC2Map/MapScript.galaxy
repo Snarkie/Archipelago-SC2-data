@@ -251,6 +251,8 @@ trigger gt_Init04Music;
 trigger gt_Init05Environment;
 trigger gt_Init06Difficulty;
 trigger gt_Init07Help;
+trigger gt_DebugSKIP;
+trigger gt_DebugTRAIN;
 trigger gt_IntroSequence;
 trigger gt_StartGame;
 trigger gt_TrainPathInitialization;
@@ -345,7 +347,7 @@ trigger gt_ObjectiveDestroyTheKillTeamComplete;
 trigger gt_NorthDefiler;
 trigger gt_MidDefiler;
 trigger gt_SouthDefiler;
-trigger gt_onKillTeamMemberDie;
+trigger gt_onKillTeamMemberMindControlled;
 trigger gt_ObjectiveFlawlessCreateQ;
 trigger gt_ObjectiveFlawlessComplete;
 trigger gt_ArchInit;
@@ -1180,6 +1182,53 @@ bool gt_Init07Help_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_Init07Help_Init () {
     gt_Init07Help = TriggerCreate("gt_Init07Help_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Debug SKIP
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugSKIP_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TimerStart(gv_nextTrainTimer, 1.0, false, c_timeGame);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugSKIP_Init () {
+    gt_DebugSKIP = TriggerCreate("gt_DebugSKIP_Func");
+    TriggerAddEventChatMessage(gt_DebugSKIP, 1, "SKIP", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Debug TRAIN
+//--------------------------------------------------------------------------------------------------
+bool gt_DebugTRAIN_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_newValue;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_newValue = StringToInt(StringWord(EventChatMessage(false), 2));
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, (StringExternal("Param/Value/E4ADB9F7") + IntToText(lv_newValue) + StringExternal("Param/Value/41368F16") + IntToText(gv_trainsDestroyed) + StringExternal("Param/Value/1DD7D2EB")));
+    gv_trainsDestroyed = lv_newValue;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DebugTRAIN_Init () {
+    gt_DebugTRAIN = TriggerCreate("gt_DebugTRAIN_Func");
+    TriggerAddEventChatMessage(gt_DebugTRAIN, 1, "TRAIN", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4916,12 +4965,11 @@ bool gt_PatrolWavesTop_Func (bool testConds, bool runActions) {
         while (!((libNtve_gf_UnitGroupIsDead(gv_patrolTop) == true))) {
             Wait(1.0, c_timeAI);
         }
-        if ((libNtve_gf_DifficultyValueInt(0, 1, 1, 1) == 1) && (gv_achievementMaraudersKilled == 0)) {
-            gv_achievementMaraudersKilled = 1;
-            AchievementAward(gv_pLAYER_01_USER, "THorner01_2");
-        }
-
         gv_patrolWaveSpawnedTop = false;
+        while (!((libNtve_gf_UnitGroupIsDead(gv_patrolTop) == true) && (libNtve_gf_UnitGroupIsDead(gv_patrolBottom) == true))) {
+            Wait(1.0, c_timeAI);
+        }
+        TriggerExecute(gt_ObjectiveDestroyTheKillTeamComplete, true, false);
     }
     return true;
 }
@@ -5001,12 +5049,11 @@ bool gt_PatrolWavesBottom_Func (bool testConds, bool runActions) {
         while (!((libNtve_gf_UnitGroupIsDead(gv_patrolBottom) == true))) {
             Wait(1.0, c_timeAI);
         }
-        if ((libNtve_gf_DifficultyValueInt(0, 1, 1, 1) == 1) && (gv_achievementMaraudersKilled == 0)) {
-            gv_achievementMaraudersKilled = 1;
-            AchievementAward(gv_pLAYER_01_USER, "THorner01_2");
-        }
-
         gv_patrolWaveSpawnedBottom = false;
+        while (!((libNtve_gf_UnitGroupIsDead(gv_patrolTop) == true) && (libNtve_gf_UnitGroupIsDead(gv_patrolBottom) == true))) {
+            Wait(1.0, c_timeAI);
+        }
+        TriggerExecute(gt_ObjectiveDestroyTheKillTeamComplete, true, false);
     }
     return true;
 }
@@ -5071,11 +5118,7 @@ bool gt_PatrolWavesSingle_Func (bool testConds, bool runActions) {
         while (!((libNtve_gf_UnitGroupIsDead(gv_patrolSingle) == true))) {
             Wait(1.0, c_timeAI);
         }
-        if ((libNtve_gf_DifficultyValueInt(0, 1, 1, 1) == 1) && (gv_achievementMaraudersKilled == 0)) {
-            gv_achievementMaraudersKilled = 1;
-            AchievementAward(gv_pLAYER_01_USER, "THorner01_2");
-        }
-
+        TriggerExecute(gt_ObjectiveDestroyTheKillTeamComplete, true, false);
         gv_patrolWaveSpawnedSingle = false;
     }
     return true;
@@ -6290,21 +6333,19 @@ void gt_SouthDefiler_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: onKillTeamMemberDie
+// Trigger: onKillTeamMemberMindControlled
 //--------------------------------------------------------------------------------------------------
-bool gt_onKillTeamMemberDie_Func (bool testConds, bool runActions) {
+bool gt_onKillTeamMemberMindControlled_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_targetUnit;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_targetUnit = lib15EF4C78_gf_AP_Player_UnitMindControlledEventTarget();
+
     // Conditions
     if (testConds) {
-        if (!((UnitGetOwner(EventUnit()) == gv_pLAYER_02_DOMINION))) {
-            return false;
-        }
-
-        if (!((UnitGetType(EventUnit()) == "DominionKillTeam"))) {
-            return false;
-        }
-
-        if (!((UnitGroupCount(UnitGroup("DominionKillTeam", gv_pLAYER_02_DOMINION, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0))) {
+        if (!(((UnitGroupHasUnit(gv_patrolSingle, lv_targetUnit) == true) || (UnitGroupHasUnit(gv_patrolTop, lv_targetUnit) == true) || (UnitGroupHasUnit(gv_patrolBottom, lv_targetUnit) == true)))) {
             return false;
         }
     }
@@ -6314,15 +6355,16 @@ bool gt_onKillTeamMemberDie_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TriggerEnable(TriggerGetCurrent(), false);
-    TriggerExecute(gt_ObjectiveDestroyTheKillTeamComplete, true, false);
+    UnitGroupRemove(gv_patrolSingle, lv_targetUnit);
+    UnitGroupRemove(gv_patrolTop, lv_targetUnit);
+    UnitGroupRemove(gv_patrolBottom, lv_targetUnit);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_onKillTeamMemberDie_Init () {
-    gt_onKillTeamMemberDie = TriggerCreate("gt_onKillTeamMemberDie_Func");
-    TriggerAddEventUnitDied(gt_onKillTeamMemberDie, null);
+void gt_onKillTeamMemberMindControlled_Init () {
+    gt_onKillTeamMemberMindControlled = TriggerCreate("gt_onKillTeamMemberMindControlled_Func");
+    TriggerAddEventGeneric(gt_onKillTeamMemberMindControlled, lib15EF4C78_gv_aP_Player_UNIT_MIND_CONTROLLED_EVENT);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7028,6 +7070,8 @@ void InitTriggers () {
     gt_Init05Environment_Init();
     gt_Init06Difficulty_Init();
     gt_Init07Help_Init();
+    gt_DebugSKIP_Init();
+    gt_DebugTRAIN_Init();
     gt_IntroSequence_Init();
     gt_StartGame_Init();
     gt_TrainPathInitialization_Init();
@@ -7122,7 +7166,7 @@ void InitTriggers () {
     gt_NorthDefiler_Init();
     gt_MidDefiler_Init();
     gt_SouthDefiler_Init();
-    gt_onKillTeamMemberDie_Init();
+    gt_onKillTeamMemberMindControlled_Init();
     gt_ObjectiveFlawlessCreateQ_Init();
     gt_ObjectiveFlawlessComplete_Init();
     gt_ArchInit_Init();
