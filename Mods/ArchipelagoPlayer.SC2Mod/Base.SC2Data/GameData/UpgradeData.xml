@@ -16908,6 +16908,7 @@
         <EffectArray Operation="Set" Reference="Abil,AP_WarpRelocateAssimilator,InfoArray[Build3].Resource[Minerals]" Value="0"/>
         <EffectArray Operation="Set" Reference="Abil,AP_WarpRelocateAssimilator,InfoArray[Build24].Resource[Minerals]" Value="0"/>
         <EffectArray Operation="Set" Reference="Button,AP_WarpRelocate,Tooltip" Value="Button/Tooltip/AP_WarpRelocateUpgraded"/>
+        <EffectArray Operation="Set" Reference="Button,AP_WarpRelocateNexus,Tooltip" Value="Button/Tooltip/AP_WarpRelocateNexusUpgraded"/>
     </CUpgrade>
     <CUpgrade id="AP_GuardianPropellantSacs">
         <EffectArray Reference="Unit,AP_GuardianSCBW,Speed" Value="1.000"/>
