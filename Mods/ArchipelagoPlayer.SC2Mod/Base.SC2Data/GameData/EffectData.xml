@@ -6340,6 +6340,7 @@
         <Behavior value="AP_NovaAlreadyDominated"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AP_NovaDominationApplySet">
+        <ValidatorArray value=""/>
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="AP_NovaDominationAB"/>
         <EffectArray value="AP_NovaDominationApplyNova"/>
