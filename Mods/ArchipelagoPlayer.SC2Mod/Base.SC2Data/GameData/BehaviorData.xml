@@ -118,6 +118,11 @@
         <Duration value="1.5"/>
         <Modification MoveSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_MindControlImmune">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-commander-stetmann.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AP_KillSquad">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
