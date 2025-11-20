@@ -4213,6 +4213,7 @@
         <ValidatorArray index="0" value="AP_UseHiveMindEmulatorAny"/>
         <ValidatorArray value="NotLarvaEgg"/>
         <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="AP_NotHaveMindControlImmune"/>
         <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
     <CEffectEnumTransport id="AP_MindControlKillCargo">
@@ -6346,6 +6347,7 @@
     </CEffectSet>
     <CEffectCreatePersistent id="AP_NovaDominationPersistent">
         <ValidatorArray value="AP_IsNotVanillaSonarDrone"/>
+        <ValidatorArray value="AP_NotHaveMindControlImmune"/>
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetUnit"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
@@ -7731,6 +7733,7 @@
         <ValidatorArray value="NotFrenzied"/>
         <ValidatorArray value="HasNoCargo"/>
         <ValidatorArray value="NotPointDefenseDrone"/>
+        <ValidatorArray value="AP_NotHaveMindControlImmune"/>
         <EditorCategories value="Race:Terran"/>
         <Marker Link="Abil/AP_NeuralParasite">
             <MatchFlags index="Link" value="1"/>
@@ -11343,6 +11346,7 @@
         <ValidatorArray value="NotPointDefenseDrone"/>
         <ValidatorArray value="IsNotEgg"/>
         <ValidatorArray value="NotLarva"/>
+        <ValidatorArray value="AP_NotHaveMindControlImmune"/>
         <!-- TODO: Void campaign integration -->
         <!--        <ValidatorArray value="NotInfestedSpire"/>-->
         <!--        <ValidatorArray value="NoDarkArchonMindControlPrevention"/>-->
@@ -16572,6 +16576,7 @@
         <ValidatorArray value="HasNoCargo"/>
         <ValidatorArray value="NotPointDefenseDrone"/>
         <ValidatorArray value="AP_IsMechanical"/>
+        <ValidatorArray value="AP_NotHaveMindControlImmune"/>
         <!--        <ValidatorArray value="MutatorPolarityTargetCasterCheck"/>-->
         <EditorCategories value=""/>
         <EffectArray value="AP_ReclamationCP"/>
