@@ -4508,8 +4508,6 @@ bool lib15EF4C78_gt_Stukov_RallyPlaced_Func (bool testConds, bool runActions) {
 
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_SIStukovRallyBeaconPsiEmitterPoint", c_unitCreateIgnorePlacement, 0, lib15EF4C78_gv_stukov_RallyPoint[lv_player]);
     lib15EF4C78_gv_stukov_RallyBeaconUnit[lv_player] = UnitLastCreated();
-    UnitGroupIssueOrder(UnitGroupFilterPlayer(lib15EF4C78_gv_stukov_BunkerGroup, lv_player, 0), OrderTargetingPoint(AbilityCommand("AP_SIInfestedBunkerRally", 0), lib15EF4C78_gv_stukov_RallyPoint[lv_player]), c_orderQueueReplace);
-    UnitGroupIssueOrder(UnitGroup("AP_SIBarracks", lv_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), OrderTargetingPoint(AbilityCommand("Rally", 0), lib15EF4C78_gv_stukov_RallyPoint[lv_player]), c_orderQueueReplace);
     lib15EF4C78_gf_Stukov_HordeGoToRally(lv_player);
     return true;
 }
