@@ -18153,13 +18153,14 @@
         <ExcludeArray Value="Target"/>
     </CEffectDamage>
     <CEffectDamage id="AP_CarrierPurifierBomberFriendlyDamage" parent="DU_WEAP">
+        <!-- Hit friendly target only if under a direct attack order -->
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="3"/>
+        <Amount value="9"/>
         <Death value="Blast"/>
         <SearchFilters value="Ground;Self,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="0.25" Fraction="1"/>
+        <AreaArray Radius="0.25" Fraction="1" Validator="AP_CasterIsAttackingTarget"/>
         <ExcludeArray Value="Target"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="AP_CarrierPurifierPrismaticBeam">
