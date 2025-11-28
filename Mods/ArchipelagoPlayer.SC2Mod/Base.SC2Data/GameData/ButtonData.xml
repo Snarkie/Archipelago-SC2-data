@@ -6756,6 +6756,12 @@
         <AlertIcon value="Assets\Textures\btn-ability-protoss-massrecall.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
+    <CButton id="AP_WarpRelocateNexus">
+        <Icon value="Assets\Textures\btn-ability-protoss-massrecall.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-massrecall.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="AP_WarpRelocate"/>
+    </CButton>
     <CButton id="AP_StalwartStrutEnhancements">
         <Icon value="AP\Assets\Textures\btn-reintigrated-framework.dds"/>
         <AlertIcon value="AP\Assets\Textures\btn-reintigrated-framework.dds"/>

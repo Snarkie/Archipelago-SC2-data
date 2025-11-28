@@ -15993,7 +15993,7 @@
             <LayoutButtons Face="AP_SOARadarNexus" Type="Passive" Requirements="AP_HaveSOARadar" Row="2" Column="3"/>
             <LayoutButtons Face="AP_KaraxTurretRange" Type="Passive" Requirements="AP_HaveSOARadarAndKaraxTurretRange" Row="2" Column="1"/>
             <LayoutButtons Face="AP_KaraxTurretAttackSpeed" Type="Passive" Requirements="AP_HaveSOARadarAndKaraxTurretAttackSpeed" Row="2" Column="2"/>
-            <LayoutButtons Face="AP_WarpRelocate" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build1" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_WarpRelocateNexus" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build1" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="2"/>
         <SeparationRadius value="2"/>
