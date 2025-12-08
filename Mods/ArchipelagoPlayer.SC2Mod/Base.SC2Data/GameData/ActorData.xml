@@ -22213,7 +22213,7 @@
         <On Terms="SelectionLocalUpdate.*.Stop" Send="SetVisibility"/>
         <On Terms="Behavior.AP_TaldarimMothershipGroundSlowAura.On" Send="Create"/>
         <On Terms="Behavior.AP_TaldarimMothershipGroundSlowAura.Off" Send="Destroy"/>
-        <Range value="6.350000"/>
+        <Range value="7.750000"/>
     </CActorRange>
     <CActorRange id="AP_PurifierMothershipAttackSpeedBoostAuraRange">
         <On Terms="SelectionLocalUpdate.*.Start" Send="SetVisibility 1"/>

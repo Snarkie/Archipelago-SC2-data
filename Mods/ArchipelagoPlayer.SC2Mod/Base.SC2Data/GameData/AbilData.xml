@@ -7325,7 +7325,7 @@
     <CAbilEffectTarget id="AP_SOAMothershipBlinkGlobal" parent="AP_SOAMothershipBlink">
         <Cost index="0">
             <Vital index="Energy" value="50"/>
-            <Cooldown Link="Abil/AP_SOAMothershipBlink" TimeUse="60"/>
+            <Cooldown Link="Abil/AP_SOAMothershipBlink" TimeUse="120"/>
         </Cost>
         <Range index="0" value="500"/>
     </CAbilEffectTarget>

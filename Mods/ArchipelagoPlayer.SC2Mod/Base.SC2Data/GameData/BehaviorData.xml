@@ -5240,8 +5240,8 @@
         <DisableValidatorArray value="AP_NotHeroic"/>
         <DisableValidatorArray value="AP_IsNotFriendly"/>
         <Duration value="0.125"/>
-        <Modification MoveSpeedMultiplier="0.25"/>
-        <Modification AttackSpeedMultiplier="0.25"/>
+        <Modification MoveSpeedMultiplier="0.4"/>
+        <Modification AttackSpeedMultiplier="0.4"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_TimeFieldAiurHeroic">
         <Alignment value="Negative"/>
@@ -5250,8 +5250,8 @@
         <DisableValidatorArray value="AP_IsHeroic"/>
         <DisableValidatorArray value="AP_IsNotFriendly"/>
         <Duration value="0.125"/>
-        <Modification MoveSpeedMultiplier="0.5"/>
-        <Modification AttackSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.6"/>
+        <Modification AttackSpeedMultiplier="0.6"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_TimeFieldTaldarim">
         <Alignment value="Negative"/>

@@ -12492,7 +12492,7 @@
     <CEffectCreatePersistent id="AP_AiurMothershipBlackHolePersistent">
         <InitialEffect value="AP_AiurMothershipFeedbackSearchPoint"/>
         <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="128"/>
+        <PeriodCount value="96"/>
         <PeriodicEffectArray value="AP_AiurMothershipBlackHoleSearch"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
@@ -12525,7 +12525,7 @@
     </CEffectSet>
     <CEffectCreatePersistent id="AP_PurifierMothershipBlackHolePersistent">
         <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="128"/>
+        <PeriodCount value="112"/>
         <PeriodicEffectArray value="AP_PurifierMothershipBlackHoleSearch"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
@@ -18361,7 +18361,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="CasterUnit"/>
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Dead,Hidden"/>
-        <AreaArray Radius="6" Effect="AP_TaldarimMothershipGroundSlowAB"/>
+        <AreaArray Radius="7.5" Effect="AP_TaldarimMothershipGroundSlowAB"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>  
     <CEffectApplyBehavior id="AP_TaldarimMothershipGroundSlowAB">

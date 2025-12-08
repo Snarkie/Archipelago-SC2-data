@@ -3368,8 +3368,6 @@
         <Icon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
         <Hotkey value="Button/Hotkey/AP_MothershipUtilityPrimary"/>
-        <Tooltip value="Button/Tooltip/AP_MothershipBlackHole"/>
-        <AlertTooltip value="Button/Tooltip/AP_MothershipBlackHole"/>
         <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="AP_MothershipUtilityPrimary"/>
     </CButton>
@@ -3377,18 +3375,16 @@
         <Icon value="AP\Assets\Textures\btn-ability-protoss-blackhole-orange.dds"/>
         <AlertIcon value="AP\Assets\Textures\btn-ability-protoss-blackhole-orange.dds"/>
         <Hotkey value="Button/Hotkey/AP_MothershipUtilityPrimary"/>
-        <Tooltip value="Button/Tooltip/AP_MothershipBlackHole"/>
-        <AlertTooltip value="Button/Tooltip/AP_MothershipBlackHole"/>
         <EditorCategories value="Race:Protoss"/>
         <HotkeyAlias value="AP_MothershipUtilityPrimary"/>
     </CButton>
     <CButton id="AP_MothershipAiurBlackHoleInstall" parent="AP_AiurMothershipBlackHole">
-        <Tooltip value="Button/Tooltip/AP_MothershipBlackHoleInstall"/>
+        <Tooltip value="Button/Tooltip/AP_MothershipAiurBlackHoleInstall"/>
         <Hotkey value="Button/Hotkey/AP_MothershipUtility1"/>
         <Name value="Button/Name/AP_MothershipBlackHoleInstall"/>
     </CButton>
     <CButton id="AP_MothershipPurifierBlackHoleInstall" parent="AP_PurifierMothershipBlackHole">
-        <Tooltip value="Button/Tooltip/AP_MothershipBlackHoleInstall"/>
+        <Tooltip value="Button/Tooltip/AP_MothershipPurifierBlackHoleInstall"/>
         <Hotkey value="Button/Hotkey/AP_MothershipUtility1"/>
         <Name value="Button/Name/AP_MothershipBlackHoleInstall"/>
     </CButton>
