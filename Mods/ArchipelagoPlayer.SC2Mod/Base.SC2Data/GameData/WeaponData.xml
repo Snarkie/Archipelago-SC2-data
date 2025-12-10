@@ -2317,10 +2317,10 @@
         <DisplayEffect value="AP_MothershipCoreRepulsorCannonDamage"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <RangeSlop value="0"/>
-        <Range value="5"/>
+        <Range value="7"/>
         <Period value="0.85"/>
         <Effect value="AP_MothershipCorePlasmaDisruptorLaunchMissile"/>
-        <AllowedMovement value="Moving"/>
+        <AllowedMovement value="Slowing"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="AP_MothershipCoreWeapon">
         <Options index="Hidden" value="1"/>

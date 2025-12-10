@@ -7700,17 +7700,17 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <InfoArray index="Research1" Time="0" Upgrade="AP_AiurMothershipFeedback">
             <Resource index="Minerals" value="25"/>
-            <Resource index="Vespene" value="50"/>
+            <Resource index="Vespene" value="25"/>
             <Button DefaultButtonFace="AP_AiurMothershipFeedback" State="Restricted" Requirements="AP_CanInstallAiurMothershipFeedback"/>
         </InfoArray>    
         <InfoArray index="Research2" Time="0" Upgrade="AP_AiurMothershipShieldRestore">
-            <Resource index="Minerals" value="75"/>
-            <Resource index="Vespene" value="25"/>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="0"/>
             <Button DefaultButtonFace="AP_AiurMothershipShieldRestore" State="Restricted" Requirements="AP_CanInstallAiurMothershipShieldRestore"/>
         </InfoArray>     
         <InfoArray index="Research3" Time="0" Upgrade="AP_AiurMothershipEnergyRegenAura">
-            <Resource index="Minerals" value="75"/>
-            <Resource index="Vespene" value="75"/>
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
             <Button DefaultButtonFace="AP_AiurMothershipEnergyRegenAura" State="Restricted" Requirements="AP_CanInstallAiurMothershipEnergyRegenAura"/>
         </InfoArray>     
         <InfoArray index="Research4" Time="0" Upgrade="AP_MothershipAiurHangar">

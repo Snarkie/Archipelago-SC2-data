@@ -8090,7 +8090,7 @@
     <CEffectDamage id="AP_MothershipCoreRepulsorCannonDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Protoss"/>
         <Kind value="Ranged"/>
-        <Amount value="8"/>
+        <Amount value="6"/>
         <Visibility value="Visible"/>
     </CEffectDamage> 
     <CEffectCreatePersistent id="AP_InterceptorAiurLaunchPersistent">
