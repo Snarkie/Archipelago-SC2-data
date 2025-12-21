@@ -6307,6 +6307,7 @@ Unit/Name/AP_MothershipAiur=Mothership
 Unit/Name/AP_MothershipCoreAiur=Mothership Core
 Unit/Name/AP_MothershipCorePurifier=Mothership Core
 Unit/Name/AP_MothershipPurifier=Mothership
+Unit/Name/AP_MothershipRepairDrone=Shielding Drone
 Unit/Name/AP_Mutalisk=Mutalisk
 Unit/Name/AP_MutaliskBroodlord=Mutalisk
 Unit/Name/AP_MutaliskViper=Mutalisk

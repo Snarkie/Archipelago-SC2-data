@@ -12329,10 +12329,6 @@
         <ValidatorArray value="AP_CasterIsPurifierMothership"/>
         <EditorCategories value="Race:Protoss"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_PurifierMothershipShieldingTargetAB">
-        <Behavior value="AP_PurifierMothershipShielding"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CEffectApplyBehavior>
    <CEffectRemoveBehavior id="AP_PurifierMothershipShieldingRB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
@@ -12583,7 +12579,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_PowerRedirectionCasterAB"/>
         <EffectArray value="AP_PowerRedirectionCP"/>
-        <EffectArray value="AP_PurifierMothershipShieldingTargetAB"/>
+        <EffectArray value="AP_PurifierMothershipShieldingABTarget"/>
         <ValidatorArray value="AP_IsPhotonOrKhaydarin"/>
         <TargetLocationType value="UnitOrPoint"/>
     </CEffectSet>
@@ -12622,6 +12618,7 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_PowerRedirectionCasterRB"/>
         <EffectArray value="AP_KillMothershipPylonPowerSearchArea"/>
+        <EffectArray value="AP_PurifierMothershipShieldingRBTarget"/>
     </CEffectSet>
     <CEffectEnumArea id="AP_KhaydarinSplashSearch">
         <EditorCategories value=""/>

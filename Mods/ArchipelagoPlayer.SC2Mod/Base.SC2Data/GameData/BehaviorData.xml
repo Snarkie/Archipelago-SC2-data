@@ -6176,7 +6176,6 @@
         <DisplayDuration index="Neutral" value="1"/>
         <InitialEffect value="AP_PowerRedirectionCasterAB"/>
         <FinalEffect value="AP_PowerRedirectionCasterRemoveSet"/>
-        <ExpireEffect value="AP_PurifierMothershipShieldingRBTarget"/>
         <Modification>
             <AdditiveAttackSpeedFactor value="1.25"/>
         </Modification>
@@ -6192,7 +6191,6 @@
         <DisplayDuration index="Neutral" value="1"/>
         <InitialEffect value="AP_PowerRedirectionCasterAB"/>
         <FinalEffect value="AP_PowerRedirectionCasterRemoveSet"/>
-        <ExpireEffect value="AP_PurifierMothershipShieldingRBTarget"/>
         <Modification>
             <AdditiveAttackSpeedFactor value="1.0"/>
         </Modification>
