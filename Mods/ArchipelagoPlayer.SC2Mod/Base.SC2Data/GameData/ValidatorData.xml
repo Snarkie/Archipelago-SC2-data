@@ -3331,6 +3331,9 @@
     <CValidatorUnitFilters id="AP_FriendlyTargetExcludeSelf">
         <Filters value="-;Enemy"/>
     </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="AP_EnemyTargetExcludeSelf">
+        <Filters value="Enemy;-"/>
+    </CValidatorUnitFilters>
     <CValidatorUnitCompareBehaviorCount id="AP_TargetFirePriority">
         <Compare value="GT"/>
         <Behavior value="AP_TargetFire"/>
@@ -3366,6 +3369,10 @@
     <CValidatorUnitCompareBehaviorCount id="AP_NotCasterOverloadWeaponSystems">
         <WhichUnit Value="Caster"/>
         <Behavior value="AP_OverloadWeaponSystems"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="AP_NoPurifierMothershipTarget">
+        <WhichUnit Value="Target"/>
+        <Behavior value="AP_PurifierMothershipTarget"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="AP_HavePurifierMothershipDebuff">
         <Find value="1"/>

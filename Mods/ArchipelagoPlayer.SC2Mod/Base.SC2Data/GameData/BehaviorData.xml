@@ -6279,8 +6279,7 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <DisplayDuration index="Neutral" value="1"/>
-        <Modification>
-            <ModifyFlags index="SuppressMoving" value="1"/>
+        <Modification MoveSpeedBonus="-10">
             <AbilClassDisableArray index="CAbilMove" value="1"/>
             <AbilClassDisableArray index="move" value="1"/>
             <AbilLinkDisableArray value="AP_PurifierMothershipInstalls"/>

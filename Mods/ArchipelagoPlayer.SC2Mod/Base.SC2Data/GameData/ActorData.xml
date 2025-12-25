@@ -22119,6 +22119,7 @@
         <On Terms="Behavior.AP_PlanetCracker.On" Send="Create"/>
         <On Terms="Behavior.AP_PlanetCracker.Off" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.AP_PlanetCracker.On" Send="SetScale 1.150000"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.75"/>
     </CActorBeamSimple>
     <CActorModel id="AP_PlanetCrackerImpact" parent="ModelAnimationStyleOneShotUNIT">
         <On Terms="Effect.AP_PlanetCrackerDamage.Start; At Target" Send="Create"/>

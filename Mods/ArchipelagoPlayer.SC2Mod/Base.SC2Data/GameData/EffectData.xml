@@ -11952,6 +11952,7 @@
         <Flags index="Channeled" value="0"/>
     </CEffectCreatePersistent>
     <CEffectSet id="AP_PurifierMothershipBeamSet">
+        <ValidatorArray value="AP_EnemyTargetExcludeSelf"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_PurifierMothershipBeamPersistent"/>
         <EffectArray value="AP_PurifierMothershipSecondaryBeamPersistent"/>
@@ -11966,6 +11967,7 @@
     <CEffectSet id="AP_PurifierMothershipWeaponSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_PurifierMothershipFriendlyBeamSet"/>
+        <EffectArray value="AP_PurifierMothershipBeamSet"/>
         <EffectArray value="AP_PurifierMothershipWeaponSearchSwitch"/>
         <EffectArray value="AP_PurifierMothershipWeaponOverloadSearchSwitch"/>
         <TargetLocationType value="Unit"/>
@@ -11988,6 +11990,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ImpactLocation Value="CasterUnit"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <ExcludeArray Value="Target"/>
         <TargetSorts>
             <SortArray value="AP_MothershipTargetFire"/>
             <SortArray value="AP_TSThreatenBattlecruiser"/>
@@ -11995,7 +11998,7 @@
         </TargetSorts>
         <AreaArray>
             <Arc value="360"/>
-            <MaxCount value="4"/>
+            <MaxCount value="3"/>
             <Radius value="7.5"/>
             <Effect value="AP_PurifierMothershipBeamSet"/>
         </AreaArray>
@@ -12020,7 +12023,7 @@
     </CEffectEnumArea>
     <CEffectEnumArea id="AP_PurifierMothershipWeaponOverloadSearch" parent="AP_PurifierMothershipWeaponSearch">
         <AreaArray index="0">
-            <MaxCount value="8"/>
+            <MaxCount value="7"/>
         </AreaArray>
     </CEffectEnumArea>
     <CEffectEnumArea id="AP_PurifierMothershipWeaponOverloadSearch1BonusRange" parent="AP_PurifierMothershipWeaponOverloadSearch">
