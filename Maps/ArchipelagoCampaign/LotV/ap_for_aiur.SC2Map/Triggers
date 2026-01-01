@@ -62576,12 +62576,6 @@
     </Element>
     <Element Type="FunctionCall" Id="3C67C497">
         <Disabled/>
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="CF0ECFBC"/>
-        <Parameter Type="Param" Id="E26D3D1A"/>
-    </Element>
-    <Element Type="Param" Id="E26D3D1A">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="695FF979"/>
-        <Variable Type="Variable" Id="C55DEA15"/>
     </Element>
     <Element Type="Trigger" Id="A6577053">
         <Condition Type="FunctionCall" Id="61AE8F9C"/>
