@@ -436,7 +436,6 @@
             </SectionArray>
             <SectionArray index="Stats">
                 <DurationArray index="Delay" value="2.5"/>
-                <EffectArray index="Finish" value="AP_ThorMengskWeaponChange"/>
             </SectionArray>
         </InfoArray>
         <!--SectionArray index="Abils">
@@ -454,7 +453,7 @@
         <Flags index="Interruptible" value="0"/>
         <InfoArray index="0">
             <SectionArray index="Actor">
-                <EffectArray index="Finish" value="AP_ThorMengskSiegeOrderSet"/>
+                <EffectArray index="Finish" value="AP_ThorMengskSiegeOrder"/>
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
@@ -488,7 +487,6 @@
             </SectionArray>
             <SectionArray index="Stats">
                 <DurationArray index="Delay" value="2.5"/>
-                <EffectArray index="Finish" value="AP_ThorMengskWeaponChange"/>
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
@@ -508,14 +506,14 @@
         <Cost>
             <Vital index="Life" value="10"/>
             <Charge Link="Abil/AP_Stimpack"/>
-            <Cooldown Link="Abil/AP_Stimpack"/>
+            <Cooldown Link="Abil/AP_Stimpack" TimeUse="2"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AP_StimpackLargeBase" parent="AP_StimpackBase">
         <Cost>
             <Vital index="Life" value="20"/>
             <Charge Link="Abil/AP_Stimpack"/>
-            <Cooldown Link="Abil/AP_Stimpack"/>
+            <Cooldown Link="Abil/AP_Stimpack" TimeUse="2"/>
         </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AP_Stimpack" parent="AP_StimpackSmallBase">
@@ -1297,6 +1295,7 @@
             <Vital index="Energy" value="125"/>
             <Cooldown Link="AP_YamatoYamato" TimeUse="0.8332"/>
         </Cost>
+        <TargetFilters value="Visible;Self,Player,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>
         <RangeSlop value="10"/>
         <PrepTime value="3"/>
@@ -1428,7 +1427,7 @@
         <Cost>
             <Vital index="Energy" value="25"/>
         </Cost>
-        <TargetFilters value="Biological,Visible;Self,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetFilters value="Biological,Visible;Self,Player,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>
         <CastIntroTime value="0.5"/>
         <Marker>
@@ -1686,7 +1685,6 @@
             </SectionArray>
             <SectionArray index="Stats">
                 <DurationArray index="Delay" value="12"/>
-                <EffectArray index="Finish" value="AP_ThorMengskWeaponChange"/>
             </SectionArray>
         </InfoArray>
         <Alert value="RebornComplete"/>
@@ -4297,7 +4295,7 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_SiegeTankMengskBlink" State="Restricted" Requirements="AP_HaveGoliathJumpJets">
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_GoliathMengskBlink" State="Restricted" Requirements="AP_HaveGoliathMengskVeterancyLevel2">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
@@ -7224,6 +7222,8 @@
             </Button>
             <Unit value="AP_Baneling"/>
             <Unit value="AP_Baneling"/>
+            <Unit value="AP_Baneling"/>
+            <Unit value="AP_Baneling"/>
             <Flags index="IgnorePlacement" value="1"/>
         </InfoArray>
         <Alert value="MorphComplete_Zerg"/>
@@ -10134,7 +10134,7 @@
             <Button DefaultButtonFace="AP_Bunker" State="Restricted" Requirements="AP_HideFortifiedBunker"/>
         </InfoArray>
         <InfoArray index="Build8" Unit="AP_PsiDisruptor" Time="50">
-            <Button DefaultButtonFace="AP_PsiDisruptor" State="Restricted"/>
+            <Button DefaultButtonFace="AP_PsiDisruptor" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
         </InfoArray>
         <InfoArray index="Build9" Unit="AP_SensorTower" Time="25">
             <Button DefaultButtonFace="AP_SensorTower" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
@@ -10167,7 +10167,7 @@
             <Button DefaultButtonFace="AP_CommandCenterOrbRelay" State="Restricted" Requirements="AP_UseOrbitalRelay"/>
         </InfoArray>
         <InfoArray index="Build22" Unit="AP_HiveMindEmulator" Time="50">
-            <Button DefaultButtonFace="AP_HiveMindEmulator" State="Restricted"/>
+            <Button DefaultButtonFace="AP_HiveMindEmulator" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
         </InfoArray>
         <InfoArray index="Build23" Unit="AP_Bunker" Time="30">
             <Button DefaultButtonFace="AP_BunkerFortified" State="Restricted" Requirements="AP_UseFortifiedBunker"/>
@@ -11267,12 +11267,6 @@
         <Flags index="Automatic" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <InfoArray Unit="AP_GhostResourceEfficiency"/>
-    </CAbilMorph>
-    <CAbilMorph id="AP_GhostMengskResourceEfficiencyMorph">
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ghost" Requirements="AP_HaveGhostBargainBinPrices"/>
-        <Flags index="Automatic" value="1"/>
-        <Flags index="IgnoreUnitCost" value="1"/>
-        <InfoArray Unit="AP_GhostMengskResourceEfficiency"/>
     </CAbilMorph>
     <CAbilMorph id="AP_SpectreResourceEfficiencyMorph">
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_Spectre" Requirements="AP_HaveSpectreBargainBinPrices"/>
@@ -14063,7 +14057,7 @@
         <InfoArray Unit="AP_ThorMengskSieged">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="3"/>
-                <EffectArray index="Finish" value="AP_ThorMengskSiegeMorphingRBSet"/>
+                <EffectArray index="Finish" value="AP_ThorMengskSiegeMorphingRB"/>
             </SectionArray>
         </InfoArray>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_ThorMengskSiege"/>
@@ -14088,7 +14082,6 @@
         <InfoArray Unit="AP_ThorMengsk">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="3"/>
-                <EffectArray index="Finish" value="AP_ThorMengskWeaponChange"/>
             </SectionArray>
         </InfoArray>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_ThorMengskUnsiege">
@@ -14102,7 +14095,7 @@
         <InfoArray Unit="AP_ThorMengsk">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="3"/>
-                <EffectArray index="Finish" value="AP_ThorMengskContinueMorphingToAPSet"/>
+                <EffectArray index="Finish" value="AP_ThorMengskContinueMorphingToAP"/>
             </SectionArray>
         </InfoArray>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_ThorMengskUnsiege" Requirements="AP_HaveThorMorph">
@@ -14301,7 +14294,7 @@
         <Cost>
             <Vital index="Energy" value="25"/>
         </Cost>
-        <TargetFilters value="Biological,Visible;Self,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetFilters value="Biological,Visible;Self,Player,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>
         <CastIntroTime value="0.5"/>
         <Marker>
@@ -14350,7 +14343,7 @@
             <Button DefaultButtonFace="AP_Bunker" State="Restricted" Requirements="AP_HideFortifiedBunker"/>
         </InfoArray>
         <InfoArray index="Build8" Unit="AP_PsiDisruptor" Time="50">
-            <Button DefaultButtonFace="AP_PsiDisruptor" State="Restricted"/>
+            <Button DefaultButtonFace="AP_PsiDisruptor" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
         </InfoArray>
         <InfoArray index="Build9" Unit="AP_SensorTower" Time="25">
             <Button DefaultButtonFace="AP_SensorTower" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
@@ -14359,7 +14352,7 @@
             <Button DefaultButtonFace="AP_PerditionTurret" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
         </InfoArray>
         <InfoArray index="Build22" Unit="AP_HiveMindEmulator" Time="50">
-            <Button DefaultButtonFace="AP_HiveMindEmulator" State="Restricted"/>
+            <Button DefaultButtonFace="AP_HiveMindEmulator" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
         </InfoArray>
         <InfoArray index="Build23" Unit="AP_Bunker" Time="30">
             <Button DefaultButtonFace="AP_BunkerFortified" State="Restricted" Requirements="AP_UseFortifiedBunker"/>
@@ -14679,7 +14672,8 @@
         </Cost>
         <TargetFilters value="CanHaveEnergy,Visible,HasEnergy;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="5"/>
-        <AutoCastValidatorArray value="AP_DarkTemplarVoidStasis"/>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="AP_TargetHasGE40Energy"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <UninterruptibleArray index="Cast" value="1"/>
         <UninterruptibleArray index="Channel" value="1"/>
@@ -14726,6 +14720,7 @@
         </TargetSorts>
         <AutoCastFilters value="Ground,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="9"/>
+        <AutoCastValidatorArray value="AP_TargetNotHarmless"/>
         <Effect index="0" value="AP_GuardianExplosiveSporesLaunch"/>
     </CAbilEffectTarget>
     <CAbilBehavior id="AP_WidowMineBuilding">
@@ -15456,7 +15451,8 @@
         <MaxCargoCount value="8"/>
         <MaxCargoSize value="4"/>
         <TotalCargoSpace value="8"/>
-        <UnloadPeriod value="1"/>
+        <UnloadPeriod value="0.5"/>
+        <SearchRadius value="4"/>
         <LoadCargoBehavior value="TransportDummy"/>
         <LoadCargoEffect value="AP_InfBullfrogTransportDamageBuffApply"/>
         <UnloadCargoEffect value="AP_InfBullfrogTransportDamageBuffDelay"/>
@@ -15501,7 +15497,7 @@
         <MorphUnit value="AP_SICocoonInfestedBullfrog"/>
         <InfoArray index="Train1" Time="32" Effect="">
             <Resource index="Minerals" value="125"/>
-            <Resource index="Vespene" value="50"/>
+            <Resource index="Vespene" value="75"/>
             <Button DefaultButtonFace="AP_InfestedBullfrog"/>
             <Unit value="AP_InfestedBullfrog"/>
             <Flags index="AutoCast" value="1"/>
@@ -15570,4 +15566,10 @@
         <TargetFilters index="0" value="Visible;Self,Enemy,Structure,Missile,UnderConstruction,Dead,Hidden"/>
         <CmdButtonArray index="Execute" Requirements="AP_HaveAdaptiveMedPacks"/>
     </CAbilEffectTarget>
+    <CAbilEffectInstant id="AP_BullfrogAllAboard">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AP_BullfrogAllAboardSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_BullfrogAllAboard" />
+        <Flags index="Transient" value="1"/>
+    </CAbilEffectInstant>
 </Catalog>

@@ -19744,6 +19744,10 @@
     <CModel id="AP_VikingMengskMorph" parent="VikingMorphBase">
         <Model value="Assets\COOP\Mengsk\Units\Viking_Mengsk_COOP_Morph\Viking_Mengsk_COOP_Morph.m3"/>
     </CModel>
+    <CModel id="AP_VikingMengskCheatDeathGlaze" parent="Glaze">
+        <Model value="Assets\Effects\Glaze\Glaze_Fire_WorldSpace\Glaze_Fire_WorldSpace.m3"/>
+        <Priority value="32"/>
+    </CModel>
     <CModel id="AP_StarportMengskBuild" parent="StarportBuildBase"/>
     <CModel id="AP_StarportMengsk" parent="StarportBase">
         <Model value="Assets\COOP\Mengsk\Buildings\Starport_Mengsk_COOP\Starport_Mengsk_COOP.m3"/>
@@ -21935,6 +21939,13 @@
         <TipabilityLength value="1.000000"/>
         <TipabilityWidth value="1.000000"/>
         <UnitGlossaryCamera value="Star2CameraHigh05"/>
+        <Events>
+            <Anim value="Attack,00"/>
+            <Name value="AP_Bullfrog_attack"/>
+            <Type value="Sound"/>
+            <Time value="0.1"/>
+            <Payload value="AP_Bullfrog_Spit"/>
+        </Events>
     </CModel>
     <CModel id="AP_InfestedBullfrogChassis" parent="Unit" Race="Zerg">
         <Model value="AP\Assets\Units\Terran\DropshipSCBW\DropshipSCBW.m3"/>
@@ -21991,5 +22002,24 @@
     </CModel>
     <CModel id="AP_ImmortalPurifierSparks">
         <Model value="Assets\Doodads\Sparks_Protoss\Sparks_Protoss.m3"/>
+    </CModel>
+    <CModel id="AP_BullfrogSpitWeapon" parent="MissileFX">
+        <Model value="Assets\Effects\Zerg\RavasaurMissile\RavasaurMissile.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="0.850000,0.850000,0.850000"/>
+        <ScaleMin value="0.850000,0.850000,0.850000"/>
+    </CModel>
+    <CModel id="AP_BullfrogAttackImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Zerg\RavasaurMissileImpact\RavasaurMissileImpact.m3"/>
+        <EditorCategories value="Race:Zerg"/>
+        <ScaleMax value="0.650000,0.650000,0.650000"/>
+        <ScaleMin value="0.650000,0.650000,0.650000"/>
+        <Events>
+            <Anim value="Death"/>
+            <Name value="Spit_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="AP_BullfrogSpit_Impact"/>
+        </Events>
     </CModel>
 </Catalog>

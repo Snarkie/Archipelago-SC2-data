@@ -53,6 +53,10 @@
         <CombineArray value="AP_HaveHotSSwarmHostSplitA"/>
         <Negate value="1"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="AP_NotHaveMindControlImmune">
+        <ResultFailed value="Error,Error/AP_MindControlImmune"/>
+        <Behavior value="AP_MindControlImmune"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AP_NotHaveWraithPermanentCloak">
         <Behavior value="AP_WraithPermanentCloak"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -1982,7 +1986,7 @@
         <CombineArray value="AP_IsUnstoppable"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="AP_TargetNotHarmless">
-        <Behavior value="AP_Harmless"/>
+        <Behavior value="Harmless"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AP_SelfNotUltraliskOutOfCombat2">
         <WhichUnit Value="Caster"/>
@@ -7389,6 +7393,11 @@
         <Value value="1"/>
         <Behavior value="AP_WraithCloak"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareVital id="AP_TargetHasGE40Energy">
+        <Compare value="GE"/>
+        <Value value="40"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
     <CValidatorLocationCompareRange id="AP_GuardianExplosiveSporesRange">
         <WhichLocation Effect="AP_GuardianExplosiveSporesKnockback" Value="TargetUnit"/>
         <Compare value="LE"/>
@@ -8165,4 +8174,17 @@
         <CombineArray value="AP_NotSpawningAPMutantLarva"/>
         <ResultFailed value="AlreadySpawningLarva"/>
     </CValidatorCombine>
+    <CValidatorUnitState id="AP_NotInTransport">
+        <State value="InsideTransport"/>
+    </CValidatorUnitState>
+    <CValidatorUnitCompareCargo id="AP_LT8CargoUsed">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Used"/>
+        <Value value="8"/>
+    </CValidatorUnitCompareCargo>
+    <CValidatorUnitType id="AP_TargetIsNotBullfrog">
+        <Value value="AP_InfestedBullfrog"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
 </Catalog>

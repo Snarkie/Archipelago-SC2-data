@@ -118,6 +118,11 @@
         <Duration value="1.5"/>
         <Modification MoveSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_MindControlImmune">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-commander-stetmann.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="AP_KillSquad">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -207,16 +212,12 @@
             <WeaponEnableArray value="AP_SpartanCompanyGUpgraded"/>
             <WeaponEnableArray value="AP_BrynhildAssaultAUpgraded"/>
             <WeaponEnableArray value="AP_BrynhildAssaultGUpgraded"/>
-            <WeaponEnableArray value="AP_GoliathMengskAUpgraded"/>
-            <WeaponEnableArray value="AP_GoliathMengskGUpgraded"/>
             <WeaponDisableArray value="AP_GoliathA"/>
             <WeaponDisableArray value="AP_GoliathG"/>
             <WeaponDisableArray value="AP_SpartanCompanyA"/>
             <WeaponDisableArray value="AP_SpartanCompanyG"/>
             <WeaponDisableArray value="AP_BrynhildAssaultA"/>
             <WeaponDisableArray value="AP_BrynhildAssaultG"/>
-            <WeaponDisableArray value="AP_GoliathMengskA"/>
-            <WeaponDisableArray value="AP_GoliathMengskG"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_BurstCapacitorsAttacking">
@@ -1613,7 +1614,10 @@
             <WeaponDisableArray value="AP_KaiserBlades"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_Harmless">
+    <CBehaviorBuff id="Harmless">
+        <!-- Override -->
+        <!-- This behaviour is defined the same in vanilla, but only in libertycampaign -->
+        <!-- Re-defining it here to ensure it's always defined. -->
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value=""/>
         <Modification>
@@ -5320,6 +5324,7 @@
         <Duration value="90"/>
         <InitialEffect value="AP_SIBarracksTrainTimedLifeHasBeenAppliedAB"/>
         <FinalEffect value="AP_SIBarracksTrainTimedLifeExpireSet"/>
+        <DisableValidatorArray value="AP_NotInTransport"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_SIBarracksTrainTimedLifeHasBeenApplied">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -5348,6 +5353,7 @@
         <Duration value="30"/>
         <InitialEffect value="AP_SIBarracksTrainTimedLifeHasBeenAppliedAB"/>
         <FinalEffect value="AP_SIBarracksTrainTimedLifeExpireSet"/>
+        <DisableValidatorArray value="AP_NotInTransport"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_SIInfestedBunkerUprootedGroundFarForcePush">
         <InfoFlags index="Hidden" value="1"/>
@@ -7367,6 +7373,7 @@
         <Modification>
             <StateFlags index="Summoned" value="1"/>
         </Modification>
+        <DisableValidatorArray value="AP_NotInTransport"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_AmorphousArmorcloud">
         <Alignment value="Positive"/>
@@ -7697,6 +7704,7 @@
             <DeathResponse Chance="1" Effect="AP_AberrationBanelingIncubationCU"/>
         </Modification>
         <DisableValidatorArray value="AP_HaveAberrationBanelingIncubation"/>
+        <DisableValidatorArray value="AP_NotInTransport"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_AberrationBanelingIncubationBirthHeight">
@@ -8624,9 +8632,9 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="3000" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <ShieldArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="200"/>
@@ -8634,9 +8642,9 @@
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="7000" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <ShieldArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="200"/>
@@ -8648,9 +8656,9 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <ShieldArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="200"/>
@@ -8799,27 +8807,7 @@
         <InitialEffect value="AP_VikingMengskAttackDamageCooldownSet"/>
         <DamageResponse Location="Attacker" ModifyFraction="1.5">
             <RequireEffectArray value="AP_TwinGatlingCannonsMengsk"/>
-            <RequireEffectArray value="AP_TwinGatlingCannonsMengskSplash"/>
             <RequireEffectArray value="AP_VikingMengskGroundMassiveDamage"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageL2"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageL3"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageL4"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageSplash"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageSplashL2"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageSplashL3"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageSplashL4"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageDummy"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageDummyL2"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageDummyL3"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageDummyL4"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonus"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusL2"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusL3"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusL4"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusSplash"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusSplashL2"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusSplashL3"/>
-            <RequireEffectArray value="AP_VikingMengskGroundMassiveDamageMechanicalBonusSplashL4"/>
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -8834,9 +8822,6 @@
         <DamageResponse Location="Attacker" ModifyFraction="1.5">
             <RequireEffectArray value="AP_LanzerTorpedoesMengskDamage"/>
             <RequireEffectArray value="AP_VikingMengskAirMassiveDamage"/>
-            <RequireEffectArray value="AP_VikingMengskAirMassiveDamageL2"/>
-            <RequireEffectArray value="AP_VikingMengskAirMassiveDamageL3"/>
-            <RequireEffectArray value="AP_VikingMengskAirMassiveDamageL4"/>
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -8858,24 +8843,6 @@
             <WeaponArray Link="AP_VikingMengskAirMassive"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_VikingMengskWeaponAirMassiveL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_VikingMengskAirMassiveL3"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_VikingMengskWeaponAirMassiveL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_VikingMengskAirMassiveL4"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_VikingMengskWeaponGround">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -8894,30 +8861,12 @@
             <WeaponArray Link="AP_VikingMengskGroundMassive"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_VikingMengskWeaponGroundMassiveL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_VikingMengskGroundMassiveL3"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_VikingMengskWeaponGroundMassiveL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_VikingMengskGroundMassiveL4"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_VikingMengskCheatDeath">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-ability-mengsk-viking-cheatdeath.dds"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Duration value="15"/>
-        <DamageResponse ModifyFraction="0" ModifyLimit="400" ModifyMinimumDamage="1">
+        <DamageResponse ModifyFraction="0" ModifyLimit="300" ModifyMinimumDamage="1">
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
@@ -8927,18 +8876,18 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1200" LevelGainEffect="AP_VikingMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2800" LevelGainEffect="AP_VikingMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
             </Modification>
@@ -8949,9 +8898,9 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
             </Modification>
@@ -8972,17 +8921,11 @@
         </DamageResponse>
         <DisableValidatorArray value="AP_VikingMengskCheatDeath"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MedivacRangeBonus">
-        <InfoFlags index="Hidden" value="1"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="AP_CasterLevelGTE3"/>
-        <Modification SightBonus="2" WeaponRange="2" WeaponScanBonus="2"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_SiegeTankMengskRangeBonus">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="AP_CasterLevelGTE3"/>
-        <Modification SightBonus="2"/>
+        <Modification SightBonus="2" WeaponRange="2" WeaponScanBonus="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_SiegeTankMengskSlowHeroic">
         <Alignment value="Negative"/>
@@ -9011,18 +8954,18 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1800" LevelGainEffect="AP_SiegeTankMengskVeteranLevelUp" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="90"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="4200" LevelGainEffect="AP_SiegeTankMengskVeteranLevelUp" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="90"/>
             </Modification>
@@ -9033,9 +8976,9 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="90"/>
             </Modification>
@@ -9047,13 +8990,30 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <XPFraction index="Kills" value="0"/>
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
-        <VeterancyLevelArray MinVeterancyXP="1800" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank1"/>
-        <VeterancyLevelArray MinVeterancyXP="4200" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank2"/>
+        <VeterancyLevelArray MinVeterancyXP="1800" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank1">
+            <Modification>
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
+            </Modification>
+        </VeterancyLevelArray>
+        <VeterancyLevelArray MinVeterancyXP="4200" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank2">
+            <Modification>
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
+            </Modification>
+        </VeterancyLevelArray>
         <VeterancyLevelArray>
             <MinVeterancyXP value="7200"/>
             <LevelGainEffect value="AP_MengskVeteranMaxedTrigger"/>
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
+            <Modification>
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
+            </Modification>
         </VeterancyLevelArray>
     </CBehaviorVeterancy>
     <CBehaviorBuff id="AP_VeterancySuppressEffects">
@@ -9112,9 +9072,9 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="2400" LevelGainEffect="AP_ThorMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="150"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9123,9 +9083,9 @@
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="5600" LevelGainEffect="AP_ThorMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="150"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9138,9 +9098,9 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="150"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9218,18 +9178,18 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1200" LevelGainEffect="AP_MarauderMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="75"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2800" LevelGainEffect="AP_MarauderMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="75"/>
             </Modification>
@@ -9240,9 +9200,9 @@
             <LevelLossEffect value="AP_MarauderMengskLevelUpSet"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="75"/>
             </Modification>
@@ -9251,42 +9211,6 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
     </CBehaviorVeterancy>
-    <CBehaviorBuff id="AP_MarauderMengskWeapon">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_PunisherGrenadesMengsk"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MarauderMengskWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_PunisherGrenadesMengskL2"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MarauderMengskWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_PunisherGrenadesMengskL3"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MarauderMengskWeaponL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_PunisherGrenadesMengskL4"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_GhostMengskIrradiatePreMarker">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
@@ -9348,9 +9272,9 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1200" LevelGainEffect="AP_GhostMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="50"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9359,9 +9283,9 @@
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2800" LevelGainEffect="AP_GhostMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="50"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9374,9 +9298,9 @@
             <LevelLossEffect value="AP_GhostMengskLevelUpSet"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-<!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-<!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="50"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9393,33 +9317,6 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>
             <WeaponArray Link="AP_C10CanisterRifleMengsk"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_GhostMengskWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_C10CanisterRifleMengskL2"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_GhostMengskWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_C10CanisterRifleMengskL3"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_GhostMengskWeaponL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_C10CanisterRifleMengskL4"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_NovaNukeArming">
@@ -9505,20 +9402,22 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="600" LevelGainEffect="AP_MarineMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="25"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="1400" LevelGainEffect="AP_MarineMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="25"/>
+                <WeaponRange value="2"/>
+                <WeaponScanBonus value="2"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray>
@@ -9527,9 +9426,9 @@
             <LevelLossEffect value="AP_MarineMengskLevelUpSet"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="25"/>
             </Modification>
@@ -9538,42 +9437,6 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
     </CBehaviorVeterancy>
-    <CBehaviorBuff id="AP_MarineMengskWeapon">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_GaussRifleMengsk"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MarineMengskWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_GaussRifleMengsk"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MarineMengskWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_GaussRifleMengskLongRange"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MarineMengskWeaponL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_GaussRifleMengskLongRange"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_WarpRelocating">
         <Alignment value="Positive"/>
         <BehaviorFlags index="Permanent" value="1"/>
@@ -9609,20 +9472,25 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1200" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
-                <VitalMaxArray index="Life" value="70"/>
+                <VitalMaxArray index="Life" value="50"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2800" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
-                <VitalMaxArray index="Life" value="70"/>
+                <VitalMaxArray index="Life" value="50"/>
+                <!-- Level 2 perk: Multi-Target System -->
+                <WeaponEnableArray value="AP_GoliathMengskAUpgraded"/>
+                <WeaponEnableArray value="AP_GoliathMengskGUpgraded"/>
+                <WeaponDisableArray value="AP_GoliathMengskA"/>
+                <WeaponDisableArray value="AP_GoliathMengskG"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray>
@@ -9631,11 +9499,16 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
-                <VitalMaxArray index="Life" value="70"/>
+                <VitalMaxArray index="Life" value="50"/>
+                <!-- Level 2 perk: Multi-Target System -->
+                <WeaponEnableArray value="AP_GoliathMengskAUpgraded"/>
+                <WeaponEnableArray value="AP_GoliathMengskGUpgraded"/>
+                <WeaponDisableArray value="AP_GoliathMengskA"/>
+                <WeaponDisableArray value="AP_GoliathMengskG"/>
             </Modification>
         </VeterancyLevelArray>
         <BehaviorFlags index="Permanent" value="1"/>
@@ -9711,18 +9584,18 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1800" LevelGainEffect="AP_LiberatorMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="100"/>
             </Modification>
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="4200" LevelGainEffect="AP_LiberatorMengskLevelUpSet" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="100"/>
             </Modification>
@@ -9733,9 +9606,9 @@
             <LevelLossEffect value="AP_LiberatorMengskLevelUpSet"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="100"/>
             </Modification>
@@ -9752,25 +9625,7 @@
             <WeaponArray Link="AP_LiberatorMengskMissileLaunchers"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_LiberatorMengskWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_LiberatorMengskMissileLaunchersMoreAttacks"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_LiberatorMengskWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_LiberatorMengskMissileLaunchersMoreAttacks"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_LiberatorMengskWeaponL4">
+    <CBehaviorBuff id="AP_LiberatorMengskWeaponMoreAttacks">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <BehaviorCategories index="User9" value="1"/>
@@ -9788,24 +9643,6 @@
             <WeaponArray Link="AP_LiberatorMengskAGWeapon" Turret="AP_LiberatorAG"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_LiberatorAGMengskWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_LiberatorMengskAGWeapon" Turret="AP_LiberatorAG"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_LiberatorAGMengskWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <WeaponArray Link="AP_LiberatorMengskAGWeapon" Turret="AP_LiberatorAG"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_LiberatorAGMengskWeaponL4">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -9813,6 +9650,7 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Modification>
             <WeaponArray Link="AP_LiberatorMengskAGWeaponAA" Turret="AP_LiberatorAG"/>
+            <WeaponArray Link="AP_LiberatorMengskMissileLaunchersWhileSieged"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_LiberatorCompressedRocketFuelIndicator">
@@ -9898,9 +9736,9 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1200" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9909,9 +9747,9 @@
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2800" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9924,9 +9762,9 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -9940,13 +9778,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <DisableValidatorArray value="AP_CasterLevelGTE3"/>
-        <RemoveValidatorArray value="AP_NotHaveWraithAdvancedLaserTechnology"/>
-        <Modification>
-            <WeaponEnableArray value="AP_WraithMengskALongRange"/>
-            <WeaponEnableArray value="AP_WraithMengskGLongRange"/>
-            <WeaponDisableArray value="AP_WraithMengskA"/>
-            <WeaponDisableArray value="AP_WraithMengskG"/>
-        </Modification>
+        <Modification WeaponRange="2" WeaponScanBonus="2"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_WraithMengskResonatingFeedbackInterference">
         <Alignment value="Negative"/>
@@ -10013,9 +9845,9 @@
         <VeterancyLevelArray RankNameSchema="Behavior/RankName/AP_MengskRank0"/>
         <VeterancyLevelArray MinVeterancyXP="1200" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank1">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -10024,9 +9856,9 @@
         </VeterancyLevelArray>
         <VeterancyLevelArray MinVeterancyXP="2800" LevelGainEffect="AP_MengskVeteranLevelUpDummy" RankNameSchema="Behavior/RankName/AP_MengskRank2">
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -10039,9 +9871,9 @@
             <LevelLossEffect value="AP_MengskVeteranTrigger"/>
             <RankNameSchema value="Behavior/RankName/AP_MengskRank3"/>
             <Modification>
-                <!--                <DamageDealtFraction index="Melee" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Ranged" value="0.25"/>-->
-                <!--                <DamageDealtFraction index="Splash" value="0.25"/>-->
+                <DamageDealtFraction index="Melee" value="0.25"/>
+                <DamageDealtFraction index="Ranged" value="0.25"/>
+                <DamageDealtFraction index="Splash" value="0.25"/>
                 <LifeArmorBonus value="1"/>
                 <VitalMaxArray index="Life" value="70"/>
                 <VitalMaxArray index="Energy" value="50"/>
@@ -10373,7 +10205,7 @@
         <!-- Indicator of passive upgrade - full command card -->
         <BehaviorFlags index="Permanent" value="1"/>
         <DisableValidatorArray value="AP_HaveAdvancedConstruction"/>
-        <InfoIcon value="AP\Assets\Textures\btn-advanced-construction.dds"/>
+        <InfoIcon value="Assets\Textures\btn-ability-mengsk-trooper-advancedconstruction.dds"/>
         <Name value="Button/Name/AP_AdvancedConstruction"/>
         <Tooltip value="Button/Tooltip/AP_AdvancedConstruction"/>
     </CBehaviorBuff>
@@ -10389,86 +10221,6 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <DamageResponse Handled="AP_DefilerSCBWDarkSwarm@DamageDummy" ModifyFraction="0" ModifyMinimumDamage="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskWeapon">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_JavelinMissileLaunchersMengsk"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_JavelinMissileLaunchersMengskL2"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_JavelinMissileLaunchersMengskL3"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskWeaponL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_JavelinMissileLaunchersMengskL4"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskAPWeapon">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_LanceMissileLaunchersMengsk"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskAPWeaponL2">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_LanceMissileLaunchersMengskL2"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskAPWeaponL3">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_LanceMissileLaunchersMengskL3"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ThorMengskAPWeaponL4">
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <BehaviorCategories index="User9" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-<!--            <WeaponArray Link="AP_ThorsHammerMengsk"/>-->
-            <WeaponArray Link="AP_LanceMissileLaunchersMengskL4"/>
-        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_LiberatorMengskL2EnergyBuff">
         <BehaviorFlags index="Permanent" value="1"/>
@@ -11065,6 +10817,16 @@
         <InfoFlags index="Hidden" value="1"/>
         <Duration value="0.375"/>
         <FinalEffect value="SuicideRemove"/>
+        <Modification SightMaximum="3" MoveSpeedBonus="3">
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="NoDraw" value="1"/>
+            <StateFlags index="Uncommandable" value="1"/>
+            <StateFlags index="Unselectable" value="1"/>
+            <StateFlags index="Unstoppable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_FastDelivery1">
         <EditorCategories value="AbilityorEffectType:Units"/>
