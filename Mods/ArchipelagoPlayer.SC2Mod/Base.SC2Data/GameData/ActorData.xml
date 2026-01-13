@@ -39848,7 +39848,7 @@
         <GroupSoundArray index="Board" value="VikingFighter_GroupBoard"/>
         <GroupSoundThreshold value="2"/>
         <HeroIcon value="Assets\Textures\btn-unit-terran-vikingmengskfighter.dds"/>
-        <HighlightTooltip value="Unit/Name/VikingMengskFighter"/>
+        <HighlightTooltip value="Unit/Name/AP_VikingMengskFighter"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
         <MinimapIconScale value="1.000000"/>
         <MinimapIconBackgroundScale value="1.000000"/>
@@ -39998,7 +39998,7 @@
             <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetanksiegemode.dds"/>
-        <HighlightTooltip value="Unit/Name/SiegeTank"/>
+        <HighlightTooltip value="Unit/Name/SiegeTankMengsk"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <SoundArray index="Ready" value="SiegeTank_Ready"/>
         <SoundArray index="Help" value="SiegeTank_Help"/>
@@ -40403,7 +40403,7 @@
         <GroupSoundArray index="Board" value="SiegeTankSieged_GroupBoard"/>
         <GroupSoundThreshold value="2"/>
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetankmengsksieged.dds"/>
-        <HighlightTooltip value="Unit/Name/AP_SiegeTankMengskSieged"/>
+        <HighlightTooltip value="Unit/Name/AP_SiegeTankMengsk"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <MinimapIconScale value="1.000000"/>
         <MinimapIconBackgroundScale value="1.000000"/>
@@ -40507,7 +40507,7 @@
             <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-TankMode.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetankmengsk.dds"/>
-        <HighlightTooltip value="Unit/Name/SiegeTank"/>
+        <HighlightTooltip value="Unit/Name/SiegeTankMengsk"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <SoundArray index="Ready" value="SiegeTank_Ready"/>
         <SoundArray index="Help" value="SiegeTank_Help"/>
@@ -41041,6 +41041,7 @@
         <Baselines index="Stand" AnimProps=""/>
         <DeathArray index="Normal" ModelLink="AP_ThorMengsk" SoundLink="Thor_Explode"/>
         <PortraitModel value="ThorPortrait"/>
+        <HighlightTooltip value="Unit/Name/AP_ThorMengsk"/>
         <HeroIcon value="Assets\Textures\btn-unit-terran-thormengsk.dds"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-thormengsk.dds"/>
         <Wireframe>
@@ -42637,6 +42638,9 @@
         <On Terms="Behavior.AP_GoliathCliffJump.LandDown" Send="AnimPlay AP_Jump Unload,End"/>
         <On Terms="Behavior.AP_GoliathCliffJump.LandUpDone" Send="AnimClear AP_Jump 1.000000"/>
         <On Terms="Behavior.AP_GoliathCliffJump.LandDownDone" Send="AnimClear AP_Jump 1.000000"/>
+        <On Terms="Behavior.AP_GoliathCliffJump.Launch" Send="Create AP_GoliathMengskJumpJet"/>
+        <On Terms="WeaponStart.AP_GoliathMengskGUpgraded.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.AP_GoliathMengskGUpgraded.AttackStop" Send="AnimBracketStop Attack"/>
         <Model value="AP_GoliathMengsk"/>
         <DeathActorModel value="AP_GoliathMengskDeath"/>
         <HeroIcon value="AP\Assets\Textures\btn-unit-terran-goliath-mengsk.dds"/>
@@ -42938,6 +42942,7 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
+        <HighlightTooltip value="Unit/Name/AP_LiberatorMengsk"/>
     </CActorUnit>
     <CActorAction id="AP_LiberatorMengskShieldHitter" parent="AoESplashShieldHitter" effectHit="AP_LiberatorMengskMissileDamage"/>
     <CActorAction id="AP_LiberatorMengskAttack" parent="GenericAttack" effectImpact="AP_LiberatorMengskMissileDummy" effectLaunch="AP_LiberatorMengskMissileLM">
@@ -43005,6 +43010,7 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
+        <HighlightTooltip value="Unit/Name/AP_LiberatorMengsk"/>
     </CActorUnit>
     <CActorSplat id="AP_LiberatorMengskAGTargetCursorSplat" parent="CursorSplat" abil="AP_LiberatorMengskAGTarget">
         <Model value="LiberatorAGTargetCursorSplat"/>
@@ -43053,6 +43059,7 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-aamode.dds"/>
         </Wireframe>
+        <HighlightTooltip value="Unit/Name/AP_LiberatorMengsk"/>
     </CActorUnit>
     <CActorUnit id="AP_WraithMengsk" parent="GenericUnitBase" unitName="AP_WraithMengsk">
         <Aliases value="_UnitLarge"/>
