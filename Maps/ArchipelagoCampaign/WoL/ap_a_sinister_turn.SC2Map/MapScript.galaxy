@@ -67,8 +67,8 @@ unit gv_libraryAtBridge03;
 unit gv_libraryAtBridge04;
 unit gv_libraryAtBridge05;
 unit gv_stalkerAtBridge;
-unit gv_overseer;
-actor gv_overseerHighlight;
+unit gv_ncqbgfqmjrfdmqve;
+actor gv_ndkripgrvbacltms;
 int gv_overseerHighlight2;
 unitgroup gv_prisonGroup;
 int gv_startingMinerals;
@@ -224,6 +224,7 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 // Global Function Declarations
 //--------------------------------------------------------------------------------------------------
+bool gf_IsCombatUnit (unit lp_unit);
 void gf_SetMaxLife (unit lp_unit, fixed lp_maxLife);
 void gf_SetMaxShields (unit lp_unit, fixed lp_maxShields);
 void gf_AddUpgradeForEnemies (int lp_qty, string lp_upgrade);
@@ -263,6 +264,7 @@ trigger gt_Init06Difficulties;
 trigger gt_Init07Help;
 trigger gt_PlayerIsInCombat;
 trigger gt_PlayerIsInCombatIndicatorDiminish;
+trigger gt_DEBUGVictory;
 trigger gt_EnergyLeaderboard;
 trigger gt_EnergyTimer;
 trigger gt_StartAI;
@@ -300,8 +302,8 @@ trigger gt_PhotonCannon02Base;
 trigger gt_Checkifallfivearepowered;
 trigger gt_SecondaryObjectiveRun;
 trigger gt_OverseerTutorial;
-trigger gt_OverseerHighlightOff;
-trigger gt_CreepTumorHighlightOff;
+trigger gt_gdxlmvseombqsmod;
+trigger gt_xggstkrjiyerbjwm;
 trigger gt_PlayerBuildingArmyActivatesMidCin;
 trigger gt_PlayerBuildingPhotonCannonsActivatesMidCin;
 trigger gt_PlayerGatheringCashActivatesMidCin;
@@ -427,6 +429,23 @@ trigger gt_VictoryCleanup;
 //--------------------------------------------------------------------------------------------------
 // Global Functions
 //--------------------------------------------------------------------------------------------------
+bool gf_IsCombatUnit (unit lp_unit) {
+    // Variable Declarations
+    string lv_type;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_type = UnitGetType(lp_unit);
+
+    // Implementation
+    if ((UnitFilterMatch(lp_unit, gv_p1_USER, UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true) && (lv_type != "AP_SICocoonInfestedSCV") && (lv_type != "AP_MULE") && (lv_type != "AP_Overlord") && (lv_type != "AP_Overseer") && (lv_type != "AP_Yggdrasil") && (lv_type != "AP_Morphling")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 void gf_SetMaxLife (unit lp_unit, fixed lp_maxLife) {
     // Automatic Variable Declarations
     // Implementation
@@ -1379,6 +1398,47 @@ bool gt_PlayerIsInCombatIndicatorDiminish_Func (bool testConds, bool runActions)
 void gt_PlayerIsInCombatIndicatorDiminish_Init () {
     gt_PlayerIsInCombatIndicatorDiminish = TriggerCreate("gt_PlayerIsInCombatIndicatorDiminish_Func");
     TriggerAddEventTimePeriodic(gt_PlayerIsInCombatIndicatorDiminish, 1.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG - Victory
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUGVictory_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+
+        if (!((gv_gameOver == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerInCinematicMode(EventPlayer()) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerDebugOutput(1, StringExternal("Param/Value/68E8F746"), true);
+    TriggerExecute(gt_VictoryPrisonObjectiveComplete, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUGVictory_Init () {
+    gt_DEBUGVictory = TriggerCreate("gt_DEBUGVictory_Func");
+    TriggerAddEventChatMessage(gt_DEBUGVictory, 1, "-win", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2989,10 +3049,10 @@ bool gt_OverseerTutorial_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gv_overseerHighlight = libNtve_gf_AttachModelToUnit(gv_overseer, "BriefingUnitSelectZergGreen", "Ref_Center");
-    TextTagCreate(StringExternal("Param/Value/95F33DDA"), 22, UnitGetPosition(gv_overseer), 1.0, true, false, PlayerGroupAll());
+    gv_ndkripgrvbacltms = libNtve_gf_AttachModelToUnit(gv_ncqbgfqmjrfdmqve, "BriefingUnitSelectZergGreen", "Ref_Center");
+    TextTagCreate(StringExternal("Param/Value/95F33DDA"), 22, UnitGetPosition(gv_ncqbgfqmjrfdmqve), 1.0, true, false, PlayerGroupAll());
     gv_overseerHighlight2 = TextTagLastCreated();
-    TextTagAttachToUnit(gv_overseerHighlight2, gv_overseer, 4.0);
+    TextTagAttachToUnit(gv_overseerHighlight2, gv_ncqbgfqmjrfdmqve, 4.0);
     UISetButtonHighlighted(PlayerGroupAll(), AbilityCommand("AP_OverseerBuild", 0), true);
     return true;
 }
@@ -3003,9 +3063,9 @@ void gt_OverseerTutorial_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Overseer Highlight Off
+// Trigger: 
 //--------------------------------------------------------------------------------------------------
-bool gt_OverseerHighlightOff_Func (bool testConds, bool runActions) {
+bool gt_gdxlmvseombqsmod_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -3017,7 +3077,7 @@ bool gt_OverseerHighlightOff_Func (bool testConds, bool runActions) {
             return false;
         }
 
-        if (!((EventUnit() == gv_overseer))) {
+        if (!((EventUnit() == gv_ncqbgfqmjrfdmqve))) {
             return false;
         }
     }
@@ -3027,21 +3087,21 @@ bool gt_OverseerHighlightOff_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libNtve_gf_KillModel(gv_overseerHighlight);
+    libNtve_gf_KillModel(gv_ndkripgrvbacltms);
     TextTagDestroy(gv_overseerHighlight2);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_OverseerHighlightOff_Init () {
-    gt_OverseerHighlightOff = TriggerCreate("gt_OverseerHighlightOff_Func");
-    TriggerAddEventUnitSelected(gt_OverseerHighlightOff, null, gv_p1_USER, true);
+void gt_gdxlmvseombqsmod_Init () {
+    gt_gdxlmvseombqsmod = TriggerCreate("gt_gdxlmvseombqsmod_Func");
+    TriggerAddEventUnitSelected(gt_gdxlmvseombqsmod, null, gv_p1_USER, true);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Creep Tumor Highlight Off
+// Trigger: 
 //--------------------------------------------------------------------------------------------------
-bool gt_CreepTumorHighlightOff_Func (bool testConds, bool runActions) {
+bool gt_xggstkrjiyerbjwm_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -3064,9 +3124,9 @@ bool gt_CreepTumorHighlightOff_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_CreepTumorHighlightOff_Init () {
-    gt_CreepTumorHighlightOff = TriggerCreate("gt_CreepTumorHighlightOff_Func");
-    TriggerAddEventUnitAbility(gt_CreepTumorHighlightOff, null, AbilityCommand("AP_OverseerBuild", 0), c_unitAbilStageAll, false);
+void gt_xggstkrjiyerbjwm_Init () {
+    gt_xggstkrjiyerbjwm = TriggerCreate("gt_xggstkrjiyerbjwm_Func");
+    TriggerAddEventUnitAbility(gt_xggstkrjiyerbjwm, null, AbilityCommand("AP_OverseerBuild", 0), c_unitAbilStageAll, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3076,15 +3136,11 @@ bool gt_PlayerBuildingArmyActivatesMidCin_Func (bool testConds, bool runActions)
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
-        if (!((UnitFilterMatch(EventUnitProgressUnit(), gv_p1_USER, UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_TriggeringProgressUnitType() != "AP_SICocoonInfestedSCV"))) {
-            return false;
-        }
-
         if (!((UnitGetOwner(EventUnitProgressUnit()) == 1))) {
+            return false;
+        }
+
+        if (!(gf_IsCombatUnit(EventUnitProgressUnit()))) {
             return false;
         }
     }
@@ -3186,11 +3242,7 @@ bool gt_PlayerBuildingUnitActivatesActivatesStalker_Func (bool testConds, bool r
             return false;
         }
 
-        if (!((UnitFilterMatch(EventUnitProgressUnit(), gv_p1_USER, UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_TriggeringProgressUnitType() != "AP_SICocoonInfestedSCV"))) {
+        if (!(gf_IsCombatUnit(EventUnitProgressUnit()))) {
             return false;
         }
 
@@ -7353,7 +7405,7 @@ bool gt_IntroCleanup_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_Lair", 0, gv_p1_USER, PointFromId(2));
         lib15EF4C78_gf_AP_Player_SpawnLarvaForHatchery(UnitLastCreated(), 3);
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_Overseer", 0, gv_p1_USER, PointFromId(348));
-        gv_overseer = UnitLastCreated();
+        gv_ncqbgfqmjrfdmqve = UnitLastCreated();
         libNtve_gf_CreateUnitsAtPoint2(1, "AP_Drone", 0, gv_p1_USER, PointFromId(9));
         libNtve_gf_CreateUnitsAtPoint2(1, "AP_Drone", 0, gv_p1_USER, PointFromId(38));
         libNtve_gf_CreateUnitsAtPoint2(1, "AP_Drone", 0, gv_p1_USER, PointFromId(59));
@@ -8318,6 +8370,7 @@ void InitTriggers () {
     gt_Init07Help_Init();
     gt_PlayerIsInCombat_Init();
     gt_PlayerIsInCombatIndicatorDiminish_Init();
+    gt_DEBUGVictory_Init();
     gt_EnergyLeaderboard_Init();
     gt_EnergyTimer_Init();
     gt_StartAI_Init();
@@ -8355,8 +8408,8 @@ void InitTriggers () {
     gt_Checkifallfivearepowered_Init();
     gt_SecondaryObjectiveRun_Init();
     gt_OverseerTutorial_Init();
-    gt_OverseerHighlightOff_Init();
-    gt_CreepTumorHighlightOff_Init();
+    gt_gdxlmvseombqsmod_Init();
+    gt_xggstkrjiyerbjwm_Init();
     gt_PlayerBuildingArmyActivatesMidCin_Init();
     gt_PlayerBuildingPhotonCannonsActivatesMidCin_Init();
     gt_PlayerGatheringCashActivatesMidCin_Init();
