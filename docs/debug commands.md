@@ -44,6 +44,10 @@ Zero Hour:
 -drop: Trigger a Zerg drop pod.
 -color: Make the different zerg players use different colors.
 
+Devil's Playground:
+
+-lava: Make the lava rise immediately
+
 The Dig:
 
 -s2: Start Drill phase
