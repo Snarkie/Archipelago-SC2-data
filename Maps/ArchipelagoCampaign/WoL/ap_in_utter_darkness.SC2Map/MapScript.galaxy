@@ -154,9 +154,10 @@ trigger gt_Init05Environment;
 trigger gt_Init06Difficulties;
 trigger gt_Init07Help;
 trigger gt_DEBUGSetKills;
-trigger gt_DEBUGMidCine;
 trigger gt_DEBUGVictoryDefeat;
+trigger gt_DEBUGMidCine;
 trigger gt_DEBUGSetProtectArchiveTimer;
+trigger gt_DEBUGNydus;
 trigger gt_IntroSequence;
 trigger gt_StartGameStage1;
 trigger gt_StartGameStage2;
@@ -315,16 +316,24 @@ void gf_SpawnSuicidalAttackerAir (string lp_paraUnitType, int lp_paraPlayer) {
 
 bool gf_AreaIsBeingHarvested (region lp_region) {
     // Automatic Variable Declarations
+    unitgroup auto488D3AE6_g;
+    int auto488D3AE6_u;
+    unit auto488D3AE6_var;
+
     // Implementation
     if (((UnitGroupCount(UnitGroup("RichMineralField", c_playerAny, lp_region, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0) || (UnitGroupCount(UnitGroup("NydusCanal", c_playerAny, lp_region, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 1))) {
         return false;
     }
     else {
-        if ((UnitGroupCount(UnitGroup("AP_Nexus", gv_p01_PLAYER, lp_region, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 1)) {
-            return true;
-        }
-        else {
-            return false;
+        auto488D3AE6_g = UnitGroup(null, gv_p01_PLAYER, lp_region, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto488D3AE6_u = UnitGroupCount(auto488D3AE6_g, c_unitCountAll);
+        for (;; auto488D3AE6_u -= 1) {
+            auto488D3AE6_var = UnitGroupUnitFromEnd(auto488D3AE6_g, auto488D3AE6_u);
+            if (auto488D3AE6_var == null) { break; }
+            if ((lib15EF4C78_gf_AP_Player_isTownHall(auto488D3AE6_var) || (UnitGetType(auto488D3AE6_var) == "AP_EchidnaWorm"))) {
+                return true;
+            }
+
         }
     }
     return false;
@@ -362,6 +371,15 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
 
     TriggerExecute(lib88187CC2_gt_ArchipelagoPlayerWoLHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
+    if ((GameIsTestMap(false) == true)) {
+        libABFE498B_gf_AP_Triggers_setDifficulty("B");
+        GameSetSpeedValue(c_gameSpeedFaster);
+        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Terr";
+        libABFE498B_gv_aP_Triggers_skipCutscenes = true;
+        libABFE498B_gv_aP_Triggers_DebugMode = true;
+        libABFE498B_gf_AP_Triggers_Debug_Tech(gv_p01_PLAYER, 4);
+    }
+
     libABFE498B_gf_AP_Triggers_clearProtossTech(gv_p01_PLAYER);
     lib5BD4895D_gf_AP_Core_MapConfig_setMapInit(gt_Initialization);
     libABFE498B_gf_AP_Triggers_MapConfig_setMissionProtoss(libABFE498B_gv_aP_Triggers_MapConfig_MISSION_PROTOSS_NOT_LOTV_MAIN);
@@ -541,6 +559,8 @@ bool gt_VictoryButtonPressed_Func (bool testConds, bool runActions) {
     unitgroup auto048BB013_g;
     int auto048BB013_u;
     unit auto048BB013_var;
+    const int autoE73F5B21_n = 5;
+    int autoE73F5B21_i;
 
     // Variable Initialization
     lv_playerunits = UnitGroupEmpty();
@@ -568,7 +588,11 @@ bool gt_VictoryButtonPressed_Func (bool testConds, bool runActions) {
         libNtve_gf_ChangeUnitDamage(auto048BB013_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Mega);
     }
     PlayerCreateEffectPoint(gv_p07_FRENZIED_ZERG, "EnergyNovaPersistent", UnitGroupCenterOfGroup(lv_playerunits));
-    Wait(5.0, c_timeGame);
+    for (autoE73F5B21_i = 1; autoE73F5B21_i <= autoE73F5B21_n; autoE73F5B21_i += 1) {
+        Wait(1.0, c_timeGame);
+        lv_playerunits = UnitGroup(null, gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32))), 0);
+        PlayerCreateEffectPoint(gv_p07_FRENZIED_ZERG, "EnergyNovaPersistent", UnitGetPosition(UnitGroupRandomUnit(lv_playerunits, c_unitCountAlive)));
+    }
     gv_pretendPlayerIsDead = true;
     return true;
 }
@@ -1005,60 +1029,7 @@ bool gt_DEBUGSetKills_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_DEBUGSetKills_Init () {
     gt_DEBUGSetKills = TriggerCreate("gt_DEBUGSetKills_Func");
-    TriggerAddEventChatMessage(gt_DEBUGSetKills, 1, "-setkills", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DEBUG - Mid Cine
-//--------------------------------------------------------------------------------------------------
-bool gt_DEBUGMidCine_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_PlayerInCinematicMode(EventPlayer()) == false))) {
-            return false;
-        }
-
-        if (!((gv_gameOver == false))) {
-            return false;
-        }
-
-        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerEnable(TriggerGetCurrent(), false);
-    TriggerStop(gt_MissionEventTiming);
-    TriggerStop(gt_AttackWavesStage2P04NW);
-    TriggerStop(gt_AttackWavesStage2P05NE);
-    TriggerStop(gt_AttackWavesStage2P06SE);
-    TriggerStop(gt_AttackWavesEndGameAirKillers);
-    TriggerStop(gt_AttackWavesStage1P04NW);
-    TriggerStop(gt_AttackWavesStage1P05NE);
-    TriggerStop(gt_AttackWavesStage1P06SE);
-    TriggerStop(gt_AttackWavesStage1RepeatingP04NW);
-    TriggerStop(gt_AttackWavesStage1RepeatingP05NE);
-    TriggerStop(gt_AttackWavesStage1RepeatingP06SE);
-    gv_gameOver = true;
-    TriggerQueueClear(c_triggerQueueRemove);
-    TriggerExecute(gt_MidQ, true, false);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_DEBUGMidCine_Init () {
-    gt_DEBUGMidCine = TriggerCreate("gt_DEBUGMidCine_Func");
-    TriggerAddEventChatMessage(gt_DEBUGMidCine, 1, "-s2", true);
+    TriggerAddEventChatMessage(gt_DEBUGSetKills, c_playerAny, "-setkills", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1104,8 +1075,62 @@ bool gt_DEBUGVictoryDefeat_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_DEBUGVictoryDefeat_Init () {
     gt_DEBUGVictoryDefeat = TriggerCreate("gt_DEBUGVictoryDefeat_Func");
-    TriggerAddEventChatMessage(gt_DEBUGVictoryDefeat, 1, "-win", false);
-    TriggerAddEventChatMessage(gt_DEBUGVictoryDefeat, 1, "-defeat", false);
+    TriggerAddEventChatMessage(gt_DEBUGVictoryDefeat, c_playerAny, "-win", false);
+    TriggerAddEventChatMessage(gt_DEBUGVictoryDefeat, c_playerAny, "-defeat", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG - Mid Cine
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUGMidCine_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerInCinematicMode(EventPlayer()) == false))) {
+            return false;
+        }
+
+        if (!((gv_gameOver == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerDebugOutput(1, StringExternal("Param/Value/223B5B7E"), true);
+    TriggerStop(gt_MissionEventTiming);
+    TriggerStop(gt_AttackWavesStage2P04NW);
+    TriggerStop(gt_AttackWavesStage2P05NE);
+    TriggerStop(gt_AttackWavesStage2P06SE);
+    TriggerStop(gt_AttackWavesEndGameAirKillers);
+    TriggerStop(gt_AttackWavesStage1P04NW);
+    TriggerStop(gt_AttackWavesStage1P05NE);
+    TriggerStop(gt_AttackWavesStage1P06SE);
+    TriggerStop(gt_AttackWavesStage1RepeatingP04NW);
+    TriggerStop(gt_AttackWavesStage1RepeatingP05NE);
+    TriggerStop(gt_AttackWavesStage1RepeatingP06SE);
+    gv_gameOver = true;
+    TriggerQueueClear(c_triggerQueueRemove);
+    TriggerExecute(gt_MidQ, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUGMidCine_Init () {
+    gt_DEBUGMidCine = TriggerCreate("gt_DEBUGMidCine_Func");
+    TriggerAddEventChatMessage(gt_DEBUGMidCine, c_playerAny, "-s2", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1137,6 +1162,7 @@ bool gt_DEBUGSetProtectArchiveTimer_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    TriggerDebugOutput(1, StringExternal("Param/Value/5F0495D7"), true);
     UIDisplayMessage(PlayerGroupAll(), c_messageAreaSubtitle, StringExternal("Param/Value/4024F0DC"));
     TimerStart(gv_protectArchiveTimer, 5.0, false, c_timeGame);
     return true;
@@ -1145,7 +1171,58 @@ bool gt_DEBUGSetProtectArchiveTimer_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_DEBUGSetProtectArchiveTimer_Init () {
     gt_DEBUGSetProtectArchiveTimer = TriggerCreate("gt_DEBUGSetProtectArchiveTimer_Func");
-    TriggerAddEventChatMessage(gt_DEBUGSetProtectArchiveTimer, 1, "-timer", true);
+    TriggerAddEventChatMessage(gt_DEBUGSetProtectArchiveTimer, c_playerAny, "-timer", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG - Nydus
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUGNydus_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerInCinematicMode(EventPlayer()) == false))) {
+            return false;
+        }
+
+        if (!((gv_gameOver == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_NydusWormAttack1) == 0)) {
+        TriggerDebugOutput(1, StringExternal("Param/Value/949C4CED"), true);
+        TriggerExecute(gt_NydusWormAttack1, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_NydusWormAttack2) == 0)) {
+        TriggerEnable(TriggerGetCurrent(), false);
+        TriggerDebugOutput(1, StringExternal("Param/Value/71247E59"), true);
+        TriggerExecute(gt_NydusWormAttack2, true, false);
+        return true;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUGNydus_Init () {
+    gt_DEBUGNydus = TriggerCreate("gt_DEBUGNydus_Func");
+    TriggerAddEventChatMessage(gt_DEBUGNydus, c_playerAny, "-nydus", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5762,8 +5839,13 @@ void gt_StatStargateUnitBuilt_Init () {
 bool gt_VictoryDefeatforPlayer_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unitgroup lv_unitGroup;
+    string lv_unitType;
 
     // Automatic Variable Declarations
+    unitgroup autoB996910D_g;
+    int autoB996910D_u;
+    unit autoB996910D_var;
+
     // Variable Initialization
     lv_unitGroup = UnitGroupEmpty();
 
@@ -5779,41 +5861,43 @@ bool gt_VictoryDefeatforPlayer_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    lv_unitGroup = UnitGroup(null, gv_p01_PLAYER, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_SoACaster", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_SoAAutonomousCaster", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_SOAThermalLanceTargeter", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_Core_Controller", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_Core_Controller2", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_Core_SupplyHolder", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_ZerglingRespawnControllerUnit", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_CreepTumorQueen", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_CreepTumor", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_CreepTumorBurrowed", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    UnitGroupRemoveUnitGroup(lv_unitGroup, UnitGroup("AP_CreepTumorUsed", gv_p01_PLAYER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
-    if (((UnitGroupCount(lv_unitGroup, c_unitCountAlive) == 0) || (gv_pretendPlayerIsDead == true))) {
-        TriggerEnable(TriggerGetCurrent(), false);
-        lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(lib5BD4895D_gv_aP_Core_locationVictory);
-        gv_gameOver = true;
-        lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveSurviveUntilYouDie);
-        Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
-        if ((gv_killCount >= gv_sTAGE_01_KILL_QUOTA)) {
-            if ((lib5BD4895D_gf_AP_Core_isLocationSent(gv_LOCATION_ID_ARTANIS) == false)) {
-                lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_ARTANIS);
+    if ((gv_pretendPlayerIsDead == false)) {
+        lv_unitGroup = UnitGroup(null, gv_p01_PLAYER, RegionPlayableMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        autoB996910D_g = lv_unitGroup;
+        autoB996910D_u = UnitGroupCount(autoB996910D_g, c_unitCountAll);
+        for (;; autoB996910D_u -= 1) {
+            autoB996910D_var = UnitGroupUnitFromEnd(autoB996910D_g, autoB996910D_u);
+            if (autoB996910D_var == null) { break; }
+            lv_unitType = UnitGetType(autoB996910D_var);
+            if ((lv_unitType != "AP_SoACaster") && (lv_unitType != "AP_SoAAutonomousCaster") && (lv_unitType != "AP_SOAThermalLanceTargeter") && (lv_unitType != "AP_Core_SupplyHolder") && (lv_unitType != "AP_CreepTumorQueen") && (lv_unitType != "AP_CreepTumor") && (lv_unitType != "AP_CreepTumorBurrowed") && (lv_unitType != "AP_CreepTumorUsed")) {
+                return true;
             }
 
-            libCamp_gf_RunMissionVictorySequence(gt_VictoryQ);
-        }
-        else {
-            TriggerQueuePause(true);
-            TriggerQueueClear(c_triggerQueueRemove);
-            Wait(2.0, c_timeReal);
-            libCamp_gf_DisplayCampaignMessage(PlayerGroupAll(), libCamp_ge_CampaignMessageType_MissionFailed, StringExternal("Param/Value/D472A25B"), libCamp_ge_CampaignMessageFormatNotFormat_FormatMessage);
-            Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
-            TriggerExecute(gt_Defeat, true, false);
         }
     }
 
+    TriggerEnable(TriggerGetCurrent(), false);
+    gv_gameOver = true;
+    if ((gv_killCount >= gv_sTAGE_01_KILL_QUOTA)) {
+        lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveSurviveUntilYouDie);
+        Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
+        lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(lib5BD4895D_gv_aP_Core_locationVictory);
+        if ((lib5BD4895D_gf_AP_Core_isLocationSent(gv_LOCATION_ID_ARTANIS) == false)) {
+            lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_ARTANIS);
+        }
+
+        libCamp_gf_RunMissionVictorySequence(gt_VictoryQ);
+    }
+    else {
+        TriggerQueuePause(true);
+        TriggerQueueClear(c_triggerQueueRemove);
+        lib5BD4895D_gf_AP_Core_setObjectiveFailed(gv_objectiveSurviveUntilYouDie);
+        Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
+        Wait(2.0, c_timeReal);
+        libCamp_gf_DisplayCampaignMessage(PlayerGroupAll(), libCamp_ge_CampaignMessageType_MissionFailed, StringExternal("Param/Value/D472A25B"), libCamp_ge_CampaignMessageFormatNotFormat_FormatMessage);
+        Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
+        TriggerExecute(gt_Defeat, true, false);
+    }
     return true;
 }
 
@@ -7703,9 +7787,10 @@ void InitTriggers () {
     gt_Init06Difficulties_Init();
     gt_Init07Help_Init();
     gt_DEBUGSetKills_Init();
-    gt_DEBUGMidCine_Init();
     gt_DEBUGVictoryDefeat_Init();
+    gt_DEBUGMidCine_Init();
     gt_DEBUGSetProtectArchiveTimer_Init();
+    gt_DEBUGNydus_Init();
     gt_IntroSequence_Init();
     gt_StartGameStage1_Init();
     gt_StartGameStage2_Init();

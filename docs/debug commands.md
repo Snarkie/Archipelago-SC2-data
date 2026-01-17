@@ -71,6 +71,7 @@ In Utter Darkness
 -defeat: Ends the mission in successful defeat (-win also works)
 -setkills x: Sets your kills to x
 -timer: Sets the remaining protection time for the archive to 5 seconds 
+-nydus: Spawns a nydus worm wave
 
 
 Rendezvous:
