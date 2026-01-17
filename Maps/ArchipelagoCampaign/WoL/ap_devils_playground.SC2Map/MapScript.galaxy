@@ -5122,7 +5122,7 @@ bool gt_VictoryCollectedQuota_Func (bool testConds, bool runActions) {
     }
 
     TriggerEnable(TriggerGetCurrent(), false);
-    gv_gameOver = true;
+    TriggerEnable(gt_DefeatBaseDead, false);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(lib5BD4895D_gv_aP_Core_locationVictory);
     Wait(1.0, c_timeGame);
     TriggerExecute(gt_ObjectiveCollectComplete, true, true);
@@ -5233,6 +5233,7 @@ bool gt_VictoryButtonPressed_Func (bool testConds, bool runActions) {
     }
 
     TriggerEnable(TriggerGetCurrent(), false);
+    gv_gameOver = true;
     DialogSetVisible(gv_victoryButtonDialog, PlayerGroupAll(), false);
     libCamp_gf_RunMissionVictorySequence(gt_VictoryQ);
     return true;
