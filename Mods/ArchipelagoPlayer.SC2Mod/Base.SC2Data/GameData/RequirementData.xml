@@ -2568,12 +2568,6 @@
     <CRequirement id="AP_CanInstallWormholeModule">
         <NodeArray index="Show" Link="AP_AndCanInstallWormholeModuleCompleteOnly"/>
     </CRequirement>
-    <CRequirement id="AP_CanInstallMassRecall">
-        <NodeArray index="Show" Link="AP_AndCanInstallMassRecallCompleteOnly"/>
-    </CRequirement>
-    <CRequirement id="AP_CanInstallNexusRecall">
-        <NodeArray index="Show" Link="AP_AndCanInstallNexusRecallCompleteOnly"/>
-    </CRequirement>
     <CRequirement id="AP_CanInstallPurifierMothershipDebuff">
         <NodeArray index="Show" Link="AP_CountUpgradeCanInstallPurifierMothershipDebuffCompleteOnly"/>
     </CRequirement>
