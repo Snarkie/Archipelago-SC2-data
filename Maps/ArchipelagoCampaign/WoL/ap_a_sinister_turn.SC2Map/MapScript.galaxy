@@ -67,8 +67,8 @@ unit gv_libraryAtBridge03;
 unit gv_libraryAtBridge04;
 unit gv_libraryAtBridge05;
 unit gv_stalkerAtBridge;
-unit gv_ncqbgfqmjrfdmqve;
-actor gv_ndkripgrvbacltms;
+unit gv_overseer;
+actor gv_overseerHighlight;
 int gv_overseerHighlight2;
 unitgroup gv_prisonGroup;
 int gv_startingMinerals;
@@ -238,6 +238,7 @@ unitgroup gf_EnemiesWithinRange (unit lp_unit, fixed lp_range, unitfilter lp_fil
 //--------------------------------------------------------------------------------------------------
 // Trigger Variables
 //--------------------------------------------------------------------------------------------------
+trigger gt_ArchInit;
 trigger gt_FactionSwapInit;
 trigger gt_ObjectiveDestroyNortheastCreateQ;
 trigger gt_ObjectiveDestroyNortheastComplete;
@@ -253,7 +254,6 @@ trigger gt_onDifficultyCasual;
 trigger gt_onDifficultyNormal;
 trigger gt_onDifficultyHard;
 trigger gt_onDifficultyBrutal;
-trigger gt_ArchInit;
 trigger gt_Initialization;
 trigger gt_Init01Technology;
 trigger gt_Init02Players;
@@ -302,8 +302,8 @@ trigger gt_PhotonCannon02Base;
 trigger gt_Checkifallfivearepowered;
 trigger gt_SecondaryObjectiveRun;
 trigger gt_OverseerTutorial;
-trigger gt_gdxlmvseombqsmod;
-trigger gt_xggstkrjiyerbjwm;
+trigger gt_OverseerHighlightEnd;
+trigger gt_OverseerHighlight;
 trigger gt_PlayerBuildingArmyActivatesMidCin;
 trigger gt_PlayerBuildingPhotonCannonsActivatesMidCin;
 trigger gt_PlayerGatheringCashActivatesMidCin;
@@ -535,6 +535,38 @@ unitgroup gf_EnemiesWithinRange (unit lp_unit, fixed lp_range, unitfilter lp_fil
     // Automatic Variable Declarations
     // Implementation
     return UnitGroupAlliance(UnitGetOwner(lp_unit), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(lp_unit), lp_range), lp_filter, 0);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Arch Init
+//--------------------------------------------------------------------------------------------------
+bool gt_ArchInit_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerExecute(lib88187CC2_gt_ArchipelagoPlayerWoLHandlersConstructor, true, false);
+    TriggerExecute(gt_Init02Players, true, false);
+    if ((GameIsTestMap(false) == true)) {
+        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
+        libABFE498B_gv_aP_Triggers_skipCutscenes = true;
+        libABFE498B_gf_AP_Triggers_setDifficulty("B");
+        libABFE498B_gf_AP_Triggers_setGameSpeed("4");
+    }
+
+    lib5BD4895D_gf_AP_Core_MapConfig_setMapInit(gt_Initialization);
+    libABFE498B_gf_AP_Triggers_MapConfig_setMissionProtoss(libABFE498B_gv_aP_Triggers_MapConfig_MISSION_PROTOSS_NOT_LOTV_MAIN);
+    libABFE498B_gf_AP_Triggers_MapConfig_setDifficultySetup(gt_onDifficultyCasual, gt_onDifficultyNormal, gt_onDifficultyHard, gt_onDifficultyBrutal);
+    lib5BD4895D_gf_AP_Core_initObjectivePanel();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ArchInit_Init () {
+    gt_ArchInit = TriggerCreate("gt_ArchInit_Func");
+    TriggerAddEventMapInit(gt_ArchInit);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1015,31 +1047,6 @@ bool gt_onDifficultyBrutal_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_onDifficultyBrutal_Init () {
     gt_onDifficultyBrutal = TriggerCreate("gt_onDifficultyBrutal_Func");
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: Arch Init
-//--------------------------------------------------------------------------------------------------
-bool gt_ArchInit_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    TriggerExecute(lib88187CC2_gt_ArchipelagoPlayerWoLHandlersConstructor, true, false);
-    TriggerExecute(gt_Init02Players, true, false);
-    lib5BD4895D_gf_AP_Core_MapConfig_setMapInit(gt_Initialization);
-    libABFE498B_gf_AP_Triggers_MapConfig_setMissionProtoss(libABFE498B_gv_aP_Triggers_MapConfig_MISSION_PROTOSS_NOT_LOTV_MAIN);
-    libABFE498B_gf_AP_Triggers_MapConfig_setDifficultySetup(gt_onDifficultyCasual, gt_onDifficultyNormal, gt_onDifficultyHard, gt_onDifficultyBrutal);
-    lib5BD4895D_gf_AP_Core_initObjectivePanel();
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_ArchInit_Init () {
-    gt_ArchInit = TriggerCreate("gt_ArchInit_Func");
-    TriggerAddEventMapInit(gt_ArchInit);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3049,10 +3056,10 @@ bool gt_OverseerTutorial_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gv_ndkripgrvbacltms = libNtve_gf_AttachModelToUnit(gv_ncqbgfqmjrfdmqve, "BriefingUnitSelectZergGreen", "Ref_Center");
-    TextTagCreate(StringExternal("Param/Value/95F33DDA"), 22, UnitGetPosition(gv_ncqbgfqmjrfdmqve), 1.0, true, false, PlayerGroupAll());
+    gv_overseerHighlight = libNtve_gf_AttachModelToUnit(gv_overseer, "BriefingUnitSelectZergGreen", "Ref_Center");
+    TextTagCreate(StringExternal("Param/Value/95F33DDA"), 22, UnitGetPosition(gv_overseer), 1.0, true, false, PlayerGroupAll());
     gv_overseerHighlight2 = TextTagLastCreated();
-    TextTagAttachToUnit(gv_overseerHighlight2, gv_ncqbgfqmjrfdmqve, 4.0);
+    TextTagAttachToUnit(gv_overseerHighlight2, gv_overseer, 4.0);
     UISetButtonHighlighted(PlayerGroupAll(), AbilityCommand("AP_OverseerBuild", 0), true);
     return true;
 }
@@ -3063,9 +3070,9 @@ void gt_OverseerTutorial_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: 
+// Trigger: Overseer Highlight End
 //--------------------------------------------------------------------------------------------------
-bool gt_gdxlmvseombqsmod_Func (bool testConds, bool runActions) {
+bool gt_OverseerHighlightEnd_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -3077,7 +3084,7 @@ bool gt_gdxlmvseombqsmod_Func (bool testConds, bool runActions) {
             return false;
         }
 
-        if (!((EventUnit() == gv_ncqbgfqmjrfdmqve))) {
+        if (!((EventUnit() == gv_overseer))) {
             return false;
         }
     }
@@ -3087,21 +3094,21 @@ bool gt_gdxlmvseombqsmod_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    libNtve_gf_KillModel(gv_ndkripgrvbacltms);
+    libNtve_gf_KillModel(gv_overseerHighlight);
     TextTagDestroy(gv_overseerHighlight2);
     return true;
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_gdxlmvseombqsmod_Init () {
-    gt_gdxlmvseombqsmod = TriggerCreate("gt_gdxlmvseombqsmod_Func");
-    TriggerAddEventUnitSelected(gt_gdxlmvseombqsmod, null, gv_p1_USER, true);
+void gt_OverseerHighlightEnd_Init () {
+    gt_OverseerHighlightEnd = TriggerCreate("gt_OverseerHighlightEnd_Func");
+    TriggerAddEventUnitSelected(gt_OverseerHighlightEnd, null, gv_p1_USER, true);
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: 
+// Trigger: Overseer Highlight
 //--------------------------------------------------------------------------------------------------
-bool gt_xggstkrjiyerbjwm_Func (bool testConds, bool runActions) {
+bool gt_OverseerHighlight_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
     // Conditions
     if (testConds) {
@@ -3124,9 +3131,9 @@ bool gt_xggstkrjiyerbjwm_Func (bool testConds, bool runActions) {
 }
 
 //--------------------------------------------------------------------------------------------------
-void gt_xggstkrjiyerbjwm_Init () {
-    gt_xggstkrjiyerbjwm = TriggerCreate("gt_xggstkrjiyerbjwm_Func");
-    TriggerAddEventUnitAbility(gt_xggstkrjiyerbjwm, null, AbilityCommand("AP_OverseerBuild", 0), c_unitAbilStageAll, false);
+void gt_OverseerHighlight_Init () {
+    gt_OverseerHighlight = TriggerCreate("gt_OverseerHighlight_Func");
+    TriggerAddEventUnitAbility(gt_OverseerHighlight, null, AbilityCommand("AP_OverseerBuild", 0), c_unitAbilStageAll, false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7405,7 +7412,7 @@ bool gt_IntroCleanup_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_Lair", 0, gv_p1_USER, PointFromId(2));
         lib15EF4C78_gf_AP_Player_SpawnLarvaForHatchery(UnitLastCreated(), 3);
         libNtve_gf_CreateUnitsWithDefaultFacing(1, "AP_Overseer", 0, gv_p1_USER, PointFromId(348));
-        gv_ncqbgfqmjrfdmqve = UnitLastCreated();
+        gv_overseer = UnitLastCreated();
         libNtve_gf_CreateUnitsAtPoint2(1, "AP_Drone", 0, gv_p1_USER, PointFromId(9));
         libNtve_gf_CreateUnitsAtPoint2(1, "AP_Drone", 0, gv_p1_USER, PointFromId(38));
         libNtve_gf_CreateUnitsAtPoint2(1, "AP_Drone", 0, gv_p1_USER, PointFromId(59));
@@ -8344,6 +8351,7 @@ void gt_VictoryCleanup_Init () {
 // Trigger Initialization
 //--------------------------------------------------------------------------------------------------
 void InitTriggers () {
+    gt_ArchInit_Init();
     gt_FactionSwapInit_Init();
     gt_ObjectiveDestroyNortheastCreateQ_Init();
     gt_ObjectiveDestroyNortheastComplete_Init();
@@ -8359,7 +8367,6 @@ void InitTriggers () {
     gt_onDifficultyNormal_Init();
     gt_onDifficultyHard_Init();
     gt_onDifficultyBrutal_Init();
-    gt_ArchInit_Init();
     gt_Initialization_Init();
     gt_Init01Technology_Init();
     gt_Init02Players_Init();
@@ -8408,8 +8415,8 @@ void InitTriggers () {
     gt_Checkifallfivearepowered_Init();
     gt_SecondaryObjectiveRun_Init();
     gt_OverseerTutorial_Init();
-    gt_gdxlmvseombqsmod_Init();
-    gt_xggstkrjiyerbjwm_Init();
+    gt_OverseerHighlightEnd_Init();
+    gt_OverseerHighlight_Init();
     gt_PlayerBuildingArmyActivatesMidCin_Init();
     gt_PlayerBuildingPhotonCannonsActivatesMidCin_Init();
     gt_PlayerGatheringCashActivatesMidCin_Init();
