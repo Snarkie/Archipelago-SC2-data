@@ -13050,6 +13050,7 @@
         <EffectArray index="Return" value="TimedLifeFate"/>
         <MaxCount value="3"/>
         <Launch value="ReleaseAtTarget"/>
+        <Alert value=""/>
     </CAbilArmMagazine>
     <CAbilQueue id="AP_VoidRayPurifierQueue3">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
