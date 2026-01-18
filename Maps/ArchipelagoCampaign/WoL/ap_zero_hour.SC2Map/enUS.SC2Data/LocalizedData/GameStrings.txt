@@ -33,7 +33,7 @@ Param/Value/2E255EC2=Zerg Forces
 Param/Value/33D1A4C2=DEBUG: Spawn Reinforcements
 Param/Value/375DF249=Weapon and Armor Upgrades
 Param/Value/3C261846=
-Param/Value/41BF7276=Destroy Zerg Hatcheries
+Param/Value/41BF7276=Destroy unique Hatcheries
 Param/Value/43FACC21=<c val="00FF00">EMPTY BUNKER</c><n/>Select Marines, then right-click<n/>to load the Bunker.
 Param/Value/4401EDF4=DEBUG: Victory
 Param/Value/44A00372=<c val="00FF00">T Minus 1!</c>

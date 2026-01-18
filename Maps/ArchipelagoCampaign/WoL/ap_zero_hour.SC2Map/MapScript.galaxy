@@ -584,6 +584,13 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
 
     TriggerExecute(lib88187CC2_gt_ArchipelagoPlayerWoLHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
+    if ((GameIsTestMap(false) == true)) {
+        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
+        libABFE498B_gv_aP_Triggers_skipCutscenes = true;
+        libABFE498B_gf_AP_Triggers_setDifficulty("B");
+        libABFE498B_gf_AP_Triggers_setGameSpeed("4");
+    }
+
     lib5BD4895D_gf_AP_Core_MapConfig_setChatboxPosition(c_anchorTopRight, 500, 350, 0, 120);
     lib5BD4895D_gf_AP_Core_MapConfig_setMapInit(gt_Initialization);
     lib5BD4895D_gf_AP_Core_MapConfig_setPlayerFaction(gv_pLAYER01_USER, lib5BD4895D_gv_aP_Core_Faction_RAYNORS_RAIDERS);
