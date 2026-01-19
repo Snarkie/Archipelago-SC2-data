@@ -1365,7 +1365,6 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
         TriggerExecute(gt_onDifficultyBrutal, true, false);
         libABFE498B_gf_AP_Triggers_giveProtossDefaultTech(gv_pLAYER_01_USER);
     }
@@ -1442,6 +1441,11 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         if (auto934ECFD9_var == null) { break; }
         if ((libNtve_gf_UnitInRegion(auto934ECFD9_var, RegionFromId(1)) == true) && (libABFE498B_gv_aP_Triggers_skipCutscenes == true)) {
             libNtve_gf_ShowHideUnit(auto934ECFD9_var, true);
+        }
+
+        if ((UnitGetType(auto934ECFD9_var) == "AP_ColossusPurifier")) {
+            libNtve_gf_ShowHideUnit(auto934ECFD9_var, false);
+            libNtve_gf_PauseUnit(auto934ECFD9_var, true);
         }
 
     }

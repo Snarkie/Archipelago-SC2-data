@@ -772,6 +772,7 @@
         <ValueType Type="bool"/>
     </Element>
     <Element Type="FunctionCall" Id="4E3B3946">
+        <Disabled/>
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
         <Parameter Type="Param" Id="AEBE11B1"/>
@@ -2240,6 +2241,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C4DC760C"/>
         <Parameter Type="Param" Id="9B7018AD"/>
         <FunctionCall Type="FunctionCall" Id="F4A5CBC8"/>
+        <FunctionCall Type="FunctionCall" Id="00BC24F2"/>
     </Element>
     <Element Type="Param" Id="9B7018AD">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="F96B466D"/>
@@ -2332,6 +2334,86 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
         <Value>true</Value>
         <ValueType Type="bool"/>
+    </Element>
+    <Element Type="FunctionCall" Id="00BC24F2">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="9441B8B5"/>
+        <FunctionCall Type="Comment" Id="F2B42F1B"/>
+        <FunctionCall Type="FunctionCall" Id="F5907AE8"/>
+        <FunctionCall Type="FunctionCall" Id="B6C98D17"/>
+        <FunctionCall Type="FunctionCall" Id="8BC4618B"/>
+    </Element>
+    <Element Type="Comment" Id="F2B42F1B">
+        <Comment>
+            Colossus stay hidden until engaged
+        </Comment>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+    </Element>
+    <Element Type="FunctionCall" Id="F5907AE8">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+        <Parameter Type="Param" Id="1ACB890C"/>
+        <Parameter Type="Param" Id="BA84C02E"/>
+        <Parameter Type="Param" Id="D996662E"/>
+    </Element>
+    <Element Type="Param" Id="1ACB890C">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+        <FunctionCall Type="FunctionCall" Id="C63CBACC"/>
+    </Element>
+    <Element Type="FunctionCall" Id="C63CBACC">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000079"/>
+        <Parameter Type="Param" Id="75DD2321"/>
+    </Element>
+    <Element Type="Param" Id="75DD2321">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000138"/>
+        <FunctionCall Type="FunctionCall" Id="5529D99E"/>
+    </Element>
+    <Element Type="FunctionCall" Id="5529D99E">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="19CE733E"/>
+    </Element>
+    <Element Type="Param" Id="BA84C02E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+    </Element>
+    <Element Type="Param" Id="D996662E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+        <Value>AP_ColossusPurifier</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Unit"/>
+    </Element>
+    <Element Type="FunctionCall" Id="B6C98D17">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="40000000"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="910E8CD4"/>
+        <Parameter Type="Param" Id="2854CC92"/>
+    </Element>
+    <Element Type="Param" Id="910E8CD4">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="11000000"/>
+        <FunctionCall Type="FunctionCall" Id="0737830F"/>
+    </Element>
+    <Element Type="FunctionCall" Id="0737830F">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="19CE733E"/>
+    </Element>
+    <Element Type="Param" Id="2854CC92">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="21000000"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000121"/>
+    </Element>
+    <Element Type="FunctionCall" Id="8BC4618B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="30000000"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="26CAB44F"/>
+        <Parameter Type="Param" Id="246FCAF3"/>
+    </Element>
+    <Element Type="Param" Id="26CAB44F">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="90000000"/>
+        <FunctionCall Type="FunctionCall" Id="C4052A54"/>
+    </Element>
+    <Element Type="FunctionCall" Id="C4052A54">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="19CE733E"/>
+    </Element>
+    <Element Type="Param" Id="246FCAF3">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="01000000"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="00000115"/>
     </Element>
     <Element Type="Category" Id="94A018CA">
         <Item Type="Category" Id="9404B8F1"/>

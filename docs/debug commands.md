@@ -44,6 +44,10 @@ Zero Hour:
 -drop: Trigger a Zerg drop pod.
 -color: Make the different zerg players use different colors.
 
+Devil's Playground:
+
+-lava: Make the lava rise immediately
+
 The Dig:
 
 -s2: Start Drill phase
@@ -61,6 +65,13 @@ Piercing the Shroud:
 Gates of Hell
 
 -drop: Spawn the next drop pod. Currently only works for the very first drop pod.
+
+In Utter Darkness
+
+-defeat: Ends the mission in successful defeat (-win also works)
+-setkills x: Sets your kills to x
+-timer: Sets the remaining protection time for the archive to 5 seconds 
+-nydus: Spawns a nydus worm wave
 
 
 Rendezvous:

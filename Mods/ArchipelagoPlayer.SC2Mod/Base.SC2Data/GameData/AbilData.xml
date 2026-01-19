@@ -2318,7 +2318,7 @@
         </TargetSorts>
         <Range value="7"/>
         <Arc value="360"/>
-        <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="7.5"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="AP_TargetNotLockOn"/>
@@ -7625,6 +7625,7 @@
         <AutoCastRange value="8"/>
         <AutoCastValidatorArray value="AP_NotHaveTargetLock"/>
         <AutoCastValidatorArray value="AP_NotInterceptor"/>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <CastOutroTime value="0.5"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_TargetLock"/>
     </CAbilEffectTarget>
@@ -13049,6 +13050,7 @@
         <EffectArray index="Return" value="TimedLifeFate"/>
         <MaxCount value="3"/>
         <Launch value="ReleaseAtTarget"/>
+        <Alert value=""/>
     </CAbilArmMagazine>
     <CAbilQueue id="AP_VoidRayPurifierQueue3">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
