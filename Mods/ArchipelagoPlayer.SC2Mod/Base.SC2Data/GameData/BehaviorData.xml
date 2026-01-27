@@ -10870,4 +10870,21 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_SurveillanceMode">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <Height value="3"/>
+            <SightBonus value="4"/>
+            <MoveSpeedMaximum value="0"/>
+            <DetectBonus value="4"/>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+            <StateFlags index="SuppressArmySelect" value="1"/>
+            <HeightTime index="Start" value="2"/>
+            <HeightTime index="Stop" value="1"/>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilLinkDisableArray value="AP_OracleWeapon"/>
+        </Modification>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
 </Catalog>
