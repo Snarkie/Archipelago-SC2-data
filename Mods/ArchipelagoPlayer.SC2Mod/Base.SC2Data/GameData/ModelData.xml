@@ -22036,4 +22036,16 @@
         <SelectionRadius value="2.000000"/>
         <ShadowRadius value="2.000000"/>
     </CModel>
+    <CModel id="UI_Screens_Mission_DehakaCalldownFour">
+        <!-- no AP prefix, needs to match cutscene-->
+        <Model value="Assets\UI\Glues\UI_Screens_Mission_ZergPrimalCalldownFour\UI_Screens_Mission_ZergPrimalCalldownFour.m3"/>
+    </CModel>
+    <CModel id="UI_Screens_Mission_JunkerCalldownFour" parent="UIGlue">
+        <!-- no AP prefix, needs to match cutscene-->
+        <Lighting value="UI_Screens_Mission_TerranCalldownFour"/>
+    </CModel>
+    <CModel id="UI_Screens_Mission_StukovCalldownFour">
+        <!-- no AP prefix, needs to match cutscene-->
+        <Model value="Assets\UI\Glues\UI_Screens_Mission_StukovCalldownFour\UI_Screens_Mission_StukovCalldownFour.m3"/>
+    </CModel>
 </Catalog>
