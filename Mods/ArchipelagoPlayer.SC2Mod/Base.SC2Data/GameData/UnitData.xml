@@ -21521,7 +21521,7 @@
         <AbilArray Link="AP_SOAMothershipBlink"/>
         <AbilArray Link="AP_SummonDeathFleet"/>
         <AbilArray Link="AP_MothershipTaldarimHangar"/>
-        <!--- Note: War Council Nerf relies on AP_AutoMorphToMothershipTaldarim to be index 8 and AP_DisplayPowerFieldMothership to be index 0 -->
+        <!-- Note: War Council Nerf relies on AP_AutoMorphToMothershipTaldarim to be index 8 and AP_DisplayPowerFieldMothership to be index 0 -->
         <AbilArray Link="AP_AutoMorphToMothershipTaldarim"/>
         <AbilArray Link="AP_HangarQueue5"/>
         <AbilArray Link="Warpable"/>
