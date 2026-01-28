@@ -19,6 +19,8 @@ void libABFE498B_InitLibraries () {
 bool libABFE498B_InitVariables_completed = false;
 
 void libABFE498B_InitVariables () {
+    int init_i;
+
     if (libABFE498B_InitVariables_completed) {
         return;
     }
@@ -31,6 +33,21 @@ void libABFE498B_InitVariables () {
     libABFE498B_gv_aP_Triggers_isBuild = true;
     libABFE498B_gv_aP_Triggers_MapConfig_Mission_Protoss = libABFE498B_gv_aP_Triggers_MapConfig_MISSION_NOT_PROTOSS;
     libABFE498B_gv_aP_Triggers_MapConfig_SoAControllingPlayers = PlayerGroupSingle(1);
+    libABFE498B_gv_aP_Topbars_Panel = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_PanelHolder = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_CommandPanel = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= libABFE498B_gv_aP_Topbars_MAX_BUTTONS; init_i += 1) {
+        libABFE498B_gv_aP_Topbars_CommandButtons[init_i] = c_invalidDialogControlId;
+    }
+    libABFE498B_gv_aP_Topbars_EnergyBarStatusFrame = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_EnergyBar = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_EnergyBackground = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_EnergyLabel = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_HideButton = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_ShowButton = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_Cutscene = c_invalidDialogControlId;
+    libABFE498B_gv_aP_Topbars_Race = "Terr";
+    libABFE498B_gv_aP_Topbars_Players = PlayerGroupSingle(1);
     libABFE498B_gv_aP_Triggers_lastWarpedUnits = UnitGroupEmpty();
 }
 
@@ -10627,6 +10644,210 @@ void libABFE498B_gf_AP_Triggers_techTreeInit () {
     }
 }
 
+void libABFE498B_gf_AP_Topbars_Initialize (int lp_player, string lp_race, bool lp_force) {
+    // Variable Declarations
+    int lv_one;
+
+    // Automatic Variable Declarations
+    string auto1D3FC7DB_val;
+
+    // Variable Initialization
+    lv_one = 1;
+
+    // Implementation
+    if ((libABFE498B_gv_aP_Topbars_Initialized == true) && (lp_force == false)) {
+        return ;
+    }
+
+    if ((libABFE498B_gv_aP_Topbars_Initialized == true)) {
+        libABFE498B_gf_AP_Topbars_ShowHide(false, 1, c_transitionDurationImmediate);
+    }
+
+    libABFE498B_gv_aP_Topbars_Initialized = true;
+    if ((libABFE498B_gv_aP_Topbars_PanelHolder == c_invalidDialogControlId)) {
+        DialogControlHookupStandard(c_triggerControlTypePanel, "UIContainer/FullscreenUpperContainer/AP_GlobalCastingPanel");
+        libABFE498B_gv_aP_Topbars_PanelHolder = DialogControlLastCreated();
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_PanelHolder, PlayerGroupAll(), false);
+    }
+
+    libABFE498B_gv_aP_Topbars_Race = lp_race;
+    libABFE498B_gv_aP_Topbars_Players = PlayerGroupSingle(lp_player);
+    auto1D3FC7DB_val = lp_race;
+    if (auto1D3FC7DB_val == "Terr") {
+        libABFE498B_gf_AP_Topbars_InitializeTerran(lp_player);
+    }
+    else if (auto1D3FC7DB_val == "Zerg") {
+        libABFE498B_gf_AP_Topbars_InitializeZerg(lp_player);
+    }
+    else {
+    }
+}
+
+void libABFE498B_gf_AP_Topbars_InitializeTerran (int lp_player) {
+    // Variable Declarations
+    int lv_lastFrame;
+    string lv_append;
+    int lv_buttonIndex;
+
+    // Automatic Variable Declarations
+    const int auto6F41702C_ae = libABFE498B_gv_aP_Topbars_MAX_BUTTONS;
+    const int auto6F41702C_ai = 1;
+
+    // Variable Initialization
+    lv_lastFrame = c_invalidDialogControlId;
+    lv_append = "";
+
+    // Implementation
+    DialogControlCreateInPanelFromTemplate(libABFE498B_gv_aP_Topbars_PanelHolder, c_triggerControlTypePanel, "ap_topbars/TerranCasterPanelTemplate");
+    libABFE498B_gv_aP_Topbars_Panel = DialogControlLastCreated();
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_Panel, c_triggerControlTypeCutscene, "TerranCommandCutscene");
+    libABFE498B_gv_aP_Topbars_Cutscene = DialogControlLastCreated();
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_Panel, c_triggerControlTypePanel, "ButtonHolder");
+    lv_lastFrame = DialogControlLastCreated();
+    DialogControlCreateInPanelFromTemplate(lv_lastFrame, c_triggerControlTypeCommandPanel, "ap_topbars/TerranGlobalCommandPanelTemplate");
+    libABFE498B_gv_aP_Topbars_CommandPanel = DialogControlLastCreated();
+    lv_buttonIndex = 1;
+    for ( ; ( (auto6F41702C_ai >= 0 && lv_buttonIndex <= auto6F41702C_ae) || (auto6F41702C_ai < 0 && lv_buttonIndex >= auto6F41702C_ae) ) ; lv_buttonIndex += auto6F41702C_ai ) {
+        if ((lv_buttonIndex > 10)) {
+            lv_append = "";
+        }
+        else {
+            lv_append = "0";
+        }
+        DialogControlHookup(libABFE498B_gv_aP_Topbars_CommandPanel, c_triggerControlTypeButton, "CommandButton" +lv_append + IntToString(lv_buttonIndex-1));
+        libABFE498B_gv_aP_Topbars_CommandButtons[lv_buttonIndex] = DialogControlLastCreated();
+    }
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_CommandPanel, c_triggerControlTypeUnitStatus, "TerranTopbarStatusFrame");
+    libABFE498B_gv_aP_Topbars_EnergyBarStatusFrame = DialogControlLastCreated();
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_EnergyBarStatusFrame, c_triggerControlTypeUnitStatusBar, "EnergyBar");
+    libABFE498B_gv_aP_Topbars_EnergyBar = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeButton, "$ap_TerranCasterVisibilityButtonContainer/HideButton");
+    libABFE498B_gv_aP_Topbars_HideButton = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(libABFE498B_gv_aP_Topbars_HideButton, "AP\\Assets\\Textures\\ui-terrantopbar-normal.dds", libABFE498B_gv_aP_Topbars_Players);
+    libNtve_gf_SetDialogItemImage2(libABFE498B_gv_aP_Topbars_HideButton, "AP\\Assets\\Textures\\ui-terrantopbar-hover.dds", libABFE498B_gv_aP_Topbars_Players);
+    DialogControlHookupStandard(c_triggerControlTypeButton, "$ap_TerranCasterVisibilityButtonContainer/ShowButton");
+    libABFE498B_gv_aP_Topbars_ShowButton = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(libABFE498B_gv_aP_Topbars_ShowButton, "AP\\Assets\\Textures\\ui-terrantopbar-normal.dds", libABFE498B_gv_aP_Topbars_Players);
+    libNtve_gf_SetDialogItemImage2(libABFE498B_gv_aP_Topbars_ShowButton, "AP\\Assets\\Textures\\ui-terrantopbar-hover.dds", libABFE498B_gv_aP_Topbars_Players);
+    DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Panel, libABFE498B_gv_aP_Topbars_Players, false);
+    DialogControlSetVisible(libABFE498B_gv_aP_Topbars_ShowButton, libABFE498B_gv_aP_Topbars_Players, false);
+    CutscenePlay(CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene));
+}
+
+void libABFE498B_gf_AP_Topbars_InitializeZerg (int lp_player) {
+    // Variable Declarations
+    int lv_lastFrame;
+    string lv_append;
+    int lv_buttonIndex;
+
+    // Automatic Variable Declarations
+    const int autoCCDAAD5D_ae = libABFE498B_gv_aP_Topbars_MAX_BUTTONS;
+    const int autoCCDAAD5D_ai = 1;
+
+    // Variable Initialization
+    lv_lastFrame = c_invalidDialogControlId;
+    lv_append = "";
+
+    // Implementation
+    DialogControlCreateInPanelFromTemplate(libABFE498B_gv_aP_Topbars_PanelHolder, c_triggerControlTypePanel, "ap_topbars/ZergCasterPanelTemplate");
+    libABFE498B_gv_aP_Topbars_Panel = DialogControlLastCreated();
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_Panel, c_triggerControlTypeCutscene, "ZergCommandCutscene");
+    libABFE498B_gv_aP_Topbars_Cutscene = DialogControlLastCreated();
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_Panel, c_triggerControlTypePanel, "ButtonHolder");
+    lv_lastFrame = DialogControlLastCreated();
+    DialogControlCreateInPanelFromTemplate(lv_lastFrame, c_triggerControlTypeCommandPanel, "ap_topbars/ZergGlobalCommandPanelTemplate");
+    libABFE498B_gv_aP_Topbars_CommandPanel = DialogControlLastCreated();
+    lv_buttonIndex = 1;
+    for ( ; ( (autoCCDAAD5D_ai >= 0 && lv_buttonIndex <= autoCCDAAD5D_ae) || (autoCCDAAD5D_ai < 0 && lv_buttonIndex >= autoCCDAAD5D_ae) ) ; lv_buttonIndex += autoCCDAAD5D_ai ) {
+        if ((lv_buttonIndex > 10)) {
+            lv_append = "";
+        }
+        else {
+            lv_append = "0";
+        }
+        DialogControlHookup(libABFE498B_gv_aP_Topbars_CommandPanel, c_triggerControlTypeButton, "CommandButton" +lv_append + IntToString(lv_buttonIndex-1));
+        libABFE498B_gv_aP_Topbars_CommandButtons[lv_buttonIndex] = DialogControlLastCreated();
+    }
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_CommandPanel, c_triggerControlTypeUnitStatus, "ZergTopbarStatusFrame");
+    libABFE498B_gv_aP_Topbars_EnergyBarStatusFrame = DialogControlLastCreated();
+    DialogControlHookup(libABFE498B_gv_aP_Topbars_EnergyBarStatusFrame, c_triggerControlTypeUnitStatusBar, "EnergyBar");
+    libABFE498B_gv_aP_Topbars_EnergyBar = DialogControlLastCreated();
+    DialogControlHookupStandard(c_triggerControlTypeButton, "$ap_TerranCasterVisibilityButtonContainer/HideButton");
+    libABFE498B_gv_aP_Topbars_HideButton = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(libABFE498B_gv_aP_Topbars_HideButton, "AP\\Assets\\Textures\\ui-zergtopbar-normal.dds", libABFE498B_gv_aP_Topbars_Players);
+    libNtve_gf_SetDialogItemImage2(libABFE498B_gv_aP_Topbars_HideButton, "AP\\Assets\\Textures\\ui-zergtopbar-hover.dds", libABFE498B_gv_aP_Topbars_Players);
+    DialogControlHookupStandard(c_triggerControlTypeButton, "$ap_TerranCasterVisibilityButtonContainer/ShowButton");
+    libABFE498B_gv_aP_Topbars_ShowButton = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(libABFE498B_gv_aP_Topbars_ShowButton, "AP\\Assets\\Textures\\ui-zergtopbar-normal.dds", libABFE498B_gv_aP_Topbars_Players);
+    libNtve_gf_SetDialogItemImage2(libABFE498B_gv_aP_Topbars_ShowButton, "AP\\Assets\\Textures\\ui-zergtopbar-hover.dds", libABFE498B_gv_aP_Topbars_Players);
+    DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Panel, libABFE498B_gv_aP_Topbars_Players, false);
+    DialogControlSetVisible(libABFE498B_gv_aP_Topbars_ShowButton, libABFE498B_gv_aP_Topbars_Players, false);
+    CutscenePlay(CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene));
+}
+
+void libABFE498B_gf_AP_Topbars_SetCasterUnit (unit lp_casterUnit, int lp_player, string lp_race, bool lp_force) {
+    // Automatic Variable Declarations
+    // Implementation
+    libABFE498B_gf_AP_Topbars_Initialize(lp_player, lp_race, lp_force);
+    libABFE498B_gv_aP_Topbars_CasterUnit = lp_casterUnit;
+    libNtve_gf_SetDialogItemUnitGroup(libABFE498B_gv_aP_Topbars_CommandPanel, libNtve_gf_ConvertUnitToUnitGroup(lp_casterUnit), libABFE498B_gv_aP_Topbars_Players);
+    libNtve_gf_SetDialogItemUnit(libABFE498B_gv_aP_Topbars_EnergyBarStatusFrame, lp_casterUnit, libABFE498B_gv_aP_Topbars_Players);
+}
+
+void libABFE498B_gf_AP_Topbars_ShowHide (bool lp_showHide, int lp_player, fixed lp_duration) {
+    // Variable Declarations
+    int lv_buttonIndex;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    libABFE498B_gv_aP_Topbars_Visible = (lp_showHide == true);
+    if ((libABFE498B_gv_aP_Topbars_Panel == c_invalidDialogControlId)) {
+        return ;
+    }
+
+    if ((lp_showHide == true)) {
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Cutscene, libABFE498B_gv_aP_Topbars_Players, true);
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_PanelHolder, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Panel, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_ShowButton, libABFE498B_gv_aP_Topbars_Players, false);
+        if ((libABFE498B_gv_aP_Topbars_Cutscene == c_invalidDialogControlId)) {
+            return ;
+        }
+
+        CutsceneSetTime(CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene), 0);
+        CutscenePlay(CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene));
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Cutscene, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+        if ((lp_duration == c_transitionDurationImmediate)) {
+            CutsceneGoToBookmark(CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene), "LoopStart");
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_CommandPanel, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_HideButton, libABFE498B_gv_aP_Topbars_Players, true);
+        }
+        else {
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_CommandPanel, libABFE498B_gv_aP_Topbars_Players, false);
+        }
+    }
+    else {
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_HideButton, libABFE498B_gv_aP_Topbars_Players, false);
+        if ((lp_duration == c_transitionDurationImmediate)) {
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_PanelHolder, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Panel, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_CommandPanel, libABFE498B_gv_aP_Topbars_Players, lp_showHide);
+            DialogControlSetVisible(libABFE498B_gv_aP_Topbars_ShowButton, libABFE498B_gv_aP_Topbars_Players, true);
+        }
+        else {
+            CutsceneGoToBookmark(CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene), "Death");
+        }
+    }
+}
+
+bool libABFE498B_gf_AP_Topbars_Visible () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libABFE498B_gv_aP_Topbars_Visible;
+}
+
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
     // Automatic Variable Declarations
     // Implementation
@@ -11303,6 +11524,110 @@ void libABFE498B_gt_UpgradeProtossStructures_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AP_Topbars_BirthCutsceneFinished
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Topbars_BirthCutsceneFinished_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_buttonIndex;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libABFE498B_gv_aP_Topbars_Cutscene != c_invalidDialogControlId) && (EventCutsceneId() == CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene))) {
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_CommandPanel, libABFE498B_gv_aP_Topbars_Players, true);
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_HideButton, libABFE498B_gv_aP_Topbars_Players, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Topbars_BirthCutsceneFinished_Init () {
+    libABFE498B_gt_AP_Topbars_BirthCutsceneFinished = TriggerCreate("libABFE498B_gt_AP_Topbars_BirthCutsceneFinished_Func");
+    TriggerAddEventCutsceneBookmarkFired(libABFE498B_gt_AP_Topbars_BirthCutsceneFinished, c_cutsceneNone, "2DBirth");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Topbars_DeathCutsceneProgress
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Topbars_DeathCutsceneProgress_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libABFE498B_gv_aP_Topbars_Cutscene != c_invalidDialogControlId) && (EventCutsceneId() == CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene))) {
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_CommandPanel, libABFE498B_gv_aP_Topbars_Players, false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Topbars_DeathCutsceneProgress_Init () {
+    libABFE498B_gt_AP_Topbars_DeathCutsceneProgress = TriggerCreate("libABFE498B_gt_AP_Topbars_DeathCutsceneProgress_Func");
+    TriggerAddEventCutsceneBookmarkFired(libABFE498B_gt_AP_Topbars_DeathCutsceneProgress, c_cutsceneNone, "2DDeath");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Topbars_DeathCutsceneFinished
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Topbars_DeathCutsceneFinished_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libABFE498B_gv_aP_Topbars_Cutscene != c_invalidDialogControlId) && (EventCutsceneId() == CutsceneGetTriggerControl(libABFE498B_gv_aP_Topbars_Cutscene))) {
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_Cutscene, libABFE498B_gv_aP_Topbars_Players, false);
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_ShowButton, libABFE498B_gv_aP_Topbars_Players, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Topbars_DeathCutsceneFinished_Init () {
+    libABFE498B_gt_AP_Topbars_DeathCutsceneFinished = TriggerCreate("libABFE498B_gt_AP_Topbars_DeathCutsceneFinished_Func");
+    TriggerAddEventCutsceneBookmarkFired(libABFE498B_gt_AP_Topbars_DeathCutsceneFinished, c_cutsceneNone, "AfterDeath");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Topbars_Show/HideButtonPressed
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Topbars_ShowHideButtonPressed_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventDialogControl() == libABFE498B_gv_aP_Topbars_HideButton) && (libABFE498B_gf_AP_Topbars_Visible() == true)) {
+        libABFE498B_gf_AP_Topbars_ShowHide(false, 1, c_transitionDurationDefault);
+    }
+
+    if ((EventDialogControl() == libABFE498B_gv_aP_Topbars_ShowButton) && (libABFE498B_gf_AP_Topbars_Visible() == false)) {
+        libABFE498B_gf_AP_Topbars_ShowHide(true, 1, c_transitionDurationDefault);
+        DialogControlSetVisible(libABFE498B_gv_aP_Topbars_ShowButton, libABFE498B_gv_aP_Topbars_Players, false);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Topbars_ShowHideButtonPressed_Init () {
+    libABFE498B_gt_AP_Topbars_ShowHideButtonPressed = TriggerCreate("libABFE498B_gt_AP_Topbars_ShowHideButtonPressed_Func");
+    TriggerAddEventDialogControl(libABFE498B_gt_AP_Topbars_ShowHideButtonPressed, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AP_Triggers_Debug_activateDebugMode
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_AP_Triggers_Debug_activateDebugMode_Func (bool testConds, bool runActions) {
@@ -11822,6 +12147,10 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_bankItemsInit_Init();
     libABFE498B_gt_AP_Triggers_techTreeInit_Init();
     libABFE498B_gt_UpgradeProtossStructures_Init();
+    libABFE498B_gt_AP_Topbars_BirthCutsceneFinished_Init();
+    libABFE498B_gt_AP_Topbars_DeathCutsceneProgress_Init();
+    libABFE498B_gt_AP_Topbars_DeathCutsceneFinished_Init();
+    libABFE498B_gt_AP_Topbars_ShowHideButtonPressed_Init();
     libABFE498B_gt_AP_Triggers_Debug_activateDebugMode_Init();
     libABFE498B_gt_AP_Triggers_Debug_takeControl_Init();
     libABFE498B_gt_AP_Triggers_Debug_clearQueue_Init();
