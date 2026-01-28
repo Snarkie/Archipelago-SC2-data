@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CutsceneState cutsceneVersion="1.300000">
+    <CCutsceneNodeDirector guid="11922497574948245018" name="Director" interactive="1" waitForResources="1">
+        <CCutsceneNodeActiveCamera guid="9740389233658465794" name="Active Camera (Four Buttons)">
+            <CCutsceneElementActiveCamera guid="5657419096837730854" cameraIndex="0" objectGuid="11815251601055411731"/>
+        </CCutsceneNodeActiveCamera>
+        <CCutsceneNodeBookmark guid="9306127807464965068" name="Bookmarks">
+            <CCutsceneElementBookmark guid="7750641266918964122" start="1016" bookmarkName="2DBirth"/>
+            <CCutsceneElementBookmark guid="5584455356505988030" start="1334" bookmarkName="LoopStart"/>
+            <CCutsceneElementBookmark guid="7586185658386212389" start="4667" bookmarkName="LoopEnd" jumpToBookmarkWhenHit="LoopStart"/>
+            <CCutsceneElementBookmark guid="8942999999098382351" start="6667" bookmarkName="Death"/>
+            <CCutsceneElementBookmark guid="5384575280664518147" start="6809" bookmarkName="2DDeath"/>
+            <CCutsceneElementBookmark guid="8175713574442059768" start="7729" bookmarkName="AfterDeath"/>
+            <CCutsceneElementBookmark guid="6684492308366868338" start="7836" bookmarkName="DeathEnd"/>
+            <CCutsceneElementBookmark guid="4715299195632022128" start="8022" bookmarkName="DeathLoop" jumpToBookmarkWhenHit="DeathEnd"/>
+        </CCutsceneNodeBookmark>
+        <CCutsceneNodeActiveLight guid="10211602711577052798" name="Active Light">
+            <CCutsceneElementActiveLight guid="8502524447114172216" lightGUID="0" lightID="Char" lightIndex="0" blendTime="0"/>
+        </CCutsceneNodeActiveLight>
+        <CCutsceneNodeEndScene guid="9446830993182515441" name="End Scene Markers">
+            <CCutsceneElementEndScene guid="7227807071365456113" start="28168"/>
+        </CCutsceneNodeEndScene>
+    </CCutsceneNodeDirector>
+    <CCutsceneNodeActor guid="11815251601055411731" locked="1" name="UI_Dummy (Invisible)" modelLink="UI_Screens_Mission_TerranCalldownFour" shadowBox="0" opacity="0.000000" teamColorDiffuse="0.705800,0.078300,0.117600,1.000000" teamColorEmissive="0.545100,0.062700,0.086100,1.000000">
+        <CCutsceneElementObject guid="7261244794390048275" duration="28353" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9906055195358785043" locked="1" name="Animation Layer">
+            <CCutsceneElementAnim guid="5941213873301745171" duration="1334" anim="Birth" priority="7" originalDuration="1333" looping="1" blendOutTime="0" fullMatchLegacy="1"/>
+            <CCutsceneElementAnim guid="5401467482549979803" start="1334" duration="5333" anim="Stand" priority="3" originalDuration="933" looping="1" blendTime="0" blendOutTime="0" fullMatchLegacy="1"/>
+            <CCutsceneElementAnim guid="8332010043168361627" start="6667" duration="1166" anim="Death" priority="11" originalDuration="1166" looping="1" blendTime="0" blendOutTime="0"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="9508944404594619328" name="UI_Screens_Mission_TerranCalldownFour" position="0.000000,0.000000,-0.030000" scale="0.750000,1.000000,0.750000" modelLink="UI_Screens_Mission_JunkerCalldownFour" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,1.000000" teamColorEmissive="0.545100,0.062700,0.086100,1.000000">
+        <CCutsceneElementObject guid="5241397060280579008" duration="28353" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="12366394818162389952" locked="1" name="Animation Layer">
+            <CCutsceneElementAnim guid="6097291928209781696" duration="1334" anim="Birth" priority="7" originalDuration="1333" looping="1" blendOutTime="0" fullMatchLegacy="1"/>
+            <CCutsceneElementAnim guid="5381430448877269952" start="1334" duration="5333" anim="Stand" priority="3" originalDuration="933" looping="1" blendTime="0" blendOutTime="0" fullMatchLegacy="1"/>
+            <CCutsceneElementAnim guid="8663274101450535872" start="6667" duration="1166" anim="Death" priority="11" originalDuration="1166" looping="1" blendTime="0" blendOutTime="0"/>
+        </CCutsceneNodeAnimLayer>
+        <CCutsceneNodePropertyValue guid="13219229212655547328" name="Property - Position Z" propertyName="positionZ">
+            <CCutsceneElementPropertyCurve guid="8428177324063388608" value="0.100000" time="0.000000" curveInValue="-1.000000,0.100000" curveOutValue="430.333344,0.056667" curveOutType="3" curveInType="3"/>
+            <CCutsceneElementPropertyCurve guid="7168392566366073792" start="1291" value="-0.030000" time="1291.000000" curveInValue="860.666626,0.013333" curveOutValue="3083.000000,-0.030000" curveOutType="3" curveInType="3"/>
+            <CCutsceneElementPropertyCurve guid="4882117831879881664" start="6667" value="-0.030000" time="6667.000000" curveInValue="4875.000000,-0.030000" curveOutValue="7054.333496,0.013333" curveOutType="3" curveInType="3"/>
+            <CCutsceneElementPropertyCurve guid="4860729629185209280" start="7829" value="0.100000" time="7829.000000" curveInValue="7441.666504,0.056667" curveOutValue="7830.000000,0.100000" curveOutType="3" curveInType="3"/>
+        </CCutsceneNodePropertyValue>
+    </CCutsceneNodeActor>
+    <CCutsceneNodeActor guid="13283700801374103290" name="UI_Screens_Mission_TerranCalldownFour" position="0.000000,0.000000,0.078200" scale="1.450000,1.000000,0.800000" modelLink="UI_Screens_Mission_TerranCalldownFour" shadowBox="0" teamColorDiffuse="0.705800,0.078300,0.117600,1.000000" teamColorEmissive="0.545100,0.062700,0.086100,1.000000">
+        <CCutsceneElementObject guid="8604208819984770810" duration="28353" lockedToEnd="1"/>
+        <CCutsceneNodeAnimLayer guid="9252542672063047904" locked="1" name="Animation Layer">
+            <CCutsceneElementAnim guid="6735233073970292960" duration="1334" anim="Birth" priority="7" originalDuration="1333" looping="1" blendOutTime="0" fullMatchLegacy="1"/>
+            <CCutsceneElementAnim guid="7406553143988070624" start="1334" duration="5333" anim="Stand" priority="3" originalDuration="933" looping="1" blendTime="0" blendOutTime="0" fullMatchLegacy="1"/>
+            <CCutsceneElementAnim guid="8181980012920318176" start="6667" duration="1166" anim="Death" priority="11" originalDuration="1166" looping="1" blendTime="0" blendOutTime="0"/>
+        </CCutsceneNodeAnimLayer>
+    </CCutsceneNodeActor>
+</CutsceneState>
