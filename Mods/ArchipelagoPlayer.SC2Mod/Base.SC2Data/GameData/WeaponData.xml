@@ -4317,4 +4317,12 @@
         <Period value="1.8"/>
         <Effect value="AP_BullfrogSpitLM"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="AP_WarHoundMeleeBrawler">
+        <EditorCategories value="Race:Terran"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel0.dds"/>
+        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.8"/>
+        <Period value="1"/>
+    </CWeaponLegacy>
 </Catalog>

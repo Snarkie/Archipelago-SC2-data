@@ -10901,4 +10901,23 @@
         <Duration value="6"/>
         <DurationRandomMax value="0"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_WarhoundBrawler">
+        <InfoIcon value="Assets\Textures\btn-unit-terran-tychuswarhound.dds"/>
+        <Modification>
+            <DamageTakenFraction index="Spell" value="-0.4"/>
+            <DamageTakenFraction index="Melee" value="-0.4"/>
+            <DamageTakenFraction index="Ranged" value="-0.4"/>
+            <DamageTakenFraction index="Splash" value="-0.4"/>
+            <DamageTakenFraction index="NoProc" value="-0.4"/>
+            <WeaponArray Link="AP_WarHoundMeleeBrawler"/>
+            <WeaponDisableArray value="AP_WarHound"/>
+            <WeaponDisableArray value="AP_WarHoundMelee"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_WarhoundJumpSlow">
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-timebomb.dds"/>
+        <Alignment value="Negative"/>
+        <Duration value="5"/>
+        <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
+    </CBehaviorBuff>
 </Catalog>

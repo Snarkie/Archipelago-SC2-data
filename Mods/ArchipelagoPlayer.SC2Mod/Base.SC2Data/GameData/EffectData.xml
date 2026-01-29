@@ -24921,4 +24921,40 @@
     <CEffectSet id="AP_MengskSiegeTankJumpJetSet">
         <EffectArray value="AP_MengskSiegeTankJumpJetRU"/>
     </CEffectSet>
+        <CEffectSet id="AP_WarhoundJump">
+        <EffectArray value="AP_WarhoundJumpPrecursor"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="AP_WarhoundJumpImpact">
+        <EffectArray value="AP_WarhoundJumpSearch"/>
+        <EffectArray value="AP_KillRemove"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="AP_WarhoundJumpLaunch">
+        <ImpactEffect value="AP_WarhoundJumpImpact"/>
+        <Movers Link="AP_WarhoundJump"/>
+        <DeathType value="Unknown"/>
+    </CEffectLaunchMissile>
+    <CEffectCreateUnit id="AP_WarhoundJumpPrecursor">
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="Precursor" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="AP_WarhoundJumpSet"/>
+        <SpawnRange value="5"/>
+    </CEffectCreateUnit>
+    <CEffectEnumArea id="AP_WarhoundJumpSearch">
+        <SearchFilters value="Ground;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="AP_WarhoundJumpSlow"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AP_WarhoundJumpSet">
+        <EffectArray value="AP_WarhoundJumpLaunch"/>
+        <EffectArray value="AP_ChangelingTimedLife"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AP_WarhoundJumpSlow">
+    </CEffectApplyBehavior>
+    <CEffectDamage id="AP_WarHoundMeleeBrawler" parent="DU_WEAP">
+        <Amount value="30"/>
+    </CEffectDamage>
 </Catalog>

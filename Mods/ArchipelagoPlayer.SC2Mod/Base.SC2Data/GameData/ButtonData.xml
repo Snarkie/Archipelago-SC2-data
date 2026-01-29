@@ -8018,4 +8018,14 @@
     <CButton id="AP_SuperWarpgateNextSubmenu">
         <Icon value="Assets\Textures\tutorialarrow01.dds"/>
     </CButton>
+    <CButton id="AP_WarhoundBrawlerOn">
+        <Icon value="Assets\Textures\btn-unit-terran-tychuswarhound.dds"/>
+    </CButton>
+    <CButton id="AP_WarhoundBrawlerOff">
+        <Icon value="Assets\Textures\btn-unit-terran-tychuswarhound-holo.dds"/>
+        <HotkeyAlias value="AP_WarhoundBrawlerOn"/>
+    </CButton>
+    <CButton id="AP_WarhoundJump">
+        <Icon value="Assets\Textures\btn-ability-neutral-ursadonleap.dds"/>
+    </CButton>
 </Catalog>
