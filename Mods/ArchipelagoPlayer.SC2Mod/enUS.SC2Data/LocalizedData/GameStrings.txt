@@ -754,6 +754,8 @@ Behavior/Name/AP_VoidZealotShadowChargeStun=Stunned
 Behavior/Name/AP_VoidZealotTerazineFuryWeakness=Terazine Fury Weakness
 Behavior/Name/AP_WarpRelocateDestination=Warp Relocate - Destination
 Behavior/Name/AP_WarpRelocating=Warp Relocating
+Behavior/Name/AP_WarhoundBrawler=Brawler Configuration
+Behavior/Name/AP_WarhoundJumpSlow=Slowed
 Behavior/Name/AP_WildMutation=Wild Mutation
 Behavior/Name/AP_WraithCloak=Cloak
 Behavior/Name/AP_WraithMengskResonatingFeedbackInterference=Stunned
@@ -1004,6 +1006,8 @@ Behavior/Tooltip/AP_VoidStalkerBlinkShieldRestore=This unit is regenerating shie
 Behavior/Tooltip/AP_VoidZealotShadowChargeStun=This unit cannot move or attack.
 Behavior/Tooltip/AP_WarpRelocateDestination=A Protoss structure is relocating to this location.
 Behavior/Tooltip/AP_WarpRelocating=This structure is moving to a new location.
+Behavior/Tooltip/AP_WarhoundBrawler=This unit is in Brawler configuration
+Behavior/Tooltip/AP_WarhoundJumpSlow=This unit's movespeed and attackspeed is slowed
 Behavior/Tooltip/AP_WildMutation=This unit gains +<d ref="Behavior,AP_WildMutation,Modification.VitalMaxArray[1]"/> maximum life and <d ref="(Behavior,AP_WildMutation,Modification.AttackSpeedMultiplier - 1) * 100"/>% increased attack speed.
 Behavior/Tooltip/AP_WraithCloak=This unit is cloaked and will only be revealed by detector units or effects.
 Behavior/Tooltip/AP_WraithMengskResonatingFeedbackInterference=Target is currently stunned and unable to use any abilities.
@@ -2365,6 +2369,9 @@ Button/Name/AP_VultureAutoRepair=Jerry-Rigged Patchup
 Button/Name/AP_VultureSpeedUpgrade=Ion Thrusters
 Button/Name/AP_WarHound=Build Warhound
 Button/Name/AP_WarhoundReinforcedPlating=Axiom Plating
+Button/Name/AP_WarhoundBrawlerOff=Brawler Configuration
+Button/Name/AP_WarhoundBrawlerOn=Brawler Configuration
+Button/Name/AP_WarhoundJump=Jump Jets
 Button/Name/AP_WarpInAdept=Warp In Adept
 Button/Name/AP_WarpInReplicant=Warp in Replicant
 Button/Name/AP_WarpInRoboticsWarpFacility=Warp In Warp Robotics Facility
@@ -4062,6 +4069,9 @@ Button/Tooltip/AP_VultureSpeedUpgrade=Vulture movement speed is increased.
 Button/Tooltip/AP_WarHound=Anti-vehicle mech. Haywire missiles do bonus damage to mechanical units. <n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/AP_WarPig=War Pig mercenaries are well known for both their ruthless combat efficiency as well as their heavy drinking and barroom brawls. Their upgraded equipment and thousands of hours of combat experience make them well worth all the trouble they cause when they are off duty.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_WarhoundReinforcedPlating=Increases Warhound armor by 2.
+Button/Tooltip/AP_WarhoundBrawlerOff=Disable Brawler configuration. Re-enables your ranged weapon, but disables the damage reduction shield and bonuses to your melee weapon.
+Button/Tooltip/AP_WarhoundBrawlerOn=Enable Brawler configuration. Improves your melee weapon and gives you a damage reduction shield, but disables your ranged weapon.
+Button/Tooltip/AP_WarhoundJump=The Warhound jumps a short distance, slowing nearby enemies on impact by <d ref="Behavior,AP_WarhoundJumpSlow,Modification.AttackSpeedMultiplier *100"/>% for <d ref="Behavior,AP_WarhoundJumpSlow,Duration"/> seconds.
 Button/Tooltip/AP_WarpGate=Enables warp in of Protoss ground units.
 Button/Tooltip/AP_WarpInAdept=Purifier Faction<n/>Ranged specialist. Can use Psionic Transfer.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_WarpInReplicant=Mimic unit. Can turn into a copy of an allied or enemy unit.
@@ -7340,6 +7350,7 @@ Weapon/Name/AP_Vulture=Fragmentation Grenade
 Weapon/Name/AP_VultureSpiderMines=Spider Mines
 Weapon/Name/AP_WarHound=Railgun
 Weapon/Name/AP_WarHoundMelee=War Hound Melee
+Weapon/Name/AP_WarHoundMeleeBrawler=Power Fist
 Weapon/Name/AP_WarpBlades=Warp Blades
 Weapon/Name/AP_WarpPrismTaldarimWeapon=Phase Blaster
 Weapon/Name/AP_WidowMineDummy=Detonate
