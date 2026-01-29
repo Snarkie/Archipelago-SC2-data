@@ -1066,6 +1066,7 @@
         <EffectArray Reference="Effect,AP_TempestPurifierDamageGround,Amount" Value="5"/>
         <!-- Oracle -->
         <EffectArray Reference="Weapon,AP_Oracle,Level" Value="1"/>
+        <EffectArray Reference="Weapon,AP_OracleGround,Level" Value="1"/>
         <EffectArray Reference="Effect,AP_OracleWeaponDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,AP_OracleWeaponDamage,AttributeBonus[Light]" Value="1"/>
         <!-- Warp Prism -->
@@ -1140,6 +1141,8 @@
         <!-- Oracle -->
         <EffectArray Reference="Unit,AP_Oracle,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,AP_Oracle,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,AP_OracleGround,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,AP_OracleGround,LifeArmorLevel" Value="1"/>
         <!-- Scout -->
         <EffectArray Reference="Unit,AP_ScoutMP,LifeArmor" Value="1.000000"/>
         <EffectArray Reference="Unit,AP_ScoutMP,LifeArmorLevel" Value="1"/>
@@ -1336,6 +1339,8 @@
         <!-- Oracle -->
         <EffectArray Reference="Unit,AP_Oracle,ShieldArmor" Value="1"/>
         <EffectArray Reference="Unit,AP_Oracle,ShieldArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,AP_OracleGround,ShieldArmor" Value="1"/>
+        <EffectArray Reference="Unit,AP_OracleGround,ShieldArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AP_OracleStasisTrap,ShieldArmor" Value="1"/>
         <EffectArray Reference="Unit,AP_OracleStasisTrap,ShieldArmorLevel" Value="1"/>
         <!-- Scout-->
@@ -7551,7 +7556,9 @@
         <EffectArray Reference="Unit,AP_Sentry,EnergyMax" Value="10"/>
         <EffectArray Reference="Unit,AP_Sentry,EnergyStart" Value="10"/>
         <EffectArray Reference="Unit,AP_Oracle,EnergyMax" Value="10"/>
+        <EffectArray Reference="Unit,AP_OracleGround,EnergyMax" Value="10"/>
         <EffectArray Reference="Unit,AP_Oracle,EnergyStart" Value="10"/>
+        <EffectArray Reference="Unit,AP_OracleGround,EnergyStart" Value="10"/>
         <EffectArray Reference="Unit,AP_DarkArchon,EnergyMax" Value="10"/>
         <EffectArray Reference="Unit,AP_DarkArchon,EnergyStart" Value="10"/>
         <EffectArray Reference="Unit,AP_ArbiterMP,EnergyMax" Value="10"/>
@@ -7638,6 +7645,7 @@
         <EffectArray Reference="Unit,AP_Interceptor,ShieldRegenRate" Value=".05"/>
         <EffectArray Reference="Unit,AP_InterceptorAiur,ShieldRegenRate" Value=".05"/>
         <EffectArray Reference="Unit,AP_Oracle,ShieldRegenRate" Value=".05"/>
+        <EffectArray Reference="Unit,AP_OracleGround,ShieldRegenRate" Value=".05"/>
         <EffectArray Reference="Unit,AP_Observer,ShieldRegenRate" Value=".05"/>
         <EffectArray Reference="Unit,AP_Mothership,ShieldRegenRate" Value=".05"/>
         <EffectArray Reference="Unit,AP_MothershipCore,ShieldRegenRate" Value=".05"/>
@@ -7791,7 +7799,9 @@
         <ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/>
         <EffectArray Reference="Unit,AP_Oracle,EnergyStart" Value="150"/>
+        <EffectArray Reference="Unit,AP_OracleGround,EnergyStart" Value="150"/>
         <EffectArray Reference="Unit,AP_Oracle,EnergyMax" Value="50"/>
+        <EffectArray Reference="Unit,AP_OracleGround,EnergyMax" Value="50"/>
         <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
         <Icon value="Assets\Textures\BTN-Upgrade-Protoss-ResearchBosonicCore.dds"/>
         <Race value="Prot"/>
@@ -8500,6 +8510,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_InterceptorTaldarim,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,Mothership,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>-->
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel1.dds"/>
@@ -8543,6 +8554,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_InterceptorTaldarim,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,Mothership,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>-->
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel2.dds"/>
@@ -8586,6 +8598,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_InterceptorTaldarim,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,Mothership,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>-->
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-airarmorlevel3.dds"/>
@@ -8628,6 +8641,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_InterceptorTaldarim,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,Mothership,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>-->
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel4.dds"/>
@@ -8669,6 +8683,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_InterceptorTaldarim,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,Mothership,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>-->
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airarmorlevel5.dds"/>
@@ -9345,6 +9360,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_Stargate,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_FleetBeacon,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel1.dds"/>
@@ -9448,6 +9464,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_Stargate,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_FleetBeacon,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel2.dds"/>
@@ -9551,6 +9568,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_Stargate,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_FleetBeacon,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,ShieldArmorIcon" Value="Assets\Textures\btn-upgrade-protoss-shieldslevel3.dds"/>
@@ -9653,6 +9671,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_Stargate,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_FleetBeacon,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel4.dds"/>
@@ -9755,6 +9774,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_Stargate,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_FleetBeacon,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_Oracle,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_OracleGround,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutMP,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarim,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_ScoutTaldarimMorphed,ShieldArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-shieldslevel5.dds"/>
@@ -12707,6 +12727,8 @@
     <CUpgrade id="AP_OracleSustainablePulsarBeam">
         <EffectArray Reference="Weapon,AP_OracleDummyWeapon,Options[Disabled]" Value="1"/>
         <EffectArray Operation="Subtract" Reference="Weapon,AP_Oracle,Options[Disabled]" Value="1"/>
+        <EffectArray Operation="Subtract" Reference="Weapon,AP_OracleGround,Options[Disabled]" Value="1"/>
+        <AffectedUnitArray value="AP_OracleGround"/>
         <AffectedUnitArray value="AP_Oracle"/>
     </CUpgrade>
     <CUpgrade id="AP_ArbiterReinforcedHull">
@@ -15309,6 +15331,7 @@
         <EffectArray Reference="Unit,AP_MothershipAiur,ShieldRegenRate" Value="0.05"/>
         <!-- Oracle -->
         <EffectArray Reference="Unit,AP_Oracle,ShieldRegenRate" Value="0.05"/>
+        <EffectArray Reference="Unit,AP_OracleGround,ShieldRegenRate" Value="0.05"/>
         <EffectArray Reference="Unit,AP_OracleStasisTrap,ShieldRegenRate" Value="0.05"/>
         <!-- Scout-->
         <EffectArray Reference="Unit,AP_ScoutMP,ShieldRegenRate" Value="0.05"/>
@@ -15451,6 +15474,7 @@
         <EffectArray Reference="Unit,AP_MothershipAiur,ShieldRegenRate" Value="5"/>
         <!-- Oracle -->
         <EffectArray Reference="Unit,AP_Oracle,ShieldRegenRate" Value="5"/>
+        <EffectArray Reference="Unit,AP_OracleGround,ShieldRegenRate" Value="5"/>
         <EffectArray Reference="Unit,AP_OracleStasisTrap,ShieldRegenRate" Value="5"/>
         <!-- Scout-->
         <EffectArray Reference="Unit,AP_ScoutMP,ShieldRegenRate" Value="5"/>
@@ -16784,4 +16808,5 @@
     <CUpgrade id="AP_AllowTradeWorkers"/>
     <CUpgrade id="AP_WarhoundBrawlerConfiguration"/>
     <CUpgrade id="AP_WarhoundJumpJets"/>
+    <CUpgrade id="AP_OracleGround"/>
 </Catalog>

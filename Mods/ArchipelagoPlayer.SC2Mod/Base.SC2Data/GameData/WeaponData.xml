@@ -4325,4 +4325,21 @@
         <Range value="0.8"/>
         <Period value="1"/>
     </CWeaponLegacy>
+    <CWeaponLegacy id="AP_OracleGround">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="Disabled" value="1"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-oraclepulsarcannonon.dds"/>
+        <DisplayEffect value="AP_OracleWeaponDamage"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <RangeSlop value="0"/>
+        <TeleportResetRange value="0"/>
+        <Period value="0.86"/>
+        <Backswing value="0.75"/>
+        <Effect value="AP_OracleWeaponCreatePersistent"/>
+        <LegacyOptions index="CanRetargetWhileChanneling" value="1"/>
+        <LegacyOptions index="NoDeceleration" value="1"/>
+        <AllowedMovement value="Slowing"/>
+        <MinScanRange value="7.5"/>
+    </CWeaponLegacy>
 </Catalog>
