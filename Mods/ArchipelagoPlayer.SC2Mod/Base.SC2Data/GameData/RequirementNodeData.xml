@@ -7831,12 +7831,10 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_WarhoundBrawlerConfiguration">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="AP_WarhoundBrawlerConfiguration" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_WarhoundJumpJets">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="AP_WarhoundJumpJets" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
 </Catalog>
