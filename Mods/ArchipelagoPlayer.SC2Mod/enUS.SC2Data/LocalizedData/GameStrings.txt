@@ -4070,8 +4070,8 @@ Button/Tooltip/AP_WarHound=Anti-vehicle mech. Haywire missiles do bonus damage t
 Button/Tooltip/AP_WarPig=War Pig mercenaries are well known for both their ruthless combat efficiency as well as their heavy drinking and barroom brawls. Their upgraded equipment and thousands of hours of combat experience make them well worth all the trouble they cause when they are off duty.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_WarhoundReinforcedPlating=Increases Warhound armor by 2.
 Button/Tooltip/AP_WarhoundBrawlerOff=Disable Brawler configuration. Re-enables your ranged weapon, but disables the damage reduction shield and bonuses to your melee weapon.
-Button/Tooltip/AP_WarhoundBrawlerOn=Enable Brawler configuration. Improves your melee weapon and gives you a damage reduction shield, but disables your ranged weapon.
-Button/Tooltip/AP_WarhoundJump=The Warhound jumps a short distance, slowing nearby enemies on impact by <d ref="Behavior,AP_WarhoundJumpSlow,Modification.AttackSpeedMultiplier *100"/>% for <d ref="Behavior,AP_WarhoundJumpSlow,Duration"/> seconds.
+Button/Tooltip/AP_WarhoundBrawlerOn=Enable Brawler configuration. Improves your melee weapon and grants a <d ref="-1*Behavior,AP_WarhoundBrawler,Modification.DamageTakenFraction[Ranged] * 100"/>% damage reduction shield, but disables your ranged weapon.
+Button/Tooltip/AP_WarhoundJump=The Warhound jumps a short distance, slowing movement and attack speed of nearby enemies on impact by <d ref="Behavior,AP_WarhoundJumpSlow,Modification.AttackSpeedMultiplier *100"/>% for <d ref="Behavior,AP_WarhoundJumpSlow,Duration"/> seconds.
 Button/Tooltip/AP_WarpGate=Enables warp in of Protoss ground units.
 Button/Tooltip/AP_WarpInAdept=Purifier Faction<n/>Ranged specialist. Can use Psionic Transfer.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_WarpInReplicant=Mimic unit. Can turn into a copy of an allied or enemy unit.
