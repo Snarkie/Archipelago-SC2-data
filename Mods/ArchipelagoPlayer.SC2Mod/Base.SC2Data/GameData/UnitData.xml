@@ -26206,12 +26206,12 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="AP_WarhoundReinforcedPlating" Type="Passive" Requirements="AP_HaveWarhoundReinforcedPlating" Row="1" Column="1"/>
-            <LayoutButtons Face="AP_TornadoMissile" Type="AbilCmd" AbilCmd="AP_TornadoMissile,0" Row="1" Column="0"/>
-            <LayoutButtons Face="AP_BuildWarhoundAutoTurret" Type="AbilCmd" AbilCmd="AP_BuildWarhoundAutoTurret,0" Row="2" Column="1"/>
-            <LayoutButtons Face="AP_WarhoundJump" Type="AbilCmd" AbilCmd="AP_WarhoundJump,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="AP_WarhoundBrawlerOn" Type="AbilCmd" AbilCmd="AP_WarhoundBrawler,On" Row="2" Column="2"/>
-            <LayoutButtons Face="AP_WarhoundBrawlerOff" Type="AbilCmd" AbilCmd="AP_WarhoundBrawler,Off" Row="2" Column="3"/>
+            <LayoutButtons Face="AP_WarhoundReinforcedPlating" Type="Passive" Requirements="AP_HaveWarhoundReinforcedPlating" Row="1" Column="0"/>
+            <LayoutButtons Face="AP_TornadoMissile" Type="AbilCmd" AbilCmd="AP_TornadoMissile,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_BuildWarhoundAutoTurret" Type="AbilCmd" AbilCmd="AP_BuildWarhoundAutoTurret,0" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_WarhoundJump" Type="AbilCmd" AbilCmd="AP_WarhoundJump,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_WarhoundBrawlerOn" Type="AbilCmd" AbilCmd="AP_WarhoundBrawler,On" Row="2" Column="3"/>
+            <LayoutButtons Face="AP_WarhoundBrawlerOff" Type="AbilCmd" AbilCmd="AP_WarhoundBrawler,Off" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.8125"/>
         <SeparationRadius value="0.625"/>
