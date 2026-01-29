@@ -16768,4 +16768,6 @@
         <EffectArray Operation="Set" Reference="Abil,AP_SummonZergMercs,InfoArray[Train6].Button.Requirements" Value="AP_ZergMercCompoundBroodWar"/>
     </CUpgrade>
     <CUpgrade id="AP_AllowTradeWorkers"/>
+    <CUpgrade id="AP_WarhoundBrawlerConfiguration"/>
+    <CUpgrade id="AP_WarhoundJumpJets"/>
 </Catalog>

@@ -22440,6 +22440,23 @@
         <On Terms="Effect.AP_TornadoMissileCP.Stop; At Caster" Send="AnimBracketStop Cover"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create AP_Warhound_Land"/>
         <On Terms="UnitDeathCustomize; Option Model Low" Send="DeathCustomize Low"/>
+        <On Terms="Abil.AP_WarhoundJump.SourceCastStart" Send="Signal JumpStart"/>
+        <On Terms="Signal.*.JumpStart" Send="AnimPlay AP_JumpStart Unload,End 0 0.200000 -1.000000 0.500000 AsTimeScale"/>
+        <On Terms="Signal.*.JumpStart" Send="AnimSetCompletion AP_JumpStart 26.600000"/>
+        <On Terms="Effect.AP_WarhoundJumpLaunch.Start" Send="Signal Jump"/>
+        <On Terms="Signal.*.Jump" Send="AnimClear AP_JumpStart"/>
+        <On Terms="Signal.*.Jump" Send="AnimPlay AP_Jump Spell,A,01 0 -1.000000 -1.000000 0.500000 AsTimeScale"/>
+        <On Terms="ActorCreation; IsInEditor" Send="Signal JumpStart"/>
+        <On Terms="ActorCreation; IsInEditor" Send="TimerSet 0.500000"/>
+        <On Terms="TimerExpired" Send="Signal Jump"/>
+        <On Terms="Signal.*.JumpStart" Send="Create AP_WarhoundJumpFlameRight"/>
+        <On Terms="Signal.*.JumpStart" Send="Create AP_WarhoundJumpFlameLeft"/>
+        <On Terms="Effect.AP_WarhoundJumpImpact.Start" Target="AP_WarhoundJumpFlameRight" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.AP_WarhoundJumpImpact.Start" Target="AP_WarhoundJumpFlameLeft" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.AP_WarhoundJumpImpact.Start" Send="AnimClear AP_Jump 1.000000"/>
+        <On Terms="Signal.*.JumpStart" Send="DestroyParticles"/>
+        <On Terms="WeaponStart.AP_WarHoundMeleeBrawler.AttackStart" Send="AnimBracketStart Attack Spell,A"/>
+        <On Terms="WeaponStop.AP_WarHoundMeleeBrawler.AttackStop" Send="AnimBracketStop Attack"/>
         <DeathArray index="Normal" ModelLink="AP_WarHoundDeath" SoundLink="SiegeTank_Explode"/>
         <DeathCustoms ModelLink="AP_WarhoundDeathRagdoll" Name="RagdollBasic">
             <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
@@ -22568,6 +22585,8 @@
             <Physics value="AP_WarhoundMeleeAttackForceLateral"/>
         </ImpactPhysics>
         <ShieldFlashType value="Header"/>
+        <On Terms="Effect.AP_WarHoundMeleeBrawler.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.AP_WarHoundMeleeBrawler.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
     </CActorAction>
     <CActorSound id="AP_WarHound_Death" parent="SoundOneShot">
         <On Terms="UnitDeath.AP_WarHound; PassChance 25.000000" Send="Create"/>
@@ -46536,4 +46555,101 @@
             <Image value="Assets\Textures\Wireframe-Protoss-warpgate-Shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorModel id="AP_WarhoundBrawlerFist" parent="ModelAdditionNoAnims">
+        <Remove Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD IGNORE GLstand IGNORE"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="UnitBirth.AP_WarHound.EditorPlaced" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,100,0 2.000000}"/>
+        <On Terms="Behavior.AP_WarhoundBrawler.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.700000 0.500000"/>
+        <On Terms="Behavior.AP_WarhoundBrawler.Off" Send="SetOpacity 0.000000 0.500000"/>
+        <On Terms="Behavior.AP_WarhoundBrawler.Off" Send="TimerSet 0.500000"/>
+        <On Terms="TimerExpired" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachTarget5 AP_WarhoundBrawlerFistOffset AP_WarhoundBrawlerFistRotation"/>
+        <Scale value="0.600000,1.000000,0.600000"/>
+    </CActorModel>
+    <CActorModel id="AP_WarhoundBrawlerFistImpact" parent="ModelAnimationStyleOneShot">
+        <Remove Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce 0.200000 AsTimeScale"/>
+        <On Terms="Effect.AP_WarHoundMeleeBrawler.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 1.000000"/>
+        <On Terms="ActorCreation" Send="Create AP_WarhoundBrawlerFistImpactSound"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorSound id="AP_WarhoundBrawlerFistImpactSound" parent="SoundOneShot">
+        <Sound value="AP_Alarak_LightningCharge_Start"/>
+    </CActorSound>
+    <CActorSiteOpLocalOffset id="AP_WarhoundBrawlerFistOffset">
+        <LocalOffset value="0.400000,0.000000,-0.600000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotationExplicit id="AP_WarhoundBrawlerFistRotation">
+        <Forward value="0.000000,0.000000,1.000000"/>
+        <Up value="-1.000000,0.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorModel id="AP_WarhoundBrawlerShield" parent="ModelAddition">
+        <Remove Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentForceLooping"/>
+        <On Terms="UnitBirth.AP_WarHound.EditorPlaced" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet"/>
+        <On Terms="TimerExpired" Send="SetTintColor {255,50,0 10.000000}"/>
+        <On Terms="Behavior.AP_WarhoundBrawler.On" Send="Create"/>
+        <On Terms="Behavior.AP_WarhoundBrawler.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="GuardianShield"/>
+        <Scale value="0.200000,0.200000,0.300000"/>
+    </CActorModel>
+    <CActorSiteOpLocalOffset id="AP_WarhoundJumpFlameOffsetRight">
+        <LocalOffset value="0.300000,0.300000,0.300000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="AP_WarhoundJumpFlameOffsetLeft">
+        <LocalOffset value="-0.300000,0.300000,0.300000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorModel id="AP_WarhoundJumpFlameRight" parent="ModelAddition">
+        <HostSiteOps Ops="SOpAttachCenter AP_WarhoundJumpFlameRotation AP_WarhoundJumpFlameOffsetRight"/>
+        <Model value="AP_InfestedBullfrogFlameJets"/>
+        <Scale value="2.000000,1.500000,2.000000"/>
+        <On Terms="ActorCreation" Send="TimerSet 3.000000"/>
+        <On Terms="TimerExpired" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorModel id="AP_WarhoundJumpFlameLeft" parent="ModelAddition">
+        <HostSiteOps Ops="SOpAttachCenter AP_WarhoundJumpFlameRotation AP_WarhoundJumpFlameOffsetLeft"/>
+        <Model value="AP_InfestedBullfrogFlameJets"/>
+        <Scale value="2.000000,1.500000,2.000000"/>
+        <On Terms="ActorCreation" Send="TimerSet 3.000000"/>
+        <On Terms="TimerExpired" Send="AnimBracketStop BSD"/>
+    </CActorModel>
+    <CActorSiteOpRotationExplicit id="AP_WarhoundJumpFlameRotation">
+        <Forward value="0.000000,0.400000,-1.000000"/>
+        <Up value="0.000000,0.000000,1.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorModel id="AP_WarhoundJumpImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.AP_WarhoundJumpImpact.Start" Send="Create"/>
+        <Model value="AP_SiegeTank_BlackOps_JumpJets_Land"/>
+    </CActorModel>
+    <CActorSound id="AP_WarhoundJumpImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.AP_WarhoundJumpImpact.Start" Send="Create"/>
+        <Sound value="Terran_CovertOps_Impact_Metal"/>
+    </CActorSound>
+    <CActorModel id="AP_WarhoundJumpLaunch" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.AP_WarhoundJumpLaunch.Start; At Caster" Send="Create"/>
+        <Model value="AP_MercReaperJumpLandUpModel"/>
+        <Scale value="2.000000"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+        <Host Subject="_Selectable"/>
+    </CActorModel>
+    <CActorSound id="AP_WarhoundJumpLaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.AP_WarhoundJumpLaunch.Start" Send="Create"/>
+        <Sound value="AP_Hellbat_JumpJet_Launch"/>
+    </CActorSound>
+    <CActorSound id="AP_WarhoundJumpChargeSound" parent="SoundOneShot">
+        <Sound value="AP_Moebius02_Reactor_Fire_Flare"/>
+        <On Terms="Abil.AP_WarhoundJump.SourceCastStart" Send="Create"/>
+    </CActorSound>
 </Catalog>

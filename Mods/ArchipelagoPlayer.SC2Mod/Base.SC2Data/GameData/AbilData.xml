@@ -16025,4 +16025,28 @@
         <Flags index="WarpTrainersButton" value="0"/>
         <SharedFlags index="SkipPreload" value="1"/>
     </CAbilWarpTrain>
+    <CAbilBehavior id="AP_WarhoundBrawler">
+        <CmdButtonArray index="On" DefaultButtonFace="AP_WarhoundBrawlerOn" Requirements="AP_HaveWarhoundBrawlerConfiguration"/>
+        <CmdButtonArray index="Off" DefaultButtonFace="AP_WarhoundBrawlerOff" Requirements="AP_HaveWarhoundBrawlerConfiguration"/>
+        <Flags index="Toggle" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="5"/>
+        </Cost>
+        <OffCost>
+            <Cooldown TimeUse="5"/>
+        </OffCost>
+        <BehaviorArray value="AP_WarhoundBrawler"/>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="AP_WarhoundJump">
+        <Cost>
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <Range value="7"/>
+        <CastIntroTime value="0.5"/>
+        <CastOutroTime value="0.5"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_WarhoundJump" Requirements="AP_HaveWarhoundJumpJets"/>
+    </CAbilEffectTarget>
 </Catalog>
