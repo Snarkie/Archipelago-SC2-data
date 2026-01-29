@@ -46652,4 +46652,5 @@
         <Sound value="AP_Moebius02_Reactor_Fire_Flare"/>
         <On Terms="Abil.AP_WarhoundJump.SourceCastStart" Send="Create"/>
     </CActorSound>
+    <CActorRange id="AP_WarhoundJumpRange" parent="RangeAbil" abil="AP_WarhoundJump"/>
 </Catalog>
