@@ -719,6 +719,7 @@
         <!-- Warhound -->
         <EffectArray Reference="Effect,AP_WarHound,Amount" Value="2"/>
         <EffectArray Reference="Weapon,AP_WarHound,Level" Value="1"/>
+        <EffectArray Reference="Effect,AP_WarHoundMelee,Amount" Value="2"/>
         <EffectArray Reference="Effect,AP_WarHoundMeleeBrawler,Amount" Value="3"/>
         <EffectArray Reference="Weapon,AP_WarHoundMeleeBrawler,Level" Value="1"/>
         <!-- Merc Thor -->
