@@ -10911,6 +10911,7 @@
             <DamageTakenFraction index="NoProc" value="-0.4"/>
             <WeaponArray Link="AP_WarHoundMeleeBrawler"/>
             <WeaponDisableArray value="AP_WarHound"/>
+            <WeaponDisableArray value="AP_WarHoundMelee"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_WarhoundJumpSlow">
