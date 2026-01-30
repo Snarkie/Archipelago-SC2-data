@@ -4857,4 +4857,7 @@
     <CRequirement id="AP_HaveWarhoundJumpJets">
         <NodeArray index="Show" Link="AP_WarhoundJumpJets"/>
     </CRequirement>
+    <CRequirement id="AP_HaveOracleGround">
+        <NodeArray index="Show" Link="AP_OracleGround"/>
+    </CRequirement>
 </Catalog>
