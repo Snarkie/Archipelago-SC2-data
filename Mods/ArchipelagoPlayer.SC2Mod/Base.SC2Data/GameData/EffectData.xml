@@ -19292,7 +19292,7 @@
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="20"/>
+        <Amount value="17"/>
         <Death value="Blast"/>
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Fraction="1"/>
@@ -19302,7 +19302,7 @@
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="20"/>
+        <Amount value="17"/>
         <Death value="Blast"/>
         <SearchFilters value="Ground;Self,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1" Fraction="0.5"/>
@@ -24848,7 +24848,7 @@
     </CEffectSet>
     <CEffectCreatePersistent id="AP_CarrierPurifierBombingZonePersistent">
         <EditorCategories value="Race:Protoss"/>
-        <PeriodCount value="72"/>
+        <PeriodCount value="68"/>
         <PeriodicEffectArray value="AP_CarrierPurifierBombingZoneSearchArea"/>
         <PeriodicPeriodArray value="0.25"/>
     </CEffectCreatePersistent>

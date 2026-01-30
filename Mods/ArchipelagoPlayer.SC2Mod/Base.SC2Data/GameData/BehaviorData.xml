@@ -10896,7 +10896,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_CarrierPurifierBomberCount">
         <InfoFlags index="Hidden" value="1"/>
-        <MaxStackCount value="6"/>
+        <MaxStackCount value="5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_WarhoundBrawler">
         <InfoIcon value="Assets\Textures\btn-unit-terran-tychuswarhound.dds"/>

@@ -2713,9 +2713,9 @@ Button/Tooltip/AP_CarrierAiur=Aiur Faction<n/>Capital ship. Builds and launches 
 Button/Tooltip/AP_CarrierAiurWarCouncil=Aiur Faction<n/>Capital ship. Builds and launches Interceptors that attack enemy targets. Repair Drones heal nearby mechanical units.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AP_CarrierHyperjump=Teleports the Skylord to the target location.
 Button/Tooltip/AP_CarrierPurifier=Purifier Faction<n/>Capital ship. Builds and launches fragile, high-damage Bombers to indiscriminately bomb target areas. <n/><n/><c val="ffff8a">Can attack ground and air units.</c>
-Button/Tooltip/AP_CarrierPurifierDispatchBombers=Send all available bombers to the target location, where they will saturate the area with explosives for <d ref="Behavior,AP_ReleaseInterceptorsTimedLife,Duration"/> seconds before expiring.
+Button/Tooltip/AP_CarrierPurifierDispatchBombers=Send all available bombers to the target location, where they will saturate the area with explosives for <d ref="Behavior,AP_ReleaseInterceptorsTimedLife,Duration"/> seconds before expiring.<n/><n/><c val="ffff8a">Caution: Deals friendly fire damage!</c>
 Button/Tooltip/AP_CarrierPurifierDispatchBombersCount=<d ref="$BehaviorStackCount:AP_CarrierPurifierBomberCount$"/>
-Button/Tooltip/AP_CarrierPurifierBomberMiniaturization=Triremes can carry up to 6 bombers.
+Button/Tooltip/AP_CarrierPurifierBomberMiniaturization=Triremes can carry up to 5 bombers.<n/><n/><c val="FFE303">War Council Upgrade.</c>
 Button/Tooltip/AP_CarrierRepairDrone=Flying spy. Cloak renders the unit invisible to enemies without detection.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/AP_CarrierStructuralIntegrityReinforcements=Increases Carrier armor by 2.
 Button/Tooltip/AP_CarrierTaldarim=Tal'darim Faction<n/>Capital ship. Fires a slow but powerful laser blast that damages enemies in a line.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -6134,6 +6134,7 @@ Unit/Name/AP_Bunker=Bunker
 Unit/Name/AP_Carrier=Carrier
 Unit/Name/AP_CarrierAiur=Carrier
 Unit/Name/AP_CarrierPurifier=Trireme
+Unit/Name/AP_CarrierPurifierBomber=Trireme Bomber
 Unit/Name/AP_CarrierRepairDrone=Repair Drone
 Unit/Name/AP_CarrierTaldarim=Skylord
 Unit/Name/AP_ChronoDrone=Chrono Drone
@@ -7364,6 +7365,7 @@ Weapon/Name/AP_WreckingCrewFighter=Lanzer Torpedoes
 Weapon/Tip/AP_AcidSpines=
 Weapon/Tip/AP_BullfrogSpit=Direct hits deal friendly-fire damage.
 Weapon/Tip/AP_ATXLaserBatteryMengsk=Deals 75% base damage against air targets.
+Weapon/Tip/AP_CarrierPurifierBomberBomb=Deals friendly-fire damage.
 Weapon/Tip/AP_D8Charge=Only used against structures.
 Weapon/Tip/AP_Impaler=<c val="#ColorAttackInfo">Must be burrowed to attack.</c>
 Weapon/Tip/AP_LocustFlyingLaunch=<c val="#ColorAttackInfo">Must be rooted or burrowed to attack.</c>

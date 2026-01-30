@@ -1504,7 +1504,7 @@
     </CRequirement>
     <CRequirement id="AP_ArmCarrierPurifierBomberUpgraded">
         <EditorCategories value="Race:Protoss,TechType:Unit"/>
-        <NodeArray index="Use" Link="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit6"/>
+        <NodeArray index="Use" Link="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit5"/>
     </CRequirement>
     <CRequirement id="AP_UseDarkProtoss">
         <EditorCategories value="Race:Zerg,TechType:Ability"/>
@@ -3183,6 +3183,7 @@
     <CRequirement id="AP_HaveTriremeBomberMiniaturization">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="AP_CountUpgradeTriremeBomberMiniaturizationCompleteOnly"/>
+        <NodeArray index="Show" Link="AP_CountUpgradeWarCouncilNerfsCompleteOnly"/>
     </CRequirement>
     <CRequirement id="AP_HaveVoidRaySpeedUpgrade">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>

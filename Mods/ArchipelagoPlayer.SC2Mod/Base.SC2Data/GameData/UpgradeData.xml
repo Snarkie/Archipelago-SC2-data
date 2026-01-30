@@ -16772,7 +16772,7 @@
     <CUpgrade id="AP_WarhoundBrawlerConfiguration"/>
     <CUpgrade id="AP_WarhoundJumpJets"/>
     <CUpgrade id="AP_CarrierPurifierHangarUpgrade">
-        <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,MaxCount" Value="6"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,MaxCount" Value="5"/>
         <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,InfoArray[Ammo1].Button.Requirements" Value="AP_ArmCarrierPurifierBomberUpgraded"/>
         <EditorCategories value="UpgradeType:Talents"/>
     </CUpgrade>

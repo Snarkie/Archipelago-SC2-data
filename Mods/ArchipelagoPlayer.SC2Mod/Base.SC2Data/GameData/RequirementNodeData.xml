@@ -2906,10 +2906,10 @@
         <OperandArray index="1" value="3"/>
         <Tooltip value="RequirementNode/Tooltip/AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit3"/>
     </CRequirementLT>
-    <CRequirementLT id="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit6">
+    <CRequirementLT id="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit5">
         <OperandArray index="0" value="AP_CountUnitCarrierPurifierBomberQueuedOrBetterAtUnit"/>
-        <OperandArray index="1" value="6"/>
-        <Tooltip value="RequirementNode/Tooltip/AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit6"/>
+        <OperandArray index="1" value="5"/>
+        <Tooltip value="RequirementNode/Tooltip/AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit5"/>
     </CRequirementLT>
     <CRequirementCountUnit id="AP_CountUnitInterceptorQueuedOrBetterAtUnit">
         <Count Link="AP_Interceptor" State="QueuedOrBetterAtUnit"/>

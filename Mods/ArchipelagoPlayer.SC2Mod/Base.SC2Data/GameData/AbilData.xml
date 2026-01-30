@@ -16052,7 +16052,7 @@
         <Cost>
             <Cooldown>
                 <Location value="Unit"/>
-                <TimeUse value="8"/>
+                <TimeUse value="10"/>
             </Cooldown>
         </Cost>
         <Effect index="0" value="AP_CarrierPurifierBombingRunSet"/>
