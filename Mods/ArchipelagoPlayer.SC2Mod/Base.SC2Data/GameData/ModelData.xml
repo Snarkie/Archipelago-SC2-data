@@ -22038,4 +22038,10 @@
         <SelectionRadius value="2.000000"/>
         <ShadowRadius value="2.000000"/>
     </CModel>
+    <CModel id="AP_WarhoundBrawlerFist">
+        <Model value="Assets\Effects\Protoss\ImmortalShield\ImmortalShield.m3"/>
+    </CModel>
+    <CModel id="AP_WarhoundBrawlerFistImpact">
+        <Model value="Assets\Effects\Zerg\ZurvanPsiArcImpact\ZurvanPsiArcImpact.m3"/>
+    </CModel>
 </Catalog>

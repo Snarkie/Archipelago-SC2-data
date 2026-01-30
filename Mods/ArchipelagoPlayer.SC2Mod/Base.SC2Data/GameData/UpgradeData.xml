@@ -719,6 +719,9 @@
         <!-- Warhound -->
         <EffectArray Reference="Effect,AP_WarHound,Amount" Value="2"/>
         <EffectArray Reference="Weapon,AP_WarHound,Level" Value="1"/>
+        <EffectArray Reference="Effect,AP_WarHoundMelee,Amount" Value="2"/>
+        <EffectArray Reference="Effect,AP_WarHoundMeleeBrawler,Amount" Value="3"/>
+        <EffectArray Reference="Weapon,AP_WarHoundMeleeBrawler,Level" Value="1"/>
         <!-- Merc Thor -->
         <EffectArray Reference="Weapon,AP_MercThorsHammer,Level" Value="1"/>
         <EffectArray Reference="Weapon,AP_MercJavelinMissileLaunchers,Level" Value="1"/>
@@ -760,6 +763,7 @@
         <EffectArray Reference="Weapon,AP_TyphoonMissilePod,RateMultiplier" Value="0.05"/>
         <EffectArray Reference="Weapon,AP_WarHound,RateMultiplier" Value="0.05"/>
         <EffectArray Reference="Weapon,AP_WarHoundMelee,RateMultiplier" Value="0.05"/>
+        <EffectArray Reference="Weapon,AP_WarHoundMeleeBrawler,RateMultiplier" Value="0.05"/>
     </CUpgrade>
     <CUpgrade default="1" id="AP_BaseProtossGroundWeapons">
         <!--  Zealot -->
@@ -5459,6 +5463,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <LeaderLevel value="1"/>
     </CUpgrade>
@@ -5492,6 +5497,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <LeaderLevel value="2"/>
     </CUpgrade>
@@ -5525,6 +5531,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <LeaderLevel value="3"/>
     </CUpgrade>
@@ -5558,6 +5565,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <LeaderLevel value="4"/>
     </CUpgrade>
@@ -5591,6 +5599,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <LeaderLevel value="5"/>
     </CUpgrade>
@@ -5624,6 +5633,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel1.dds"/>
     </CUpgrade>
     <CUpgrade id="AP_TerranVehicleWeaponsUltraCapacitorsLevel2" parent="AP_BaseTerranVehicleWeaponsUltraCapacitors">
@@ -5656,6 +5666,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel2.dds"/>
     </CUpgrade>
     <CUpgrade id="AP_TerranVehicleWeaponsUltraCapacitorsLevel3" parent="AP_BaseTerranVehicleWeaponsUltraCapacitors">
@@ -5688,6 +5699,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="Assets\Textures\btn-upgrade-terran-vehicleweaponslevel3.dds"/>
     </CUpgrade>
     <CUpgrade id="AP_TerranVehicleWeaponsUltraCapacitorsLevel4" parent="AP_BaseTerranVehicleWeaponsUltraCapacitors">
@@ -5720,6 +5732,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel4.dds"/>
         <LeaderLevel value="4"/>
     </CUpgrade>
@@ -5753,6 +5766,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_Predator,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TyphoonMissilePod,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_WarHound,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_WarHoundMeleeBrawler,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_MedivacSiegeTankAirlift,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-terran-vehicleweaponslevel5.dds"/>
         <LeaderLevel value="5"/>
     </CUpgrade>
@@ -16755,6 +16769,8 @@
         <EffectArray Operation="Set" Reference="Abil,AP_SummonZergMercs,InfoArray[Train6].Button.Requirements" Value="AP_ZergMercCompoundBroodWar"/>
     </CUpgrade>
     <CUpgrade id="AP_AllowTradeWorkers"/>
+    <CUpgrade id="AP_WarhoundBrawlerConfiguration"/>
+    <CUpgrade id="AP_WarhoundJumpJets"/>
     <CUpgrade id="AP_CarrierPurifierHangarUpgrade">
         <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,MaxCount" Value="6"/>
         <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,InfoArray[Ammo1].Button.Requirements" Value="AP_ArmCarrierPurifierBomberUpgraded"/>

@@ -4855,4 +4855,10 @@
     <CRequirement id="AP_HaveFastDelivery">
         <NodeArray index="Show" Link="AP_CountUpgradeFastDelivery"/>
     </CRequirement>
+    <CRequirement id="AP_HaveWarhoundBrawlerConfiguration">
+        <NodeArray index="Show" Link="AP_WarhoundBrawlerConfiguration"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveWarhoundJumpJets">
+        <NodeArray index="Show" Link="AP_WarhoundJumpJets"/>
+    </CRequirement>
 </Catalog>

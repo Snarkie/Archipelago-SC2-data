@@ -7834,4 +7834,12 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_SporeCrawlerBioBonus" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_WarhoundBrawlerConfiguration">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_WarhoundBrawlerConfiguration" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_WarhoundJumpJets">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_WarhoundJumpJets" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
 </Catalog>

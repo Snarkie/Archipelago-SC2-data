@@ -642,8 +642,8 @@ void libABFE498B_gf_AP_Triggers_unlockTerranArmory7 (int lp_player, int lp_bitAr
         libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundAutoTurret, // 20
         libABFE498B_gf_AP_Triggers_Terran_unlockGhostBargainBinPrices, // 21
         libABFE498B_gf_AP_Triggers_Terran_unlockSpectreBargainBinPrices, //22
-        ap_triggers_PlayerConsumer_sig, //23
-        ap_triggers_PlayerConsumer_sig, //24
+        libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundBrawlerConfiguration, //23
+        libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundJumpJets, //24
         ap_triggers_PlayerConsumer_sig, //25
         ap_triggers_PlayerConsumer_sig, //26
         ap_triggers_PlayerConsumer_sig, //27
@@ -4533,6 +4533,18 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundAutoTurret (int lp_player) 
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_WarhoundAutoTurret", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundBrawlerConfiguration (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_WarhoundBrawlerConfiguration", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundJumpJets (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_WarhoundJumpJets", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Terran_unlockHERCResourceEfficiency (int lp_player) {
