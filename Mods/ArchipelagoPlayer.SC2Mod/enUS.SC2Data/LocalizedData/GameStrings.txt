@@ -1529,6 +1529,9 @@ Button/Name/AP_ImpalerDamage=Sunken Spines
 Button/Name/AP_ImpalerDen=Mutate into Impaler Den
 Button/Name/AP_ImpalerGenerateCreep=Secretion Glands
 Button/Name/AP_ImpalerPassive=Impaler
+Button/Name/AP_ImpalerDeepTunnel=Deep Tunnel
+Button/Name/AP_ImpalerDistributedAttack=Distributed Attack
+Button/Name/AP_ImpalerTentacleExtensions=Tentacle Extensions
 Button/Name/AP_ImpalingStrike=Impaling Strike
 Button/Name/AP_ImpalingStrikeStun=Impaling Strike Stun
 Button/Name/AP_ImprovedIonCannons=Ionic Wavelength Flux
@@ -2213,6 +2216,7 @@ Button/Name/AP_TaldarimMothershipGroundSlowInstall=Install Shadow of Death
 Button/Name/AP_TaldarimWarpConduit=War Configuration
 Button/Name/AP_TargetLock=Target Lock
 Button/Name/AP_TechReactor=Build Tech Reactor
+Button/Name/AP_TempestDistributedAttack=Distributed Attack
 Button/Name/AP_TempestGravitySling=Gravity Sling
 Button/Name/AP_TempestInterplanetaryRange=Interplanetary Range
 Button/Name/AP_TempestPurifier=Warp in Tempest
@@ -3100,6 +3104,9 @@ Button/Tooltip/AP_Impaler=Long-range anti-armor ambusher. Must burrow to attack.
 Button/Tooltip/AP_ImpalerBurrowed=Long-range anti-armor ambusher. Must burrow to attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/AP_ImpalerDamage=Increases attack damage.
 Button/Tooltip/AP_ImpalerDen=<c val="ffff8a">Enables:</c><n/>- Impalers from Hydralisks
+Button/Tooltip/AP_ImpalerDeepTunnel=Can travel quickly to any location with creep.
+Button/Tooltip/AP_ImpalerDistributedAttack=Putting this on Autocast will cause multiple Impalers to distribute their attacks across available targets.
+Button/Tooltip/AP_ImpalerTentacleExtensions=Piercing Tentacle bounces to a nearby secondary target. Deals half the damage of your main attack.
 Button/Tooltip/AP_ImpalerEgg=This cocoon contains a Hydralisk that is morphing into an Impaler.
 Button/Tooltip/AP_ImpalerGenerateCreep=Generates creep while standing still or burrowed.
 Button/Tooltip/AP_ImpalerPassive=Impaler Den enables you to morph Impalers from Hydralisks.
@@ -3897,6 +3904,7 @@ Button/Tooltip/AP_TaldarimWarpConduit=Warp Prisms transform between modes faster
 Button/Tooltip/AP_TargetLock=Increases damage dealt to target enemy unit by <d ref="Behavior,AP_ObserverTargetLock,Modification.DamageTakenFraction[Splash]*100"/>%. Effect lasts as long as the Havoc remains locked onto the target.
 Button/Tooltip/AP_TechLab=Enables additional unit construction options.
 Button/Tooltip/AP_TechReactor=Enables additional unit construction options and allows 2 units to be created simultaneously.
+Button/Tooltip/AP_TempestDistributedAttack=Putting this on Autocast will cause multiple Tempests to distribute their attacks across available targets.
 Button/Tooltip/AP_TempestGravitySling=Increases Tempest air attack range by +<d ref="$UpgradeEffectArrayValue:AP_TempestGravitySling:Weapon,AP_TempestPurifier,Range$"/> and cast range by +<d ref="$UpgradeEffectArrayValue:AP_TempestGravitySling:Abil,AP_LightningBomb,Range[0]$"/>.
 Button/Tooltip/AP_TempestInterplanetaryRange=Increases Tempest attack range by +<d ref="$UpgradeEffectArrayValue:AP_TempestInterplanetaryRange:Weapon,AP_TempestPurifier,Range$"/>.
 Button/Tooltip/AP_TempestPurifier=Purifier Faction<n/>Siege artillery craft. Attacks from long range.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
@@ -6069,6 +6077,7 @@ RequirementNode/Tooltip/AP_GTECountBehaviorMengskVeterancyWraithMengskCompleteOn
 RequirementNode/Tooltip/AP_GTECountBehaviorTradeChargeCompleteOnlyAtUnit1=Requires 1 Void Trade Token
 RequirementNode/Tooltip/AP_GTECountBehaviorTradeChargeCompleteOnlyAtUnit5=Requires 5 Void Trade Tokens
 RequirementNode/Tooltip/AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit3=Trireme must have fewer than 3 Bombers
+RequirementNode/Tooltip/AP_ImpalerBurrowed=Can only be used while burrowed
 RequirementNode/Tooltip/AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit6=Trireme must have fewer than 6 Bombers
 RequirementNode/Tooltip/AP_LTCountUnitInterceptorQueuedOrBetterAtUnit8=Carrier must have fewer than 8 Interceptors
 RequirementNode/Tooltip/AP_LTCountUnitInterceptorTaldarimQueuedOrBetterAtUnit8=Skylord must have fewer than 8 Interceptors
