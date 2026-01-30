@@ -8050,4 +8050,8 @@
         <Icon value="Assets\Textures\btn-unit-protoss-oracle.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-protoss-oracle.dds"/>
     </CButton>
+    <CButton id="AP_CorruptorAcidSplash">
+        <Icon value="AP\Assets\Textures\btn-zerg-AcidSplash.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-zerg-AcidSplash.dds"/>
+    </CButton>
 </Catalog>

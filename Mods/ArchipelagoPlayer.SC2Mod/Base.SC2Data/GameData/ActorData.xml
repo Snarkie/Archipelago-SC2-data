@@ -46758,4 +46758,23 @@
         <ScopeBearingsTracking value="ForceOff"/>
         <Model value="LiberatorAGSearchIndicator"/>
     </CActorModel>
+    <CActorAction id="AP_ParasiteSporeGround" parent="GenericAttack" effectAttack="AP_ParasiteSporeGroundDamage">
+        <ImpactMap index="None" Model="AP_ParasiteSporeGround"/>
+        <DamageMap index="None" Model="AP_ParasiteSporeGround"/>
+    </CActorAction>
+    <CActorModel id="AP_ParasiteSporeGroundImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.AP_ParasiteSporeGroundImpact.Start; At Effect" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow SOpMoveByDot3"/>
+        <Scale value="0.500000"/>
+    </CActorModel>
+    <CActorAction id="AP_ParasiteSporeGroundLaunch" parent="GenericAttack" effectImpact="AP_ParasiteSporeGroundImpact" effectLaunch="AP_ParasiteSporeGroundLaunch">
+        <ImpactSiteOps Ops="SOpShadow"/>
+        <ShieldFlashType value="Full"/>
+    </CActorAction>
+    <CActorMissile id="AP_ParasiteSporeGroundLaunchMissile" parent="GenericAttackMissile" unitName="AP_ParasiteSporeGroundMissile"/>
+    <CActorUnit id="AP_InvisibleTargetDummy" parent="GenericUnitMinimal" unitName="AP_InvisibleTargetDummy">
+        <Model value="Invisible"/>
+        <BuildModel value="Invisible"/>
+        <PlacementModel value="Invisible"/>
+    </CActorUnit>
 </Catalog>
