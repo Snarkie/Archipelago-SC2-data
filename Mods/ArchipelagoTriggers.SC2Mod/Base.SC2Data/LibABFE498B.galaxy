@@ -1860,7 +1860,7 @@ void libABFE498B_gf_AP_Triggers_unlockProtossWarCouncil2 (int lp_player, int lp_
         libABFE498B_gf_AP_Triggers_Protoss_unlockDawnbringerSolariteLens, // 7
         libABFE498B_gf_AP_Triggers_Protoss_unlockCarrierAiurRepairDrones, // 8
         libABFE498B_gf_AP_Triggers_Protoss_unlockSkylordHyperjump, // 9
-        libABFE498B_gf_AP_Triggers_Protoss_unlockTriremeSolarBeam, // 10
+        libABFE498B_gf_AP_Triggers_Protoss_unlockTriremeBomberMiniaturization, // 10
         libABFE498B_gf_AP_Triggers_Protoss_unlockTempestDisintegration, // 11
         libABFE498B_gf_AP_Triggers_Protoss_unlockScoutExpeditionaryHull, // 12
         libABFE498B_gf_AP_Triggers_Protoss_unlockArbiterAbilityEfficiency, // 13
@@ -9118,10 +9118,10 @@ void libABFE498B_gf_AP_Triggers_Protoss_unlockCarrierAiurRepairDrones (int lp_pl
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_CarrierAiurRepairDrones", 1);
 }
 
-void libABFE498B_gf_AP_Triggers_Protoss_unlockTriremeSolarBeam (int lp_player) {
+void libABFE498B_gf_AP_Triggers_Protoss_unlockTriremeBomberMiniaturization (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
-    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_TriremeSolarBeam", 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_CarrierPurifierHangarUpgrade", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Protoss_unlockSkylordHyperjump (int lp_player) {

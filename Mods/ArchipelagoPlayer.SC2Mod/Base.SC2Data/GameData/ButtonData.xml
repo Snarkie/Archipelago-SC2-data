@@ -6514,11 +6514,6 @@
         <AlertIcon value="Assets\Textures\wireframe-zerg-primaltownhall.dds"/>
         <EditorCategories value="Race:Zerg"/>
     </CButton>
-    <CButton id="AP_CarrierPurifierSolarBeam">
-        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-carrier-solarbeam.dds"/>
-        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-fenix-carrier-solarbeam.dds"/>
-        <EditorCategories value="Race:Protoss"/>
-    </CButton>
     <CButton id="AP_CarrierPurifier">
         <Icon value="Assets\Textures\btn-unit-collection-purifier-carrier.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-collection-purifier-carrier.dds"/>
@@ -8017,5 +8012,24 @@
     </CButton>
     <CButton id="AP_SuperWarpgateNextSubmenu">
         <Icon value="Assets\Textures\tutorialarrow01.dds"/>
+    </CButton>
+    <CButton id="AP_CarrierPurifierDispatchBombers">
+        <ChargeText value="Button/Tooltip/AP_CarrierPurifierDispatchBombersCount"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-bomberresearch.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-fenix-bomberresearch.dds"/>
+        <Hotkey value="Button/Hotkey/AP_CarrierPurifierDispatchBombers"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="AP_CarrierPurifierDispatchBombers"/>
+    </CButton>
+    <CButton id="AP_GravitonCatapultTrireme">
+        <Name value="Button/Name/AP_GravitonCatapult"/>
+        <Icon value="Assets\Textures\BTN-Upgrade-Protoss-GravitonCatapult.dds"/>
+        <AlertIcon value="Assets\Textures\BTN-Upgrade-Protoss-GravitonCatapult.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="AP_CarrierPurifierBomberMiniaturization">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-arbitersuit-weapon.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-fenix-arbitersuit-weapon.dds"/>
+        <EditorCategories value="Race:Protoss"/>
     </CButton>
 </Catalog>

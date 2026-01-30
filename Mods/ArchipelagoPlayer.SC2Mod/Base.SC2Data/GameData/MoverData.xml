@@ -2394,4 +2394,15 @@
             <YawPitchRoll value="5759.6484"/>
         </MotionPhases>
     </CMoverMissile>
+    <CMoverMissile id="AP_CarrierPurifierWeapon">
+        <PathMode value="Flying"/>
+        <MotionPhases>
+            <Driver value="Guidance"/>
+            <Acceleration value="50"/>
+            <Speed value="5"/>
+            <MaxSpeed value="20"/>
+            <BlendType value="Linear"/>
+            <YawPitchRoll value="MAX"/>
+        </MotionPhases>
+    </CMoverMissile>
 </Catalog>

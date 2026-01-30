@@ -973,16 +973,14 @@
         <EffectArray Reference="Weapon,AP_InterceptorsDummy,Level" Value="1"/>
         <EffectArray Reference="Weapon,AP_InterceptorsTaldarimDummy,Level" Value="1"/>
         <EffectArray Reference="Weapon,AP_InterceptorsPurifierDummy,Level" Value="1"/>
-        <EffectArray Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Level" Value="1"/>
+        <EffectArray Reference="Weapon,AP_CarrierPurifier,Level" Value="1"/>
+        <EffectArray Reference="Effect,AP_CarrierPurifierDamage,Amount" Value="1"/>
         <EffectArray Reference="Weapon,AP_InterceptorAiurLaunch,Level" Value="1"/>
         <EffectArray Reference="Weapon,AP_InterceptorAiurBeam,Level" Value="1"/>
         <EffectArray Reference="Effect,AP_InterceptorAiurBeamDamage,Amount" Value="1"/>
         <EffectArray Reference="Weapon,AP_CarrierPurifierBomberBomb,Level" Value="1"/>
-        <EffectArray Reference="Effect,AP_CarrierPurifierBomberDamage,Amount" Value="1"/>
-        <EffectArray Reference="Effect,AP_CarrierPurifierBomberFriendlyDamage,Amount" Value="1"/>
-        <EffectArray Reference="Effect,AP_CarrierPurifierChargeBeamDamageCharge1,Amount" Value="1"/>
-        <EffectArray Reference="Effect,AP_CarrierPurifierChargeBeamDamageCharge2,Amount" Value="1"/>
-        <EffectArray Reference="Effect,AP_CarrierPurifierChargeBeamDamageCharge3,Amount" Value="1"/>
+        <EffectArray Reference="Effect,AP_CarrierPurifierBomberDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,AP_CarrierPurifierBomberFriendlyDamage,Amount" Value="2"/>
         <!-- Skylord -->
         <EffectArray Reference="Weapon,AP_CarrierTaldarimLaser,Level" Value="1"/>
         <EffectArray Reference="Effect,AP_CarrierTaldarimLaserDamage,Amount" Value="5"/>
@@ -8695,7 +8693,6 @@
         <!--        <EffectArray Operation="Set" Reference="Weapon,MothershipBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>-->
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurLaunch,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierBomberBomb,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_CarrierTaldarimLaser,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ArbiterMPWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ScoutMPGround,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
@@ -8711,7 +8708,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayPurifierPrimaryBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayAiurChronoBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRaySwarm,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_NeutronFlare,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_SOAMothershipv4Weapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TempestPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel1.dds"/>
@@ -8734,7 +8731,6 @@
         <!--        <EffectArray Operation="Set" Reference="Weapon,MothershipBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>-->
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurLaunch,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierBomberBomb,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_CarrierTaldarimLaser,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ArbiterMPWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ScoutMPGround,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
@@ -8750,7 +8746,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayPurifierPrimaryBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayAiurChronoBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRaySwarm,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_NeutronFlare,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_SOAMothershipv4Weapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TempestPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel2.dds"/>
@@ -8773,7 +8769,6 @@
         <!--        <EffectArray Operation="Set" Reference="Weapon,MothershipBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>-->
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurLaunch,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierBomberBomb,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_CarrierTaldarimLaser,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ArbiterMPWeapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ScoutMPGround,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
@@ -8789,7 +8784,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayPurifierPrimaryBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayAiurChronoBeam,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRaySwarm,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_NeutronFlare,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_SOAMothershipv4Weapon,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TempestPurifier,Icon" Value="Assets\Textures\btn-upgrade-protoss-airweaponslevel3.dds"/>
@@ -8811,7 +8806,6 @@
         <!--        <EffectArray Operation="Set" Reference="Weapon,MothershipBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>-->
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurLaunch,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierBomberBomb,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_CarrierTaldarimLaser,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ArbiterMPWeapon,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ScoutMPGround,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
@@ -8827,7 +8821,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayPurifierPrimaryBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayAiurChronoBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRaySwarm,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifier,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_NeutronFlare,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_SOAMothershipv4Weapon,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TempestPurifier,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel4.dds"/>
@@ -8849,7 +8843,6 @@
         <!--        <EffectArray Operation="Set" Reference="Weapon,MothershipBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>-->
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurLaunch,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierBomberBomb,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_CarrierTaldarimLaser,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ArbiterMPWeapon,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_ScoutMPGround,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
@@ -8865,7 +8858,7 @@
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayPurifierPrimaryBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRayAiurChronoBeam,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_VoidRaySwarm,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifier,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_NeutronFlare,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_SOAMothershipv4Weapon,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_TempestPurifier,Icon" Value="AP\Assets\Custom\Textures\btn-upgrade-protoss-airweaponslevel5.dds"/>
@@ -12718,7 +12711,7 @@
         <ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/>
         <EffectArray Operation="Set" Reference="Weapon,AP_InterceptorAiurLaunch,Effect" Value="AP_InterceptorLaunchUpgradedPersistent"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierBomberLaunch,Effect" Value="AP_BomberLaunchUpgradedPersistent"/>
+        <EffectArray Operation="Set" Reference="Effect,AP_ReleaseInterceptorsInitialCP,PeriodicPeriodArray[0]" Value="0.125"/>
         <EffectArray Operation="Set" Reference="Effect,AP_BomberLaunchPersistentSet,EffectArray[0]" Value="AP_BomberLaunchUpgradedPersistent"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_CarrierAiur"/>
@@ -12745,11 +12738,6 @@
         <AffectedUnitArray value="AP_CarrierAiur"/>
     </CUpgrade>
     <CUpgrade id="AP_SkylordHyperjump"/>
-    <CUpgrade id="AP_TriremeSolarBeam">
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeam,Options[Disabled]" Value="0"/>
-        <EffectArray Operation="Set" Reference="Weapon,AP_CarrierPurifierPrismaticBeamDummy,Options[Disabled]" Value="0"/>
-        <AffectedUnitArray value="AP_CarrierPurifier"/>
-    </CUpgrade>
      <CUpgrade id="AP_PurifierMothershipDebuff">
         <EffectArray Operation="Set" Reference="Effect,AP_PurifierMothershipSecondaryBeamPersistent,FinalEffect" Value="AP_PurifierMothershipDebuffAB"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
@@ -13196,7 +13184,6 @@
     <CUpgrade id="AP_SentryForceField"/>
     <CUpgrade id="AP_WarCouncilNerfs">
         <EffectArray Operation="Set" Reference="Button,AP_VoidSentryShieldRepairDouble,Tooltip" Value="Button/Tooltip/AP_VoidSentryShieldRepairDoubleWCNerf"/>
-        <EffectArray Operation="Set" Reference="Button,AP_CarrierPurifierSolarBeam,Tooltip" Value="Button/Tooltip/AP_CarrierPurifierSolarBeamWCNerf"/>
     </CUpgrade>
     <CUpgrade id="AP_AlarakHavocAbilityRange">
         <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-rangeincrease.dds"/>
@@ -16768,4 +16755,9 @@
         <EffectArray Operation="Set" Reference="Abil,AP_SummonZergMercs,InfoArray[Train6].Button.Requirements" Value="AP_ZergMercCompoundBroodWar"/>
     </CUpgrade>
     <CUpgrade id="AP_AllowTradeWorkers"/>
+    <CUpgrade id="AP_CarrierPurifierHangarUpgrade">
+        <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,MaxCount" Value="6"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_CarrierPurifierHangar,InfoArray[Ammo1].Button.Requirements" Value="AP_ArmCarrierPurifierBomberUpgraded"/>
+        <EditorCategories value="UpgradeType:Talents"/>
+    </CUpgrade>
 </Catalog>

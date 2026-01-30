@@ -1500,6 +1500,10 @@
     </CRequirement>
     <CRequirement id="AP_ArmCarrierPurifierBomber">
         <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Use" Link="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit3"/>
+    </CRequirement>
+    <CRequirement id="AP_ArmCarrierPurifierBomberUpgraded">
+        <EditorCategories value="Race:Protoss,TechType:Unit"/>
         <NodeArray index="Use" Link="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit6"/>
     </CRequirement>
     <CRequirement id="AP_UseDarkProtoss">
@@ -3176,9 +3180,9 @@
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
         <NodeArray index="Use" Link="AP_CountUpgradeSkylordHyperjumpCompleteOnly"/>
     </CRequirement>
-    <CRequirement id="AP_HaveTriremeSolarBeam">
+    <CRequirement id="AP_HaveTriremeBomberMiniaturization">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>
-        <NodeArray index="Use" Link="AP_CountUpgradeTriremeSolarBeamCompleteOnly"/>
+        <NodeArray index="Use" Link="AP_CountUpgradeTriremeBomberMiniaturizationCompleteOnly"/>
     </CRequirement>
     <CRequirement id="AP_HaveVoidRaySpeedUpgrade">
         <EditorCategories value="Race:Protoss,TechType:Ability"/>

@@ -13644,7 +13644,7 @@
         <On Terms="ActorCreation; ValidateUnit AP_NoDarkProtoss" Send="ModelSwap DarkInterceptorAttackBeam"/>
         <Model value="InterceptorAttackBeam"/>
     </CActorBeamSimple>
-    <CActorUnit id="AP_ReleaseInterceptorsBeacon" parent="GenericUnitMinimal" unitName="ReleaseInterceptorsBeacon">
+    <CActorUnit id="AP_ReleaseInterceptorsBeacon" parent="GenericUnitMinimal" unitName="AP_ReleaseInterceptorsBeacon">
         <On Terms="ActorCreation" Send="$Stand 0 -1.000000 -1.000000 60.000000 AsDuration"/>
         <Model value="Invisible"/>
         <HighlightTooltip value="Unit/Name/AP_ReleaseInterceptorsBeacon"/>
@@ -36933,16 +36933,6 @@
         <On Terms="WeaponStop.*.AttackStop" Send="StatusSet WeaponAttacking 0"/>
         <On Terms="Abil.AP_CarrierPurifierHangar.Launch" Send="AnimPlay Cover Cover 0 0.500000 0.500000 3.000000 AsDuration"/>
         <On Terms="ActorCreation" Send="AnimBracketStart Cover Cover,Start Cover"/>
-        <On Terms="Effect.CarrierPurifierChargeBeamWeaponCP.Start; ValidateUnit AP_CarrierPurifierChargeBeamPhase1" Send="Create AP_CarrierPurifierLoopSound1"/>
-        <On Terms="Effect.CarrierPurifierChargeBeamWeaponCP.Start; ValidateUnit AP_CarrierPurifierChargeBeamPhase2" Send="Create AP_CarrierPurifierLoopSound2"/>
-        <On Terms="Effect.CarrierPurifierChargeBeamWeaponCP.Start; ValidateUnit AP_CarrierPurifierChargeBeamPhase3" Send="Create AP_CarrierPurifierLoopSound3"/>
-        <On Terms="Effect.CarrierPurifierChargeBeamWeaponCP.Stop" Target="AP_CarrierPurifierLoopSound1" Send="Destroy"/>
-        <On Terms="Effect.CarrierPurifierChargeBeamWeaponCP.Stop" Target="AP_CarrierPurifierLoopSound2" Send="Destroy"/>
-        <On Terms="Effect.CarrierPurifierChargeBeamWeaponCP.Stop" Target="AP_CarrierPurifierLoopSound3" Send="Destroy"/>
-        <On Terms="Behavior.CarrierPurifierChargeBeamPhase2.On" Target="AP_CarrierPurifierLoopSound1" Send="Destroy"/>
-        <On Terms="Behavior.CarrierPurifierChargeBeamPhase2.On; IsStatus WeaponAttacking 1" Send="Create AP_CarrierPurifierLoopSound2"/>
-        <On Terms="Behavior.CarrierPurifierChargeBeamPhase3.On" Target="AP_CarrierPurifierLoopSound2" Send="Destroy"/>
-        <On Terms="Behavior.CarrierPurifierChargeBeamPhase3.On; IsStatus WeaponAttacking 1" Send="Create AP_CarrierPurifierLoopSound3"/>
         <On Terms="Behavior.WarpInEffect.On" Send="ModelSwap AP_CarrierPurifierWarpInStargate"/>
         <On Terms="Behavior.WarpInEffect.On" Send="$Spell"/>
         <On Terms="AnimDone; AnimName Spell" Send="ModelSwap Carrier_Purifier"/>
@@ -36998,89 +36988,6 @@
         <RollInArc value="200.000000"/>
         <RollOutDuration value="1.400000"/>
     </CActorSiteOpBankerUnit>
-    <!-- Copy of Void ray charge beam for campaign for Clolarion-->
-    <CActorBeamSimple id="AP_CarrierPurifierChargeBeamAttackBeam" parent="BeamSimpleAnimationStyleContinuous">
-        <Supporter Subject="_Unit" Scope="Caster" Actor="Find"/>
-        <Host Subject="_Unit" Scope="Caster" Actor="Find"/>
-        <On Terms="ActorCreation" Target="::Host" Send="Signal CarrierPurifierChargeAttackBeamModel"/>
-        <On Terms="ActorCreation; ValidateEffect AP_CarrierPurifierChargeBeamCounterPhase1" Send="AnimPlay Attack Attack,02 PlayForever"/>
-        <On Terms="ActorCreation; ValidateEffect AP_CarrierPurifierChargeBeamCounterCheckPhase2Ready" Send="AnimPlay Attack Attack,04 PlayForever"/>
-        <On Terms="ActorCreation; ValidateEffect AP_CarrierPurifierChargeBeamCounterCheckPhase3Ready" Send="AnimPlay Attack Attack,06 PlayForever"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamPhase2AB.Start" Send="AnimPlay Attack Attack,04 PlayForever"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamPhase3AB.Start" Send="AnimPlay Attack Attack,06 PlayForever"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamRangePhase2AB.Start" Send="AnimPlay Attack Attack,04 PlayForever"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamRangePhase3AB.Start" Send="AnimPlay Attack Attack,06 PlayForever"/>
-        <On Terms="ActorOrphan" Send="Destroy"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamWeaponCP.Stop; At Effect" Send="TimerSet 0.125000 DelayDestroy"/>
-        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
-        <On Terms="ActorCreation" Send="RefSetFromRequest ::actor.CasterUnit _Unit Caster Find"/>
-        <On Terms="ActorCreation" Target="::actor.CasterUnit" Send="Signal CampaignBeamCreated"/>
-        <Aliases value="_CarrierPurifierChargeAttackBeam"/>
-        <Model value="AP_CarrierPurifierAttackBeam"/>
-    </CActorBeamSimple>
-    <CActorAction id="AP_CarrierPurifierChargeBeamAttack" parent="GenericAttackBase">
-        <LaunchAttachQuery Methods="Weapon 1"/>
-        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance SOpForwardLaunchGuide"/>
-        <ActionFlags index="AlignedImpactsAndDamages" value="1"/>
-        <ActionFlags index="LaunchForceSite" value="1"/>
-        <Lifetime value="-1.000000"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamWeaponCP.Start; At Caster" Send="Create"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamWeaponCP.Stop" Send="Destroy"/>
-    </CActorAction>
-    <CActorSound id="AP_CarrierPurifierSoundStart" parent="SoundOneShot">
-        <Sound value="AP_CarrierPurifier_WeaponStart"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamWeaponCP.Start" Send="Create"/>
-        <Layers Sound="AP_CarrierPurifier_Weapon_Fire">
-            <Chance value="100"/>
-            <Pitch value="0.000000,0.000000"/>
-            <PlayDelay value="0,0"/>
-            <Volume value="0.000000,0.000000"/>
-        </Layers>
-    </CActorSound>
-    <CActorSound id="AP_CarrierPurifierSoundEnd" parent="SoundOneShot">
-        <Sound value="AP_CarrierPurifier_WeaponEnd"/>
-        <On Terms="Effect.AP_CarrierPurifierChargeBeamWeaponCP.Stop" Send="Create"/>
-        <Layers Sound="AP_CarrierPurifier_Weapon_End">
-            <Chance value="100"/>
-            <Pitch value="0.000000,0.000000"/>
-            <PlayDelay value="0,0"/>
-            <Volume value="0.000000,0.000000"/>
-        </Layers>
-    </CActorSound>
-    <CActorSound id="AP_CarrierPurifierLoopSound1" parent="SoundContinuous">
-        <Inherits index="Visibility" value="0"/>
-        <Sound value="AP_CarrierPurifier_WeaponLoop1"/>
-        <Host Subject="_Selectable"/>
-        <Layers Sound="AP_CarrierPurifier_Weapon_ChargeStart">
-            <Chance value="0"/>
-            <Pitch value="0.000000,0.000000"/>
-            <PlayDelay value="0,0"/>
-            <Volume value="0.000000,0.000000"/>
-        </Layers>
-    </CActorSound>
-    <CActorSound id="AP_CarrierPurifierLoopSound2" parent="SoundContinuous">
-        <Inherits index="Visibility" value="0"/>
-        <Sound value="AP_CarrierPurifier_WeaponLoop2"/>
-        <Host Subject="_Selectable"/>
-        <Layers Sound="AP_CarrierPurifier_Weapon_Loop_Start">
-            <Chance value="0"/>
-            <Pitch value="0.000000,0.000000"/>
-            <PlayDelay value="0,0"/>
-            <Volume value="0.000000,0.000000"/>
-        </Layers>
-    </CActorSound>
-    <CActorSound id="AP_CarrierPurifierLoopSound3" parent="SoundContinuous">
-        <Inherits index="Visibility" value="0"/>
-        <Sound value="AP_CarrierPurifier_WeaponLoop3"/>
-        <Host Subject="_Selectable"/>
-        <Layers Sound="AP_CarrierPurifier_Weapon_Loop_Start">
-            <Chance value="0"/>
-            <Pitch value="0.000000,0.000000"/>
-            <PlayDelay value="0,0"/>
-            <Volume value="0.000000,0.000000"/>
-        </Layers>
-    </CActorSound>
     <CActorUnit id="AP_CarrierPurifierBomber" parent="GenericUnitStandard" unitName="AP_CarrierPurifierBomber">
         <DeathArray index="Normal" ModelLink="AP_CarrierPurifierBomberDeath" SoundLink="Interceptor_Explode"/>
         <UnitFlags index="ShowBlobShadow" value="0"/>
@@ -46536,4 +46443,41 @@
             <Image value="Assets\Textures\Wireframe-Protoss-warpgate-Shield03.dds"/>
         </WireframeShield>
     </CActorUnit>
+    <CActorAction id="AP_CarrierPurifierAttack" parent="GenericAttack" effectImpact="AP_CarrierPurifierDamage" effectLaunch="AP_CarrierPurifierLM">
+        <LaunchAssets Sound="AP_DragoonVoid_AttackLaunch"/>
+        <LaunchSiteOps Ops="AP_SOpAttachRandomWeaponClosest"/>
+        <ImpactMap index="None" Sound="AP_DragoonVoid_AttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="DragoonPhaseDisruptorImpact" MatchKeys="Basic" Physics="AP_DragoonAttackDeathForce"/>
+    </CActorAction>
+    <CActorMissile id="AP_CarrierPurifierAttackMissile" parent="GenericAttackMissile" unitName="AP_CarrierPurifierWeapon">
+        <Model value="AP_ScarabWeapon"/>
+    </CActorMissile>
+    <CActorRange id="AP_CarrierPurifierBombingRunRange" parent="RangeAbil" abil="AP_CarrierPurifierReleaseBombers">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+        <On Terms="Abil.AP_CarrierPurifierReleaseBombers.TargetOn" Send="Create"/>
+        <On Terms="Abil.AP_CarrierPurifierReleaseBombers.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.AP_CarrierPurifierReleaseBombers.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.AP_CarrierPurifierReleaseBombers.ButtonHoverOff" Send="Destroy"/>
+        <Flags index="SuppressSaveLoad" value="1"/>
+    </CActorRange>
+    <CActorSplat id="AP_CarrierPurifierBombingRunSplat" parent="ProtossCursorSplat" abil="AP_CarrierPurifierReleaseBombers">
+        <Model value="LiberatorAGTargetCursorSplat"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,165,0 10.000000}"/>
+        <Scale value="0.6"/>
+    </CActorSplat>
+    <CActorModel id="AP_CarrierPurifierBombingZoneIndicatorModel">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetScale 0.600000"/>
+        <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.AP_CarrierPurifierBombingZonePersistent.Start" Send="Create"/>
+        <On Terms="Effect.AP_CarrierPurifierBombingZonePersistent.Start" Send="AnimBracketStart BSD {} Stand Death"/>
+        <On Terms="Effect.AP_CarrierPurifierBombingZonePersistent.Stop" Send="Destroy"/>
+        <HostForProps Subject="_Unit" Scope="Caster"/>
+        <HostSiteOps Ops="SOpTargetPoint SOpShadowSyncGround"/>
+        <ScopeBearingsTracking value="ForceOff"/>
+        <Model value="LiberatorAGSearchIndicator"/>
+    </CActorModel>
 </Catalog>

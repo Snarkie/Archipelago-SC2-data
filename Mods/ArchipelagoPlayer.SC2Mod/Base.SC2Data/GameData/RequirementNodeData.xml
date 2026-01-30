@@ -2901,6 +2901,11 @@
         <OperandArray index="1" value="8"/>
         <Tooltip value="RequirementNode/Tooltip/AP_LTCountUnitInterceptorPurifierQueuedOrBetterAtUnit8"/>
     </CRequirementLT>
+    <CRequirementLT id="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit3">
+        <OperandArray index="0" value="AP_CountUnitCarrierPurifierBomberQueuedOrBetterAtUnit"/>
+        <OperandArray index="1" value="3"/>
+        <Tooltip value="RequirementNode/Tooltip/AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit3"/>
+    </CRequirementLT>
     <CRequirementLT id="AP_LTCountUnitCarrierPurifierBomberQueuedOrBetterAtUnit6">
         <OperandArray index="0" value="AP_CountUnitCarrierPurifierBomberQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="6"/>
@@ -5669,8 +5674,8 @@
         <Count Link="AP_SkylordHyperjump" State="CompleteOnly"/>
         <Flags index="TechTreeCheat" value="0"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_CountUpgradeTriremeSolarBeamCompleteOnly">
-        <Count Link="AP_TriremeSolarBeam" State="CompleteOnly"/>
+    <CRequirementCountUpgrade id="AP_CountUpgradeTriremeBomberMiniaturizationCompleteOnly">
+        <Count Link="AP_CarrierPurifierHangarUpgrade" State="CompleteOnly"/>
         <Flags index="TechTreeCheat" value="0"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_CountUpgradeVoidRaySpeedUpgradeCompleteOnly">

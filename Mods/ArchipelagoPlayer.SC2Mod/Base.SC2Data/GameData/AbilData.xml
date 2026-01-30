@@ -4064,23 +4064,21 @@
         <MaxCount value="8"/>
     </CAbilArmMagazine>
     <CAbilArmMagazine id="AP_CarrierPurifierHangar">
-        <AbilSetId value="CarrierAiurHanger"/>
+        <AbilSetId value="CarrierPurifierHangar"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Flags index="Retarget" value="1"/>
         <Leash value="12"/>
-        <InfoArray index="Ammo1" Time="15" CountStart="3" Manage="Recall" Unit="AP_CarrierPurifierBomber">
-            <Charge Link="CarrierBomber" Location="Unit"/>
+        <InfoArray index="Ammo1" Time="5" CountStart="3" Manage="Ignore" Unit="AP_CarrierPurifierBomber">
             <Cooldown Link="Abil/AP_CarrierPurifierHangar"/>
             <Button DefaultButtonFace="AP_InterceptorPurifier" Requirements="AP_ArmCarrierPurifierBomber">
                 <Flags index="ToSelection" value="1"/>
             </Button>
             <Flags index="AutoBuild" value="1"/>
             <Flags index="AutoBuildOn" value="1"/>
-            <Flags index="LeashRetarget" value="1"/>
         </InfoArray>
-        <Alert value="TrainComplete"/>
+        <Alert value=""/>
+        <EffectArray index="Create" value="AP_CarrierPurifierBomberCountAB"/>
         <EffectArray index="Death" value="InterceptorFate"/>
-        <MaxCount value="6"/>
+        <MaxCount value="3"/>
     </CAbilArmMagazine>
     <CAbilArmMagazine id="AP_CarrierHangar">
         <AbilSetId value="CarrierHanger"/>
@@ -16025,4 +16023,23 @@
         <Flags index="WarpTrainersButton" value="0"/>
         <SharedFlags index="SkipPreload" value="1"/>
     </CAbilWarpTrain>
+    <CAbilEffectTarget id="AP_CarrierPurifierReleaseBombers">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Cost>
+            <Cooldown>
+                <Location value="Unit"/>
+                <TimeUse value="8"/>
+            </Cooldown>
+        </Cost>
+        <Effect index="0" value="AP_CarrierPurifierBombingRunSet"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_LiberatorAGMode" />
+    </CAbilEffectTarget>
+    <CAbilQueue id="AP_HiddenHangarQueue5">
+        <EditorCategories value="Race:Neutral,AbilityorEffectType:Structures"/>
+        <QueueSize value="5"/>
+        <Flags index="Passive" value="1"/>
+        <Flags index="Hidden" value="1"/>
+    </CAbilQueue>
 </Catalog>
