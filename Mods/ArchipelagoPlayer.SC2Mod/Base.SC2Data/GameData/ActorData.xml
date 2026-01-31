@@ -17498,6 +17498,20 @@
         <On Terms="UnitDeathCustomize; ValidateUnit AP_NoDarkProtoss; UnitWalking" Send="DeathCustomize Variation2"/>
         <On Terms="Behavior.AP_SurveillanceMode.On" Send="AnimBracketStart Work IGNORE Dance IGNORE"/>
         <On Terms="Behavior.AP_SurveillanceMode.Off" Send="AnimBracketStop Work"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_Oracle" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom AP_Oracle" Send="Destroy"/>
+        <On Terms="ActorCreation; IsInEditor" Send="TimerSet 1.000000"/>
+        <On Terms="TimerExpired" Send="Signal Morph"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart Spell IGNORE Spell IGNORE Instant"/>
+        <On Terms="ActorCreation" Send="AnimBracketStop Spell"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_OracleGround" Send="Signal Morph"/>
+        <On Terms="Signal.*.Morph" Send="AnimPlay Lifetime Spell PlayForever 2.500000"/>
+        <On Terms="Signal.*.Morph" Send="StatusSet Morph 1"/>
+        <On Terms="Signal.*.Morph; PassChance 50.000000" Send="StatusSet Morph 2"/>
+        <On Terms="Signal.*.Morph; IsStatus Morph 1" Send="Signal Morph1"/>
+        <On Terms="Signal.*.Morph; IsStatus Morph 2" Send="Signal Morph2"/>
+        <On Terms="Signal.*.Morph1" Send="HostSiteOpsAdd ::Host AP_OracleGroundRotator Head"/>
+        <On Terms="Signal.*.Morph2" Send="HostSiteOpsAdd ::Host AP_OracleGroundRotator2 Head"/>
         <Model value="Oracle"/>
         <AnimBlendTime value="0.400000"/>
         <ModelFlags index="AutomateGlobalLoops" value="0"/>
@@ -46560,6 +46574,153 @@
         <On Terms="Abil.AP_WarhoundJump.SourceCastStart" Send="Create"/>
     </CActorSound>
     <CActorRange id="AP_WarhoundJumpRange" parent="RangeAbil" abil="AP_WarhoundJump"/>
+    <CActorUnit id="AP_OracleGround" parent="GenericUnitBase" unitName="AP_OracleGround">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="GlobalLoopMacro"/>
+        <Macros value="GlobalLoopMacroMore"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <Remove Terms="Abil.OracleRevelation.SourceCastStart" Send="Create Oracle_RevelationCast_Sound"/>
+        <Remove Terms="Abil.OracleRevelation.SourceCastStart" Send="Create Oracle_RevelationCast2_Sound"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create AP_Oracle_Land"/>
+        <On Terms="Behavior.WarpInEffect.On" Send="ModelSwap OracleWarpInStargate"/>
+        <On Terms="Behavior.WarpInEffect.On" Send="$Spell 0 0.000000 0.000000 2.100000 AsDuration"/>
+        <On Terms="Behavior.WarpInEffect.Off" Send="ModelSwap Oracle"/>
+        <On Terms="Behavior.WarpInEffect.Off" Send="AnimClear Spell"/>
+        <On Terms="Behavior.WarpInEffect.Off" Send="AnimBracketStart GL_BSD GLbirth GLstand GLdeath"/>
+        <On Terms="Behavior.WarpInEffect.Off" Send="AnimBracketStart GL_BSD_A GLbirth,A GLstand,A GLdeath,A"/>
+        <On Terms="Behavior.OracleCloakField.On" Send="AnimBracketStart Cloaking Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Behavior.OracleCloakField.Off" Send="AnimBracketStop Cloaking"/>
+        <On Terms="Abil.AP_OracleRevelation.SourceCastStart" Send="AnimPlay Spell Stand,Work,Start"/>
+        <On Terms="Abil.*.SourceCastStart" Send="Create AP_OracleCastLaunch"/>
+        <On Terms="Abil.AP_OracleRevelation.SourceCastStart" Send="Create AP_Oracle_RevelationCast_Sound"/>
+        <On Terms="Abil.AP_OracleRevelation.SourceCastStart" Send="Create AP_Oracle_RevelationCast2_Sound"/>
+        <On Terms="Abil.AP_OracleRevelation.SourceCastStart" Send="Create AP_Oracle_Spell_Revelation_StandWorkStart2_Sound"/>
+        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundMedium"/>
+        <On Terms="UnitDeathCustomize; IsStatus OracleMoving 1; !ValidateUnit IsHallucination" Send="DeathCustomize Variation0"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="UnitMovementUpdate.*.Stand" Send="StatusSet OracleMoving 0"/>
+        <On Terms="UnitMovementUpdate.*.Walk" Send="StatusSet OracleMoving 1"/>
+        <On Terms="Behavior.AP_OracleWeapon.On" Send="Create AP_OracleCastLaunch"/>
+        <On Terms="Behavior.AP_OracleWeapon.On" Send="Create AP_Oracle_PulsarBeamModeOn_Sound"/>
+        <On Terms="Behavior.AP_OracleWeapon.On" Send="Create AP_Oracle_PulsarBeamModeOn2_Sound"/>
+        <On Terms="Behavior.AP_OracleWeapon.On" Send="Create AP_Oracle_PulsarBeamModeOn3_Sound"/>
+        <On Terms="Behavior.AP_OracleWeapon.Off" Send="Create AP_Oracle_PulsarBeamModeOff_Sound"/>
+        <On Terms="Behavior.AP_OracleWeapon.Off" Send="Create AP_Oracle_PulsarBeamModeOff2_Sound"/>
+        <On Terms="Behavior.AP_LightofAiur.On" Send="AnimBracketStart Envisioning Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Behavior.AP_LightofAiur.Off" Send="AnimBracketStop Envisioning"/>
+        <On Terms="Behavior.AP_LightofAiur.On" Send="StatusSet MorphDeath 1"/>
+        <On Terms="Behavior.AP_LightofAiur.Off" Send="StatusSet MorphDeath 0"/>
+        <On Terms="UnitDeathCustomize; IsStatus MorphDeath 1; !ValidateUnit IsHallucination" Send="DeathCustomize Variation1"/>
+        <On Terms="Behavior.AP_LightofAiur.On" Send="Create AP_Oracle_EnvisionCast1_Sound"/>
+        <On Terms="Behavior.AP_LightofAiur.On" Send="Create AP_Oracle_EnvisionCast2_Sound"/>
+        <On Terms="Behavior.AP_LightofAiur.On" Send="Create AP_Oracle_EnvisionCast3_Sound"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit AP_HaveVoidShade" Send="DeathCustomize Shadow"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit AP_HaveTerrazineShadow" Send="DeathCustomize Shadow"/>
+        <On Terms="Upgrade.AP_DarkProtoss.Add" Send="ModelSwap Oracle_Taldarim"/>
+        <On Terms="UnitBirth; ValidateUnit AP_NoDarkProtoss" Send="ModelSwap Oracle_Taldarim"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit AP_NoDarkProtoss" Send="DeathCustomize DarkProtoss"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit AP_NoDarkProtoss; UnitWalking" Send="DeathCustomize Variation2"/>
+        <On Terms="ActorCreation; IsInEditor" Send="TimerSet 1.000000 Morph"/>
+        <On Terms="TimerExpired; TimerName Morph" Send="Signal Morph"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_OracleGround" Send="Create"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom AP_OracleGround" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_Oracle" Send="Signal Morph"/>
+        <On Terms="Signal.*.Morph" Send="AnimPlay Morph Spell 0 -1.000000 -1.000000 2.500000 AsDuration"/>
+        <On Terms="Signal.*.Morph" Send="HostSiteOpsRemove ::Host SOpUpsideDown"/>
+        <On Terms="Signal.*.Morph" Send="StatusSet Morph 1"/>
+        <On Terms="Signal.*.Morph; PassChance 50.000000" Send="StatusSet Morph 2"/>
+        <On Terms="Signal.*.Morph; IsStatus Morph 1" Send="Signal Morph1"/>
+        <On Terms="Signal.*.Morph; IsStatus Morph 2" Send="Signal Morph2"/>
+        <On Terms="Signal.*.Morph1" Send="HostSiteOpsAdd ::Host AP_OracleAirRotator Head"/>
+        <On Terms="Signal.*.Morph2" Send="HostSiteOpsAdd ::Host AP_OracleAirRotator2 Head"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimPlay Attack Walk PlayForever 1.000000 1.000000 -1.000000 AsAutomatic 0.000000 60"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimClear Attack"/>
+        <HostSiteOps Ops="SOpUpsideDown"/>
+        <Model value="Oracle"/>
+        <AnimBlendTime value="0.400000"/>
+        <ModelFlags index="AutomateGlobalLoops" value="0"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <Baselines index="Stand" AnimProps="Spell"/>
+        <Baselines index="Walk" AnimProps="Spell" BlendIn="1.500000" BlendOut="2.000000"/>
+        <BuildModel value="OracleWarpIn"/>
+        <DeathArray index="Normal" ModelLink="OracleDeath" SoundLink="Oracle_Explode"/>
+        <DeathCustoms ModelLink="OracleDeathWalk" VoiceLink="Oracle_Death" Name="Variation0"/>
+        <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathMedium" Name="Hallucination"/>
+        <DeathCustoms>
+            <ActorModel value="UnitDeathRagdollFlier"/>
+            <ModelLink value="OracleDeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+            <BodySquibs Name="Basic" Model="ProtossTinyRobotSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ModelLink="OracleDeathMorph" VoiceLink="Oracle_Death" Name="Variation1"/>
+        <DeathCustoms>
+            <ModelLink value="DeathVoidShadowSmall"/>
+            <SoundLink value="ShadowUnit_DeathFX"/>
+            <VoiceLink value="ShadowUnit_DeathVox"/>
+            <Name value="Shadow"/>
+        </DeathCustoms>
+        <DeathCustoms ModelLink="Oracle_Taldarim_Death" Name="DarkProtoss"/>
+        <DeathCustoms ModelLink="Oracle_Taldarim_Death_Walk" Name="Variation2"/>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionFlier"/>
+        <PlacementModel value="AP_OraclePlacement"/>
+        <PortraitModel value="OraclePortrait"/>
+        <BarOffset value="40"/>
+        <BarWidth value="50"/>
+        <GroupIcon>
+            <Image value="AP\Assets\Textures\wireframe-protoss-oracleground.dds"/>
+        </GroupIcon>
+        <HeroIcon value="AP\Assets\Textures\btn-unit-protoss-oracleground.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <NameOffset value="60"/>
+        <SoundArray index="Ready" value="Oracle_Ready"/>
+        <SoundArray index="Help" value="Oracle_Help"/>
+        <SoundArray index="What" value="Oracle_What"/>
+        <SoundArray index="Yes" value="Oracle_Yes"/>
+        <SoundArray index="Attack" value="Oracle_Attack"/>
+        <SoundArray index="Pissed" value="Oracle_Pissed"/>
+        <SoundArray index="Movement" value="Oracle_Movement"/>
+        <UnitIcon value="AP\Assets\Textures\btn-unit-protoss-oracleground.dds"/>
+        <Wireframe>
+            <Image value="AP\Assets\Textures\wireframe-protoss-oracleground.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="AP\Assets\Textures\wireframe-protoss-oracleground-shield01.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-protoss-oracleground-shield02.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-protoss-oracleground-shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorSiteOpRotator id="AP_OracleGroundRotator">
+        <LocalAxis value="0.000000,-1.000000,0.000000"/>
+        <Rate value="72.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="AP_OracleGroundRotator2">
+        <LocalAxis value="0.000000,1.000000,0.000000"/>
+        <Rate value="72.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="AP_OracleAirRotator">
+        <LocalAxis value="0.000000,-1.000000,0.000000"/>
+        <Rate value="72.000000"/>
+        <InitialAngle value="180.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="AP_OracleAirRotator2">
+        <LocalAxis value="0.000000,1.000000,0.000000"/>
+        <Rate value="72.000000"/>
+        <InitialAngle value="180.000000"/>
+    </CActorSiteOpRotator>
     <CActorAction id="AP_CarrierPurifierAttack" parent="GenericAttack" effectImpact="AP_CarrierPurifierDamage" effectLaunch="AP_CarrierPurifierLM">
         <LaunchAssets Sound="AP_DragoonVoid_AttackLaunch"/>
         <LaunchSiteOps Ops="AP_SOpAttachRandomWeaponClosest"/>

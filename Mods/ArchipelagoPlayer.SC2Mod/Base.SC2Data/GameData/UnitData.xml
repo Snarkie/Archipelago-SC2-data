@@ -16354,6 +16354,7 @@
         <AbilArray Link="AP_OracleWeapon"/>
         <AbilArray Link="AP_OracleStasisTrapBuild"/>
         <AbilArray Link="AP_SurveillanceMode"/>
+        <AbilArray Link="AP_OracleGround"/>
         <BehaviorArray Link="Detector11"/>
         <BehaviorArray Link="AP_SOAHeroicShieldProcBuff"/>
         <BehaviorArray Link="AP_OraclePermanentCloak"/>
@@ -16374,10 +16375,12 @@
             <LayoutButtons Face="AP_OracleStasisWardUpgrade" Type="Passive" Requirements="AP_HaveOracleStasisWardUpgradeWC" Row="1" Column="1"/>
             <LayoutButtons Face="AP_OracleEnergyUpgrade" Type="Passive" Requirements="AP_HaveOracleEnergyUpgrade" Row="1" Column="2"/>
             <LayoutButtons Face="AP_OracleSustainablePulsarBeam" Type="Passive" Requirements="AP_HaveOracleSustainablePulsarBeam" Row="2" Column="2"/>
-            <LayoutButtons Face="AP_OracleStasisWardAir" Type="Passive" Requirements="AP_HaveOracleStasisWardAir" Row="1" Column="3"/>
+            <LayoutButtons Face="AP_OracleStasisWardAir" Type="Passive" Requirements="AP_HaveOracleStasisWardAir" Row="2" Column="4"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_OracleAir" Type="AbilCmd" AbilCmd="AP_OracleAir,0" Row="1" Column="4"/>
             <LayoutButtons Face="AP_SurveillanceModeOracleOn" Type="AbilCmd" AbilCmd="AP_SurveillanceMode,On" Row="1" Column="4"/>
             <LayoutButtons Face="AP_SurveillanceModeOracleOff" Type="AbilCmd" AbilCmd="AP_SurveillanceMode,Off" Row="1" Column="4"/>
+            <LayoutButtons Face="AP_OracleGround" Type="AbilCmd" AbilCmd="AP_OracleGround,0" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.75"/>
@@ -31630,6 +31633,99 @@
         <EditorCategories value="ObjectType:Other,ObjectFamily:Campaign"/>
         <LeaderAlias value=""/>
         <Sight value="1"/>
+    </CUnit>
+    <CUnit id="AP_OracleGround">
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="AlwaysThreatens" value="1"/>
+        <FlagArray index="AIHighPrioTarget" value="1"/>
+        <FlagArray index="AICaster" value="1"/>
+        <FlagArray index="AISupport" value="1"/>
+        <FlagArray index="AIFleeDamageDisabled" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <LifeStart value="140"/>
+        <LifeMax value="140"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
+        <EnergyStart value="50"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldsStart value="100"/>
+        <ShieldsMax value="100"/>
+        <ShieldRegenDelay value="10"/>
+        <ShieldRegenRate value="2"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.25"/>
+        <Acceleration value="3"/>
+        <Sight value="10"/>
+        <Height value="0.8"/>
+        <Food value="-3"/>
+        <CostCategory value="Army"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="150"/>
+        <RepairTime value="60"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="AP_OracleRevelation"/>
+        <AbilArray Link="Warpable"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="ProgressRally"/>
+        <AbilArray Link="AP_OracleWeapon"/>
+        <AbilArray Link="AP_OracleStasisTrapBuild"/>
+        <AbilArray Link="AP_OracleAir"/>
+        <BehaviorArray Link="AP_SOAHeroicShieldProcBuff"/>
+        <BehaviorArray Link="AP_OraclePermanentCloak"/>
+        <WeaponArray Link="AP_OracleGround"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AP_OracleAttack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
+            <LayoutButtons Face="AP_OracleRevelation" Type="AbilCmd" AbilCmd="AP_OracleRevelation,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_OracleBuildStasisTrap" Type="AbilCmd" AbilCmd="AP_OracleStasisTrapBuild,Build1" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_OracleWeaponOn" Type="AbilCmd" AbilCmd="AP_OracleWeapon,On" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_OracleSustainablePulsarBeam" Type="Passive" Requirements="AP_HaveOracleSustainablePulsarBeam" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_OracleWeaponOff" Type="AbilCmd" AbilCmd="AP_OracleWeapon,Off" Row="2" Column="3"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_OracleStasisTrapBuild,Halt" Row="2" Column="4"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_OracleStasisWardAir" Type="Passive" Requirements="AP_HaveOracleStasisWardAir" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_PermanentlyCloakedOracle" Type="Passive" Requirements="AP_HaveOraclePermanentCloak" Row="1" Column="0"/>
+            <LayoutButtons Face="AP_OracleStasisWardUpgrade" Type="Passive" Requirements="AP_HaveOracleStasisWardUpgradeWC" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_OracleEnergyUpgrade" Type="Passive" Requirements="AP_HaveOracleEnergyUpgrade" Row="1" Column="2"/>
+            <LayoutButtons Face="AP_OracleGround" Type="AbilCmd" AbilCmd="AP_OracleGround,Execute" Row="1" Column="3"/>
+            <LayoutButtons Face="AP_OracleAir" Type="AbilCmd" AbilCmd="AP_OracleAir,Execute" Row="1" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.75"/>
+        <InnerRadius value="0.5"/>
+        <CargoSize value="2"/>
+        <ScoreMake value="300"/>
+        <ScoreKill value="300"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="45"/>
+        <MinimapRadius value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <TacticalAIThink value="AIThinkOracle"/>
+        <AIEvalFactor value="0.3"/>
+        <GlossaryCategory value="Unit/Category/AP_ProtossUnitsAir"/>
+        <GlossaryPriority value="168"/>
+        <HotkeyCategory value="Unit/Category/AP_ProtossUnitsAir"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+        <LifeArmor value="1"/>
+        <SelectAlias value="AP_Oracle"/>
     </CUnit>
     <CUnit id="AP_CarrierPurifierWeapon" parent="MISSILE">
         <Race value="Prot"/>

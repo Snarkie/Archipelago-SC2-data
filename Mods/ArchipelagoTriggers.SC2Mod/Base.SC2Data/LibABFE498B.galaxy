@@ -1776,7 +1776,7 @@ void libABFE498B_gf_AP_Triggers_unlockProtossForge5 (int lp_player, int lp_bitAr
         libABFE498B_gf_AP_Triggers_Protoss_unlockTaldarimMothershipShadowOfDeath, // 3
         libABFE498B_gf_AP_Triggers_Protoss_unlockTaldarimMothershipSoulForgedConduits, // 4
         libABFE498B_gf_AP_Triggers_Protoss_unlockTaldarimMothershipBloodFusedParticles, // 5    
-        ap_triggers_PlayerConsumer_sig, // 6
+        libABFE498B_gf_AP_Triggers_Protoss_unlockOracleSurfaceStabilizer, // 6
         ap_triggers_PlayerConsumer_sig, // 7
         ap_triggers_PlayerConsumer_sig, // 8
         ap_triggers_PlayerConsumer_sig, // 9
@@ -9074,6 +9074,12 @@ void libABFE498B_gf_AP_Triggers_Protoss_unlockOracleBosonicCore (int lp_player) 
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_OracleEnergyUpgrade", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Protoss_unlockOracleSurfaceStabilizer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_OracleGround", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Protoss_unlockArbiterChronostaticReinforcement (int lp_player) {

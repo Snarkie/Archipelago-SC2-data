@@ -7842,4 +7842,8 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_WarhoundJumpJets" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_OracleGround">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_OracleGround" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
 </Catalog>

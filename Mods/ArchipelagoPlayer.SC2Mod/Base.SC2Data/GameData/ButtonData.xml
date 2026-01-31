@@ -8042,4 +8042,12 @@
     <CButton id="AP_WarhoundJump">
         <Icon value="Assets\Textures\btn-ability-neutral-ursadonleap.dds"/>
     </CButton>
+    <CButton id="AP_OracleGround">
+        <Icon value="AP\Assets\Textures\btn-unit-protoss-oracleground.dds"/>
+        <AlertIcon value="OracleGround.dds"/>
+    </CButton>
+    <CButton id="AP_OracleAir">
+        <Icon value="Assets\Textures\btn-unit-protoss-oracle.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-protoss-oracle.dds"/>
+    </CButton>
 </Catalog>
