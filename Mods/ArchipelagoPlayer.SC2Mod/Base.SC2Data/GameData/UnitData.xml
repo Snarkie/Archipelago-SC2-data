@@ -12475,25 +12475,24 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <AbilArray Link="AP_CarrierPurifierHangar"/>
-        <AbilArray Link="AP_HangarQueue5"/>
+        <AbilArray Link="AP_HiddenHangarQueue5"/>
+        <AbilArray Link="AP_CarrierPurifierReleaseBombers"/>
         <AbilArray Link="Warpable"/>
         <AbilArray Link="ProgressRally"/>
         <BehaviorArray Link="AP_SOAHeroicShieldProcBuff"/>
-        <WeaponArray Link="AP_CarrierPurifierPrismaticBeam"/>
-        <WeaponArray Link="AP_CarrierPurifierBomberLaunch"/>
-        <WeaponArray Link="AP_CarrierPurifierPrismaticBeamDummy"/>
+        <WeaponArray Link="AP_CarrierPurifier"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-            <LayoutButtons Face="AP_InterceptorPurifier" Type="AbilCmd" AbilCmd="AP_CarrierPurifierHangar,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_CarrierPurifierDispatchBombers" Type="AbilCmd" AbilCmd="AP_CarrierPurifierReleaseBombers,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_HangarQueue5,0" Row="2" Column="4"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="ProgressRally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="AP_GravitonCatapult" Type="Passive" Requirements="AP_HaveCarrierAiurLaunchSpeedUpgrade" Row="1" Column="0"/>
+            <LayoutButtons Face="AP_GravitonCatapultTrireme" Type="Passive" Requirements="AP_HaveCarrierAiurLaunchSpeedUpgrade" Row="1" Column="0"/>
             <LayoutButtons Face="AP_CarrierStructuralIntegrityReinforcements" Type="Passive" Requirements="AP_HaveCarrierStructuralIntegrityReinforcements" Row="1" Column="1"/>
-            <LayoutButtons Face="AP_CarrierPurifierSolarBeam" Type="Passive" Requirements="AP_HaveTriremeSolarBeam" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_CarrierPurifierBomberMiniaturization" Type="Passive" Requirements="AP_HaveTriremeBomberMiniaturization" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="1.25"/>
         <SeparationRadius value="1.25"/>
@@ -12537,12 +12536,11 @@
         <Collide index="FlyingEscorts" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
-        <Attributes index="Heroic" value="1"/>
-        <LifeStart value="80"/>
-        <LifeMax value="80"/>
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
         <LifeArmorName value="Unit/LifeArmorName/ProtossPlating"/>
-        <ShieldsStart value="80"/>
-        <ShieldsMax value="80"/>
+        <ShieldsStart value="20"/>
+        <ShieldsMax value="20"/>
         <ShieldRegenDelay value="10"/>
         <ShieldRegenRate value="2"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
@@ -12558,10 +12556,9 @@
         <CostCategory value="Army"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
-        <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <BehaviorArray Link="AP_ReleaseBombersWanderDelay"/>
-        <WeaponArray Link="AP_CarrierPurifierBomberBomb"/>
+        <BehaviorArray Link="AP_CarrierPurifierBomberBombing"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -31729,5 +31726,9 @@
         <RankDisplay value="Always"/>
         <LifeArmor value="1"/>
         <SelectAlias value="AP_Oracle"/>
+    </CUnit>
+    <CUnit id="AP_CarrierPurifierWeapon" parent="MISSILE">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
 </Catalog>
