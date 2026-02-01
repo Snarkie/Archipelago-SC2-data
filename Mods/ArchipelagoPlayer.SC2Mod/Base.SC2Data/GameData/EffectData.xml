@@ -24944,7 +24944,7 @@
     <CEffectCreatePersistent id="AP_ParasiteSporeGroundPersistent">
         <EditorCategories value=""/>
         <WhichLocation Value="TargetUnitOrPoint"/>
-        <PeriodCount value="3"/>
+        <PeriodCount value="2"/>
         <!--disable friendly fire behavior-->
         <!--PeriodicEffectArray value="AP_ParasiteSporeGroundAB"/-->
         <PeriodicEffectArray value="AP_ParasiteSpore_Damage"/>
