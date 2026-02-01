@@ -8055,8 +8055,8 @@
         <AlertIcon value="AP\Assets\Textures\btn-zerg-AcidSplash.dds"/>
     </CButton>
     <CButton id="AP_BunkerIgnoreSupply">
-        <Icon value="Assets\Textures\btn-tips-research.dds"/>
-        <AlertIcon value="Assets\Textures\btn-tips-research.dds"/>
+        <Icon value="Assets\Textures\btn-tips-droppedterrazine.dds"/>
+        <AlertIcon value="Assets\Textures\btn-tips-droppedterrazine.dds"/>
     </CButton>
     <CButton id="AP_CommandCenterHyperjump">
         <Icon value="Assets\Textures\btn-ability-terran-hercules-tacticaljump.dds"/>
