@@ -5429,8 +5429,10 @@
         <AbilArray Link="AP_SupplyDepotRaise"/>
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
+        <BehaviorArray Link="AP_SupplyDepotCloak"/>
         <CardLayouts>
             <LayoutButtons Face="Raise" Type="AbilCmd" AbilCmd="AP_SupplyDepotRaise,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_SupplyDepotCloak" Type="Passive" Requirements="AP_HaveSupplyDepotCloak" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.25"/>
         <SeparationRadius value="1.25"/>
@@ -5578,6 +5580,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="AP_TechReactor" Type="AbilCmd" AbilCmd="AP_BarracksAddOns,Build4" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.75"/>
         <SeparationRadius value="1.75"/>
@@ -5712,6 +5715,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
 <!--            <LayoutButtons Face="AP_TechReactor" Type="AbilCmd" AbilCmd="AP_BarracksAddOns,Build4" Row="2" Column="0"/>-->
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.75"/>
         <SeparationRadius value="1.75"/>
@@ -6875,6 +6879,7 @@
             <LayoutButtons Face="Halt" Type="AbilCmd" AbilCmd="BuildInProgress,Halt" Row="2" Column="3"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_SalvageShared,1" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_BunkerIgnoreSupply" Type="Passive" Requirements="AP_HaveBunkerIgnoreSupply" Row="2" Column="4"/>
             <LayoutButtons Face="SelectBuilder" Type="SelectBuilder" Row="1" Column="3"/>
             <LayoutButtons Face="StopBunker" Type="AbilCmd" AbilCmd="AP_BunkerStop,0" Row="0" Column="1"/>
             <LayoutButtons Face="AP_ShrikeTurret" Type="Passive" Requirements="AP_ShrikeTurretResearched" Row="1" Column="2"/>
@@ -7392,6 +7397,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="AP_TechReactor" Type="AbilCmd" AbilCmd="AP_FactoryAddOns,Build4" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.625"/>
         <SeparationRadius value="1.625"/>
@@ -7529,6 +7535,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
 <!--            <LayoutButtons Face="AP_TechReactor" Type="AbilCmd" AbilCmd="AP_FactoryAddOns,Build4" Row="2" Column="0"/>-->
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.625"/>
         <SeparationRadius value="1.625"/>
@@ -7924,6 +7931,7 @@
             <LayoutButtons Face="AP_PlanetaryFortressAttackAirlift" Type="Passive" Requirements="AP_HavePlanetaryFortressWeapon" Row="2" Column="2"/>
             <LayoutButtons Face="AP_PlanetaryFortressAdvancedTargeting" Type="Passive" Requirements="AP_HavePlanetaryFortressAirAttackFlying" Row="1" Column="3"/>
             <LayoutButtons Face="AP_PlanetaryFortressAdvancedTargeting" Type="Passive" Requirements="AP_HavePlanetaryFortressAirAttackLand" Row="1" Column="3"/>
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="2.5"/>
         <SeparationRadius value="2.5"/>
@@ -10207,6 +10215,7 @@
         <AbilArray Link="move"/>
         <AbilArray Link="AP_MULEGather"/>
         <AbilArray Link="AP_MULERepair"/>
+        <BehaviorArray Link="AP_SCVRepairBio"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -10218,6 +10227,7 @@
             <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="AP_MULERepair,0" Row="2" Column="2"/>
             <LayoutButtons Face="ReturnCargo" Type="AbilCmd" AbilCmd="AP_MULEGather,1" Row="1" Column="1"/>
             <LayoutButtons Face="ReturnCargo" Type="AbilCmd" AbilCmd="AP_SCVHarvest,1" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_SCVRepairFree" Type="Passive" Requirements="AP_HaveSCVRepairFree" Row="2" Column="4"/>   
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -10388,6 +10398,7 @@
             <LayoutButtons Face="BunkerUnloadAll" Type="AbilCmd" AbilCmd="AP_CommandCenterTransport,UnloadAll" Row="2" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="2.5"/>
         <SeparationRadius value="2.5"/>
@@ -10546,6 +10557,7 @@
         <AbilArray Link="move"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="AP_CommandCenterTransport"/>
+        <AbilArray Link="AP_CommandCenterHyperjump"/>
         <BehaviorArray Link="AP_TerranBuildingBurnDown"/>
         <BehaviorArray Link="AP_CommandCenterQueue"/>
         <BehaviorArray Link="AP_FireSuppressionSystem"/>
@@ -10558,6 +10570,8 @@
             <LayoutButtons Face="CommandCenterUnloadAll" Type="AbilCmd" AbilCmd="AP_CommandCenterTransport,UnloadAll" Row="2" Column="1"/>
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AP_CommandCenterHyperjump" Type="AbilCmd" AbilCmd="AP_CommandCenterHyperjump,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="1"/>
         </CardLayouts>
         <Radius value="2.5"/>
         <SeparationRadius value="2.5"/>
@@ -19441,6 +19455,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="AP_TechReactor" Type="AbilCmd" AbilCmd="AP_StarportAddOns,Build4" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.625"/>
         <SeparationRadius value="1.625"/>
@@ -19589,6 +19604,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
 <!--            <LayoutButtons Face="AP_TechReactor" Type="AbilCmd" AbilCmd="AP_StarportAddOns,Build4" Row="2" Column="0"/>-->
+            <LayoutButtons Face="AP_JuggernautThrusters" Type="Passive" Requirements="AP_HaveJuggernautThrusters" Row="1" Column="0"/>
         </CardLayouts>
         <Radius value="1.625"/>
         <SeparationRadius value="1.625"/>
@@ -19645,6 +19661,7 @@
         <AbilArray Link="CancelTerrazineHarvest"/>
         <AbilArray Link="AP_TerranBuildDrop"/>
         <BehaviorArray Link="AP_SCVCliffJump"/>
+        <BehaviorArray Link="AP_SCVRepairBio"/>
         <WeaponArray Link="AP_FusionCutter"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -19663,6 +19680,7 @@
             <LayoutButtons Face="AP_SCVCliffJump" Type="Passive" Requirements="AP_HaveSCVCliffJump" Row="2" Column="3"/>
             <LayoutButtons Face="Halt" Type="AbilCmd" AbilCmd="AP_TerranBuild,30" Row="2" Column="4"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="CancelTerrazineHarvest,0" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_SCVRepairFree" Type="Passive" Requirements="AP_HaveSCVRepairFree" Row="2" Column="4"/>            
         </CardLayouts>
         <CardLayouts CardId="TBl1">
             <LayoutButtons Face="AP_CommandCenter" Type="AbilCmd" AbilCmd="AP_TerranBuild,0" Row="0" Column="0"/>

@@ -7864,4 +7864,28 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_CorruptorAcidSplash" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CommandCenterHyperjump">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_CommandCenterHyperjump" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_JuggernautThrusters">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_JuggernautThrusters" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_BunkerIgnoreSupply">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_BunkerIgnoreSupply" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_SCVRepairBio">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_SCVRepairBio" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_SCVRepairFree">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_SCVRepairFree" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_SupplyDepotCloak">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_SupplyDepotCloak" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
 </Catalog>

@@ -7980,4 +7980,12 @@
         <Value value="1"/>
         <Behavior value="AP_CarrierPurifierBomberActivated"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorFunction id="AP_BunkerUnload">
+        <Line Success="AP_FoodAvailableOneHalf"/>
+        <Line Success="AP_HaveBunkerIgnoreSupply"/>
+        <ResultFallback value="NotEnoughFood,Alert/Tooltip/AP_BunkerIgnoreSupply"/>
+    </CValidatorFunction>
+    <CValidatorPlayerRequirement id="AP_HaveBunkerIgnoreSupply">
+        <Value value="AP_HaveBunkerIgnoreSupply"/>
+    </CValidatorPlayerRequirement>
 </Catalog>

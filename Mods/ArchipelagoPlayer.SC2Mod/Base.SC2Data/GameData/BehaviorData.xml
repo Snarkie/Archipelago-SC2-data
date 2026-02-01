@@ -10922,4 +10922,23 @@
             <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_SCVRepairBio">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-terran-nova-healingmastery.dds"/>
+        <Requirements value="AP_HaveSCVRepairBio"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_SupplyDepotCloak">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-cloak.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Requirements value="AP_HaveSupplyDepotCloak"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_SCVRepairFree">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-progression-stetmann-05-scrapdrop.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
 </Catalog>

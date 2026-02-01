@@ -8054,4 +8054,25 @@
         <Icon value="AP\Assets\Textures\btn-zerg-AcidSplash.dds"/>
         <AlertIcon value="AP\Assets\Textures\btn-zerg-AcidSplash.dds"/>
     </CButton>
+    <CButton id="AP_BunkerIgnoreSupply">
+        <Icon value="Assets\Textures\btn-tips-research.dds"/>
+        <AlertIcon value="Assets\Textures\btn-tips-research.dds"/>
+    </CButton>
+    <CButton id="AP_CommandCenterHyperjump">
+        <Icon value="Assets\Textures\btn-ability-terran-hercules-tacticaljump.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-hercules-tacticaljump.dds"/>
+    </CButton>
+    <CButton id="AP_SCVRepairFree">
+        <Icon value="Assets\Textures\btn-progression-stetmann-05-scrapdrop.dds"/>
+        <AlertIcon value="Assets\Textures\btn-progression-stetmann-05-scrapdrop.dds"/>
+    </CButton>
+    <CButton id="AP_SupplyDepotCloak">
+        <Icon value="Assets\Textures\btn-ability-terran-cloak.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-cloak.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="AP_JuggernautThrusters">
+        <Icon value="Assets\Textures\btn-upgrade-terran-jumpjets.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-jumpjets.dds"/>
+    </CButton>
 </Catalog>
