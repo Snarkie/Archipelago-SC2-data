@@ -24892,4 +24892,64 @@
         <BehaviorLink value="AP_CarrierPurifierBomberCount"/>
         <WhichUnit Value="Caster"/>
     </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="AP_ParasiteSporeGroundAB">
+        <ValidatorArray index="0" value="FriendlyTarget"/>
+        <EditorCategories value=""/>
+        <Behavior value="AP_CorruptorAcidSplash"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="AP_ParasiteSporeGroundCreate">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
+        <CreateFlags index="PlacementIgnoreCliffTest" value="1"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="AP_ParasiteSporeGroundSet"/>
+        <SpawnUnit value="AP_InvisibleTargetDummy"/>
+        <SpawnOffset value="0,-50"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="AP_ParasiteSporeGroundDamage">
+        <EditorCategories value=""/>
+        <Amount value="20"/>
+        <Death value="Disintegrate"/>
+        <AreaArray Radius="0.25" FacingAdjustment="257.4645" Fraction="1"/>
+        <AreaArray Radius="0.6" Fraction="0.5"/>
+        <AreaArray Radius="1.3" Fraction="0.25"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CEffectDamage>
+    <CEffectSet id="AP_ParasiteSporeGroundImpact">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_ParasiteSporeGroundDamage"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="AP_ParasiteSporeGroundLaunch">
+        <EditorCategories value=""/>
+        <LaunchLocation Effect="AP_ParasiteSporeGroundPersistent" Value="TargetUnit"/>
+        <ImpactEffect value="AP_ParasiteSporeGroundImpact"/>
+        <AmmoUnit value="AP_ParasiteSporeGroundMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="AP_ParasiteSporeGroundSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_ParasiteSporeGroundLaunch"/>
+        <EffectArray value="AP_BroodlingTimedLife"/>
+    </CEffectSet>
+    <CEffectEnumArea id="AP_ParasiteSporeGroundSearch">
+        <EditorCategories value=""/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.3" Effect="AP_ParasiteSporeGroundDamage"/>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="AP_ParasiteSporeGroundPersistent">
+        <EditorCategories value=""/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <PeriodCount value="2"/>
+        <!--disable friendly fire behavior-->
+        <!--PeriodicEffectArray value="AP_ParasiteSporeGroundAB"/-->
+        <PeriodicEffectArray value="AP_ParasiteSpore_Damage"/>
+        <PeriodicEffectArray value="AP_ParasiteSporeGroundCreate"/>
+        <PeriodicOffsetArray value="0,0,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
 </Catalog>

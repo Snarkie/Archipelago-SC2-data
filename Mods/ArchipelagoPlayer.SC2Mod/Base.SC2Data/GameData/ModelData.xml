@@ -22044,4 +22044,13 @@
     <CModel id="AP_WarhoundBrawlerFistImpact">
         <Model value="Assets\Effects\Zerg\ZurvanPsiArcImpact\ZurvanPsiArcImpact.m3"/>
     </CModel>
+    <CModel id="AP_ParasiteSporeGround">
+        <Model value="Assets\Effects\Zerg\CausticSpray_Missile_Impact\CausticSpray_Missile_Impact.m3"/>
+    </CModel>
+    <CModel id="AP_ParasiteSporeGroundImpact">
+        <Model value="Assets\Effects\Zerg\MiasmaliskPoisonCloudBirth\MiasmaliskPoisonCloudBirth.m3"/>
+    </CModel>
+    <CModel id="AP_ParasiteSporeGroundMissile">
+        <Model value="Assets\Effects\Zerg\SlivanAcidPuddleMissile\SlivanAcidPuddleMissile.m3"/>
+    </CModel>
 </Catalog>

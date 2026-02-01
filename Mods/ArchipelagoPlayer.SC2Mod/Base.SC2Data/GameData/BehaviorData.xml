@@ -10918,4 +10918,13 @@
         <Duration value="5"/>
         <Modification MoveSpeedMultiplier="0.5" AttackSpeedMultiplier="0.5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_CorruptorAcidSplash">
+        <Alignment value="Positive"/>
+        <InfoIcon value="AP\Assets\Textures\btn-zerg-AcidSplash.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
 </Catalog>

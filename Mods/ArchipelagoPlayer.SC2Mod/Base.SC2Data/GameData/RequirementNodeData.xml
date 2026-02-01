@@ -7846,4 +7846,8 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_OracleGround" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CorruptorAcidSplash">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_CorruptorAcidSplash" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
 </Catalog>
