@@ -9706,6 +9706,7 @@
         <TurningRate value="999.8437"/>
         <Sight value="9"/>
         <Food value="-3"/>
+        <RepairTime value="20"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="25"/>
@@ -29853,7 +29854,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="20"/>
-        <RepairTime value="40"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
