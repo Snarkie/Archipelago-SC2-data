@@ -46815,7 +46815,20 @@
         <On Terms="Signal.*.End" Send="SetOpacity 1.000000"/>
         <On Terms="ActorCreation" Send="Create AP_CommandCenterHyperjumpGlaze"/>
         <On Terms="ActorDestruction" Target="AP_CommandCenterHyperjumpGlaze" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.AP_HyperjumpTeleport.Start" Target="_Selectable" Send="SetVisibility"/>
+        <On Terms="Signal.*.End" Target="_Selectable" Send="SetVisibility 1"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="SetVisibility 1"/>
+        <On Terms="Effect.AP_HyperjumpTeleport.Start" Target="_Selectable" Send="Create AP_CommandCenterHyperjumpPlaceholder"/>
+        <On Terms="ActorDestruction" Target="AP_CommandCenterHyperjumpPlaceholder" Send="AnimBracketStop BSD"/>
+        <On Terms="Signal.*.End" Target="AP_CommandCenterHyperjumpPlaceholder" Send="AnimBracketStop BSD"/>
         <HostSiteOps Ops="SOpAttachHead SOpMoveDownBy1 SOp2DRotation"/>
+        <Model value="CommandCenterPlacement"/>
+    </CActorModel>
+    <CActorModel id="AP_CommandCenterHyperjumpPlaceholder" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="Visibility" value="0"/>
         <Model value="CommandCenterPlacement"/>
     </CActorModel>
 </Catalog>
