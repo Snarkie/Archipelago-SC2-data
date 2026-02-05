@@ -16839,8 +16839,8 @@
         <EffectArray Operation="Subtract" Reference="Effect,AP_MULERepair,DrainResourceCostFactor[Custom]" Value="0.25"/>
     </CUpgrade>
     <CUpgrade id="AP_SCVRepairBio">
-        <LeaderAlias value="AP_SCVRepairFree"/>
         <EffectArray Operation="Set" Reference="Abil,AP_Repair,IgnoreFilters" Value="-;-"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_MULERepair,IgnoreFilters" Value="-;-"/>
     </CUpgrade>
     <CUpgrade id="AP_SupplyDepotCloak"/>
 </Catalog>
