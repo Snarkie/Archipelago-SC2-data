@@ -30633,7 +30633,7 @@
         <Sight value="14"/>
         <CostResource index="Minerals" value="1000"/>
         <CostResource index="Vespene" value="1000"/>
-        <RepairTime value="69"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="AP_AttackAllowsInvulnerable"/>
@@ -31743,3 +31743,4 @@
         <Mover value=""/>
     </CUnit>
 </Catalog>
+
