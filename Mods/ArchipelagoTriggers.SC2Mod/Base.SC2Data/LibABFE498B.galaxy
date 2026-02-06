@@ -10655,10 +10655,6 @@ void libABFE498B_gf_AP_Triggers_techTreeInit () {
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
     // Automatic Variable Declarations
     // Implementation
-    if ((GameIsTestMap(false) == true)) {
-        TriggerExecute(libABFE498B_gt_AP_Triggers_techTreeInit, true, true);
-    }
-
     if ((lp_level >= 0)) {
         libABFE498B_gf_AP_Triggers_Terran_unlockMarine(lp_player);
         libABFE498B_gf_AP_Triggers_Zerg_unlockZergling(lp_player);
@@ -11162,7 +11158,7 @@ bool libABFE498B_gt_AP_Triggers_bankInit_Func (bool testConds, bool runActions) 
 //--------------------------------------------------------------------------------------------------
 void libABFE498B_gt_AP_Triggers_bankInit_Init () {
     libABFE498B_gt_AP_Triggers_bankInit = TriggerCreate("libABFE498B_gt_AP_Triggers_bankInit_Func");
-    TriggerAddEventMapInit(libABFE498B_gt_AP_Triggers_bankInit);
+    TriggerAddEventTimeElapsed(libABFE498B_gt_AP_Triggers_bankInit, 0.0, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11184,12 +11180,6 @@ bool libABFE498B_gt_AP_Triggers_bankOptionsInit_Func (bool testConds, bool runAc
     lv_user = lib5BD4895D_gf_AP_Core_getUser();
     BankLoad(libABFE498B_gv_aP_Triggers_BANK_OPTIONS_FILE_NAME, lv_user);
     libABFE498B_gv_aP_Triggers_bankOptions = BankLastCreated();
-    BankBackupLoopBegin(libABFE498B_gv_aP_Triggers_bankOptions,false);
-    for ( ; !BankBackupLoopDone() ; BankBackupLoopStep() ) {
-        BankBackupRemove(libABFE498B_gv_aP_Triggers_bankOptions, BankBackupGetId(BankBackupLoopCurrent()), lv_user);
-    }
-    BankBackupLoopEnd();
-    BankSave(libABFE498B_gv_aP_Triggers_bankOptions);
     return true;
 }
 
@@ -11216,12 +11206,6 @@ bool libABFE498B_gt_AP_Triggers_bankItemsInit_Func (bool testConds, bool runActi
     lv_user = lib5BD4895D_gf_AP_Core_getUser();
     BankLoad(libABFE498B_gv_aP_Triggers_BANK_ITEMS_FILE_NAME, lv_user);
     libABFE498B_gv_aP_Triggers_bankItems = BankLastCreated();
-    BankBackupLoopBegin(libABFE498B_gv_aP_Triggers_bankItems,false);
-    for ( ; !BankBackupLoopDone() ; BankBackupLoopStep() ) {
-        BankBackupRemove(libABFE498B_gv_aP_Triggers_bankItems, BankBackupGetId(BankBackupLoopCurrent()), lv_user);
-    }
-    BankBackupLoopEnd();
-    BankSave(libABFE498B_gv_aP_Triggers_bankItems);
     return true;
 }
 
