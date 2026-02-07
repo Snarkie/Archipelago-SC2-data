@@ -765,7 +765,7 @@ bool gt_ArchiInit_Func (bool testConds, bool runActions) {
     TriggerExecute(lib30B9E51A_gt_ArchipelagoPlayerLotvHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
     TriggerExecute(gt_Init03Units, true, false);
-    if ((GameIsTestMap(false) == true)) {
+    if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
         libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Terr";
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
