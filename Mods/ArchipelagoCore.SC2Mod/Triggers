@@ -428,6 +428,7 @@
             <Item Type="Comment" Library="5BD4895D" Id="EE98FE7B"/>
             <Item Type="Variable" Library="5BD4895D" Id="CC11984F"/>
             <Item Type="Variable" Library="5BD4895D" Id="9940F539"/>
+            <Item Type="Variable" Library="5BD4895D" Id="D66519BC"/>
             <Item Type="Comment" Library="5BD4895D" Id="B107E1E0"/>
             <Item Type="Variable" Library="5BD4895D" Id="C603957A"/>
             <Item Type="Variable" Library="5BD4895D" Id="4598A6E0"/>
@@ -476,6 +477,16 @@
         </Element>
         <Element Type="FunctionCall" Id="5B169C73">
             <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="030061A4"/>
+        </Element>
+        <Element Type="Variable" Id="D66519BC">
+            <VariableType>
+                <Type Value="bool"/>
+            </VariableType>
+            <Value Type="Param" Library="5BD4895D" Id="B33CC4E6"/>
+        </Element>
+        <Element Type="Param" Id="B33CC4E6">
+            <Value>false</Value>
+            <ValueType Type="bool"/>
         </Element>
         <Element Type="Comment" Id="B107E1E0">
             <Comment>
@@ -1132,6 +1143,7 @@
             <Item Type="Variable" Library="5BD4895D" Id="B66911A5"/>
             <Item Type="Trigger" Library="5BD4895D" Id="09118D7A"/>
             <Item Type="Trigger" Library="5BD4895D" Id="CB983523"/>
+            <Item Type="Trigger" Library="5BD4895D" Id="A10194D3"/>
         </Element>
         <Element Type="Variable" Id="7A01FE6A">
             <Internal/>
@@ -1168,8 +1180,6 @@
             <Action Type="FunctionCall" Library="5BD4895D" Id="5512C818"/>
             <Action Type="FunctionCall" Library="5BD4895D" Id="DBD20837"/>
             <Action Type="FunctionCall" Library="5BD4895D" Id="8D903C59"/>
-            <Action Type="Comment" Library="5BD4895D" Id="80B8A5E9"/>
-            <Action Type="FunctionCall" Library="5BD4895D" Id="1D4468AD"/>
         </Element>
         <Element Type="FunctionCall" Id="363E87A5">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
@@ -1387,85 +1397,6 @@
             <ParameterDef Type="ParamDef" Library="Ntve" Id="25A88BC6"/>
             <Preset Type="PresetValue" Library="Ntve" Id="00000120"/>
         </Element>
-        <Element Type="Comment" Id="80B8A5E9">
-            <Disabled/>
-            <Comment>
-                TODO: Find a way to test for editor start
-            </Comment>
-        </Element>
-        <Element Type="FunctionCall" Id="1D4468AD">
-            <Disabled/>
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-            <FunctionCall Type="Comment" Library="5BD4895D" Id="ED04263B"/>
-            <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="1CB61433"/>
-            <FunctionCall Type="Comment" Library="5BD4895D" Id="DAB80810"/>
-            <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="06023349"/>
-            <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="5B6C03BA"/>
-        </Element>
-        <Element Type="Comment" Id="ED04263B">
-            <Disabled/>
-            <Comment>
-                Map is started with the &quot;Test Document&quot; button from Editor
-            </Comment>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        </Element>
-        <Element Type="FunctionCall" Id="1CB61433">
-            <Disabled/>
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000242"/>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="485378F7"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="D5093C8F"/>
-        </Element>
-        <Element Type="Param" Id="485378F7">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000419"/>
-            <Value>0.0625</Value>
-            <ValueType Type="fixed"/>
-        </Element>
-        <Element Type="Param" Id="D5093C8F">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000420"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="00000013"/>
-        </Element>
-        <Element Type="Comment" Id="DAB80810">
-            <Disabled/>
-            <Comment>
-                needs a wait
-            </Comment>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        </Element>
-        <Element Type="FunctionCall" Id="06023349">
-            <Disabled/>
-            <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="C7D41A74"/>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        </Element>
-        <Element Type="FunctionCall" Id="5B6C03BA">
-            <Disabled/>
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="723F2CB2"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="94FCA9D9"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="2E7A61FE"/>
-        </Element>
-        <Element Type="Param" Id="723F2CB2">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
-            <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="CC8C6548"/>
-        </Element>
-        <Element Type="FunctionCall" Id="CC8C6548">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="40844EC3"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="8E77CC9F"/>
-        </Element>
-        <Element Type="Param" Id="8E77CC9F">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="51D3A7CE"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="BE13E79D"/>
-        </Element>
-        <Element Type="Param" Id="94FCA9D9">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
-        </Element>
-        <Element Type="Param" Id="2E7A61FE">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
-            <Value>true</Value>
-            <ValueType Type="bool"/>
-        </Element>
         <Element Type="Trigger" Id="CB983523">
             <Internal/>
             <Variable Type="Variable" Library="5BD4895D" Id="80482A34"/>
@@ -1585,21 +1516,27 @@
             <Variable Type="Variable" Library="5BD4895D" Id="7A01FE6A"/>
         </Element>
         <Element Type="FunctionCall" Id="9057E13F">
-            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-            <FunctionCall Type="Comment" Library="5BD4895D" Id="BFC9B350"/>
+            <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="C4E01CCD"/>
             <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="EF239598"/>
             <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="23DCDAB4"/>
         </Element>
-        <Element Type="Comment" Id="BFC9B350">
-            <Disabled/>
-            <Comment>
-                Map is started with the &quot;Test Document&quot; button from Editor
-            </Comment>
+        <Element Type="FunctionCall" Id="C4E01CCD">
+            <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="8A66A37E"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="FC77A0B0"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="55304DE8"/>
+        </Element>
+        <Element Type="Param" Id="FC77A0B0">
+            <ParameterDef Type="ParamDef" Library="5BD4895D" Id="325F25F9"/>
+            <Variable Type="Variable" Library="5BD4895D" Id="CC11984F"/>
+        </Element>
+        <Element Type="Param" Id="55304DE8">
+            <ParameterDef Type="ParamDef" Library="5BD4895D" Id="48480682"/>
+            <Value>Archipelago failed to connect</Value>
+            <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionCall" Id="EF239598">
-            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000118"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="5BD4895D" Id="1FFAE581"/>
@@ -1619,7 +1556,6 @@
             <ValueType Type="text"/>
         </Element>
         <Element Type="FunctionCall" Id="23DCDAB4">
-            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
             <Parameter Type="Param" Library="5BD4895D" Id="22F7EF81"/>
@@ -1628,15 +1564,7 @@
         </Element>
         <Element Type="Param" Id="22F7EF81">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
-            <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="0A225374"/>
-        </Element>
-        <Element Type="FunctionCall" Id="0A225374">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="40844EC3"/>
-            <Parameter Type="Param" Library="5BD4895D" Id="2F6413C9"/>
-        </Element>
-        <Element Type="Param" Id="2F6413C9">
-            <ParameterDef Type="ParamDef" Library="Ntve" Id="51D3A7CE"/>
-            <Preset Type="PresetValue" Library="Ntve" Id="BE13E79D"/>
+            <Variable Type="Variable" Library="5BD4895D" Id="D66519BC"/>
         </Element>
         <Element Type="Param" Id="C7465445">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
@@ -1646,6 +1574,69 @@
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Value>true</Value>
             <ValueType Type="bool"/>
+        </Element>
+        <Element Type="Trigger" Id="A10194D3">
+            <Internal/>
+            <Event Type="FunctionCall" Library="5BD4895D" Id="C4A6B7CF"/>
+            <Condition Type="FunctionCall" Library="5BD4895D" Id="C73C4DA2"/>
+            <Action Type="Comment" Library="5BD4895D" Id="28452ECE"/>
+            <Action Type="FunctionCall" Library="5BD4895D" Id="E7745C49"/>
+            <Action Type="FunctionCall" Library="5BD4895D" Id="321BE7D9"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C4A6B7CF">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="BF7A3439"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="BDCF3477"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="FE7540B0"/>
+        </Element>
+        <Element Type="Param" Id="BDCF3477">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="D5175014"/>
+            <Value>0.5</Value>
+            <ValueType Type="fixed"/>
+        </Element>
+        <Element Type="Param" Id="FE7540B0">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="BCEBDC95"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000013"/>
+        </Element>
+        <Element Type="FunctionCall" Id="C73C4DA2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="54987403"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="A711E20D"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="B3EAE7CB"/>
+        </Element>
+        <Element Type="Param" Id="54987403">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="5BD4895D" Id="A93C1313"/>
+        </Element>
+        <Element Type="Param" Id="A711E20D">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="B3EAE7CB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>false</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="Comment" Id="28452ECE">
+            <Comment>
+                Banks get written before the mission finishes loading. If the game cannot read the banks after .5 seconds, assume there is no connection to the AP client
+            </Comment>
+        </Element>
+        <Element Type="FunctionCall" Id="E7745C49">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="FADC5C4F"/>
+            <Parameter Type="Param" Library="5BD4895D" Id="8FB472E3"/>
+        </Element>
+        <Element Type="Param" Id="FADC5C4F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="5BD4895D" Id="D66519BC"/>
+        </Element>
+        <Element Type="Param" Id="8FB472E3">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="321BE7D9">
+            <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="C7D41A74"/>
         </Element>
         <Element Type="Category" Id="E5CDEC13">
             <Item Type="Category" Library="5BD4895D" Id="227444F0"/>
@@ -11755,6 +11746,7 @@
         </Element>
         <Element Type="FunctionDef" Id="2601BD74">
             <FlagAction/>
+            <FlagCreateThread/>
             <Variable Type="Variable" Library="5BD4895D" Id="B7A41851"/>
             <Variable Type="Variable" Library="5BD4895D" Id="568E08CE"/>
             <FunctionCall Type="FunctionCall" Library="5BD4895D" Id="7DAD13F7"/>

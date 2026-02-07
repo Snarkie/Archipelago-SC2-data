@@ -25,12 +25,13 @@ void libABFE498B_InitVariables () {
 
     libABFE498B_InitVariables_completed = true;
 
-    libABFE498B_gv_aP_Triggers_Option_gameSpeed = c_gameSpeedNormal;
-    libABFE498B_gv_aP_Triggers_Option_enableNova = true;
-    libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Neut";
     libABFE498B_gv_aP_Triggers_isBuild = true;
     libABFE498B_gv_aP_Triggers_MapConfig_Mission_Protoss = libABFE498B_gv_aP_Triggers_MapConfig_MISSION_NOT_PROTOSS;
     libABFE498B_gv_aP_Triggers_MapConfig_SoAControllingPlayers = PlayerGroupSingle(1);
+    libABFE498B_gv_aP_Triggers_Option_gameSpeed = c_gameSpeedNormal;
+    libABFE498B_gv_aP_Triggers_Option_enableNova = true;
+    libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Neut";
+    libABFE498B_gv_aP_Triggers_HeroUnits = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_lastWarpedUnits = UnitGroupEmpty();
 }
@@ -10652,6 +10653,175 @@ void libABFE498B_gf_AP_Triggers_techTreeInit () {
     }
 }
 
+void libABFE498B_gf_AP_Triggers_HeroInit (int lp_player, point lp_location, unitgroup lp_replacements) {
+    // Variable Declarations
+    string[4] lv_unittype;
+    int[4] lv_system;
+    int lv_bitflag;
+    int lv_count;
+    int lv_index;
+    point lv_spawnPoint;
+
+    // Automatic Variable Declarations
+    int auto6F886A1D_ae;
+    const int auto6F886A1D_ai = 1;
+    unitgroup auto71D70EA7_g;
+    int auto71D70EA7_u;
+    unit auto71D70EA7_var;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 0)) {
+        return ;
+    }
+
+    lv_bitflag = ModI(libABFE498B_gv_aP_Triggers_Option_HeroPresence, 2);
+    if ((lv_bitflag == 1)) {
+        lv_count += 1;
+        lv_unittype[lv_count] = "AP_K5Kerrigan";
+        lv_system[lv_count] = 1;
+    }
+
+    libABFE498B_gv_aP_Triggers_Option_HeroPresence /= 2;
+    lv_bitflag = ModI(libABFE498B_gv_aP_Triggers_Option_HeroPresence, 2);
+    if ((lv_bitflag == 1)) {
+        lv_count += 1;
+        lv_unittype[lv_count] = "AP_NovaHero";
+        lv_system[lv_count] = 1;
+    }
+
+    libABFE498B_gv_aP_Triggers_Option_HeroPresence /= 2;
+    lv_bitflag = ModI(libABFE498B_gv_aP_Triggers_Option_HeroPresence, 2);
+    if ((lv_bitflag == 1)) {
+    }
+
+    auto6F886A1D_ae = lv_count;
+    lv_index = 1;
+    for ( ; ( (auto6F886A1D_ai >= 0 && lv_index <= auto6F886A1D_ae) || (auto6F886A1D_ai < 0 && lv_index >= auto6F886A1D_ae) ) ; lv_index += auto6F886A1D_ai ) {
+        if ((lv_count > 1)) {
+            lv_spawnPoint = PointWithOffsetPolar(lp_location, 1.0, (120*lv_index));
+        }
+        else {
+            lv_spawnPoint = lp_location;
+        }
+        TextExpressionSetToken("Param/Expression/lib_ABFE498B_626DF616", "A", StringToText((lv_unittype[lv_index])));
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_626DF616"), false);
+        UnitCreate(1, lv_unittype[lv_index], 0, lp_player, lv_spawnPoint, 270.0);
+        libABFE498B_gv_aP_Triggers_HeroUnit[lv_index] = UnitLastCreated();
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, UnitLastCreated());
+        if ((lv_system[lv_index] == 1)) {
+            lib15EF4C78_gf_SetHeroPanelUnit(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
+        }
+        else {
+            lib15EF4C78_gf_SetHeroPanelUnit2(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
+        }
+    }
+    auto71D70EA7_g = lp_replacements;
+    auto71D70EA7_u = UnitGroupCount(auto71D70EA7_g, c_unitCountAll);
+    for (;; auto71D70EA7_u -= 1) {
+        auto71D70EA7_var = UnitGroupUnitFromEnd(auto71D70EA7_g, auto71D70EA7_u);
+        if (auto71D70EA7_var == null) { break; }
+        UnitRemove(auto71D70EA7_var);
+    }
+}
+
+void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgroup lp_replacements) {
+    // Variable Declarations
+    point lv_location;
+    string[4] lv_unittype;
+    int[4] lv_system;
+    int lv_bitflag;
+    int lv_count;
+    int lv_index;
+    point lv_spawnPoint;
+
+    // Automatic Variable Declarations
+    int auto4FA2ACBF_ae;
+    const int auto4FA2ACBF_ai = 1;
+    unitgroup auto93F8A4D3_g;
+    int auto93F8A4D3_u;
+    unit auto93F8A4D3_var;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 0)) {
+        return ;
+    }
+
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 1) && (UnitGetType(lp_hero) == "AP_K5Kerrigan")) {
+        libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        return ;
+    }
+
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 2) && (UnitGetType(lp_hero) == "AP_NovaHero")) {
+        libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        return ;
+    }
+
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 4) && (UnitGetType(lp_hero) == "ZealotACGluescreenDummy")) {
+        libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        return ;
+    }
+
+    lv_location = UnitGetPosition(lp_hero);
+    lv_bitflag = ModI(libABFE498B_gv_aP_Triggers_Option_HeroPresence, 2);
+    if ((lv_bitflag == 1)) {
+        lv_count += 1;
+        lv_unittype[lv_count] = "AP_K5Kerrigan";
+        lv_system[lv_count] = 1;
+    }
+
+    libABFE498B_gv_aP_Triggers_Option_HeroPresence /= 2;
+    lv_bitflag = ModI(libABFE498B_gv_aP_Triggers_Option_HeroPresence, 2);
+    if ((lv_bitflag == 1)) {
+        lv_count += 1;
+        lv_unittype[lv_count] = "AP_NovaHero";
+        lv_system[lv_count] = 1;
+    }
+
+    libABFE498B_gv_aP_Triggers_Option_HeroPresence /= 2;
+    lv_bitflag = ModI(libABFE498B_gv_aP_Triggers_Option_HeroPresence, 2);
+    if ((lv_bitflag == 1)) {
+    }
+
+    lib15EF4C78_gf_SetHeroPanelUnit(1, null, lp_player);
+    lib15EF4C78_gf_SetHeroPanelUnit2(1, null, lp_player);
+    UnitRemove(lp_hero);
+    auto4FA2ACBF_ae = lv_count;
+    lv_index = 1;
+    for ( ; ( (auto4FA2ACBF_ai >= 0 && lv_index <= auto4FA2ACBF_ae) || (auto4FA2ACBF_ai < 0 && lv_index >= auto4FA2ACBF_ae) ) ; lv_index += auto4FA2ACBF_ai ) {
+        if ((lv_count > 1)) {
+            lv_spawnPoint = PointWithOffsetPolar(lv_location, 1.0, (120*lv_index));
+        }
+        else {
+            lv_spawnPoint = lv_location;
+        }
+        TextExpressionSetToken("Param/Expression/lib_ABFE498B_851E1858", "A", StringToText((lv_unittype[lv_index])));
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_851E1858"), false);
+        UnitCreate(1, lv_unittype[lv_index], 0, lp_player, lv_spawnPoint, 270.0);
+        libABFE498B_gv_aP_Triggers_HeroUnit[lv_index] = UnitLastCreated();
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, UnitLastCreated());
+        if ((lv_system[lv_index] == 1)) {
+            lib15EF4C78_gf_SetHeroPanelUnit(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
+        }
+        else {
+            lib15EF4C78_gf_SetHeroPanelUnit2(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
+        }
+    }
+    auto93F8A4D3_g = lp_replacements;
+    auto93F8A4D3_u = UnitGroupCount(auto93F8A4D3_g, c_unitCountAll);
+    for (;; auto93F8A4D3_u -= 1) {
+        auto93F8A4D3_var = UnitGroupUnitFromEnd(auto93F8A4D3_g, auto93F8A4D3_u);
+        if (auto93F8A4D3_var == null) { break; }
+        UnitRemove(auto93F8A4D3_var);
+    }
+}
+
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
     // Automatic Variable Declarations
     // Implementation
@@ -11139,6 +11309,7 @@ bool libABFE498B_gt_AP_Triggers_bankInit_Func (bool testConds, bool runActions) 
         return true;
     }
 
+    TriggerDebugSetTypeFile(1, "TriggerDebug.txt");
     TriggerExecute(libABFE498B_gt_AP_Triggers_bankOptionsInit, true, false);
     TriggerExecute(libABFE498B_gt_AP_Triggers_bankItemsInit, true, false);
     while ((lib5BD4895D_gv_aP_Core_initFinished == false)) {
@@ -11176,7 +11347,6 @@ bool libABFE498B_gt_AP_Triggers_bankOptionsInit_Func (bool testConds, bool runAc
         return true;
     }
 
-    TriggerDebugSetTypeFile(1, "TriggerDebug.txt");
     lv_user = lib5BD4895D_gf_AP_Core_getUser();
     BankLoad(libABFE498B_gv_aP_Triggers_BANK_OPTIONS_FILE_NAME, lv_user);
     libABFE498B_gv_aP_Triggers_bankOptions = BankLastCreated();

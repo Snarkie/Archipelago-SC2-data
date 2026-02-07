@@ -977,7 +977,17 @@ void lib5BD4895D_gf_AP_Core_tradeReceiveUnit (int lp_player, string lp_receivedS
     }
 }
 
+trigger auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_Trigger = null;
+
 void lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg () {
+    if (auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_Trigger == null) {
+        auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_Trigger = TriggerCreate("auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_Trigger, false, false);
+}
+
+bool auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_TriggerFunc (bool testConds, bool runActions) {
     // Variable Declarations
     int lv_currentPlayer;
     int lv_color;
@@ -1009,6 +1019,7 @@ void lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg () {
         }
 
     }
+    return true;
 }
 
 void lib5BD4895D_gf_AP_Core_initObjectivePanel () {
@@ -2256,6 +2267,11 @@ bool lib5BD4895D_gt_AP_Core_mapLoadEnd_Func (bool testConds, bool runActions) {
     DialogControlFadeTransparency(lib5BD4895D_gv_aP_Core_blackScreen, PlayerGroupAll(), lv_duration, 0.0);
     Wait(lv_duration, c_timeReal);
     DialogDestroy(lib5BD4895D_gv_aP_Core_blackScreen_dialog);
+    if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
+        lib5BD4895D_gf_AP_Core_sendChatMessage(lib5BD4895D_gv_aP_Core_user, "Archipelago failed to connect");
+        TriggerDebugOutput(1, StringExternal("Param/Value/lib_5BD4895D_FD3A182F"), true);
+    }
+
     return true;
 }
 
@@ -2263,6 +2279,34 @@ bool lib5BD4895D_gt_AP_Core_mapLoadEnd_Func (bool testConds, bool runActions) {
 void lib5BD4895D_gt_AP_Core_mapLoadEnd_Init () {
     lib5BD4895D_gt_AP_Core_mapLoadEnd = TriggerCreate("lib5BD4895D_gt_AP_Core_mapLoadEnd_Func");
     TriggerAddEventTimePeriodic(lib5BD4895D_gt_AP_Core_mapLoadEnd, 0.0625, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Core_mapLoadFailed
+//--------------------------------------------------------------------------------------------------
+bool lib5BD4895D_gt_AP_Core_mapLoadFailed_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((lib5BD4895D_gv_aP_Core_initFinished == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5BD4895D_gv_aP_Core_testMode = true;
+    lib5BD4895D_gf_AP_Core_onLoadFinished();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib5BD4895D_gt_AP_Core_mapLoadFailed_Init () {
+    lib5BD4895D_gt_AP_Core_mapLoadFailed = TriggerCreate("lib5BD4895D_gt_AP_Core_mapLoadFailed_Func");
+    TriggerAddEventTimeElapsed(lib5BD4895D_gt_AP_Core_mapLoadFailed, 0.5, c_timeGame);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2702,6 +2746,7 @@ void lib5BD4895D_gt_AP_Core_objectiveTimerUpdate_Init () {
 void lib5BD4895D_InitTriggers () {
     lib5BD4895D_gt_AP_Core_mapLoadStart_Init();
     lib5BD4895D_gt_AP_Core_mapLoadEnd_Init();
+    lib5BD4895D_gt_AP_Core_mapLoadFailed_Init();
     lib5BD4895D_gt_AP_Core_bankInit_Init();
     lib5BD4895D_gt_AP_Core_bankCoreOptionsInit_Init();
     lib5BD4895D_gt_AP_Core_bankMessageInit_Init();
