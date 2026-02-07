@@ -2346,6 +2346,7 @@ Variable/Name/lib_ABFE498B_77F731A2=player
 Variable/Name/lib_ABFE498B_783D5B86=morphValue
 Variable/Name/lib_ABFE498B_78BECE48=AP_Triggers_Protoss_has_Dragoon
 Variable/Name/lib_ABFE498B_796BD8AB=player
+Variable/Name/lib_ABFE498B_7980B38E=heroPresence
 Variable/Name/lib_ABFE498B_7989A0E4=1stacks
 Variable/Name/lib_ABFE498B_7A7F52C9=upgradeLevels
 Variable/Name/lib_ABFE498B_7C7FC1E0=upgradeLevels

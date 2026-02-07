@@ -1906,6 +1906,7 @@ void libABFE498B_gf_AP_Triggers_setOptions (string lp_inputString) {
     string lv_difficultyDamageModifierEvent;
     string lv_unitOptionsValue;
     string lv_warCouncilNerfs;
+    string lv_heroPresence;
     int lv_currentPlayer;
 
     // Automatic Variable Declarations
@@ -1932,6 +1933,7 @@ void libABFE498B_gf_AP_Triggers_setOptions (string lp_inputString) {
     lv_difficultyDamageModifierEvent = "";
     lv_unitOptionsValue = "";
     lv_warCouncilNerfs = "";
+    lv_heroPresence = "";
 
     // Implementation
     lv_difficulty = StringWord(lp_inputString, 1);
@@ -1953,6 +1955,9 @@ void libABFE498B_gf_AP_Triggers_setOptions (string lp_inputString) {
     lv_difficultyDamageModifier = StringWord(lp_inputString, 17);
     lv_unitOptionsValue = StringWord(lp_inputString, 18);
     lv_warCouncilNerfs = StringWord(lp_inputString, 19);
+    lv_heroPresence = StringWord(lp_inputString, 20);
+    TextExpressionSetToken("Param/Expression/lib_ABFE498B_DA7A6A87", "A", StringToText(lv_heroPresence));
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_DA7A6A87"), false);
     libABFE498B_gf_AP_Triggers_setDifficulty(lv_difficulty);
     libABFE498B_gf_AP_Triggers_setGameSpeed(lv_gameSpeed);
     libABFE498B_gf_AP_Triggers_setGenericUpgradeOptions(StringToInt(lv_genericUpgradeResearch));
@@ -1985,6 +1990,9 @@ void libABFE498B_gf_AP_Triggers_setOptions (string lp_inputString) {
     }
     libABFE498B_gf_AP_Triggers_setMercenaryHighlander(StringEqual(lv_unitOptionsValue, "1", c_stringCase));
     libABFE498B_gf_AP_Triggers_setWarCouncil(StringEqual(lv_warCouncilNerfs, "1", c_stringCase));
+    libABFE498B_gv_aP_Triggers_Option_HeroPresence = StringToInt(lv_heroPresence);
+    TextExpressionSetToken("Param/Expression/lib_ABFE498B_FCA6D672", "A", IntToText(libABFE498B_gv_aP_Triggers_Option_HeroPresence));
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_FCA6D672"), false);
 }
 
 void libABFE498B_gf_AP_Triggers_giveTerranTech (string lp_inputString) {
@@ -2331,6 +2339,8 @@ bool auto_libABFE498B_gf_AP_Triggers_bankOptionsRead_TriggerFunc (bool testConds
     lv_key = libABFE498B_gv_aP_Triggers_BANK_OPTIONS_KEY_OPTIONS;
     if ((BankKeyExists(libABFE498B_gv_aP_Triggers_bankOptions, lv_section, lv_key) == true)) {
         lv_value = BankValueGetAsString(libABFE498B_gv_aP_Triggers_bankOptions, lv_section, lv_key);
+        TextExpressionSetToken("Param/Expression/lib_ABFE498B_DB335FCF", "A", StringToText(lv_value));
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_DB335FCF"), false);
         libABFE498B_gf_AP_Triggers_setOptions(lv_value);
     }
 
