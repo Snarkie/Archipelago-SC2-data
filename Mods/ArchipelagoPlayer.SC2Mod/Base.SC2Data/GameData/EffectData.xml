@@ -6405,7 +6405,7 @@
         <Amount value="100"/>
         <AreaArray Radius="1.5" Fraction="1"/>
         <AreaArray Radius="2.5" Fraction="0.6"/>
-        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Invulnerable"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Invulnerable,Hidden"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="AP_NovaGadgetPulseGrenadesLaunchMissile">
         <ValidatorArray index="0" value="HasVision"/>
@@ -24142,19 +24142,6 @@
         <PeriodicEffectArray value="AP_ElderProbeWarpinSearch"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
-    <CEffectModifyPlayer id="AP_ElderProbeReconstructionCharge">
-        <EditorCategories value=""/>
-        <WhichPlayer Value="Origin"/>
-        <Cost>
-            <Charge>
-                <CountMax value="5"/>
-                <CountUse value="-1"/>
-                <Link value="Abil/AP_ElderProbeReconstruction"/>
-                <Location value="Player"/>
-            </Charge>
-        </Cost>
-        <ValidatorArray value="AP_ElderProbeGiveReconstuctionCharge"/>
-    </CEffectModifyPlayer>
     <CEffectModifyPlayer id="AP_ElderProbeUsed">
         <EditorCategories value=""/>
         <WhichPlayer Value="Origin"/>
