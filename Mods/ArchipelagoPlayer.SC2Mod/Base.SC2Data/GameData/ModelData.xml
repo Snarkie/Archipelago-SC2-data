@@ -21283,7 +21283,7 @@
         <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
     <CModel id="AP_LaserDrillTripodDeath" parent="UnitDeath" Race="Terran">
-        <Model value="Assets\Buildings\Terran\LaserDrillTripodDeath\LaserDrillTripodDeath.m3"/>
+        <Model value="Assets\Units\Terran\LaserDrillTripodDeath\LaserDrillTripodDeath.m3"/>
         <LowQualityModel value="AP_LaserDrillTripodDeathLow"/>
     </CModel>
     <CModel id="AP_SlaynMissileTurret" parent="Building" Race="Protoss">
