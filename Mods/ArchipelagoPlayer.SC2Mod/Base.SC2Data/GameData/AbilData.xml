@@ -5250,7 +5250,8 @@
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
         <Flags index="PassengerAcquirePassengers" value="1"/>
-        <TargetFilters value="Mechanical,Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <TargetFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <IgnoreFilters value="Mechanical;-"/>
         <AutoCastAcquireLevel value="Defensive"/>
         <AutoCastFilters value="-;Neutral,Enemy"/>
         <AutoCastRange value="7"/>
@@ -5307,7 +5308,8 @@
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
         <Flags index="PassengerAcquirePassengers" value="1"/>
-        <TargetFilters value="Mechanical,Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <TargetFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <IgnoreFilters value="Mechanical;-"/>
         <AutoCastAcquireLevel value="Defensive"/>
         <AutoCastFilters value="Visible;Neutral,Enemy"/>
         <AutoCastRange value="7"/>
@@ -9763,6 +9765,7 @@
         <TargetFilters value="Biological,Visible;Ally,Neutral,Enemy,Dead,Hidden"/>
         <LoadValidatorArray value="RequiresTerran"/>
         <LoadValidatorArray value="AP_IsNotHellionTank"/>
+        <UnloadValidatorArray value="AP_BunkerUnload"/>
     </CAbilTransport>
     <CAbilRedirectTarget id="AP_AttackRedirect">
         <Abil value="attack"/>
@@ -16123,4 +16126,27 @@
         <Flags index="Passive" value="1"/>
         <Flags index="Hidden" value="1"/>
     </CAbilQueue>
+    <CAbilEffectTarget id="AP_CommandCenterHyperjump">
+        <AbilSetId value="FleetwideJump"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="AP_HyperjumpCreatePrecursor"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CastIntroTime value="0.3"/>
+        <CastOutroTime value="1.2624"/>
+        <ShowProgressArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <ProgressButtonArray index="Channel" value="AP_HyperjumpHercules"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_CommandCenterHyperjump" Requirements="AP_HaveCommandCenterHyperjump">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <PlaceUnit value="CommandCenterFlying"/>
+    </CAbilEffectTarget>
 </Catalog>

@@ -4872,4 +4872,23 @@
     <CRequirement id="AP_HaveCorruptorAcidSplash">
         <NodeArray index="Show" Link="AP_CorruptorAcidSplash"/>
     </CRequirement>
+    <CRequirement id="AP_HaveBunkerIgnoreSupply">
+        <NodeArray index="Show" Link="AP_BunkerIgnoreSupply"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveCommandCenterHyperjump">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="AP_CommandCenterHyperjump"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveJuggernautThrusters">
+        <NodeArray index="Show" Link="AP_JuggernautThrusters"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveSCVRepairBio">
+        <NodeArray index="Show" Link="AP_SCVRepairBio"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveSCVRepairFree">
+        <NodeArray index="Show" Link="AP_SCVRepairFree"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveSupplyDepotCloak">
+        <NodeArray index="Show" Link="AP_SupplyDepotCloak"/>
+    </CRequirement>
 </Catalog>

@@ -271,6 +271,8 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockSCVAdvancedConstruction (int lp_pla
 void libABFE498B_gf_AP_Triggers_Terran_unlockSCVDualFusionWelders (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockSCVHostileEnvironmentAdaptation (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockSCVConstructionJumpJets (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockSCVResourceful (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockSCVCauterizer (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockMarineCombatShield (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockMarineProgressiveStimpack (int lp_player, int lp_level);
 void libABFE498B_gf_AP_Triggers_Terran_unlockMarineLaserTargetingSystem (int lp_player);
@@ -480,6 +482,7 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerProjectileAccelerator (int lp
 void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerNeosteelBunker (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerShrikeTurret (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerFortifiedBunker (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerEmergencyProvisions (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockMissileTurretTitaniumHousing (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockMissileTurretHellstormBatteries (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockMissileTurretResourceEfficency (int lp_player);
@@ -488,6 +491,7 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterPlanetaryFortress (int
 void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterExtraSupplies (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterScannerSweep (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterMULE (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterTacticalJump (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockPlanetaryFortressProgressiveAugumentedThrusters (int lp_player, int lp_level);
 void libABFE498B_gf_AP_Triggers_Terran_unlockPlanetaryFortressAdvancedTargeting (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockPlanetaryFortressOrbitalModule (int lp_player);
@@ -497,6 +501,8 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockDevastatorTurretResourceEfficency (
 void libABFE498B_gf_AP_Triggers_Terran_unlockSensorTowerAssistiveTargeting (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockSensorTowerEnhancedVision (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockFusionCoreFusionReactor (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockJuggernautThrusters (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockSupplyDepotCovertStocks (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockInfantryArmor (int lp_player, int lp_level);
 void libABFE498B_gf_AP_Triggers_Terran_unlockInfantryWeapon (int lp_player, int lp_level);
 void libABFE498B_gf_AP_Triggers_Terran_unlockVehicleArmor (int lp_player, int lp_level);

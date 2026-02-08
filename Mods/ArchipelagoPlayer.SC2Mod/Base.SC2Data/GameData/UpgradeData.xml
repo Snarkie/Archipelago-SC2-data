@@ -16804,4 +16804,43 @@
     <CUpgrade id="AP_CorruptorAcidSplash">
         <EffectArray Operation="Set" Reference="Effect,AP_ParasiteSpore_LaunchMissile,ImpactEffect" Value="AP_ParasiteSporeGroundPersistent"/>
     </CUpgrade>
+    <CUpgrade id="AP_BunkerIgnoreSupply">
+        <EffectArray Operation="Set" Reference="Behavior,AP_BunkerWeaponRangeBonus,Modification.StateFlags[SuppressFoodUsed]" Value="1"/>
+    </CUpgrade>
+    <CUpgrade id="AP_CommandCenterHyperjump"/>
+    <CUpgrade id="AP_JuggernautThrusters">
+        <EffectArray Operation="Multiply" Reference="Unit,AP_CommandCenterFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_CommandCenterFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_OrbitalCommandFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_OrbitalCommandFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_BarracksFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_BarracksFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_FactoryFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_FactoryFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_StarportFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_StarportFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_BarracksMengskFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_BarracksMengskFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_FactoryMengskFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_FactoryMengskFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_StarportMengskFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_StarportMengskFlying,Speed" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_PlanetaryFortressFlying,Acceleration" Value="2.000000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_PlanetaryFortressFlying,Speed" Value="2.000000"/>
+    </CUpgrade>
+    <CUpgrade id="AP_SCVRepairFree">
+        <EffectArray Operation="Subtract" Reference="Effect,AP_Repair,DrainResourceCostFactor[Minerals]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_Repair,DrainResourceCostFactor[Vespene]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_Repair,DrainResourceCostFactor[Terrazine]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_Repair,DrainResourceCostFactor[Custom]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_MULERepair,DrainResourceCostFactor[Minerals]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_MULERepair,DrainResourceCostFactor[Vespene]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_MULERepair,DrainResourceCostFactor[Terrazine]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_MULERepair,DrainResourceCostFactor[Custom]" Value="0.25"/>
+    </CUpgrade>
+    <CUpgrade id="AP_SCVRepairBio">
+        <EffectArray Operation="Set" Reference="Abil,AP_Repair,IgnoreFilters" Value="-;-"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_MULERepair,IgnoreFilters" Value="-;-"/>
+    </CUpgrade>
+    <CUpgrade id="AP_SupplyDepotCloak"/>
 </Catalog>

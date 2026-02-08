@@ -645,10 +645,10 @@ void libABFE498B_gf_AP_Triggers_unlockTerranArmory7 (int lp_player, int lp_bitAr
         libABFE498B_gf_AP_Triggers_Terran_unlockSpectreBargainBinPrices, //22
         libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundBrawlerConfiguration, //23
         libABFE498B_gf_AP_Triggers_Terran_unlockWarhoundJumpJets, //24
-        ap_triggers_PlayerConsumer_sig, //25
-        ap_triggers_PlayerConsumer_sig, //26
-        ap_triggers_PlayerConsumer_sig, //27
-        ap_triggers_PlayerConsumer_sig, //28
+        libABFE498B_gf_AP_Triggers_Terran_unlockSCVResourceful, //25
+        libABFE498B_gf_AP_Triggers_Terran_unlockSCVCauterizer, //26
+        libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterTacticalJump, //27
+        libABFE498B_gf_AP_Triggers_Terran_unlockBunkerEmergencyProvisions, //28
         ap_triggers_PlayerConsumer_sig //29
     );
 }
@@ -685,8 +685,8 @@ void libABFE498B_gf_AP_Triggers_unlockTerranLaboratory (int lp_player, int lp_bi
         libABFE498B_gf_AP_Triggers_Terran_unlockHiveMindEmulatorProtoss, //22
         libABFE498B_gf_AP_Triggers_Terran_unlockHiveMindEmulatorTerran, //23
         libABFE498B_gf_AP_Triggers_Terran_unlockSignalBeacon, //24
-        ap_triggers_PlayerConsumer_sig, //25
-        ap_triggers_PlayerConsumer_sig, //26
+        libABFE498B_gf_AP_Triggers_Terran_unlockJuggernautThrusters, //25
+        libABFE498B_gf_AP_Triggers_Terran_unlockSupplyDepotCovertStocks, //26
         ap_triggers_PlayerConsumer_sig, //27
         ap_triggers_PlayerConsumer_sig, //28
         ap_triggers_PlayerConsumer_sig //29
@@ -3047,6 +3047,18 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockSCVConstructionJumpJets (int lp_pla
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SCVCliffJump", 1);
 }
 
+void libABFE498B_gf_AP_Triggers_Terran_unlockSCVResourceful (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SCVRepairFree", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Terran_unlockSCVCauterizer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SCVRepairBio", 1);
+}
+
 void libABFE498B_gf_AP_Triggers_Terran_unlockMarineCombatShield (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -4690,6 +4702,12 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerFortifiedBunker (int lp_playe
 
 }
 
+void libABFE498B_gf_AP_Triggers_Terran_unlockBunkerEmergencyProvisions (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_BunkerIgnoreSupply", 1);
+}
+
 void libABFE498B_gf_AP_Triggers_Terran_unlockMissileTurretTitaniumHousing (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -4740,6 +4758,12 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterMULE (int lp_player) {
     // Implementation
     libABFE498B_gf_AP_Triggers_Terran_unlockOrbitalCommand(lp_player);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_MULE", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Terran_unlockCommandCenterTacticalJump (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_CommandCenterHyperjump", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Terran_unlockPlanetaryFortressProgressiveAugumentedThrusters (int lp_player, int lp_level) {
@@ -4840,6 +4864,18 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockFusionCoreFusionReactor (int lp_pla
     TechTreeAbilityAllow(lp_player, AbilityCommand("AP_TerranBuild", 11), true);
     TechTreeAbilityAllow(lp_player, AbilityCommand("AP_TerranBuild", 15), true);
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_FusionCoreFusionReactor", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Terran_unlockJuggernautThrusters (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_JuggernautThrusters", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Terran_unlockSupplyDepotCovertStocks (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SupplyDepotCloak", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Terran_unlockInfantryArmor (int lp_player, int lp_level) {

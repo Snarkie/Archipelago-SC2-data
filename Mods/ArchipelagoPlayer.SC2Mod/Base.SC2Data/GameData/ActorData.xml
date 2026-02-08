@@ -46777,4 +46777,58 @@
         <BuildModel value="Invisible"/>
         <PlacementModel value="Invisible"/>
     </CActorUnit>
+    <CActorModelMaterial id="AP_CommandCenterHyperjumpGlaze" parent="GlazeParent">
+        <Remove Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD IGNORE Stand Death"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <Model value="GlazeStasis"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModel id="AP_CommandCenterHyperjump" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <EditorCategories value=""/>
+        <On Terms="Signal.*.Teleport" Target="_Selectable" Send="SetOpacity 0.000000 0.000000 AP_Jump"/>
+        <On Terms="Signal.*.Teleport" Send="SetScale 0.010000,0.010000,3.000000 0.600000"/>
+        <On Terms="TimerExpired; TimerName Delay" Target="_Selectable" Send="SetScale 0.010000,0.010000,20.000000 0.400000 AP_Jump"/>
+        <On Terms="Signal.*.Teleport" Send="TimerSet 0.500000 Delay"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.300000 Start"/>
+        <On Terms="TimerExpired; TimerName Start" Send="Signal Teleport"/>
+        <On Terms="Abil.AP_CommandCenterHyperjump.SourceCastStart" Send="Create"/>
+        <On Terms="Behavior.AP_HyperjumpTeleportIn.On" Send="Signal End"/>
+        <On Terms="Signal.*.End" Target="_Selectable" Send="SetScale 1.000000 0.400000 AP_Jump"/>
+        <On Terms="Signal.*.End" Send="TimerSet 0.200000 End"/>
+        <On Terms="TimerExpired; TimerName End" Send="SetScale 1.000000 0.600000"/>
+        <On Terms="TimerExpired; TimerName End" Send="TimerSet 0.600000 DestroyDelay"/>
+        <On Terms="TimerExpired; TimerName DestroyDelay" Send="TimerSet 0.300000 Destroy"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="ClearOpacity 0.000000 AP_Jump"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="ClearScale 0.000000 AP_Jump"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 0.300000"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.000000 0.300000 AP_Jump"/>
+        <On Terms="TimerExpired; TimerName Destroy" Send="AnimBracketStop BSD"/>
+        <On Terms="TimerExpired; TimerName DestroyDelay" Send="SetOpacity 0.000000 0.300000"/>
+        <On Terms="TimerExpired; TimerName DestroyDelay" Target="_Selectable" Send="SetOpacity 1.000000 0.300000 AP_Jump"/>
+        <On Terms="Effect.AP_HyperjumpTeleport.Start" Send="SetOpacity"/>
+        <On Terms="Signal.*.End" Send="SetOpacity 1.000000"/>
+        <On Terms="ActorCreation" Send="Create AP_CommandCenterHyperjumpGlaze"/>
+        <On Terms="ActorDestruction" Target="AP_CommandCenterHyperjumpGlaze" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.AP_HyperjumpTeleport.Start" Target="_Selectable" Send="SetVisibility"/>
+        <On Terms="Signal.*.End" Target="_Selectable" Send="SetVisibility 1"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="SetVisibility 1"/>
+        <On Terms="Effect.AP_HyperjumpTeleport.Start" Target="_Selectable" Send="Create AP_CommandCenterHyperjumpPlaceholder"/>
+        <On Terms="ActorDestruction" Target="AP_CommandCenterHyperjumpPlaceholder" Send="AnimBracketStop BSD"/>
+        <On Terms="Signal.*.End" Target="AP_CommandCenterHyperjumpPlaceholder" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachHead SOpMoveDownBy1 SOp2DRotation"/>
+        <Model value="CommandCenterPlacement"/>
+    </CActorModel>
+    <CActorModel id="AP_CommandCenterHyperjumpPlaceholder" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <Model value="CommandCenterPlacement"/>
+    </CActorModel>
 </Catalog>

@@ -76,6 +76,7 @@ Button/Hotkey/AP_CloakOnSpectre=C
 Button/Hotkey/AP_Colossus=C
 Button/Hotkey/AP_ColossusHallucination=C
 Button/Hotkey/AP_CommandCenter=C
+Button/Hotkey/AP_CommandCenterHyperjump=T
 Button/Hotkey/AP_CommandCenterOrbRelay=C
 Button/Hotkey/AP_CommandCenterUnloadAll=D
 Button/Hotkey/AP_Contaminate=E
