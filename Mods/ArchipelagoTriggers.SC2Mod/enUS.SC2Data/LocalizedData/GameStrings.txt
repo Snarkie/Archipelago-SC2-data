@@ -1,7 +1,6 @@
 ﻿Param/Expression/lib_ABFE498B_0C410619=DEBUG: Adding player ~A~ to affected players for AP items
 Param/Expression/lib_ABFE498B_58E5AF43=Hero System: Handle placement for ~A~
 Param/Expression/lib_ABFE498B_720449CE=DEBUG: Grant tech level: ~A~
-Param/Expression/lib_ABFE498B_851E1858=Hero System: Handle placement for ~A~
 Param/Expression/lib_ABFE498B_8CEF283A=Items loaded at: ~A~
 Param/Expression/lib_ABFE498B_96E13CF2=DEBUG: Victory
 Param/Expression/lib_ABFE498B_9FD2030F=Options loaded at: ~A~

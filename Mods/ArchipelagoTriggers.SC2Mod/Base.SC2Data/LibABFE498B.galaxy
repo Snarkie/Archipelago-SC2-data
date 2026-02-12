@@ -10732,7 +10732,6 @@ void libABFE498B_gf_AP_Triggers_HeroInit (int lp_player, point lp_location, unit
 void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_location, unitgroup lp_replacements, fixed lp_facing) {
     // Variable Declarations
     string[4] lv_unittype;
-    int[4] lv_system;
     int lv_bitflag;
     int lv_heropresence;
     int lv_count;
@@ -10758,7 +10757,6 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_K5Kerrigan";
-        lv_system[lv_count] = 1;
     }
 
     lv_heropresence /= 2;
@@ -10766,7 +10764,6 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_NovaHero";
-        lv_system[lv_count] = 1;
     }
 
     lv_heropresence /= 2;
@@ -10774,7 +10771,6 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_MarauderMengsk";
-        lv_system[lv_count] = 1;
     }
 
     autoE0B86775_ae = lv_count;
@@ -10791,12 +10787,10 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
         UnitCreate(1, lv_unittype[lv_index], 0, lp_player, lv_spawnPoint, lp_facing);
         libABFE498B_gv_aP_Triggers_HeroUnit[lv_index] = UnitLastCreated();
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, UnitLastCreated());
-        if ((lv_system[lv_index] == 1)) {
+        if ((lv_index <= 2)) {
             lib15EF4C78_gf_SetHeroPanelUnit(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
         }
-        else {
-            lib15EF4C78_gf_SetHeroPanelUnit2(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
-        }
+
     }
     autoBD254AC8_g = lp_replacements;
     autoBD254AC8_u = UnitGroupCount(autoBD254AC8_g, c_unitCountAll);
@@ -10811,7 +10805,6 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     // Variable Declarations
     point lv_location;
     string[4] lv_unittype;
-    int[4] lv_system;
     int lv_bitflag;
     int lv_count;
     int lv_index;
@@ -10820,11 +10813,11 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     point lv_spawnPoint;
 
     // Automatic Variable Declarations
-    int auto4FA2ACBF_ae;
-    const int auto4FA2ACBF_ai = 1;
     unitgroup auto93F8A4D3_g;
     int auto93F8A4D3_u;
     unit auto93F8A4D3_var;
+    int auto4FA2ACBF_ae;
+    const int auto4FA2ACBF_ai = 1;
 
     // Variable Initialization
 
@@ -10838,6 +10831,13 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
         return ;
     }
 
+    auto93F8A4D3_g = lp_replacements;
+    auto93F8A4D3_u = UnitGroupCount(auto93F8A4D3_g, c_unitCountAll);
+    for (;; auto93F8A4D3_u -= 1) {
+        auto93F8A4D3_var = UnitGroupUnitFromEnd(auto93F8A4D3_g, auto93F8A4D3_u);
+        if (auto93F8A4D3_var == null) { break; }
+        UnitRemove(auto93F8A4D3_var);
+    }
     if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 1) && (UnitGetType(lp_hero) == "AP_K5Kerrigan")) {
         libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
@@ -10862,7 +10862,6 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_K5Kerrigan";
-        lv_system[lv_count] = 1;
     }
 
     lv_heropresence /= 2;
@@ -10870,7 +10869,6 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_NovaHero";
-        lv_system[lv_count] = 1;
     }
 
     lv_heropresence /= 2;
@@ -10878,7 +10876,6 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_MarauderMengsk";
-        lv_system[lv_count] = 1;
     }
 
     lib15EF4C78_gf_SetHeroPanelUnit(1, null, lp_player);
@@ -10893,24 +10890,13 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
         else {
             lv_spawnPoint = lv_location;
         }
-        TextExpressionSetToken("Param/Expression/lib_ABFE498B_851E1858", "A", StringToText((lv_unittype[lv_index])));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_851E1858"), false);
         UnitCreate(1, lv_unittype[lv_index], 0, lp_player, lv_spawnPoint, lv_facing);
         libABFE498B_gv_aP_Triggers_HeroUnit[lv_index] = UnitLastCreated();
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, UnitLastCreated());
-        if ((lv_system[lv_index] == 1)) {
+        if ((lv_index <= 2)) {
             lib15EF4C78_gf_SetHeroPanelUnit(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
         }
-        else {
-            lib15EF4C78_gf_SetHeroPanelUnit2(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
-        }
-    }
-    auto93F8A4D3_g = lp_replacements;
-    auto93F8A4D3_u = UnitGroupCount(auto93F8A4D3_g, c_unitCountAll);
-    for (;; auto93F8A4D3_u -= 1) {
-        auto93F8A4D3_var = UnitGroupUnitFromEnd(auto93F8A4D3_g, auto93F8A4D3_u);
-        if (auto93F8A4D3_var == null) { break; }
-        UnitRemove(auto93F8A4D3_var);
+
     }
 }
 
