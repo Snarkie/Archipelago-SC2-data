@@ -1527,7 +1527,7 @@ Button/Name/AP_ImpalerDamage=Sunken Spines
 Button/Name/AP_ImpalerDen=Mutate into Impaler Den
 Button/Name/AP_ImpalerGenerateCreep=Secretion Glands
 Button/Name/AP_ImpalerPassive=Impaler
-Button/Name/AP_ImpalerRounds=Impaler Rounds
+Button/Name/AP_SpectreImpalerRounds=Impaler Rounds
 Button/Name/AP_ImpalingStrike=Impaling Strike
 Button/Name/AP_ImpalingStrikeStun=Impaling Strike Stun
 Button/Name/AP_ImprovedIonCannons=Ionic Wavelength Flux
@@ -3102,7 +3102,7 @@ Button/Tooltip/AP_ImpalerDen=<c val="ffff8a">Enables:</c><n/>- Impalers from Hyd
 Button/Tooltip/AP_ImpalerEgg=This cocoon contains a Hydralisk that is morphing into an Impaler.
 Button/Tooltip/AP_ImpalerGenerateCreep=Generates creep while standing still or burrowed.
 Button/Tooltip/AP_ImpalerPassive=Impaler Den enables you to morph Impalers from Hydralisks.
-Button/Tooltip/AP_ImpalerRounds=Increases Spectres damage to armored units by +5.
+Button/Tooltip/AP_SpectreImpalerRounds=Increases Spectres damage to armored units by +<d ref="Upgrade,AP_SpectreImpalerRounds,EffectArray[0].Value"/>.
 Button/Tooltip/AP_ImpalingStrike=Tyrannozor melee attacks have a <d ref="Behavior,AP_ImpalingStrike,DamageResponse.Chance*100"/>% chance to stun for <d ref="Behavior,AP_ImpalingStrikeStun,Duration" precision="1"/> seconds.<n/><n/>Cannot occur more than once every <d ref="Behavior,AP_ImpalingStrikeResist,Duration"/> seconds.
 Button/Tooltip/AP_ImpalingStrikeStun=This unit is stunned due to Impaling Strike.
 Button/Tooltip/AP_ImprovedIonCannons=Improves Ion Cannon weapon damage by 2.
@@ -6782,7 +6782,7 @@ Upgrade/Name/AP_HurricaneMissiles=Missile Pods
 Upgrade/Name/AP_Hyperfluxor=Hyperfluxor
 Upgrade/Name/AP_ImmortalBarrier=Immortal Barrier
 Upgrade/Name/AP_ImmortalRevive=Immortal Revive
-Upgrade/Name/AP_ImpalerRounds=Impaler Rounds
+Upgrade/Name/AP_SpectreImpalerRounds=Impaler Rounds
 Upgrade/Name/AP_ImpalingStrike=Impaling Strike
 Upgrade/Name/AP_ImprovedConcealment=Concealment
 Upgrade/Name/AP_JackhammerConcussionGrenades=Concussive Shells

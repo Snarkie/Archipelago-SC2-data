@@ -2934,7 +2934,7 @@
         <AffectedUnitArray value="AP_Ghost"/>
         <LeaderAlias value=""/>
     </CUpgrade>
-    <CUpgrade id="AP_ImpalerRounds">
+    <CUpgrade id="AP_SpectreImpalerRounds">
         <Flags index="UpgradeCheat" value="0"/>
         <EffectArray Reference="Effect,AP_SpecterU,AttributeBonus[1]" Value="5.000000"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>

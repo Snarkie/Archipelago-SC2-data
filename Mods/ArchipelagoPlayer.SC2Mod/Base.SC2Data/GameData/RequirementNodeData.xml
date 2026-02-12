@@ -3320,8 +3320,8 @@
     <CRequirementCountUpgrade id="AP_CountUpgradeSpiderMineDamageCompleteOnly">
         <Count Link="AP_SpiderMineDamage" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_CountUpgradeImpalerRoundsCompleteOnly">
-        <Count Link="AP_ImpalerRounds" State="CompleteOnly"/>
+    <CRequirementCountUpgrade id="AP_CountUpgradeSpectreImpalerRoundsCompleteOnly">
+        <Count Link="AP_SpectreImpalerRounds" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementAnd id="AP_ScienceVesselSCBWEMPShockwave@Show">
         <OperandArray value="AP_ScienceVesselSCBWEMPShockwaveResearch@Count"/>

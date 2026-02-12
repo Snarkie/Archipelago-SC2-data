@@ -4555,9 +4555,9 @@
         <Find value="1"/>
         <Value value="AP_UseSpectreNyxSuit"/>
     </CValidatorPlayerRequirement>
-    <CValidatorPlayerRequirement id="AP_HaveImpalerRounds">
+    <CValidatorPlayerRequirement id="AP_HaveSpectreImpalerRounds">
         <Find value="1"/>
-        <Value value="AP_HaveImpalerRounds"/>
+        <Value value="AP_HaveSpectreImpalerRounds"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitFilters id="AP_HighTemplarSCBWHallucination@KillHallucinationTargetFilters">
         <Filters value="Hallucination;-"/>
