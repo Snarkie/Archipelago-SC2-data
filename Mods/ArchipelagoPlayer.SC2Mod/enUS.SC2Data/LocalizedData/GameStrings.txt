@@ -565,7 +565,6 @@ Behavior/Name/AP_HotSRaptorCharging=Leaping
 Behavior/Name/AP_HotSRoachShieldIndicator=Adaptive Plating
 Behavior/Name/AP_HydraliskFrenzy=Frenzy
 Behavior/Name/AP_ImmortalOverload=Barrier
-Behavior/Name/AP_ImpalerRoundsIndicator=Impaler Rounds
 Behavior/Name/AP_InfBullfrogImpactMutagen=Something In The Air...
 Behavior/Name/AP_InfBullfrogImpactStun=We got 100 tons of Zerg incoming!!
 Behavior/Name/AP_Irradiate=Irradiated
@@ -864,7 +863,6 @@ Behavior/Tooltip/AP_HotSRaptorCharging=This Raptor is leaping, allowing it to qu
 Behavior/Tooltip/AP_HotSRoachShieldIndicator=Roach gains +<d ref="Behavior,AP_RoachShield,Modification[0].LifeArmorBonus"/> armor when life is under 50%.
 Behavior/Tooltip/AP_HydraliskFrenzy=Attack speed increased.
 Behavior/Tooltip/AP_ImmortalOverload=This unit is absorbing damage dealt to it.
-Behavior/Tooltip/AP_ImpalerRoundsIndicator=Tungsten alloy rounds that do an additional 5 damage to armored units.
 Behavior/Tooltip/AP_InfBullfrogImpactMutagen=This unit has temporary bonus health and attack speed.
 Behavior/Tooltip/AP_InfBullfrogImpactStun=This unit has been stunned, likely because it got bodyslammed by a Zerg monster wearing a Terran Dropship like a dang fashion statement.
 Behavior/Tooltip/AP_Irradiate=Irradiated unit. All biological units in or near the radiation field will take damage.
@@ -1529,6 +1527,7 @@ Button/Name/AP_ImpalerDamage=Sunken Spines
 Button/Name/AP_ImpalerDen=Mutate into Impaler Den
 Button/Name/AP_ImpalerGenerateCreep=Secretion Glands
 Button/Name/AP_ImpalerPassive=Impaler
+Button/Name/AP_ImpalerRounds=Impaler Rounds
 Button/Name/AP_ImpalingStrike=Impaling Strike
 Button/Name/AP_ImpalingStrikeStun=Impaling Strike Stun
 Button/Name/AP_ImprovedIonCannons=Ionic Wavelength Flux
@@ -3103,6 +3102,7 @@ Button/Tooltip/AP_ImpalerDen=<c val="ffff8a">Enables:</c><n/>- Impalers from Hyd
 Button/Tooltip/AP_ImpalerEgg=This cocoon contains a Hydralisk that is morphing into an Impaler.
 Button/Tooltip/AP_ImpalerGenerateCreep=Generates creep while standing still or burrowed.
 Button/Tooltip/AP_ImpalerPassive=Impaler Den enables you to morph Impalers from Hydralisks.
+Button/Tooltip/AP_ImpalerRounds=Increases Spectres damage to armored units by +5.
 Button/Tooltip/AP_ImpalingStrike=Tyrannozor melee attacks have a <d ref="Behavior,AP_ImpalingStrike,DamageResponse.Chance*100"/>% chance to stun for <d ref="Behavior,AP_ImpalingStrikeStun,Duration" precision="1"/> seconds.<n/><n/>Cannot occur more than once every <d ref="Behavior,AP_ImpalingStrikeResist,Duration"/> seconds.
 Button/Tooltip/AP_ImpalingStrikeStun=This unit is stunned due to Impaling Strike.
 Button/Tooltip/AP_ImprovedIonCannons=Improves Ion Cannon weapon damage by 2.
@@ -3110,9 +3110,9 @@ Button/Tooltip/AP_ImprovedNanoRepair=Science Vessel's Nano-Repair no longer cost
 Button/Tooltip/AP_ImprovedSiegeMode=Siege Tanks gain +3 armor in Siege Mode.
 Button/Tooltip/AP_IncineratorNozzles=Increases the Firebat's damage radius by 40%.
 Button/Tooltip/AP_InfBullfrogBroodlings=Spawns 2 broodlings at the impact site when using Aggressive Delivery.
-Button/Tooltip/AP_InfBullfrogHardImpact=Aggressive Delivery deals more damage and stuns for a greater duration.
+Button/Tooltip/AP_InfBullfrogHardImpact=Aggressive Delivery deals <d ref="Upgrade,AP_InfBullfrogHardImpact,EffectArray[0].Value"/> more damage and now stuns for <d ref="Upgrade,AP_InfBullfrogHardImpact,EffectArray[1].Value"/> seconds.
 Button/Tooltip/AP_InfBullfrogLeap=Leap to target location without unloading cargo. Shorter range and cooldown than Aggressive Delivery.
-Button/Tooltip/AP_InfBullfrogLeapUnload=Launches the Bullfrog at the target location, briefly stunning and dealing <d ref="Effect,AP_InfBullfrogImpactDamage,Amount + (Behavior,AP_InfBullfrogTransportDamageBuff,Modification.DamageDealtUnscaled[Spell] * $BehaviorStackCount:AP_InfBullfrogTransportDamageBuff$)"/> damage to enemies in the area. Damage increases per loaded unit.<n/><n/><c val="FFE303">Instantly unloads all units in the transport.</c> 
+Button/Tooltip/AP_InfBullfrogLeapUnload=Launches the Bullfrog at the target location, briefly stunning enemies for <d ref="Behavior,AP_InfBullfrogImpactStun,Duration" precision="1"/> seconds and dealing <d ref="Effect,AP_InfBullfrogImpactDamage,Amount + (Behavior,AP_InfBullfrogTransportDamageBuff,Modification.DamageDealtUnscaled[Spell] * $BehaviorStackCount:AP_InfBullfrogTransportDamageBuff$)"/> damage to enemies in the area. Damage increases per loaded unit.<n/><n/><c val="FFE303">Instantly unloads all units in the transport.</c> 
 Button/Tooltip/AP_InfBullfrogLoad=Load small or medium units (max size 4) into the Bullfrog.
 Button/Tooltip/AP_InfBullfrogRange=Aggressive Delivery range is increased by 6. Reposition range is increased by 3.
 Button/Tooltip/AP_InfBullfrogUnloadAll=Unloads all units.
@@ -3901,8 +3901,8 @@ Button/Tooltip/AP_TempestGravitySling=Increases Tempest air attack range by +<d 
 Button/Tooltip/AP_TempestInterplanetaryRange=Increases Tempest attack range by +<d ref="$UpgradeEffectArrayValue:AP_TempestInterplanetaryRange:Weapon,AP_TempestPurifier,Range$"/>.
 Button/Tooltip/AP_TempestPurifier=Purifier Faction<n/>Siege artillery craft. Attacks from long range.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AP_TempestPurifierWarCouncil=Purifier Faction<n/>Siege artillery craft. Attacks from long range. Can use Disintegration.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
-Button/Tooltip/AP_TempestQuanticReactor=Increases Tempest attack damage to massive units.
-Button/Tooltip/AP_TempestTectonicDestabilizers=Increases Tempest attack damage to structures.
+Button/Tooltip/AP_TempestQuanticReactor=Increases Tempest attack damage to massive units by +<d ref="Upgrade,AP_TempestQuanticReactor,EffectArray[0].Value"/>.
+Button/Tooltip/AP_TempestTectonicDestabilizers=Increases Tempest attack damage to structures by +<d ref="Upgrade,AP_TempestTectonicDestabilizers,EffectArray[0].Value"/>.
 Button/Tooltip/AP_TemplarArchive=High Templar tech structure.
 Button/Tooltip/AP_TerranBuild=A list of basic structures.
 Button/Tooltip/AP_TerranInfantryArmorLevel4=Maximizes the armor of infantry units.

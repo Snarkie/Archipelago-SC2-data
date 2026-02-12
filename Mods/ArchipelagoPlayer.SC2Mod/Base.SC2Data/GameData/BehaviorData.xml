@@ -4702,13 +4702,6 @@
         <Name value="Button/Name/AP_NyxClassCloakingModule"/>
         <Tooltip value="Button/Tooltip/AP_NyxClassCloakingModule"/>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImpalerRoundsIndicator">
-        <!-- Indicator of passive upgrade - full command card -->
-        <Alignment value="Positive"/>
-        <BehaviorFlags index="Permanent" value="1"/>
-        <InfoIcon value="AP\Assets\Textures\btn-techupgrade-terran-impalerrounds-color.dds"/>
-        <DisableValidatorArray value="AP_HaveImpalerRounds"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_ScienceVesselSCBWEMPShockwave@Decloak">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-terran-emp.dds"/>
@@ -9863,38 +9856,6 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
     </CBehaviorVeterancy>
-    <CBehaviorBuff id="AP_BansheeMengskCloakEnergyDrainL1">
-        <InfoFlags index="Hidden" value="1"/>
-        <DisableValidatorArray value="AP_LevelEq1"/>
-        <DisableValidatorArray value="AP_HasBansheeMengskEnergyDrain"/>
-        <Modification>
-            <VitalRegenArray index="Energy" value="-1.125"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_BansheeMengskCloakEnergyDrainL2">
-        <InfoFlags index="Hidden" value="1"/>
-        <DisableValidatorArray value="AP_LevelEq2"/>
-        <DisableValidatorArray value="AP_HasBansheeMengskEnergyDrain"/>
-        <Modification>
-            <VitalRegenArray index="Energy" value="-1.625"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_BansheeMengskCloakEnergyDrainL3">
-        <InfoFlags index="Hidden" value="1"/>
-        <DisableValidatorArray value="AP_LevelEq3"/>
-        <DisableValidatorArray value="AP_HasBansheeMengskEnergyDrain"/>
-        <Modification>
-            <VitalRegenArray index="Energy" value="-2.125"/>
-        </Modification>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_BansheeMengskCloakEnergyDrainL4">
-        <InfoFlags index="Hidden" value="1"/>
-        <DisableValidatorArray value="AP_LevelEq4"/>
-        <DisableValidatorArray value="AP_HasBansheeMengskEnergyDrain"/>
-        <Modification>
-            <VitalRegenArray index="Energy" value="-2.625"/>
-        </Modification>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_ShockwaveMissilePatternIndicator">
         <!-- Indicator of passive upgrade - full command card -->
 <!--        <Alignment value="Positive"/>-->
@@ -10200,7 +10161,9 @@
     <CBehaviorBuff id="AP_DamageImmunity">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <DamageResponse Handled="AP_DefilerSCBWDarkSwarm@DamageDummy" ModifyFraction="0" ModifyMinimumDamage="1"/>
+        <DamageResponse Handled="AP_DefilerSCBWDarkSwarm@DamageDummy" ModifyFraction="0" ModifyMinimumDamage="1">
+            <Chance value="1"/>
+        </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_LiberatorMengskL2EnergyBuff">
         <BehaviorFlags index="Permanent" value="1"/>

@@ -533,6 +533,11 @@
         <HotkeyAlias value="CloakOnBanshee"/>
         <HotkeySet value="Cloak"/>
     </CButton>
+    <CButton id="AP_ImpalerRounds">
+        <Icon value="AP\Assets\Textures\btn-techupgrade-terran-impalerrounds-color.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-techupgrade-terran-impalerrounds-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
     <CButton id="AP_NyxClassCloakingModule">
         <Icon value="AP\Assets\Custom\Textures\btn-permacloak-spectre.dds"/>
         <AlertIcon value="AP\Assets\Custom\Textures\btn-permacloak-spectre.dds"/>
