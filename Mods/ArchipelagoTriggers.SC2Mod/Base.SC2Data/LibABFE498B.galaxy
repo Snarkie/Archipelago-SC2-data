@@ -10797,6 +10797,8 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
     for (;; autoBD254AC8_u -= 1) {
         autoBD254AC8_var = UnitGroupUnitFromEnd(autoBD254AC8_g, autoBD254AC8_u);
         if (autoBD254AC8_var == null) { break; }
+        UnitBehaviorRemoveCategory(autoBD254AC8_var, c_unitBehaviorFlagPermanent);
+        UnitBehaviorRemove(autoBD254AC8_var, "AP_BanelingExplode", c_unitBehaviorCountAll);
         UnitRemove(autoBD254AC8_var);
     }
 }
@@ -10836,6 +10838,8 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     for (;; auto93F8A4D3_u -= 1) {
         auto93F8A4D3_var = UnitGroupUnitFromEnd(auto93F8A4D3_g, auto93F8A4D3_u);
         if (auto93F8A4D3_var == null) { break; }
+        UnitBehaviorRemoveCategory(auto93F8A4D3_var, c_unitBehaviorFlagPermanent);
+        UnitBehaviorRemove(auto93F8A4D3_var, "AP_BanelingExplode", c_unitBehaviorCountAll);
         UnitRemove(auto93F8A4D3_var);
     }
     if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 1) && (UnitGetType(lp_hero) == "AP_K5Kerrigan")) {
@@ -10868,7 +10872,13 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     lv_bitflag = ModI(lv_heropresence, 2);
     if ((lv_bitflag == 1)) {
         lv_count += 1;
-        lv_unittype[lv_count] = "AP_NovaHero";
+        if ((lv_count >= 2) && (UnitGetType(lp_hero) == "AP_NovaHero")) {
+            lv_unittype[lv_count] = lv_unittype[1];
+            lv_unittype[1] = "AP_NovaHero";
+        }
+        else {
+            lv_unittype[lv_count] = "AP_NovaHero";
+        }
     }
 
     lv_heropresence /= 2;
@@ -10898,6 +10908,16 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
         }
 
     }
+}
+
+void libABFE498B_gf_AP_Triggers_HeroHide (unit lp_hero) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_ShowHideUnit(lp_hero, false);
+    libNtve_gf_PauseUnit(lp_hero, true);
+    UnitBehaviorAdd(lp_hero, "AP_ImmortalShakurasAntiAirMissileDisableAttack", lp_hero, 1);
+    libNtve_gf_SendActorMessageToUnit(lp_hero, "SetOpacity");
+    lib15EF4C78_gf_SetHeroPanelUnit(1, null, UnitGetOwner(lp_hero));
 }
 
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
