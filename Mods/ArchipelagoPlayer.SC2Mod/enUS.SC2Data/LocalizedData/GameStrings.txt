@@ -1527,7 +1527,6 @@ Button/Name/AP_ImpalerDamage=Sunken Spines
 Button/Name/AP_ImpalerDen=Mutate into Impaler Den
 Button/Name/AP_ImpalerGenerateCreep=Secretion Glands
 Button/Name/AP_ImpalerPassive=Impaler
-Button/Name/AP_SpectreImpalerRounds=Impaler Rounds
 Button/Name/AP_ImpalingStrike=Impaling Strike
 Button/Name/AP_ImpalingStrikeStun=Impaling Strike Stun
 Button/Name/AP_ImprovedIonCannons=Ionic Wavelength Flux
@@ -2108,6 +2107,7 @@ Button/Name/AP_SpecterPsiRound=Spectre Psi Round
 Button/Name/AP_Spectre=Train Spectre
 Button/Name/AP_SpectreConsumption=Consumption
 Button/Name/AP_SpectreHoldFire=Hold Fire
+Button/Name/AP_SpectreImpalerRounds=Impaler Rounds
 Button/Name/AP_SpectreMindSplatter=Mind Splatter
 Button/Name/AP_SpectreNukeCalldown=Tac Nuke Strike
 Button/Name/AP_SpectreShadowClones=Shadow Clone
@@ -3102,7 +3102,6 @@ Button/Tooltip/AP_ImpalerDen=<c val="ffff8a">Enables:</c><n/>- Impalers from Hyd
 Button/Tooltip/AP_ImpalerEgg=This cocoon contains a Hydralisk that is morphing into an Impaler.
 Button/Tooltip/AP_ImpalerGenerateCreep=Generates creep while standing still or burrowed.
 Button/Tooltip/AP_ImpalerPassive=Impaler Den enables you to morph Impalers from Hydralisks.
-Button/Tooltip/AP_SpectreImpalerRounds=Increases Spectres damage to armored units by +<d ref="Upgrade,AP_SpectreImpalerRounds,EffectArray[0].Value"/>.
 Button/Tooltip/AP_ImpalingStrike=Tyrannozor melee attacks have a <d ref="Behavior,AP_ImpalingStrike,DamageResponse.Chance*100"/>% chance to stun for <d ref="Behavior,AP_ImpalingStrikeStun,Duration" precision="1"/> seconds.<n/><n/>Cannot occur more than once every <d ref="Behavior,AP_ImpalingStrikeResist,Duration"/> seconds.
 Button/Tooltip/AP_ImpalingStrikeStun=This unit is stunned due to Impaling Strike.
 Button/Tooltip/AP_ImprovedIonCannons=Improves Ion Cannon weapon damage by 2.
@@ -3788,6 +3787,7 @@ Button/Tooltip/AP_SpecterPsiRound=Fires a psi-charged bullet, dealing <d ref="Ef
 Button/Tooltip/AP_Spectre=Infiltration unit. Can use Ultrasonic Pulse, Psionic Lash, and Cloak. Can also call down Tactical Nukes.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_SpectreConsumption=Drains half the life from a friendly biological unit and gives the Spectre 2 energy for each point of life drained.
 Button/Tooltip/AP_SpectreHoldFire=Orders selected units to holster their weapons and avoid engaging enemies, unless given a direct command. Units holding fire will flee if attacked.
+Button/Tooltip/AP_SpectreImpalerRounds=Increases Spectres damage to armored units by +<d ref="Upgrade,AP_SpectreImpalerRoundsz,EffectArray[0].Value"/>.
 Button/Tooltip/AP_SpectreMindSplatter=Deals <d ref="Effect,AP_SpectreMindSplatterInitialDamage,Amount"/> damage to the target biological unit. When the unit dies, it explodes and deals <d ref="Effect,AP_SpectreMindSplatterExplosionDamage,Amount"/> damage to nearby enemy units.
 Button/Tooltip/AP_SpectreNukeCalldown=Calls down a Nuclear Strike at a target location. Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage to enemies in a large radius.
 Button/Tooltip/AP_SpectreShadowClones=The Spectre creates a clone of himself.  This clone can be used to draw fire away from friendly units.  The clone deals no damage and lasts <d ref="Behavior,ToshShadowCloneTimedLife,Duration"/> seconds.<n/>
@@ -6782,7 +6782,6 @@ Upgrade/Name/AP_HurricaneMissiles=Missile Pods
 Upgrade/Name/AP_Hyperfluxor=Hyperfluxor
 Upgrade/Name/AP_ImmortalBarrier=Immortal Barrier
 Upgrade/Name/AP_ImmortalRevive=Immortal Revive
-Upgrade/Name/AP_SpectreImpalerRounds=Impaler Rounds
 Upgrade/Name/AP_ImpalingStrike=Impaling Strike
 Upgrade/Name/AP_ImprovedConcealment=Concealment
 Upgrade/Name/AP_JackhammerConcussionGrenades=Concussive Shells
@@ -6961,6 +6960,7 @@ Upgrade/Name/AP_SOAVortexStorm=SOAVortex Storm
 Upgrade/Name/AP_SOAWarpGateCharges=SOAWarp Gate Charges
 Upgrade/Name/AP_SOAWarpInReinforcements=SOAWarp In Reinforcements
 Upgrade/Name/AP_SOAWarpTech=SOAWarp Tech
+Upgrade/Name/AP_SpectreImpalerRounds=Impaler Rounds (Spectre)
 Upgrade/Name/AP_ScavengingSystems=Scavenging Systems
 Upgrade/Name/AP_ScienceVessel=Science Vessel
 Upgrade/Name/AP_ScienceVesselEnergyManipulation=Science Vessel (Energy Manipulation)
