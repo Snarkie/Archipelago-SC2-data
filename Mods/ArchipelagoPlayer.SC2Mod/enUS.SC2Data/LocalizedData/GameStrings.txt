@@ -3106,7 +3106,7 @@ Button/Tooltip/AP_ImpalerDamage=Increases attack damage.
 Button/Tooltip/AP_ImpalerDen=<c val="ffff8a">Enables:</c><n/>- Impalers from Hydralisks
 Button/Tooltip/AP_ImpalerDeepTunnel=Can travel quickly to any location with creep.
 Button/Tooltip/AP_ImpalerDistributedAttack=Putting this on Autocast will cause multiple Impalers to distribute their attacks across available targets.
-Button/Tooltip/AP_ImpalerTentacleExtensions=Piercing Tentacle bounces to a nearby secondary target. Deals half the damage of your main attack.
+Button/Tooltip/AP_ImpalerTentacleExtensions=Allows Piercing Tentacle to hit an additional nearby secondary target for 50% damage.
 Button/Tooltip/AP_ImpalerEgg=This cocoon contains a Hydralisk that is morphing into an Impaler.
 Button/Tooltip/AP_ImpalerGenerateCreep=Generates creep while standing still or burrowed.
 Button/Tooltip/AP_ImpalerPassive=Impaler Den enables you to morph Impalers from Hydralisks.
