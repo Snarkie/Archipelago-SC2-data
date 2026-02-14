@@ -25008,13 +25008,13 @@
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectIssueOrder id="AP_DistributedAttackOrder">
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Abil value="attack"/>
         <Target Value="TargetUnit"/>
+        <CmdFlags index="Preempt" value="1"/>
     </CEffectIssueOrder>
     <CEffectSet id="AP_DistributedAttackSet">
-        <EditorCategories value=""/>
+        <ValidatorArray value="CasterNotHoldingPosition"/>
         <EffectArray value="AP_DistributedAttackOrder"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_DistributedAttackAB">
