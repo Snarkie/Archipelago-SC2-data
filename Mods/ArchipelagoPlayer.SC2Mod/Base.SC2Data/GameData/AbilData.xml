@@ -16215,7 +16215,7 @@
         <Range value="10"/>
         <Arc value="360"/>
         <AutoCastFilters value="Visible;Player,Ally,Neutral"/>
-        <AutoCastRange value="8"/>
+        <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="AP_DistributedAttackNotMarked"/>
         <AutoCastValidatorArray value="AP_IsNotVanillaInterceptor"/>
