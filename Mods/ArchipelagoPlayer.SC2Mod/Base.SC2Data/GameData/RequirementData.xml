@@ -4904,7 +4904,4 @@
     <CRequirement id="AP_HaveImpalerTentacleExtensions">
         <NodeArray index="Show" Link="AP_ImpalerTentacleExtensions"/>
     </CRequirement>
-    <CRequirement id="AP_HaveTempestDistributedAttack">
-        <NodeArray index="Show" Link="AP_TempestDistributedAttack"/>
-    </CRequirement>
 </Catalog>
