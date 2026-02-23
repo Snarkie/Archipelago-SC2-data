@@ -10916,13 +10916,13 @@
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="AP_ImpalerBurrowUp" Type="AbilCmd" AbilCmd="AP_UnburrowImpaler,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AP_AdaptiveTalons" Type="Passive" Requirements="AP_HaveDiggingClaws" Row="1" Column="0"/>
             <LayoutButtons Face="AP_ImpalerGenerateCreep" Type="Passive" Requirements="AP_HaveImpalerGenerateCreep" Row="1" Column="1"/>
             <LayoutButtons Face="AP_ImpalerDamage" Type="Passive" Requirements="AP_HaveImpalerDamage" Row="1" Column="2"/>
-            <LayoutButtons Face="AP_ImpalerDistributedAttack" Type="AbilCmd" AbilCmd="AP_ImpalerDistributedAttack,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="AP_ImpalerTentacleExtensions" Type="Passive" Requirements="AP_HaveImpalerTentacleExtensions" Row="1" Column="3"/>
+            <LayoutButtons Face="AP_ImpalerDistributedAttack" Type="AbilCmd" AbilCmd="AP_ImpalerDistributedAttack,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="AP_ImpalerDeepTunnel" Type="AbilCmd" AbilCmd="AP_ImpalerDeepTunnel,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_ImpalerBurrowUp" Type="AbilCmd" AbilCmd="AP_UnburrowImpaler,Execute" Row="2" Column="4"/>
         </CardLayouts>
         <SeparationRadius value="0"/>
         <InnerRadius value="0.625"/>
