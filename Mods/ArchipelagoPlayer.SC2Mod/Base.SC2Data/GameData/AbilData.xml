@@ -16196,7 +16196,7 @@
         <AutoCastValidatorArray value="NotLarva"/>
         <AutoCastValidatorArray value="CasterIsNotHidden"/>
         <AutoCastValidatorArray value="NotLarvaEgg"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_TempestDistributedAttack2" Requirements="AP_HaveImpalerDistributedAttack"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_ImpalerDistributedAttack" Requirements="AP_HaveImpalerDistributedAttack"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="AP_TempestDistributedAttack">
         <Alignment value="Negative"/>
