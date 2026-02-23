@@ -10982,6 +10982,23 @@
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="AP_ImpalerEggMorphling" parent="AP_ImpalerEgg"/>
+    <CUnit id="AP_ImpalerPlaceholder">
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <EditorFlags index="NoPlacement" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <BehaviorArray Link="AP_SwarmHostSplitBPlacementRemove"/>
+        <Radius value="0.625"/>
+        <SeparationRadius value="0.625"/>
+        <InnerRadius value="0.625"/>
+    </CUnit>
     <CUnit id="AP_HydraliskLurkerEgg">
         <DeathRevealRadius value="3"/>
         <Facing value="45"/>
@@ -31769,23 +31786,6 @@
         <FlagArray index="Untargetable" value="1"/>
         <FlagArray index="Invulnerable" value="1"/>
         <Mover value=""/>
-    </CUnit>
-    <CUnit id="AP_ImpalerPlaceholder">
-        <FlagArray index="Uncommandable" value="1"/>
-        <FlagArray index="Unselectable" value="1"/>
-        <FlagArray index="Untargetable" value="1"/>
-        <FlagArray index="Invulnerable" value="1"/>
-        <FlagArray index="NoScore" value="1"/>
-        <EditorFlags index="NoPlacement" value="1"/>
-        <Collide index="Burrow" value="1"/>
-        <Collide index="Ground" value="1"/>
-        <Collide index="Colossus" value="1"/>
-        <Collide index="ForceField" value="1"/>
-        <Collide index="Small" value="1"/>
-        <BehaviorArray Link="AP_SwarmHostSplitBPlacementRemove"/>
-        <Radius value="0.625"/>
-        <SeparationRadius value="0.625"/>
-        <InnerRadius value="0.625"/>
     </CUnit>
 </Catalog>
 
