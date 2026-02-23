@@ -8077,4 +8077,20 @@
         <Icon value="Assets\Textures\btn-upgrade-terran-jumpjets.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-terran-jumpjets.dds"/>
     </CButton>
+    <CButton id="AP_ImpalerTentacleExtensions">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-abathur-abduct.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-abathur-abduct.dds"/>
+    </CButton>
+    <CButton id="AP_ImpalerDeepTunnel">
+        <Icon value="Assets\Textures\btn-ability-zerg-deeptunnel.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="AP_ImpalerDistributedAttack">
+        <Icon value="Assets\Textures\btn-ability-stetmann-lurkerchannelingspines.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-stetmann-lurkerchannelingspines.dds"/>
+    </CButton>
+    <CButton id="AP_TempestDistributedAttack">
+        <Icon value="AP\Assets\Textures\btn-protoss-DistributedAttack.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-protoss-DistributedAttack.dds"/>
+    </CButton>
 </Catalog>
