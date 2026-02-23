@@ -1104,6 +1104,7 @@ trigger libABFE498B_gt_AP_Triggers_PatchesInit;
 trigger libABFE498B_gt_AP_Triggers_bankInit;
 trigger libABFE498B_gt_AP_Triggers_bankOptionsInit;
 trigger libABFE498B_gt_AP_Triggers_bankItemsInit;
+trigger libABFE498B_gt_AP_Triggers_bankStartLoop;
 trigger libABFE498B_gt_AP_Triggers_techTreeInit;
 trigger libABFE498B_gt_UpgradeProtossStructures;
 trigger libABFE498B_gt_AP_Triggers_Debug_activateDebugMode;
@@ -1122,6 +1123,7 @@ trigger libABFE498B_gt_AP_Triggers_InitSoA;
 trigger libABFE498B_gt_AP_Triggers_warpInInit;
 trigger libABFE498B_gt_AP_Triggers_setLastWarpedUnit;
 trigger libABFE498B_gt_AP_Triggers_warpGateSafety;
+trigger libABFE498B_gt_AP_Triggers_ObjectGroupFix;
 
 // Library Initialization
 void libABFE498B_InitVariables ();
