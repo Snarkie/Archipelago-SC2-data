@@ -10824,12 +10824,15 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     // Variable Initialization
 
     // Implementation
-    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 0)) {
+    if ((UnitIsValid(lp_hero) == false)) {
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_E4AC5990"), false);
         return ;
     }
 
-    if ((UnitIsValid(lp_hero) == false)) {
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_E4AC5990"), false);
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 0)) {
+        libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        libABFE498B_gf_AP_Triggers_HeroHide(lp_hero);
         return ;
     }
 
