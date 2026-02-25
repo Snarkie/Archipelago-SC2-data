@@ -6640,8 +6640,8 @@
         <AIRebuild Index="4" Value="0"/>
     </ObjectUnit>
     <ObjectUnit Id="43" Position="85.5,27.5,0" Scale="1,1,1" UnitType="VespeneGeyser">
-        <AIActive Index="3" Value="0"/>
-        <AIActive Index="4" Value="0"/>
+        <AIActive Index="3" Value="1"/>
+        <AIActive Index="4" Value="1"/>
     </ObjectUnit>
     <ObjectUnit Id="110" Position="40.5563,65.9914,0" Rotation="1.4443" Scale="1,1,1" UnitType="Zergling" Player="2">
         <AIRebuild Index="1" Value="14"/>
