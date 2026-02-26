@@ -10848,18 +10848,21 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 1) && (UnitGetType(lp_hero) == "AP_K5Kerrigan")) {
         libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        lib15EF4C78_gf_SetHeroPanelUnit(1, lp_hero, lp_player);
         return ;
     }
 
     if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 2) && (UnitGetType(lp_hero) == "AP_NovaHero")) {
         libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        lib15EF4C78_gf_SetHeroPanelUnit(1, lp_hero, lp_player);
         return ;
     }
 
     if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence == 4) && (UnitGetType(lp_hero) == "ZealotACGluescreenDummy")) {
         libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
+        lib15EF4C78_gf_SetHeroPanelUnit(1, lp_hero, lp_player);
         return ;
     }
 
