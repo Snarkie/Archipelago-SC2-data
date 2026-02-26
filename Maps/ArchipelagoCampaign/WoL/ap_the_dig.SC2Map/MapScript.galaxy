@@ -524,7 +524,6 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_FactionSwapInit_Init () {
     gt_FactionSwapInit = TriggerCreate("gt_FactionSwapInit_Func");
-    TriggerAddEventGeneric(gt_FactionSwapInit, lib5BD4895D_gv_aP_Core_LOAD_FINISHED_EVENT);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -755,6 +754,7 @@ bool gt_Initialization_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_Init04Music, true, true);
     TriggerExecute(gt_Init05Environment, true, true);
     TriggerExecute(gt_Init06Difficulty, true, true);
+    TriggerExecute(gt_FactionSwapInit, true, true);
     TriggerExecute(gt_IntroSequence, true, false);
     return true;
 }
@@ -1380,10 +1380,9 @@ bool gt_IntroSequence_Func (bool testConds, bool runActions) {
     libNtve_gf_CinematicMode(true, PlayerGroupAll(), 0.0);
     libNtve_gf_GlobalCinematicSetting(true);
     if ((libABFE498B_gv_aP_Triggers_skipCutscenes == true)) {
-        UnitSetPosition(UnitFromId(317), PointFromId(463), false);
+        UnitSetPosition(UnitFromId(317), PointWithOffset(PointFromId(463), -4.0, 4.0), false);
     }
 
-    UnitIssueOrder(UnitFromId(317), OrderTargetingPoint(AbilityCommand("move", 0), PointFromId(463)), c_orderQueueReplace);
     UIAlertPoint("Trigger", gv_p1_USER, StringExternal("Param/Value/B8B156BC"), null, PointFromId(10));
     libNtve_gf_CinematicMode(false, PlayerGroupAll(), 1.5);
     libNtve_gf_GlobalCinematicSetting(false);
@@ -1392,6 +1391,10 @@ bool gt_IntroSequence_Func (bool testConds, bool runActions) {
     libABFE498B_gf_AP_Triggers_startNoBuild(gv_p1_USER);
     GamePauseAllCharges(true);
     GamePauseAllCooldowns(true);
+    Wait(0.0625, c_timeReal);
+    TriggerEnable(gt_MMDropoff, true);
+    UnitIssueOrder(UnitFromId(317), OrderTargetingPoint(AbilityCommand("move", 0), PointFromId(463)), c_orderQueueReplace);
+    UnitIssueOrder(UnitFromId(317), OrderTargetingPoint(AbilityCommand("SpecOpsDropshipTransport", 2), PointFromId(463)), c_orderQueueAddToEnd);
     TriggerExecute(gt_StartGameTacticalPhase, true, false);
     return true;
 }
@@ -1496,6 +1499,7 @@ bool gt_MMDropoff_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_MMDropoff_Init () {
     gt_MMDropoff = TriggerCreate("gt_MMDropoff_Func");
+    TriggerEnable(gt_MMDropoff, false);
     TriggerAddEventUnitCargo(gt_MMDropoff, UnitRefFromUnit(UnitFromId(317)), false);
 }
 
