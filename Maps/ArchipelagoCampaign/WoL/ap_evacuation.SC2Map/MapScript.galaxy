@@ -1884,6 +1884,7 @@ bool gt_IntroSequence_Func (bool testConds, bool runActions) {
     if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence != 0)) {
         libABFE498B_gf_AP_Triggers_HeroInit(gv_p1_USER, UnitGetPosition(UnitFromId(290)), libNtve_gf_ConvertUnitToUnitGroup(UnitFromId(290)));
         UnitGroupIssueOrder(libABFE498B_gv_aP_Triggers_HeroUnits, OrderTargetingPoint(AbilityCommand("move", 0), PointFromId(125)), c_orderQueueReplace);
+        TriggerEnable(gt_DefeatTacticalPhase, true);
     }
     else {
         auto8875A42A_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
