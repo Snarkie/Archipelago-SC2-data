@@ -7,6 +7,7 @@ Param/Expression/lib_ABFE498B_9FD2030F=Options loaded at: ~A~
 Param/Expression/lib_ABFE498B_DA7A6A87=Hero Presence: ~A~
 Param/Expression/lib_ABFE498B_DB335FCF=Load options bank: ~A~
 Param/Expression/lib_ABFE498B_E4AC5990=DEBUG: Hero system attempt to replace invalid unit
+Param/Expression/lib_ABFE498B_F67D03A7=DEBUG: Spawn Trap: ~A~ with difficulty: ~B~ for player: ~C~
 Param/Expression/lib_ABFE498B_FCA6D672=Hero Presence: ~A~
 Param/Value/lib_ABFE498B_0032FC65=DEBUG: Debug mode is now ON. You have access to debug commands.
 Param/Value/lib_ABFE498B_164F4E85=DEBUG: Resetting Base

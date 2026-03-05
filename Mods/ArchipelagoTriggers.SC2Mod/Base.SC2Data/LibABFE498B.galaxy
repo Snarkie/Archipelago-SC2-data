@@ -42,6 +42,8 @@ void libABFE498B_InitVariables () {
 //--------------------------------------------------------------------------------------------------
 include "AP_Triggers_PlayerConsumer"
 include "AP_Triggers_Util"
+include "AP_Triggers_BaseDetection"
+include "AP_Triggers_GhostSpawn"
 
 void libABFE498B_InitCustomScript () {
 }
@@ -2139,6 +2141,7 @@ void libABFE498B_gf_AP_Triggers_giveZergTech (string lp_inputString) {
     string lv_mercenaryValue;
     string lv_evolutionPitValue;
     string lv_progressiveValue;
+    int lv_kerriganLevelHelper;
 
     // Automatic Variable Declarations
     playergroup autoFB24477E_g;
@@ -11068,6 +11071,10 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
             lib15EF4C78_gf_SetHeroPanelUnit(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
         }
 
+        if ((lv_unittype[lv_index] == "AP_K5Kerrigan")) {
+            lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(lp_player, lib15EF4C78_gf_AP_Player_getKerriganLevel(lp_player));
+        }
+
     }
     autoBD254AC8_g = lp_replacements;
     autoBD254AC8_u = UnitGroupCount(autoBD254AC8_g, c_unitCountAll);
@@ -11192,6 +11199,10 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
             lib15EF4C78_gf_SetHeroPanelUnit(lv_index, libABFE498B_gv_aP_Triggers_HeroUnit[lv_index], lp_player);
         }
 
+        if ((lv_unittype[lv_index] == "AP_K5Kerrigan")) {
+            lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(lp_player, lib15EF4C78_gf_AP_Player_getKerriganLevel(lp_player));
+        }
+
     }
 }
 
@@ -11203,6 +11214,62 @@ void libABFE498B_gf_AP_Triggers_HeroHide (unit lp_hero) {
     UnitBehaviorAdd(lp_hero, "AP_ImmortalShakurasAntiAirMissileDisableAttack", lp_hero, 1);
     libNtve_gf_SendActorMessageToUnit(lp_hero, "SetOpacity");
     lib15EF4C78_gf_SetHeroPanelUnit(1, null, UnitGetOwner(lp_hero));
+}
+
+void libABFE498B_gf_AP_Triggers_Base_detect (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    AP_Base_detect(lp_player);
+}
+
+void libABFE498B_gf_AP_Triggers_Base_show (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    AP_Base_show(lp_player);
+}
+
+int libABFE498B_gf_AP_Triggers_Base_getBiggestBaseIndex (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return AP_Base_getBiggestBaseIndex(lp_player);
+}
+
+int libABFE498B_gf_AP_Triggers_Base_getBiggestPlayer () {
+    // Automatic Variable Declarations
+    // Implementation
+    return AP_Base_getBiggestPlayer();
+}
+
+void libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuilding (int lp_difficulty) {
+    // Automatic Variable Declarations
+    // Implementation
+    AP_GhostSpawn_difficultyOverride = lp_difficulty;
+    AP_GhostSpawn_placeBuilding();
+}
+
+void libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuildingForPlayer (int lp_player, int lp_difficulty) {
+    // Automatic Variable Declarations
+    // Implementation
+    AP_GhostSpawn_difficultyOverride = lp_difficulty;
+    AP_GhostSpawn_placeBuildingForPlayer(lp_player);
+}
+
+void libABFE498B_gf_AP_Triggers_GhostSpawn_setOverrides (int lp_player, int lp_difficulty, region lp_spawnRegion, point lp_attackTarget, point lp_gatherPoint, bool lp_pathingCheck, bool lp_waveTarget) {
+    // Automatic Variable Declarations
+    // Implementation
+    // Overrides
+    // Use these to force specific aspects of the system on a per map basis
+    AP_GhostSpawn_playerOverride = lp_player;
+    AP_GhostSpawn_difficultyOverride = lp_difficulty;
+    AP_GhostSpawn_regionOverride = lp_spawnRegion;
+    AP_GhostSpawn_attackTargetOverride = lp_attackTarget;
+    AP_GhostSpawn_gatherPointOverride = lp_gatherPoint;
+    // set to true to make sure a ground path from spawn building to player base exists
+    // usually not needed, AI will handle transport management automatically
+    AP_GhostSpawn_pathingCheckOverride = lp_pathingCheck; 
+    // set to true for a player that normally doesn't send attack waves against the player
+    // may interfere with future attack waves
+    AP_GhostSpawn_waveTargetOverride = lp_waveTarget; 
 }
 
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
@@ -11671,7 +11738,8 @@ bool libABFE498B_gt_AP_Triggers_PatchesInit_Func (bool testConds, bool runAction
         return true;
     }
 
-    lib6EE41A55_InitLib();
+    AP_Base_init();
+    AP_GhostSpawn_init();
     TriggerExecute(lib6EE41A55_gt_AP_Patches_Constructor, true, false);
     return true;
 }
@@ -12222,6 +12290,88 @@ void libABFE498B_gt_AP_Triggers_Debug_updatePrompt_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_spawnTrap
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_trap;
+    int lv_difficulty;
+    int lv_player;
+    bool lv_wavetargetoverride;
+    string lv_string;
+    string lv_string2;
+    string lv_string3;
+    string lv_string4;
+    string lv_string5;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_trap = 1;
+    lv_difficulty = 3;
+    lv_string = "";
+    lv_string2 = "";
+    lv_string3 = "";
+    lv_string4 = "";
+    lv_string5 = "";
+
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_string = EventChatMessage(false);
+    lv_string2 = StringWord(lv_string, 2);
+    lv_string3 = StringWord(lv_string, 3);
+    lv_string4 = StringWord(lv_string, 4);
+    lv_string5 = StringWord(lv_string, 5);
+    if ((StringLength(lv_string2) > 0)) {
+        lv_trap = StringToInt(lv_string2);
+    }
+
+    if ((StringLength(lv_string3) > 0)) {
+        lv_difficulty = StringToInt(lv_string3);
+    }
+
+    if ((StringLength(lv_string4) > 0) && (lv_string4 != "0")) {
+        lv_player = StringToInt(lv_string4);
+    }
+    else {
+        lv_player = -1;
+    }
+    if ((StringLength(lv_string5) > 0) && (lv_string5 != "0")) {
+        lv_wavetargetoverride = true;
+    }
+    else {
+        lv_wavetargetoverride = false;
+    }
+    TextExpressionSetToken("Param/Expression/lib_ABFE498B_F67D03A7", "A", IntToText(lv_trap));
+    TextExpressionSetToken("Param/Expression/lib_ABFE498B_F67D03A7", "B", IntToText(lv_difficulty));
+    TextExpressionSetToken("Param/Expression/lib_ABFE498B_F67D03A7", "C", IntToText(lv_player));
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_F67D03A7"), true);
+    AP_GhostSpawn_waveTargetOverride = lv_wavetargetoverride;
+    if ((lv_player == -1)) {
+        libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuilding(lv_difficulty);
+    }
+    else {
+        libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuildingForPlayer(lv_player, lv_difficulty);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_spawnTrap = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_spawnTrap, c_playerAny, "-trap", false);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AP_Triggers_Debug_reviveHeroes
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Func (bool testConds, bool runActions) {
@@ -12501,6 +12651,7 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_grantChecks_Init();
     libABFE498B_gt_AP_Triggers_Debug_addAffectedPlayer_Init();
     libABFE498B_gt_AP_Triggers_Debug_updatePrompt_Init();
+    libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Init();
     libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Init();
     libABFE498B_gt_AP_Triggers_tradeStructureBuilt_Init();
     libABFE498B_gt_AP_Triggers_InitSoA_Init();
