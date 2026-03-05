@@ -47561,4 +47561,36 @@
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="BlinkStopModel"/>
     </CActorModel>
+    <CActorUnit id="AP_GhostTrapSpawner" parent="TerranBuildingEx" unitName="AP_GhostTrapSpawner">
+        <Aliases value="_UnitHuge"/>
+        <Macros value="QueueAnim"/>
+        <On Terms="Behavior.AP_NovaNukeArming.On" Send="StatusIncrement Queuing"/>
+        <On Terms="Behavior.AP_NovaNukeArming.Off" Send="StatusDecrement Queuing"/>
+        <On Terms="Behavior.AP_MengskNukeArming.On" Send="StatusIncrement Queuing"/>
+        <On Terms="Behavior.AP_MengskNukeArming.Off" Send="StatusDecrement Queuing"/>
+        <Model value="GhostAcademy"/>
+        <BuildModel value="GhostAcademy"/>
+        <DeathArray index="Normal" ModelLink="GhostAcademyDeath"/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="GhostAcademy_Explode"/>
+        <PlacementModel value="GhostAcademyPlacement"/>
+        <PortraitModel value="GhostAcademyPortrait"/>
+        <BarOffset value="125"/>
+        <BarWidth value="155"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-GhostAcademy.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-terran-ghostacademy.dds"/>
+        <NameOffset value="100"/>
+        <SoundArray index="Ready" value="GhostAcademy_Ready"/>
+        <SoundArray index="What" value="GhostAcademy_What"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitFlags index="StandAnimBirthVariation" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-terran-ghostacademy.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-GhostAcademy.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorSplat id="AP_GhostTrapSpawnerSplat" parent="GenericUnitSplat" unitName="AP_GhostTrapSpawner">
+        <Model value="GhostAcademySplat"/>
+    </CActorSplat>
 </Catalog>
