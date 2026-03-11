@@ -2448,7 +2448,6 @@
         <AbilArray Link="AP_SpectreWeaponsFree"/>
         <AbilArray Link="AP_TacNukeStrike"/>
         <AbilArray Link="AP_SpectreResourceEfficiencyMorph"/>
-        <BehaviorArray Link="AP_ImpalerRoundsIndicator"/>
         <BehaviorArray Link="AP_SpectrePermanentCloak"/>
         <BehaviorArray Link="AP_SpectreResourceEfficiencyMorph"/>
         <WeaponArray Link="AP_Specter"/>
@@ -2459,6 +2458,7 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="AttackGhost" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AP_SpectreNukeCalldown" Type="AbilCmd" AbilCmd="AP_TacNukeStrike,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="AP_SpectreImpalerRounds" Type="Passive" Requirements="AP_HaveSpectreImpalerRounds" Row="1" Column="1"/>
             <LayoutButtons Face="AP_SpectreHoldFire" Type="AbilCmd" AbilCmd="AP_SpectreHoldFire,Execute" Row="1" Column="2"/>
             <LayoutButtons Face="AP_SpectreWeaponsFree" Type="AbilCmd" AbilCmd="AP_SpectreWeaponsFree,Execute" Row="1" Column="3"/>
             <LayoutButtons Face="AP_UltrasonicPulse" Type="AbilCmd" AbilCmd="AP_UltrasonicPulse,Execute" Row="2" Column="0"/>
@@ -30372,10 +30372,6 @@
         <BehaviorArray Link="AP_MengskVeteranL3Tracker"/>
         <BehaviorArray Link="AP_MengskVeteranL4Tracker"/>
         <BehaviorArray Link="AP_MengskVeteranTrigger"/>
-        <BehaviorArray Link="AP_BansheeMengskCloakEnergyDrainL1"/>
-        <BehaviorArray Link="AP_BansheeMengskCloakEnergyDrainL2"/>
-        <BehaviorArray Link="AP_BansheeMengskCloakEnergyDrainL3"/>
-        <BehaviorArray Link="AP_BansheeMengskCloakEnergyDrainL4"/>
         <BehaviorArray Link="AP_ShockwaveMissilePatternIndicator"/>
         <BehaviorArray Link="AP_DistortionBlastersIndicator"/>
         <BehaviorArray Link="AP_BansheeShapedHullIndicator"/>

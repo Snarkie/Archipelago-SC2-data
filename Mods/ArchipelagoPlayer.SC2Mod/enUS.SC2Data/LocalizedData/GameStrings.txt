@@ -565,7 +565,6 @@ Behavior/Name/AP_HotSRaptorCharging=Leaping
 Behavior/Name/AP_HotSRoachShieldIndicator=Adaptive Plating
 Behavior/Name/AP_HydraliskFrenzy=Frenzy
 Behavior/Name/AP_ImmortalOverload=Barrier
-Behavior/Name/AP_ImpalerRoundsIndicator=Impaler Rounds
 Behavior/Name/AP_InfBullfrogImpactMutagen=Something In The Air...
 Behavior/Name/AP_InfBullfrogImpactStun=We got 100 tons of Zerg incoming!!
 Behavior/Name/AP_Irradiate=Irradiated
@@ -864,7 +863,6 @@ Behavior/Tooltip/AP_HotSRaptorCharging=This Raptor is leaping, allowing it to qu
 Behavior/Tooltip/AP_HotSRoachShieldIndicator=Roach gains +<d ref="Behavior,AP_RoachShield,Modification[0].LifeArmorBonus"/> armor when life is under 50%.
 Behavior/Tooltip/AP_HydraliskFrenzy=Attack speed increased.
 Behavior/Tooltip/AP_ImmortalOverload=This unit is absorbing damage dealt to it.
-Behavior/Tooltip/AP_ImpalerRoundsIndicator=Tungsten alloy rounds that do an additional 5 damage to armored units.
 Behavior/Tooltip/AP_InfBullfrogImpactMutagen=This unit has temporary bonus health and attack speed.
 Behavior/Tooltip/AP_InfBullfrogImpactStun=This unit has been stunned, likely because it got bodyslammed by a Zerg monster wearing a Terran Dropship like a dang fashion statement.
 Behavior/Tooltip/AP_Irradiate=Irradiated unit. All biological units in or near the radiation field will take damage.
@@ -2112,6 +2110,7 @@ Button/Name/AP_SpecterPsiRound=Spectre Psi Round
 Button/Name/AP_Spectre=Train Spectre
 Button/Name/AP_SpectreConsumption=Consumption
 Button/Name/AP_SpectreHoldFire=Hold Fire
+Button/Name/AP_SpectreImpalerRounds=Impaler Rounds
 Button/Name/AP_SpectreMindSplatter=Mind Splatter
 Button/Name/AP_SpectreNukeCalldown=Tac Nuke Strike
 Button/Name/AP_SpectreShadowClones=Shadow Clone
@@ -3117,9 +3116,9 @@ Button/Tooltip/AP_ImprovedNanoRepair=Science Vessel's Nano-Repair no longer cost
 Button/Tooltip/AP_ImprovedSiegeMode=Siege Tanks gain +3 armor in Siege Mode.
 Button/Tooltip/AP_IncineratorNozzles=Increases the Firebat's damage radius by 40%.
 Button/Tooltip/AP_InfBullfrogBroodlings=Spawns 2 broodlings at the impact site when using Aggressive Delivery.
-Button/Tooltip/AP_InfBullfrogHardImpact=Aggressive Delivery deals more damage and stuns for a greater duration.
+Button/Tooltip/AP_InfBullfrogHardImpact=Aggressive Delivery deals <d ref="Upgrade,AP_InfBullfrogHardImpact,EffectArray[0].Value"/> more damage and now stuns for <d ref="Upgrade,AP_InfBullfrogHardImpact,EffectArray[1].Value"/> seconds.
 Button/Tooltip/AP_InfBullfrogLeap=Leap to target location without unloading cargo. Shorter range and cooldown than Aggressive Delivery.
-Button/Tooltip/AP_InfBullfrogLeapUnload=Launches the Bullfrog at the target location, briefly stunning and dealing <d ref="Effect,AP_InfBullfrogImpactDamage,Amount + (Behavior,AP_InfBullfrogTransportDamageBuff,Modification.DamageDealtUnscaled[Spell] * $BehaviorStackCount:AP_InfBullfrogTransportDamageBuff$)"/> damage to enemies in the area. Damage increases per loaded unit.<n/><n/><c val="FFE303">Instantly unloads all units in the transport.</c> 
+Button/Tooltip/AP_InfBullfrogLeapUnload=Launches the Bullfrog at the target location, briefly stunning enemies for <d ref="Behavior,AP_InfBullfrogImpactStun,Duration" precision="1"/> seconds and dealing <d ref="Effect,AP_InfBullfrogImpactDamage,Amount + (Behavior,AP_InfBullfrogTransportDamageBuff,Modification.DamageDealtUnscaled[Spell] * $BehaviorStackCount:AP_InfBullfrogTransportDamageBuff$)"/> damage to enemies in the area. Damage increases per loaded unit.<n/><n/><c val="FFE303">Instantly unloads all units in the transport.</c> 
 Button/Tooltip/AP_InfBullfrogLoad=Load small or medium units (max size 4) into the Bullfrog.
 Button/Tooltip/AP_InfBullfrogRange=Aggressive Delivery range is increased by 6. Reposition range is increased by 3.
 Button/Tooltip/AP_InfBullfrogUnloadAll=Unloads all units.
@@ -3795,6 +3794,7 @@ Button/Tooltip/AP_SpecterPsiRound=Fires a psi-charged bullet, dealing <d ref="Ef
 Button/Tooltip/AP_Spectre=Infiltration unit. Can use Ultrasonic Pulse, Psionic Lash, and Cloak. Can also call down Tactical Nukes.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_SpectreConsumption=Drains half the life from a friendly biological unit and gives the Spectre 2 energy for each point of life drained.
 Button/Tooltip/AP_SpectreHoldFire=Orders selected units to holster their weapons and avoid engaging enemies, unless given a direct command. Units holding fire will flee if attacked.
+Button/Tooltip/AP_SpectreImpalerRounds=Spectres deal <c val="ffff8a">+<d ref="Upgrade,AP_SpectreImpalerRounds,EffectArray[0].Value"/></c> damage to armored units.
 Button/Tooltip/AP_SpectreMindSplatter=Deals <d ref="Effect,AP_SpectreMindSplatterInitialDamage,Amount"/> damage to the target biological unit. When the unit dies, it explodes and deals <d ref="Effect,AP_SpectreMindSplatterExplosionDamage,Amount"/> damage to nearby enemy units.
 Button/Tooltip/AP_SpectreNukeCalldown=Calls down a Nuclear Strike at a target location. Nukes take <d time="20"/> to land, but they deal up to 300 (+200 vs. structures) damage to enemies in a large radius.
 Button/Tooltip/AP_SpectreShadowClones=The Spectre creates a clone of himself.  This clone can be used to draw fire away from friendly units.  The clone deals no damage and lasts <d ref="Behavior,ToshShadowCloneTimedLife,Duration"/> seconds.<n/>
@@ -3909,8 +3909,8 @@ Button/Tooltip/AP_TempestGravitySling=Increases Tempest air attack range by +<d 
 Button/Tooltip/AP_TempestInterplanetaryRange=Increases Tempest attack range by +<d ref="$UpgradeEffectArrayValue:AP_TempestInterplanetaryRange:Weapon,AP_TempestPurifier,Range$"/>.
 Button/Tooltip/AP_TempestPurifier=Purifier Faction<n/>Siege artillery craft. Attacks from long range.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AP_TempestPurifierWarCouncil=Purifier Faction<n/>Siege artillery craft. Attacks from long range. Can use Disintegration.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
-Button/Tooltip/AP_TempestQuanticReactor=Increases Tempest attack damage to massive units.
-Button/Tooltip/AP_TempestTectonicDestabilizers=Increases Tempest attack damage to structures.
+Button/Tooltip/AP_TempestQuanticReactor=Increases Tempest attack damage to massive units by +<d ref="Upgrade,AP_TempestQuanticReactor,EffectArray[0].Value"/>.
+Button/Tooltip/AP_TempestTectonicDestabilizers=Increases Tempest attack damage to structures by +<d ref="Upgrade,AP_TempestTectonicDestabilizers,EffectArray[0].Value"/>.
 Button/Tooltip/AP_TemplarArchive=High Templar tech structure.
 Button/Tooltip/AP_TerranBuild=A list of basic structures.
 Button/Tooltip/AP_TerranInfantryArmorLevel4=Maximizes the armor of infantry units.
@@ -6791,7 +6791,6 @@ Upgrade/Name/AP_HurricaneMissiles=Missile Pods
 Upgrade/Name/AP_Hyperfluxor=Hyperfluxor
 Upgrade/Name/AP_ImmortalBarrier=Immortal Barrier
 Upgrade/Name/AP_ImmortalRevive=Immortal Revive
-Upgrade/Name/AP_ImpalerRounds=Impaler Rounds
 Upgrade/Name/AP_ImpalingStrike=Impaling Strike
 Upgrade/Name/AP_ImprovedConcealment=Concealment
 Upgrade/Name/AP_JackhammerConcussionGrenades=Concussive Shells
@@ -6970,6 +6969,7 @@ Upgrade/Name/AP_SOAVortexStorm=SOAVortex Storm
 Upgrade/Name/AP_SOAWarpGateCharges=SOAWarp Gate Charges
 Upgrade/Name/AP_SOAWarpInReinforcements=SOAWarp In Reinforcements
 Upgrade/Name/AP_SOAWarpTech=SOAWarp Tech
+Upgrade/Name/AP_SpectreImpalerRounds=Impaler Rounds (Spectre)
 Upgrade/Name/AP_ScavengingSystems=Scavenging Systems
 Upgrade/Name/AP_ScienceVessel=Science Vessel
 Upgrade/Name/AP_ScienceVesselEnergyManipulation=Science Vessel (Energy Manipulation)
