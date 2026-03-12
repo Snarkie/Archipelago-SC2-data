@@ -20076,7 +20076,12 @@
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_VoidRayPurifierBeamActorHook"/>
         <EffectArray value="AP_VoidRayPurifierSecondaryBeamErraticMovement"/>
+        <EffectArray value="AP_VoidRayPurifierBeamTimedLifeAB"/>
     </CEffectSet>
+    <CEffectApplyBehavior id="AP_VoidRayPurifierBeamTimedLifeAB">
+        <WhichUnit Value="Target"/>
+        <Behavior value="AP_VoidRayPurifierBeamTimedLife"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AP_DamagedRecentlyByVoidRayPurifierAB">
         <WhichUnit Value="Target"/>
         <Behavior value="AP_DamagedRecentlyByVoidRayPurifier"/>
