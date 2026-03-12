@@ -15671,6 +15671,7 @@
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="AP_BullfrogLeapUnloadCreatePlaceholder"/>
         <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="BestUnit" value="0"/>
         <Cost>
             <Cooldown TimeUse="24"/>
         </Cost>
@@ -15686,6 +15687,7 @@
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
         <Effect index="0" value="AP_BullfrogLeapCreatePlaceholder"/>
         <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="BestUnit" value="0"/>
         <Cost>
             <Cooldown TimeUse="8"/>
         </Cost>

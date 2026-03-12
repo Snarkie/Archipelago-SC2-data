@@ -25165,9 +25165,14 @@
     <CEffectCreatePersistent id="AP_InfBullfrogLeapDelay">
         <EditorCategories value=""/>
         <Flags index="Channeled" value="1"/>
+        <Flags index="RandomPeriod" value="1"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="AP_InfBullfrogLeapLM"/>
+        <PeriodicPeriodArray value="0.3"/>
+        <PeriodicPeriodArray value="0.4"/>
         <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0.6"/>
+        <PeriodicPeriodArray value="0.7"/>
         <OffsetVectorStartLocation Value="CasterUnit"/>
         <OffsetFacingFallback Value="CasterUnit"/>
         <PeriodicOffsetArray value="0,-1,0"/>
@@ -25175,9 +25180,14 @@
     <CEffectCreatePersistent id="AP_InfBullfrogLeapCargoDelay">
         <EditorCategories value=""/>
         <Flags index="Channeled" value="1"/>
+        <Flags index="RandomPeriod" value="1"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="AP_InfBullfrogLeapUnloadLM"/>
+        <PeriodicPeriodArray value="0.3"/>
+        <PeriodicPeriodArray value="0.4"/>
         <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0.6"/>
+        <PeriodicPeriodArray value="0.7"/>
         <OffsetVectorStartLocation Effect="AP_BullfrogLeapUnloadCreatePlaceholder" Value="CasterUnitOrPoint"/>
         <OffsetVectorEndLocation Effect="AP_BullfrogLeapUnloadCreatePlaceholder"/>
         <PeriodicOffsetArray value="0,-1,0"/>
