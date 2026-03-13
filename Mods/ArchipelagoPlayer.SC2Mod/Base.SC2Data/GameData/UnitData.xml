@@ -24761,6 +24761,7 @@
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
     <CUnit id="AP_VoidRayPurifier" parent="AP_VoidRayCampaignBase">
+        <LifeArmor value="1"/>
         <StationaryTurningRate value="90"/>
         <TurningRate value="90"/>
         <WeaponArray Link="AP_VoidRayPurifierPrimaryBeam" Turret="AP_VoidRayPurifier"/>
@@ -31851,7 +31852,7 @@
     <CUnit id="AP_BullfrogPlaceholder" parent="PLACEHOLDER">
         <DeathRevealRadius value="3"/>
         <Race value="Zerg"/>
-        <Collide index="Structure" value="1"/>
+        <Collide index="Ground" value="1"/>
         <Attributes index="Biological" value="1"/>
         <StationaryTurningRate value="719.4726"/>
         <TurningRate value="719.4726"/>
@@ -31859,8 +31860,12 @@
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
         <KillXP value="10"/>
-        <SeparationRadius value="0.375"/>
+        <Radius value="1"/>
+        <SeparationRadius value="1"/>
+        <InnerRadius value="1"/>
         <MinimapRadius value="0.375"/>
+        <PushPriority value="11"/>
+        <AlliedPushPriority value="1"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <LeaderAlias value=""/>
         <HotkeyAlias value=""/>

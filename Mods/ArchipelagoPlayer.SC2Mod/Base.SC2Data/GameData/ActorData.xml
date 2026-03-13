@@ -36802,8 +36802,6 @@
         <On Terms="WeaponStop.*.AttackStop; ValidateUnit AP_NotQuadAndNotDoubleDamageOrDawnbringerPhase1" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.AP_VoidRayPhase2.Off; !ValidateUnit AP_QuadDamage" Send="AnimBracketStop BSD"/>
         <On Terms="Behavior.AP_VoidRayPhase3.Off" Send="AnimBracketStop BSD"/>
-        <On Terms="Behavior.AP_VoidRayPurifierPhase2.Off; !ValidateUnit AP_VoidRayPurifierPhase3" Send="AnimBracketStop BSD"/>
-        <On Terms="Behavior.AP_VoidRayPurifierPhase3.Off" Send="AnimBracketStop BSD"/>
         <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
         <Inherits index="CloakEffect" value="1"/>
         <Inherits index="Visibility" value="1"/>
@@ -36813,6 +36811,49 @@
         <On Terms="Effect.AP_PrismaticBeamChargeEffect02.Start; At Source; ValidateUnit AP_DoubleDamage" Send="Create"/>
         <On Terms="Effect.AP_PrismaticBeamChargeEffect02.Start; At Source; ValidateUnit AP_QuadDamage" Send="Create"/>
         <On Terms="Effect.AP_PrismaticBeamChargeEffect03.Start; At Source; ValidateUnit AP_QuadDamage" Send="Create"/>
+        <Host>
+            <Subject value="_Selectable"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <FailOnNoHost value="1"/>
+        </Host>
+        <HostSiteOps Ops="SOpAttachWeapon03"/>
+    </CActorModel>
+    <CActorModel id="AP_VoidRayChargeX02" parent="AP_VoidRayChargeBase">
+        <On Terms="Effect.AP_PrismaticBeamChargeEffect02.Start; At Source" Send="Create"/>
+        <On Terms="Effect.AP_PrismaticBeamChargeEffect03.Start; At Source; ValidateUnit AP_QuadDamage" Send="Create"/>
+        <Host>
+            <Subject value="_Selectable"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <FailOnNoHost value="1"/>
+        </Host>
+        <HostSiteOps Ops="SOpAttachWeapon05"/>
+    </CActorModel>
+    <CActorModel id="AP_VoidRayChargeX03" parent="AP_VoidRayChargeBase">
+        <On Terms="Effect.AP_PrismaticBeamChargeEffect03.Start; At Source" Send="Create"/>
+        <Host>
+            <Subject value="_Selectable"/>
+            <Scope value="Caster"/>
+            <Actor value="Find"/>
+            <FailOnNoHost value="1"/>
+        </Host>
+        <HostSiteOps Ops="SOpAttachWeapon07"/>
+    </CActorModel>
+    <!-- Dawnbringer Orange Charge Beams -->
+    <CActorModel id="AP_VoidRayPurifierChargeBase">
+        <Model value="AP_VoidRayPurifierChargeBeam"/>
+        <Terms value="Cap 1"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="WeaponStop.*.AttackStop; ValidateUnit AP_NotQuadAndNotDoubleDamageOrDawnbringerPhase1" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.AP_VoidRayPurifierPhase2.Off; !ValidateUnit AP_VoidRayPurifierPhase3" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.AP_VoidRayPurifierPhase3.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+    </CActorModel>
+    <CActorModel id="AP_VoidRayPurifierChargeX01" parent="AP_VoidRayPurifierChargeBase">
         <On Terms="Effect.AP_VoidRayPurifierBeamChargeEffect1.Start; At Source" Send="Create"/>
         <On Terms="Effect.AP_VoidRayPurifierBeamChargeEffect2.Start; At Source; ValidateUnit AP_VoidRayPurifierPhase2" Send="Create"/>
         <On Terms="Effect.AP_VoidRayPurifierBeamChargeEffect2.Start; At Source; ValidateUnit AP_VoidRayPurifierPhase3" Send="Create"/>
@@ -36825,9 +36866,7 @@
         </Host>
         <HostSiteOps Ops="SOpAttachWeapon03"/>
     </CActorModel>
-    <CActorModel id="AP_VoidRayChargeX02" parent="AP_VoidRayChargeBase">
-        <On Terms="Effect.AP_PrismaticBeamChargeEffect02.Start; At Source" Send="Create"/>
-        <On Terms="Effect.AP_PrismaticBeamChargeEffect03.Start; At Source; ValidateUnit AP_QuadDamage" Send="Create"/>
+    <CActorModel id="AP_VoidRayPurifierChargeX02" parent="AP_VoidRayPurifierChargeBase">
         <On Terms="Effect.AP_VoidRayPurifierBeamChargeEffect2.Start; At Source" Send="Create"/>
         <On Terms="Effect.AP_VoidRayPurifierBeamChargeEffect3.Start; At Source; ValidateUnit AP_VoidRayPurifierPhase3" Send="Create"/>
         <Host>
@@ -36838,8 +36877,7 @@
         </Host>
         <HostSiteOps Ops="SOpAttachWeapon05"/>
     </CActorModel>
-    <CActorModel id="AP_VoidRayChargeX03" parent="AP_VoidRayChargeBase">
-        <On Terms="Effect.AP_PrismaticBeamChargeEffect03.Start; At Source" Send="Create"/>
+    <CActorModel id="AP_VoidRayPurifierChargeX03" parent="AP_VoidRayPurifierChargeBase">
         <On Terms="Effect.AP_VoidRayPurifierBeamChargeEffect3.Start; At Source" Send="Create"/>
         <Host>
             <Subject value="_Selectable"/>

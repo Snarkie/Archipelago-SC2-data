@@ -11080,4 +11080,10 @@
         <MaxStackCountPerCaster value="1"/>
         <Duration value="5"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_VoidRayPurifierBeamTimedLife">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="0.5"/> <!-- short enough to disappear promptly, long enough to allow players to "drag" the beams -->
+        <DisableValidatorArray value="AP_SourceUnitNotFiringWeapon"/>
+        <ExpireEffect value="AP_SuicideRemove"/>
+    </CBehaviorBuff>
 </Catalog>

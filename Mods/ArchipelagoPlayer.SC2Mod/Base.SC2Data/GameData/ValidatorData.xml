@@ -8042,4 +8042,8 @@
     <CValidatorUnitCompareBehaviorCount id="AP_DistributedAttackNotMarked">
         <Behavior value="AP_DistributedAttackMarker"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitWeaponFiring id="AP_SourceUnitNotFiringWeapon">
+        <WhichUnit Value="Source"/>
+        <Find value="0"/>
+    </CValidatorUnitWeaponFiring>
 </Catalog>
