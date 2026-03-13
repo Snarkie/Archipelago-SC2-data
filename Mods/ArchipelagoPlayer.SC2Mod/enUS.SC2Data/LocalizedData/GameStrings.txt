@@ -570,6 +570,8 @@ Behavior/Name/AP_HydraliskFrenzy=Frenzy
 Behavior/Name/AP_ImmortalOverload=Barrier
 Behavior/Name/AP_InfBullfrogImpactMutagen=Something In The Air...
 Behavior/Name/AP_InfBullfrogImpactStun=We got 100 tons of Zerg incoming!!
+Behavior/Name/AP_InfestedSCVRepairBio=Cauterizer
+Behavior/Name/AP_InfestedSCVRepairFree=Resourceful
 Behavior/Name/AP_Irradiate=Irradiated
 Behavior/Name/AP_KeneticMitosisSplitBehavior=Kenetic Mitosis Split Behavior
 Behavior/Name/AP_KerriganPrimalRage1=Fury
@@ -585,6 +587,7 @@ Behavior/Name/AP_LiberatorGuerillaMissilesDebuff=Guerilla Missiled
 Behavior/Name/AP_LightningBomb=Disintegration
 Behavior/Name/AP_LockOn=Lock On Target
 Behavior/Name/AP_LockdownB=Lockdown
+Behavior/Name/AP_LurkerCarapace=Carapace
 Behavior/Name/AP_MarauderMengskAbsorb=Aegis Barrier
 Behavior/Name/AP_MarauderMengskAttackSpeedBoost=High-Grade Stimpacks
 Behavior/Name/AP_MarauderMengskShrapnelSlow=Slow
@@ -870,6 +873,8 @@ Behavior/Tooltip/AP_HydraliskFrenzy=Attack speed increased.
 Behavior/Tooltip/AP_ImmortalOverload=This unit is absorbing damage dealt to it.
 Behavior/Tooltip/AP_InfBullfrogImpactMutagen=This unit has temporary bonus health and attack speed.
 Behavior/Tooltip/AP_InfBullfrogImpactStun=This unit has been stunned, likely because it got bodyslammed by a Zerg monster wearing a Terran Dropship like a dang fashion statement.
+Behavior/Tooltip/AP_InfestedSCVRepairBio=Can repair non-mechanical units.
+Behavior/Tooltip/AP_InfestedSCVRepairFree=Repairing no longer costs resources.
 Behavior/Tooltip/AP_Irradiate=Irradiated unit. All biological units in or near the radiation field will take damage.
 Behavior/Tooltip/AP_KerriganPrimalRage1=Attack speed increased by <d ref="(Behavior,AP_KerriganPrimalRage1,Modification.AttackSpeedMultiplier - 1) * 100"/>%.
 Behavior/Tooltip/AP_KerriganPrimalRage2=Attack speed increased by <d ref="(Behavior,AP_KerriganPrimalRage2,Modification.AttackSpeedMultiplier - 1) * 100"/>%.
@@ -882,6 +887,7 @@ Behavior/Tooltip/AP_LeapHunterlingStun=Target is stunned.
 Behavior/Tooltip/AP_LiberatorGuerillaMissilesDebuff=This unit has <d ref="(Behavior,AP_LiberatorGuerillaMissilesDebuff,Modification.MoveSpeedMultiplier - 1) * 100"/>% reduced move speed and <d ref="(Behavior,AP_LiberatorGuerillaMissilesDebuff,Modification.AttackSpeedMultiplier - 1) * 100"/>% reduced attack speed.
 Behavior/Tooltip/AP_LightningBomb=This unit or structure is taking damage over time.
 Behavior/Tooltip/AP_LockOn=This unit has been targeted by a Cyclone's Lock On ability.
+Behavior/Tooltip/AP_LurkerCarapace=This unit has temporary hitpoints
 Behavior/Tooltip/AP_MarauderMengskAbsorb=When active, this Aegis Barrier blocks all incoming damage, up to a maximum of <d ref="Behavior,AP_MarauderMengskAbsorb,DamageResponse.ModifyLimit"/>.
 Behavior/Tooltip/AP_MarauderMengskAttackSpeedBoost=This unit attacks more quickly while under the effects of High-Grade Stimpacks.
 Behavior/Tooltip/AP_MarauderMengskShrapnelSlow=Movement slowed.
@@ -1155,6 +1161,7 @@ Button/Name/AP_BanelingLaunch=Baneling Launch
 Button/Name/AP_BanelingLaunchTrain=Baneling Launch Train
 Button/Name/AP_BanelingNest=Mutate into Baneling Nest
 Button/Name/AP_BanelingPassive=Baneling
+Button/Name/AP_BanelingSpawn=Spawn Banelings
 Button/Name/AP_BanelingSplitterlingPassive=Baneling
 Button/Name/AP_BanelingSplitterlingSplitPassive=Division
 Button/Name/AP_Banshee=Build Banshee
@@ -1416,6 +1423,8 @@ Button/Name/AP_GraviticDrive=Gravitic Drive
 Button/Name/AP_GravitonBeam=Graviton Beam
 Button/Name/AP_GravitonBeamVoidCampaign=Graviton Beam
 Button/Name/AP_GravitonCatapult=Graviton Catapult
+Button/Name/AP_GreaterHydraliskDen=Mutate into Greater Hydralisk Den
+Button/Name/AP_GreaterSpire=Mutate into Greater Spire
 Button/Name/AP_GreaterSpireBroodlord=Mutate into Greater Spire
 Button/Name/AP_GreaterSpireViper=Mutate into Greater Spire
 Button/Name/AP_GroovedSpines=Grooved Spines
@@ -1562,9 +1571,12 @@ Button/Name/AP_InfestedBullfrog=Spawn Bullfrog
 Button/Name/AP_InfestedDiamondbackConcentratedSpew=Concentrated Spew
 Button/Name/AP_InfestedDiamondbackViolentEnzymes=Violent Enzymes
 Button/Name/AP_InfestedDuskWing=Infested Dusk Wings
+Button/Name/AP_InfestedMarineExtended=Enduring Strain
+Button/Name/AP_InfestedMarineSpeed=Leg Enhancements
 Button/Name/AP_InfestedMedic=Infested Medics
 Button/Name/AP_InfestedMedicMercHeal=Heal
 Button/Name/AP_InfestedMedicMercHealPlusMech=Heal
+Button/Name/AP_InfestedSCVRepairFree=Resourceful
 Button/Name/AP_InfestedSiegeBreaker=Infested Siege Breakers
 Button/Name/AP_InfestedSiegeTankBalancedRoots=Balanced Roots
 Button/Name/AP_InfestedSiegeTankSeismicSonar=Seismic Sonar
@@ -1631,8 +1643,11 @@ Button/Name/AP_LocustGround=Switch to Ground Locust spawn
 Button/Name/AP_LocustLaunch=Spawn Locusts
 Button/Name/AP_LocustSpeed=Locust Metabolic Boost
 Button/Name/AP_Lurker=Morph to Lurker
+Button/Name/AP_LurkerCarapace=Carapace
 Button/Name/AP_LurkerDen=Mutate into Greater Hydralisk Den
+Button/Name/AP_LurkerDetection=Sonar Glands
 Button/Name/AP_LurkerPassive=Lurker
+Button/Name/AP_LurkerRangeCreep=Pressurized Release
 Button/Name/AP_MaelstromRounds=Maelstrom Rounds
 Button/Name/AP_MagFieldLaunchers=Mag-Field Launchers
 Button/Name/AP_MagrailMunitions=Magrail Munitions
@@ -2053,6 +2068,7 @@ Button/Name/AP_ScourgeAmountUpgrade=Swarm Scourge
 Button/Name/AP_ScourgeCostUpgrade=Resource Efficiency
 Button/Name/AP_ScourgeDetonate=Detonate
 Button/Name/AP_ScourgePassive=Scourge
+Button/Name/AP_ScourgeSpawn=Spawn Scourge
 Button/Name/AP_ScourgeSplashUpgrade=Virulent Spores
 Button/Name/AP_Scout=Warp in Scout
 Button/Name/AP_ScoutAdvancedPhotonBlasters=Advanced Photon Blasters
@@ -2641,6 +2657,7 @@ Button/Tooltip/AP_BanelingLaunchLevel2=The Aberration stores and launches up to 
 Button/Tooltip/AP_BanelingLaunchTrain=A Baneling to be thrown by an Aberration.
 Button/Tooltip/AP_BanelingNest=<c val="ffff8a">Enables:</c><n/>- Banelings from Zerglings
 Button/Tooltip/AP_BanelingPassive=Baneling Nest enables you to morph Banelings from Zerglings.
+Button/Tooltip/AP_BanelingSpawn=Spawn 3 Banelings with a <d ref="Behavior,AP_BanelingSpawnTimedLife,Duration"/> seconds timed life.
 Button/Tooltip/AP_BanelingSplitterlingPassive=Splitter Strain<n/><n/>Baneling Nest enables you to morph Banelings from Zerglings.
 Button/Tooltip/AP_BanelingSplitterlingSplitPassive=Splits into two smaller Baneling Spawn upon death or eruption.
 Button/Tooltip/AP_Banshee=Tactical-strike aircraft.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
@@ -2976,6 +2993,7 @@ Button/Tooltip/AP_GravitonBeam=Makes the target unit float in the air, disabling
 Button/Tooltip/AP_GravitonBeamVoidCampaign=Makes the target unit float in the air, disabling its abilities. Effect lasts up to <d time="10"/>.<n/><n/><c val="#ColorAttackInfo">Massive units are immune.</c>
 Button/Tooltip/AP_GravitonCatapult=Makes the Carrier launch Interceptors more quickly.
 Button/Tooltip/AP_GravitonCatapultTrireme=Makes the Trireme launch Bombers more quickly.
+Button/Tooltip/AP_GreaterHydraliskDen=<c val="ffff8a">Enables:</c><n/>- Hydralisks<n/>- Lurkers and Impalers from Hydralisks
 Button/Tooltip/AP_GreaterSpire=Contains upgrades for Zerg air units.<n/><n/><c val="ffff8a">Enables:</c><n/>- Brood Lords from Corruptors
 Button/Tooltip/AP_GreaterSpireBroodlord=<c val="ffff8a">Enables:</c><n/>- Brood Lords from Mutalisks
 Button/Tooltip/AP_GreaterSpireViper=<c val="ffff8a">Enables:</c><n/>- Vipers from Mutalisks
@@ -3151,9 +3169,12 @@ Button/Tooltip/AP_InfestedDiamondbackConcentratedSpew=Increases Infested Diamond
 Button/Tooltip/AP_InfestedDiamondbackViolentEnzymes=Increases Infested Diamondback attack damage by 8.
 Button/Tooltip/AP_InfestedDuskWing=Request <d ref="Effect,AP_SummonZergMercenaryDummy,PeriodicPeriodArray[2]"/> Infested Dusk Wings.<n/><n/>Tactical-strike aircraft.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/AP_InfestedDuskWings=Hired by the Raiders, the Dusk Wings served with distinction during the Invasion of Char, suffering casualties but securing an impossible victory in the end. When Raynor's Raiders and Kerrigan's Swarm later allied together, the mercenaries found it unsettling that many of those casualties worked alongside them again....<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
+Button/Tooltip/AP_InfestedMarineExtended=Increased duration by 30 seconds.
+Button/Tooltip/AP_InfestedMarineSpeed=Increases the movement speed while not on creep by 50%.
 Button/Tooltip/AP_InfestedMedic=In the wake of the Brood War, a sea of United Earth Directorate corpses littered the ashen fields of Char. Kerrigan has given their medics a second life enslaved to the same broods they sought to control.<n/><n/>Heals nearby biological ground units.
 Button/Tooltip/AP_InfestedMedicMercHeal=Heals a friendly biological target.<n/><n/><c val="f078ff">Heals <d ref="Effect,AP_MedivacHeal,RechargeVitalRate*Effect,AP_MedivacHeal,DrainVitalCostFactor"/> life per 1 energy.</c>
 Button/Tooltip/AP_InfestedMedicMercHealPlushMech=Heals a friendly biological target.<n/><n/><c val="f078ff">Heals <d ref="Effect,AP_MedivacHeal,RechargeVitalRate*Effect,AP_MedivacHeal,DrainVitalCostFactor"/> life per 1 energy.</c>
+Button/Tooltip/AP_InfestedSCVRepairFree=Repairing no longer costs resources.
 Button/Tooltip/AP_InfestedSiegeBreaker=The Confederacy died with Tarsonis. In the wake of the planet's destruction, the once stalwart defenders and technology of the Confederacy began to appear among the Swarm's legions of infested, shadows of a nation long destroyed.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/AP_InfestedSiegeBreakerSieged=The Confederacy died with Tarsonis. In the wake of the planet's destruction, the once stalwart defenders and technology of the Confederacy began to appear among the Swarm's legions of infested, shadows of a nation long destroyed.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/AP_InfestedSiegeTankBalancedRoots=Allows Infested Siege Tanks to attack with their Tentacle while moving.
@@ -3251,8 +3272,11 @@ Button/Tooltip/AP_LocustGround=Switch to the ground Locust strain.<n/><n/>These 
 Button/Tooltip/AP_LocustLaunch=Sends Locusts to target location.
 Button/Tooltip/AP_LocustSpeed=Locusts move 20% faster.
 Button/Tooltip/AP_Lurker=Area-damage ambusher. Must burrow to attack. <n/><n/><c val="ffff8a">Can attack ground units.</c>
+Button/Tooltip/AP_LurkerCarapace=Lurkers gain <d ref="Behavior,AP_LurkerCarapace,Modification.VitalMaxArray[Shields]"/> temporary hitpoints for <d ref="Behavior,AP_LurkerCarapace,Duration"/> seconds on burrowing and unburrowing.
 Button/Tooltip/AP_LurkerDen=<c val="ffff8a">Enables:</c><n/>- Lurkers and Impalers from Hydralisks
+Button/Tooltip/AP_LurkerDetection=Lurkers gain detection and +<d ref="Behavior,AP_LurkerDetection,Modification.SightBonus"/> sight range while burrowed.
 Button/Tooltip/AP_LurkerPassive=Lurker Den enables you to morph Lurkers from Hydralisks.
+Button/Tooltip/AP_LurkerRangeCreep=Increases attack range by 1, and increases attack range by an additional <d ref="Behavior,AP_LurkerRangeCreep,Modification.WeaponRange"/> while on creep.
 Button/Tooltip/AP_MULE=Prototype harvesting unit. Gathers minerals more quickly than regular SCVs. MULEs last <d time="90"/> before their systems fail.
 Button/Tooltip/AP_MaelstromRounds=Shock Cannon deals +40 damage to primary target. Splash damage remains the same.
 Button/Tooltip/AP_MagFieldLaunchers=Increases <c val="ffff8a">Cyclone's</c> attack range by +<d ref="$UpgradeEffectArrayValue:AP_MagFieldLaunchers:Weapon,AP_TyphoonMissilePod,Range$"/>.
@@ -3730,6 +3754,7 @@ Button/Tooltip/AP_ScourgeAmountUpgrade=Scourge morph ten times as fast, and an a
 Button/Tooltip/AP_ScourgeCostUpgrade=Scourge eggs cost 50 less Vespene Gas.
 Button/Tooltip/AP_ScourgeDetonate=The Scourge detonates at its current location and damages all nearby enemy air units.
 Button/Tooltip/AP_ScourgePassive=This building enables you to morph Scourge.
+Button/Tooltip/AP_ScourgeSpawn=Spawn 3 Scourge with a <d ref="Behavior,AP_ScourgeSpawnTimedLife,Duration"/> seconds timed life.
 Button/Tooltip/AP_ScourgeSplashUpgrade=Scourge deal splash damage.
 Button/Tooltip/AP_Scout=Versatile high-speed fighter.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_ScoutAdvancedPhotonBlasters=Improves Photon Blaster weapon damage.
@@ -3759,7 +3784,7 @@ Button/Tooltip/AP_ScoutTaldarimVulcanBlaster=The Oppressor slows down to activat
 Button/Tooltip/AP_ScoutTaldarimVulcanBlasterCancel=Cancels the Vulcan Blasters. Restores mobility and anti-air missiles.
 Button/Tooltip/AP_ScoutTaldarimWeaponRange=<c val="ffff8a">Oppressors</c> gain +2 air attack range and +2 ground attack range. Also increases the area of effect for Vulcan Blasters.
 Button/Tooltip/AP_ScoutWeaponRange=<c val="ffff8a">Scouts</c> gain +3 air attack range and +1 ground attack range.
-Button/Tooltip/AP_SeismicSpines=Increases attack range by 6.
+Button/Tooltip/AP_SeismicSpines=Increases attack range by 2.
 Button/Tooltip/AP_SensorTower=Reveals the locations of enemy units at long range. The Sensor Tower's detection area is visible to the enemy.
 Button/Tooltip/AP_SensorTowerAssistiveTargeting=Gives +<d ref="Behavior,AP_SensorTowerRangeBuff,Modification.RangedWeaponRange"/> range to player defensive buildings within the Sensor Tower's direct sight range.
 Button/Tooltip/AP_SensorTowerEnhancedVision=The Sensor Tower gains +<d ref="Upgrade,AP_SensorTowerEnhancedVision,EffectArray[0].Value"/> sight range and +<d ref="$UpgradeEffectArrayValue:AP_SensorTowerEnhancedVision:Behavior,AP_SensorTowerRadar,Modification.Radar$"/> radar range.<n/><n/><c val="#ColorAttackInfo">"Zoom and enhance!"</c>
@@ -4200,7 +4225,7 @@ Button/Tooltip/AP_YggdrasilHive=Further evolved version of the Hatchery that all
 Button/Tooltip/AP_YggdrasilHydraliskDen=<c val="ffff8a">Enables:</c><n/>- Hydralisks from Larvae
 Button/Tooltip/AP_YggdrasilInfestationPit=<c val="ffff8a">Enables:</c><n/>- Infestors from Larvae<n/>- Swarm Hosts from Larvae
 Button/Tooltip/AP_YggdrasilLair=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.
-Button/Tooltip/AP_YggdrasilLurkerDen=<c val="ffff8a">Enables:</c><n/>- Lurkers and Impalers from Hydralisks
+Button/Tooltip/AP_YggdrasilLurkerDen=<c val="ffff8a">Enables:</c><n/>- Hydralisks<n/>- Lurkers and Impalers from Hydralisks
 Button/Tooltip/AP_YggdrasilNydusNetwork=<c val="ffff8a">Enables:</c><n/>- Nydus Worm <n/>- Echidna Worm
 Button/Tooltip/AP_YggdrasilPredatorNest=Trains Specialist units.
 Button/Tooltip/AP_YggdrasilRoachWarren=<c val="ffff8a">Enables:</c><n/>- Roaches from Larvae

@@ -10329,7 +10329,7 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-zerg-lurker.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
-        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <ShieldArmorIcon value="AP\Assets\Textures\btn-zerg-mutatedshell.dds"/>
         <SoundArray index="Ready" value="Lurker_Ready"/>
         <SoundArray index="What" value="Lurker_What"/>
         <SoundArray index="Yes" value="Lurker_Yes"/>
@@ -10346,8 +10346,32 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Zerg-Lurker.dds"/>
         </Wireframe>
-        <WireframeShieldColor value="255,0,128,0"/>
+        <WireframeShield>
+            <Image value="AP\Assets\Textures\wireframe-zerg-lurker-shield00.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-zerg-lurker-shield01.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-zerg-lurker-shield02.dds"/>
+        </WireframeShield>
+        <WireframeShieldColor value="255,255,0,128"/>
     </CActorUnit>
+    <CActorModel id="AP_LurkerCarapace" parent="ModelAddition">
+        <On Terms="ActorCreation" Send="TimerSet"/>
+        <On Terms="TimerExpired" Send="SetTintColor 100,0,5"/>
+        <On Terms="Behavior.AP_LurkerCarapace.On" Send="Create"/>
+        <On Terms="Behavior.AP_LurkerCarapace.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitBirth.AP_Lurker.EditorPlaced" Send="Create"/>
+        <On Terms="UnitBirth.AP_LurkerBurrowed.EditorPlaced" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachHead AP_LurkerCarapaceRotation AP_LurkerCarapaceOffset"/>
+        <Model value="AP_RoachShield"/>
+        <Scale value="2.000000,1.500000,1.000000"/>
+    </CActorModel>
+    <CActorSiteOpLocalOffset id="AP_LurkerCarapaceOffset">
+        <LocalOffset value="0.000000,0.500000,0.300000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotationExplicit id="AP_LurkerCarapaceRotation">
+        <Forward value="0.000000,-1.000000,-0.200000"/>
+        <Up value="0.000000,0.000000,1.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
     <CActorAction id="AP_LurkerAttackSpike" parent="AoEAttackBase">
         <On Terms="Effect.AP_LurkerU.Start; At Effect" Send="Create"/>
         <On Terms="Effect.AP_LurkerU.Start; At Effect" Send="ActionDamage"/>
@@ -23049,9 +23073,9 @@
         <On Terms="AnimDone.*.Complete; AnimName Gather" Send="TimerSet 0.000000,0.300000 Gather"/>
         <On Terms="TimerExpired; TimerName Gather" Send="AnimPlay Gather Work NonLooping"/>
         <On Terms="TimerExpired; TimerName Gather" Send="Create SCVGatherSound"/>
-        <On Terms="Abil.AP_Repair.SourceChannelStart" Send="TimerSet 0.000000,0.300000 Repair"/>
-        <On Terms="Abil.AP_Repair.SourceChannelStop" Send="TimerKill Repair"/>
-        <On Terms="Abil.AP_Repair.SourceChannelStop" Send="AnimClear Repair"/>
+        <On Terms="Abil.AP_InfestedSCVRepair.SourceChannelStart" Send="TimerSet 0.000000,0.300000 Repair"/>
+        <On Terms="Abil.AP_InfestedSCVRepair.SourceChannelStop" Send="TimerKill Repair"/>
+        <On Terms="Abil.AP_InfestedSCVRepair.SourceChannelStop" Send="AnimClear Repair"/>
         <On Terms="AnimDone.*.Complete; AnimName Repair" Send="TimerSet 0.000000,0.300000 Repair"/>
         <On Terms="TimerExpired; TimerName Repair" Send="AnimPlay Repair Work NonLooping"/>
         <On Terms="TimerExpired; TimerName Repair" Send="Create SCVRepairSound"/>
@@ -47326,4 +47350,36 @@
         <HostSiteOps Ops="SOpAttachOriginStationary SOpShadow"/>
         <Scale value="2.000000"/>
     </CActorSplat>
+    <CActorModel id="AP_YggdrasilAssimilate">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Morph,Start Morph Morph,End 0 0.500000 AsTimeScale"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Start; At Target" Send="Create"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetScale 0.500000,0.500000,0.400000 3.000000 AP_YggdrasilDrain"/>
+        <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.500000 3.000000 AP_YggdrasilDrain"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="ClearScale 1.000000 AP_YggdrasilDrain"/>
+        <On Terms="ActorDestruction" Target="_Selectable" Send="ClearOpacity 1.000000 AP_YggdrasilDrain"/>
+        <On Terms="ActorCreation" Send="AnimSetCompletion BSD 5.000000"/>
+        <On Terms="ActorCreation; ValidateUnit AP_IsZergTallStructure" Send="SetScale 1.000000,1.000000,1.400000"/>
+        <On Terms="AnimBracketState.*.AfterClosing" Send="Destroy"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="Create AP_YggdrasilAssimilateEnd"/>
+        <Host Subject="_Selectable"/>
+        <Model value="SpireMorph"/>
+        <Scale value="1.000000,1.000000,0.800000"/>
+        <AutoScaleFromSelectionFactor value="0.300000"/>
+    </CActorModel>
+    <CActorModel id="AP_YggdrasilAssimilateEnd" parent="ModelAnimationStyleOneShot">
+        <On Terms="ActorCreation" Send="AnimSetCompletion BSD 20.000000"/>
+        <HostSiteOps Ops="SOpTargetPointStationary"/>
+        <Model value="HatcheryDeath"/>
+        <Scale value="0.400000"/>
+    </CActorModel>
+    <CActorSound id="AP_YggdrasilAssimilateSound" parent="SoundOneShot">
+        <Sound value="AP_YggdrasilAssimilate"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Start; At Target" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="AP_YggdrasilAssimilateEndSound" parent="SoundOneShot">
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop; At Target" Send="Create"/>
+        <Sound value="AP_YggdrasilAssimilateEnd"/>
+    </CActorSound>
 </Catalog>

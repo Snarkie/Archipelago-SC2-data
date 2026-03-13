@@ -8042,6 +8042,25 @@
     <CValidatorUnitCompareBehaviorCount id="AP_DistributedAttackNotMarked">
         <Behavior value="AP_DistributedAttackMarker"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="AP_HealBlacklist">
+        <Type value="And"/>
+        <CombineArray value="AP_NotSummoned"/>
+        <CombineArray value="NotWarpingIn"/>
+        <CombineArray value="AP_NotTimedLifeUnitAndNotLarva"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="AP_NotSummoned">
+        <Filters value="-;Summoned"/>
+    </CValidatorUnitFilters>
+    <CValidatorPlayerRequirement id="AP_ZergBuildingSpawnSplitterlings">
+        <Find value="1"/>
+        <Value value="AP_ZergBuildingSpawnSplitterlings"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="AP_IsZergTallStructure">
+        <CombineArray value="AP_IsAPSpire"/>
+        <CombineArray value="AP_IsAPGreaterSpire"/>
+        <CombineArray value="AP_IsAPBanelingNest"/>
+        <CombineArray value="AP_IsAPSpineCrawlerRooted"/>
+    </CValidatorCombine>
     <CValidatorUnitWeaponFiring id="AP_SourceUnitNotFiringWeapon">
         <WhichUnit Value="Source"/>
         <Find value="0"/>

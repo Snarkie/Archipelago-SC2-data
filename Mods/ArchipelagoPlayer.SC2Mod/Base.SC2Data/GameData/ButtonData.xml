@@ -8207,4 +8207,46 @@
         <Icon value="AP\Assets\Textures\btn-protoss-DistributedAttack.dds"/>
         <AlertIcon value="AP\Assets\Textures\btn-protoss-DistributedAttack.dds"/>
     </CButton>
+    <CButton id="AP_BanelingSpawn">
+        <Icon value="Assets\Textures\abilityicon_spawnbanelings_square.dds"/>
+        <AlertIcon value="Assets\Textures\abilityicon_spawnbanelings_square.dds"/>
+    </CButton>
+    <CButton id="AP_InfestedMarineExtended">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-stukov-unlockresearchbundle_infestedcivilianmarines_07.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-stukov-unlockresearchbundle_infestedcivilianmarines_07.dds"/>
+    </CButton>
+    <CButton id="AP_InfestedMarineSpeed">
+        <Icon value="Assets\Textures\btn-ability-dehaka-speedboost.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-dehaka-speedboost.dds"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="AP_InfestedSCVRepairFree">
+        <Icon value="Assets\Textures\btn-progression-stetmann-05-scrapdrop.dds"/>
+        <AlertIcon value="Assets\Textures\btn-progression-stetmann-05-scrapdrop.dds"/>
+    </CButton>
+    <CButton id="AP_LurkerCarapace">
+        <Icon value="AP\Assets\Textures\btn-zerg-mutatedshell.dds"/>
+    </CButton>
+    <CButton id="AP_LurkerDetection">
+        <Icon value="AP\Assets\Textures\btn-seismic-sonar.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-seismic-sonar.dds"/>
+    </CButton>
+    <CButton id="AP_LurkerRangeCreep">
+        <Icon value="Assets\Textures\btn-ability-dehaka-fanofknives.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-dehaka-fanofknives.dds"/>
+    </CButton>
+    <CButton id="AP_ScourgeSpawn">
+        <Icon value="Assets\Textures\talent-zagara-level04-scourgeresearchbundle.dds"/>
+        <AlertIcon value="Assets\Textures\talent-zagara-level04-scourgeresearchbundle.dds"/>
+    </CButton>
+    <CButton id="AP_GreaterHydraliskDen">
+        <Icon value="Assets\Textures\btn-building-zerg-lurkerden.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-lurkerden.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
+    <CButton id="AP_GreaterSpire">
+        <Icon value="Assets\Textures\btn-building-zerg-greaterspire.dds"/>
+        <AlertIcon value="Assets\Textures\btn-building-zerg-greaterspire.dds"/>
+        <EditorCategories value="Race:Zerg"/>
+    </CButton>
 </Catalog>

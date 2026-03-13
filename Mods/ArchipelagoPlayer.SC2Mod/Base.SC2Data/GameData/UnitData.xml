@@ -15,6 +15,7 @@
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <Sight value="7"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -8017,6 +8018,7 @@
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <RepairTime value="15"/>
         <Mover value="Creep"/>
         <Speed value="0.5625"/>
         <Acceleration value="1000"/>
@@ -8126,6 +8128,7 @@
         <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="50"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -8240,6 +8243,7 @@
         <Sight value="9"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="75"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <BehaviorArray Link="AP_AutomaticHarvestableVespene"/>
@@ -8366,6 +8370,7 @@
         <Sight value="9"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="75"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_ExtractorToAutomatedExtractor"/>
@@ -8434,6 +8439,7 @@
         <Sight value="9"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="75"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_ExtractorPipesToExtractor"/>
@@ -8496,6 +8502,7 @@
         <Sight value="9"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="75"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_ExtractorToAutomatedExtractorRich"/>
@@ -8555,6 +8562,7 @@
         <Food value="-1"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="50"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <AIOverideTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
@@ -8609,11 +8617,13 @@
             <LayoutButtons Face="AP_AutomatedExtractor" Type="AbilCmd" AbilCmd="AP_ZergBuild,18" Row="0" Column="1"/>
         </CardLayouts>
         <CardLayouts CardId="ZBl2">
+            <LayoutButtons Face="AP_GreaterSpire" Type="AbilCmd" AbilCmd="AP_ZergBuild,28" Row="1" Column="0"/>
             <LayoutButtons Face="AP_Spire" Type="AbilCmd" AbilCmd="AP_ZergBuild,6" Row="1" Column="0"/>
             <LayoutButtons Face="AP_UltraliskCavern" Type="AbilCmd" AbilCmd="AP_ZergBuild,7" Row="2" Column="0"/>
             <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
             <LayoutButtons Face="AP_NydusNetwork" Type="AbilCmd" AbilCmd="AP_ZergBuild,9" Row="1" Column="1"/>
             <LayoutButtons Face="AP_InfestationPit" Type="AbilCmd" AbilCmd="AP_ZergBuild,8" Row="0" Column="1"/>
+            <LayoutButtons Face="AP_GreaterHydraliskDen" Type="AbilCmd" AbilCmd="AP_ZergBuild,29" Row="0" Column="0"/>
             <LayoutButtons Face="AP_HydraliskDen" Type="AbilCmd" AbilCmd="AP_ZergBuild,5" Row="0" Column="0"/>
             <LayoutButtons Face="AP_ZergMercenaryCompound" Type="AbilCmd" AbilCmd="AP_ZergBuild,21" Row="0" Column="2"/>
             <LayoutButtons Face="AP_TradeStructure" Type="AbilCmd" AbilCmd="AP_ZergBuild,Build23" Row="0" Column="4"/>
@@ -8660,6 +8670,7 @@
         <Food value="-1"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="50"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <AIOverideTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
@@ -8710,6 +8721,7 @@
         <StationaryTurningRate value="719.4726"/>
         <TurningRate value="719.4726"/>
         <Sight value="11"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_BurrowCreepTumorDown"/>
@@ -8769,6 +8781,7 @@
         <StationaryTurningRate value="719.4726"/>
         <TurningRate value="719.4726"/>
         <Sight value="11"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="19"/>
         <AbilArray Link="AP_CreepTumorBuild"/>
         <AbilArray Link="BuildInProgress"/>
@@ -8830,6 +8843,7 @@
         <StationaryTurningRate value="719.4726"/>
         <TurningRate value="719.4726"/>
         <Sight value="11"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="19"/>
         <BehaviorArray Link="AP_makeCreep4x4"/>
         <!--        <BehaviorArray Link="QueenofVenomCreepTumorSearch"/>-->
@@ -8886,6 +8900,7 @@
         <StationaryTurningRate value="719.4726"/>
         <TurningRate value="719.4726"/>
         <Sight value="11"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_BurrowCreepTumorDown"/>
@@ -8957,6 +8972,7 @@
         <Height value="3.75"/>
         <VisionHeight value="4"/>
         <CostCategory value="Army"/>
+        <RepairTime value="90"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -9607,6 +9623,7 @@
         <StationaryTurningRate value="719.4726"/>
         <TurningRate value="719.4726"/>
         <Sight value="7"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -9911,6 +9928,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="Rally"/>
@@ -9987,6 +10005,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="Rally"/>
         <AbilArray Link="BuildInProgress"/>
@@ -10055,6 +10074,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="Rally"/>
@@ -10178,6 +10198,7 @@
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="75"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_EchidnaCreepBuild"/>
@@ -10681,6 +10702,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="75"/>
+        <RepairTime value="40"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -10760,6 +10782,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="75"/>
+        <RepairTime value="40"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -10880,6 +10903,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -10963,6 +10987,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -11031,6 +11056,7 @@
         <Sight value="5"/>
         <Food value="-2"/>
         <CostCategory value="Army"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -11087,6 +11113,7 @@
         <Sight value="5"/>
         <Food value="-2"/>
         <CostCategory value="Army"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -11135,6 +11162,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -11145,6 +11173,7 @@
         <AbilArray Link="attack"/>
         <BehaviorArray Link="AP_LurkerWeaponDisabled"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_LurkerRangeCreep"/>
         <WeaponArray Link="AP_Lurker" Turret="FreeRotate"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -11156,6 +11185,9 @@
             <LayoutButtons Face="AP_BurrowLurkerMP" Type="AbilCmd" AbilCmd="AP_BurrowLurkerDown,0" Row="2" Column="4"/>
             <LayoutButtons Face="AP_SeismicSpines" Type="Passive" Requirements="AP_HaveLurkerRange" Row="1" Column="0"/>
             <LayoutButtons Face="AP_AdaptedSpines" Type="Passive" Requirements="AP_HaveLurkerNormalDamage" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_LurkerCarapace" Type="Passive" Requirements="AP_LurkerCarapace" Row="1" Column="2"/>
+            <LayoutButtons Face="AP_LurkerRangeCreep" Type="Passive" Requirements="AP_LurkerRangeCreep" Row="1" Column="3"/>
+            <LayoutButtons Face="AP_LurkerDetection" Type="Passive" Requirements="AP_LurkerDetection" Row="1" Column="4"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.75"/>
@@ -11223,6 +11255,8 @@
         <AbilArray Link="AP_BurrowLurkerDown"/>
         <AbilArray Link="stop"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_LurkerDetection"/>
+        <BehaviorArray Link="AP_LurkerRangeCreep"/>
         <WeaponArray Link="AP_Lurker" Turret="FreeRotate"/>
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -11230,6 +11264,9 @@
             <LayoutButtons Face="AP_LurkerBurrowUp" Type="AbilCmd" AbilCmd="AP_BurrowLurkerUp,0" Row="2" Column="4"/>
             <LayoutButtons Face="AP_SeismicSpines" Type="Passive" Requirements="AP_HaveLurkerRange" Row="1" Column="0"/>
             <LayoutButtons Face="AP_AdaptedSpines" Type="Passive" Requirements="AP_HaveLurkerNormalDamage" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_LurkerCarapace" Type="Passive" Requirements="AP_LurkerCarapace" Row="1" Column="2"/>
+            <LayoutButtons Face="AP_LurkerRangeCreep" Type="Passive" Requirements="AP_LurkerRangeCreep" Row="1" Column="3"/>
+            <LayoutButtons Face="AP_LurkerDetection" Type="Passive" Requirements="AP_LurkerDetection" Row="1" Column="4"/>
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0"/>
@@ -11280,6 +11317,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -11361,6 +11399,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -11397,6 +11436,7 @@
         <LifeStart value="160"/>
         <LifeMax value="160"/>
         <LifeArmor value="2"/>
+        <RepairTime value="30"/>
         <AbilArray index="4" Link="AP_BurrowHunterKillerDown"/>
         <AbilArray index="6" Link=""/>
         <AbilArray index="7" Link=""/>
@@ -11412,6 +11452,7 @@
         <LifeStart value="160"/>
         <LifeMax value="160"/>
         <LifeArmor value="2"/>
+        <RepairTime value="30"/>
         <AbilArray index="0" Link="AP_BurrowHunterKillerUp"/>
         <CardLayouts index="0">
             <LayoutButtons index="1" Face="BurrowUp" Type="AbilCmd" AbilCmd="AP_BurrowHunterKillerUp,Execute" Row="2" Column="4"/>
@@ -11635,6 +11676,7 @@
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <RepairTime value="15"/>
         <Speed value="2.25"/>
         <SpeedMultiplierCreep value="1.3"/>
         <Acceleration value="1000"/>
@@ -11719,6 +11761,7 @@
         <LifeRegenRate value="0.2734"/>
         <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ZergWildMutation"/>
+        <RepairTime value="15"/>
         <Mover value="Fly"/>
         <Speed value="3"/>
         <Acceleration value="1000"/>
@@ -12144,6 +12187,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -12236,6 +12280,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -13092,6 +13137,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="250"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -13162,6 +13208,7 @@
         <Food value="-2"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -15268,6 +15315,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="15"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -15358,6 +15406,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="15"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -15436,6 +15485,7 @@
         <Food value="-0.5"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="25"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -15504,6 +15554,7 @@
         <Sight value="8"/>
         <Food value="-0.25"/>
         <CostCategory value="Army"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -15591,6 +15642,7 @@
         <Sight value="8"/>
         <Food value="-0.25"/>
         <CostCategory value="Army"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -17194,11 +17246,13 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="350"/>
         <CostResource index="Vespene" value="350"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_SpireResearch"/>
         <AbilArray Link="que5CancelToSelection"/>
-        <AbilArray Link="AP_StrainInjectionRally"/>
+        <AbilArray Link="AP_SpireRally"/>
+        <AbilArray Link="AP_ScourgeSpawn"/>
         <BehaviorArray Link="OnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingNotOnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingDies6"/>
@@ -17225,6 +17279,7 @@
             <LayoutButtons Face="AP_BroodLordPassive" Type="Passive" Requirements="AP_HaveHotSMutaliskBroodLord" Row="1" Column="1"/>
             <LayoutButtons Face="AP_ViperPassive" Type="Passive" Requirements="AP_HaveHotSMutaliskViper" Row="1" Column="2"/>
             <LayoutButtons Face="AP_StrainInjectionSpire" Type="Passive" Requirements="AP_HaveHiveQueenStrainInjection" Row="1" Column="4"/>
+            <LayoutButtons Face="AP_ScourgeSpawn" Type="AbilCmd" AbilCmd="AP_ScourgeSpawn,0" Row="2" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -17272,6 +17327,7 @@
         <Sight value="9"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
@@ -17337,6 +17393,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
@@ -17400,6 +17457,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
@@ -17468,11 +17526,13 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
         <AbilArray Link="AP_UpgradeToLurkerDen"/>
         <AbilArray Link="AP_StrainInjectionRally"/>
+        <AbilArray Link="AP_AutoMorphHydraDen"/>
         <!--        <AbilArray Link="AP_UpgradeToImpalerDen"/>-->
         <BehaviorArray Link="OnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingNotOnCreep"/>
@@ -17542,7 +17602,8 @@
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
-        <AbilArray Link="AP_StrainInjectionRally"/>
+        <AbilArray Link="AP_BanelingNestRally"/>
+        <AbilArray Link="AP_BanelingSpawn"/>
         <BehaviorArray Link="OnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingNotOnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingDies6"/>
@@ -17555,6 +17616,7 @@
             <LayoutButtons Face="AP_BanelingSplitterlingPassive" Type="Passive" Requirements="AP_HotSHaveSplitterling" Row="1" Column="0"/>
             <LayoutButtons Face="AP_BanelingPassive" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="AP_StrainInjectionBanelingNest" Type="Passive" Requirements="AP_HaveHiveQueenStrainInjection" Row="1" Column="4"/>
+            <LayoutButtons Face="AP_BanelingSpawn" Type="AbilCmd" AbilCmd="AP_BanelingSpawn,Train1" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="1.5"/>
         <SeparationRadius value="1.5"/>
@@ -17603,6 +17665,7 @@
         <Sight value="9"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="125"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
@@ -18503,6 +18566,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="700"/>
         <CostResource index="Vespene" value="250"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_RallyHatchery"/>
@@ -18626,6 +18690,7 @@
         <Food value="2"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="350"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_UpgradeToLair"/>
@@ -18726,6 +18791,7 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="500"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="AP_UpgradeToHive"/>
@@ -18821,6 +18887,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -18922,6 +18989,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -18986,6 +19054,7 @@
         <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -19074,6 +19143,7 @@
         <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -19353,6 +19423,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -19425,6 +19496,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -20094,6 +20166,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -20192,6 +20265,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="25"/>
+        <RepairTime value="20"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -20267,6 +20341,7 @@
         <TurningRate value="999.8437"/>
         <Height value="0.2"/>
         <CostCategory value="Army"/>
+        <RepairTime value="15"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
@@ -20312,6 +20387,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
@@ -20388,6 +20464,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="100"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="AP_BurrowRavagerUp"/>
         <AbilArray Link="AP_DeepTunnel"/>
@@ -20438,6 +20515,7 @@
         <Sight value="5"/>
         <Food value="-2"/>
         <CostCategory value="Army"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="10"/>
         <AbilArray Link="que1"/>
         <AbilArray Link="Rally"/>
@@ -21871,7 +21949,7 @@
         <AbilArray Link="AP_SOAMothershipBlink"/>
         <AbilArray Link="AP_SummonDeathFleet"/>
         <AbilArray Link="AP_MothershipTaldarimHangar"/>
-        <!--- Note: War Council Nerf relies on AP_AutoMorphToMothershipTaldarim to be index 8 and AP_DisplayPowerFieldMothership to be index 0 -->
+        <!-- Note: War Council Nerf relies on AP_AutoMorphToMothershipTaldarim to be index 8 and AP_DisplayPowerFieldMothership to be index 0 -->
         <AbilArray Link="AP_AutoMorphToMothershipTaldarim"/>
         <AbilArray Link="AP_HangarQueue5"/>
         <AbilArray Link="Warpable"/>
@@ -22876,13 +22954,16 @@
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5CancelToSelection"/>
         <AbilArray Link="AP_UpgradeToGreaterSpireBroodlord"/>
         <AbilArray Link="AP_SpireResearch"/>
         <AbilArray Link="AP_UpgradeToGreaterSpireViper"/>
-        <AbilArray Link="AP_StrainInjectionRally"/>
+        <AbilArray Link="AP_SpireRally"/>
+        <AbilArray Link="AP_ScourgeSpawn"/>
+        <AbilArray Link="AP_AutoMorphSpire"/>
         <BehaviorArray Link="OnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingNotOnCreep"/>
         <BehaviorArray Link="AP_ZergBuildingDies6"/>
@@ -22912,6 +22993,7 @@
             <LayoutButtons Face="AP_GreaterSpireBroodlord" Type="AbilCmd" AbilCmd="AP_UpgradeToGreaterSpireBroodlord,0" Row="2" Column="0"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_UpgradeToGreaterSpireBroodlord,1" Row="2" Column="4"/>
             <LayoutButtons Face="AP_GreaterSpireViper" Type="AbilCmd" AbilCmd="AP_UpgradeToGreaterSpireViper,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_ScourgeSpawn" Type="AbilCmd" AbilCmd="AP_ScourgeSpawn,0" Row="2" Column="2"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_UpgradeToGreaterSpireViper,1" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="1"/>
@@ -22963,6 +23045,7 @@
         <Sight value="9"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
@@ -23035,6 +23118,7 @@
         <Sight value="11"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="stop"/>
@@ -23112,6 +23196,7 @@
         <Sight value="11"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="19"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
@@ -23189,6 +23274,7 @@
         <Sight value="11"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="125"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="19"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="stop"/>
@@ -23270,6 +23356,7 @@
         <Sight value="11"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="125"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="19"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
@@ -23343,6 +23430,7 @@
         <Sight value="11"/>
         <CostResource index="Minerals" value="125"/>
         <CostResource index="Vespene" value="100"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="stop"/>
@@ -23413,6 +23501,7 @@
         <Sight value="9"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="250"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="11"/>
         <AbilArray Link="BuildInProgress"/>
         <AbilArray Link="que5"/>
@@ -23921,6 +24010,7 @@
         <Sight value="5"/>
         <Food value="-2"/>
         <CostCategory value="Army"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="10"/>
         <AbilArray Link="Rally"/>
         <AbilArray Link="que1"/>
@@ -23991,13 +24081,14 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
-        <AbilArray Link="AP_Repair"/>
+        <AbilArray Link="AP_InfestedSCVRepair"/>
         <AbilArray Link="AP_SCVHarvest"/>
         <AbilArray Link="AP_SIAdvancedBuild"/>
         <AbilArray Link="GatherSpecialObject"/>
         <AbilArray Link="CancelTerrazineHarvest"/>
         <BehaviorArray Link="AP_SCVCliffJump"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_InfestedSCVRepairBio"/>
         <WeaponArray Link="AP_FusionCutter"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -24015,6 +24106,7 @@
             <!--            <LayoutButtons Face="TerranBuildAdvanced" Type="Submenu" SubmenuCardId="TBl2" Row="2" Column="1"/>-->
             <LayoutButtons Face="AP_SCVCliffJump" Type="Passive" Requirements="AP_HaveSCVCliffJump" Row="2" Column="3"/>
             <LayoutButtons Face="Halt" Type="AbilCmd" AbilCmd="AP_SIAdvancedBuild,30" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_InfestedSCVRepairFree" Type="Passive" Requirements="AP_InfestedSCVRepairFree" Row="2" Column="4"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="CancelTerrazineHarvest,0" Row="2" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="TBl1">
@@ -24303,6 +24395,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -24427,6 +24520,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -24508,6 +24602,7 @@
         <Food value="-6"/>
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -24556,6 +24651,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="18"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -24628,6 +24724,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="0"/>
+        <RepairTime value="15"/>
         <Food value="-1"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
@@ -24684,6 +24781,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="75"/>
         <CostResource index="Vespene" value="0"/>
+        <RepairTime value="15"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -24814,6 +24912,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -24891,6 +24990,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -25676,6 +25776,7 @@
         <Food value="-0.5"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="25"/>
+        <RepairTime value="10"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -25762,6 +25863,7 @@
         <Food value="-0.5"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="25"/>
+        <RepairTime value="10"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -26061,6 +26163,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="40"/>
         <!--        <GlossaryStrongArray value="Battlecruiser"/>-->
         <!--        <GlossaryStrongArray value="Mutalisk"/>-->
         <!--        <GlossaryStrongArray value="Phoenix"/>-->
@@ -26127,6 +26230,7 @@
         <Food value="-2"/>
         <CostResource index="Minerals" value="250"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="40"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -26170,6 +26274,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="60"/>
         <BuildTime value="37.5"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
@@ -26229,6 +26334,7 @@
         <Food value="-2"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -26369,6 +26475,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="40"/>
         <BuildTime value="46.875"/>
         <AttackTargetPriority value="20"/>
         <KillXP value="40"/>
@@ -26447,6 +26554,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="50"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="40"/>
         <AttackTargetPriority value="20"/>
         <KillXP value="40"/>
         <AbilArray Link="AP_DefilerSCBW@BurrowUp"/>
@@ -26799,6 +26907,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
@@ -26865,6 +26974,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="AP_PrimalIgniterBurrowUp"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
@@ -27042,6 +27152,8 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="AP_BurrowSIInfestedMarineDown,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AP_SIMarineTrooperImprovedRange" Type="Passive" Requirements="AP_HaveSIMarineTrooperRange" Row="2" Column="0"/>
             <LayoutButtons Face="AP_SIPlaguedMunitions" Type="Passive" Requirements="AP_HaveSIPlaguedMunitions" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_InfestedMarineExtended" Type="Passive" Requirements="AP_InfestedMarineExtended" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_InfestedMarineSpeed" Type="Passive" Requirements="AP_InfestedMarineSpeed" Row="2" Column="3"/>
         </CardLayouts>
         <Attributes index="Light" value="1"/>
         <Attributes index="Biological" value="1"/>
@@ -27092,6 +27204,8 @@
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="AP_BurrowSIInfestedMarineUp,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AP_SIMarineTrooperImprovedRange" Type="Passive" Requirements="AP_HaveSIMarineTrooperRange" Row="2" Column="0"/>
             <LayoutButtons Face="AP_SIPlaguedMunitions" Type="Passive" Requirements="AP_HaveSIPlaguedMunitions" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_InfestedMarineExtended" Type="Passive" Requirements="AP_InfestedMarineExtended" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_InfestedMarineSpeed" Type="Passive" Requirements="AP_InfestedMarineSpeed" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -27155,6 +27269,8 @@
             <LayoutButtons Face="BurrowDown" Type="AbilCmd" AbilCmd="AP_BurrowSIInfestedTrooperDown,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AP_SIMarineTrooperImprovedRange" Type="Passive" Requirements="AP_HaveSIMarineTrooperRange" Row="2" Column="0"/>
             <LayoutButtons Face="AP_SIPlaguedMunitions" Type="Passive" Requirements="AP_HaveSIPlaguedMunitions" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_InfestedMarineExtended" Type="Passive" Requirements="AP_InfestedMarineExtended" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_InfestedMarineSpeed" Type="Passive" Requirements="AP_InfestedMarineSpeed" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -27209,6 +27325,8 @@
             <LayoutButtons Face="BurrowUp" Type="AbilCmd" AbilCmd="AP_BurrowSIInfestedTrooperUp,Execute" Row="2" Column="4"/>
             <LayoutButtons Face="AP_SIMarineTrooperImprovedRange" Type="Passive" Requirements="AP_HaveSIMarineTrooperRange" Row="2" Column="0"/>
             <LayoutButtons Face="AP_SIPlaguedMunitions" Type="Passive" Requirements="AP_HaveSIPlaguedMunitions" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_InfestedMarineExtended" Type="Passive" Requirements="AP_InfestedMarineExtended" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_InfestedMarineSpeed" Type="Passive" Requirements="AP_InfestedMarineSpeed" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -27302,6 +27420,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="600"/>
         <CostResource index="Vespene" value="400"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
@@ -27376,6 +27495,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="600"/>
         <CostResource index="Vespene" value="400"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="20"/>
         <AbilArray Link="AP_TyrannozorBurrowUp"/>
         <BehaviorArray Link="AllUnitBehaviorController"/>
@@ -27494,6 +27614,7 @@
         <EditorCategories value="ObjectType:Structure"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="50"/>
+        <RepairTime value="60"/>
         <FlagArray index="Turnable" value="0"/>
         <FlagArray index="PreventDefeat" value="1"/>
         <FlagArray index="PreventDestroy" value="1"/>
@@ -27522,6 +27643,7 @@
         <LifeStart value="120"/>
         <LifeMax value="120"/>
         <LifeArmor value="3"/>
+        <RepairTime value="20"/>
         <AbilArray index="4" Link="AP_BurrowMercZerglingDown"/>
         <AbilArray index="5" Link=""/>  <!--remove baneling morph-->
         <BehaviorArray index="0" Link=""/>  <!--remove respawn ability-->
@@ -27539,6 +27661,7 @@
         <LifeStart value="120"/>
         <LifeMax value="120"/>
         <LifeArmor value="3"/>
+        <RepairTime value="20"/>
         <AbilArray index="0" Link="AP_BurrowMercZerglingUp"/>
         <BehaviorArray index="0" Link=""/>  <!--remove respawn ability-->
         <CardLayouts index="0">
@@ -27668,6 +27791,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="18"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -27728,6 +27852,7 @@
         <Food value="-6"/>
         <CostResource index="Minerals" value="300"/>
         <CostResource index="Vespene" value="200"/>
+        <RepairTime value="60"/>
         <AttackTargetPriority value="10"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -31201,6 +31326,7 @@
         <Food value="30"/>
         <CostCategory value="Economy"/>
         <CostResource index="Minerals" value="250"/>
+        <RepairTime value="40"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>

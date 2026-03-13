@@ -4922,4 +4922,54 @@
     <CRequirement id="AP_HaveImpalerTentacleExtensions">
         <NodeArray index="Show" Link="AP_ImpalerTentacleExtensions"/>
     </CRequirement>
+    <CRequirement id="AP_BanelingSpawn">
+        <NodeArray index="Show" Link="AP_BanelingSpawn"/>
+    </CRequirement>
+    <CRequirement id="AP_GreaterHydraliskDen">
+        <NodeArray index="Use" Link="AP_CountUnitAlias_LairCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="AP_HydraliskDenMaturation"/>
+    </CRequirement>
+    <CRequirement id="AP_HydraliskDenMaturation">
+        <NodeArray index="Show" Link="AP_HydraliskDenMaturation"/>
+    </CRequirement>
+    <CRequirement id="AP_GreaterSpire">
+        <NodeArray index="Use" Link="AP_CountUnitAlias_LairCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="AP_SpireMaturation"/>
+    </CRequirement>
+    <CRequirement id="AP_SpireMaturation">
+        <NodeArray index="Show" Link="AP_SpireMaturation"/>
+    </CRequirement>
+    <CRequirement id="AP_InfestedSCVRepairBio">
+        <NodeArray index="Show" Link="AP_InfestedSCVRepairBio"/>
+    </CRequirement>
+    <CRequirement id="AP_InfestedSCVRepairFree">
+        <NodeArray index="Show" Link="AP_InfestedSCVRepairFree"/>
+    </CRequirement>
+    <CRequirement id="AP_InfestedMarineExtended">
+        <NodeArray index="Show" Link="AP_InfestedMarineExtended"/>
+    </CRequirement>
+    <CRequirement id="AP_InfestedMarineSpeed">
+        <NodeArray index="Show" Link="AP_InfestedMarineSpeed"/>
+    </CRequirement>
+    <CRequirement id="AP_LurkerDetection">
+        <NodeArray index="Show" Link="AP_LurkerDetection"/>
+    </CRequirement>
+    <CRequirement id="AP_LurkerRangeCreep">
+        <NodeArray index="Show" Link="AP_LurkerRangeCreep"/>
+    </CRequirement>
+    <CRequirement id="AP_ScourgeSpawn">
+        <NodeArray index="Use" Link="AP_ScourgeSpawn"/>
+    </CRequirement>
+    <CRequirement id="AP_LurkerCarapace">
+        <NodeArray index="Show" Link="AP_LurkerCarapace"/>
+    </CRequirement>
+    <CRequirement id="AP_BanelingNestRally">
+        <NodeArray index="Show" Link="AP_BanelingNestRally"/>
+    </CRequirement>
+    <CRequirement id="AP_SpireRally">
+        <NodeArray index="Show" Link="AP_SpireRally"/>
+    </CRequirement>
+    <CRequirement id="AP_ZergBuildingSpawnSplitterlings">
+        <NodeArray index="Show" Link="AP_ZergBuildingSpawnSplitterlings"/>
+    </CRequirement>
 </Catalog>

@@ -1130,6 +1130,46 @@ void libABFE498B_gf_AP_Triggers_unlockZergMutation5 (int lp_player, int lp_bitAr
         libABFE498B_gf_AP_Triggers_Zerg_HiveQueenPsionicMitochondria, // 23
         libABFE498B_gf_AP_Triggers_Zerg_HiveQueenStrainInjection, // 24
         libABFE498B_gf_AP_Triggers_Zerg_HiveQueenSwelledTransfusion, // 25
+        libABFE498B_gf_AP_Triggers_Zerg_LurkerCarapace, // 26
+        libABFE498B_gf_AP_Triggers_Zerg_LurkerDetection, // 27
+        libABFE498B_gf_AP_Triggers_Zerg_LurkerRangeCreep, // 28
+        libABFE498B_gf_AP_Triggers_Zerg_LurkerFastMorph  // 29
+    );
+}
+
+void libABFE498B_gf_AP_Triggers_unlockZergMutation6 (int lp_player, int lp_bitArrayValue) {
+    // Automatic Variable Declarations
+    // Implementation
+    // Yeah, this must be done in Galaxy
+    ap_triggers_processBitsInBitArray(
+        lp_player,
+        lp_bitArrayValue,
+        libABFE498B_gf_AP_Triggers_Zerg_InfestedMarineExtended, // 0
+        libABFE498B_gf_AP_Triggers_Zerg_InfestedMarineSpeed, // 1
+        libABFE498B_gf_AP_Triggers_Zerg_InfestedSCVRepairBio, // 2
+        libABFE498B_gf_AP_Triggers_Zerg_InfestedSCVRepairFree, // 3
+        ap_triggers_PlayerConsumer_sig, // 4
+        ap_triggers_PlayerConsumer_sig, // 5
+        ap_triggers_PlayerConsumer_sig, // 6
+        ap_triggers_PlayerConsumer_sig, // 7
+        ap_triggers_PlayerConsumer_sig, // 8
+        ap_triggers_PlayerConsumer_sig, // 9
+        ap_triggers_PlayerConsumer_sig, // 10
+        ap_triggers_PlayerConsumer_sig, // 11
+        ap_triggers_PlayerConsumer_sig, // 12
+        ap_triggers_PlayerConsumer_sig, // 13
+        ap_triggers_PlayerConsumer_sig, // 14
+        ap_triggers_PlayerConsumer_sig, // 15
+        ap_triggers_PlayerConsumer_sig, // 16
+        ap_triggers_PlayerConsumer_sig, // 17
+        ap_triggers_PlayerConsumer_sig, // 18
+        ap_triggers_PlayerConsumer_sig, // 19
+        ap_triggers_PlayerConsumer_sig, // 20
+        ap_triggers_PlayerConsumer_sig, // 21
+        ap_triggers_PlayerConsumer_sig, // 22
+        ap_triggers_PlayerConsumer_sig, // 23
+        ap_triggers_PlayerConsumer_sig, // 24
+        ap_triggers_PlayerConsumer_sig, // 25
         ap_triggers_PlayerConsumer_sig, // 26
         ap_triggers_PlayerConsumer_sig, // 27
         ap_triggers_PlayerConsumer_sig, // 28
@@ -1324,11 +1364,11 @@ void libABFE498B_gf_AP_Triggers_unlockZergEvolutionPit (int lp_player, int lp_bi
         libABFE498B_gf_AP_Triggers_Zerg_SelfSufficient, // 17
         libABFE498B_gf_AP_Triggers_Zerg_UnrestrictedMutation, // 18
         libABFE498B_gf_AP_Triggers_Zerg_EvolutionaryLeap, // 19
-        ap_triggers_PlayerConsumer_sig, // 20
-        ap_triggers_PlayerConsumer_sig, // 21
-        ap_triggers_PlayerConsumer_sig, //22
-        ap_triggers_PlayerConsumer_sig, //23
-        ap_triggers_PlayerConsumer_sig, //24
+        libABFE498B_gf_AP_Triggers_Zerg_HydraliskDenMaturation, // 20
+        libABFE498B_gf_AP_Triggers_Zerg_ZergSpawnSplitterling, // 21
+        libABFE498B_gf_AP_Triggers_Zerg_BanelingSpawn, // 22
+        libABFE498B_gf_AP_Triggers_Zerg_ScourgeSpawn, // 23
+        libABFE498B_gf_AP_Triggers_Zerg_SpireMaturation, //24
         ap_triggers_PlayerConsumer_sig, //25
         ap_triggers_PlayerConsumer_sig, //26
         ap_triggers_PlayerConsumer_sig, //27
@@ -2091,6 +2131,7 @@ void libABFE498B_gf_AP_Triggers_giveZergTech (string lp_inputString) {
     string lv_mutation3Value;
     string lv_mutation4Value;
     string lv_mutation5Value;
+    string lv_mutation6Value;
     string lv_strainValue;
     string lv_morphValue;
     string lv_upgradeValue;
@@ -2112,6 +2153,7 @@ void libABFE498B_gf_AP_Triggers_giveZergTech (string lp_inputString) {
     lv_mutation3Value = "";
     lv_mutation4Value = "";
     lv_mutation5Value = "";
+    lv_mutation6Value = "";
     lv_strainValue = "";
     lv_morphValue = "";
     lv_upgradeValue = "";
@@ -2136,6 +2178,7 @@ void libABFE498B_gf_AP_Triggers_giveZergTech (string lp_inputString) {
     lv_mutation4Value = StringWord(lp_inputString, 13);
     lv_progressiveValue = StringWord(lp_inputString, 14);
     lv_mutation5Value = StringWord(lp_inputString, 15);
+    lv_mutation6Value = StringWord(lp_inputString, 16);
     autoFB24477E_g = lib5BD4895D_gv_aP_Core_affectedPlayers;
     lv_currentPlayer = -1;
     while (true) {
@@ -2176,6 +2219,7 @@ void libABFE498B_gf_AP_Triggers_giveZergTech (string lp_inputString) {
         libABFE498B_gf_AP_Triggers_unlockZergMutation4(lv_currentPlayer, StringToInt(lv_mutation4Value));
         libABFE498B_gf_AP_Triggers_unlockZergProgressiveUpgrades(lv_currentPlayer, StringToInt(lv_progressiveValue));
         libABFE498B_gf_AP_Triggers_unlockZergMutation5(lv_currentPlayer, StringToInt(lv_mutation5Value));
+        libABFE498B_gf_AP_Triggers_unlockZergMutation6(lv_currentPlayer, StringToInt(lv_mutation6Value));
     }
 }
 
@@ -6548,6 +6592,13 @@ void libABFE498B_gf_AP_Triggers_Zerg_BanelingRapidMetamorph (int lp_player) {
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_HotSRapidMetamorph", 1);
 }
 
+void libABFE498B_gf_AP_Triggers_Zerg_BanelingSpawn (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_BanelingSpawn", 1);
+    TechTreeAbilityAllow(lp_player, AbilityCommand("AP_ZergBuild", 10), true);
+}
+
 void libABFE498B_gf_AP_Triggers_Zerg_MutaliskViciousGlave (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -6813,6 +6864,14 @@ void libABFE498B_gf_AP_Triggers_Zerg_ScourgeSwarmScourge (int lp_player) {
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_HotSScourgeAmount", 1);
 }
 
+void libABFE498B_gf_AP_Triggers_Zerg_ScourgeSpawn (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ScourgeSpawn", 1);
+    TechTreeAbilityAllow(lp_player, AbilityCommand("AP_ScourgeSpawn", 0), true);
+    TechTreeAbilityAllow(lp_player, AbilityCommand("AP_ZergBuild", 6), true);
+}
+
 void libABFE498B_gf_AP_Triggers_Zerg_DevourerCorrosiveSpray (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -6919,6 +6978,30 @@ void libABFE498B_gf_AP_Triggers_Zerg_LurkerAdaptedSpines (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_LurkerNormalDamage", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_LurkerCarapace (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_LurkerCarapace", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_LurkerDetection (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_LurkerDetection", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_LurkerRangeCreep (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_LurkerRangeCreep", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_LurkerFastMorph (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_LurkerFastMorph", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Zerg_RavagerPotentBile (int lp_player) {
@@ -7162,6 +7245,18 @@ void libABFE498B_gf_AP_Triggers_Zerg_SISCVChargeCount (int lp_player) {
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SISCVBuildChargeCount", 1);
 }
 
+void libABFE498B_gf_AP_Triggers_Zerg_InfestedSCVRepairBio (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_InfestedSCVRepairBio", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_InfestedSCVRepairFree (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_InfestedSCVRepairFree", 1);
+}
+
 void libABFE498B_gf_AP_Triggers_Zerg_SIPlaguedMunitions (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
@@ -7172,6 +7267,18 @@ void libABFE498B_gf_AP_Triggers_Zerg_SIMarineRangeUpgrade (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SIMarineTrooperRange", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_InfestedMarineExtended (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_InfestedMarineExtended", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_InfestedMarineSpeed (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_InfestedMarineSpeed", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Zerg_SIBunkerRegen (int lp_player) {
@@ -7924,6 +8031,24 @@ void libABFE498B_gf_AP_Triggers_Zerg_UnrestrictedMutation (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_UnrestrictedMutation", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_HydraliskDenMaturation (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_HydraliskDenMaturation", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_SpireMaturation (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SpireMaturation", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_ZergSpawnSplitterling (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergBuildingSpawnSplitterlings", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Zerg_KerriganKinteticBlast (int lp_player) {
@@ -12223,6 +12348,193 @@ void libABFE498B_gt_AP_Triggers_ObjectGroupFix_Init () {
     TriggerAddEventTimeElapsed(libABFE498B_gt_AP_Triggers_ObjectGroupFix, 0.0, c_timeGame);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_YggdrasilConsumeUse
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_target;
+    unit lv_caster;
+    int lv_tag;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_target = EventPlayerEffectUsedUnit(c_effectUnitTarget);
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_tag = UnitGetTag(lv_caster);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_ShowHideUnit(lv_target, false);
+    libNtve_gf_PauseUnit(lv_target, true);
+    DataTableSetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_tag)), lv_target);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse_Init () {
+    libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse = TriggerCreate("libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse_Func");
+    TriggerAddEventPlayerEffectUsed(libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse, c_playerAny, "AP_YggdrasilAssimilateSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_YggdrasilConsumeBuild
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_tag;
+    unit lv_originalbuilding;
+    unit lv_newunit;
+    int lv_newtag;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_tag = UnitGetTag(EventUnit());
+    lv_newunit = EventUnitCreatedUnit();
+    lv_newtag = UnitGetTag(lv_newunit);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "AP_Yggdrasil"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_originalbuilding = DataTableGetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_tag)));
+    DataTableSetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_newtag)), lv_originalbuilding);
+    UnitSetPosition(lv_originalbuilding, UnitGetPosition(lv_newunit), false);
+    UnitSetPropertyFixed(lv_originalbuilding, c_unitPropLifePercent, 100.0);
+    UnitBehaviorRemoveCategory(lv_newunit, c_unitBehaviorFlagPermanent);
+    TriggerAddEventUnitDied(libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety, UnitRefFromUnit(lv_newunit));
+    DataTableSetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_tag)), null);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild_Init () {
+    libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild = TriggerCreate("libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild_Func");
+    TriggerAddEventUnitCreated(libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild, null, "AP_YggdrasilBuild", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_YggdrasilConsumeComplete
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_tag;
+    unit lv_originalunit;
+
+    // Automatic Variable Declarations
+    unitgroup autoC6F04122_g;
+    int autoC6F04122_u;
+    unit autoC6F04122_var;
+
+    // Variable Initialization
+    lv_tag = UnitGetTag(EventUnitProgressUnit());
+    lv_originalunit = DataTableGetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_tag)));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(lv_originalunit) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemoveCategory(EventUnitProgressUnit(), c_unitBehaviorFlagPermanent);
+    autoC6F04122_g = UnitGroup("AP_Larva", c_playerAny, RegionCircle(UnitGetPosition(EventUnitProgressUnit()), 5.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoC6F04122_u = UnitGroupCount(autoC6F04122_g, c_unitCountAll);
+    for (;; autoC6F04122_u -= 1) {
+        autoC6F04122_var = UnitGroupUnitFromEnd(autoC6F04122_g, autoC6F04122_u);
+        if (autoC6F04122_var == null) { break; }
+        UnitRemove(autoC6F04122_var);
+    }
+    UnitRemove(EventUnitProgressUnit());
+    libNtve_gf_ShowHideUnit(lv_originalunit, true);
+    libNtve_gf_PauseUnit(lv_originalunit, false);
+    if ((UnitGroupHasUnit(UnitGroupSelected(lib5BD4895D_gf_AP_Core_getUser()), EventUnitProgressUnit()) == true)) {
+        UnitSelect(lv_originalunit, lib5BD4895D_gf_AP_Core_getUser(), true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete_Init () {
+    libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete = TriggerCreate("libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete_Func");
+    TriggerAddEventUnitConstructProgress(libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_YggdrasilDeathSafety
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_tag;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetType(EventUnit()) == "AP_Yggdrasil"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_tag = UnitGetTag(EventUnit());
+    UnitRemove(DataTableGetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_tag))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety_Init () {
+    libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety = TriggerCreate("libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety_Func");
+    TriggerAddEventUnitDied(libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_YggdrasilBuildingDeathSafety
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_tag;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_tag = UnitGetTag(EventUnit());
+    UnitRemove(DataTableGetUnit(true, ("AP_YggdrasilBuilding_" + IntToString(lv_tag))));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety_Init () {
+    libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety = TriggerCreate("libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety_Func");
+}
+
 void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_PatchesInit_Init();
     libABFE498B_gt_AP_Triggers_bankInit_Init();
@@ -12248,6 +12560,11 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_setLastWarpedUnit_Init();
     libABFE498B_gt_AP_Triggers_warpGateSafety_Init();
     libABFE498B_gt_AP_Triggers_ObjectGroupFix_Init();
+    libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse_Init();
+    libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild_Init();
+    libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete_Init();
+    libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety_Init();
+    libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety_Init();
 }
 
 //--------------------------------------------------------------------------------------------------
