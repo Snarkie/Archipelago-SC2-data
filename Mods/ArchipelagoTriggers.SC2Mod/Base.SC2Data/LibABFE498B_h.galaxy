@@ -1144,11 +1144,6 @@ trigger libABFE498B_gt_AP_Triggers_warpInInit;
 trigger libABFE498B_gt_AP_Triggers_setLastWarpedUnit;
 trigger libABFE498B_gt_AP_Triggers_warpGateSafety;
 trigger libABFE498B_gt_AP_Triggers_ObjectGroupFix;
-trigger libABFE498B_gt_AP_Triggers_YggdrasilConsumeUse;
-trigger libABFE498B_gt_AP_Triggers_YggdrasilConsumeBuild;
-trigger libABFE498B_gt_AP_Triggers_YggdrasilConsumeComplete;
-trigger libABFE498B_gt_AP_Triggers_YggdrasilDeathSafety;
-trigger libABFE498B_gt_AP_Triggers_YggdrasilBuildingDeathSafety;
 
 // Library Initialization
 void libABFE498B_InitVariables ();
