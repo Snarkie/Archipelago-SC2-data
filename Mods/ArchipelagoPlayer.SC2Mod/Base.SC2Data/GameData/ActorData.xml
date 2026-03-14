@@ -47352,9 +47352,7 @@
     </CActorSplat>
     <CActorModel id="AP_YggdrasilAssimilate">
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Morph,Start Morph Morph,End 0 0.500000 AsTimeScale"/>
-        <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="Effect.AP_YggdrasilDrainPresistent.Start; At Target" Send="Create"/>
-        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="AnimBracketStop BSD"/>
         <On Terms="ActorCreation" Target="_Selectable" Send="SetScale 0.500000,0.500000,0.400000 3.000000 AP_YggdrasilDrain"/>
         <On Terms="ActorCreation" Target="_Selectable" Send="SetOpacity 0.500000 3.000000 AP_YggdrasilDrain"/>
         <On Terms="ActorDestruction" Target="_Selectable" Send="ClearScale 1.000000 AP_YggdrasilDrain"/>
@@ -47363,7 +47361,10 @@
         <On Terms="ActorCreation; ValidateUnit AP_IsZergTallStructure" Send="SetScale 1.000000,1.000000,1.400000"/>
         <On Terms="AnimBracketState.*.AfterClosing" Send="Destroy"/>
         <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="Create AP_YggdrasilAssimilateEnd"/>
-        <Host Subject="_Selectable"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="TimerSet 1.000000"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="SetScale 0.010000 1.100000"/>
+        <On Terms="TimerExpired" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop" Send="AnimSetTimeScale BSD 0.100000"/>
         <Model value="SpireMorph"/>
         <Scale value="1.000000,1.000000,0.800000"/>
         <AutoScaleFromSelectionFactor value="0.300000"/>
