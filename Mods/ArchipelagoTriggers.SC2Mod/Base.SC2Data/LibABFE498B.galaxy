@@ -10908,6 +10908,7 @@ void libABFE498B_gf_AP_Triggers_HeroInitFacingAngle (int lp_player, point lp_loc
     if ((lv_bitflag == 1)) {
         lv_count += 1;
         lv_unittype[lv_count] = "AP_NovaHero";
+        TechTreeUpgradeAddLevel(lp_player, "AP_NovaEnabled", 1);
     }
 
     lv_heropresence /= 2;
@@ -11000,6 +11001,7 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
         libABFE498B_gv_aP_Triggers_HeroUnit[1] = lp_hero;
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_HeroUnits, lp_hero);
         lib15EF4C78_gf_SetHeroPanelUnit(1, lp_hero, lp_player);
+        TechTreeUpgradeAddLevel(lp_player, "AP_NovaEnabled", 1);
         return ;
     }
 
@@ -11022,6 +11024,7 @@ void libABFE498B_gf_AP_Triggers_HeroReplace (int lp_player, unit lp_hero, unitgr
     lv_bitflag = ModI(lv_heropresence, 2);
     if ((lv_bitflag == 1)) {
         lv_count += 1;
+        TechTreeUpgradeAddLevel(lp_player, "AP_NovaEnabled", 1);
         if ((lv_count >= 2) && (UnitGetType(lp_hero) == "AP_NovaHero")) {
             lv_unittype[lv_count] = lv_unittype[1];
             lv_unittype[1] = "AP_NovaHero";
