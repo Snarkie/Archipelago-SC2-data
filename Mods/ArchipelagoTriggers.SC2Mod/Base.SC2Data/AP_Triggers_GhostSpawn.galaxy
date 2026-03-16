@@ -19,8 +19,8 @@ static fixed NukeInterval = 90.0;
 static fixed SpawnDelay = 40.0;
 // wait this long to see if the player sends a wave
 static fixed GatherDelay = 60.0;
-// If a ghost is stationary for this long 
-// and not currently gathering or waiting for an attack wave, 
+// If a ghost is stationary for this long
+// and not currently gathering or waiting for an attack wave,
 // force it to attack something no matter what
 static fixed IdleTimeMax = 120.0;
 
@@ -40,15 +40,20 @@ point AP_GhostSpawn_attackTargetOverride = null;
 point AP_GhostSpawn_gatherPointOverride = null;
 // set to true to make sure a ground path from spawn building to player base exists
 // usually not needed, AI will handle transport management automatically
-bool AP_GhostSpawn_pathingCheckOverride = false; 
+bool AP_GhostSpawn_pathingCheckOverride = false;
  // if true, spawned ghost waves will attempt to join natural attack waves by the player
 bool AP_GhostSpawn_joinWavesOverride = true;
 // set to true for a player that normally doesn't send attack waves against the player
 // may interfere with future attack waves
-bool AP_GhostSpawn_waveTargetOverride = false; 
+bool AP_GhostSpawn_waveTargetOverride = false;
 // set to true on map init to stop the spawn until you set it to false again
 // most no-build sections should be handled automatically, use this otherwise
-bool AP_GhostSpawn_waitForSpawnOverride = false; 
+bool AP_GhostSpawn_waitForSpawnOverride = false;
+point AP_GhostSpawn_waypointOverride = null;
+// override with the unit type of transport available in the map
+// AI should be able to handle transports by itself in general
+// this allows you to force transports otherwise
+string AP_GhostSpawn_transportOverride = null;
 
 
 // Globals
@@ -65,25 +70,25 @@ static string NukeMagazineId = "AP_ArmSiloWithNuke";
 static abilcmd NukeMagazine = AbilityCommand(NukeMagazineId, 0);
 static abilcmd AbilCmdNuke = AbilityCommand("AP_TacNukeStrike", 0);
 static abilcmd AbilCmdAttackMove = AbilityCommand("attack", 0);
-static unitfilter UnitFilterStandard = UnitFilter(0, 0, (1 << c_targetFilterMissile), 
+static unitfilter UnitFilterStandard = UnitFilter(0, 0, (1 << c_targetFilterMissile),
     (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
 static unitfilter UnitFilterNoAir = UnitFilter(0, 0, (1 << c_targetFilterMissile) |
-    (1 << c_targetFilterAir), 
+    (1 << c_targetFilterAir),
     (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)));
-static unitfilter UnitFilterHidden = UnitFilter(0, 0, (1 << c_targetFilterMissile), 
+static unitfilter UnitFilterHidden = UnitFilter(0, 0, (1 << c_targetFilterMissile),
     (1 << (c_targetFilterDead - 32)) );
 static unitfilter UnitFilterNuke = UnitFilter(
-        ( 1 << c_targetFilterVisible) , 0, 
-        (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | 
+        ( 1 << c_targetFilterVisible) , 0,
+        (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) |
         (1 << (c_targetFilterHidden - 32)));
 static unitfilter UnitFilterDetector = UnitFilter(
         ((1 << c_targetFilterVisible) | (1 << c_targetFilterStructure) |
-        (1 << c_targetFilterDetector)) , 0, 
-        (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | 
+        (1 << c_targetFilterDetector)) , 0,
+        (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) |
         (1 << (c_targetFilterHidden - 32)));
-static string ActorMessageWork = 
+static string ActorMessageWork =
     "AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End";
-static string ActorMessageWorkEnd = 
+static string ActorMessageWorkEnd =
     "AnimBracketStop Work";
 static trigger TriggerNukeRearm;
 static trigger TriggerWaitForAttackWave;
@@ -258,7 +263,7 @@ bool AP_GhostSpawn_placeBuildingForPlayer(int player) {
     if (!UnitIsAlive(spawnBuilding)) {
         // found no valid location in 20 tries
         log("DEBUG: Failed to spawn Ghost building!");
-    } 
+    }
     return false;
 }
 
@@ -290,7 +295,7 @@ bool AP_GhostSpawn_placeBuilding() {
         while (!HasActiveEnemy(user)){
             Wait(5, c_timeAI);
         }
-        p = AP_Base_getBiggestPlayer(); 
+        p = AP_Base_getBiggestPlayer();
     }
     if (p <= 0) {
         log("DEBUG: No valid player, failed to spawn Ghost Building");
@@ -303,16 +308,31 @@ bool AP_GhostSpawn_triggerWaitForAttackWaveFunc(bool testConds, bool runActions)
     int p = ParamPlayer;
     int index;
     unitgroup g = ParamGroup;
+    unitgroup transports;
+    bool useTransport = AP_GhostSpawn_transportOverride != null;
+    unit transport;
     UnitGroupRemoveUnitGroup(GhostsGathering, g);
     UnitGroupAddUnitGroup(GhostsWaiting, g);
     Wait(GatherDelay, c_timeAI);
     if (UnitGroupCount(g, c_unitCountAlive)>0 && UnitGroupHasUnit(GhostsWaiting, UnitGroupUnit(g, 1))) {
         UnitGroupRemoveUnitGroup(GhostsWaiting, g);
         AIAttackWaveUseGroup(p, g);
+        if (useTransport) {
+            transports = UnitGroup(AP_GhostSpawn_transportOverride, p, RegionEntireMap(), UnitFilterStandard, 0);
+            AISetGroupScriptControlled(transports, false);
+            transport = libNtve_gf_ClosestUnitToPoint(UnitGroupCenterOfGroup(g), transports);
+            AIAttackWaveUseUnit(p, transport);
+            UnitGroupRemove(transports, transport);
+            // if transport override is used, force the AI to only use a single transport
+            AISetGroupScriptControlled(transports, true);
+        }
         if (AP_GhostSpawn_waveTargetOverride) {
             AIAttackWaveSetTargetPlayer(p, PlayerGroupSingle(lib5BD4895D_gf_AP_Core_getUser()));
         }
-        AIAttackWaveAddWaypoint(p, GetAttackLoc(), false);
+        if (AP_GhostSpawn_waypointOverride != null) {
+            AIAttackWaveAddWaypoint(p, AP_GhostSpawn_waypointOverride, useTransport);
+        }
+        AIAttackWaveAddWaypoint(p, GetAttackLoc(), useTransport);
         SendingWave = true;
         AIAttackWaveSend(p, 0, false);
         Wait(2, c_timeAI);
@@ -323,7 +343,7 @@ bool AP_GhostSpawn_triggerWaitForAttackWaveFunc(bool testConds, bool runActions)
 
 bool AP_GhostSpawn_triggerOnAttackWaveFunc(bool testConds, bool runActions) {
     wave w;
-    int i; 
+    int i;
     int p = lib5BD4895D_gf_AP_Core_getUser();
     unit u;
     unitgroup g;
@@ -344,7 +364,7 @@ bool AP_GhostSpawn_triggerOnAttackWaveFunc(bool testConds, bool runActions) {
             onlyAir = false;
         }
     }
-    if (onlyAir) { 
+    if (onlyAir) {
         return false;
     }
     for (i = 1; i <= UnitGroupCount(GhostsWaiting, c_unitCountAlive); i += 1) {
@@ -423,7 +443,7 @@ bool AP_GhostSpawn_triggerNukeRearmFunc(bool testConds, bool runActions) {
         }
         nukes = UnitGroup(NUKE_TYPE, p, RegionEntireMap(), UnitFilterHidden, 0);
         nukeCount = UnitGroupCount(nukes, c_unitCountAlive);
-        if (nukeCount == 0) { 
+        if (nukeCount == 0) {
             if (NukeRearming) {
                 NukeRearming = false;
                 rearmNuke(p);
@@ -460,13 +480,13 @@ void AP_GhostSpawn_ghostTactical(int owner, unit ghost, unitgroup nearbyUnits) {
         nearbyUnits,
         5, // min targets
         300, // damage base
-        5, // min score 
+        5, // min score
         6, // aoe radius
         p, // position
         14, //range
         c_unitAttributeStructure // bonus score attribute
     );
-    
+
     if (p != null) {
         AICast(ghost, OrderTargetingPoint(AbilCmdNuke, p), c_noMarker, c_castHold);
     }
