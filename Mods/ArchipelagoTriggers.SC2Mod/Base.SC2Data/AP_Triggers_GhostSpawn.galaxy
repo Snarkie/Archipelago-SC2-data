@@ -46,6 +46,9 @@ bool AP_GhostSpawn_joinWavesOverride = true;
 // set to true for a player that normally doesn't send attack waves against the player
 // may interfere with future attack waves
 bool AP_GhostSpawn_waveTargetOverride = false; 
+// set to true on map init to stop the spawn until you set it to false again
+// most no-build sections should be handled automatically, use this otherwise
+bool AP_GhostSpawn_waitForSpawnOverride = false; 
 
 
 // Globals
@@ -212,7 +215,7 @@ bool AP_GhostSpawn_placeBuildingForPlayer(int player) {
     unit spawnBuilding;
     region r;
     log("DEBUG: Placing for player: " + IntToString(player));
-    while (libABFE498B_gv_aP_Triggers_IsNoBuild) {
+    while (libABFE498B_gv_aP_Triggers_IsNoBuild || AP_GhostSpawn_waitForSpawnOverride) {
         Wait(5, c_timeAI);
     }
     while (!PlayerGroupHasPlayer(PlayerGroupActive(), player)) {
@@ -277,7 +280,7 @@ static bool HasActiveEnemy(int user) {
 bool AP_GhostSpawn_placeBuilding() {
     int p;
     int user = lib5BD4895D_gf_AP_Core_getUser();
-    while (libABFE498B_gv_aP_Triggers_IsNoBuild) {
+    while (libABFE498B_gv_aP_Triggers_IsNoBuild || AP_GhostSpawn_waitForSpawnOverride) {
         Wait(5, c_timeAI);
     }
     if (AP_GhostSpawn_playerOverride > 0) {

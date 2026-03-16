@@ -12302,7 +12302,6 @@ bool libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Func (bool testConds, bool runAc
     string lv_string2;
     string lv_string3;
     string lv_string4;
-    string lv_string5;
 
     // Automatic Variable Declarations
     // Variable Initialization
@@ -12312,7 +12311,6 @@ bool libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Func (bool testConds, bool runAc
     lv_string2 = "";
     lv_string3 = "";
     lv_string4 = "";
-    lv_string5 = "";
 
     // Conditions
     if (testConds) {
@@ -12330,7 +12328,6 @@ bool libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Func (bool testConds, bool runAc
     lv_string2 = StringWord(lv_string, 2);
     lv_string3 = StringWord(lv_string, 3);
     lv_string4 = StringWord(lv_string, 4);
-    lv_string5 = StringWord(lv_string, 5);
     if ((StringLength(lv_string2) > 0)) {
         lv_trap = StringToInt(lv_string2);
     }
@@ -12345,17 +12342,10 @@ bool libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Func (bool testConds, bool runAc
     else {
         lv_player = -1;
     }
-    if ((StringLength(lv_string5) > 0) && (lv_string5 != "0")) {
-        lv_wavetargetoverride = true;
-    }
-    else {
-        lv_wavetargetoverride = false;
-    }
     TextExpressionSetToken("Param/Expression/lib_ABFE498B_F67D03A7", "A", IntToText(lv_trap));
     TextExpressionSetToken("Param/Expression/lib_ABFE498B_F67D03A7", "B", IntToText(lv_difficulty));
     TextExpressionSetToken("Param/Expression/lib_ABFE498B_F67D03A7", "C", IntToText(lv_player));
     TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_F67D03A7"), true);
-    AP_GhostSpawn_waveTargetOverride = lv_wavetargetoverride;
     if ((lv_player == -1)) {
         libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuilding(lv_difficulty);
     }

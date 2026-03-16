@@ -2414,7 +2414,6 @@ Variable/Name/lib_ABFE498B_2E851A67=AP_Triggers_IsNoBuild
 Variable/Name/lib_ABFE498B_2EA0F80B=upgradeLevels
 Variable/Name/lib_ABFE498B_2EC5B4AD=difficulty
 Variable/Name/lib_ABFE498B_2EFD1C51=1stacks
-Variable/Name/lib_ABFE498B_2FB0C385=string 5
 Variable/Name/lib_ABFE498B_30D87F14=AP_Triggers_onDifficultyBrutal
 Variable/Name/lib_ABFE498B_30FB09E8=AP_Triggers_WARPIN_TRAIN_ABIL_IDs
 Variable/Name/lib_ABFE498B_31EC2DEE=AP_Triggers_Protoss_has_CarrierAiur
