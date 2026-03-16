@@ -2326,15 +2326,6 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
-        GameSetSpeedValue(c_gameSpeedFaster);
-        libABFE498B_gf_AP_Triggers_setDifficulty("B");
-        libABFE498B_gv_aP_Triggers_skipCutscenes = true;
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Terr";
-        libABFE498B_gv_aP_Triggers_DebugMode = true;
-        gf_APtech(gv_pLAYER_01_USER, 4);
-    }
-
     CinematicFade(false, 0.0, c_fadeStyleNormal, ColorWithAlpha(0.00, 0.00, 0.00, 0.00), 0.0, false);
     TriggerExecute(lib30B9E51A_gt_ArchipelagoPlayerLotvHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
@@ -2358,6 +2349,8 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     // Variable Declarations
     unit lv_unit;
     unitgroup lv_remove;
+    region lv_spawn;
+    int lv_player;
 
     // Automatic Variable Declarations
     string auto973AFC8F_val;
@@ -2368,15 +2361,26 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
 
     // Variable Initialization
     lv_remove = UnitGroupEmpty();
+    lv_player = gv_pLAYER_04_AMON;
 
     // Actions
     if (!runActions) {
         return true;
     }
 
+    if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
+        GameSetSpeedValue(c_gameSpeedFaster);
+        libABFE498B_gf_AP_Triggers_setDifficulty("B");
+        libABFE498B_gv_aP_Triggers_skipCutscenes = true;
+        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Prot";
+        libABFE498B_gv_aP_Triggers_DebugMode = true;
+        gf_APtech(gv_pLAYER_01_USER, 4);
+    }
+
     auto973AFC8F_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
     if (auto973AFC8F_val == "Terr") {
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
+        lv_spawn = RegionFromId(124);
         PlayerSetRace(gv_pLAYER_01_USER, "Terr");
         lib5BD4895D_gf_AP_Core_MapConfig_setPlayerFaction(gv_pLAYER_01_USER, lib5BD4895D_gv_aP_Core_Faction_RAYNORS_RAIDERS);
         lib5BD4895D_gf_AP_Core_Util_FixPlayerMaxSupplyAfterRaceSwap(gv_pLAYER_01_USER);
@@ -2386,6 +2390,7 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
     else if (auto973AFC8F_val == "Prot") {
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
+        lv_spawn = RegionFromId(125);
         PlayerSetRace(gv_pLAYER_01_USER, "Prot");
         lib5BD4895D_gf_AP_Core_MapConfig_setPlayerFaction(gv_pLAYER_01_USER, lib5BD4895D_gv_aP_Core_Faction_DAELAAM);
         lib5BD4895D_gf_AP_Core_Util_FixPlayerMaxSupplyAfterRaceSwap(gv_pLAYER_01_USER);
@@ -2394,10 +2399,13 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         TechTreeAbilityAllow(gv_pLAYER_01_USER, AbilityCommand("AP_KerriganEpilogue03PowerTeleport", 0), true);
     }
     else {
+        lv_spawn = RegionFromId(125);
         TechTreeAbilityAllow(gv_pLAYER_01_USER, AbilityCommand("KerriganEpilogue03CreepTeleport", 0), true);
         TechTreeAbilityAllow(gv_pLAYER_01_USER, AbilityCommand("AP_KerriganEpilogue03StructureTeleport", 0), false);
         TechTreeAbilityAllow(gv_pLAYER_01_USER, AbilityCommand("AP_KerriganEpilogue03PowerTeleport", 0), false);
     }
+    AP_GhostSpawn_playerOverride = lv_player;
+    AP_GhostSpawn_regionOverride = lv_spawn;
     if ((libABFE498B_gv_aP_Triggers_Option_takeOverAIAllies == true)) {
         lv_remove = UnitGroup(null, gv_pLAYER_06_KERRIGAN_AI, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
         gf_RemoveUnusedStartingUnitsSkipWorkersTownhalls(UnitGroupFromId(2), "Zerg", false);
@@ -2436,7 +2444,6 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_FactionSwapInit_Init () {
     gt_FactionSwapInit = TriggerCreate("gt_FactionSwapInit_Func");
-    TriggerAddEventGeneric(gt_FactionSwapInit, lib5BD4895D_gv_aP_Core_LOAD_FINISHED_EVENT);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2632,9 +2639,7 @@ bool gt_Initialization_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_Init04MusicSound, true, false);
     TriggerExecute(gt_Init05Environment, true, false);
     TriggerExecute(gt_Init06Difficulties, true, false);
-    GameSetSpeedValueMinimum(c_gameSpeedSlower);
-    GameSetSpeedValue(libABFE498B_gv_aP_Triggers_Option_gameSpeed);
-    Wait(0.0625, c_timeGame);
+    TriggerExecute(gt_FactionSwapInit, true, true);
     TriggerExecute(gt_IntroQ, true, true);
     TriggerExecute(gt_StartGameQ, true, false);
     return true;
@@ -2723,6 +2728,7 @@ bool gt_Init02Players_Func (bool testConds, bool runActions) {
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_02_RAYNOR, libNtve_ge_AllianceSetting_AllyWithSharedVision);
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_03_ARTANIS, libNtve_ge_AllianceSetting_AllyWithSharedVision);
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_05_AMON_NEUTRAL, libNtve_ge_AllianceSetting_Neutral);
+    libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_04_AMON, libNtve_ge_AllianceSetting_Enemy);
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_06_KERRIGAN_AI, libNtve_ge_AllianceSetting_AllyWithSharedVision);
     libNtve_gf_SetAlliance(gv_pLAYER_02_RAYNOR, gv_pLAYER_03_ARTANIS, libNtve_ge_AllianceSetting_AllyWithSharedVision);
     libNtve_gf_SetAlliance(gv_pLAYER_02_RAYNOR, gv_pLAYER_05_AMON_NEUTRAL, libNtve_ge_AllianceSetting_Neutral);
