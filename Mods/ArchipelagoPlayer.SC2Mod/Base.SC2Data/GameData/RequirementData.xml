@@ -2532,10 +2532,10 @@
     </CRequirement>
     <CRequirement id="AP_CanInstallOverloadWeaponSystems">
         <NodeArray index="Show" Link="AP_NotCountBehaviorOverloadWeaponSystemsInstalledCompleteOnlyAtUnit"/>
-    </CRequirement>  
+    </CRequirement>
     <CRequirement id="AP_CanInstallPowerRedirection">
         <NodeArray index="Show" Link="AP_NotCountBehaviorPowerRedirectionInstalledCompleteOnlyAtUnit"/>
-    </CRequirement>    
+    </CRequirement>
     <CRequirement id="AP_CanInstallRevitalizeShields">
         <NodeArray index="Show" Link="AP_NotCountBehaviorRevitalizeShieldsInstalledCompleteOnlyAtUnit"/>
     </CRequirement>
@@ -2544,10 +2544,10 @@
     </CRequirement>
     <CRequirement id="AP_CanInstallThermalLance">
         <NodeArray index="Show" Link="AP_NotCountBehaviorThermalLanceInstalledCompleteOnlyAtUnit"/>
-    </CRequirement> 
+    </CRequirement>
     <CRequirement id="AP_CanInstallBlackHole">
         <NodeArray index="Show" Link="AP_NotCountBehaviorBlackHoleInstalledCompleteOnlyAtUnit"/>
-    </CRequirement>  
+    </CRequirement>
     <CRequirement id="AP_CanInstallAstralRestoration">
         <NodeArray index="Show" Link="AP_AndCanInstallAstralRestorationCompleteOnly"/>
     </CRequirement>
@@ -4971,5 +4971,8 @@
     </CRequirement>
     <CRequirement id="AP_ZergBuildingSpawnSplitterlings">
         <NodeArray index="Show" Link="AP_ZergBuildingSpawnSplitterlings"/>
+    </CRequirement>
+    <CRequirement id="AP_CreepTumorSuperCloak">
+        <NodeArray index="Show" Link="AP_CreepTumorSuperCloak"/>
     </CRequirement>
 </Catalog>

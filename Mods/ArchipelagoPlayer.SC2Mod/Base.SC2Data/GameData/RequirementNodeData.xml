@@ -7980,7 +7980,7 @@
     <CRequirementCountUpgrade id="AP_SpireMaturation">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_SpireMaturation" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>    
+    </CRequirementCountUpgrade>
     <CRequirementOr id="AP_BanelingNestRally">
         <OperandArray value="AP_BanelingSpawn"/>
         <OperandArray value="AP_CountUpgradeHiveQueenStrainInjectionCompleteOnly"/>
@@ -7992,5 +7992,9 @@
     <CRequirementCountUpgrade id="AP_ZergBuildingSpawnSplitterlings">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_ZergBuildingSpawnSplitterlings" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CreepTumorSuperCloak">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_CreepTumorSuperCloak" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
 </Catalog>

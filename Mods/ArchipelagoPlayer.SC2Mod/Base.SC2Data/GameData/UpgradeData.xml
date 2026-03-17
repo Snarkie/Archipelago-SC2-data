@@ -1983,7 +1983,7 @@
         <EffectArray Reference="Weapon,AP_MercRoachVileMelee,Level" Value="1"/>
         <EffectArray Reference="Effect,AP_MercRoachVileAcidSalivaU,Amount" Value="3"/>
         <EffectArray Reference="Weapon,AP_MercRoachVileAcidSaliva,Level" Value="1"/>
-        <EffectArray Reference="Weapon,AP_MercRoachVileAcidSalivaAir,Level" Value="1"/>  
+        <EffectArray Reference="Weapon,AP_MercRoachVileAcidSalivaAir,Level" Value="1"/>
         <!--        <EffectArray Reference="Weapon,InfestedGuassRifle,Level" Value="1"/>-->
         <!--        <EffectArray Reference="Effect,InfestedGuassRifle,Amount" Value="1"/>-->
         <!--        <EffectArray Reference="Weapon,LocustMP,Level" Value="1"/>-->
@@ -9966,7 +9966,7 @@
     </CUpgrade>
     <CUpgrade id="AP_DisruptorRestrainedDestruction">
         <Icon value="Assets\Textures\btn-upgrade-stetmann-banelingmanashieldefficiency.dds"/>
-        <EffectArray Operation="Set" Reference="Effect,AP_PurificationNovaFriendlyDamage,Amount" Value="65"/>    
+        <EffectArray Operation="Set" Reference="Effect,AP_PurificationNovaFriendlyDamage,Amount" Value="65"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Disruptor"/>
     </CUpgrade>
@@ -15010,7 +15010,7 @@
         <EffectArray Operation="Set" Reference="Behavior,AP_TrooperMengskWeaponTimedLife,Duration" Value="300"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskFlamethrower,CostResource[Vespene]" Value="20"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskImproved,CostResource[Vespene]" Value="20"/>
-        <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskAA,CostResource[Vespene]" Value="20"/>    
+        <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskAA,CostResource[Vespene]" Value="20"/>
     </CUpgrade>
     <CUpgrade id="AP_TrooperMengskImproved"/>
     <CUpgrade id="AP_TrooperMengskAA"/>
@@ -16966,4 +16966,5 @@
         <AffectedUnitArray value="AP_LurkerBurrowed"/>
     </CUpgrade>
     <CUpgrade id="AP_ZergBuildingSpawnSplitterlings"/>
+    <CUpgrade id="AP_CreepTumorSuperCloak"/>
 </Catalog>

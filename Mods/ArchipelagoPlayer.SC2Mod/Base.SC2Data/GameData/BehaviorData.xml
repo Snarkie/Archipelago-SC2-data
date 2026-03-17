@@ -5149,7 +5149,7 @@
             <StateFlags index="SuppressAttack" value="1"/>
             <AbilLinkDisableArray value="move"/>
             <AbilLinkDisableArray value="attack"/>
-            <AbilLinkDisableArray value="AP_PurifierMothershipInstalls"/> 
+            <AbilLinkDisableArray value="AP_PurifierMothershipInstalls"/>
             <AbilLinkDisableArray value="AP_MothershipCoreMassRecall"/>
             <AbilLinkDisableArray value="AP_PurifierMothershipBlackHole"/>
             <AbilLinkDisableArray value="AP_TimeFieldPurifier"/>
@@ -5172,7 +5172,7 @@
             <StateFlags index="SuppressAttack" value="1"/>
             <AbilLinkDisableArray value="move"/>
             <AbilLinkDisableArray value="attack"/>
-            <AbilLinkDisableArray value="AP_PurifierMothershipInstalls"/> 
+            <AbilLinkDisableArray value="AP_PurifierMothershipInstalls"/>
             <AbilLinkDisableArray value="AP_MothershipCoreMassRecall"/>
             <AbilLinkDisableArray value="AP_MothershipPurifierBlackHole"/>
             <AbilLinkDisableArray value="AP_TimeFieldPurifier"/>
@@ -8667,7 +8667,7 @@
         <Tooltip value="Button/Tooltip/AP_BattlecruiserRangeAura"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_MothershipAiurShieldArmor">
-        <Alignment value="Positive"/>       
+        <Alignment value="Positive"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Protoss"/>
         <Duration value="0.25"/>
         <InfoIcon value="AP\Assets\Textures\btn-ability-protoss-emergencywarp-aiur.dds"/>
@@ -11140,5 +11140,14 @@
         <Duration value="0.5"/> <!-- short enough to disappear promptly, long enough to allow players to "drag" the beams -->
         <DisableValidatorArray value="AP_SourceUnitNotFiringWeapon"/>
         <ExpireEffect value="AP_SuicideRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_CreepTumorSuperCloak">
+        <BehaviorCategories index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <Requirements value="AP_CreepTumorSuperCloak"/>
+        <Modification>
+            <StateFlags index="Undetectable" value="1"/>
+        </Modification>
     </CBehaviorBuff>
 </Catalog>

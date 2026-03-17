@@ -8249,4 +8249,8 @@
         <AlertIcon value="Assets\Textures\btn-building-zerg-greaterspire.dds"/>
         <EditorCategories value="Race:Zerg"/>
     </CButton>
+    <CButton id="AP_CreepTumorSuperCloak">
+        <Icon value="Assets\Textures\btn-ability-zerg-generatecreepstop-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-generatecreepstop-color.dds"/>
+    </CButton>
 </Catalog>

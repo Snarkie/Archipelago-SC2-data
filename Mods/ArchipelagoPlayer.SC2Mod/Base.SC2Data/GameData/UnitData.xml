@@ -8731,10 +8731,12 @@
         <BehaviorArray Link="AP_makeCreep4x4Enhanced"/>
         <BehaviorArray Link="AP_CreepFrenzy13CreepTumor"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_CreepTumorSuperCloak"/>
         <CardLayouts>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="AP_CreepTumorPassive" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="AP_K5CreepBonuses" Type="Passive" Requirements="AP_HaveK5CreepBonuses" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_CreepTumorSuperCloak" Type="Passive" Requirements="AP_CreepTumorSuperCloak" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -8790,11 +8792,13 @@
         <BehaviorArray Link="AP_makeCreep4x4Enhanced"/>
         <BehaviorArray Link="AP_CreepFrenzy13CreepTumor"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_CreepTumorSuperCloak"/>
         <CardLayouts>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="AP_CreepTumorBuild,Halt" Row="2" Column="4"/>
             <LayoutButtons Face="AP_BuildCreepTumorPropagate" Type="AbilCmd" AbilCmd="AP_CreepTumorBuild,Build1" Row="2" Column="0"/>
             <LayoutButtons Face="AP_CreepTumorPassive" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="AP_K5CreepBonuses" Type="Passive" Requirements="AP_HaveK5CreepBonuses" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_CreepTumorSuperCloak" Type="Passive" Requirements="AP_CreepTumorSuperCloak" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -8851,9 +8855,11 @@
         <BehaviorArray Link="AP_CreepFrenzy13CreepTumor"/>
         <BehaviorArray Link="AP_CreepTumorExhausted"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_CreepTumorSuperCloak"/>
         <CardLayouts>
             <LayoutButtons Face="AP_CreepTumorPassive" Type="Passive" Row="1" Column="0"/>
             <LayoutButtons Face="AP_K5CreepBonuses" Type="Passive" Requirements="AP_HaveK5CreepBonuses" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_CreepTumorSuperCloak" Type="Passive" Requirements="AP_CreepTumorSuperCloak" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -8906,8 +8912,10 @@
         <AbilArray Link="AP_BurrowCreepTumorDown"/>
         <BehaviorArray Link="AP_makeCreep4x4"/>
         <BehaviorArray Link="AP_CreepFrenzy13Crawler"/>
+        <BehaviorArray Link="AP_CreepTumorSuperCloak"/>
         <CardLayouts>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="AP_CreepTumorSuperCloak" Type="Passive" Requirements="AP_CreepTumorSuperCloak" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="1"/>
         <SeparationRadius value="1"/>
@@ -10312,7 +10320,7 @@
             <LayoutButtons Face="Repair" Type="AbilCmd" AbilCmd="AP_MULERepair,0" Row="2" Column="2"/>
             <LayoutButtons Face="ReturnCargo" Type="AbilCmd" AbilCmd="AP_MULEGather,1" Row="1" Column="1"/>
             <LayoutButtons Face="ReturnCargo" Type="AbilCmd" AbilCmd="AP_SCVHarvest,1" Row="1" Column="1"/>
-            <LayoutButtons Face="AP_SCVRepairFree" Type="Passive" Requirements="AP_HaveSCVRepairFree" Row="2" Column="4"/>   
+            <LayoutButtons Face="AP_SCVRepairFree" Type="Passive" Requirements="AP_HaveSCVRepairFree" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>
@@ -14438,7 +14446,7 @@
             <LayoutButtons Face="AP_HealingPsionicStorm" Type="Passive" Requirements="AP_HaveHighArchonAndPlasmaSurge" Row="1" Column="1"/>
             <LayoutButtons Face="AP_HighImpactPsiStorm" Type="Passive" Requirements="AP_HaveHighArchonAndHighImpactPsionicStorm" Row="1" Column="2"/>
             <LayoutButtons Face="AP_KhaydarinAmulet" Type="Passive" Requirements="AP_HaveKhaydarinAmuletArchon" Row="1" Column="3"/>
-            <LayoutButtons Face="AP_ArchonWeaponUpgrade" Type="Passive" Requirements="AP_HaveArchonWeaponUpgrade" Row="1" Column="4"/>       
+            <LayoutButtons Face="AP_ArchonWeaponUpgrade" Type="Passive" Requirements="AP_HaveArchonWeaponUpgrade" Row="1" Column="4"/>
 
             <LayoutButtons Face="AP_Feedback" Type="AbilCmd" AbilCmd="AP_FeedbackArchon,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="AP_HighArchonPsiStorm" Type="AbilCmd" AbilCmd="AP_HighArchonPsiStormArchon,Execute" Row="2" Column="1"/>
@@ -20081,7 +20089,7 @@
             <LayoutButtons Face="AP_SCVCliffJump" Type="Passive" Requirements="AP_HaveSCVCliffJump" Row="2" Column="3"/>
             <LayoutButtons Face="Halt" Type="AbilCmd" AbilCmd="AP_TerranBuild,30" Row="2" Column="4"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="CancelTerrazineHarvest,0" Row="2" Column="4"/>
-            <LayoutButtons Face="AP_SCVRepairFree" Type="Passive" Requirements="AP_HaveSCVRepairFree" Row="2" Column="4"/>            
+            <LayoutButtons Face="AP_SCVRepairFree" Type="Passive" Requirements="AP_HaveSCVRepairFree" Row="2" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="TBl1">
             <LayoutButtons Face="AP_CommandCenter" Type="AbilCmd" AbilCmd="AP_TerranBuild,0" Row="0" Column="0"/>
@@ -32337,4 +32345,3 @@
         <Mover value=""/>
     </CUnit>
 </Catalog>
-

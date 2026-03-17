@@ -1186,7 +1186,7 @@ Button/Name/AP_BehemothPlating=Behemoth Plating
 Button/Name/AP_BileLauncherArtilleryDucts=Artillery Ducts
 Button/Name/AP_BileLauncherBesideSpawningPool=Spawning Pool Acid
 Button/Name/AP_BileLauncherBombardment=Bombardment
-Button/Name/AP_BileLauncherRapidBombardment=Rapid Bombardment 
+Button/Name/AP_BileLauncherRapidBombardment=Rapid Bombardment
 Button/Name/AP_BioMechanicalHeal=Bio-Mechanical Repair
 Button/Name/AP_BioMechanicalStockpiling=Bio-Mechanical Stockpiling
 Button/Name/AP_BioMechanicalTransfusionPassive=Bio-Mechanical Transfusion
@@ -1294,6 +1294,7 @@ Button/Name/AP_CorsairNetworkDisruption=Network Disruption
 Button/Name/AP_CorsairShieldUpgrade=Neutron Shields
 Button/Name/AP_CorsairSustainingDisruption=Sustaining Disruption
 Button/Name/AP_CreepTumorPassive=Creep Generator
+Button/Name/AP_CreepTumorSuperCloak=Submerged Tumors
 Button/Name/AP_CripplingPsionicStorm=Crippling Psionic Storm
 Button/Name/AP_CriusSuit=Crius Suit
 Button/Name/AP_CrossSpectrumDampeners=Cross-Spectrum Dampeners
@@ -2817,7 +2818,7 @@ Button/Tooltip/AP_CorpserPassive=Enemies damaged by the Roach become infested an
 Button/Tooltip/AP_CorrosiveAcidDevourer=Attacks cause the target and nearby enemies to leave an Acid Spores effect.<n/>Affected targets attack slower and take 1 additional damage with each attack received.<n/><n/>Stacks up to 9 times. Lasts <d ref="Behavior,AP_DevourerSCBWWeapon,Duration"/> seconds.
 Button/Tooltip/AP_Corruption=Covers the target enemy unit in Zerg slime, increasing the damage taken by 20% for <d time="30"/>.
 Button/Tooltip/AP_Corruptor=Anti-air flyer, specializing in anti-massive. Can morph into advanced fliers.<n/><n/><c val="ffff8a">Can attack air units.</c>
-Button/Tooltip/AP_CorruptorAcidSplash=Attacking an air unit will release a splash of acid, raining down on enemy ground units, causing up to <d ref="Effect,AP_ParasiteSporeGroundDamage,Amount"/> damage in an area. 
+Button/Tooltip/AP_CorruptorAcidSplash=Attacking an air unit will release a splash of acid, raining down on enemy ground units, causing up to <d ref="Effect,AP_ParasiteSporeGroundDamage,Amount"/> damage in an area.
 Button/Tooltip/AP_CorruptorConstructRegeneration=Increases Corruptor health regeneration by 3 per second.
 Button/Tooltip/AP_CorruptorIncubateScourge=Corruptors spawn 2 Scourge when killed (3 with Swarm Scourge).
 Button/Tooltip/AP_CorruptorMonstrousResilience=Increases Corruptor life by 100.
@@ -2832,6 +2833,7 @@ Button/Tooltip/AP_CorsairSustainingDisruption=Disruption Webs last longer.
 Button/Tooltip/AP_CreepTumor=A burrowed creep generator. Creep feeds nearby Zerg structures. A Creep Tumor can spawn additional Creep Tumors.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/AP_CreepTumorBurrowed=A burrowed creep generator. Creep feeds nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/AP_CreepTumorPassive=Automatically produces creep to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
+Button/Tooltip/Ap_CreepTumorSuperCloak=Creep Tumors are undetectable
 Button/Tooltip/AP_CripplingPsionicStorm=Creates a storm of psionic energy that lasts 4 seconds, causing up to 80 damage to all enemy units in the target area. Does NOT damage friendly units.
 Button/Tooltip/AP_CripplingPsionicStormUpgraded=Creates a storm of psionic energy that lasts 4 seconds, causing up to 112 damage to all enemy units in the target area. Does NOT damage friendly units.
 Button/Tooltip/AP_CriusSuit=Ghost is permanently cloaked.
@@ -3155,7 +3157,7 @@ Button/Tooltip/AP_IncineratorNozzles=Increases the Firebat's damage radius by 40
 Button/Tooltip/AP_InfBullfrogBroodlings=Spawns 2 broodlings at the impact site when using Aggressive Delivery.
 Button/Tooltip/AP_InfBullfrogHardImpact=Aggressive Delivery deals <d ref="Upgrade,AP_InfBullfrogHardImpact,EffectArray[0].Value"/> more damage and now stuns for <d ref="Upgrade,AP_InfBullfrogHardImpact,EffectArray[1].Value"/> seconds.
 Button/Tooltip/AP_InfBullfrogLeap=Leap to target location without unloading cargo. Shorter range and cooldown than Aggressive Delivery.
-Button/Tooltip/AP_InfBullfrogLeapUnload=Launches the Bullfrog at the target location, briefly stunning enemies for <d ref="Behavior,AP_InfBullfrogImpactStun,Duration" precision="1"/> seconds and dealing <d ref="Effect,AP_InfBullfrogImpactDamage,Amount + (Behavior,AP_InfBullfrogTransportDamageBuff,Modification.DamageDealtUnscaled[Spell] * $BehaviorStackCount:AP_InfBullfrogTransportDamageBuff$)"/> damage to enemies in the area. Damage increases per loaded unit.<n/><n/><c val="FFE303">Instantly unloads all units in the transport.</c> 
+Button/Tooltip/AP_InfBullfrogLeapUnload=Launches the Bullfrog at the target location, briefly stunning enemies for <d ref="Behavior,AP_InfBullfrogImpactStun,Duration" precision="1"/> seconds and dealing <d ref="Effect,AP_InfBullfrogImpactDamage,Amount + (Behavior,AP_InfBullfrogTransportDamageBuff,Modification.DamageDealtUnscaled[Spell] * $BehaviorStackCount:AP_InfBullfrogTransportDamageBuff$)"/> damage to enemies in the area. Damage increases per loaded unit.<n/><n/><c val="FFE303">Instantly unloads all units in the transport.</c>
 Button/Tooltip/AP_InfBullfrogLoad=Load small or medium units (max size 4) into the Bullfrog.
 Button/Tooltip/AP_InfBullfrogRange=Aggressive Delivery range is increased by 6. Reposition range is increased by 3.
 Button/Tooltip/AP_InfBullfrogUnloadAll=Unloads all units.
@@ -4142,7 +4144,7 @@ Button/Tooltip/AP_VoidRaySwarmDamageBoost=Realigns the Scorcher's Prismatic Beam
 Button/Tooltip/AP_VoidRayTaldarim=Tal'darim Faction<n/>Area assault craft. Can use Destruction Beam to attack multiple units.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_VoidRayVoidPrismaticRange=Increases the range of the Void Ray's Prismatic Beam as it continues to attack, up to a maximum of +<d ref="$UpgradeEffectArrayValue:AP_VoidRayPrismaticRange:Behavior,AP_VoidRayChargeBeamRangePhase3,Modification.WeaponRange$"/> range.
 Button/Tooltip/AP_VoidSentryBlackHole=Stuns enemy units in the target area for <d ref="Effect,AP_VoidSentryBlackHolePersistent,PeriodCount*Effect,AP_VoidSentryBlackHolePersistent,PeriodicPeriodArray[0]"/> seconds.
-Button/Tooltip/AP_VoidSentryBlackHoleInstall=<d ref="Abil,AP_VoidSentryBlackHole,Cost[0].Vital"/> Energy<n/>No Cooldown<n/>Stuns enemy units in the target area for <d ref="Effect,AP_VoidSentryBlackHolePersistent,PeriodCount*Effect,AP_VoidSentryBlackHolePersistent,PeriodicPeriodArray[0]"/> seconds. 
+Button/Tooltip/AP_VoidSentryBlackHoleInstall=<d ref="Abil,AP_VoidSentryBlackHole,Cost[0].Vital"/> Energy<n/>No Cooldown<n/>Stuns enemy units in the target area for <d ref="Effect,AP_VoidSentryBlackHolePersistent,PeriodCount*Effect,AP_VoidSentryBlackHolePersistent,PeriodicPeriodArray[0]"/> seconds.
 Button/Tooltip/AP_VoidSentryChronoBeam=Friendly target gains 50% attack and 50% movement speed.
 Button/Tooltip/AP_VoidSentryMobileMode=Transforms the Energizer to Mobile Mode. The Energizer can move, but no longer creates a power field.
 Button/Tooltip/AP_VoidSentryPhasingMode=Transforms the Energizer to Phasing Mode and generates a power field as if it was a Pylon. The Energizer cannot move in this mode.
@@ -7188,7 +7190,7 @@ UserData/AP_CampaignPerk/GPTier2Power3_Tooltip=Energy Cost: <d ref="Abil,AP_SOAT
 UserData/AP_CampaignPerk/GPTier6Power1_Name=Purifier Beam
 UserData/AP_CampaignPerk/GPTier6Power1_TargetInstructions=Choose Beam Location
 UserData/AP_CampaignPerk/GPTier6Power1_Tooltip=Energy Cost: <d ref="Abil,AP_SOAPurifierBeam,Cost[0].Vital[2]"/><n/>Cooldown: <d ref="Abil,AP_SOAPurifierBeam,Cost[0].Cooldown.TimeUse"/><n/><n/>The Spear of Adun fires a controllable beam at the surface that deals <d ref="Effect,AP_SOAPurifierBeamDamage,Amount*Behavior,AP_SOAPurifierBeamFiring,Duration*(1/Behavior,AP_SOAPurifierBeamFiring,Period)"/> damage (<d ref="(Effect,AP_SOAPurifierBeamDamage,Amount+Effect,AP_SOAPurifierBeamDamage,AttributeBonus[Armored])*Behavior,AP_SOAPurifierBeamFiring,Duration*(1/Behavior,AP_SOAPurifierBeamFiring,Period)"/> vs Armored) to enemy units and structures over <d ref="Behavior,AP_SOAPurifierBeamFiring,Duration"/> seconds. <n/><n/>The beam automatically acquires targets if it is not manually controlled.
-Vital/ZergShields=Shell: 
+Vital/ZergShields=Shell:
 Weapon/Name/AP_90mmCannons=90mm Cannons
 Weapon/Name/AP_ATALaserBattery=ATA Laser Battery
 Weapon/Name/AP_ATSLaserBattery=ATS Laser Battery
