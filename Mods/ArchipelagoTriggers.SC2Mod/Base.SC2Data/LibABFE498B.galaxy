@@ -1369,7 +1369,7 @@ void libABFE498B_gf_AP_Triggers_unlockZergEvolutionPit (int lp_player, int lp_bi
         libABFE498B_gf_AP_Triggers_Zerg_BanelingSpawn, // 22
         libABFE498B_gf_AP_Triggers_Zerg_ScourgeSpawn, // 23
         libABFE498B_gf_AP_Triggers_Zerg_SpireMaturation, //24
-        ap_triggers_PlayerConsumer_sig, //25
+        libABFE498B_gf_AP_Triggers_Zerg_CreepTumorSubmergedTumors, //25
         ap_triggers_PlayerConsumer_sig, //26
         ap_triggers_PlayerConsumer_sig, //27
         ap_triggers_PlayerConsumer_sig, //28
@@ -8049,6 +8049,12 @@ void libABFE498B_gf_AP_Triggers_Zerg_ZergSpawnSplitterling (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_ZergBuildingSpawnSplitterlings", 1);
+}
+
+void libABFE498B_gf_AP_Triggers_Zerg_CreepTumorSubmergedTumors (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_CreepTumorSuperCloak", 1);
 }
 
 void libABFE498B_gf_AP_Triggers_Zerg_KerriganKinteticBlast (int lp_player) {

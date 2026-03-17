@@ -800,6 +800,7 @@ void libABFE498B_gf_AP_Triggers_Zerg_UnrestrictedMutation (int lp_player);
 void libABFE498B_gf_AP_Triggers_Zerg_HydraliskDenMaturation (int lp_player);
 void libABFE498B_gf_AP_Triggers_Zerg_SpireMaturation (int lp_player);
 void libABFE498B_gf_AP_Triggers_Zerg_ZergSpawnSplitterling (int lp_player);
+void libABFE498B_gf_AP_Triggers_Zerg_CreepTumorSubmergedTumors (int lp_player);
 void libABFE498B_gf_AP_Triggers_Zerg_KerriganKinteticBlast (int lp_player);
 void libABFE498B_gf_AP_Triggers_Zerg_KerriganHeroicFortitude (int lp_player);
 void libABFE498B_gf_AP_Triggers_Zerg_KerriganLeapingStrike (int lp_player);
