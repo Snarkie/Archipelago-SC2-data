@@ -17139,6 +17139,9 @@
         <EffectArray Reference="Unit,AP_ShieldBattery,ShieldArmor" Value="2"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_ShieldBattery,ShieldRegenDelay" Value="10"/>
     </CUpgrade>
+    <CUpgrade id="AP_GhostSpawn">
+        <MaxLevel value="5"/>
+    </CUpgrade>
     <CUpgrade id="AP_GhostSpawnShields">
         <EffectArray Reference="Unit,AP_GhostTrapSpawner,ShieldsMax" Value="500"/>
         <EffectArray Reference="Unit,AP_GhostTrapSpawner,ShieldRegenRate" Value="2.000000"/>

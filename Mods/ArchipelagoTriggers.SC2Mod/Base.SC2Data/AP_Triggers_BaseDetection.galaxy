@@ -20,13 +20,13 @@ struct AP_Base {
 static AP_Base[MAX_PLAYERS][MAX_BASES_PER_PLAYER] playerBases;
 static int[MAX_PLAYERS] baseCount;
 static unitfilter baseFilter = UnitFilter(
-        (1 << c_targetFilterGround) | (1 << c_targetFilterStructure) | 
-        (1 << c_targetFilterPreventDefeat), 0, 
-        (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | 
+        (1 << c_targetFilterGround) | (1 << c_targetFilterStructure) |
+        (1 << c_targetFilterPreventDefeat), 0,
+        (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) |
         (1 << (c_targetFilterHidden - 32)));
 
 static void log(string s) {
-    TriggerDebugOutput(1, StringToText(s), true);
+    TriggerDebugOutput(1, StringToText("Base Detection: " + s), true);
 }
 
 int AP_Base_getCount(int player) {
@@ -59,7 +59,7 @@ bool AP_Base_detect(int player) {
     if (UnitGroupCount(buildings, c_unitCountAlive) <= 0) {
         return false;
     }
-    while (UnitGroupCount(buildings, c_unitCountAlive) > 0 
+    while (UnitGroupCount(buildings, c_unitCountAlive) > 0
         && count < MAX_BASES_PER_PLAYER) {
         u = UnitGroupUnit(buildings, 1);
         step = 0;
@@ -72,7 +72,7 @@ bool AP_Base_detect(int player) {
         if (UnitGroupCount(sphereNext, c_unitCountAlive) <= 0) {
             continue;
         }
-        count += 1; 
+        count += 1;
         bases[count] = UnitGroupCopy(sphereNext);
         radius[count] = r;
         while (step < STEP_MAX) {

@@ -2033,8 +2033,6 @@ void libABFE498B_gf_AP_Triggers_setOptions (string lp_inputString) {
     libABFE498B_gf_AP_Triggers_setMercenaryHighlander(StringEqual(lv_unitOptionsValue, "1", c_stringCase));
     libABFE498B_gf_AP_Triggers_setWarCouncil(StringEqual(lv_warCouncilNerfs, "1", c_stringCase));
     libABFE498B_gv_aP_Triggers_Option_HeroPresence = StringToInt(lv_heroPresence);
-    TextExpressionSetToken("Param/Expression/lib_ABFE498B_FCA6D672", "A", IntToText(libABFE498B_gv_aP_Triggers_Option_HeroPresence));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_FCA6D672"), false);
 }
 
 void libABFE498B_gf_AP_Triggers_giveTerranTech (string lp_inputString) {
@@ -2334,6 +2332,28 @@ void libABFE498B_gf_AP_Triggers_giveMiscTech (string lp_inputString) {
     }
 }
 
+void libABFE498B_gf_AP_Triggers_giveTrapItems (string lp_inputString) {
+    // Variable Declarations
+    int lv_currentPlayer;
+    string lv_ghostSpawnTrap;
+
+    // Automatic Variable Declarations
+    playergroup autoBD699784_g;
+
+    // Variable Initialization
+    lv_ghostSpawnTrap = "";
+
+    // Implementation
+    lv_ghostSpawnTrap = StringWord(lp_inputString, 1);
+    autoBD699784_g = lib5BD4895D_gv_aP_Core_affectedPlayers;
+    lv_currentPlayer = -1;
+    while (true) {
+        lv_currentPlayer = PlayerGroupNextPlayer(autoBD699784_g, lv_currentPlayer);
+        if (lv_currentPlayer < 0) { break; }
+        libABFE498B_gf_AP_Triggers_unlockGhostSpawn(lv_currentPlayer, StringToInt(lv_ghostSpawnTrap));
+    }
+}
+
 void libABFE498B_gf_AP_Triggers_bankOptionsLoop () {
     // Variable Declarations
     int lv_bankbackupid;
@@ -2469,6 +2489,12 @@ bool auto_libABFE498B_gf_AP_Triggers_bankItemsRead_TriggerFunc (bool testConds, 
     if ((BankKeyExists(libABFE498B_gv_aP_Triggers_bankItems, lv_section, lv_key) == true)) {
         lv_value = BankValueGetAsString(libABFE498B_gv_aP_Triggers_bankItems, lv_section, lv_key);
         libABFE498B_gf_AP_Triggers_giveMiscTech(lv_value);
+    }
+
+    lv_key = libABFE498B_gv_aP_Triggers_BANK_ITEMS_KEY_TRAP_ITEMS;
+    if ((BankKeyExists(libABFE498B_gv_aP_Triggers_bankItems, lv_section, lv_key) == true)) {
+        lv_value = BankValueGetAsString(libABFE498B_gv_aP_Triggers_bankItems, lv_section, lv_key);
+        libABFE498B_gf_AP_Triggers_giveTrapItems(lv_value);
     }
 
     if ((libABFE498B_gv_aP_Triggers_bankItemsInitialized == false)) {
@@ -10884,6 +10910,39 @@ void libABFE498B_gf_AP_Triggers_giveProtossDefaultTech (int lp_player) {
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_VoidRayBeamCanCharge", 1);
 }
 
+trigger auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_Trigger = null;
+int auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_lp_player;
+int auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_lp_level;
+
+void libABFE498B_gf_AP_Triggers_unlockGhostSpawn (int lp_player, int lp_level) {
+    auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_lp_player = lp_player;
+    auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_lp_level = lp_level;
+
+    if (auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_Trigger == null) {
+        auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_Trigger = TriggerCreate("auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_Trigger, false, false);
+}
+
+bool auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_lp_player;
+    int lp_level = auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_lp_level;
+
+    // Automatic Variable Declarations
+    // Implementation
+    if ((TechTreeUpgradeCount(lp_player, "AP_GhostSpawn", c_techCountCompleteOnly) >= 1)) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
+        AP_GhostSpawn_updateDifficulty(lp_level);
+    }
+    else {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
+        AP_GhostSpawn_difficultyOverride = lp_level;
+        AP_GhostSpawn_placeBuilding();
+    }
+    return true;
+}
+
 void libABFE498B_gf_AP_Triggers_unlockTradeStructure (int lp_player, int lp_value) {
     // Automatic Variable Declarations
     // Implementation
@@ -12362,6 +12421,34 @@ void libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_killTraps
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_killTraps_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, StringExternal("Param/Value/lib_ABFE498B_D5086B57"), true);
+    AP_GhostSpawn_disable();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_killTraps_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_killTraps = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_killTraps_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_killTraps, c_playerAny, "-killtraps", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AP_Triggers_Debug_reviveHeroes
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Func (bool testConds, bool runActions) {
@@ -12642,6 +12729,7 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_addAffectedPlayer_Init();
     libABFE498B_gt_AP_Triggers_Debug_updatePrompt_Init();
     libABFE498B_gt_AP_Triggers_Debug_spawnTrap_Init();
+    libABFE498B_gt_AP_Triggers_Debug_killTraps_Init();
     libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Init();
     libABFE498B_gt_AP_Triggers_tradeStructureBuilt_Init();
     libABFE498B_gt_AP_Triggers_InitSoA_Init();

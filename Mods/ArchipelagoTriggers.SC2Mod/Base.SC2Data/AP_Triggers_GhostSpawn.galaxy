@@ -34,7 +34,7 @@ static fixed EMPCooldown = 2;
 // Overrides
 // Use these to force specific aspects of the system on a per map basis
 int AP_GhostSpawn_playerOverride = 0;
-int AP_GhostSpawn_difficultyOverride = 4;
+int AP_GhostSpawn_difficultyOverride = 1;
 region AP_GhostSpawn_regionOverride = null;
 point AP_GhostSpawn_attackTargetOverride = null;
 point AP_GhostSpawn_gatherPointOverride = null;
@@ -63,6 +63,7 @@ static bool NukeRearming = false;
 static int NukeCounter = 0;
 static int NukeCooldownTics = 0;
 static playergroup playersActive = PlayerGroupEmpty();
+static unitgroup BuildingsActive = UnitGroupEmpty();
 static unitgroup GhostsActive = UnitGroupEmpty();
 static unitgroup GhostsGathering = UnitGroupEmpty();
 static unitgroup GhostsWaiting = UnitGroupEmpty();
@@ -127,7 +128,7 @@ static bool SpawnSetupDifficulty(int player, int difficulty){
 }
 
 static void log(string s) {
-    TriggerDebugOutput(1, StringToText(s), true);
+    TriggerDebugOutput(1, StringToText("Ghost Spawn System: " + s), false);
 }
 
 static bool SpawnSetup(int player) {
@@ -162,7 +163,7 @@ static bool SpawnLoop(unit spawnBuilding) {
         gatherPoint = AP_GhostSpawn_gatherPointOverride;
     }
     else if (gatherPoint == null || PointPathingCost(spawnLocation, gatherPoint) > 225) {
-        log("DEBUG: Failed to get valid gather point, using fallback");
+        log("Failed to get valid gather point, using fallback");
         gatherPoint = PointWithOffset(location, 0, -3);
     }
     gatherOrder = OrderTargetingPoint(AbilCmdAttackMove, gatherPoint);
@@ -213,13 +214,38 @@ static point GetAttackLoc() {
     return attackTarget;
 }
 
+bool AP_GhostSpawn_disable() {
+    int i;
+    unit u;
+    for (i = 1; i <= UnitGroupCount(BuildingsActive, c_unitCountAll); i += 1) {
+        u = UnitGroupUnit(BuildingsActive, i);
+        UnitRemove(u);
+    }
+    for (i = 1; i <= UnitGroupCount(GhostsActive, c_unitCountAll); i += 1) {
+        u = UnitGroupUnit(GhostsActive, i);
+        UnitRemove(u);
+    }
+    return true;
+}
+
+bool AP_GhostSpawn_updateDifficulty(int difficulty) {
+    unit u = UnitGroupUnit(BuildingsActive, 1);
+    int p = UnitGetOwner(u);
+    SpawnSetupDifficulty(p, difficulty);
+    return true;
+}
+
 bool AP_GhostSpawn_placeBuildingForPlayer(int player) {
     int i;
     int baseIndex;
     point p;
     unit spawnBuilding;
     region r;
-    log("DEBUG: Placing for player: " + IntToString(player));
+    if (!libABFE498B_gv_aP_Triggers_isBuild) {
+        log("No build mission, do not spawn Ghost Building");
+        return false;
+    }
+    log("Placing for player: " + IntToString(player));
     while (libABFE498B_gv_aP_Triggers_IsNoBuild || AP_GhostSpawn_waitForSpawnOverride) {
         Wait(5, c_timeAI);
     }
@@ -251,18 +277,19 @@ bool AP_GhostSpawn_placeBuildingForPlayer(int player) {
         if (!AP_GhostSpawn_pathingCheckOverride || PointPathingIsConnected(p, GetAttackLoc())) {
             // success
             PlayerGroupAdd(playersActive, player);
+            UnitGroupAdd(BuildingsActive, spawnBuilding);
             SpawnLoop(spawnBuilding);
             return true;
         }
         else {
-            log("DEBUG: No valid attack path, try again");
+            log("No valid attack path, try again");
             MinimapPing(PlayerGroupAll(), GetAttackLoc() , 5, Color(255, 255, 255));
             UnitRemove(spawnBuilding);
         }
     }
     if (!UnitIsAlive(spawnBuilding)) {
         // found no valid location in 20 tries
-        log("DEBUG: Failed to spawn Ghost building!");
+        log("Failed to spawn Ghost building!");
     }
     return false;
 }
@@ -285,6 +312,10 @@ static bool HasActiveEnemy(int user) {
 bool AP_GhostSpawn_placeBuilding() {
     int p;
     int user = lib5BD4895D_gf_AP_Core_getUser();
+    if (!libABFE498B_gv_aP_Triggers_isBuild) {
+        log("No build mission, do not spawn Ghost Building");
+        return false;
+    }
     while (libABFE498B_gv_aP_Triggers_IsNoBuild || AP_GhostSpawn_waitForSpawnOverride) {
         Wait(5, c_timeAI);
     }
@@ -298,7 +329,7 @@ bool AP_GhostSpawn_placeBuilding() {
         p = AP_Base_getBiggestPlayer();
     }
     if (p <= 0) {
-        log("DEBUG: No valid player, failed to spawn Ghost Building");
+        log("No valid player, failed to spawn Ghost Building");
         return false;
     }
     return AP_GhostSpawn_placeBuildingForPlayer(p);
@@ -413,7 +444,7 @@ static bool detectIdle() {
         if (oldX == newX && oldY == newY) {
             idleTime = UnitGetCustomValue (u, CUSTOM_VALUE_TIMER) + 5.0;
             if (idleTime >= IdleTimeMax) {
-                log("ghost inactive, enable suicide");
+                log("Ghost inactive, enable suicide");
                 AISetUnitSuicide(u, true);
             }
             else {
