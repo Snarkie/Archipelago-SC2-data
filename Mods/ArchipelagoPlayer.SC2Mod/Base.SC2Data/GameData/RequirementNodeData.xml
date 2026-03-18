@@ -7937,4 +7937,64 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_TempestDistributedAttack" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_BanelingSpawn">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_BanelingSpawn" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_ScourgeSpawn">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_ScourgeSpawn" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_InfestedMarineExtended">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_InfestedMarineExtended" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_InfestedMarineSpeed">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_InfestedMarineSpeed" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_InfestedSCVRepairBio">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_InfestedSCVRepairBio" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_InfestedSCVRepairFree">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_InfestedSCVRepairFree" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_LurkerCarapace">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_LurkerCarapace" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_LurkerDetection">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_LurkerDetection" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_LurkerRangeCreep">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_LurkerRangeCreep" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_HydraliskDenMaturation">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_HydraliskDenMaturation" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_SpireMaturation">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_SpireMaturation" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementOr id="AP_BanelingNestRally">
+        <OperandArray value="AP_BanelingSpawn"/>
+        <OperandArray value="AP_CountUpgradeHiveQueenStrainInjectionCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementOr id="AP_SpireRally">
+        <OperandArray value="AP_ScourgeSpawn"/>
+        <OperandArray value="AP_CountUpgradeHiveQueenStrainInjectionCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementCountUpgrade id="AP_ZergBuildingSpawnSplitterlings">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_ZergBuildingSpawnSplitterlings" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CreepTumorSuperCloak">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_CreepTumorSuperCloak" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
 </Catalog>

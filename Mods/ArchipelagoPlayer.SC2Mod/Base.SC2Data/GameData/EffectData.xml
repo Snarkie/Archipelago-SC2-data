@@ -13665,8 +13665,11 @@
     <CEffectCreatePersistent id="AP_ZergBuildingSpawnBroodling6Delay">
         <ValidatorArray value="CasterIsNotHidden"/>
         <EditorCategories value="Race:Zerg"/>
-        <ExpireDelay value="0.5"/>
-        <FinalEffect value="AP_ZergBuildingSpawnBroodling6"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="AP_ZergBuildingSpawnBroodling6"/>
+        <PeriodicEffectArray value="AP_ZergBuildingSpawnSplitterling4"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="AP_ZergBuildingSpawnBroodling9">
         <EditorCategories value="Race:Zerg"/>
@@ -13680,8 +13683,11 @@
     <CEffectCreatePersistent id="AP_ZergBuildingSpawnBroodling9Delay">
         <ValidatorArray value="CasterIsNotHidden"/>
         <EditorCategories value="Race:Zerg"/>
-        <ExpireDelay value="0.5"/>
-        <FinalEffect value="AP_ZergBuildingSpawnBroodling9"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="AP_ZergBuildingSpawnBroodling9"/>
+        <PeriodicEffectArray value="AP_ZergBuildingSpawnSplitterling6"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="AP_ZergBuildingSpawnBroodlingCrawler">
         <EditorCategories value="Race:Zerg"/>
@@ -13695,8 +13701,11 @@
     <CEffectCreatePersistent id="AP_ZergBuildingSpawnBroodlingCrawlerDelay">
         <ValidatorArray value="CasterIsNotHidden"/>
         <EditorCategories value="Race:Zerg"/>
-        <ExpireDelay value="0.5"/>
-        <FinalEffect value="AP_ZergBuildingSpawnBroodlingCrawler"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="AP_ZergBuildingSpawnBroodlingCrawler"/>
+        <PeriodicEffectArray value="AP_ZergBuildingSpawnSplitterling2"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="AP_HydraliskDenMorphFinishDummy"/>
     <CEffectApplyBehavior id="AP_SiegeTankSiegeModeProgressiveRangeInceaseAB">
@@ -23615,7 +23624,6 @@
         <ValidatorArray value="LifeGTZero"/>
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="AP_KillLarvaSearchArea"/>
-        <EffectArray value="AP_YggdrasilConsume"/>
         <EffectArray value="AP_YggdrasilAssimilateBasic"/>
         <EffectArray value="AP_YggdrasilAssimilateMain"/>
         <EffectArray value="AP_YggdrasilAssimilateAdvanced"/>
@@ -25663,4 +25671,81 @@
     <CEffectApplyBehavior id="AP_DistributedAttackAB">
         <Behavior value="AP_DistributedAttackMarker"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AP_BanelingSpawnAB">
+        <Behavior value="AP_BanelingSpawnTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateHealer id="AP_InfestedSCVRepair">
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="HiddenCompareBA"/>
+        <ValidatorArray value="HiddenCompareAB"/>
+        <ValidatorArray value="NotVortexd"/>
+        <ValidatorArray value="NotThorWreckage"/>
+        <ValidatorArray value="NotOdinWreckage"/>
+        <EditorCategories value="Race:Terran"/>
+        <DrainResourceCostFactor index="Minerals" value="0.25"/>
+        <DrainResourceCostFactor index="Vespene" value="0.25"/>
+        <DrainResourceCostFactor index="Terrazine" value="0.25"/>
+        <DrainResourceCostFactor index="Custom" value="0.25"/>
+        <RechargeVitalRate value="1"/>
+        <TimeFactor value="1"/>
+    </CEffectCreateHealer>
+    <CEffectApplyBehavior id="AP_ScourgeSpawnAB">
+        <Behavior value="AP_ScourgeSpawnTimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AP_LurkerCarapace">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_LurkerCarapaceRBDummy"/>
+        <EffectArray value="AP_LurkerCarapaceRB"/>
+        <EffectArray value="AP_LurkerCarapaceABDummy"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AP_LurkerCarapaceAB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_LurkerCarapace"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AP_LurkerCarapaceABDummy">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_LurkerCarapaceDummy"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AP_LurkerCarapaceRBDummy">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="AP_LurkerCarapaceDummy"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="AP_LurkerCarapaceRB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="AP_LurkerCarapace"/>
+    </CEffectRemoveBehavior>   
+    <CEffectCreateUnit id="AP_ZergBuildingSpawnSplitterling2">
+        <ValidatorArray value="AP_ZergBuildingSpawnSplitterlings"/>
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnOwner Value="Caster"/>
+        <SpawnEffect value="AP_BroodlingTimedLife"/>
+        <SpawnUnit value="AP_HotSSplitterlingMedium"/>
+        <SpawnCount value="2"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="AP_ZergBuildingSpawnSplitterling4">
+        <ValidatorArray value="AP_ZergBuildingSpawnSplitterlings"/>
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnOwner Value="Caster"/>
+        <SpawnEffect value="AP_BroodlingTimedLife"/>
+        <SpawnUnit value="AP_HotSSplitterlingMedium"/>
+        <SpawnCount value="4"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="AP_ZergBuildingSpawnSplitterling6">
+        <ValidatorArray value="AP_ZergBuildingSpawnSplitterlings"/>
+        <EditorCategories value="Race:Zerg"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnOwner Value="Caster"/>
+        <SpawnEffect value="AP_BroodlingTimedLife"/>
+        <SpawnUnit value="AP_HotSSplitterlingMedium"/>
+        <SpawnCount value="6"/>
+    </CEffectCreateUnit>
 </Catalog>

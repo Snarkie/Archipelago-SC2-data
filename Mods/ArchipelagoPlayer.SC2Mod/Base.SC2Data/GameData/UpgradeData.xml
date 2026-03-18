@@ -1983,7 +1983,7 @@
         <EffectArray Reference="Weapon,AP_MercRoachVileMelee,Level" Value="1"/>
         <EffectArray Reference="Effect,AP_MercRoachVileAcidSalivaU,Amount" Value="3"/>
         <EffectArray Reference="Weapon,AP_MercRoachVileAcidSaliva,Level" Value="1"/>
-        <EffectArray Reference="Weapon,AP_MercRoachVileAcidSalivaAir,Level" Value="1"/>  
+        <EffectArray Reference="Weapon,AP_MercRoachVileAcidSalivaAir,Level" Value="1"/>
         <!--        <EffectArray Reference="Weapon,InfestedGuassRifle,Level" Value="1"/>-->
         <!--        <EffectArray Reference="Effect,InfestedGuassRifle,Amount" Value="1"/>-->
         <!--        <EffectArray Reference="Weapon,LocustMP,Level" Value="1"/>-->
@@ -7040,6 +7040,7 @@
         <EditorCategories value="Race:Zerg,UpgradeType:SpellResearch"/>
         <EffectArray Operation="Set" Reference="Abil,AP_LarvaTrainSwarm,InfoArray[Train30].Unit[2]" Value="AP_Scourge"/>
         <EffectArray Operation="Set" Reference="Abil,AP_LarvaTrainSwarm,InfoArray[Train30].Time" Value="3"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_ScourgeSpawn,InfoArray[Train1].Unit[3]" Value="AP_Scourge"/>
     </CUpgrade>
     <CUpgrade id="AP_HotSScourgeCost">
         <Flags index="UpgradeCheat" value="0"/>
@@ -9965,7 +9966,7 @@
     </CUpgrade>
     <CUpgrade id="AP_DisruptorRestrainedDestruction">
         <Icon value="Assets\Textures\btn-upgrade-stetmann-banelingmanashieldefficiency.dds"/>
-        <EffectArray Operation="Set" Reference="Effect,AP_PurificationNovaFriendlyDamage,Amount" Value="65"/>    
+        <EffectArray Operation="Set" Reference="Effect,AP_PurificationNovaFriendlyDamage,Amount" Value="65"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Disruptor"/>
     </CUpgrade>
@@ -13535,7 +13536,7 @@
         <Race value="Zerg"/>
         <ScoreAmount value="300"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Reference="Weapon,AP_Lurker,Range" Value="6"/>
+        <EffectArray Reference="Weapon,AP_Lurker,Range" Value="2"/>
         <EditorCategories value="Race:Zerg,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Lurker"/>
         <AffectedUnitArray value="AP_LurkerBurrowed"/>
@@ -15009,7 +15010,7 @@
         <EffectArray Operation="Set" Reference="Behavior,AP_TrooperMengskWeaponTimedLife,Duration" Value="300"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskFlamethrower,CostResource[Vespene]" Value="20"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskImproved,CostResource[Vespene]" Value="20"/>
-        <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskAA,CostResource[Vespene]" Value="20"/>    
+        <EffectArray Operation="Subtract" Reference="Unit,AP_TrooperMengskAA,CostResource[Vespene]" Value="20"/>
     </CUpgrade>
     <CUpgrade id="AP_TrooperMengskImproved"/>
     <CUpgrade id="AP_TrooperMengskAA"/>
@@ -16922,4 +16923,48 @@
     <CUpgrade id="AP_ImpalerTentacleExtensions"/>
     <CUpgrade id="AP_ImpalerDistributedAttack"/>
     <CUpgrade id="AP_TempestDistributedAttack"/>
+    <CUpgrade id="AP_BanelingSpawn"/>
+    <CUpgrade id="AP_HydraliskDenMaturation">
+        <EffectArray Operation="Subtract" Reference="Unit,AP_LurkerDen,CostResource[Minerals]" Value="100"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_LurkerDen,CostResource[Vespene]" Value="50"/>
+    </CUpgrade>
+    <CUpgrade id="AP_SpireMaturation">
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GreaterSpire,CostResource[Minerals]" Value="100"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_GreaterSpire,CostResource[Vespene]" Value="150"/>
+    </CUpgrade>
+    <CUpgrade id="AP_InfestedMarineExtended">
+        <EffectArray Reference="Behavior,AP_SIInfestedBunkerTrainTimedLife,Duration" Value="30"/>
+        <EffectArray Reference="Behavior,AP_SIBarracksTrainTimedLife,Duration" Value="30.000000"/>
+    </CUpgrade>
+    <CUpgrade id="AP_InfestedMarineSpeed">
+        <EffectArray Operation="Multiply" Reference="Unit,AP_SIInfestedMarine,Speed" Value="1.500000"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_SIInfestedMarine,SpeedMultiplierCreep" Value="0.66"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_SIInfestedTrooper,SpeedMultiplierCreep" Value="0.66"/>
+        <EffectArray Operation="Multiply" Reference="Unit,AP_SIInfestedTrooper,Speed" Value="1.500000"/>
+    </CUpgrade>
+    <CUpgrade id="AP_InfestedSCVRepairBio">
+        <EffectArray Operation="Set" Reference="Abil,AP_InfestedSCVRepair,IgnoreFilters" Value="-;-"/>
+    </CUpgrade>
+    <CUpgrade id="AP_InfestedSCVRepairFree">
+        <EffectArray Operation="Subtract" Reference="Effect,AP_InfestedSCVRepair,DrainResourceCostFactor[Minerals]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_InfestedSCVRepair,DrainResourceCostFactor[Vespene]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_InfestedSCVRepair,DrainResourceCostFactor[Terrazine]" Value="0.25"/>
+        <EffectArray Operation="Subtract" Reference="Effect,AP_InfestedSCVRepair,DrainResourceCostFactor[Custom]" Value="0.25"/>
+    </CUpgrade>
+    <CUpgrade id="AP_LurkerDetection">
+        <LeaderAlias value="AP_LurkerCarapace"/>
+    </CUpgrade>
+    <CUpgrade id="AP_LurkerFastMorph">
+        <EffectArray Operation="Subtract" Reference="Abil,AP_MorphHydraliskToLurker,InfoArray[Train1].Time" Value="14.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AP_MorphlingToLurker,InfoArray[Train1].Time" Value="15.000000"/>
+    </CUpgrade>
+    <CUpgrade id="AP_ScourgeSpawn"/>
+    <CUpgrade id="AP_LurkerCarapace"/>
+    <CUpgrade id="AP_LurkerRangeCreep">
+        <EffectArray Reference="Weapon,AP_Lurker,Range" Value="1"/>
+        <AffectedUnitArray value="AP_Lurker"/>
+        <AffectedUnitArray value="AP_LurkerBurrowed"/>
+    </CUpgrade>
+    <CUpgrade id="AP_ZergBuildingSpawnSplitterlings"/>
+    <CUpgrade id="AP_CreepTumorSuperCloak"/>
 </Catalog>

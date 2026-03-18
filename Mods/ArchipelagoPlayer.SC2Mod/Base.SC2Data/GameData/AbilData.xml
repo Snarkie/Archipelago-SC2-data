@@ -3864,6 +3864,9 @@
         <Flags index="IgnorePlacement" value="0"/>
         <Flags index="SuppressMovement" value="1"/>
         <InfoArray Unit="AP_LurkerBurrowed" RandomDelayMax="0.25">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value="AP_LurkerCarapaceABDummy"/>
+            </SectionArray>
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
@@ -3885,6 +3888,9 @@
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="SuppressMovement" value="1"/>
         <InfoArray Unit="AP_Lurker" RandomDelayMax="0.5">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value="AP_LurkerCarapaceABDummy"/>
+            </SectionArray>
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
@@ -11806,6 +11812,12 @@
         <InfoArray index="Build23" Unit="AP_TradeStructure" Time="40">
             <Button DefaultButtonFace="AP_TradeStructure" State="Restricted" Requirements="AP_NotHaveTradeStructure"/>
         </InfoArray>
+        <InfoArray index="Build29" Unit="AP_GreaterSpire" Time="40">
+            <Button DefaultButtonFace="AP_GreaterHydraliskDen" Requirements="AP_GreaterSpire"/>
+        </InfoArray>
+        <InfoArray index="Build30" Unit="AP_LurkerDen" Time="40">
+            <Button DefaultButtonFace="AP_GreaterHydraliskDen" Requirements="AP_GreaterHydraliskDen"/>
+        </InfoArray>
     </CAbilBuild>
     <CAbilBuild id="AP_CreepTumorBuild">
         <Alert value="BuildComplete_Zerg"/>
@@ -16389,4 +16401,96 @@
         <AutoCastValidatorArray value="NotLarvaEgg"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_TempestDistributedAttack" Requirements="AP_HaveTempestDistributedAttack"/>
     </CAbilEffectTarget>
+    <CAbilMorph id="AP_AutoMorphHydraDen">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_GreaterHydraliskDen" Requirements="AP_HydraliskDenMaturation"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <ActorKey value=""/>
+        <Flags index="Automatic" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray Unit="AP_LurkerDen" CollideRange="0"/>
+    </CAbilMorph>
+    <CAbilMorph id="AP_AutoMorphSpire">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_GreaterSpire" Requirements="AP_SpireMaturation"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <ActorKey value=""/>
+        <Flags index="Automatic" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray Unit="AP_GreaterSpire" CollideRange="0"/>
+    </CAbilMorph>
+    <CAbilEffectTarget id="AP_InfestedSCVRepair">
+        <AbilSetId value="Repair"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOffOwnerLeave" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="BestUnit" value="0"/>
+        <Flags index="ReExecutable" value="1"/>
+        <Flags index="Smart" value="1"/>
+        <Flags index="PassengerAcquirePassengers" value="1"/>
+        <TargetFilters value="Visible;Self,Enemy,Missile,UnderConstruction,Dead,Hidden"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastRange value="7"/>
+        <UseMarkerArray index="Approach" value="0"/>
+        <UseMarkerArray index="Prep" value="0"/>
+        <UseMarkerArray index="Cast" value="0"/>
+        <UseMarkerArray index="Channel" value="0"/>
+        <InheritAttackPriorityArray index="Prep" value="1"/>
+        <InheritAttackPriorityArray index="Cast" value="1"/>
+        <InheritAttackPriorityArray index="Channel" value="1"/>
+        <DefaultError value="RequiresRepairTarget"/>
+        <IgnoreFilters value="Mechanical;-"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Repair">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <AutoCastValidatorArray value="AP_HealBlacklist"/>
+    </CAbilEffectTarget>
+    <CAbilTrain id="AP_ScourgeSpawn">
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray index="Train1" Effect="AP_ScourgeSpawnAB">
+            <Cooldown Location="Player" TimeUse="30"/>
+            <Button DefaultButtonFace="AP_ScourgeSpawn" State="Restricted" Requirements="AP_ScourgeSpawn"/>
+            <Unit value="AP_Scourge"/>
+            <Unit value="AP_Scourge"/>
+            <Unit value="AP_Scourge"/>
+            <Unit value=""/>
+            <Unit value=""/>
+            <Unit value=""/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="AP_BanelingSpawn">
+        <Flags index="IgnoreUnitCost" value="1"/>
+        <InfoArray index="Train1" Effect="AP_BanelingSpawnAB">
+            <Cooldown Location="Player" TimeUse="30"/>
+            <Button DefaultButtonFace="AP_BanelingSpawn" State="Restricted" Requirements="AP_BanelingSpawn"/>
+            <Unit value="AP_Baneling"/>
+            <Unit value="AP_Baneling"/>
+            <Unit value="AP_Baneling"/>
+            <Unit value=""/>
+            <Unit value=""/>
+            <Unit value=""/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+    </CAbilTrain>    
+    <CAbilRally id="AP_BanelingNestRally">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <CmdButtonArray index="Rally1" Requirements="AP_BanelingNestRally"/>
+        <CmdButtonArray index="Rally2" Requirements="AP_BanelingNestRally"/>
+        <CmdButtonArray index="Rally3" Requirements="AP_BanelingNestRally"/>
+    </CAbilRally>
+    <CAbilRally id="AP_SpireRally">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <CmdButtonArray index="Rally1" Requirements="AP_SpireRally"/>
+        <CmdButtonArray index="Rally2" Requirements="AP_SpireRally"/>
+        <CmdButtonArray index="Rally3" Requirements="AP_SpireRally"/>
+    </CAbilRally>
 </Catalog>

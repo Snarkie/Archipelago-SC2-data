@@ -16057,5 +16057,18 @@
         <AssetArray File="AP\Assets\Sounds\Terrorzor_AntiAir_Impact_4.wav" FacialGroup=""/>
         <AssetArray File="AP\Assets\Sounds\Terrorzor_AntiAir_Impact_5.wav" FacialGroup=""/>
         <Volume value="-4.000000,-2.000000"/>
+    </CSound>    
+    <CSound id="AP_YggdrasilAssimilate" parent="Spell">
+        <AssetArray File="Assets\Sounds\Spell_Consumption_Launch_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Consumption_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Consumption_Launch_02.wav" FacialGroup=""/>
+    </CSound>
+    <CSound id="AP_YggdrasilAssimilateEnd" parent="Spell">
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Explosions\Zerg_ExplosionMedium0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Explosions\Zerg_ExplosionMedium1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Explosions\Zerg_ExplosionMedium2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Explosions\Zerg_ExplosionMedium3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Explosions\Zerg_ExplosionMedium4.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Explosions\Zerg_ExplosionMedium5.wav" FacialGroup=""/>
     </CSound>
 </Catalog>
