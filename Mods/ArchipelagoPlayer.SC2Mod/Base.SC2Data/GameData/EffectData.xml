@@ -4546,8 +4546,8 @@
     </CEffectApplyBehavior>
     <CEffectSet id="AP_VoidZealotShadowChargeSet">
         <EditorCategories value="Race:Protoss"/>
-        <EffectArray value="AP_VoidZealotShadowChargeStunTarget"/>
-        <EffectArray value="AP_VoidZealotShadowChargeSlowTarget"/>
+        <EffectArray value="AP_VoidZealotShadowChargeSearch"/>
+        <EffectArray value="AP_CenturionCloakAB"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_VoidZealotShadowChargeSlowTarget">
         <EditorCategories value=""/>
@@ -8068,7 +8068,7 @@
         <Kind value="Ranged"/>
         <Amount value="6"/>
         <Visibility value="Visible"/>
-    </CEffectDamage> 
+    </CEffectDamage>
     <CEffectCreatePersistent id="AP_InterceptorAiurLaunchPersistent">
         <EditorCategories value="Race:Protoss"/>
         <WhichLocation Value="TargetUnit"/>
@@ -11502,6 +11502,7 @@
         <EditorCategories value=""/>
         <EffectArray value="AP_Blink"/>
         <EffectArray value="AP_PhaseBlinkDamageAB"/>
+        <EffectArray value="AP_StalkerTaldarimAttackUpgradeRB"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectDamage id="AP_AlarakParticleDisruptorsU" parent="DU_WEAP_MISSILE">
@@ -12691,7 +12692,7 @@
         <PeriodicOffsetArray value="1,0,0"/>
         <PeriodicOffsetArray value="1.25,0,0"/>
         <PeriodicPeriodArray value="0.025"/>
-    </CEffectCreatePersistent>  
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="AP_SOAMothershipv4WarpAwayAB">
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Source"/>
@@ -14999,7 +15000,6 @@
     </CEffectCreatePersistent>
     <CEffectCreateUnit id="AP_StrainInjectionSplitterlingCU">
         <CreateFlags index="UseFood" value="0"/>
-        <RallyUnit Value="Source"/>
         <SpawnEffect value="AP_StrainInjectionSplitterlingSpawn"/>
         <SpawnUnit value="AP_HotSSplitterlingMedium"/>
         <SpawnRange value="4"/>
@@ -15025,7 +15025,7 @@
     </CEffectSet>
     <CEffectCreateUnit id="AP_StrainInjectionSplitterlingSecondCU">
         <CreateFlags index="UseFood" value="0"/>
-        <RallyUnit Effect="AP_StrainInjectionSplitterlingCU" Value="SourceUnit"/>
+        <RallyUnit Effect="AP_StrainInjectionSplitterlingCU" Value="Source"/>
         <SpawnEffect value="AP_TimedLife20AB"/>
         <SpawnUnit value="AP_HotSSplitterlingMedium"/>
         <SpawnRange value="4"/>
@@ -18965,10 +18965,10 @@
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,Missile,Dead,Hidden"/>
         <AreaArray Radius="7.5" Effect="AP_TaldarimMothershipGroundSlowAB"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
-    </CEffectEnumArea>  
+    </CEffectEnumArea>
     <CEffectApplyBehavior id="AP_TaldarimMothershipGroundSlowAB">
         <Behavior value="AP_TaldarimMothershipGroundSlowDebuff"/>
-    </CEffectApplyBehavior>  
+    </CEffectApplyBehavior>
     <CEffectCreatePersistent id="AP_TornadoMissileCP">
         <ValidatorArray value="AP_TornadoMaxDistance"/>
         <ValidatorArray value="AP_TornadoMissileFilters"/>
@@ -20365,7 +20365,7 @@
         <EditorCategories value="Race:Protoss"/>
         <ValidatorArray value="AP_IsAiurUnit"/>
         <Behavior value="AP_AiurMothershipEnergyRegenAuraBuffAiur"/>
-    </CEffectApplyBehavior> 
+    </CEffectApplyBehavior>
     <CEffectSet id="AP_AiurMothershipEnergyRegenAuraSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_AiurMothershipEnergyRegenAuraBuffAB"/>
@@ -24849,7 +24849,7 @@
     <CEffectSet id="AP_VoidStalkerBlinkMultipleSet">
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_VoidStalkerBlinkMultiple"/>
-        <EffectArray value="AP_VoidStalkerBlinkMultipleCooldown"/>
+        <ValidatorArray value="AP_CasterNotFungalGrowthed"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
     <CEffectEnumArea id="AP_OracleStasisWardActivateSearchAir">
@@ -25717,7 +25717,7 @@
         <EditorCategories value=""/>
         <WhichUnit Value="Source"/>
         <BehaviorLink value="AP_LurkerCarapace"/>
-    </CEffectRemoveBehavior>   
+    </CEffectRemoveBehavior>
     <CEffectCreateUnit id="AP_ZergBuildingSpawnSplitterling2">
         <ValidatorArray value="AP_ZergBuildingSpawnSplitterlings"/>
         <EditorCategories value="Race:Zerg"/>
@@ -25748,4 +25748,126 @@
         <SpawnUnit value="AP_HotSSplitterlingMedium"/>
         <SpawnCount value="6"/>
     </CEffectCreateUnit>
+    <CEffectSet id="AP_StalkerTaldarimAttackUpgrade">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_StalkerTaldarimAttackUpgradeU"/>
+        <EffectArray value="AP_StalkerEntropyLanceSearch"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AP_StalkerTaldarimAttackUpgradeAB">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_StalkerTaldarimAttackUpgradeRestock"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="AP_StalkerTaldarimAttackUpgradeLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="AP_StalkerTaldarimAttackUpgrade"/>
+        <AmmoUnit value="AP_StalkerTaldarimAttackUpgradeMissile"/>
+        <Movers Link="AP_StalkerPurifierWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="AP_StalkerTaldarimAttackLM">
+        <ValidatorArray index="0" value="AP_NoStalkerTaldarimAttackBuff"/>
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="AP_StalkerTaldarimAttack"/>
+        <AmmoUnit value="AP_StalkerTaldarimAttackMissile"/>
+        <Movers Link="AP_StalkerPurifierWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectRemoveBehavior id="AP_StalkerTaldarimAttackUpgradeRB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AP_StalkerTaldarimAttackUpgradeRestock"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="AP_StalkerTaldarimAttackUpgradeSet">
+        <ValidatorArray value="AP_HasStalkerTaldarimAttackBuff"/>
+        <EditorCategories value=""/>
+        <EffectArray value="AP_StalkerTaldarimAttackUpgradeLM"/>
+        <EffectArray value="AP_PhaseBlinkDamageRB"/>
+        <EffectArray value="AP_StalkerTaldarimAttackUpgradeAB"/>
+    </CEffectSet>
+    <CEffectDamage id="AP_StalkerTaldarimAttackUpgradeU" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Protoss"/>
+        <AttributeBonus index="Armored" value="8"/>
+        <Amount value="20"/>
+        <AreaArray Fraction="1"/>
+        <AreaArray Fraction="0.5"/>
+        <AreaArray Fraction="0.25"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="-;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectSet id="AP_StalkerTaldarimAttack">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_StalkerTaldarimAttackU"/>
+        <EffectArray value="AP_StalkerEntropyLanceSearch"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="AP_StalkerPurifierAttackLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="AP_StalkerPurifierAttack"/>
+        <AmmoUnit value="AP_StalkerPurifierAttackMissile"/>
+        <Movers Link="AP_StalkerPurifierWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="AP_StalkerPurifierAttackSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_StalkerPurifierAttackMarkerAB"/>
+        <EffectArray value="AP_StalkerPurifierAttackLM"/>
+    </CEffectSet>
+    <CEffectSet id="AP_StalkerTaldarimAttackSet">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_StalkerTaldarimAttackLM"/>
+        <EffectArray value="AP_StalkerTaldarimAttackUpgradeSet"/>
+    </CEffectSet>
+    <CEffectDamage id="AP_StalkerPurifierAttackU" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Protoss"/>
+        <AttributeBonus index="Armored" value="4"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectSet id="AP_StalkerPurifierAttack">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_StalkerPurifierAttackU"/>
+    </CEffectSet>
+    <CEffectDamage id="AP_StalkerTaldarimAttackU" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Protoss"/>
+        <AttributeBonus index="Armored" value="4"/>
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="AP_StalkerPurifierAttackMarkerAB">
+        <EditorCategories value=""/>
+        <Behavior value="AP_StalkerPurifierAttackMarker"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="AP_VoidStalkerBlinkMultipleCP">
+        <EditorCategories value=""/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="AP_VoidStalkerBlinkMultipleSearch"/>
+        <PeriodicEffectArray value="AP_VoidStalkerBlinkMultiple"/>
+        <PeriodicEffectArray value="AP_VoidStalkerBlinkMultipleSearch"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="AP_VoidStalkerBlinkMultipleCasterAB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_VoidStalkerBlinkMultipleCaster"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="AP_VoidStalkerBlinkMultipleSearch">
+        <ValidatorArray value="AP_VoidStalkerBlinkMultiple"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="AP_StalkerPurifierAttackTarget"/>
+            <SortArray value="TSRandom"/>
+        </TargetSorts>
+        <AreaArray Arc="29.9926" Radius="15" Effect="AP_VoidStalkerBlinkMultipleTargetSet"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AP_VoidStalkerBlinkMultipleTargetSet">
+        <ValidatorArray value="AP_TargetInWeaponRange"/>
+        <EditorCategories value=""/>
+        <EffectArray value="AP_VoidStalkerBlinkMultipleCasterAB"/>
+        <EffectArray value="AP_StalkerPurifierAttackLM"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="AP_CenturionCloakAB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_CenturionCloak"/>
+    </CEffectApplyBehavior>
 </Catalog>
