@@ -564,6 +564,7 @@ trigger lib15EF4C78_gt_AP_Player_YggdrasilConsumeBuild;
 trigger lib15EF4C78_gt_AP_Player_YggdrasilConsumeComplete;
 trigger lib15EF4C78_gt_AP_Player_YggdrasilDeathSafety;
 trigger lib15EF4C78_gt_AP_Player_YggdrasilBuildingDeathSafety;
+trigger lib15EF4C78_gt_AP_Player_GreaterSpireFixFacing;
 trigger lib15EF4C78_gt_EmitTransformerLand;
 
 // Library Initialization
