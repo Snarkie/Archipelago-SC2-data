@@ -1820,7 +1820,7 @@
         <On Terms="UnitBirth.AP_NydusWorm.Normal" Send="Create"/>
         <On Terms="UnitBirth.AP_EchidnaWorm.Normal" Send="Create"/>
         <On Terms="Behavior.AP_SalvageNydus.On" Send="Create"/>
-        <On Terms="Behavior.AP_SalvageNydus.Off" Send="Destroy"/> 
+        <On Terms="Behavior.AP_SalvageNydus.Off" Send="Destroy"/>
         <Sound value="Nydus_Unburrow"/>
     </CActorSound>
     <CActorModel default="1" id="AP_SITerranBuildingBuild" parent="TerranModelConstruction">
@@ -11540,6 +11540,9 @@
         <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.Stop" Send="Destroy"/>
         <On Terms="AbilMorph.*.Start; MorphTo AP_LurkerBurrowed; Selected" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphTo AP_Lurker" Send="Destroy"/>
+        <On Terms="ActorCreation; ValidateUnit AP_LurkerRangeCreep" Send="SetVisibility"/>
+        <On Terms="Behavior.AP_LurkerRangeCreep.On" Send="SetVisibility"/>
+        <On Terms="Behavior.AP_LurkerRangeCreep.Off" Send="SetVisibility 1"/>
         <Weapon value="AP_Lurker"/>
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.000000"/>
@@ -22575,7 +22578,7 @@
         <On Terms="Behavior.AP_AstralRestorationCaster.On" Send="Create"/>
         <On Terms="Behavior.AP_AstralRestorationCaster.Off" Send="Destroy"/>
         <On Terms="ActorCreation" Send="$Birth PlayForever,ForceLooping"/>
-        <On Terms="ActorCreation" Send="SetOpacity 0.450000"/>    
+        <On Terms="ActorCreation" Send="SetOpacity 0.450000"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <Model value="AP_AstralRestoration"/>
         <Host Subject="_Selectable"/>
@@ -24747,7 +24750,7 @@
         <On Terms="UnitBirth.AP_MothershipPurifierPowerSource" Send="Create"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create AP_Mothership_Land"/>
         <On Terms="Behavior.AP_PlanetCracker.On" Send="AnimBracketStart AR Stand,Work,Start Stand,Work Stand,Work,End"/>
-        <On Terms="Behavior.AP_PlanetCracker.Off" Send="AnimBracketStop AR"/>        
+        <On Terms="Behavior.AP_PlanetCracker.Off" Send="AnimBracketStop AR"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCorePurifier" Send="Create"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCorePurifier" Send="SetScale 0.010000"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_MothershipCorePurifier" Send="SetScale 1.000000 0.500000"/>
@@ -25278,7 +25281,7 @@
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
         <Lifetime value="-1.000000"/>
     </CActorAction>
-    <CActorBeamSimple id="AP_PurifierMothershipAttackBeam" parent="BeamSimpleAnimationStyleContinuous"> 
+    <CActorBeamSimple id="AP_PurifierMothershipAttackBeam" parent="BeamSimpleAnimationStyleContinuous">
         <Macros value="ActionTargetTeleportDestroy"/>
         <On Terms="Effect.AP_PurifierMothershipBeamPersistent.Start" Send="SetTintColor {255,197,60 3.000000}"/>
         <On Terms="Effect.AP_PurifierMothershipBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
@@ -25317,7 +25320,7 @@
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
         <Lifetime value="-1.000000"/>
     </CActorAction>
-    <CActorBeamSimple id="AP_AiurMothershipAttackBeam" parent="BeamSimpleAnimationStyleContinuous"> 
+    <CActorBeamSimple id="AP_AiurMothershipAttackBeam" parent="BeamSimpleAnimationStyleContinuous">
         <Macros value="ActionTargetTeleportDestroy"/>
         <On Terms="Effect.AP_AiurMothershipBeamPersistent.Start" Send="SetTintColor {255,197,60 3.000000}"/>
         <On Terms="Effect.AP_AiurMothershipBeamPersistent.Stop" Send="AnimBracketStop BSD"/>
@@ -47383,4 +47386,32 @@
         <On Terms="Effect.AP_YggdrasilDrainPresistent.Stop; At Target" Send="Create"/>
         <Sound value="AP_YggdrasilAssimilateEnd"/>
     </CActorSound>
+    <CActorRange id="AP_LurkerRange9">
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.StartEditorGround" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.StartEditorFlyer" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.Stop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_LurkerBurrowed; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_Lurker" Send="Destroy"/>
+        <On Terms="ActorCreation; !ValidateUnit AP_LurkerRange9" Send="SetVisibility"/>
+        <On Terms="Behavior.AP_LurkerRangeCreep.On; ValidateUnit AP_LurkerRange9" Send="SetVisibility 1"/>
+        <On Terms="Behavior.AP_LurkerRangeCreep.Off" Send="SetVisibility"/>
+        <Range value="9.000000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.000000"/>
+    </CActorRange>
+    <CActorRange id="AP_LurkerRange11">
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.StartEditorGround" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.StartEditorFlyer" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AP_LurkerBurrowed.Stop" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_LurkerBurrowed; Selected" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_Lurker" Send="Destroy"/>
+        <On Terms="ActorCreation; !ValidateUnit AP_LurkerRange11" Send="SetVisibility"/>
+        <On Terms="Behavior.AP_LurkerRangeCreep.On; ValidateUnit AP_LurkerRange11" Send="SetVisibility 1"/>
+        <On Terms="Behavior.AP_LurkerRangeCreep.Off" Send="SetVisibility"/>
+        <Range value="11.000000"/>
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.000000"/>
+    </CActorRange>
 </Catalog>

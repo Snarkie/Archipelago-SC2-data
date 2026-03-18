@@ -8065,4 +8065,18 @@
         <WhichUnit Value="Source"/>
         <Find value="0"/>
     </CValidatorUnitWeaponFiring>
+    <CValidatorPlayerRequirement id="AP_NotHaveLurkerRange">
+        <Value value="AP_HaveLurkerRange"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="AP_LuirkerRange9"/>
+    <CValidatorCombine id="AP_LurkerRange11">
+        <Type value="And"/>
+        <CombineArray value="AP_HaveLurkerRange"/>
+        <CombineArray value="AP_LurkerRangeCreep"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AP_LurkerRange9">
+        <Type value="And"/>
+        <CombineArray value="AP_NotHaveLurkerRange"/>
+        <CombineArray value="AP_LurkerRangeCreep"/>
+    </CValidatorCombine>
 </Catalog>
