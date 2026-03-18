@@ -11098,6 +11098,7 @@
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
+        <Requirements value="AP_LurkerDetection"/>
         <Modification SightBonus="4" Detect="11"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_ScourgeSpawnTimedLife" parent="TimedLife">
