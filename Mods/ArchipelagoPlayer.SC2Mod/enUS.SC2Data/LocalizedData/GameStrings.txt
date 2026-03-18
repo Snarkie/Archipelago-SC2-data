@@ -2833,7 +2833,7 @@ Button/Tooltip/AP_CorsairSustainingDisruption=Disruption Webs last longer.
 Button/Tooltip/AP_CreepTumor=A burrowed creep generator. Creep feeds nearby Zerg structures. A Creep Tumor can spawn additional Creep Tumors.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/AP_CreepTumorBurrowed=A burrowed creep generator. Creep feeds nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
 Button/Tooltip/AP_CreepTumorPassive=Automatically produces creep to feed nearby Zerg structures.<n/><n/><c val="#ColorAttackInfo">Bonus: Zerg move faster on creep.</c>
-Button/Tooltip/Ap_CreepTumorSuperCloak=Creep Tumors are undetectable
+Button/Tooltip/AP_CreepTumorSuperCloak=Creep Tumors are undetectable.
 Button/Tooltip/AP_CripplingPsionicStorm=Creates a storm of psionic energy that lasts 4 seconds, causing up to 80 damage to all enemy units in the target area. Does NOT damage friendly units.
 Button/Tooltip/AP_CripplingPsionicStormUpgraded=Creates a storm of psionic energy that lasts 4 seconds, causing up to 112 damage to all enemy units in the target area. Does NOT damage friendly units.
 Button/Tooltip/AP_CriusSuit=Ghost is permanently cloaked.
