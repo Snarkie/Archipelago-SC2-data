@@ -25751,7 +25751,6 @@
     <CEffectSet id="AP_StalkerTaldarimAttackUpgrade">
         <EditorCategories value=""/>
         <EffectArray value="AP_StalkerTaldarimAttackUpgradeU"/>
-        <EffectArray value="AP_StalkerEntropyLanceSearch"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_StalkerTaldarimAttackUpgradeAB">
         <WhichUnit Value="Caster"/>
@@ -25796,7 +25795,6 @@
     <CEffectSet id="AP_StalkerTaldarimAttack">
         <EditorCategories value=""/>
         <EffectArray value="AP_StalkerTaldarimAttackU"/>
-        <EffectArray value="AP_StalkerEntropyLanceSearch"/>
     </CEffectSet>
     <CEffectLaunchMissile id="AP_StalkerPurifierAttackLM">
         <EditorCategories value="Race:Protoss"/>
