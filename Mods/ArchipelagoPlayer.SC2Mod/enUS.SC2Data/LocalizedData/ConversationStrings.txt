@@ -1,0 +1,3 @@
+﻿Character/Name/Ghost=Ghost
+Conversation/Ghost/Line/TauntFemale=Know what I like about nukes? One shot - so many kills.
+Conversation/Ghost/Line/TauntMale=Now THAT's an ass-whoopin'!

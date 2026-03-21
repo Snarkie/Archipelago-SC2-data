@@ -5,6 +5,9 @@ static const int MAX_TRIES = 20;
 static const string BUILDING_TYPE = "AP_GhostTrapSpawner";
 static const string UNIT_TYPE = "AP_Ghost";
 static const string NUKE_TYPE = "AP_Nuke";
+static const string NUKE_DAMAGE_EFFECT = "AP_NukeDamage";
+// if a ghost gets this many kills with a single nuke, trigger a taunt message
+static const int NUKE_TAUNT_KILL_THRESHOLD = 20;
 
 // used to track idle state
 static const int CUSTOM_VALUE_X = 15;
@@ -12,6 +15,7 @@ static const int CUSTOM_VALUE_Y = 16;
 static const int CUSTOM_VALUE_TIMER = 17;
 
 // Config
+// Some of these are overridden in the difficulty setup
 static fixed SpawnInitialDelay = 20.0;
 static fixed SpawnInterval = 60.0;
 static fixed NukeInterval = 90.0;
@@ -62,6 +66,7 @@ static bool SendingWave = false;
 static bool NukeRearming = false;
 static int NukeCounter = 0;
 static int NukeCooldownTics = 0;
+static int NukeKillsRecent = 0;
 static playergroup playersActive = PlayerGroupEmpty();
 static unitgroup BuildingsActive = UnitGroupEmpty();
 static unitgroup GhostsActive = UnitGroupEmpty();
@@ -94,6 +99,7 @@ static string ActorMessageWorkEnd =
 static trigger TriggerNukeRearm;
 static trigger TriggerWaitForAttackWave;
 static trigger TriggerOnAttackWave;
+static trigger TriggerOnNukeKill;
 
 // pass to trigger
 static int ParamPlayer = 0;
@@ -488,6 +494,52 @@ bool AP_GhostSpawn_triggerNukeRearmFunc(bool testConds, bool runActions) {
     return false;
 }
 
+static bool nukeTaunt(){
+    int randomLine = RandomInt(1,2);
+    soundlink line;
+    string portrait;
+    // Male or Female Ghost is currently handled with Actors only, and cannot be detected via trigger
+    // So we just randomly play a male or female line, which does not necessarily match the nuking ghost
+    if (randomLine == 1) {
+        line = SoundLink("AP_GhostSpawnTauntMale",0);
+        portrait = "GhostPortrait";
+    }
+    if (randomLine == 2) {
+        line = SoundLink("AP_GhostSpawnTauntFemale",0);
+        portrait = "GhostAlternatePortrait";
+    }
+    libNtve_gf_SetAllSoundChannelVolumes(libNtve_ge_VolumeChannelMode_Speech, PlayerGroupAll(), 0);
+    libNtve_gf_SendTransmissionSimple(TransmissionSourceFromModel(portrait),
+        libNtve_gf_CinematicPortrait(libNtve_ge_CinematicPortraitPosition_CenterLeft),
+        line, 0.0, c_transmissionDurationAdd, true);
+    libNtve_gf_SetAllSoundChannelVolumes(libNtve_ge_VolumeChannelMode_Game, PlayerGroupAll(), 0);
+    return true;
+}
+
+bool AP_GhostSpawn_triggerOnNukeKillFunc(bool testConds, bool runActions) {
+    int user = lib5BD4895D_gf_AP_Core_getUser();
+    if (EventUnitDamageEffect() != NUKE_DAMAGE_EFFECT ||
+        UnitGetOwner(EventUnit()) != user ||
+        UnitGetOwner(libNtve_gf_KillingUnit()) == user) {
+        return false;
+    }
+    if (NukeKillsRecent <= 0) {
+        NukeKillsRecent = 1;
+        Wait(2, c_timeAI);
+        if (NukeKillsRecent >= NUKE_TAUNT_KILL_THRESHOLD) {
+            // only play taunt once per mission
+            TriggerEnable(TriggerGetCurrent(), false);
+            nukeTaunt();
+        }
+        NukeKillsRecent = 0;
+    }
+    else {
+        NukeKillsRecent += 1;
+    }
+    return true;
+}
+
+
 void AP_GhostSpawn_ghostTactical(int owner, unit ghost, unitgroup nearbyUnits) {
     point p;
     region r;
@@ -529,4 +581,6 @@ void AP_GhostSpawn_init() {
     TriggerOnAttackWave = TriggerCreate("AP_GhostSpawn_triggerOnAttackWaveFunc");
     TriggerNukeRearm = TriggerCreate("AP_GhostSpawn_triggerNukeRearmFunc");
     TriggerAddEventTimePeriodic(TriggerNukeRearm, 5, c_timeAI);
+    TriggerOnNukeKill= TriggerCreate("AP_GhostSpawn_triggerOnNukeKillFunc");
+    TriggerAddEventUnitDied(TriggerOnNukeKill, null);
 }
