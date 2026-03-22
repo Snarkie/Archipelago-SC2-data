@@ -177,7 +177,7 @@ static bool SpawnLoop(unit spawnBuilding) {
     while (UnitIsAlive(spawnBuilding)) {
         g = UnitGroupEmpty();
         while (UnitGroupCount(g, c_unitCountAlive) < GroupSize) {
-            if (!UnitIsAlive(spawnBuilding)){ break; }
+            if (!UnitIsAlive(spawnBuilding)){ return false; }
             if (UnitGroupCount(GhostsActive, c_unitCountAlive) >= GhostsActiveMax) {
                 libNtve_gf_SendActorMessageToUnit(spawnBuilding, ActorMessageWorkEnd);
                 Wait(5, c_timeAI);
@@ -187,6 +187,7 @@ static bool SpawnLoop(unit spawnBuilding) {
                 libNtve_gf_SendActorMessageToUnit(spawnBuilding, ActorMessageWork);
                 Wait(SpawnInterval/GroupSize, c_timeAI);
             }
+            if (!UnitIsAlive(spawnBuilding)){ return false; }
             ghost = UnitGroupUnit(UnitCreate(1, UNIT_TYPE, 0, player, spawnLocation, 270), 1);
             UnitGroupAdd(g, ghost);
             UnitGroupAdd(GhostsActive, ghost);
@@ -454,7 +455,7 @@ static bool detectIdle() {
                 AISetUnitSuicide(u, true);
             }
             else {
-                UnitSetCustomValue(u, 17, idleTime);
+                UnitSetCustomValue(u, CUSTOM_VALUE_TIMER, idleTime);
             }
         }
         else {
