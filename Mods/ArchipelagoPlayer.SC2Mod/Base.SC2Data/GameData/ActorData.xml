@@ -47509,7 +47509,7 @@
         <Color value="0,0,0,0"/>
     </CActorSplat>
     <CActorPower id="AP_NexusPower">
-        <On Terms="Behavior.AP_NexusPowerSource.Create" Send="Create"/>
+        <On Terms="Behavior.AP_NexusPowerSource.Create; ValidatePlayer AP_HaveNexusPowerField" Send="Create"/>
         <On Terms="Behavior.AP_NexusPowerSource.Destroy" Send="Destroy"/>
         <VisualArray value="AP_NexusUnpoweredVisual"/>
         <VisualArray value="AP_NexusPowerVisual"/>

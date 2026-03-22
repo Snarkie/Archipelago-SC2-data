@@ -8109,4 +8109,8 @@
         <Value value="AP_HavePylonImproved"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitInWeaponRange id="AP_TargetInWeaponRange2"/>
+    <CValidatorPlayerRequirement id="AP_HaveNexusPowerField">
+        <Find value="1"/>
+        <Value value="AP_HaveNexusPowerField"/>
+    </CValidatorPlayerRequirement>
 </Catalog>

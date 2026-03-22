@@ -17049,6 +17049,7 @@
         <EffectArray Reference="Unit,AP_Pylon,Food" Value="4"/>
         <EffectArray Operation="Multiply" Reference="Actor,UnpoweredVisual,Scale" Value="1.350000"/>
         <EffectArray Operation="Multiply" Reference="Actor,PowerVisual,Scale" Value="1.350000"/>
+        <EffectArray Operation="Multiply" Reference="Actor,AP_MatrixOverloadPowerSplat,Scale" Value="1.350000"/>
     </CUpgrade>
     <CUpgrade id="AP_StalwartImprovedBarrier">
         <EffectArray Operation="Subtract" Reference="Behavior,AP_HardenedShield,DamageResponse.ClampMaximum" Value="5"/>

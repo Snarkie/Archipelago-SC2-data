@@ -10358,8 +10358,19 @@ void libABFE498B_gf_AP_Triggers_Protoss_unlockPylonPsiEnhancement (int lp_player
 
 void libABFE498B_gf_AP_Triggers_Protoss_unlockNexusKhaydarinCore (int lp_player) {
     // Automatic Variable Declarations
+    unitgroup autoEC563A1C_g;
+    int autoEC563A1C_u;
+    unit autoEC563A1C_var;
+
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_NexusPowerField", 1);
+    autoEC563A1C_g = UnitGroup("AP_Nexus", lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    autoEC563A1C_u = UnitGroupCount(autoEC563A1C_g, c_unitCountAll);
+    for (;; autoEC563A1C_u -= 1) {
+        autoEC563A1C_var = UnitGroupUnitFromEnd(autoEC563A1C_g, autoEC563A1C_u);
+        if (autoEC563A1C_var == null) { break; }
+        lib15EF4C78_gf_AP_Player_ReapplyDefaultBehaviorsToUnit(autoEC563A1C_var);
+    }
 }
 
 void libABFE498B_gf_AP_Triggers_Protoss_unlockOperationalEfficiencyFleetBeacon (int lp_player) {
