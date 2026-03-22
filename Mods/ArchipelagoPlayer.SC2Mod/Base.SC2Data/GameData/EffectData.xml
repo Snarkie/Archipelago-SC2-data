@@ -25865,22 +25865,21 @@
         <EffectArray value="AP_StalkerPurifierAttackLM"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_CenturionCloakAB">
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Behavior value="AP_CenturionCloak"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AP_CenturionDodgeAB">
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <Behavior value="AP_CenturionDodge"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AP_CenturionDodgeHandled">
-        <EditorCategories value=""/>
         <EffectArray value="AP_CenturionDodgeReset"/>
         <EffectArray value="AP_CenturionDodgeAB"/>
     </CEffectSet>
+    <CEffectSet id="AP_CenturionDodgeInitial">
+        <EffectArray value="AP_CenturionDodgeReset"/>
+    </CEffectSet>
     <CEffectRemoveBehavior id="AP_CenturionDodgeRB">
-        <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
         <BehaviorLink value="AP_CenturionDodge"/>
     </CEffectRemoveBehavior>
@@ -25889,7 +25888,7 @@
         <Amount value="0"/>
         <SourceKey value="AP_CenturionDodge"/>
         <Operation value="Set"/>
-        <ValidateMin value="4"/>
+        <ValidateMin value="3"/>
         <ValidateMax value="10"/>
         <EffectSuccess value="AP_CenturionDodgeHandled"/>
         <BehaviorScope Behavior="AP_CenturionDodgeTracker"/>
@@ -25897,9 +25896,9 @@
     <CEffectUserData id="AP_CenturionDodgeTracker">
         <Key value="AP_CenturionDodge"/>
         <SourceKey value="AP_CenturionDodge"/>
-        <ValidateMax value="4"/>
+        <ValidateMax value="3"/>
         <BehaviorScope Behavior="AP_CenturionDodgeTracker"/>
-        <ValidateMin value="4"/>
+        <ValidateMin value="3"/>
         <EffectSuccess value="AP_CenturionDodgeHandled"/>
     </CEffectUserData>
 </Catalog>

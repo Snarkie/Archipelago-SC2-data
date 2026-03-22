@@ -8113,4 +8113,7 @@
         <Find value="1"/>
         <Value value="AP_HaveNexusPowerField"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="AP_NoCenturionDodge">
+        <WhichUnit Value="Caster"/>
+    <Behavior value="AP_CenturionDodge"/>
 </Catalog>

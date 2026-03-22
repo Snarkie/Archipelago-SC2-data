@@ -11154,7 +11154,8 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Requirements value="AP_CenturionDodge"/>
-        <InitialEffect value="AP_CenturionDodgeTracker"/>
+        <DisableValidatorArray value="AP_NoCenturionDodge"/>
+        <InitialEffect value="AP_CenturionDodgeInitial"/>
         <DamageResponse Handled="AP_CenturionDodgeTracker">
             <Chance value="1"/>
         </DamageResponse>
