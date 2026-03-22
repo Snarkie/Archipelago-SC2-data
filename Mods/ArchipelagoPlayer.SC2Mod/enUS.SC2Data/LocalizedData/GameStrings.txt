@@ -3920,7 +3920,7 @@ Button/Tooltip/AP_StalkerTaldarimAttackUpgrade=Every <d ref="Behavior,AP_Stalker
 Button/Tooltip/AP_StalkerTaldarimPhaseAlignment=Reduces the cooldown of Phase Armor by 1 second.
 Button/Tooltip/AP_StalwartArcInducers=Stalwarts damage up to 3 additional units when attacking.<n/><n/><c val="FFE303">War Council Upgrade.</c>
 Button/Tooltip/AP_StalwartHighVoltageCapacitors=Increases Stalwart attack bounce range by +1.
-Button/Tooltip/AP_StalwartImprovedBarrier=Hardened Shields reduce the damage even further.
+Button/Tooltip/AP_StalwartImprovedBarrier=Hardened Shields reduce incoming damage to a maximum of 5.
 Button/Tooltip/AP_StalwartLatticedShields=Increases Stalwart max shields by 50.
 Button/Tooltip/AP_StalwartStabilizedElectrodes=Allows Stalwarts to attack while moving, and increases attack range by +1.
 Button/Tooltip/AP_StalwartStrutEnhancements=Increases the movement speed of Stalwarts.
