@@ -2806,7 +2806,7 @@ Button/Tooltip/AP_CarrierStructuralIntegrityReinforcements=Increases Carrier arm
 Button/Tooltip/AP_CarrierTaldarim=Tal'darim Faction<n/>Capital ship. Fires a slow but powerful laser blast that damages enemies in a line.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AP_CausticSpray=Emits a stream of acid that deals <d ref="Effect,AP_CausticSprayLevel1_Damage,Amount/Effect,AP_CausticSprayLevel1_Persistent,PeriodicPeriodArray[0]" precision="1"/> damage per second for <d ref="Effect,AP_CausticSprayLevel1_Persistent,PeriodCount*Effect,AP_CausticSprayLevel1_Persistent,PeriodicPeriodArray[0]" precision="1"/> seconds, then increases to <d ref="Effect,AP_CausticSprayLevel2_Damage,Amount/Effect,AP_CausticSprayLevel2_Persistent,PeriodicPeriodArray[0]" precision="1"/> damage per second.<n/><n/><c val="ffff8a">Channeled ability.</c><c val="#ColorAttackInfo"> Can only target enemy structures.</c>
 Button/Tooltip/AP_CentrifugalHooksUpgrade=Increases Baneling movement speed.
-Button/Tooltip/AP_CenturionCloak=Centurions stay cloaked for 5 seconds after using Darkcoil.
+Button/Tooltip/AP_CenturionCloak=Cloaks the Centurion for 5 seconds after using Darkcoil.
 Button/Tooltip/AP_CenturionDodge=Centurions have <d ref="Behavior,AP_CenturionDodge,DamageResponse.Chance * 100"/>% chance to dodge incoming damage.
 Button/Tooltip/AP_CenturionResourceEfficiency=Centurions cost <d ref="$UpgradeEffectArrayValue:AP_ResourceEfficiencyCenturion:Unit,AP_ZealotShakuras,CostResource[Vespene]$"/> less vespene gas.<n/><n/><c val="FFE303">War Council Upgrade.</c>
 Button/Tooltip/AP_CerberusMines=Increases blast radius and trigger radius by 33%.
