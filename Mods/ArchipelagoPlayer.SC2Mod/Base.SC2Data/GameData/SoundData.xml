@@ -16092,6 +16092,6 @@
         <AssetArray File="Assets\Sounds\Nova_MolecularBlade_Launch_05.wav" FacialGroup=""/>
         <AssetArray File="Assets\Sounds\Nova_MolecularBlade_Launch_06.wav" FacialGroup=""/>
         <Pitch value="6.000000,6.000000"/>
-        <Volume value="-6.000000,-6.000000"/>
+        <Volume value="-10.000000,-10.000000"/>
     </CSound>
 </Catalog>
