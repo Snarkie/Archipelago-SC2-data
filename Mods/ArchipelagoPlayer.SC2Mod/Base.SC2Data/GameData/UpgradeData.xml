@@ -17039,7 +17039,6 @@
         <EffectArray Operation="Subtract" Reference="Behavior,AP_AlarakStalkerPhasingArmor,DamageResponse.Cost.Cooldown.TimeUse" Value="1.000000"/>
     </CUpgrade>
     <CUpgrade id="AP_NexusPowerField"/>
-    <CUpgrade id="AP_PhotonCannonPower"/>
     <CUpgrade id="AP_ProbePermanentCloak"/>
     <CUpgrade id="AP_PylonImproved">
         <EffectArray Reference="Unit,AP_Pylon,LifeMax" Value="100"/>
