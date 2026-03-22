@@ -5419,30 +5419,40 @@ void lib15EF4C78_gt_KerriganEconDrop_Init () {
 //--------------------------------------------------------------------------------------------------
 bool lib15EF4C78_gt_AP_Player_SentinelRecharge_Func (bool testConds, bool runActions) {
     // Variable Declarations
-    unit lv_u;
-    int lv_p;
+    unit lv_caster;
+    int lv_casterPlayer;
+    int lv_targetPlayer;
     fixed lv_remaining;
 
     // Automatic Variable Declarations
     // Variable Initialization
-    lv_u = EventPlayerEffectUsedUnit(c_effectUnitCaster);
-    lv_p = UnitGetOwner(lv_u);
+    lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
+    lv_casterPlayer = UnitGetOwner(lv_caster);
+    lv_targetPlayer = UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget));
 
     // Conditions
     if (testConds) {
-        if (!((TechTreeUpgradeCount(lv_p, "AP_SentinelRecharge", c_techCountCompleteOnly) >= 1))) {
+        if (!((TechTreeUpgradeCount(lv_casterPlayer, "AP_SentinelRecharge", c_techCountCompleteOnly) >= 1))) {
             return false;
         }
 
-        if (!((UnitGetType(lv_u) == "AP_ZealotPurifier"))) {
+        if (!((UnitGetType(lv_caster) == "AP_ZealotPurifier"))) {
             return false;
         }
 
-        if (!((UnitHasBehavior(lv_u, "AP_SentinelRechargeCooldown") == false))) {
+        if (!((UnitHasBehavior(lv_caster, "AP_SentinelRechargeCooldown") == false))) {
             return false;
         }
 
-        if (!((libNtve_gf_PlayerIsEnemy(lv_p, UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)), libNtve_ge_PlayerRelation_Enemy) == true))) {
+        if (!(((lv_casterPlayer >= 1) && (lv_casterPlayer <= 15)))) {
+            return false;
+        }
+
+        if (!(((lv_targetPlayer >= 1) && (lv_targetPlayer <= 15)))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerIsEnemy(lv_casterPlayer, lv_targetPlayer, libNtve_ge_PlayerRelation_Enemy) == true))) {
             return false;
         }
     }
@@ -5452,10 +5462,10 @@ bool lib15EF4C78_gt_AP_Player_SentinelRecharge_Func (bool testConds, bool runAct
         return true;
     }
 
-    UnitBehaviorAddCooldown(lv_u, "AP_ZealotPurifierReviveSupressed", "Behavior/AP_ZealotPurifierReviveSupressed", -1.0);
-    lv_remaining = UnitBehaviorDuration(lv_u, "AP_ZealotPurifierReviveSupressed");
-    UnitBehaviorSetDurationRemaining(lv_u, "AP_ZealotPurifierReviveSupressed", (lv_remaining-1));
-    UnitBehaviorAddPlayer(lv_u, "AP_SentinelRechargeCooldown", lv_p, 1);
+    UnitBehaviorAddCooldown(lv_caster, "AP_ZealotPurifierReviveSupressed", "Behavior/AP_ZealotPurifierReviveSupressed", -1.0);
+    lv_remaining = UnitBehaviorDuration(lv_caster, "AP_ZealotPurifierReviveSupressed");
+    UnitBehaviorSetDurationRemaining(lv_caster, "AP_ZealotPurifierReviveSupressed", (lv_remaining-1));
+    UnitBehaviorAddPlayer(lv_caster, "AP_SentinelRechargeCooldown", lv_casterPlayer, 1);
     return true;
 }
 
