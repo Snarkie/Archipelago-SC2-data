@@ -8877,6 +8877,7 @@
         <On Terms="ActorCreation; ValidateUnit AP_IsSiegeTankMengskAnyMode" Send="ModelSwap BlinkStopModel"/>
         <On Terms="ActorCreation; ValidateUnit AP_IsSiegeTankMengskAnyMode" Send="SetScale 2.000000"/>
         <On Terms="ActorCreation; ValidateUnit AP_IsGoliathMengsk" Send="ModelSwap BlinkStopModel"/>
+        <On Terms="ActorCreation; ValidateUnit AP_IsSlayer" Send="ModelSwap AP_BlinkOriginSlayer"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Model value="BlinkOriginModel"/>
@@ -8890,6 +8891,7 @@
         <On Terms="Effect.AP_Blink.Stop; At Source; ValidateUnit AP_NoDarkProtoss" Send="ModelSwap DarkBlinkStopModel"/>
         <On Terms="Effect.AP_VoidStalkerBlinkShieldRestore.Stop; At Source" Send="Create"/>
         <On Terms="ActorCreation; ValidateUnit AP_IsSiegeTankMengskAnyMode" Send="SetScale 2.000000"/>
+        <On Terms="ActorCreation; ValidateUnit AP_IsSlayer" Send="SetTintColor {255,20,20 2.500000}"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="BlinkStopModel"/>

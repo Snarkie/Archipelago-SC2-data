@@ -22239,4 +22239,11 @@
     <CModel id="AP_StalkerTaldarimAttackUpgradeBuff">
         <Model value="Assets\Effects\Terran\BattleCruiserMissile\BattleCruiserMissile.m3"/>
     </CModel>
+    <CModel id="AP_BlinkOriginSlayer">
+        <Model value="AP\Assets\Units\Protoss\StalkerTaldarim\Stalker_Taldarim_Collection_Ds_BlinkOut.m3"/>
+        <ScaleMax value="0.690000,0.690000,0.690000"/>
+        <ScaleMin value="0.690000,0.690000,0.690000"/>
+        <SelectionRadius value="0.833200"/>
+        <ShadowRadius value="0.833200"/>
+    </CModel>
 </Catalog>
