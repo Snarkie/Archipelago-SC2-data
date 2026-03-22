@@ -10802,7 +10802,7 @@
     </CEffectModifyUnit>
     <CEffectEnumArea id="AP_MatrixOverloadSearch">
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Worker,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="6" Effect="AP_MatrixOverloadSet"/>
+        <AreaArray Radius="9" Effect="AP_MatrixOverloadSet"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AP_MatrixOverloadSearchSmall">
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Worker,Missile,Item,Uncommandable,Dead,Hidden,Invulnerable"/>
@@ -10811,6 +10811,7 @@
     <CEffectSet id="AP_MatrixOverloadSet">
         <EffectArray value="AP_MatrixOverloadDummyCheck"/>
         <EffectArray value="AP_MatrixOverloadAB"/>
+        <ValidatorArray value="AP_TargetLocationHasPower"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_SOAPylonWeaponAB">
         <ValidatorArray index="0" value="IsPylon"/>
