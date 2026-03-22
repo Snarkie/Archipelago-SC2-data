@@ -5465,7 +5465,6 @@ bool lib15EF4C78_gt_AP_Player_SentinelRecharge_Func (bool testConds, bool runAct
     UnitBehaviorAddCooldown(lv_caster, "AP_ZealotPurifierReviveSupressed", "Behavior/AP_ZealotPurifierReviveSupressed", -1.0);
     lv_remaining = UnitBehaviorDuration(lv_caster, "AP_ZealotPurifierReviveSupressed");
     UnitBehaviorSetDurationRemaining(lv_caster, "AP_ZealotPurifierReviveSupressed", (lv_remaining-1));
-    UnitBehaviorAddPlayer(lv_caster, "AP_SentinelRechargeCooldown", lv_casterPlayer, 1);
     return true;
 }
 
@@ -5473,7 +5472,7 @@ bool lib15EF4C78_gt_AP_Player_SentinelRecharge_Func (bool testConds, bool runAct
 void lib15EF4C78_gt_AP_Player_SentinelRecharge_Init () {
     lib15EF4C78_gt_AP_Player_SentinelRecharge = TriggerCreate("lib15EF4C78_gt_AP_Player_SentinelRecharge_Func");
     TriggerEnable(lib15EF4C78_gt_AP_Player_SentinelRecharge, false);
-    TriggerAddEventPlayerEffectUsed(lib15EF4C78_gt_AP_Player_SentinelRecharge, c_playerAny, "AP_PsiBlades");
+    TriggerAddEventPlayerEffectUsed(lib15EF4C78_gt_AP_Player_SentinelRecharge, c_playerAny, "AP_PsiBladesBurst");
 }
 
 //--------------------------------------------------------------------------------------------------
