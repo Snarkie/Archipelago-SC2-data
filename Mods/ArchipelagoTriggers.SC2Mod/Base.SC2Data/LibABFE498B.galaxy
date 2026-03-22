@@ -9002,7 +9002,7 @@ void libABFE498B_gf_AP_Triggers_Protoss_unlockSentinelRecharge (int lp_player) {
     // Automatic Variable Declarations
     // Implementation
     libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_SentinelRecharge", 1);
-    TriggerEnable(libABFE498B_gt_AP_Player_SentinelRecharge, true);
+    TriggerEnable(lib15EF4C78_gt_AP_Player_SentinelRecharge, true);
 }
 
 void libABFE498B_gf_AP_Triggers_Protoss_unlockSentinelArmor (int lp_player) {
@@ -11778,57 +11778,6 @@ void libABFE498B_gt_AP_Triggers_bankStartLoop_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AP_Player_SentinelRecharge
-//--------------------------------------------------------------------------------------------------
-bool libABFE498B_gt_AP_Player_SentinelRecharge_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unit lv_u;
-    int lv_p;
-    fixed lv_remaining;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_u = EventPlayerEffectUsedUnit(c_effectUnitCaster);
-    lv_p = UnitGetOwner(lv_u);
-
-    // Conditions
-    if (testConds) {
-        if (!((TechTreeUpgradeCount(lv_p, "AP_SentinelRecharge", c_techCountCompleteOnly) >= 1))) {
-            return false;
-        }
-
-        if (!((UnitGetType(lv_u) == "AP_ZealotPurifier"))) {
-            return false;
-        }
-
-        if (!((UnitHasBehavior(lv_u, "AP_SentinelRechargeCooldown") == false))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_PlayerIsEnemy(lv_p, UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)), libNtve_ge_PlayerRelation_Enemy) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    UnitBehaviorAddCooldown(lv_u, "AP_ZealotPurifierReviveSupressed", "Behavior/AP_ZealotPurifierReviveSupressed", -1.0);
-    lv_remaining = UnitBehaviorDuration(lv_u, "AP_ZealotPurifierReviveSupressed");
-    UnitBehaviorSetDurationRemaining(lv_u, "AP_ZealotPurifierReviveSupressed", (lv_remaining-1));
-    UnitBehaviorAddPlayer(lv_u, "AP_SentinelRechargeCooldown", lv_p, 1);
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libABFE498B_gt_AP_Player_SentinelRecharge_Init () {
-    libABFE498B_gt_AP_Player_SentinelRecharge = TriggerCreate("libABFE498B_gt_AP_Player_SentinelRecharge_Func");
-    TriggerAddEventPlayerEffectUsed(libABFE498B_gt_AP_Player_SentinelRecharge, c_playerAny, "AP_PsiBlades");
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: AP_Triggers_techTreeInit
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_AP_Triggers_techTreeInit_Func (bool testConds, bool runActions) {
@@ -12529,7 +12478,6 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_bankOptionsInit_Init();
     libABFE498B_gt_AP_Triggers_bankItemsInit_Init();
     libABFE498B_gt_AP_Triggers_bankStartLoop_Init();
-    libABFE498B_gt_AP_Player_SentinelRecharge_Init();
     libABFE498B_gt_AP_Triggers_techTreeInit_Init();
     libABFE498B_gt_UpgradeProtossStructures_Init();
     libABFE498B_gt_AP_Triggers_Debug_activateDebugMode_Init();
