@@ -25869,4 +25869,37 @@
         <WhichUnit Value="Caster"/>
         <Behavior value="AP_CenturionCloak"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AP_CenturionDodgeAB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_CenturionDodge"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AP_CenturionDodgeHandled">
+        <EditorCategories value=""/>
+        <EffectArray value="AP_CenturionDodgeReset"/>
+        <EffectArray value="AP_CenturionDodgeAB"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="AP_CenturionDodgeRB">
+        <EditorCategories value=""/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AP_CenturionDodge"/>
+    </CEffectRemoveBehavior>
+    <CEffectUserData id="AP_CenturionDodgeReset">
+        <Key value="AP_CenturionDodge"/>
+        <Amount value="0"/>
+        <SourceKey value="AP_CenturionDodge"/>
+        <Operation value="Set"/>
+        <ValidateMin value="4"/>
+        <ValidateMax value="10"/>
+        <EffectSuccess value="AP_CenturionDodgeHandled"/>
+        <BehaviorScope Behavior="AP_CenturionDodgeTracker"/>
+    </CEffectUserData>
+    <CEffectUserData id="AP_CenturionDodgeTracker">
+        <Key value="AP_CenturionDodge"/>
+        <SourceKey value="AP_CenturionDodge"/>
+        <ValidateMax value="4"/>
+        <BehaviorScope Behavior="AP_CenturionDodgeTracker"/>
+        <ValidateMin value="4"/>
+        <EffectSuccess value="AP_CenturionDodgeHandled"/>
+    </CEffectUserData>
 </Catalog>

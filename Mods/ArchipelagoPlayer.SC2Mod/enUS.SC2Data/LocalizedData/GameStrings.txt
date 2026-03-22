@@ -514,6 +514,7 @@ Behavior/Name/AP_BattlecruiserCloak=Cloak
 Behavior/Name/AP_BileDucts=Bile Ducts
 Behavior/Name/AP_BurstCapacitorsDamageBuff=Burst Capacitors
 Behavior/Name/AP_CarrierRepairDroneRecall=Carrier Repair Drone Recall
+Behavior/Name/AP_CenturionDodge=Quantum Dodge
 Behavior/Name/AP_Charging=Charging
 Behavior/Name/AP_Contaminated=Contaminated
 Behavior/Name/AP_Corruption=Corruption
@@ -829,6 +830,7 @@ Behavior/Tooltip/AP_BatteryOvercharge=Restoration rate increased by <d ref="(Beh
 Behavior/Tooltip/AP_BattlecruiserBonusRange=+<d ref="Behavior,AP_BattlecruiserBonusRange,Modification.RangedWeaponRange"/> weapon range.
 Behavior/Tooltip/AP_BattlecruiserMengskBehemothReactorIndicator=Battlecruiser special abilities require 25 less energy to cast. Pride of Augustgrad cooldown-based ability cooldowns are 20% shorter.
 Behavior/Tooltip/AP_Charging=This Zealot is charging, allowing it to quickly close the distance with its target.
+Behavior/Tooltip/AP_CenturionDodge=The next hit will be dodged.
 Behavior/Tooltip/AP_Contaminated=This structure is unable to train new units or research upgrades.
 Behavior/Tooltip/AP_Corruption=This unit takes 20% extra damage.
 Behavior/Tooltip/AP_CorruptorAcidSplash=This unit is coated in acid. It takes reduced damage.
@@ -2807,7 +2809,7 @@ Button/Tooltip/AP_CarrierTaldarim=Tal'darim Faction<n/>Capital ship. Fires a slo
 Button/Tooltip/AP_CausticSpray=Emits a stream of acid that deals <d ref="Effect,AP_CausticSprayLevel1_Damage,Amount/Effect,AP_CausticSprayLevel1_Persistent,PeriodicPeriodArray[0]" precision="1"/> damage per second for <d ref="Effect,AP_CausticSprayLevel1_Persistent,PeriodCount*Effect,AP_CausticSprayLevel1_Persistent,PeriodicPeriodArray[0]" precision="1"/> seconds, then increases to <d ref="Effect,AP_CausticSprayLevel2_Damage,Amount/Effect,AP_CausticSprayLevel2_Persistent,PeriodicPeriodArray[0]" precision="1"/> damage per second.<n/><n/><c val="ffff8a">Channeled ability.</c><c val="#ColorAttackInfo"> Can only target enemy structures.</c>
 Button/Tooltip/AP_CentrifugalHooksUpgrade=Increases Baneling movement speed.
 Button/Tooltip/AP_CenturionCloak=Cloaks the Centurion for 5 seconds after using Darkcoil.
-Button/Tooltip/AP_CenturionDodge=Centurions have <d ref="Behavior,AP_CenturionDodge,DamageResponse.Chance * 100"/>% chance to dodge incoming damage.
+Button/Tooltip/AP_CenturionDodge=Centurions dodge every 4th instance of damage.
 Button/Tooltip/AP_CenturionResourceEfficiency=Centurions cost <d ref="$UpgradeEffectArrayValue:AP_ResourceEfficiencyCenturion:Unit,AP_ZealotShakuras,CostResource[Vespene]$"/> less vespene gas.<n/><n/><c val="FFE303">War Council Upgrade.</c>
 Button/Tooltip/AP_CerberusMines=Increases blast radius and trigger radius by 33%.
 Button/Tooltip/AP_ChainReaction=Kerrigan's attacks deal normal damage to her target then jump to additional nearby enemies. Deals <d ref="Effect,AP_ChainReaction2Damage,Amount"/> damage to up to four additional targets.

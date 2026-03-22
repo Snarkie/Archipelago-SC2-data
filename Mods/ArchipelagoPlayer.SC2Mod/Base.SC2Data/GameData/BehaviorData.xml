@@ -11149,13 +11149,23 @@
             <StateFlags index="Undetectable" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_CenturionDodge">
+    <CBehaviorBuff id="AP_CenturionDodgeTracker">
         <BehaviorFlags index="Permanent" value="1"/>
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Requirements value="AP_CenturionDodge"/>
-        <DamageResponse ModifyFraction="0">
-            <Chance value="0.25"/>
+        <InitialEffect value="AP_CenturionDodgeTracker"/>
+        <DamageResponse Handled="AP_CenturionDodgeTracker">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AP_CenturionDodge">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\evasivemaneuvers_coop.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Requirements value="AP_CenturionDodge"/>
+        <DamageResponse Handled="AP_CenturionDodgeRB" ModifyFraction="0" ModifyMinimumDamage="1">
+            <Chance value="1"/>
         </DamageResponse>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_CenturionCloak">

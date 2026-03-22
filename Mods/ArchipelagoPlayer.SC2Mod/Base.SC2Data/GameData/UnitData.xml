@@ -25608,6 +25608,7 @@
         <AbilArray Link="AP_ShadowCharge"/>
         <AbilArray Link="AP_ShadowChargeStun"/>
         <BehaviorArray Link="AP_SOAHeroicShieldProcBuff"/>
+        <BehaviorArray Link="AP_CenturionDodgeTracker"/>
         <BehaviorArray Link="AP_CenturionDodge"/>
         <WeaponArray Link="AP_CenturionWarpBlades"/>
         <CardLayouts>
