@@ -8313,4 +8313,10 @@
         <Icon value="Assets\Textures\btn-upgrade-protoss-adeptshieldupgrade.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-protoss-adeptshieldupgrade.dds"/>
     </CButton>
+    <CButton id="AP_WarpHarmonizationStargate">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-warpharmonization.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-spearofadun-warpharmonization.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+        <HotkeyAlias value="AP_SOAWarpTech"/>
+    </CButton>
 </Catalog>

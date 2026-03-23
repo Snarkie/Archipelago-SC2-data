@@ -2458,6 +2458,7 @@ Button/Name/AP_WarhoundBrawlerOff=Brawler Configuration
 Button/Name/AP_WarhoundBrawlerOn=Brawler Configuration
 Button/Name/AP_WarhoundJump=Jump Jets
 Button/Name/AP_WarhoundReinforcedPlating=Axiom Plating
+Button/Name/AP_WarpHarmonizationStargate=Warp Harmonization
 Button/Name/AP_WarpInAdept=Warp In Adept
 Button/Name/AP_WarpInReplicant=Warp in Replicant
 Button/Name/AP_WarpInRoboticsWarpFacility=Warp In Warp Robotics Facility
@@ -3785,7 +3786,7 @@ Button/Tooltip/AP_SOASuperChrono=Increases the target structure's unit warp in a
 Button/Tooltip/AP_SOAThermalLance=Strafes the target area with 3 laser beams, dealing <d ref="Effect,AP_SOAThermalLanceDamage,Amount"/> damage with each beam.
 Button/Tooltip/AP_SOATimeFreeze=Freezes all enemies in time for <d ref="Behavior,AP_SOATimeFreeze,Duration"/> seconds.
 Button/Tooltip/AP_SOAWarpInReinforcements=Quickly warps in a Pylon with 2 Zealots and 2 Stalkers to any visible location.
-Button/Tooltip/AP_SOAWarpTech=Stargates and Robotics Facilities can transform to utilize Warp In technology. Warp In cooldowns are 20% faster than original build times.<n/><n/><c val="ffff8a">Passive ability.</c>
+Button/Tooltip/AP_SOAWarpTech=Robotics Facilities can transform to utilize Warp In technology. Warp In cooldowns are 20% faster than original build times.<n/><n/><c val="ffff8a">Passive ability.</c>
 Button/Tooltip/AP_Salvage=Salvages the structure, removing it and returning 100% of its mineral and gas value. Salvage takes <d time="5"/> to finish. Warning: once Salvage is triggered, it cannot be canceled.
 Button/Tooltip/AP_Scan=Reveals an area of the map, detecting cloaked and burrowed units. Lasts <d time="12"/>.
 Button/Tooltip/AP_ScarabDamage=Increases Reaver's Scarab damage by 25.
@@ -4219,6 +4220,7 @@ Button/Tooltip/AP_WarhoundBrawlerOn=Enable Brawler configuration. Improves your 
 Button/Tooltip/AP_WarhoundJump=The Warhound jumps a short distance, slowing movement and attack speed of nearby enemies on impact by <d ref="Behavior,AP_WarhoundJumpSlow,Modification.AttackSpeedMultiplier *100"/>% for <d ref="Behavior,AP_WarhoundJumpSlow,Duration"/> seconds.
 Button/Tooltip/AP_WarhoundReinforcedPlating=Increases Warhound armor by 2.
 Button/Tooltip/AP_WarpGate=Enables warp in of Protoss ground units.
+Button/Tooltip/AP_WarpHarmonizationStargate=Stargates can transform to utilize Warp In technology. Warp In cooldowns are 20% faster than original build times.<n/><n/><c val="ffff8a">Passive ability.</c>
 Button/Tooltip/AP_WarpInAdept=Purifier Faction<n/>Ranged specialist. Can use Psionic Transfer.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_WarpInReplicant=Mimic unit. Can turn into a copy of an allied or enemy unit.
 Button/Tooltip/AP_WarpInRoboticsWarpFacility=Enables warp in of Protoss robotic units.

@@ -21540,7 +21540,7 @@
             <!--Upgrades-->
 
             <LayoutButtons Face="AP_UpgradeToStargateWarp" Type="AbilCmd" AbilCmd="AP_UpgradeToStargateWarp,0" Row="2" Column="0"/>
-            <LayoutButtons Face="AP_SOAWarpTech" Type="Passive" Requirements="AP_HaveSOAWarpTech" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_WarpHarmonizationStargate" Type="Passive" Requirements="AP_WarpHarmonizationStargate" Row="2" Column="2"/>
             <LayoutButtons Face="AP_WarpRelocate" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build10" Row="2" Column="4"/>
         </CardLayouts>
         <CardLayouts CardId="Aiur">
@@ -21699,7 +21699,7 @@
 
             <LayoutButtons Face="AP_UpgradeToStargateWarp" Type="AbilCmd" AbilCmd="AP_UpgradeToStargateWarp,0" Row="2" Column="0"/>
             <LayoutButtons Face="AP_MorphBackToStargate" Type="AbilCmd" AbilCmd="AP_MorphBackToStargate,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AP_SOAWarpTech" Type="Passive" Row="2" Column="2"/>
+            <LayoutButtons Face="AP_WarpHarmonizationStargate" Type="Passive" Row="2" Column="2"/>
             <LayoutButtons Face="AP_WarpRelocate" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build27" Row="2" Column="4"/>
 
             <!--Other-->
