@@ -25858,6 +25858,9 @@
         <Behavior value="AP_VoidStalkerBlinkMultipleCaster"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="AP_VoidStalkerBlinkMultipleSearchTargetPoint">
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="AP_RangeBuffsFormula"/>
+        </ExtraRadiusBonus>
         <ValidatorArray value="AP_VoidStalkerBlinkMultiple"/>
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Effect="AP_VoidStalkerBlinkMultiple" Value="CasterUnit"/>
@@ -25867,11 +25870,14 @@
             <SortArray value="AP_StalkerPurifierAttackTarget"/>
             <SortArray value="TSRandom"/>
         </TargetSorts>
-        <AreaArray Arc="30" Radius="10" Effect="AP_StalkerPurifierAttackCasterLM"/>
+        <AreaArray Arc="30" Radius="7" Effect="AP_StalkerPurifierAttackCasterLM"/>
         <MaxCount value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AP_VoidStalkerBlinkMultipleSearchSourcePoint">
+        <ExtraRadiusBonus value="0">
+            <AccumulatorArray value="AP_RangeBuffsFormula"/>
+        </ExtraRadiusBonus>
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Effect="AP_VoidStalkerBlinkMultiple" Value="CasterUnit"/>
         <ImpactLocation Effect="AP_VoidStalkerBlinkMultiple" Value="CasterPoint"/>
@@ -25885,7 +25891,6 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectEnumArea>
     <CEffectLaunchMissile id="AP_StalkerPurifierAttackCasterLM">
-        <ValidatorArray value="AP_TargetInWeaponRange"/>
         <EditorCategories value="Race:Protoss"/>
         <LaunchLocation Value="CasterUnit"/>
         <ImpactEffect value="AP_StalkerPurifierAttack"/>
