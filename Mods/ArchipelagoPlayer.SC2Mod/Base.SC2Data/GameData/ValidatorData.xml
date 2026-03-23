@@ -8115,5 +8115,6 @@
     </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="AP_NoCenturionDodge">
         <WhichUnit Value="Caster"/>
-    <Behavior value="AP_CenturionDodge"/>
+        <Behavior value="AP_CenturionDodge"/>
+    </CValidatorUnitCompareBehaviorCount>
 </Catalog>
