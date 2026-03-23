@@ -47412,6 +47412,7 @@
         <On Terms="Signal.*.DarkProtossTest; ValidateUnit AP_NoDarkProtoss" Target="::actor.sender" Send="Signal DarkProtossSwap"/>
         <On Terms="Effect.AP_HighImpactParticleDisruptorsU.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
         <On Terms="Effect.AP_HighImpactParticleDisruptorsU.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On Terms="Effect.AP_StalkerPurifierAttackCasterLM.Start; At Caster" Send="Create"/>
         <LaunchSiteOps HoldPosition="1"/>
         <LaunchAssets Sound="Stalker_AttackLaunch"/>
         <ImpactMap index="None" Sound="Stalker_AttackImpact"/>

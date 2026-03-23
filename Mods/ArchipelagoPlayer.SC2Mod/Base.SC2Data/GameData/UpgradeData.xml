@@ -17027,7 +17027,7 @@
     <CUpgrade id="AP_SentinelRecharge"/>
     <CUpgrade id="AP_CenturionCloak"/>
     <CUpgrade id="AP_StalkerPurifierBlinkAttack">
-        <EffectArray Operation="Set" Reference="Effect,AP_VoidStalkerBlinkMultipleSet,EffectArray[0]" Value="AP_VoidStalkerBlinkMultipleCP"/>
+        <EffectArray Operation="Set" Reference="Effect,AP_VoidStalkerBlinkMultiple,TeleportEffect" Value="AP_VoidStalkerBlinkMultipleSet"/>
     </CUpgrade>
     <CUpgrade id="AP_StalkerTaldarimAttackUpgrade">
         <EffectArray Reference="Effect,AP_StalkerTaldarimAttackUpgradeU,AreaArray[0].Radius" Value="0.5"/>

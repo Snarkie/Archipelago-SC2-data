@@ -4363,7 +4363,7 @@
     <CAbilEffectTarget id="AP_BlinkMultiple">
         <AbilSetId value="Blnk"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Effect index="0" value="AP_VoidStalkerBlinkMultipleSet"/>
+        <Effect index="0" value="AP_VoidStalkerBlinkMultiple"/>
         <Flags index="BestUnit" value="0"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
