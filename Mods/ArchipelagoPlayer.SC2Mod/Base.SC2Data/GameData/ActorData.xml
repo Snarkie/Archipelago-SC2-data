@@ -8877,7 +8877,6 @@
         <On Terms="ActorCreation; ValidateUnit AP_IsSiegeTankMengskAnyMode" Send="ModelSwap BlinkStopModel"/>
         <On Terms="ActorCreation; ValidateUnit AP_IsSiegeTankMengskAnyMode" Send="SetScale 2.000000"/>
         <On Terms="ActorCreation; ValidateUnit AP_IsGoliathMengsk" Send="ModelSwap BlinkStopModel"/>
-        <On Terms="ActorCreation; ValidateUnit AP_IsSlayer" Send="ModelSwap AP_BlinkOriginSlayer"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Model value="BlinkOriginModel"/>
@@ -8891,7 +8890,6 @@
         <On Terms="Effect.AP_Blink.Stop; At Source; ValidateUnit AP_NoDarkProtoss" Send="ModelSwap DarkBlinkStopModel"/>
         <On Terms="Effect.AP_VoidStalkerBlinkShieldRestore.Stop; At Source" Send="Create"/>
         <On Terms="ActorCreation; ValidateUnit AP_IsSiegeTankMengskAnyMode" Send="SetScale 2.000000"/>
-        <On Terms="ActorCreation; ValidateUnit AP_IsSlayer" Send="SetTintColor {255,20,20 2.500000}"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="BlinkStopModel"/>
@@ -8901,6 +8899,7 @@
         <On Terms="Effect.AP_VoidStalkerBlinkShieldRestore.Stop; At Source" Send="Create"/>
         <On Terms="Effect.AP_VoidStalkerBlinkMultiple.Stop; At Source" Send="Create"/>
         <On Terms="Effect.AP_DisruptorBlink; At Source" Send="Create"/>
+        <On Terms="Effect.AP_PhaseBlink; At Source" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Sound value="Stalker_Blink"/>
@@ -47542,4 +47541,24 @@
         <EditorCategories value=""/>
         <Sound value="AP_Ascendant_Launch"/>
     </CActorSound>
+    <CActorModel id="AP_BlinkSlayerOriginModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.AP_PhaseBlink.Start; At Source" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOriginStationary"/>
+        <Model value="AP_BlinkOriginSlayer"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="AP_BlinkSlayerStopModel" parent="ModelAnimationStyleOneShot">
+        <InheritType value="OneShot"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="Effect.AP_PhaseBlink.Stop; At Source" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,20,20 2.500000}"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachOrigin"/>
+        <Model value="BlinkStopModel"/>
+    </CActorModel>
 </Catalog>

@@ -4720,7 +4720,7 @@
         <AbilSetId value="Blnk"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
         <DataCollection value="Blink"/>
-        <Effect index="0" value="AP_PhaseBlinkSet"/>
+        <Effect index="0" value="AP_PhaseBlink"/>
         <Flags index="BestUnit" value="0"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>

@@ -11494,6 +11494,18 @@
         <RechargeVital value="Shields"/>
         <RechargeVitalRate value="500000"/>
     </CEffectCreateHealer>
+    <CEffectTeleport id="AP_PhaseBlink">
+        <ValidatorArray value="AP_CasterNotFungalGrowthed"/>
+        <EditorCategories value="Race:Protoss"/>
+        <WhichUnit Value="Caster"/>
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <PlacementRange value="8"/>
+        <Range value="8"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+        <TeleportEffect value="AP_PhaseBlinkSet"/>
+    </CEffectTeleport>
     <CEffectApplyBehavior id="AP_PhaseBlinkDamageAB">
         <EditorCategories value=""/>
         <WhichUnit Value="Caster"/>
@@ -11506,7 +11518,6 @@
     </CEffectRemoveBehavior>
     <CEffectSet id="AP_PhaseBlinkSet">
         <EditorCategories value=""/>
-        <EffectArray value="AP_Blink"/>
         <EffectArray value="AP_PhaseBlinkDamageAB"/>
         <EffectArray value="AP_StalkerTaldarimAttackUpgradeRB"/>
         <TargetLocationType value="Point"/>
