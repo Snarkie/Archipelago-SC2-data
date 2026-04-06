@@ -319,6 +319,7 @@ static bool HasActiveEnemy(int user) {
 bool AP_GhostSpawn_placeBuilding() {
     int p;
     int user = lib5BD4895D_gf_AP_Core_getUser();
+    Wait(2, c_timeAI); // wait for options to settle
     if (!libABFE498B_gv_aP_Triggers_isBuild) {
         log("No build mission, do not spawn Ghost Building");
         return false;
