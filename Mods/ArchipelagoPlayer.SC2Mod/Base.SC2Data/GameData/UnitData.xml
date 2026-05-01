@@ -30640,7 +30640,7 @@
         <LeaderAlias value="AP_TrooperMengsk"/>
         <GlossaryAlias value="AP_TrooperMengsk"/>
         <HotkeyAlias value="AP_TrooperMengsk"/>
-        <SelectAlias value="AP_TrooperMengsk"/>
+        <SubgroupAlias value="AP_TrooperMengsk"/>
     </CUnit>
     <CUnit id="AP_TrooperMengskAA">
         <DeathRevealRadius value="3"/>
@@ -30727,7 +30727,7 @@
         <LeaderAlias value="AP_TrooperMengsk"/>
         <GlossaryAlias value="AP_TrooperMengsk"/>
         <HotkeyAlias value="AP_TrooperMengsk"/>
-        <SelectAlias value="AP_TrooperMengsk"/>
+        <SubgroupAlias value="AP_TrooperMengsk"/>
     </CUnit>
     <CUnit id="AP_TrooperMengskFlamethrower">
         <DeathRevealRadius value="3"/>
