@@ -6152,7 +6152,7 @@ Param/Expression/lib_15EF4C78_76617545=<c val="9BFFBE">Artanis's Warp Shell has 
 Param/Expression/lib_15EF4C78_7DF39159=~A~ ~B~
 Param/Expression/lib_15EF4C78_8968DC4B=<c val="9BFFBE">Artanis has been warped back to the Nexus to avoid lethal damage. He will be ready for action in ~A~ seconds.</c>
 Param/Expression/lib_15EF4C78_929A180C=Level:  ~level~
-Param/Expression/lib_15EF4C78_977F6D04=Spent: ~A~, Queued: ~B~, Total Queued: ~C~
+Param/Expression/lib_15EF4C78_977F6D04=Warped: ~A~, Warped discounted: ~B~, Queued: ~C~, Queued discounted: ~D~
 Param/Expression/lib_15EF4C78_DE0A8BC5=~CurrentLife~/~MaxLife~
 Param/Value/lib_15EF4C78_0733DA16=<k val="HeroSelect1"/>
 Param/Value/lib_15EF4C78_0F46D063=Prevented the mission from assigning a unit to the secondary hero panel -- reserved by commander prestige
