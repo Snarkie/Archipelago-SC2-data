@@ -27199,16 +27199,19 @@
     <CEffectSet id="AP_VanguardFlareImpact">
     </CEffectSet>
     <CEffectCreatePersistent id="AP_VanguardFlareInitialCP">
-        <PeriodCount value="3"/>
+        <PeriodCount value="4"/>
         <PeriodicEffectArray value="AP_VanguardFlareTurret"/>
         <PeriodicEffectArray value="AP_VanguardFlareLM"/>
+        <PeriodicEffectArray value="AP_VanguardFlareSecondaryLM"/>
         <PeriodicEffectArray value="AP_VanguardFlareCP"/>
         <PeriodicOffsetArray value="0,0,0"/>
         <PeriodicOffsetArray value="0,0,7"/>
+        <PeriodicOffsetArray value="0,0,10"/>
         <PeriodicOffsetArray value="0,0,0"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.3"/>
-        <PeriodicPeriodArray value="2"/>
+        <PeriodicPeriodArray value="0.5"/>
+        <PeriodicPeriodArray value="1.5"/>
     </CEffectCreatePersistent>
     <CEffectLaunchMissile id="AP_VanguardFlareLM">
         <ImpactLocation Value="TargetPoint"/>
@@ -27228,4 +27231,11 @@
             <Flags index="ClearTargetOnAimComplete" value="1"/>
         </ModifyTurret>
     </CEffectModifyUnit>
+    <CEffectSet id="AP_VanguardFlareSecondaryImpact"/>
+    <CEffectLaunchMissile id="AP_VanguardFlareSecondaryLM">
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="AP_VanguardFlareSecondaryImpact"/>
+        <AmmoUnit value="AP_VanguardFlareSecondaryMissile"/>
+        <Movers Link="AP_VanguardFlare"/>
+    </CEffectLaunchMissile>
 </Catalog>

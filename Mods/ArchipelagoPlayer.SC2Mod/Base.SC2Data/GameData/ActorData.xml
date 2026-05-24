@@ -15215,6 +15215,7 @@
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Attack"/>
         <On Terms="Effect.AP_VanguardFlareLM.Start" Send="AnimPlay Spell Attack,Superior NonLooping"/>
         <On Terms="UnitMovementUpdate.*.Walk" Send="AnimClear Spell"/>
+        <On Terms="Effect.AP_VanguardFlareSecondaryLM.Start" Send="AnimPlay Spell Attack,Superior NonLooping"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <BuildModel value="AP_ImmortalTaldarimWarpIn"/>
         <DeathArray index="Normal" ModelLink="AP_ImmortalTaldarimDeath" SoundLink=""/>
@@ -48492,8 +48493,8 @@
         <On Terms="Behavior.AP_ImmortalWarpRelocate.On" Send="Create"/>
         <Sound value="WarpGate_TrainStart"/>
     </CActorSound>
-    <CActorAction id="AP_VanguardFlare" parent="GenericAttack" effectLaunch="AP_VanguardFlareLM">
-        <LaunchSiteOps Ops="SOpAttachHarness SOpMoveByDot25"/>
+    <CActorAction id="AP_VanguardFlare" parent="GenericAttack" effectLaunch="AP_VanguardFlareLM" effectImpact="AP_VanguardFlareImpact">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpMoveByDot5"/>
         <LaunchAssets Model="AP_ImmortalTaldarimWeaponAttackLaunchModel" Scale="1.000000,2.000000,1.000000" Sound="AP_Loki_CannonLaunch"/>
     </CActorAction>
     <CActorModel id="AP_VanguardFlareImpact" parent="ModelAnimationStyleOneShot">
@@ -48532,4 +48533,37 @@
         <Host Subject=""/>
         <Range value="10.000000"/>
     </CActorRange>
+    <CActorSound id="AP_VanguardFlareLoop" parent="SoundContinuous">
+        <Host Subject="::Creator"/>
+    </CActorSound>
+    <CActorAction id="AP_VanguardFlareSecondary" parent="GenericAttack" effectImpact="AP_VanguardFlareSecondaryImpact" effectLaunch="AP_VanguardFlareSecondaryLM">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpMoveByDot5"/>
+        <LaunchAttachQuery Methods="AMFilterWeapon01"/>
+        <LaunchAssets Model="AP_ImmortalTaldarimWeaponAttackLaunchModel" Scale="1.000000,2.000000,1.000000" Sound="AP_Loki_CannonLaunch"/>
+    </CActorAction>
+    <CActorModel id="AP_VanguardFlareSecondaryImpact" parent="ModelAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.100000 15.000000"/>
+        <Host Subject="AP_VanguardFlareSecondaryMover"/>
+        <Scale value="2.000000,2.000000,1.000000"/>
+    </CActorModel>
+    <CActorMissile id="AP_VanguardFlareSecondaryMissile" parent="GenericAttackMissile" unitName="AP_VanguardFlareSecondaryMissile">
+        <Model value="AP_ImmortalTaldarimWeaponMissile"/>
+        <Scale value="3.000000"/>
+    </CActorMissile>
+    <CActorSiteMover id="AP_VanguardFlareSecondaryMover">
+        <EditorCategories value=""/>
+        <On Terms="Effect.AP_VanguardFlareSecondaryImpact.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="Create AP_VanguardFlareSecondaryImpact"/>
+        <On Terms="ActorCreation" Send="MoverSetDestinationH -5.000000"/>
+        <On Terms="ActorCreation" Send="MoverMove"/>
+        <On Terms="Effect.AP_VanguardFlareCP.Stop" Send="Destroy"/>
+        <On Terms="ActorDestruction" Target="AP_VanguardFlareSecondaryImpact" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="Create AP_VanguardFlareLoop"/>
+        <On Terms="ActorDestruction" Target="AP_VanguardFlareLoop" Send="Destroy"/>
+        <SiteFlags index="RequiresManualKill" value="1"/>
+        <Acceleration value="500.000000"/>
+        <Speed value="0.250000"/>
+        <SpeedMax value="0.250000"/>
+    </CActorSiteMover>
 </Catalog>

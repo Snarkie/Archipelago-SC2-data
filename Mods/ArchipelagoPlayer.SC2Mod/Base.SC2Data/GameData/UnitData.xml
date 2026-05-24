@@ -32616,4 +32616,7 @@
     <CUnit id="AP_VanguardFlareMissile" parent="MISSILE_INVULNERABLE">
         <Race value="Prot"/>
     </CUnit>
+    <CUnit id="AP_VanguardFlareSecondaryMissile" parent="MISSILE_INVULNERABLE">
+        <Race value="Prot"/>
+    </CUnit>
 </Catalog>

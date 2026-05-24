@@ -22512,4 +22512,7 @@
     <CModel id="AP_VanguardFlareImpact">
         <Model value="Assets\Effects\Other\FireWorkEX3\FireWorkEX3_01.m3"/>
     </CModel>
+    <CModel id="AP_VanguardFlareSecondaryImpact">
+        <Model value="Assets\Effects\Protoss\ColossusBeamBurn_Upgrade\ColossusBeamBurn_Upgrade.m3"/>
+    </CModel>
 </Catalog>
