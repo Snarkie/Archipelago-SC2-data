@@ -12280,7 +12280,6 @@ bool libABFE498B_gt_AP_Triggers_ImmortalStarter_Func (bool testConds, bool runAc
     for (;; autoF86078AC_u -= 1) {
         lv_u = UnitGroupUnitFromEnd(autoF86078AC_g, autoF86078AC_u);
         if (lv_u == null) { break; }
-        lv_u = UnitGroupClosestToPoint(lv_group, lv_point);
         UnitCreate(1, "AP_PowerRadius1", c_unitCreateIgnorePlacement, lv_player, UnitGetPosition(lv_u), 270.0);
         UnitBehaviorAdd(UnitLastCreated(), "AP_TimedLife6s", UnitLastCreated(), 1);
         UnitBehaviorAdd(lv_u, "PermanentSuppressFoodUsed", lv_u, 1);
