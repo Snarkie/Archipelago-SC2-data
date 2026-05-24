@@ -27100,6 +27100,7 @@
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectSet id="AP_ImmortalOverloadSet">
+        <ValidatorArray value="TargetIsEnemy"/>
         <EffectArray value="AP_ImmortalOverloadDamage"/>
     </CEffectSet>
     <CEffectSet id="AP_ImmortalStarterDummy"/>
