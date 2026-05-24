@@ -17375,8 +17375,8 @@
     <CUpgrade id="AP_ImmortalWarpRelocate"/>
     <CUpgrade id="AP_VanguardAcceleratedWarp">
         <Icon value="AP\Assets\Textures\btn-accelerated-warp.dds"/>
-        <EffectArray Operation="Subtract" Reference="Abil,AP_RoboticsFacilityTrain,InfoArray[6].Time" Value="38.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,AP_RoboticsFacilityTrainRedirect,InfoArray[6].Time" Value="38.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AP_RoboticsFacilityTrain,InfoArray[6].Time" Value="35.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AP_RoboticsFacilityTrainRedirect,InfoArray[6].Time" Value="35.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_RoboticsFacilityWarpTrain,InfoArray[6].Charge.TimeUse" Value="30.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_RoboticsFacilityWarpTrainRedirect,InfoArray[6].Charge.TimeUse" Value="30.000000"/>
         <EditorCategories value="Race:Protoss"/>
