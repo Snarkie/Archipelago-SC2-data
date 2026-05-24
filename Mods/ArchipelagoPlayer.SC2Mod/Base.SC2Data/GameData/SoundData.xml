@@ -16349,6 +16349,6 @@
         <AssetArray File="Assets\Sounds\Abathur_Symbiote_Shield_Loop01.ogg" FacialGroup=""/>
         <DupeMuteCount value="2"/>
         <LoopCount value="-1"/>
-        <Volume value="-0.300000,-0.300000"/>
+        <Volume value="-6.000000,-6.000000"/>
     </CSound>
 </Catalog>
