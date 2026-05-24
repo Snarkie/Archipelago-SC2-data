@@ -11782,13 +11782,11 @@
     <CBehaviorBuff id="AP_ImmortalWarpRelocate">
         <Duration value="3"/>
         <Modification>
-            <StateFlags index="Invulnerable" value="1"/>
             <StateFlags index="Stun" value="1"/>
             <StateFlags index="SuppressCollision" value="1"/>
             <StateFlags index="SuppressFidgeting" value="1"/>
             <StateFlags index="SuppressLifeRegen" value="1"/>
             <StateFlags index="SuppressShieldsRegen" value="1"/>
-            <StateFlags index="Untargetable" value="1"/>
         </Modification>
         <FinalEffect value="AP_ImmortalWarpRelocateTargetSet"/>
         <InfoFlags index="Hidden" value="1"/>
