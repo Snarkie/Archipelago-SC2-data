@@ -3327,7 +3327,7 @@ Button/Tooltip/AP_ImmortalSingularityCharge=Increases Annihilator attack range b
 Button/Tooltip/AP_ImmortalStarter=Up to twice per mission, upon building a Robotics Facility, immediately warp in an Immortal.
 Button/Tooltip/AP_ImmortalTaldarim=Tal'darim Faction<n/>Assault Strider. Attacks deal damage in an area around target enemy unit.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/AP_ImmortalTaldarimScatterCannon=Attacks deal damage to target enemy ground unit and other enemy ground units near it.<n/><n/><c val="ffff8a">Damages enemy ground units only.</c>
-Button/Tooltip/AP_ImmortalWarpRelocate=Allows the Immortal to warp to a nearby location with Pylon power.
+Button/Tooltip/AP_ImmortalWarpRelocate=Allows the Immortal to warp to a nearby location with Pylon power over 8 seconds.
 Button/Tooltip/AP_ImmortalityProtocol=Allows a destroyed Thor to be rebuilt in the field.
 Button/Tooltip/AP_ImmortalityProtocolUpgraded=Allows a destroyed Thor to be rebuilt in the field free of charge.
 Button/Tooltip/AP_Impaler=Long-range anti-armor ambusher. Must burrow to attack.<n/><n/><c val="ffff8a">Can attack ground units.</c>
@@ -6387,7 +6387,6 @@ RequirementNode/Tooltip/AP_NotTradeStructureDummyQueuedOrBetter=A Void Trade is 
 RequirementNode/Tooltip/AP_Scarab10=Reaver must have fewer than 10 Scarabs
 RequirementNode/Tooltip/AP_Scarab5=Reaver must have fewer than 5 Scarabs
 RequirementNode/Tooltip/AP_SupplicantSacrificeCount=Find Sacrifice (Supplicant)
-Reward/Name/Decal_Protoss_0077_01=20 Years of Protoss
 UI/AP_Reconstructing=Reconstructing
 UI/AP_SISpawning=Spawning
 UI/AP_SoAMissionEnergyTooltip=Shows how much energy is available for Spear of Adun powers.
