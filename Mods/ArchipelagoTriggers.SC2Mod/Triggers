@@ -7488,7 +7488,6 @@
             <ValueType Type="string"/>
         </Element>
         <Element Type="Variable" Id="969288A5">
-            <Identifier>armory7Value2</Identifier>
             <VariableType>
                 <Type Value="string"/>
             </VariableType>

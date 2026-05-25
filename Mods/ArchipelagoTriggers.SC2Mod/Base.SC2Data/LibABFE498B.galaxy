@@ -2168,7 +2168,7 @@ void libABFE498B_gf_AP_Triggers_giveTerranTech (string lp_inputString) {
     string lv_armory5Value;
     string lv_armory6Value;
     string lv_armory7Value;
-    string lv_armory7Value2;
+    string lv_armory8Value;
     string lv_buildingValue;
     string lv_mercenaryValue;
     string lv_laboratoryValue;
@@ -2191,7 +2191,7 @@ void libABFE498B_gf_AP_Triggers_giveTerranTech (string lp_inputString) {
     lv_armory5Value = "";
     lv_armory6Value = "";
     lv_armory7Value = "";
-    lv_armory7Value2 = "";
+    lv_armory8Value = "";
     lv_buildingValue = "";
     lv_mercenaryValue = "";
     lv_laboratoryValue = "";
@@ -2218,7 +2218,7 @@ void libABFE498B_gf_AP_Triggers_giveTerranTech (string lp_inputString) {
     lv_novaGearValue = StringWord(lv_receivedString, 14);
     lv_progressiveUpgrade2Value = StringWord(lv_receivedString, 15);
     lv_unit2Value = StringWord(lv_receivedString, 16);
-    lv_armory7Value2 = StringWord(lv_receivedString, 17);
+    lv_armory8Value = StringWord(lv_receivedString, 17);
     autoA98222D3_g = lib5BD4895D_gv_aP_Core_affectedPlayers;
     lv_currentPlayer = -1;
     while (true) {
@@ -2231,7 +2231,7 @@ void libABFE498B_gf_AP_Triggers_giveTerranTech (string lp_inputString) {
         libABFE498B_gf_AP_Triggers_unlockTerranArmory5(lv_currentPlayer, StringToInt(lv_armory5Value));
         libABFE498B_gf_AP_Triggers_unlockTerranArmory6(lv_currentPlayer, StringToInt(lv_armory6Value));
         libABFE498B_gf_AP_Triggers_unlockTerranArmory7(lv_currentPlayer, StringToInt(lv_armory7Value));
-        libABFE498B_gf_AP_Triggers_unlockTerranArmory8(lv_currentPlayer, StringToInt(lv_armory7Value2));
+        libABFE498B_gf_AP_Triggers_unlockTerranArmory8(lv_currentPlayer, StringToInt(lv_armory8Value));
         libABFE498B_gf_AP_Triggers_unlockTerranProgressiveUpgrades(lv_currentPlayer, StringToInt(lv_progressiveUpgradeValue));
         libABFE498B_gf_AP_Triggers_unlockTerranProgressiveUpgrades2(lv_currentPlayer, StringToInt(lv_progressiveUpgrade2Value));
         libABFE498B_gf_AP_Triggers_unlockTerranNovaGear(lv_currentPlayer, StringToInt(lv_novaGearValue));
