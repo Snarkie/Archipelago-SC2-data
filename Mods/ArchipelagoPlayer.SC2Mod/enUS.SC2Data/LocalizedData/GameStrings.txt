@@ -3324,7 +3324,7 @@ Button/Tooltip/AP_ImmortalRegen=Immortals regenerate <d ref="Behavior,AP_Immorta
 Button/Tooltip/AP_ImmortalShakuras=Nerazim Faction<n/>Assault Strider. Can use Shadow Cannon to damage air and ground units.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
 Button/Tooltip/AP_ImmortalShakurasShadowCannon=Deal <d ref="Effect,AP_ImmortalShakurasShadowCannonDamage,Amount*Effect,AP_ImmortalShakurasShadowCannonCP,PeriodCount"/> damage to target unit or structure. <n/><n/><c val="#ColorAttackInfo">Can target ground and air units.</c>
 Button/Tooltip/AP_ImmortalSingularityCharge=Increases Annihilator attack range by 2.
-Button/Tooltip/AP_ImmortalStarter=Up to twice per mission, upon building a Robotics Facility, immediately warp in an Immortal.
+Button/Tooltip/AP_ImmortalStarter=Up to twice per mission, upon building a Robotics Facility, immediately warp in a free Immortal.
 Button/Tooltip/AP_ImmortalTaldarim=Tal'darim Faction<n/>Assault Strider. Attacks deal damage in an area around target enemy unit.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/AP_ImmortalTaldarimScatterCannon=Attacks deal damage to target enemy ground unit and other enemy ground units near it.<n/><n/><c val="ffff8a">Damages enemy ground units only.</c>
 Button/Tooltip/AP_ImmortalWarpRelocate=Allows the Immortal to warp to a nearby location with Pylon power over 8 seconds.
