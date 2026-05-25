@@ -8488,7 +8488,7 @@
     <CValidatorUnitCompareDamageDealtTime id="AP_CasterNotDealingDamage10s">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>
-        <Value value="4"/>
+        <Value value="10"/>
     </CValidatorUnitCompareDamageDealtTime>
     <CValidatorCombine id="AP_CasterNotFighting4s">
         <Type value="And"/>
