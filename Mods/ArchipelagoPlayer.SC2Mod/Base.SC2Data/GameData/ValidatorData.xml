@@ -5,7 +5,8 @@
     </CValidatorCombine>
     <CValidatorCombine default="1" id="AP_SCBW_Behavior">
         <Type value="And"/>
-    </CValidatorCombine><CValidatorUnitFilters id="AP_NotMassive">
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="AP_NotMassive">
         <Filters value="-;Massive"/>
     </CValidatorUnitFilters>
     <CValidatorPlayerRequirement id="AP_HaveGhostPermanentCloak">
