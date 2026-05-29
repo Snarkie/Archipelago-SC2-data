@@ -2,6 +2,7 @@
 Param/Expression/lib_ABFE498B_23084377=DEBUG: Make ~A~ Hero
 Param/Expression/lib_ABFE498B_58E5AF43=Hero System: Handle placement for ~A~
 Param/Expression/lib_ABFE498B_720449CE=DEBUG: Grant tech level: ~A~
+Param/Expression/lib_ABFE498B_85477AAE=DEBUG: Attempting to spawn Ghost Spawn Trap for a supporting player. Currently only supported for the user. 
 Param/Expression/lib_ABFE498B_8CEF283A=Items loaded at: ~A~
 Param/Expression/lib_ABFE498B_96E13CF2=DEBUG: Victory
 Param/Expression/lib_ABFE498B_9FD2030F=Options loaded at: ~A~

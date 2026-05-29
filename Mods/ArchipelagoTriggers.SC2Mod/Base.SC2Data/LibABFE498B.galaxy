@@ -11320,11 +11320,17 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc (bool testCond
 
     // Automatic Variable Declarations
     // Implementation
-    if ((TechTreeUpgradeCount(lp_player, "AP_GhostSpawn", c_techCountCompleteOnly) >= 1)) {
+    if ((lp_player != lib5BD4895D_gf_AP_Core_getUser())) {
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_85477AAE"), false);
+        return true;
+    }
+
+    if ((libABFE498B_gv_aP_Triggers_Traps_hasGhostSpawn[lp_player] == true)) {
         libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
         AP_GhostSpawn_updateDifficulty(lp_level);
     }
     else {
+        libABFE498B_gv_aP_Triggers_Traps_hasGhostSpawn[lp_player] = true;
         libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
         AP_GhostSpawn_difficultyOverride = lp_level;
         AP_GhostSpawn_placeBuilding();

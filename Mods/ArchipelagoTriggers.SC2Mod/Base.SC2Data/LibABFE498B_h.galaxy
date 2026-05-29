@@ -129,6 +129,7 @@ bool[21] libABFE498B_gv_aP_Triggers_Protoss_has_AiurMothership;
 bool[21] libABFE498B_gv_aP_Triggers_Protoss_has_PurifierMothership;
 bool[21] libABFE498B_gv_aP_Triggers_Protoss_has_Arbiter;
 bool[21] libABFE498B_gv_aP_Triggers_Protoss_has_Oracle;
+bool[21] libABFE498B_gv_aP_Triggers_Traps_hasGhostSpawn;
 unit[4] libABFE498B_gv_aP_Triggers_HeroUnit;
 unitgroup libABFE498B_gv_aP_Triggers_HeroUnits;
 bool libABFE498B_gv_aP_Triggers_DebugMode;
