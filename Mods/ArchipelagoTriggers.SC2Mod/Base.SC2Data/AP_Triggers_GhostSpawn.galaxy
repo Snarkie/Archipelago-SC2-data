@@ -92,10 +92,8 @@ static unitfilter UnitFilterDetector = UnitFilter(
         (1 << c_targetFilterDetector)) , 0,
         (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) |
         (1 << (c_targetFilterHidden - 32)));
-static string ActorMessageWork =
-    "AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End";
-static string ActorMessageWorkEnd =
-    "AnimBracketStop Work";
+static string ActorMessageWork = "Signal Start";
+static string ActorMessageWorkEnd = "Signal Stop";
 static trigger TriggerNukeRearm;
 static trigger TriggerWaitForAttackWave;
 static trigger TriggerOnAttackWave;
@@ -166,6 +164,7 @@ static bool SpawnLoop(unit spawnBuilding) {
     unit ghost;
     unitgroup g;
     order gatherOrder;
+    actorscope scope = ActorScopeFromUnit(spawnBuilding);
     if (AP_GhostSpawn_gatherPointOverride != null) {
         gatherPoint = AP_GhostSpawn_gatherPointOverride;
     }
@@ -180,12 +179,12 @@ static bool SpawnLoop(unit spawnBuilding) {
         while (UnitGroupCount(g, c_unitCountAlive) < GroupSize) {
             if (!UnitIsAlive(spawnBuilding)){ return false; }
             if (UnitGroupCount(GhostsActive, c_unitCountAlive) >= GhostsActiveMax) {
-                libNtve_gf_SendActorMessageToUnit(spawnBuilding, ActorMessageWorkEnd);
+                ActorScopeSend(scope, ActorMessageWorkEnd);
                 Wait(5, c_timeAI);
                 continue;
             }
             else {
-                libNtve_gf_SendActorMessageToUnit(spawnBuilding, ActorMessageWork);
+                ActorScopeSend(scope, ActorMessageWork);
                 Wait(SpawnInterval/GroupSize, c_timeAI);
             }
             if (!UnitIsAlive(spawnBuilding)){ return false; }
@@ -200,9 +199,9 @@ static bool SpawnLoop(unit spawnBuilding) {
         ParamPlayer = player;
         ParamGroup = g;
         TriggerExecute(TriggerWaitForAttackWave, false, false);
-        libNtve_gf_SendActorMessageToUnit(spawnBuilding, ActorMessageWorkEnd);
+        ActorScopeSend(scope, ActorMessageWorkEnd);
         Wait(SpawnDelay, c_timeAI);
-        libNtve_gf_SendActorMessageToUnit(spawnBuilding, ActorMessageWork);
+        ActorScopeSend(scope, ActorMessageWork);
     }
     return true;
 }
