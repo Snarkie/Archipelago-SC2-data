@@ -1041,7 +1041,7 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
         libABFE498B_gv_aP_Triggers_DebugMode = true;
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
-        gf_APtech(1, 4);
+        libABFE498B_gf_AP_Triggers_Debug_Tech(gv_pLAYER_01_USER, 5);
     }
 
     auto99F1E925_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
