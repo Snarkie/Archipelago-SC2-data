@@ -178,6 +178,10 @@ static bool SpawnLoop(unit spawnBuilding) {
         g = UnitGroupEmpty();
         while (UnitGroupCount(g, c_unitCountAlive) < GroupSize) {
             if (!UnitIsAlive(spawnBuilding)){ return false; }
+            while (libABFE498B_gv_aP_Triggers_IsNoBuild) {
+                Wait(5, c_timeAI);
+                log("waiting for no-build section to end...");
+            }
             if (UnitGroupCount(GhostsActive, c_unitCountAlive) >= GhostsActiveMax) {
                 ActorScopeSend(scope, ActorMessageWorkEnd);
                 Wait(5, c_timeAI);
@@ -238,6 +242,7 @@ bool AP_GhostSpawn_disable() {
 bool AP_GhostSpawn_updateDifficulty(int difficulty) {
     unit u = UnitGroupUnit(BuildingsActive, 1);
     int p = UnitGetOwner(u);
+    log("Already placed, updating difficulty");
     SpawnSetupDifficulty(p, difficulty);
     return true;
 }
@@ -319,6 +324,7 @@ static bool HasActiveEnemy(int user) {
 bool AP_GhostSpawn_placeBuilding() {
     int p;
     int user = lib5BD4895D_gf_AP_Core_getUser();
+    log("Attempt to place");
     Wait(2, c_timeAI); // wait for options to settle
     if (!libABFE498B_gv_aP_Triggers_isBuild) {
         log("No build mission, do not spawn Ghost Building");
@@ -326,6 +332,7 @@ bool AP_GhostSpawn_placeBuilding() {
     }
     while (libABFE498B_gv_aP_Triggers_IsNoBuild || AP_GhostSpawn_waitForSpawnOverride) {
         Wait(5, c_timeAI);
+        log("waiting for no-build section to end...");
     }
     if (AP_GhostSpawn_playerOverride > 0) {
         p = AP_GhostSpawn_playerOverride;
