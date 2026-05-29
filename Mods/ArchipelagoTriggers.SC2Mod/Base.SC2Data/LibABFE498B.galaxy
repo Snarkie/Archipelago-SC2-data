@@ -11325,6 +11325,13 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc (bool testCond
         return true;
     }
 
+    if ((lp_level <= 0)) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
+        libABFE498B_gv_aP_Triggers_Traps_hasGhostSpawn[lp_player] = false;
+        AP_GhostSpawn_disable();
+        return true;
+    }
+
     if ((libABFE498B_gv_aP_Triggers_Traps_hasGhostSpawn[lp_player] == true)) {
         libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
         AP_GhostSpawn_updateDifficulty(lp_level);
@@ -12968,6 +12975,118 @@ void libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_displayBase
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_displayBase_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_player;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, StringExternal("Param/Value/lib_ABFE498B_8244CDF9"), true);
+    for (lv_player = 1; lv_player < 20; lv_player += 1) {
+        AP_Base_show(lv_player);
+    }
+    
+    for (lv_i = 1; lv_i <= PlayerGroupCount(PlayerGroupActive()); lv_i += 1) {
+        lv_player = PlayerGroupPlayer(PlayerGroupActive(), lv_i);
+        AP_Base_show(lv_player);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_displayBase_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_displayBase = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_displayBase_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_displayBase, c_playerAny, "-bases", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_ghostTrap
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_ghostTrap_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+    string lv_s;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_s = StringWord(EventChatMessage(false), 2);
+
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_s == "")) {
+        lv_level = 1;
+    }
+    else {
+        lv_level = MinI(5, MaxI(0, StringToInt(lv_s)));
+    }
+    TextExpressionSetToken("Param/Expression/lib_ABFE498B_24FD5C75", "A", IntToText(lv_level));
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_24FD5C75"), true);
+    libABFE498B_gf_AP_Triggers_unlockGhostSpawn(EventPlayer(), lv_level);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_ghostTrap_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_ghostTrap = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_ghostTrap_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_ghostTrap, c_playerAny, "-ghost", false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_killTraps
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_killTraps_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_64E7F97C"), true);
+    libABFE498B_gf_AP_Triggers_unlockGhostSpawn(EventPlayer(), 0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_killTraps_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_killTraps = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_killTraps_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_killTraps, c_playerAny, "-kill", true);
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_killTraps, c_playerAny, "-killtraps", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: MakeHeroKerrigan
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_MakeHeroKerrigan_Func (bool testConds, bool runActions) {
@@ -13412,6 +13531,9 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_updatePrompt_Init();
     libABFE498B_gt_AP_Triggers_Debug_makeHero_Init();
     libABFE498B_gt_AP_Triggers_Debug_reviveHeroes_Init();
+    libABFE498B_gt_AP_Triggers_Debug_displayBase_Init();
+    libABFE498B_gt_AP_Triggers_Debug_ghostTrap_Init();
+    libABFE498B_gt_AP_Triggers_Debug_killTraps_Init();
     libABFE498B_gt_MakeHeroKerrigan_Init();
     libABFE498B_gt_MakeHeroNova_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsAll_Init();
