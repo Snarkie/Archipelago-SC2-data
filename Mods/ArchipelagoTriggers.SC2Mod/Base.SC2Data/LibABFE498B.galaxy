@@ -11320,6 +11320,7 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc (bool testCond
 
     // Automatic Variable Declarations
     // Implementation
+    lp_level = MaxI(0, MinI(5, lp_level));
     if ((lp_player != lib5BD4895D_gf_AP_Core_getUser())) {
         TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_85477AAE"), false);
         return true;
@@ -13001,7 +13002,6 @@ bool libABFE498B_gt_AP_Triggers_Debug_displayBase_Func (bool testConds, bool run
     for (lv_player = 1; lv_player < 20; lv_player += 1) {
         AP_Base_show(lv_player);
     }
-    
     for (lv_i = 1; lv_i <= PlayerGroupCount(PlayerGroupActive()); lv_i += 1) {
         lv_player = PlayerGroupPlayer(PlayerGroupActive(), lv_i);
         AP_Base_show(lv_player);

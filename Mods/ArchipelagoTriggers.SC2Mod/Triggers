@@ -92160,6 +92160,7 @@
             <FlagCreateThread/>
             <Parameter Type="ParamDef" Library="ABFE498B" Id="A58C0756"/>
             <Parameter Type="ParamDef" Library="ABFE498B" Id="160C5666"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="7ABAE3C7"/>
             <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="49F02C2B"/>
             <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="1FD32D8A"/>
             <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="6C3341FE"/>
@@ -92181,6 +92182,47 @@
             <Default Type="Param" Library="ABFE498B" Id="EFEA0D6E"/>
         </Element>
         <Element Type="Param" Id="EFEA0D6E">
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="FunctionCall" Id="7ABAE3C7">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5BDC6A34"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="447EF5F7"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="E72582EF"/>
+        </Element>
+        <Element Type="Param" Id="447EF5F7">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="B2E0AD39"/>
+            <Parameter Type="ParamDef" Library="ABFE498B" Id="160C5666"/>
+        </Element>
+        <Element Type="Param" Id="E72582EF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="6578585C"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="BA5B0709"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BA5B0709">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="D7C3FBC2"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="66831F41"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="7E91BE3F"/>
+        </Element>
+        <Element Type="Param" Id="66831F41">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="997160FB"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="D546994C"/>
+        </Element>
+        <Element Type="FunctionCall" Id="D546994C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="7AE49F4E"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="5BB751AB"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="4EC7B8C2"/>
+        </Element>
+        <Element Type="Param" Id="5BB751AB">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="1999B4BF"/>
+            <Parameter Type="ParamDef" Library="ABFE498B" Id="160C5666"/>
+        </Element>
+        <Element Type="Param" Id="4EC7B8C2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="96CEED49"/>
+            <Value>5</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="7E91BE3F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="39183C6C"/>
             <Value>0</Value>
             <ValueType Type="int"/>
         </Element>
@@ -102375,7 +102417,6 @@
                 for (lv_player = 1; lv_player &lt; 20; lv_player += 1) {
                     AP_Base_show(lv_player);
                 }
-                
                 for (lv_i = 1; lv_i &lt;= PlayerGroupCount(PlayerGroupActive()); lv_i += 1) {
                     lv_player = PlayerGroupPlayer(PlayerGroupActive(), lv_i);
                     AP_Base_show(lv_player);
