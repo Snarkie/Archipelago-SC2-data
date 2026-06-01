@@ -293,6 +293,7 @@ Variable/Name/344CBC1E=MissionStage
 Variable/Name/3455DD66=PLAYER_01_USER
 Variable/Name/3462EB04=FadeDuration
 Variable/Name/3788D588=MissileUnit
+Variable/Name/37A5FA4B=group
 Variable/Name/3A025952=Thrasher01
 Variable/Name/3A080163=ARTANIS
 Variable/Name/3A1E440F=KerriganLowestLife

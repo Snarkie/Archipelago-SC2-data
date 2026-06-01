@@ -1,9 +1,9 @@
 //==================================================================================================
-//
+// 
 // Generated Map Script
-//
+// 
 // Name:   The Essence of Eternity
-//
+// 
 //==================================================================================================
 include "TriggerLibs/NativeLib"
 include "TriggerLibs/LibertyLib"
@@ -1008,6 +1008,7 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     int lv_player;
     region lv_region;
     point lv_point;
+    unitgroup lv_group;
 
     // Automatic Variable Declarations
     string auto99F1E925_val;
@@ -9093,7 +9094,7 @@ void gt_ObjectiveTerranSurvivalComplete_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Objective Terran Survival Failed Q
+// Trigger: Objective Terran Survival Failed Q 
 //--------------------------------------------------------------------------------------------------
 bool gt_ObjectiveTerranSurvivalFailedQ_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
