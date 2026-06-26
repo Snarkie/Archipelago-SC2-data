@@ -11860,4 +11860,11 @@
         <Duration value="15"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AP_VoidShade">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
+        <Modification>
+            <StateFlags index="SuppressFoodUsed" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
 </Catalog>

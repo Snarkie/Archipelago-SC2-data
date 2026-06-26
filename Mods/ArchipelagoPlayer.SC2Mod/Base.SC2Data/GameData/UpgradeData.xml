@@ -17366,4 +17366,7 @@
         <EffectArray Operation="Subtract" Reference="Unit,AP_PhoenixTaldarim,CostResource[Vespene]" Value="25"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_PhoenixTaldarim,CostResource[Minerals]" Value="25"/>
     </CUpgrade>
+    <CUpgrade id="AP_BiggerAttackWaves">
+        <MaxLevel value="5"/>
+    </CUpgrade>
 </Catalog>

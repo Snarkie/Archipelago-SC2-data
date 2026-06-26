@@ -48641,5 +48641,23 @@
     <CActorModel id="AP_PhoenixTaldarimDeathModel" parent="UnitDeathModel">
         <EditorCategories value=""/>
         <On Terms="Effect.AP_SkirmisherSuicideLM.Start" Send="SetVisibility"/>
+    <CActorModelMaterial id="AP_GlazeShadow" parent="GlazeParent">
+        <On Terms="Behavior.AP_VoidShade.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="Behavior.AP_VoidShade.Off" Send="Destroy"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorSimple id="AP_ShadowDeathHandler">
+        <On Terms="Behavior.AP_VoidShade.On; ValidateUnit NotStructure" Send="Create"/>
+        <On Terms="UnitDeathCustomize" Target="_Unit" Send="Destroy"/>
+        <On Terms="UnitDeathCustomize" Send="TimerSet 0.100000 Delay"/>
+        <On Terms="TimerExpired; TimerName Delay" Target="_Unit" Send="Destroy"/>
+        <On Terms="UnitDeathCustomize" Send="TimerSet 0.200000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+        <On Terms="UnitDeathCustomize" Send="Create AP_ShadowDeathModel"/>
+    </CActorSimple>
+    <CActorModel id="AP_ShadowDeathModel" parent="ModelAnimationStyleOneShotNoOrphan">
+        <EditorCategories value=""/>
+        <AutoScaleFactor value="0.300000"/>
     </CActorModel>
 </Catalog>

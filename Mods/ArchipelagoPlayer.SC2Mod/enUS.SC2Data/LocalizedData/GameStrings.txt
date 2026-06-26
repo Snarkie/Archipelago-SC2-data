@@ -800,6 +800,7 @@ Behavior/Name/AP_VoidRaySwarmDamageBoost=Prismatic Alignment
 Behavior/Name/AP_VoidRayVoidDamageBoost=Prismatic Alignment
 Behavior/Name/AP_VoidSentryBlackHole=Black Hole
 Behavior/Name/AP_VoidSentryChronoBeam=Chrono Beam
+Behavior/Name/AP_VoidShade=Void Duplicate
 Behavior/Name/AP_VoidStalkerBlinkShieldRestore=Shadow Regeneration
 Behavior/Name/AP_VoidZealotShadowChargeSlow=Slow
 Behavior/Name/AP_VoidZealotShadowChargeStun=Stunned
@@ -1095,6 +1096,7 @@ Behavior/Tooltip/AP_VoidRayAiurSlow=This unit's movement, attack, and production
 Behavior/Tooltip/AP_VoidRaySwarmDamageBoost=This unit deals an additional +<d ref="Behavior,AP_VoidRaySwarmDamageBoost,Modification[0].DamageDealtAttributeScaled[Armored]"/> damage to armored units.
 Behavior/Tooltip/AP_VoidSentryBlackHole=This unit cannot move or attack.
 Behavior/Tooltip/AP_VoidSentryChronoBeam=This unit has increased movement and attack speeds.
+Behavior/Tooltip/AP_VoidShade=This unit is reinforcing an attack wave.
 Behavior/Tooltip/AP_VoidStalkerBlinkShieldRestore=This unit is regenerating shields.
 Behavior/Tooltip/AP_VoidZealotShadowChargeStun=This unit cannot move or attack.
 Behavior/Tooltip/AP_VoltaicShock=This air unit is grounded and can be attacked as a ground unit.

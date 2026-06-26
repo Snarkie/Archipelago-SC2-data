@@ -22551,4 +22551,11 @@
     <CModel id="AP_SkirmisherSuicideImpact">
         <Model value="Assets\Effects\Protoss\Alarak_Attack_Beam_Strong_Impact\Alarak_Attack_Beam_Strong_Impact.m3"/>
     </CModel>
+    <CModel id="AP_GlazeShadow" parent="Glaze">
+        <Model value="Assets\Effects\Glaze\Glaze_Corrupted_TangentSpace\Glaze_Corrupted_TangentSpace.m3"/>
+        <Priority value="32"/>
+    </CModel>
+    <CModel id="AP_ShadowDeathModel">
+        <Model value="Assets\Units\Neutral\VoidUnit_Death\VoidUnit_Death.m3"/>
+    </CModel>
 </Catalog>
