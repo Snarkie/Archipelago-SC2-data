@@ -1,8 +1,10 @@
-﻿Param/Expression/lib_ABFE498B_0C410619=DEBUG: Adding player ~A~ to affected players for AP items
+﻿Behavior/Name/AP_VoidShade=Void Duplicate
+Behavior/Tooltip/AP_VoidShade=This unit is reinforcing an attack wave.
+Param/Expression/lib_ABFE498B_0C410619=DEBUG: Adding player ~A~ to affected players for AP items
 Param/Expression/lib_ABFE498B_23084377=DEBUG: Make ~A~ Hero
 Param/Expression/lib_ABFE498B_24A12324=DEBUG: Set all resource fields to ~A~.
 Param/Expression/lib_ABFE498B_24FD5C75=DEBUG: Activate Ghost Trap Level ~A~
-Param/Expression/lib_ABFE498B_2E4C007C=DEBUG: Activate Bigger Attack Wave Trap Level ~A~
+Param/Expression/lib_ABFE498B_2E4C007C=DEBUG: Activate Void Duplicate Trap Level ~A~
 Param/Expression/lib_ABFE498B_58E5AF43=Hero System: Handle placement for ~A~
 Param/Expression/lib_ABFE498B_64E7F97C=DEBUG: Deactivate all traps
 Param/Expression/lib_ABFE498B_720449CE=DEBUG: Grant tech level: ~A~
