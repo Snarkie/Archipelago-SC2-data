@@ -43,6 +43,7 @@ void libABFE498B_InitVariables () {
     libABFE498B_gv_aP_Triggers_HeroUnits = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk";
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Group = UnitGroupEmpty();
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = RandomInt(1, 5);
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_lastWarpedUnits = UnitGroupEmpty();
 }
@@ -12147,6 +12148,47 @@ bool libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter (string lp_type) {
     return false;
 }
 
+unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
+    // Variable Declarations
+    string lv_type;
+    int lv_p;
+    unit lv_u;
+    unit lv_new;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_type = UnitGetType(lp_u);
+    lv_p = UnitGetOwner(lp_u);
+    lv_u = lp_u;
+
+    // Implementation
+    if ((libABFE498B_gv_aP_Triggers_VoidDuplicate_PlayerFilter[lv_p] == true)) {
+        return null;
+    }
+
+    if (libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter(lv_type)) {
+        return null;
+    }
+
+    UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u);
+    if (libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex >= 5) {
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = 1;
+    }
+    else {
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex + 1;
+    }
+    if ((libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex <= libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold)) {
+        UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), UnitGetFacing(lv_u));
+        lv_new = UnitLastCreated();
+        libNtve_gf_CreateActorAtPoint("AP_ShadowDeathModel", UnitGetPosition(lv_new));
+        UnitBehaviorAdd(lv_new, "AP_VoidShade", lv_new, 1);
+        UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_new);
+        return lv_new;
+    }
+
+    return null;
+}
+
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
     // Automatic Variable Declarations
     // Implementation
@@ -13036,7 +13078,7 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
 
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u);
         if ((lv_index <= libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold)) {
-            UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), 270.0);
+            UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), UnitGetFacing(lv_u));
             lv_new = UnitLastCreated();
             libNtve_gf_CreateActorAtPoint("AP_ShadowDeathModel", UnitGetPosition(lv_new));
             UnitBehaviorAdd(lv_new, "AP_VoidShade", lv_new, 1);
