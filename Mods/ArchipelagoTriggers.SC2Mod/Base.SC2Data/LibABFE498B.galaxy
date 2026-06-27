@@ -41,7 +41,7 @@ void libABFE498B_InitVariables () {
         libABFE498B_gv_apHeroChoiceButton[init_i] = c_invalidDialogControlId;
     }
     libABFE498B_gv_aP_Triggers_HeroUnits = UnitGroupEmpty();
-    libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk";
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk NovaMothership";
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Group = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = RandomInt(1, 5);
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
