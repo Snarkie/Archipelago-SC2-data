@@ -539,6 +539,9 @@ void gf_SpawnUnitsFromNydus (int lp_qty, string lp_type, unit lp_nydus, fixed lp
     unitgroup auto56D3AD49_g;
     int auto56D3AD49_u;
     unit auto56D3AD49_var;
+    unitgroup autoBF3FF80D_g;
+    int autoBF3FF80D_u;
+    unit autoBF3FF80D_var;
 
     // Implementation
     if (((UnitIsAlive(lp_nydus) == false) || (gv_gameOver == true) || (lp_qty <= 0) || (lp_type == null) || (PlayerGetPropertyInt(gv_pLAYER_ZERG_MAIN, c_playerPropSuppliesUsed) >= 300))) {
@@ -557,6 +560,14 @@ void gf_SpawnUnitsFromNydus (int lp_qty, string lp_type, unit lp_nydus, fixed lp
         UnitSetTeamColorIndex(auto56D3AD49_var, gv_specialUnitColor);
     }
     AISetGroupSuicide(UnitLastCreatedGroup(), true);
+    autoBF3FF80D_g = UnitLastCreatedGroup();
+    autoBF3FF80D_u = UnitGroupCount(autoBF3FF80D_g, c_unitCountAll);
+    for (;; autoBF3FF80D_u -= 1) {
+        autoBF3FF80D_var = UnitGroupUnitFromEnd(autoBF3FF80D_g, autoBF3FF80D_u);
+        if (autoBF3FF80D_var == null) { break; }
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(autoBF3FF80D_var);
+        AISetUnitSuicide(UnitLastCreated(), true);
+    }
     libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lp_nydus), c_animNameDefault, "Spell", 0, c_animTimeDefault);
     SoundPlayOnUnit(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), lp_nydus, 0.0, 100.0, 0.0);
     Wait(lp_time, lp_timeType);
