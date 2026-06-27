@@ -12162,11 +12162,7 @@ unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
     lv_u = lp_u;
 
     // Implementation
-    if ((libABFE498B_gv_aP_Triggers_VoidDuplicate_PlayerFilter[lv_p] == true)) {
-        return null;
-    }
-
-    if (libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter(lv_type)) {
+    if (((TechTreeUpgradeCount(lib5BD4895D_gf_AP_Core_getUser(), "AP_BiggerAttackWaves", c_techCountCompleteOnly) <= 0) || (libNtve_gf_PlayerIsEnemy(lib5BD4895D_gf_AP_Core_getUser(), lv_p, libNtve_ge_PlayerRelation_Enemy) == false) || (libABFE498B_gv_aP_Triggers_VoidDuplicate_PlayerFilter[lv_p] == true) || libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter(lv_type))) {
         return null;
     }
 
