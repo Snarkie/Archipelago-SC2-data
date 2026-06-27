@@ -402,6 +402,10 @@ void gf_FirstZergWaveAttackP03 (int lp_quantity, fixed lp_waitTime, string lp_un
     unitgroup lv_lastGroup;
 
     // Automatic Variable Declarations
+    unitgroup auto71D9A6B7_g;
+    int auto71D9A6B7_u;
+    unit auto71D9A6B7_var;
+
     // Variable Initialization
     lv_lastGroup = UnitGroupEmpty();
 
@@ -410,17 +414,37 @@ void gf_FirstZergWaveAttackP03 (int lp_quantity, fixed lp_waitTime, string lp_un
     SoundPlayOnUnit(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), gv_nydusWormP03, 0.0, 100.0, 0.0);
     libNtve_gf_CreateUnitsAtPoint2(lp_quantity, lp_unitType, 0, gv_pLAYER03_ZERG, UnitGetPosition(gv_nydusWormP03));
     AISetGroupSuicide(UnitLastCreatedGroup(), true);
+    auto71D9A6B7_g = UnitLastCreatedGroup();
+    auto71D9A6B7_u = UnitGroupCount(auto71D9A6B7_g, c_unitCountAll);
+    for (;; auto71D9A6B7_u -= 1) {
+        auto71D9A6B7_var = UnitGroupUnitFromEnd(auto71D9A6B7_g, auto71D9A6B7_u);
+        if (auto71D9A6B7_var == null) { break; }
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(auto71D9A6B7_var);
+        AISetUnitSuicide(UnitLastCreated(), true);
+    }
     Wait(lp_waitTime, c_timeGame);
 }
 
 void gf_SpawnNydusUnitsP02West (int lp_qty, string lp_unitType, int lp_player, unit lp_nydus, fixed lp_delay) {
     // Automatic Variable Declarations
+    unitgroup auto78DE7E68_g;
+    int auto78DE7E68_u;
+    unit auto78DE7E68_var;
+
     // Implementation
     if ((gv_gameOver == false) && (UnitIsAlive(lp_nydus) == true)) {
         libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lp_nydus), c_animNameDefault, "Spell", 0, c_animTimeDefault);
         SoundPlayOnUnit(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), lp_nydus, 0.0, 100.0, 0.0);
         UnitCreate(lp_qty, lp_unitType, 0, lp_player, UnitGetPosition(lp_nydus), libNtve_gf_RandomAngle());
         AISetGroupSuicide(UnitLastCreatedGroup(), true);
+        auto78DE7E68_g = UnitLastCreatedGroup();
+        auto78DE7E68_u = UnitGroupCount(auto78DE7E68_g, c_unitCountAll);
+        for (;; auto78DE7E68_u -= 1) {
+            auto78DE7E68_var = UnitGroupUnitFromEnd(auto78DE7E68_g, auto78DE7E68_u);
+            if (auto78DE7E68_var == null) { break; }
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(auto78DE7E68_var);
+            AISetUnitSuicide(UnitLastCreated(), true);
+        }
         Wait(lp_delay, c_timeAI);
     }
 
@@ -428,12 +452,24 @@ void gf_SpawnNydusUnitsP02West (int lp_qty, string lp_unitType, int lp_player, u
 
 void gf_SpawnNydusUnitsP04East (int lp_qty, string lp_unitType, int lp_player, unit lp_nydus, fixed lp_delay) {
     // Automatic Variable Declarations
+    unitgroup autoCB214066_g;
+    int autoCB214066_u;
+    unit autoCB214066_var;
+
     // Implementation
     if ((gv_gameOver == false) && (UnitIsAlive(lp_nydus) == true)) {
         libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lp_nydus), c_animNameDefault, "Spell", 0, c_animTimeDefault);
         SoundPlayOnUnit(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), lp_nydus, 0.0, 100.0, 0.0);
         UnitCreate(lp_qty, lp_unitType, 0, lp_player, UnitGetPosition(lp_nydus), libNtve_gf_RandomAngle());
         AISetGroupSuicide(UnitLastCreatedGroup(), true);
+        autoCB214066_g = UnitLastCreatedGroup();
+        autoCB214066_u = UnitGroupCount(autoCB214066_g, c_unitCountAll);
+        for (;; autoCB214066_u -= 1) {
+            autoCB214066_var = UnitGroupUnitFromEnd(autoCB214066_g, autoCB214066_u);
+            if (autoCB214066_var == null) { break; }
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(autoCB214066_var);
+            AISetUnitSuicide(UnitLastCreated(), true);
+        }
         Wait(lp_delay, c_timeAI);
     }
 
