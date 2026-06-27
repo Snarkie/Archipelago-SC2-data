@@ -474,6 +474,7 @@ Variable/Name/C7B57065=unit
 Variable/Name/C80EAACC=LingCount
 Variable/Name/C9AF7781=PLAYER_06_DEFENDERSOFMAN
 Variable/Name/C9F82816=LOCATION_ID_ALL_GARRISONS
+Variable/Name/CBBEA957=group
 Variable/Name/CD499AB8=Hercules01
 Variable/Name/CDA54826=LOCATION_ID_SOUTH_GARRISON
 Variable/Name/CF6BAB57=Hero Enabled

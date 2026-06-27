@@ -1464,15 +1464,25 @@ bool auto_gf_S1MoveOverseerToMapEdgeAndDespawn_TriggerFunc (bool testConds, bool
 }
 
 void gf_S1SpawnStreamingWaveUnit (int lp_count, string lp_unitType, int lp_player, point lp_spawnPoint, fixed lp_delay) {
+    // Variable Declarations
+    unitgroup lv_group;
+
     // Automatic Variable Declarations
     unitgroup auto29232900_g;
     int auto29232900_u;
     unit auto29232900_var;
+    unitgroup auto00C7CDFF_g;
+    int auto00C7CDFF_u;
+    unit auto00C7CDFF_var;
+
+    // Variable Initialization
+    lv_group = UnitGroupEmpty();
 
     // Implementation
     if ((libNCMI_gf_GameIsOver() == false) && (libNCMI_gf_PlayerInCinematicModeCampaign() == false) && (gv_currentStage == 1) && (lp_count > 0)) {
         libNtve_gf_CreateUnitsAtPoint2(lp_count, lp_unitType, 0, lp_player, lp_spawnPoint);
-        auto29232900_g = UnitLastCreatedGroup();
+        lv_group = UnitLastCreatedGroup();
+        auto29232900_g = lv_group;
         auto29232900_u = UnitGroupCount(auto29232900_g, c_unitCountAll);
         for (;; auto29232900_u -= 1) {
             auto29232900_var = UnitGroupUnitFromEnd(auto29232900_g, auto29232900_u);
@@ -1481,6 +1491,16 @@ void gf_S1SpawnStreamingWaveUnit (int lp_count, string lp_unitType, int lp_playe
             libNtve_gf_AICast(auto29232900_var, OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(1750)));
         }
         AISetGroupSuicide(UnitLastCreatedGroup(), true);
+        auto00C7CDFF_g = lv_group;
+        auto00C7CDFF_u = UnitGroupCount(auto00C7CDFF_g, c_unitCountAll);
+        for (;; auto00C7CDFF_u -= 1) {
+            auto00C7CDFF_var = UnitGroupUnitFromEnd(auto00C7CDFF_g, auto00C7CDFF_u);
+            if (auto00C7CDFF_var == null) { break; }
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(auto00C7CDFF_var);
+            AISetUnitScriptControlled(UnitLastCreated(), false);
+            libNtve_gf_AICast(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(1750)));
+            AISetUnitSuicide(UnitLastCreated(), true);
+        }
         Wait(lp_delay, c_timeAI);
     }
 
