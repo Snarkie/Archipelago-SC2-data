@@ -293,6 +293,8 @@ void gf_SpawnSuicidalAttackerGround (string lp_paraUnitType, int lp_paraPlayer) 
 
     UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
     AISetUnitSuicide(UnitLastCreated(), true);
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+    AISetUnitSuicide(UnitLastCreated(), true);
 }
 
 void gf_SpawnSuicidalAttackerAir (string lp_paraUnitType, int lp_paraPlayer) {
@@ -311,6 +313,8 @@ void gf_SpawnSuicidalAttackerAir (string lp_paraUnitType, int lp_paraPlayer) {
     }
 
     UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
+    AISetUnitSuicide(UnitLastCreated(), true);
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
     AISetUnitSuicide(UnitLastCreated(), true);
 }
 
@@ -1347,6 +1351,10 @@ bool gt_UpdateLeaderboardZergorHybridKilled_Func (bool testConds, bool runAction
         }
 
         if (!(((UnitGetOwner(EventUnit()) == gv_p04_ZERG_NW) || (UnitGetOwner(EventUnit()) == gv_p05_ZERG_NE) || (UnitGetOwner(EventUnit()) == gv_p06_ZERG_SE) || (UnitGetOwner(EventUnit()) == gv_p07_FRENZIED_ZERG)))) {
+            return false;
+        }
+
+        if (!((UnitBehaviorCount(EventUnit(), "AP_VoidShade") == 0))) {
             return false;
         }
 
@@ -5174,6 +5182,9 @@ bool gt_NydusSpawningTriggerSwarmlings_Func (bool testConds, bool runActions) {
             if (autoDC125E1F_var == null) { break; }
             UnitBehaviorAdd(autoDC125E1F_var, "BroodlingWander", autoDC125E1F_var, 1);
             UnitBehaviorAdd(autoDC125E1F_var, "BroodlingFate", autoDC125E1F_var, 1);
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+            UnitBehaviorAdd(UnitLastCreated(), "BroodlingWander", UnitLastCreated(), 1);
+            UnitBehaviorAdd(UnitLastCreated(), "BroodlingFate", UnitLastCreated(), 1);
         }
     }
 
@@ -5194,6 +5205,9 @@ bool gt_NydusSpawningTriggerSwarmlings_Func (bool testConds, bool runActions) {
                 if (autoA731EB92_var == null) { break; }
                 UnitBehaviorAdd(autoA731EB92_var, "BroodlingWander", autoA731EB92_var, 1);
                 UnitBehaviorAdd(autoA731EB92_var, "BroodlingFate", autoA731EB92_var, 1);
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+                UnitBehaviorAdd(UnitLastCreated(), "BroodlingWander", UnitLastCreated(), 1);
+                UnitBehaviorAdd(UnitLastCreated(), "BroodlingFate", UnitLastCreated(), 1);
             }
         }
 
@@ -5216,6 +5230,13 @@ bool gt_NydusSpawningTriggerZerglings_Func (bool testConds, bool runActions) {
     unit lv_unit;
 
     // Automatic Variable Declarations
+    unitgroup auto4C59366A_g;
+    int auto4C59366A_u;
+    unit auto4C59366A_var;
+    unitgroup auto9D0EED51_g;
+    int auto9D0EED51_u;
+    unit auto9D0EED51_var;
+
     // Variable Initialization
 
     // Actions
@@ -5241,6 +5262,13 @@ bool gt_NydusSpawningTriggerZerglings_Func (bool testConds, bool runActions) {
         SoundPlayAtPoint(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), UnitGetPosition(lv_unit), 1.0, 100.0, 0.0);
         libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lv_unit), c_animNameDefault, "Spell", 0, c_animTimeDefault);
         libNtve_gf_CreateUnitsAtPoint2(libNtve_gf_DifficultyValueInt(2, 2, 3, 4), "Zergling", 0, gv_p07_FRENZIED_ZERG, PointWithOffsetPolar(UnitGetPosition(lv_unit), 0.5, 270.0));
+        auto4C59366A_g = UnitLastCreatedGroup();
+        auto4C59366A_u = UnitGroupCount(auto4C59366A_g, c_unitCountAll);
+        for (;; auto4C59366A_u -= 1) {
+            auto4C59366A_var = UnitGroupUnitFromEnd(auto4C59366A_g, auto4C59366A_u);
+            if (auto4C59366A_var == null) { break; }
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+        }
     }
 
     Wait(gv_nydusSpawnDelay, c_timeGame);
@@ -5253,6 +5281,13 @@ bool gt_NydusSpawningTriggerZerglings_Func (bool testConds, bool runActions) {
             SoundPlayAtPoint(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), UnitGetPosition(lv_unit), 1.0, 100.0, 0.0);
             libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lv_unit), c_animNameDefault, "Spell", 0, c_animTimeDefault);
             libNtve_gf_CreateUnitsAtPoint2(2, "Zergling", 0, gv_p07_FRENZIED_ZERG, PointWithOffsetPolar(UnitGetPosition(lv_unit), 0.5, 270.0));
+            auto9D0EED51_g = UnitLastCreatedGroup();
+            auto9D0EED51_u = UnitGroupCount(auto9D0EED51_g, c_unitCountAll);
+            for (;; auto9D0EED51_u -= 1) {
+                auto9D0EED51_var = UnitGroupUnitFromEnd(auto9D0EED51_g, auto9D0EED51_u);
+                if (auto9D0EED51_var == null) { break; }
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+            }
         }
 
         Wait(gv_nydusSpawnDelay, c_timeGame);
