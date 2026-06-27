@@ -13063,7 +13063,7 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
     for (;; auto874419A8_u -= 1) {
         lv_u = UnitGroupUnitFromEnd(auto874419A8_g, auto874419A8_u);
         if (lv_u == null) { break; }
-        if ((UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u) == true)) {
+        if (((UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u) == true) || (UnitHasBehavior(lv_u, "AP_MindControlImmune") == true))) {
             continue;
         }
 

@@ -101625,16 +101625,18 @@
         <Element Type="FunctionCall" Id="7833ED27">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000007"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="4655A5BE"/>
             <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="BE3B2BC4"/>
-            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="D6E20D3F"/>
         </Element>
-        <Element Type="FunctionCall" Id="BE3B2BC4">
-            <FunctionDef Type="FunctionDef" Library="Ntve" Id="268BBACB"/>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Element Type="FunctionCall" Id="4655A5BE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000133"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="D6E20D3F"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="AB9F4CDF"/>
         </Element>
         <Element Type="FunctionCall" Id="D6E20D3F">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
-            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
             <Parameter Type="Param" Library="ABFE498B" Id="12B5FE42"/>
             <Parameter Type="Param" Library="ABFE498B" Id="75B5C7AD"/>
             <Parameter Type="Param" Library="ABFE498B" Id="CFAFF2DD"/>
@@ -101664,6 +101666,45 @@
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Value>true</Value>
             <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="AB9F4CDF">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="A5326269"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="4589538A"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="7D2FAA6A"/>
+        </Element>
+        <Element Type="Param" Id="A5326269">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="DF6ED643"/>
+        </Element>
+        <Element Type="FunctionCall" Id="DF6ED643">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="ABD41ECF"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="6D41D37B"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="39CEA917"/>
+        </Element>
+        <Element Type="Param" Id="6D41D37B">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="E163785B"/>
+            <Variable Type="Variable" Library="ABFE498B" Id="6AE81C50"/>
+        </Element>
+        <Element Type="Param" Id="39CEA917">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="D54684BD"/>
+            <Value>AP_MindControlImmune</Value>
+            <ValueType Type="gamelink"/>
+            <ValueGameType Type="Behavior"/>
+        </Element>
+        <Element Type="Param" Id="4589538A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="7D2FAA6A">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="BE3B2BC4">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="268BBACB"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
         </Element>
         <Element Type="FunctionCall" Id="D47036AE">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
