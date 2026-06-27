@@ -12,6 +12,7 @@ MapInfo/Player09/Name=Purifier Protoss
 MapInfo/Player10/Name=Hostile
 MapInfo/Player11/Name=Hostile
 Param/Expression/17F772E8=DEBUG: Victory
+Param/Expression/58C8AC0A=DEBUG: Spawn Golden Armada wave
 Param/Expression/720A81E0=~A~ Ships
 Param/Expression/F7A1EAD8=~A~
 Param/Value/059447A6=The Keystone

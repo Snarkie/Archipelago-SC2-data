@@ -169,6 +169,7 @@ void gf_AIKarax (int lp_owner, unit lp_karax, unitgroup lp_nearbyUnits);
 void gf_AIAlarak (int lp_owner, unit lp_alarak, unitgroup lp_nearbyUnits);
 void gf_AIVorazun (int lp_owner, unit lp_vorazun, unitgroup lp_nearbyUnits);
 void gf_SpawnStreamingWaveUnit (int lp_count, string lp_unitType, int lp_player, point lp_spawnPoint, fixed lp_delay);
+void gf_ArmadaBiggerWaves (unit lp_escort, unitgroup lp_units);
 void gf_SuperWarpGateLogic (unit lp_transport);
 void gf_TurnWarpedInUnit (unit lp_unit);
 
@@ -187,6 +188,7 @@ trigger gt_Init05Environment;
 trigger gt_Init06Difficulties;
 trigger gt_Init07Help;
 trigger gt_DEBUGVictory;
+trigger gt_DEBUGGoldenArmadaWaves;
 trigger gt_PerformanceInit;
 trigger gt_PerformancePauseAll;
 trigger gt_PerformanceUnpauseSE;
@@ -948,6 +950,9 @@ void gf_SpawnStreamingWaveUnit (int lp_count, string lp_unitType, int lp_player,
     unitgroup auto0FB03E72_g;
     int auto0FB03E72_u;
     unit auto0FB03E72_var;
+    unitgroup auto9B5C3FBE_g;
+    int auto9B5C3FBE_u;
+    unit auto9B5C3FBE_var;
 
     // Implementation
     if ((libVCMI_gf_GameIsOver() == false)) {
@@ -961,9 +966,57 @@ void gf_SpawnStreamingWaveUnit (int lp_count, string lp_unitType, int lp_player,
             libNtve_gf_AICast(auto0FB03E72_var, OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(gv_keystone)));
         }
         AISetGroupSuicide(UnitLastCreatedGroup(), true);
+        auto9B5C3FBE_g = UnitLastCreatedGroup();
+        auto9B5C3FBE_u = UnitGroupCount(auto9B5C3FBE_g, c_unitCountAll);
+        for (;; auto9B5C3FBE_u -= 1) {
+            auto9B5C3FBE_var = UnitGroupUnitFromEnd(auto9B5C3FBE_g, auto9B5C3FBE_u);
+            if (auto9B5C3FBE_var == null) { break; }
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(auto9B5C3FBE_var);
+            AISetUnitScriptControlled(UnitLastCreated(), false);
+            libNtve_gf_AICast(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(gv_keystone)));
+            AISetUnitSuicide(UnitLastCreated(), true);
+        }
         Wait(lp_delay, c_timeAI);
     }
 
+}
+
+void gf_ArmadaBiggerWaves (unit lp_escort, unitgroup lp_units) {
+    // Variable Declarations
+    fixed lv_step;
+    int lv_index;
+    unit lv_u;
+    unit lv_new;
+    unitgroup lv_group;
+
+    // Automatic Variable Declarations
+    unitgroup auto7C0026D5_g;
+    int auto7C0026D5_u;
+    unitgroup auto8F142E36_g;
+    int auto8F142E36_u;
+    unit auto8F142E36_var;
+
+    // Variable Initialization
+    lv_group = UnitGroupEmpty();
+
+    // Implementation
+    auto7C0026D5_g = lp_units;
+    auto7C0026D5_u = UnitGroupCount(auto7C0026D5_g, c_unitCountAll);
+    for (;; auto7C0026D5_u -= 1) {
+        lv_u = UnitGroupUnitFromEnd(auto7C0026D5_g, auto7C0026D5_u);
+        if (lv_u == null) { break; }
+        lv_new = libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(lv_u);
+        UnitGroupAdd(lv_group, lv_new);
+    }
+    lv_step = (360/UnitGroupCount(lv_group, c_unitCountAlive));
+    auto8F142E36_g = lv_group;
+    auto8F142E36_u = UnitGroupCount(auto8F142E36_g, c_unitCountAll);
+    for (;; auto8F142E36_u -= 1) {
+        auto8F142E36_var = UnitGroupUnitFromEnd(auto8F142E36_g, auto8F142E36_u);
+        if (auto8F142E36_var == null) { break; }
+        AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, auto8F142E36_var, lp_escort, 6.0, (lv_step*lv_index));
+        lv_index += 1;
+    }
 }
 
 trigger auto_gf_SuperWarpGateLogic_Trigger = null;
@@ -1693,6 +1746,110 @@ bool gt_DEBUGVictory_Func (bool testConds, bool runActions) {
 void gt_DEBUGVictory_Init () {
     gt_DEBUGVictory = TriggerCreate("gt_DEBUGVictory_Func");
     TriggerAddEventChatMessage(gt_DEBUGVictory, c_playerAny, "-win", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: DEBUG: Golden Armada Waves
+//--------------------------------------------------------------------------------------------------
+bool gt_DEBUGGoldenArmadaWaves_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+
+        if (!((libVCMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerInCinematicMode(EventPlayer()) == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/58C8AC0A"), true);
+    if ((TriggerGetExecCount(gt_ArmadaAttack1Mid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack1Mid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack2TopMid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack2TopMid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack3BotMid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack3BotMid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack4Bot) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack4Bot, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack5Mid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack5Mid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack6BotMid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack6BotMid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack7Mid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack7Mid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack8TopMid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack8TopMid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack9Top) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack9Top, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack10Mid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack10Mid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack11Top) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack11Top, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack12Mid) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack12Mid, true, false);
+        return true;
+    }
+
+    if ((TriggerGetExecCount(gt_ArmadaAttack13Bot) <= 0)) {
+        TriggerExecute(gt_ArmadaAttack13Bot, true, false);
+        return true;
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_DEBUGGoldenArmadaWaves_Init () {
+    gt_DEBUGGoldenArmadaWaves = TriggerCreate("gt_DEBUGGoldenArmadaWaves_Func");
+    TriggerAddEventChatMessage(gt_DEBUGGoldenArmadaWaves, c_playerAny, "-armada", true);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4543,6 +4700,7 @@ bool gt_ArmadaAttack1Mid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 3.0, 180.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -4635,6 +4793,7 @@ bool gt_ArmadaAttack2TopMid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, libLotv_gf_DifficultyValueFixed2(3.0, 3.0, 3.0, 4.5), 180.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -4725,6 +4884,7 @@ bool gt_ArmadaAttack3BotMid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, libLotv_gf_DifficultyValueFixed2(3.0, 3.0, 3.0, 4.5), 180.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -4820,6 +4980,7 @@ bool gt_ArmadaAttack4Bot_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.5, 180.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -4918,6 +5079,7 @@ bool gt_ArmadaAttack5Mid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.5, 180.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -5013,6 +5175,7 @@ bool gt_ArmadaAttack6BotMid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.0, 240.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -5106,6 +5269,7 @@ bool gt_ArmadaAttack7Mid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.5, 240.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -5199,6 +5363,7 @@ bool gt_ArmadaAttack8TopMid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.5, 240.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -5309,6 +5474,7 @@ bool gt_ArmadaAttack9Top_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.5, 240.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     if ((libLotv_gf_DifficultyValueInt2(1, 1, 0, 0) == 1)) {
@@ -5422,6 +5588,7 @@ bool gt_ArmadaAttack10Mid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 4.5, 240.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -5522,6 +5689,7 @@ bool gt_ArmadaAttack11Top_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 5.0, 220.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     if ((libLotv_gf_DifficultyValueInt2(1, 1, 0, 0) == 1)) {
@@ -5626,6 +5794,7 @@ bool gt_ArmadaAttack12Mid_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 5.0, 220.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -5725,6 +5894,7 @@ bool gt_ArmadaAttack13Bot_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsWithDefaultFacing(1, "WarpPrism", 0, gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_SpawnPoint);
     AIAttackWaveAddEscortUnit(gv_pLAYER_05_PROTOSS_ARMADA, UnitLastCreated(), lv_lv_EscortTargetUnit, 5.0, 220.0);
     gf_SuperWarpGateLogic(UnitLastCreated());
+    gf_ArmadaBiggerWaves(lv_lv_EscortTargetUnit, gv_armadaUnitGroup);
     AIAttackWaveSend(gv_pLAYER_05_PROTOSS_ARMADA, 0, false);
     AIAttackWaveUseUnit(gv_pLAYER_05_PROTOSS_ARMADA, lv_lv_EscortTargetUnit);
     AIAttackWaveSetTargetPoint(gv_pLAYER_05_PROTOSS_ARMADA, PointFromId(489));
@@ -6053,6 +6223,8 @@ bool gt_SuperWarpGateSpawns_Func (bool testConds, bool runActions) {
     }
 
     AISetUnitSuicide(EventUnitProgressUnit(), true);
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(EventUnitProgressUnit());
+    AISetUnitSuicide(UnitLastCreated(), true);
     return true;
 }
 
@@ -7604,6 +7776,7 @@ void InitTriggers () {
     gt_Init06Difficulties_Init();
     gt_Init07Help_Init();
     gt_DEBUGVictory_Init();
+    gt_DEBUGGoldenArmadaWaves_Init();
     gt_PerformanceInit_Init();
     gt_PerformancePauseAll_Init();
     gt_PerformanceUnpauseSE_Init();
