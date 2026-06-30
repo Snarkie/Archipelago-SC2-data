@@ -41,7 +41,7 @@ void libABFE498B_InitVariables () {
         libABFE498B_gv_apHeroChoiceButton[init_i] = c_invalidDialogControlId;
     }
     libABFE498B_gv_aP_Triggers_HeroUnits = UnitGroupEmpty();
-    libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk NovaMothership Leviathan KerriganChar";
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk NovaMothership Leviathan KerriganChar Brakk";
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Group = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = RandomInt(1, 5);
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
@@ -11423,9 +11423,14 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc (bool testCond
 
     // Automatic Variable Declarations
     // Implementation
+    if ((libABFE498B_gv_aP_Triggers_TrapKillswitch == true)) {
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_85477AAE"), false);
+        return true;
+    }
+
     lp_level = MaxI(0, MinI(5, lp_level));
     if ((lp_player != lib5BD4895D_gf_AP_Core_getUser())) {
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_85477AAE"), false);
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_1FB03C8C"), false);
         return true;
     }
 
@@ -11474,6 +11479,11 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockVoidDuplicate_TriggerFunc (bool testC
     unit auto2F873F0F_var;
 
     // Implementation
+    if ((libABFE498B_gv_aP_Triggers_TrapKillswitch == true)) {
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_6A50AAE8"), false);
+        return true;
+    }
+
     lp_level = MaxI(0, MinI(5, lp_level));
     libNtve_gf_SetUpgradeLevelForPlayer(1, "AP_BiggerAttackWaves", lp_level);
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold = lp_level;
@@ -13850,7 +13860,14 @@ bool libABFE498B_gt_AP_Triggers_Debug_killTraps_Func (bool testConds, bool runAc
         return true;
     }
 
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_64E7F97C"), true);
+    if ((libABFE498B_gv_aP_Triggers_TrapKillswitch == false)) {
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_64E7F97C"), true);
+        libABFE498B_gv_aP_Triggers_TrapKillswitch = true;
+    }
+    else {
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_AECDE6A0"), true);
+        libABFE498B_gv_aP_Triggers_TrapKillswitch = false;
+    }
     libABFE498B_gf_AP_Triggers_unlockGhostSpawn(EventPlayer(), 0);
     libABFE498B_gf_AP_Triggers_unlockVoidDuplicate(EventPlayer(), 0);
     return true;
@@ -13915,34 +13932,6 @@ void libABFE498B_gt_AP_Triggers_Debug_resources_Init () {
     libABFE498B_gt_AP_Triggers_Debug_resources = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_resources_Func");
     TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_resources, c_playerAny, "-resources", false);
     TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_resources, c_playerAny, "-res", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MakeHeroKerrigan
-//--------------------------------------------------------------------------------------------------
-bool libABFE498B_gt_MakeHeroKerrigan_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libABFE498B_gt_MakeHeroKerrigan_Init () {
-    libABFE498B_gt_MakeHeroKerrigan = TriggerCreate("libABFE498B_gt_MakeHeroKerrigan_Func");
-    TriggerAddEventChatMessage(libABFE498B_gt_MakeHeroKerrigan, lib15EF4C78_gf_AP_GetPlayerId(), "makehero Kerrigan", false);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: MakeHeroNova
-//--------------------------------------------------------------------------------------------------
-bool libABFE498B_gt_MakeHeroNova_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libABFE498B_gt_MakeHeroNova_Init () {
-    libABFE498B_gt_MakeHeroNova = TriggerCreate("libABFE498B_gt_MakeHeroNova_Func");
-    TriggerAddEventChatMessage(libABFE498B_gt_MakeHeroNova, lib15EF4C78_gf_AP_GetPlayerId(), "makehero Nova", false);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14573,8 +14562,6 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_voidDuplicate_Init();
     libABFE498B_gt_AP_Triggers_Debug_killTraps_Init();
     libABFE498B_gt_AP_Triggers_Debug_resources_Init();
-    libABFE498B_gt_MakeHeroKerrigan_Init();
-    libABFE498B_gt_MakeHeroNova_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsAll_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsBoth_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsPassive_Init();
