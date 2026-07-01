@@ -11830,7 +11830,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
         <Requirements value="AP_MirageDetector"/>
-        <Modification Detect="11"/>
+        <Modification Detect="13"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_MirageIllusion">
         <BehaviorFlags index="Permanent" value="1"/>

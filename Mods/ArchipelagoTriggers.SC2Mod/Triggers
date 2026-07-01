@@ -101166,8 +101166,7 @@
         </Element>
         <Element Type="Param" Id="BFF8D4B8">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="37E735EA"/>
-            <Value>1</Value>
-            <ValueType Type="int"/>
+            <Variable Type="Variable" Library="ABFE498B" Id="9591240E"/>
         </Element>
         <Element Type="Param" Id="9A56B6E5">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="5D8F640E"/>

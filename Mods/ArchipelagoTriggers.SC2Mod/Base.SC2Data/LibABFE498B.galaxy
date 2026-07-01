@@ -12985,14 +12985,7 @@ bool libABFE498B_gt_AP_Triggers_MirageEternalDuty_Func (bool testConds, bool run
     // Variable Initialization
     lv_caster = EventPlayerEffectUsedUnit(c_effectUnitCaster);
     lv_player = UnitGetOwner(lv_caster);
-    lv_point = UnitTypePlacementFromUnit(lv_tYPE, 1, lv_caster, 5.0);
-
-    // Conditions
-    if (testConds) {
-        if (!((UnitGetType(libABFE498B_gf_AP_Triggers_getLastWarpedUnit()) == lv_tYPE))) {
-            return false;
-        }
-    }
+    lv_point = UnitTypePlacementFromUnit(lv_tYPE, lv_player, lv_caster, 5.0);
 
     // Actions
     if (!runActions) {
@@ -14319,3 +14312,4 @@ void libABFE498B_InitLib () {
     libABFE498B_InitCustomScript();
     libABFE498B_InitTriggers();
 }
+

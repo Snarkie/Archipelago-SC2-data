@@ -1284,3 +1284,4 @@ trigger libABFE498B_gt_AP_Triggers_RescueUnitsFix;
 
 // Library Initialization
 void libABFE498B_InitVariables ();
+
