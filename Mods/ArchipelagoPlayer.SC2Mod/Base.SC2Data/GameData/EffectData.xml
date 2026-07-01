@@ -27445,9 +27445,10 @@
     </CEffectSet>
     <CEffectEnumArea id="AP_SkirmisherSuicideSearch">
         <EditorCategories value=""/>
-        <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts>
-            <SortArray value="AP_SkirmisherSuicide"/>
+            <SortArray value="TSLifeLargestFirst"/>
+            <SortArray value="TSDistance"/>
         </TargetSorts>
         <AreaArray Radius="8" Effect="AP_SkirmisherSuicideLM"/>
         <MaxCount value="1"/>
@@ -27459,7 +27460,7 @@
         <AreaArray Radius="0.5" Fraction="1"/>
         <AreaArray Radius="1" Fraction="0.5"/>
         <AreaArray Radius="1.5" Fraction="0.25"/>
-        <IncludeArray Value="Target"/>
+        <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectApplyBehavior id="AP_GravitonBeamVoidCampaignHeightBehaviorStructure">

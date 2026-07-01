@@ -17341,10 +17341,9 @@
     <CUpgrade id="AP_PhoenixAcceleratedWarp">
         <EffectArray Operation="Subtract" Reference="Abil,AP_StargateTrain,InfoArray[Train1].Time" Value="21.000000"/>
         <EffectArray Operation="Subtract" Reference="Abil,AP_StargateTrainRedirect,InfoArray[Train1].Time" Value="21.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,AP_StargateWarpTrain,InfoArray[Train1].Charge.TimeUse" Value="19.000000"/>
-        <EffectArray Operation="Subtract" Reference="Abil,AP_StargateWarpTrainRedirect,InfoArray[Train1].Charge.TimeUse" Value="19.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AP_StargateWarpTrain,InfoArray[Train1].Charge.TimeUse" Value="17.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AP_StargateWarpTrainRedirect,InfoArray[Train1].Charge.TimeUse" Value="17.000000"/>
     </CUpgrade>
-    <CUpgrade id="AP_PhoenixGravitonGround"/>
     <CUpgrade id="AP_MiragePhaseAlignment">
         <EffectArray Operation="Subtract" Reference="Behavior,AP_VoidPhoenixPhasingArmor,DamageResponse.Cost.Cooldown.TimeUse" Value="1.000000"/>
     </CUpgrade>

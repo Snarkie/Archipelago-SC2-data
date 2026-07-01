@@ -32788,6 +32788,8 @@
     <CUnit id="AP_SkirmisherSuicideMissile" parent="MISSILE_INVULNERABLE">
         <Race value="Zerg"/>
         <Mover value="AP_SkirmisherSuicide"/>
+        <Sight value="9"/>
+        <VisionHeight value="4"/>
         <EditorCategories value=""/>
     </CUnit>
     <CUnit id="AP_SkirmisherAttackMissile" parent="MISSILE">

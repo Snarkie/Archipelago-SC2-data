@@ -8659,15 +8659,20 @@
         <CombineArray value="NotStructureTarget"/>
         <CombineArray value="AP_PhoenixGravitonBuildingAutocastWhitelist"/>
     </CValidatorCombine>
+    <CValidatorUnitType id="AP_IsPerditionTurret">
+        <Value value="PerditionTurret"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="AP_IsSensorTower">
+        <Value value="SensorTower"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="AP_PhoenixGravitonBuildingWhitelist">
         <CombineArray value="IsMissileTurret"/>
         <CombineArray value="IsSpineCrawler"/>
         <CombineArray value="IsSporeCrawler"/>
         <CombineArray value="IsPhotonCannon"/>
-        <CombineArray value="IsPylon"/>
-        <CombineArray value="IsSpireOrGreaterSpire"/>
-        <CombineArray value="IsDarkShrine"/>
         <CombineArray value="IsAutoTurret"/>
+        <CombineArray value="AP_IsPerditionTurret"/>
+        <CombineArray value="AP_IsSensorTower"/>
     </CValidatorCombine>
     <CValidatorCombine id="AP_PhoenixGravitonBuildingAutocastWhitelist">
         <CombineArray value="IsMissileTurret"/>
@@ -8750,5 +8755,9 @@
     <CValidatorCombine id="AP_GravitonBeamMirageCheck">
         <CombineArray value="AP_CasterNotMirage"/>
         <CombineArray value="AP_NotStructureOrMassive"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AP_NotPhoenixGravitonBuilding">
+        <CombineArray value="AP_PhoenixGravitonBuilding"/>
+        <Negate value="1"/>
     </CValidatorCombine>
 </Catalog>

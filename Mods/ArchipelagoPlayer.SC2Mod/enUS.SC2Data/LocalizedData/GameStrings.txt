@@ -3784,13 +3784,14 @@ Button/Tooltip/AP_PhasePrismRecast=Swap Artanis with the unit in stasis, and pul
 Button/Tooltip/AP_PhasingMode=Transforms the Warp Prism to Phasing Mode and generates a power radius similar to that of a Pylon. The Warp Prism cannot move in this mode.
 Button/Tooltip/AP_PhoenixAiur=Aiur Faction<n/>Air superiority starfighter. Can use Graviton Beam.<n/><n/><c val="ffff8a">Can attack air units.</c>
 Button/Tooltip/AP_PhoenixAiurDoubleGraviton=Aiur Faction<n/>Air superiority starfighter. Can use Graviton Beam on two enemy units simultaneously.<n/><n/><c val="ffff8a">Can attack air units.</c>
-Button/Tooltip/AP_PhoenixAiurGravitonBeam=Makes the target unit float in the air, disabling its abilities. Effect lasts up to <d time="10"/>.<n/><n/><c val="#ColorAttackInfo">Massive units are immune.</c>
+Button/Tooltip/AP_PhoenixAiurGravitonBeam=Makes the target unit float in the air, disabling its abilities. Effect lasts up to <d time="10"/>.
+Button/Tooltip/AP_PhoenixAiurGravitonBeamAppend=<n/><n/><c val="#ColorAttackInfo">Massive units are immune.</c>
 Button/Tooltip/AP_PhoenixAiurGravitonBeamPassive=Graviton Beam affects an additional enemy ground unit near the primary target.
-Button/Tooltip/AP_PhoenixGravitonBuilding=Allows Graviton Beam to lift massive units and small structures.
+Button/Tooltip/AP_PhoenixGravitonBuilding=Allows Graviton Beam to lift massive units and small defensive structures with the main beam only.
 Button/Tooltip/AP_PhoenixGravitonChain=Ion Cannon missiles will chain to one nearby target affected by Graviton Beam.
 Button/Tooltip/AP_PhoenixHallucination=These hallucinated copies function like the original unit, but they cannot use active abilities, deal damage, warp in structures, or gather resources, and they die more easily. Hallucinations last <d time="60"/> before they disappear.
 Button/Tooltip/AP_PhoenixPurifier=Purifier Faction<n/>Air superiority starfighter. Can use Graviton Beam and Phasing Armor.<n/><n/><c val="ffff8a">Can attack air units.</c>
-Button/Tooltip/AP_PhoenixShield=Increases Phoenix' shields by 80 and shield armor by 1
+Button/Tooltip/AP_PhoenixShield=Increases Phoenix' shields by 80 and shield armor by 1.
 Button/Tooltip/AP_PhoenixTaldarim=Tal'darim Faction<n/>Fast skirmish starfighter.<n/><n/><c val="ffff8a">Can attack ground units.</c>
 Button/Tooltip/AP_PhoenixTaldarimAA=Tal'darim Faction<n/>Fast skirmish starfighter.<n/><n/><c val="ffff8a">Can attack ground and air units.</c>
 Button/Tooltip/AP_PhotonCannon=Primary defensive structure.<n/><n/><c val="ffff8a">Can attack ground and air units.</c><n/><c val="FFE303">Detector</c>
@@ -4101,7 +4102,7 @@ Button/Tooltip/AP_SiegeTankSieged=Heavy tank. Long-range artillery in Siege Mode
 Button/Tooltip/AP_SiegeTankTransportHook=Allows Siege Tanks to be transported while in Siege Mode.
 Button/Tooltip/AP_SingularityAnchor=Wraith starts with 100 additional energy.
 Button/Tooltip/AP_SingularityCharge=Increases the Dragoon's attack range by 2.
-Button/Tooltip/AP_SkirmisherAttackspeed=Grants <d ref="((Behavior,AP_SkirmisherAttackspeedStacks,Modification.AdditiveAttackSpeedFactor*Behavior,AP_SkirmisherAttackspeedStacks,MaxStackCount)+ Behavior,AP_SkirmisherAttackspeed,Modification.AdditiveAttackSpeedFactor)*100"/>% attack speed upon activation, which decays over <d ref="Behavior,AP_SkirmisherAttackspeedLifeDrain,Duration"/> seconds. Sacrifices <d ref="-1*(Behavior,AP_SkirmisherAttackspeedLifeDrain,Modification.VitalRegenArray[Life] * Behavior,AP_SkirmisherAttackspeedLifeDrain,Duration) "/> life over the duration, until the Skirmisher has 1 life remaining.
+Button/Tooltip/AP_SkirmisherAttackspeed=Grants <d ref="((Behavior,AP_SkirmisherAttackspeedStacks,Modification.AdditiveAttackSpeedFactor*Behavior,AP_SkirmisherAttackspeedStacks,MaxStackCount)+ Behavior,AP_SkirmisherAttackspeed,Modification.AdditiveAttackSpeedFactor)*100"/>% attack speed upon activation, which decays over <d ref="Behavior,AP_SkirmisherAttackspeedLifeDrain,Duration"/> seconds to <d ref="Behavior,AP_SkirmisherAttackspeed,Modification.AdditiveAttackSpeedFactor)*100"/>%. Stays at slowed attack speed for an additional 3 seconds. Sacrifices <d ref="-1*(Behavior,AP_SkirmisherAttackspeedLifeDrain,Modification.VitalRegenArray[Life] * Behavior,AP_SkirmisherAttackspeedLifeDrain,Duration) "/> life over the duration, until the Skirmisher has 1 life remaining.
 Button/Tooltip/AP_SkirmisherHP=Increases the Skirmishers life by 80 and armor by 1.
 Button/Tooltip/AP_SkirmisherLifesteal=Skirmisher attacks restore up to <d ref="Effect,AP_SkirmisherAttackHealer,RechargeVitalRate * 2"/> life over 1 second.
 Button/Tooltip/AP_SkirmisherPeerContempt=Allows Skirmishers to target air units.<n/><n/><c val="FFE303">War Council Upgrade.</c>

@@ -2301,6 +2301,7 @@
     <CButton id="AP_PhoenixAiurGravitonBeam">
         <Icon value="Assets\Textures\btn-ability-protoss-gravitonbeam-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-gravitonbeam-color.dds"/>
+        <TooltipAppender Validator="AP_NotPhoenixGravitonBuilding" Text="Button/TooltipAppend1/AP_PhoenixAiurGravitonBeam"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
     <CButton id="AP_PhoenixAiurGravitonBeamPassive">
