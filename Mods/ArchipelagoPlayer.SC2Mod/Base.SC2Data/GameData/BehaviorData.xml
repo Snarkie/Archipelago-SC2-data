@@ -11803,14 +11803,6 @@
         <EditorCategories value="AbilityorEffectType:Units"/>
         <Requirements value="AP_SkirmisherSuicide"/>
         <FinalEffect value="AP_SkirmisherSuicide"/>
-        <DamageResponse Fatal="1" Handled="AP_SkirmisherSuicideMarkerAB">
-            <Chance value="1"/>
-        </DamageResponse>
-        <InfoFlags index="Hidden" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_SkirmisherSuicideMarker">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Duration value="2"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_PhoenixGravitonBeamHeightStructure">

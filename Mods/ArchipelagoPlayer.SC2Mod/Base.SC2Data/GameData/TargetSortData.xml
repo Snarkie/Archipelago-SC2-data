@@ -73,10 +73,4 @@
     <CTargetSortValidator id="AP_AvengerCharge">
         <Validator value="AP_AvengerChargeTS"/>
     </CTargetSortValidator>
-    <CTargetSortBehaviorCount id="AP_SkirmisherSuicide">
-        <WhichUnit Value="Target"/>
-        <Descending value="1"/>
-        <Behavior value="AP_SkirmisherSuicideMarker"/>
-        <Value value="1"/>
-    </CTargetSortBehaviorCount>
 </Catalog>
