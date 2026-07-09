@@ -48641,6 +48641,7 @@
     <CActorModel id="AP_PhoenixTaldarimDeathModel" parent="UnitDeathModel">
         <EditorCategories value=""/>
         <On Terms="Effect.AP_SkirmisherSuicideLM.Start" Send="SetVisibility"/>
+    </CActorModel>
     <CActorModelMaterial id="AP_GlazeShadow" parent="GlazeParent">
         <On Terms="Behavior.AP_VoidShade.On" Send="Create"/>
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
