@@ -13936,60 +13936,6 @@ void libABFE498B_gt_AP_Triggers_Debug_killTraps_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: AP_Triggers_Debug_resources
-//--------------------------------------------------------------------------------------------------
-bool libABFE498B_gt_AP_Triggers_Debug_resources_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unitgroup lv_resources;
-    fixed lv_amount;
-
-    // Automatic Variable Declarations
-    unitgroup autoE7503248_g;
-    int autoE7503248_u;
-    unit autoE7503248_var;
-
-    // Variable Initialization
-    lv_resources = UnitGroupEmpty();
-    lv_amount = StringToFixed(StringWord(EventChatMessage(false), 2));
-
-    // Conditions
-    if (testConds) {
-        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    if ((lv_amount <= 0.0)) {
-        lv_amount = 50000.0;
-    }
-
-    TextExpressionSetToken("Param/Expression/lib_ABFE498B_24A12324", "A", FixedToText(lv_amount, c_fixedPrecisionAny));
-    TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_ABFE498B_24A12324"), true);
-    UnitGroupAddUnitGroup(lv_resources, UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterRawResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0));
-    UnitGroupAddUnitGroup(lv_resources, UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0));
-    autoE7503248_g = lv_resources;
-    autoE7503248_u = UnitGroupCount(autoE7503248_g, c_unitCountAll);
-    for (;; autoE7503248_u -= 1) {
-        autoE7503248_var = UnitGroupUnitFromEnd(autoE7503248_g, autoE7503248_u);
-        if (autoE7503248_var == null) { break; }
-        UnitSetPropertyFixed(autoE7503248_var, c_unitPropResources, lv_amount);
-    }
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libABFE498B_gt_AP_Triggers_Debug_resources_Init () {
-    libABFE498B_gt_AP_Triggers_Debug_resources = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_resources_Func");
-    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_resources, c_playerAny, "-resources", false);
-    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_resources, c_playerAny, "-res", false);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: AP_Triggers_Debug_ArtanisAspectsAll
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsAll_Func (bool testConds, bool runActions) {
@@ -14615,7 +14561,6 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_ghostTrap_Init();
     libABFE498B_gt_AP_Triggers_Debug_voidDuplicate_Init();
     libABFE498B_gt_AP_Triggers_Debug_killTraps_Init();
-    libABFE498B_gt_AP_Triggers_Debug_resources_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsAll_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsBoth_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsPassive_Init();
