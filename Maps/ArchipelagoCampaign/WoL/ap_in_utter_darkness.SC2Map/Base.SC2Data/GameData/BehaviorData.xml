@@ -5,6 +5,6 @@
         <BehaviorFlags index="EnabledWhileDead" value="1"/>
     </CBehaviorBuff>
     <CBehaviorSpawn id="SpawnLarva">
-        <InfoArray index="0" Delay="0.2"/>
+        <InfoArray index="0" Unit="Larva" MaxCount="3" Delay="0.2"/>
     </CBehaviorSpawn>
 </Catalog>
