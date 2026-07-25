@@ -43,7 +43,6 @@ void libABFE498B_InitVariables () {
     libABFE498B_gv_aP_Triggers_HeroUnits = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk NovaMothership Leviathan KerriganChar Brakk";
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Group = UnitGroupEmpty();
-    libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = RandomInt(1, 5);
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_lastWarpedUnits = UnitGroupEmpty();
 }
@@ -11485,9 +11484,18 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockVoidDuplicate_TriggerFunc (bool testC
     }
 
     lp_level = MaxI(0, MinI(5, lp_level));
+    if ((lp_level == TechTreeUpgradeCount(lp_player, "AP_BiggerAttackWaves", c_techCountCompleteOnly))) {
+        return true;
+    }
+
     libNtve_gf_SetUpgradeLevelForPlayer(1, "AP_BiggerAttackWaves", lp_level);
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold = lp_level;
     if ((lp_level > 0)) {
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[0] = 0;
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[1] = 3;
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[2] = 1;
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[3] = 4;
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[4] = 2;
         TriggerEnable(libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave, true);
     }
     else {
@@ -12158,12 +12166,45 @@ bool libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter (string lp_type) {
     return false;
 }
 
+int libABFE498B_gf_AP_Triggers_VoidDuplicate_getIndex (string lp_type) {
+    // Variable Declarations
+    fixed lv_supply;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_supply = UnitTypeGetProperty(lp_type, c_unitPropSuppliesUsed);
+
+    // Implementation
+    if ((lv_supply >= 4.0)) {
+        return 4;
+    }
+
+    return TruncI(lv_supply);
+}
+
+bool libABFE498B_gf_AP_Triggers_VoidDuplicate_checkTracker (int lp_index, int lp_threshold) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_threshold >= 5)) {
+        return true;
+    }
+
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[lp_index] += lp_threshold;
+    if ((libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[lp_index] >= 5)) {
+        libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[lp_index] = ModI(libABFE498B_gv_aP_Triggers_VoidDuplicate_Tracker[lp_index], 5);
+        return true;
+    }
+
+    return false;
+}
+
 unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
     // Variable Declarations
     string lv_type;
     int lv_p;
     unit lv_u;
     unit lv_new;
+    int lv_index;
 
     // Automatic Variable Declarations
     // Variable Initialization
@@ -12177,13 +12218,8 @@ unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
     }
 
     UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u);
-    if (libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex >= 5) {
-        libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = 1;
-    }
-    else {
-        libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex = libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex + 1;
-    }
-    if ((libABFE498B_gv_aP_Triggers_VoidDuplicate_RollingIndex <= libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold)) {
+    lv_index = libABFE498B_gf_AP_Triggers_VoidDuplicate_getIndex(lv_type);
+    if ((libABFE498B_gf_AP_Triggers_VoidDuplicate_checkTracker(lv_index, libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold) == true)) {
         UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), UnitGetFacing(lv_u));
         lv_new = UnitLastCreated();
         libNtve_gf_CreateActorAtPoint("AP_ShadowDeathModel", UnitGetPosition(lv_new));
@@ -13029,6 +13065,7 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
     string lv_type;
     int lv_p;
     int lv_index;
+    int lv_tracker;
 
     // Automatic Variable Declarations
     unitgroup auto874419A8_g;
@@ -13067,7 +13104,6 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
         return true;
     }
 
-    lv_index = RandomInt(1, 5);
     auto874419A8_g = lv_g;
     auto874419A8_u = UnitGroupCount(auto874419A8_g, c_unitCountAll);
     for (;; auto874419A8_u -= 1) {
@@ -13082,8 +13118,9 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
             continue;
         }
 
+        lv_index = libABFE498B_gf_AP_Triggers_VoidDuplicate_getIndex(lv_type);
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u);
-        if ((lv_index <= libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold)) {
+        if ((libABFE498B_gf_AP_Triggers_VoidDuplicate_checkTracker(lv_index, libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold) == true)) {
             UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), UnitGetFacing(lv_u));
             lv_new = UnitLastCreated();
             libNtve_gf_CreateActorAtPoint("AP_ShadowDeathModel", UnitGetPosition(lv_new));
@@ -13092,12 +13129,6 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
             UnitGroupAdd(lv_bonusunits, lv_new);
         }
 
-        if (lv_index >= 5) {
-            lv_index = 1;
-        }
-        else {
-            lv_index = lv_index + 1;
-        }
     }
     if ((UnitGroupCount(lv_bonusunits, c_unitCountAlive) > 0)) {
         AIAttackWaveUseGroup(lv_p, lv_bonusunits);
