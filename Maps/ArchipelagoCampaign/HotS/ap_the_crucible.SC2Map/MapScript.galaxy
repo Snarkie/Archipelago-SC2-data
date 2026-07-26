@@ -837,6 +837,8 @@ bool auto_gf_SendPrimalAttackWave_TriggerFunc (bool testConds, bool runActions) 
         }
         else {
             AISetUnitSuicide(lv_currentUnit, true);
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(lv_currentUnit);
+            AISetUnitSuicide(UnitLastCreated(), true);
         }
         Wait(lp_delay, c_timeAI);
         autoADD204F7_g = lv_attackGroup;
@@ -2430,6 +2432,10 @@ bool gt_BrakkYagdraCeremonialFight_Func (bool testConds, bool runActions) {
             if ((lib15EF4C78_gf_AP_Player_UnitIsMindControlled(auto776E3F4D_var) == false)) {
                 UnitIssueOrder(auto776E3F4D_var, OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(29))), c_orderQueueReplace);
                 UnitIssueOrder(auto776E3F4D_var, OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(26))), c_orderQueueAddToEnd);
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(auto776E3F4D_var);
+                UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(29))), c_orderQueueReplace);
+                UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(26))), c_orderQueueAddToEnd);
+                UnitGroupAdd(lv_brakkAttackGroup, UnitLastCreated());
             }
 
         }
@@ -2457,6 +2463,10 @@ bool gt_BrakkYagdraCeremonialFight_Func (bool testConds, bool runActions) {
             if ((UnitGroupHasUnit(lv_yagdraInitialAttackGroup, autoF1834C33_var) == false) && (lib15EF4C78_gf_AP_Player_UnitIsMindControlled(autoF1834C33_var) == false)) {
                 UnitIssueOrder(autoF1834C33_var, OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(29))), c_orderQueueReplace);
                 UnitIssueOrder(autoF1834C33_var, OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(28))), c_orderQueueAddToEnd);
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(autoF1834C33_var);
+                UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(29))), c_orderQueueReplace);
+                UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(28))), c_orderQueueAddToEnd);
+                UnitGroupAdd(lv_yagdraAttackGroup, UnitLastCreated());
             }
 
         }
@@ -6593,6 +6603,10 @@ bool gt_MidCleanup_Func (bool testConds, bool runActions) {
     VisRevealerCreate(gv_pLAYER_01_USER, RegionFromId(2));
     VisRevealerEnable(VisRevealerLastCreated(), true);
     lib15EF4C78_gf_StartingWorkersAutoHarvest(gv_pLAYER_01_USER, RegionFromId(46), RegionFromId(47));
+    if ((UnitCount(null, c_playerAny, RegionCircle(UnitGetPosition(UnitFromId(189)), 1.0), UnitFilter((1 << c_targetFilterHarvestableResource), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0) == 0)) {
+        libNtve_gf_SendActorMessageToUnit(UnitFromId(189), "AnimClear Cover");
+    }
+
     TriggerExecute(gt_StartAIHoldout, true, false);
     Wait(0.5, c_timeReal);
     if ((gv_cinematicCompleted == true)) {
