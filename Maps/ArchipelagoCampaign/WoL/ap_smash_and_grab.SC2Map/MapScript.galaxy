@@ -197,6 +197,7 @@ trigger gt_PylonDroppod2;
 trigger gt_PylonDroppod3;
 trigger gt_GatewayDroppod;
 trigger gt_ProtossWarpDefense;
+trigger gt_ProtossWarpDefenseDuplicate;
 trigger gt_StartAI;
 trigger gt_ZergAttackWavesProtoss;
 trigger gt_ZergAttackWavesPlayer;
@@ -3877,6 +3878,8 @@ bool gt_ProtossWarpDefense_Func (bool testConds, bool runActions) {
     }
 
     UnitIssueOrder(UnitFromId(1921), OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 1), RegionRandomPoint(RegionFromId(38))), c_orderQueueReplace);
+    Wait(2.0, c_timeGame);
+    UnitIssueOrder(UnitFromId(1921), OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 0), RegionRandomPoint(RegionFromId(38))), c_orderQueueReplace);
     return true;
 }
 
@@ -3884,6 +3887,49 @@ bool gt_ProtossWarpDefense_Func (bool testConds, bool runActions) {
 void gt_ProtossWarpDefense_Init () {
     gt_ProtossWarpDefense = TriggerCreate("gt_ProtossWarpDefense_Func");
     TriggerAddEventTimePeriodic(gt_ProtossWarpDefense, 4.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Protoss Warp Defense Duplicate
+//--------------------------------------------------------------------------------------------------
+bool gt_ProtossWarpDefenseDuplicate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetOwner(EventUnitProgressUnit()) == gv_p5_UPPER_CAUSEWAY))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+
+        if (!((gv_inCinematic == false))) {
+            return false;
+        }
+
+        if (!((gv_gameOver == false))) {
+            return false;
+        }
+
+        if (!((UnitGroupCount(UnitGroup(null, gv_p2_ZERG, RegionFromId(21), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) >= 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(EventUnitProgressUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_ProtossWarpDefenseDuplicate_Init () {
+    gt_ProtossWarpDefenseDuplicate = TriggerCreate("gt_ProtossWarpDefenseDuplicate_Func");
+    TriggerAddEventUnitConstructProgress(gt_ProtossWarpDefenseDuplicate, null, c_unitProgressStageComplete);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6067,6 +6113,7 @@ void InitTriggers () {
     gt_PylonDroppod3_Init();
     gt_GatewayDroppod_Init();
     gt_ProtossWarpDefense_Init();
+    gt_ProtossWarpDefenseDuplicate_Init();
     gt_StartAI_Init();
     gt_ZergAttackWavesProtoss_Init();
     gt_ZergAttackWavesPlayer_Init();

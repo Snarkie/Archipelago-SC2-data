@@ -102,6 +102,7 @@ Trigger/Name/63C80728=Victory Cheat
 Trigger/Name/64B78B39=Fourth Relic Obtained
 Trigger/Name/6522EF1C=Zerg Killed by Player
 Trigger/Name/66199EA6=Zerg Attack Waves - Player
+Trigger/Name/67DFFABA=Protoss Warp Defense Duplicate
 Trigger/Name/6D7497A4=Objective - Destroy the Statues - Complete
 Trigger/Name/6FD8B9D6=Second Relic Obtained
 Trigger/Name/713359F9=Objective - Destroy the Statues - Create
