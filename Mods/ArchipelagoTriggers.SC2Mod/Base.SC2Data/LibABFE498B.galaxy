@@ -12213,7 +12213,7 @@ unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
     lv_u = lp_u;
 
     // Implementation
-    if (((TechTreeUpgradeCount(lib5BD4895D_gf_AP_Core_getUser(), "AP_BiggerAttackWaves", c_techCountCompleteOnly) <= 0) || (libNtve_gf_PlayerIsEnemy(lib5BD4895D_gf_AP_Core_getUser(), lv_p, libNtve_ge_PlayerRelation_Enemy) == false) || (UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u) == true) || (libABFE498B_gv_aP_Triggers_VoidDuplicate_PlayerFilter[lv_p] == true) || (UnitHasBehavior(lv_u, "AP_MindControlImmune") == true) || libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter(lv_type))) {
+    if (((libABFE498B_gv_aP_Triggers_isBuild == false) || (libABFE498B_gv_aP_Triggers_IsNoBuild == true) || (TechTreeUpgradeCount(lib5BD4895D_gf_AP_Core_getUser(), "AP_BiggerAttackWaves", c_techCountCompleteOnly) <= 0) || (libNtve_gf_PlayerIsEnemy(lib5BD4895D_gf_AP_Core_getUser(), lv_p, libNtve_ge_PlayerRelation_Enemy) == false) || (UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u) == true) || (libABFE498B_gv_aP_Triggers_VoidDuplicate_PlayerFilter[lv_p] == true) || (UnitHasBehavior(lv_u, "AP_MindControlImmune") == true) || libABFE498B_gf_AP_Triggers_VoidDuplicate_Filter(lv_type))) {
         return null;
     }
 
@@ -13081,6 +13081,14 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
 
     // Conditions
     if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_isBuild == true))) {
+            return false;
+        }
+
+        if (!((libABFE498B_gv_aP_Triggers_IsNoBuild == false))) {
+            return false;
+        }
+
         if (!((TechTreeUpgradeCount(lib5BD4895D_gf_AP_Core_getUser(), "AP_BiggerAttackWaves", c_techCountCompleteOnly) > 0))) {
             return false;
         }
