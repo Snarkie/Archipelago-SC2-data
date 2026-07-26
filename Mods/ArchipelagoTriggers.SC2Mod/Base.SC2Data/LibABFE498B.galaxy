@@ -43,6 +43,7 @@ void libABFE498B_InitVariables () {
     libABFE498B_gv_aP_Triggers_HeroUnits = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_VoidDuplicate_TypeFilter = "Maar Odin Brutalisk NovaMothership Leviathan KerriganChar Brakk";
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Group = UnitGroupEmpty();
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_WaveIndex = 45;
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_lastWarpedUnits = UnitGroupEmpty();
 }
@@ -13066,6 +13067,8 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
     int lv_p;
     int lv_index;
     int lv_tracker;
+    int lv_waveIndex1;
+    int lv_waveIndex2;
 
     // Automatic Variable Declarations
     unitgroup auto874419A8_g;
@@ -13117,7 +13120,11 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
     for (;; auto874419A8_u -= 1) {
         lv_u = UnitGroupUnitFromEnd(auto874419A8_g, auto874419A8_u);
         if (lv_u == null) { break; }
-        if (((UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u) == true) || (UnitHasBehavior(lv_u, "AP_MindControlImmune") == true))) {
+        if ((UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_u) == true)) {
+            continue;
+        }
+
+        if ((UnitHasBehavior(lv_u, "AP_MindControlImmune") == true) && (libABFE498B_gv_aP_Triggers_VoidDuplicate_BigBrainOverride == false)) {
             continue;
         }
 
@@ -13140,13 +13147,25 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
     }
     if ((UnitGroupCount(lv_bonusunits, c_unitCountAlive) > 0)) {
         AIAttackWaveUseGroup(lv_p, lv_bonusunits);
-        libABFE498B_gv_aP_Triggers_VoidDuplicate_SkipNext = true;
-        AIAttackWaveSend(lv_p, 0, false);
-        lv_merge = WaveLastCreated();
-        AIWaveSet(lv_p, 1, lv_wave);
-        AIWaveSet(lv_p, 2, lv_merge);
-        Wait(1.0, c_timeAI);
-        AIWaveMerge(lv_p, 2, 1);
+        if ((libABFE498B_gv_aP_Triggers_VoidDuplicate_TargetOverride == true)) {
+            libABFE498B_gv_aP_Triggers_VoidDuplicate_SkipNext = true;
+            AIAttackWaveSetTargetMerge(lv_p, lv_wave);
+            AIAttackWaveSend(lv_p, 0, false);
+        }
+        else {
+            libABFE498B_gv_aP_Triggers_VoidDuplicate_SkipNext = true;
+            AIAttackWaveSend(lv_p, 0, false);
+            lv_merge = WaveLastCreated();
+            libABFE498B_gv_aP_Triggers_VoidDuplicate_WaveIndex += 1;
+            lv_waveIndex1 = libABFE498B_gv_aP_Triggers_VoidDuplicate_WaveIndex;
+            AIWaveSet(lv_p, lv_waveIndex1, lv_wave);
+            libABFE498B_gv_aP_Triggers_VoidDuplicate_WaveIndex += 1;
+            lv_waveIndex2 = libABFE498B_gv_aP_Triggers_VoidDuplicate_WaveIndex;
+            AIWaveSet(lv_p, lv_waveIndex2, lv_merge);
+            AIWaveMerge(lv_p, lv_waveIndex2, lv_waveIndex1);
+            Wait(1.0, c_timeAI);
+            AIWaveMerge(lv_p, lv_waveIndex2, lv_waveIndex1);
+        }
     }
 
     return true;
