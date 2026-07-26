@@ -12223,6 +12223,9 @@ unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
     if ((libABFE498B_gf_AP_Triggers_VoidDuplicate_checkTracker(lv_index, libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold) == true)) {
         UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), UnitGetFacing(lv_u));
         lv_new = UnitLastCreated();
+        UnitSetPropertyFixed(lv_new, c_unitPropLife, UnitGetPropertyFixed(lv_u, c_unitPropLife, c_unitPropCurrent));
+        UnitSetPropertyFixed(lv_new, c_unitPropShields, UnitGetPropertyFixed(lv_u, c_unitPropShields, c_unitPropCurrent));
+        UnitSetPropertyFixed(lv_new, c_unitPropEnergy, UnitGetPropertyFixed(lv_u, c_unitPropEnergy, c_unitPropCurrent));
         libNtve_gf_CreateActorAtPoint("AP_ShadowDeathModel", UnitGetPosition(lv_new));
         UnitBehaviorAdd(lv_new, "AP_VoidShade", lv_new, 1);
         UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_new);
@@ -13138,6 +13141,9 @@ bool libABFE498B_gt_AP_Triggers_VoidDuplicate_sendWave_Func (bool testConds, boo
         if ((libABFE498B_gf_AP_Triggers_VoidDuplicate_checkTracker(lv_index, libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold) == true)) {
             UnitCreate(1, lv_type, 0, lv_p, UnitGetPosition(lv_u), UnitGetFacing(lv_u));
             lv_new = UnitLastCreated();
+            UnitSetPropertyFixed(lv_new, c_unitPropLife, UnitGetPropertyFixed(lv_u, c_unitPropLife, c_unitPropCurrent));
+            UnitSetPropertyFixed(lv_new, c_unitPropShields, UnitGetPropertyFixed(lv_u, c_unitPropShields, c_unitPropCurrent));
+            UnitSetPropertyFixed(lv_new, c_unitPropEnergy, UnitGetPropertyFixed(lv_u, c_unitPropEnergy, c_unitPropCurrent));
             libNtve_gf_CreateActorAtPoint("AP_ShadowDeathModel", UnitGetPosition(lv_new));
             UnitBehaviorAdd(lv_new, "AP_VoidShade", lv_new, 1);
             UnitGroupAdd(libABFE498B_gv_aP_Triggers_VoidDuplicate_Group, lv_new);
