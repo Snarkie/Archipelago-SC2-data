@@ -3301,7 +3301,12 @@ void gt_WarpInUnitsStarted_Init () {
 // Trigger: Warp-In Units Behavior
 //--------------------------------------------------------------------------------------------------
 bool gt_WarpInUnitsBehavior_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_u;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Conditions
     if (testConds) {
         if (!((UnitGetOwner(EventUnitProgressUnit()) == gv_pLAYER04_PURIFIER))) {
@@ -3318,6 +3323,15 @@ bool gt_WarpInUnitsBehavior_Func (bool testConds, bool runActions) {
         AISetUnitScriptControlled(EventUnitProgressUnit(), true);
         UnitSetOwner(EventUnitProgressUnit(), gv_pLAYER06_TERRORFLEET, true);
         UnitSetCustomValue(EventUnitProgressUnit(), 1, 1.0);
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(EventUnitProgressUnit());
+        lv_u = UnitLastCreated();
+        if ((UnitGetType(lv_u) == UnitGetType(EventUnitProgressUnit()))) {
+            AISetUnitScriptControlled(lv_u, true);
+            UnitSetOwner(lv_u, gv_pLAYER06_TERRORFLEET, true);
+            UnitSetCustomValue(lv_u, 1, 1.0);
+            UnitGroupAdd(gv_terrorFleetGroup, lv_u);
+        }
+
     }
     else {
         if ((UnitGetType(EventUnitProgressUnit()) == "Carrier")) {
@@ -3326,6 +3340,17 @@ bool gt_WarpInUnitsBehavior_Func (bool testConds, bool runActions) {
             UnitMagazineArm(EventUnitProgressUnit(), AbilityCommand("CarrierHangar", 0), libNtve_gf_DifficultyValueInt(0, 0, 2, 4));
             UnitIssueOrder(EventUnitProgressUnit(), OrderSetAutoCast(AbilityCommand("CarrierHangar", 0), true), c_orderQueueReplace);
             UnitSetCustomValue(EventUnitProgressUnit(), 1, 1.0);
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(EventUnitProgressUnit());
+            lv_u = UnitLastCreated();
+            if ((UnitGetType(lv_u) == UnitGetType(EventUnitProgressUnit()))) {
+                AISetUnitScriptControlled(lv_u, true);
+                UnitSetOwner(lv_u, gv_pLAYER06_TERRORFLEET, true);
+                UnitMagazineArm(lv_u, AbilityCommand("CarrierHangar", 0), libNtve_gf_DifficultyValueInt(0, 0, 2, 4));
+                UnitIssueOrder(lv_u, OrderSetAutoCast(AbilityCommand("CarrierHangar", 0), true), c_orderQueueReplace);
+                UnitSetCustomValue(lv_u, 1, 1.0);
+                UnitGroupAdd(gv_terrorFleetGroup, lv_u);
+            }
+
         }
 
     }

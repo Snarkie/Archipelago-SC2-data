@@ -227,6 +227,7 @@ Variable/Name/1FBFDA64=CurrentWavePath
 Variable/Name/21CF59DF=VictoryPrism3
 Variable/Name/221EC13B=Ship
 Variable/Name/231DC03D=Target_Group
+Variable/Name/24B6B81A=u
 Variable/Name/26F1012A=Fleet Size
 Variable/Name/3499E1D4=Random
 Variable/Name/37F7C06B=BriefingVikingPingActor3
