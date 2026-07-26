@@ -265,6 +265,7 @@ Variable/Name/080B88B6=InitialInfestation
 Variable/Name/08960FBB=InfestationOverlordLocation
 Variable/Name/09320D52=InfestationOverlordCount
 Variable/Name/099415D1=index
+Variable/Name/0A16ED95=unit
 Variable/Name/0ACFA59B=AberrationLife
 Variable/Name/0C0AC624=InfestationOverseerLocation
 Variable/Name/0CB8DCB9=Hut

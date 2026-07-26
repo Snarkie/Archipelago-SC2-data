@@ -2741,6 +2741,7 @@ bool gt_EggSpawnerGrow_Func (bool testConds, bool runActions) {
     fixed lv_eggScale;
     point lv_eggPosition;
     int lv_colonyIndex;
+    unit lv_unit;
 
     // Automatic Variable Declarations
     unitgroup autoB51C2030_g;
@@ -2778,12 +2779,18 @@ bool gt_EggSpawnerGrow_Func (bool testConds, bool runActions) {
             UnitKill(autoB51C2030_var);
             Wait(0.5, c_timeGame);
             libNtve_gf_CreateUnitsWithDefaultFacing(1, gv_eggData[lv_eggType].lv_spawnType, 0, gv_eggData[lv_eggType].lv_spawnOwner, lv_eggPosition);
-            AISetUnitSuicide(UnitLastCreated(), true);
-            if ((UnitGetType(UnitLastCreated()) == "InfestedAbomination")) {
-                gf_SetUnitMaxLife(UnitLastCreated(), gv_aberrationLife);
+            lv_unit = UnitLastCreated();
+            AISetUnitSuicide(lv_unit, true);
+            if ((UnitGetType(lv_unit) == "InfestedAbomination")) {
+                gf_SetUnitMaxLife(lv_unit, gv_aberrationLife);
                 TriggerExecute(gt_EggSpawnerAberrationWarningQ, true, false);
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(lv_unit);
+                gf_SetUnitMaxLife(UnitLastCreated(), gv_aberrationLife);
             }
-
+            else {
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(lv_unit);
+            }
+            AISetUnitSuicide(UnitLastCreated(), true);
         }
         else {
             lv_eggScale += gv_eggData[lv_eggType].lv_scaleInc;
