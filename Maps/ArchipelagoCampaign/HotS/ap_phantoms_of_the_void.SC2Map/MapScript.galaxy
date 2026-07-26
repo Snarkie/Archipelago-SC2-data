@@ -601,6 +601,7 @@ bool auto_gf_SpawnHybridforTemple_TriggerFunc (bool testConds, bool runActions) 
     int lv_numberOfEscorts;
     point lv_spawnPoint_LOCAL;
     unit lv_hybrid;
+    unit lv_hybridDuplicate;
 
     // Automatic Variable Declarations
     int autoCA580942_val;
@@ -650,6 +651,13 @@ bool auto_gf_SpawnHybridforTemple_TriggerFunc (bool testConds, bool runActions) 
     UnitSetPropertyFixed(UnitLastCreated(), c_unitPropLifePercent, 100.0);
     UnitSetPropertyFixed(UnitLastCreated(), c_unitPropMovementSpeed, 3.5);
     gf_CreatePingforHybrid(UnitLastCreated());
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(lv_hybrid);
+    lv_hybridDuplicate = UnitLastCreated();
+    UnitGroupAdd(gv_hybridGroup, lv_hybridDuplicate);
+    UnitSetPropertyFixed(lv_hybridDuplicate, c_unitPropLifeMax, gv_hybridHealth);
+    UnitSetPropertyFixed(lv_hybridDuplicate, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(lv_hybridDuplicate, c_unitPropMovementSpeed, 3.5);
+    gf_CreatePingforHybrid(lv_hybridDuplicate);
     autoCA580942_val = lv_numberOfEscorts;
     if (autoCA580942_val == 2) {
         UnitIssueOrder(gv_templeSuperWarpGate, OrderTargetingPoint(AbilityCommand("SuperWarpGateTrain", 1), PointWithOffsetPolar(lv_spawnPoint_LOCAL, 3.0, (PointGetFacing(lv_spawnPoint_LOCAL) + 45.0))), c_orderQueueReplace);
@@ -676,6 +684,7 @@ bool auto_gf_SpawnHybridforTemple_TriggerFunc (bool testConds, bool runActions) 
     AIAttackWaveSetTargetRegion(gv_pLAYER_02_DOMINION, RegionCircle(gv_templeDefensePoint, 6.0), 0);
     AIAttackWaveSetGatherPoint(gv_pLAYER_02_DOMINION, UnitGetPosition(lv_hybrid));
     AIAttackWaveUseUnit(gv_pLAYER_02_DOMINION, lv_hybrid);
+    AIAttackWaveUseUnit(gv_pLAYER_02_DOMINION, lv_hybridDuplicate);
     AIAttackWaveSend(gv_pLAYER_02_DOMINION, 0, false);
     Wait(5.0, c_timeAI);
     if ((lp_spawnPoint == PointFromId(497))) {
@@ -3399,6 +3408,8 @@ bool gt_WarpInAttacks_Func (bool testConds, bool runActions) {
     }
 
     libNtve_gf_AICast(EventUnitProgressUnit(), OrderTargetingPoint(AbilityCommand("attack", 0), gv_templeDefensePoint));
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(EventUnitProgressUnit());
+    libNtve_gf_AICast(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), gv_templeDefensePoint));
     return true;
 }
 

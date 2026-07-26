@@ -229,6 +229,7 @@ Variable/Name/2DED814E=NullZonePing
 Variable/Name/2F0BD95E=currentUnit
 Variable/Name/30FD8920=MidStreamCross
 Variable/Name/329D0E36=currentUnit
+Variable/Name/3341A929=HybridDuplicate
 Variable/Name/357CD991=BottomSpawnInProgress
 Variable/Name/38287925=X
 Variable/Name/39B85EB5=InCombatTimer
