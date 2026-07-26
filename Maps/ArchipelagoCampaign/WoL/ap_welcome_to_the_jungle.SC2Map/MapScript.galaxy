@@ -381,9 +381,6 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
     autoD1A8BB6F_val = gv_protossThreatLevel;
     if (autoD1A8BB6F_val == 1) {
         AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
-        AIAttackWaveAddUnits4(1, 1, 2, 2, "Stalker");
-        AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
-        AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
         lv_escortCount = libNtve_gf_DifficultyValueInt(1, 1, 2, 3);
         lv_offsetAngle = gf_CalculateOffset(IntToFixed(lv_escortCount));
         auto7291BAD7_ae = lv_escortCount;
@@ -391,12 +388,10 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
         for ( ; ( (auto7291BAD7_ai >= 0 && lv_i <= auto7291BAD7_ae) || (auto7291BAD7_ai < 0 && lv_i >= auto7291BAD7_ae) ) ; lv_i += auto7291BAD7_ai ) {
             AIAttackWaveAddEscortType(gv_p4_PROTOSS_WEST_ESCORTS, "Scout", lv_harvestingProbe, 3.5, (lv_offsetAngle * IntToFixed(lv_i)));
         }
+        AIAttackWaveAddUnits4(1, 1, 2, 2, "Stalker");
         AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
     }
     else if (autoD1A8BB6F_val == 2) {
-        AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
-        AIAttackWaveAddUnits4(1, 1, 2, 2, "Stalker");
-        AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
         AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
         lv_escortCount = libNtve_gf_DifficultyValueInt(2, 2, 3, 3);
         lv_offsetAngle = gf_CalculateOffset(IntToFixed(lv_escortCount));
@@ -405,12 +400,10 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
         for ( ; ( (autoD3883E60_ai >= 0 && lv_i <= autoD3883E60_ae) || (autoD3883E60_ai < 0 && lv_i >= autoD3883E60_ae) ) ; lv_i += autoD3883E60_ai ) {
             AIAttackWaveAddEscortType(gv_p4_PROTOSS_WEST_ESCORTS, "Scout", lv_harvestingProbe, 3.5, (lv_offsetAngle * IntToFixed(lv_i)));
         }
+        AIAttackWaveAddUnits4(1, 1, 2, 2, "Stalker");
         AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
     }
     else if (autoD1A8BB6F_val == 3) {
-        AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
-        AIAttackWaveAddUnits4(0, 0, 1, 2, "Stalker");
-        AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
         AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
         lv_escortCount = libNtve_gf_DifficultyValueInt(2, 2, 3, 3);
         lv_offsetAngle = gf_CalculateOffset(IntToFixed(lv_escortCount));
@@ -426,12 +419,10 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
         for ( ; ( (auto3E772D7A_ai >= 0 && lv_i <= auto3E772D7A_ae) || (auto3E772D7A_ai < 0 && lv_i >= auto3E772D7A_ae) ) ; lv_i += auto3E772D7A_ai ) {
             AIAttackWaveAddEscortType(gv_p4_PROTOSS_WEST_ESCORTS, "VoidRay", lv_harvestingProbe, 1.5, (lv_offsetAngle * IntToFixed(lv_i)));
         }
+        AIAttackWaveAddUnits4(0, 0, 1, 2, "Stalker");
         AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
     }
     else if (autoD1A8BB6F_val == 4) {
-        AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
-        AIAttackWaveAddUnits4(1, 1, 2, 2, "Stalker");
-        AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
         AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
         lv_escortCount = libNtve_gf_DifficultyValueInt(2, 2, 3, 3);
         lv_offsetAngle = gf_CalculateOffset(IntToFixed(lv_escortCount));
@@ -448,12 +439,10 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
             AIAttackWaveAddEscortType(gv_p4_PROTOSS_WEST_ESCORTS, "VoidRay", lv_harvestingProbe, 1.5, (lv_offsetAngle * IntToFixed(lv_i)));
         }
         AIAttackWaveAddUnits4(0, 0, 1, 1, "Observer");
+        AIAttackWaveAddUnits4(1, 1, 2, 2, "Stalker");
         AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
     }
     else if (autoD1A8BB6F_val == 5) {
-        AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
-        AIAttackWaveAddUnits4(2, 2, 3, 3, "Stalker");
-        AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
         AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
         lv_escortCount = libNtve_gf_DifficultyValueInt(2, 2, 3, 4);
         lv_offsetAngle = gf_CalculateOffset(IntToFixed(lv_escortCount));
@@ -470,12 +459,10 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
             AIAttackWaveAddEscortType(gv_p4_PROTOSS_WEST_ESCORTS, "VoidRay", lv_harvestingProbe, 1.5, (lv_offsetAngle * IntToFixed(lv_i)));
         }
         AIAttackWaveAddUnits4(0, 1, 1, 1, "Observer");
+        AIAttackWaveAddUnits4(2, 2, 3, 3, "Stalker");
         AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
     }
     else if (autoD1A8BB6F_val == 6) {
-        AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
-        AIAttackWaveAddUnits4(2, 2, 3, 2, "Stalker");
-        AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
         AIAttackWaveSetTargetEscortNL(gv_p4_PROTOSS_WEST_ESCORTS, libNtve_gf_ConvertUnitToUnitGroup(lv_harvestingProbe), 0);
         AIAttackWaveAddUnits4(0, 0, 0, 1, "Colossus");
         lv_escortCount = libNtve_gf_DifficultyValueInt(3, 3, 4, 4);
@@ -493,6 +480,7 @@ void gf_AITerrazineHarvestAttempt (int lp_primaryTerrazineIndex, int lp_secondar
             AIAttackWaveAddEscortType(gv_p4_PROTOSS_WEST_ESCORTS, "VoidRay", lv_harvestingProbe, 1.5, (lv_offsetAngle * IntToFixed(lv_i)));
         }
         AIAttackWaveAddUnits4(1, 1, 1, 1, "Observer");
+        AIAttackWaveAddUnits4(2, 2, 3, 2, "Stalker");
         AIAttackWaveSend(gv_p4_PROTOSS_WEST_ESCORTS, 0, false);
     }
     else {
