@@ -23,6 +23,7 @@
     <Element Type="Trigger" Id="7710D558">
         <Variable Type="Variable" Id="67A09ABD"/>
         <Event Type="FunctionCall" Id="74C7B64D"/>
+        <Action Type="FunctionCall" Id="727E60E3"/>
         <Action Type="FunctionCall" Id="D32219B8"/>
         <Action Type="FunctionCall" Id="B11B9A1B"/>
         <Action Type="Comment" Id="C358DDC0"/>
@@ -49,6 +50,20 @@
     </Element>
     <Element Type="FunctionCall" Id="74C7B64D">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+    </Element>
+    <Element Type="FunctionCall" Id="727E60E3">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+        <Parameter Type="Param" Id="6351DC43"/>
+        <Parameter Type="Param" Id="370933E5"/>
+    </Element>
+    <Element Type="Param" Id="6351DC43">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+        <Variable Type="Variable" Library="ABFE498B" Id="9437A515"/>
+    </Element>
+    <Element Type="Param" Id="370933E5">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+        <Value>true</Value>
+        <ValueType Type="bool"/>
     </Element>
     <Element Type="FunctionCall" Id="D32219B8">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
