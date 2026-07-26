@@ -1966,9 +1966,13 @@ bool gt_BattlecruiserSpawnAttackOdin_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsAtPoint2(1, "Battlecruiser", 0, gv_p07_DOMINION_STARPORT_B, PointFromId(712));
     gv_battlecruiser1 = UnitLastCreated();
     UnitIssueOrder(gv_battlecruiser1, OrderTargetingUnit(AbilityCommand("attack", 0), UnitFromId(2)), c_orderQueueReplace);
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+    UnitIssueOrder(UnitLastCreated(), OrderTargetingUnit(AbilityCommand("attack", 0), UnitFromId(2)), c_orderQueueReplace);
     libNtve_gf_CreateUnitsAtPoint2(1, "Battlecruiser", 0, gv_p07_DOMINION_STARPORT_B, PointFromId(302));
     gv_battlecruiser2 = UnitLastCreated();
     UnitIssueOrder(gv_battlecruiser2, OrderTargetingUnit(AbilityCommand("attack", 0), UnitFromId(2)), c_orderQueueReplace);
+    libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+    UnitIssueOrder(UnitLastCreated(), OrderTargetingUnit(AbilityCommand("attack", 0), UnitFromId(2)), c_orderQueueReplace);
     Wait(0.1, c_timeGame);
     TriggerExecute(gt_WraithIntro, true, false);
     TriggerExecute(gt_TransmissionBattlecruiserSpawnAttackOdinQ, true, false);
