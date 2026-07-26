@@ -81,6 +81,7 @@ revealer gv_gatherRevealer;
 bool gv_firstZergWaveSent;
 int gv_zergWaveGatherTransmissionCount;
 int gv_zergWaveSendTransmissionCount;
+bool gv_pingAlive;
 int gv_unitsLostToZerg;
 int gv_zergUnitsKilled;
 int gv_warpingTerranKilled;
@@ -3769,6 +3770,10 @@ bool gt_KerriganWaveSent_Func (bool testConds, bool runActions) {
         if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
             return false;
         }
+
+        if (!((gv_pingAlive == false))) {
+            return false;
+        }
     }
 
     // Actions
@@ -3785,6 +3790,7 @@ bool gt_KerriganWaveSent_Func (bool testConds, bool runActions) {
     gv_pingAttack = PingLastCreated();
     PingSetScale(PingLastCreated(), 0.75);
     PingSetTooltip(PingLastCreated(), StringExternal("Param/Value/975FFC5E"));
+    gv_pingAlive = true;
     TimerStart(lv_pingTimer, PingGetDuration(gv_pingAttack), false, c_timeGame);
     auto60A19573_g = lv_triggeringWaveGroup;
     auto60A19573_u = UnitGroupCount(auto60A19573_g, c_unitCountAll);
@@ -3798,6 +3804,7 @@ bool gt_KerriganWaveSent_Func (bool testConds, bool runActions) {
         Wait(0.25, c_timeGame);
     }
     PingDestroy(gv_pingAttack);
+    gv_pingAlive = false;
     return true;
 }
 

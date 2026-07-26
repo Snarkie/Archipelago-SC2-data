@@ -182,6 +182,7 @@ Variable/Name/1874387E=PLAYER_11_MOEBIUS_BRIDGECONTROL
 Variable/Name/1D6757AA=MedicGroup
 Variable/Name/1DA6C809=LOCATION_ID_SECOND_PRISONER_GROUP
 Variable/Name/1ECF2474=DropPodUnits02
+Variable/Name/1F46F050=PingAlive
 Variable/Name/22C41F54=CurrentPointName
 Variable/Name/280511B7=PathIndex
 Variable/Name/28B93901=PlayerEntersZergBaseCycle
