@@ -2631,7 +2631,12 @@ bool gt_WaveShadowFX_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    gf_ApplyShadowManifestationFX(EventUnit());
+    if ((UnitBehaviorCount(EventUnit(), "AP_VoidShade") == 0)) {
+        gf_ApplyShadowManifestationFX(EventUnit());
+    }
+    else {
+        UnitBehaviorAddPlayer(EventUnit(), "TerrazineShadow", UnitGetOwner(EventUnit()), 1);
+    }
     return true;
 }
 
