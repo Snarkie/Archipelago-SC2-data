@@ -856,6 +856,7 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
     }
 
     AP_GhostSpawn_playerOverride = lv_player;
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_TargetOverride = true;
     TriggerExecute(libA472B13C_gt_AP_HotS_Constructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
     TriggerExecute(gt_Init03Units, true, false);

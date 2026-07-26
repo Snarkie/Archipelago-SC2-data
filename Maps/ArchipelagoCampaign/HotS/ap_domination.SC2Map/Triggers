@@ -158,6 +158,7 @@
         <Variable Type="Variable" Id="8B3B3A02"/>
         <Event Type="FunctionCall" Id="FC3CE16D"/>
         <Action Type="FunctionCall" Id="52F6E015"/>
+        <Action Type="FunctionCall" Id="D12712C6"/>
         <Action Type="FunctionCall" Id="A3F571CF"/>
         <Action Type="FunctionCall" Id="8D8990CC"/>
         <Action Type="FunctionCall" Id="987F3AD4"/>
@@ -184,6 +185,20 @@
         <ScriptCode>
             AP_GhostSpawn_playerOverride = lv_player;
         </ScriptCode>
+    </Element>
+    <Element Type="FunctionCall" Id="D12712C6">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+        <Parameter Type="Param" Id="7E2481C7"/>
+        <Parameter Type="Param" Id="612ADD42"/>
+    </Element>
+    <Element Type="Param" Id="7E2481C7">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+        <Variable Type="Variable" Library="ABFE498B" Id="938D8AAF"/>
+    </Element>
+    <Element Type="Param" Id="612ADD42">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+        <Value>true</Value>
+        <ValueType Type="bool"/>
     </Element>
     <Element Type="FunctionCall" Id="A3F571CF">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
