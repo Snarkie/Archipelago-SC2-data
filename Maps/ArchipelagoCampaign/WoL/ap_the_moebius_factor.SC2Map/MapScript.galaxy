@@ -760,6 +760,7 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_TargetOverride = true;
     TriggerExecute(lib88187CC2_gt_ArchipelagoPlayerWoLHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
     lib5BD4895D_gf_AP_Core_MapConfig_setChatboxPosition(c_anchorTopRight, 500, 350, 0, 110);
@@ -1187,7 +1188,8 @@ bool gt_CreateNydusWorm_Func (bool testConds, bool runActions) {
                 UnitGroupAdd(lv_spawnedUnits, UnitLastCreated());
                 UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
                 AIAttackWaveUseUnit(lv_player, UnitLastCreated());
-                AIAttackWaveSend(lv_player, 1, false);
+                AIAttackWaveSetTargetPlayer(lv_player, PlayerGroupSingle(gv_p01_USER));
+                AIAttackWaveSend(lv_player, 0, false);
             }
 
             Wait(0.7, c_timeGame);
@@ -1205,7 +1207,8 @@ bool gt_CreateNydusWorm_Func (bool testConds, bool runActions) {
                 UnitGroupAdd(lv_spawnedUnits, UnitLastCreated());
                 UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
                 AIAttackWaveUseUnit(lv_player, UnitLastCreated());
-                AIAttackWaveSend(lv_player, 1, false);
+                AIAttackWaveSetTargetPlayer(lv_player, PlayerGroupSingle(gv_p01_USER));
+                AIAttackWaveSend(lv_player, 0, false);
             }
 
             Wait(0.7, c_timeGame);
@@ -1891,12 +1894,18 @@ bool gt_Site1SubwaySpawns_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsAtPoint2(1, "Roach", 0, gv_p02_ZERG, PointFromId(490));
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(464)), c_orderQueueReplace);
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_tARGET)), c_orderQueueAddToEnd);
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(464)), c_orderQueueReplace);
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_tARGET)), c_orderQueueAddToEnd);
         Wait(0.7, c_timeGame);
     }
     auto8794C39C_n = libNtve_gf_DifficultyValueInt(3, 3, 2, 1);
     for (auto8794C39C_i = 1; auto8794C39C_i <= auto8794C39C_n; auto8794C39C_i += 1) {
         lv_tARGET = libNtve_gf_ClosestUnitToPoint(PointFromId(464), UnitGroup(null, gv_p01_USER, RegionCircle(RegionGetCenter(RegionFromId(5)), 10.0), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
         libNtve_gf_CreateUnitsAtPoint2(1, libNtve_gf_DifficultyValueUnitType("Zergling", "Zergling", "Zergling", "Hydralisk"), 0, gv_p02_ZERG, PointFromId(490));
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(464)), c_orderQueueReplace);
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_tARGET)), c_orderQueueAddToEnd);
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(464)), c_orderQueueReplace);
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), UnitGetPosition(lv_tARGET)), c_orderQueueAddToEnd);
         Wait(0.7, c_timeGame);
@@ -1915,7 +1924,17 @@ void gt_Site1SubwaySpawns_Init () {
 // Trigger: Site 1 - Mutalisks
 //--------------------------------------------------------------------------------------------------
 bool gt_Site1Mutalisks_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unitgroup lv_group;
+
     // Automatic Variable Declarations
+    unitgroup autoE4587F43_g;
+    int autoE4587F43_u;
+    unit autoE4587F43_var;
+
+    // Variable Initialization
+    lv_group = UnitGroupEmpty();
+
     // Conditions
     if (testConds) {
         if (!((gv_gameOver == false))) {
@@ -1936,6 +1955,16 @@ bool gt_Site1Mutalisks_Func (bool testConds, bool runActions) {
     libNtve_gf_CreateUnitsAtPoint2(libNtve_gf_DifficultyValueInt(2, 2, 3, 4), "Mutalisk", 0, gv_p02_ZERG, PointFromId(134));
     UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(52))), c_orderQueueReplace);
     UnitGroupIssueOrder(UnitLastCreatedGroup(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(5))), c_orderQueueAddToEnd);
+    lv_group = UnitLastCreatedGroup();
+    autoE4587F43_g = UnitLastCreatedGroup();
+    autoE4587F43_u = UnitGroupCount(autoE4587F43_g, c_unitCountAll);
+    for (;; autoE4587F43_u -= 1) {
+        autoE4587F43_var = UnitGroupUnitFromEnd(autoE4587F43_g, autoE4587F43_u);
+        if (autoE4587F43_var == null) { break; }
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(autoE4587F43_var);
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(52))), c_orderQueueReplace);
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionGetCenter(RegionFromId(5))), c_orderQueueReplace);
+    }
     return true;
 }
 
@@ -2012,6 +2041,9 @@ bool gt_Site1Nydus_Func (bool testConds, bool runActions) {
                 libNtve_gf_CreateUnitsWithDefaultFacing(1, "Zergling", 0, gv_p05_ZERG_BASE, UnitGetPosition(lv_nydus));
                 UnitGroupAdd(lv_spawnGroup, UnitLastCreated());
                 UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(18))), c_orderQueueReplace);
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+                UnitGroupAdd(lv_spawnGroup, UnitLastCreated());
+                UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(18))), c_orderQueueReplace);
             }
 
             Wait(0.7, c_timeGame);
@@ -2025,6 +2057,9 @@ bool gt_Site1Nydus_Func (bool testConds, bool runActions) {
                 libNtve_gf_PlayAnimation(libNtve_gf_MainActorofUnit(lv_nydus), c_animNameDefault, "Spell", 0, c_animTimeDefault);
                 SoundPlayAtPoint(SoundLink("NydusWorm_Unload", -1), PlayerGroupAll(), UnitGetPosition(lv_nydus), 8.0, 100.0, 0.0);
                 libNtve_gf_CreateUnitsWithDefaultFacing(1, libNtve_gf_DifficultyValueUnitType("Roach", "Roach", "Hydralisk", "Hydralisk"), 0, gv_p05_ZERG_BASE, UnitGetPosition(lv_nydus));
+                UnitGroupAdd(lv_spawnGroup, UnitLastCreated());
+                UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(18))), c_orderQueueReplace);
+                libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
                 UnitGroupAdd(lv_spawnGroup, UnitLastCreated());
                 UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(18))), c_orderQueueReplace);
             }
@@ -2211,12 +2246,18 @@ bool gt_Site2SubwaySpawns_Func (bool testConds, bool runActions) {
         libNtve_gf_CreateUnitsAtPoint2(1, libNtve_gf_DifficultyValueUnitType("Swarmling", "Swarmling", "Zergling", "Zergling"), 0, gv_p02_ZERG, PointFromId(623));
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(622)), c_orderQueueReplace);
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(74))), c_orderQueueAddToEnd);
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(622)), c_orderQueueReplace);
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(74))), c_orderQueueAddToEnd);
         Wait(0.3, c_timeGame);
     }
     Wait(0.5, c_timeGame);
     auto2EFEB2B1_n = libNtve_gf_DifficultyValueInt(2, 2, 3, 2);
     for (auto2EFEB2B1_i = 1; auto2EFEB2B1_i <= auto2EFEB2B1_n; auto2EFEB2B1_i += 1) {
         libNtve_gf_CreateUnitsAtPoint2(1, libNtve_gf_DifficultyValueUnitType("Zergling", "Zergling", "Roach", "Hydralisk"), 0, gv_p02_ZERG, PointFromId(623));
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(622)), c_orderQueueReplace);
+        UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(74))), c_orderQueueAddToEnd);
+        libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), PointFromId(622)), c_orderQueueReplace);
         UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("attack", 0), RegionRandomPoint(RegionFromId(74))), c_orderQueueAddToEnd);
         Wait(0.7, c_timeGame);

@@ -346,6 +346,7 @@ Variable/Name/84D2EE3E=ScourgeGroup1
 Variable/Name/867759B8=BaseNydusPing1
 Variable/Name/88D7386D=ZergGroup
 Variable/Name/8C7C1C36=Rescued Count
+Variable/Name/8D820A0E=group
 Variable/Name/8E3CD65B=PING-Site2
 Variable/Name/8EF82A3F=PING-Site3
 Variable/Name/8F3871CB=Kerrigans ETA TIMER
