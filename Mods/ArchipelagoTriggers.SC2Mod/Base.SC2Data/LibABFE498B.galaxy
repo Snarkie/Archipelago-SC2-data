@@ -205,7 +205,7 @@ void libABFE498B_gf_AP_Triggers_setDifficulty (string lp_difficultyChar) {
 void libABFE498B_gf_AP_Triggers_setKerriganOptions (int lp_bitArrayValue) {
     // Automatic Variable Declarations
     // Implementation
-    libABFE498B_gv_aP_Triggers_Option_KerriganPresence = ModI(lp_bitArrayValue, 4);
+    libABFE498B_gv_aP_Triggers_Option_KerriganPresence = 1;
     libABFE498B_gv_aP_Triggers_Option_KerriganPrimalStatusByMap = (ModI((lp_bitArrayValue / 4), 2) == 1);
 }
 

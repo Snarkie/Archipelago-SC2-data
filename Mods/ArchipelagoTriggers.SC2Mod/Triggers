@@ -788,10 +788,7 @@
         <Element Type="Comment" Id="CDDD0166">
             <Comment>
                 Kerrigan presence in missions
-                0 - Not present unless the mission requires that
-                1 - Present as normal in vanilla
-                2 - All Zerg Missions
-                3 - Everywhere
+                Obsolete, replaced by Hero Presence
             </Comment>
         </Element>
         <Element Type="Variable" Id="06E55BF4">
@@ -1952,6 +1949,8 @@
             <FlagAction/>
             <Parameter Type="ParamDef" Library="ABFE498B" Id="917844F6"/>
             <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="3446A4A5"/>
+            <FunctionCall Type="Comment" Library="ABFE498B" Id="FD237C89"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="D0C49B57"/>
             <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="00381ED0"/>
         </Element>
         <Element Type="ParamDef" Id="917844F6">
@@ -1965,6 +1964,7 @@
             <ValueType Type="int"/>
         </Element>
         <Element Type="FunctionCall" Id="3446A4A5">
+            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
             <Parameter Type="Param" Library="ABFE498B" Id="0CE1E786"/>
             <Parameter Type="Param" Library="ABFE498B" Id="E7282623"/>
@@ -1990,6 +1990,25 @@
         <Element Type="Param" Id="F9ABC401">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="7438F000"/>
             <Parameter Type="ParamDef" Library="ABFE498B" Id="917844F6"/>
+        </Element>
+        <Element Type="Comment" Id="FD237C89">
+            <Comment>
+                Replaced by Hero Presence. Set it to 1 here, so no-build missions work as expected.
+            </Comment>
+        </Element>
+        <Element Type="FunctionCall" Id="D0C49B57">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="DF631093"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="A913C20F"/>
+        </Element>
+        <Element Type="Param" Id="DF631093">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="ABFE498B" Id="06E55BF4"/>
+        </Element>
+        <Element Type="Param" Id="A913C20F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <Value>1</Value>
+            <ValueType Type="int"/>
         </Element>
         <Element Type="FunctionCall" Id="00381ED0">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
