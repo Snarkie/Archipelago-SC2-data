@@ -36,10 +36,10 @@ const int gv_LOCATION_ID_SOUTHWEST_TENDRIL = 4;
 const int gv_LOCATION_ID_SOUTHEAST_TENDRIL = 5;
 const int gv_LOCATION_ID_NORTHEAST_TENDRIL = 6;
 const int gv_LOCATION_ID_NORTHWEST_TENDRIL = 7;
-const int gv_LOCATION_ID_NORTHWEST_TENDRIL2 = 8;
-const int gv_LOCATION_ID_NORTHWEST_TENDRIL3 = 9;
-const int gv_LOCATION_ID_NORTHWEST_TENDRIL4 = 10;
-const int gv_LOCATION_ID_NORTHWEST_TENDRIL5 = 11;
+const int gv_LOCATION_ID_RESOURCE_PICKUPS = 8;
+const int gv_LOCATION_ID_NEUTRAL_BUILDINGS = 9;
+const int gv_LOCATION_ID_NORTH_ISLAND = 10;
+const int gv_LOCATION_ID_EAST_ISLAND = 11;
 const int gv_p01_USER = 1;
 const int gv_p02_ZERG_LOW_GROUND_AI = 2;
 const int gv_p03_ZERG_NORTH = 3;
@@ -5944,7 +5944,7 @@ bool gt_ObjectiveResourcePickupsCreate_Func (bool testConds, bool runActions) {
     ObjectiveCreate(StringExternal("Param/Value/0E1564E6"), StringExternal("Param/Value/E9FD5946"), c_objectiveStateHidden, false);
     gv_objectiveResourcePickups = ObjectiveLastCreated();
     lib5BD4895D_gf_AP_Core_addCategoryObjectiveWithCounter(gv_objectiveResourcePickups, lv_category, "", gv_resourcePickupsCollected, 15, true);
-    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveResourcePickups, gv_LOCATION_ID_NORTHWEST_TENDRIL2);
+    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveResourcePickups, gv_LOCATION_ID_RESOURCE_PICKUPS);
     lib5BD4895D_gf_AP_Core_setObjectiveVisibility(gv_objectiveResourcePickups, true);
     Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
     return true;
@@ -6014,7 +6014,7 @@ bool gt_ObjectiveResourcePickupsComplete_Func (bool testConds, bool runActions) 
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(gt_ObjectiveResourcePickupsCreate, true, false);
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveResourcePickups, gv_resourcePickupsCollected);
-    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NORTHWEST_TENDRIL2);
+    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_RESOURCE_PICKUPS);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveResourcePickups);
     Wait(30.0, c_timeReal);
     lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveResourcePickups);
@@ -6064,7 +6064,7 @@ bool gt_ObjectiveNeutralBuildingsCreate_Func (bool testConds, bool runActions) {
     }
     gv_objectiveNeutralBuildings = ObjectiveLastCreated();
     lib5BD4895D_gf_AP_Core_addCategoryObjectiveWithCounter(gv_objectiveNeutralBuildings, lv_category, "", gv_neutralBuildingsobtained, 5, true);
-    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveNeutralBuildings, gv_LOCATION_ID_NORTHWEST_TENDRIL2);
+    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveNeutralBuildings, gv_LOCATION_ID_RESOURCE_PICKUPS);
     lib5BD4895D_gf_AP_Core_setObjectiveVisibility(gv_objectiveNeutralBuildings, true);
     Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
     return true;
@@ -6132,7 +6132,7 @@ bool gt_ObjectiveNeutralBuildingsComplete_Func (bool testConds, bool runActions)
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(gt_ObjectiveNeutralBuildingsCreate, true, false);
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveNeutralBuildings, gv_neutralBuildingsobtained);
-    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NORTHWEST_TENDRIL3);
+    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NEUTRAL_BUILDINGS);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveNeutralBuildings);
     Wait(30.0, c_timeReal);
     lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveNeutralBuildings);
@@ -6171,7 +6171,7 @@ bool gt_ObjectiveNorthIslandHiveCreate_Func (bool testConds, bool runActions) {
     ObjectiveCreate(StringExternal("Param/Value/19F3A00B"), StringExternal("Param/Value/48220DD0"), c_objectiveStateHidden, false);
     gv_objectiveNorthIslandHives = ObjectiveLastCreated();
     lib5BD4895D_gf_AP_Core_addCategoryObjectiveWithCounter(gv_objectiveNorthIslandHives, lv_category, "", gv_northIslandHivesKilled, 2, true);
-    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveNorthIslandHives, gv_LOCATION_ID_NORTHWEST_TENDRIL4);
+    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveNorthIslandHives, gv_LOCATION_ID_NORTH_ISLAND);
     lib5BD4895D_gf_AP_Core_setObjectiveVisibility(gv_objectiveNorthIslandHives, true);
     Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
     return true;
@@ -6242,7 +6242,7 @@ bool gt_ObjectiveNorthIslandHiveComplete_Func (bool testConds, bool runActions) 
     TriggerExecute(gt_ObjectiveNorthIslandHiveCreate, true, false);
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveNorthIslandHives, gv_northIslandHivesKilled);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveNorthIslandHives);
-    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NORTHWEST_TENDRIL4);
+    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NORTH_ISLAND);
     Wait(30.0, c_timeReal);
     if ((gv_eastIslandHivesKilled >= 2)) {
         lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveNorthIslandHives);
@@ -6284,7 +6284,7 @@ bool gt_ObjectiveEastIslandHiveCreate_Func (bool testConds, bool runActions) {
     ObjectiveCreate(StringExternal("Param/Value/CAA09323"), StringExternal("Param/Value/0E6AC7C7"), c_objectiveStateHidden, false);
     gv_objectiveEastIslandHives = ObjectiveLastCreated();
     lib5BD4895D_gf_AP_Core_addCategoryObjectiveWithCounter(gv_objectiveEastIslandHives, lv_category, "", gv_eastIslandHivesKilled, 2, true);
-    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveEastIslandHives, gv_LOCATION_ID_NORTHWEST_TENDRIL5);
+    lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveEastIslandHives, gv_LOCATION_ID_EAST_ISLAND);
     lib5BD4895D_gf_AP_Core_setObjectiveVisibility(gv_objectiveEastIslandHives, true);
     Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
     return true;
@@ -6355,7 +6355,7 @@ bool gt_ObjectiveEastIslandHiveComplete_Func (bool testConds, bool runActions) {
     TriggerExecute(gt_ObjectiveEastIslandHiveCreate, true, false);
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveEastIslandHives, gv_eastIslandHivesKilled);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveEastIslandHives);
-    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NORTHWEST_TENDRIL5);
+    lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_EAST_ISLAND);
     Wait(30.0, c_timeReal);
     if ((gv_northIslandHivesKilled >= 2)) {
         lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveNorthIslandHives);

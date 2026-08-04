@@ -114,7 +114,7 @@
         <ValueType Type="int"/>
     </Element>
     <Element Type="Variable" Id="5A9DA3EB">
-        <Identifier>LOCATION_ID_NORTHWEST_TENDRIL2</Identifier>
+        <Identifier>LOCATION_ID_RESOURCE_PICKUPS</Identifier>
         <VariableType>
             <Type Value="int"/>
             <Constant/>
@@ -126,7 +126,7 @@
         <ValueType Type="int"/>
     </Element>
     <Element Type="Variable" Id="2584FE75">
-        <Identifier>LOCATION_ID_NORTHWEST_TENDRIL3</Identifier>
+        <Identifier>LOCATION_ID_NEUTRAL_BUILDINGS</Identifier>
         <VariableType>
             <Type Value="int"/>
             <Constant/>
@@ -138,7 +138,7 @@
         <ValueType Type="int"/>
     </Element>
     <Element Type="Variable" Id="A783AD16">
-        <Identifier>LOCATION_ID_NORTHWEST_TENDRIL4</Identifier>
+        <Identifier>LOCATION_ID_NORTH_ISLAND</Identifier>
         <VariableType>
             <Type Value="int"/>
             <Constant/>
@@ -150,7 +150,7 @@
         <ValueType Type="int"/>
     </Element>
     <Element Type="Variable" Id="47B655FB">
-        <Identifier>LOCATION_ID_NORTHWEST_TENDRIL5</Identifier>
+        <Identifier>LOCATION_ID_EAST_ISLAND</Identifier>
         <VariableType>
             <Type Value="int"/>
             <Constant/>
