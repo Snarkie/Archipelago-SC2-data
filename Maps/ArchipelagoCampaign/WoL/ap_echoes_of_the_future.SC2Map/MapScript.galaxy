@@ -52,6 +52,7 @@ const int gv_p10_ABANDONED_STRUCTURES = 10;
 //--------------------------------------------------------------------------------------------------
 // Global Variables
 //--------------------------------------------------------------------------------------------------
+text gv_heroname;
 bool gv_gameOver;
 bool gv_inCinematic;
 unit gv_zeratul;
@@ -585,6 +586,7 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     unitgroup autoC9B551AE_g;
     int autoC9B551AE_u;
     unit autoC9B551AE_var;
+    int auto3AE6B84C_val;
 
     // Variable Initialization
 
@@ -598,7 +600,7 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
-        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 7;
+        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 5;
         libABFE498B_gf_AP_Triggers_Debug_Tech(gv_p01_USER, 2);
     }
 
@@ -692,6 +694,22 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
     else {
         UnitPutInTransport(gv_zeratul, UnitFromId(685));
+    }
+    auto3AE6B84C_val = libABFE498B_gv_aP_Triggers_Option_HeroPresence;
+    if (auto3AE6B84C_val == 0) {
+        gv_heroname = StringExternal("Param/Value/01B4C9F8");
+    }
+    else if (auto3AE6B84C_val == 1) {
+        gv_heroname = StringExternal("Param/Value/E1658001");
+    }
+    else if (auto3AE6B84C_val == 2) {
+        gv_heroname = StringExternal("Param/Value/2D11B7EE");
+    }
+    else if (auto3AE6B84C_val == 4) {
+        gv_heroname = StringExternal("Param/Value/4D27142A");
+    }
+    else {
+        gv_heroname = StringExternal("Param/Value/5428B4CC");
     }
     return true;
 }
@@ -5199,7 +5217,8 @@ bool gt_DefeatZeratulDies_Func (bool testConds, bool runActions) {
     TriggerQueuePause(true);
     TriggerQueueClear(c_triggerQueueRemove);
     Wait(2.0, c_timeReal);
-    libCamp_gf_DisplayCampaignMessage(PlayerGroupAll(), libCamp_ge_CampaignMessageType_MissionFailed, StringExternal("Param/Value/0A50BA2F"), libCamp_ge_CampaignMessageFormatNotFormat_FormatMessage);
+    TextExpressionSetToken("Param/Expression/0A50BA2F", "A", gv_heroname);
+    libCamp_gf_DisplayCampaignMessage(PlayerGroupAll(), libCamp_ge_CampaignMessageType_MissionFailed, TextExpressionAssemble("Param/Expression/0A50BA2F"), libCamp_ge_CampaignMessageFormatNotFormat_FormatMessage);
     Wait(libCamp_gv_campaignObjectiveDelay, c_timeReal);
     TriggerExecute(gt_Defeat, true, false);
     return true;
@@ -5565,7 +5584,8 @@ bool gt_ObjectiveOvermindTendrilsCreateHidden_Func (bool testConds, bool runActi
     }
 
     TriggerEnable(TriggerGetCurrent(), false);
-    ObjectiveCreate(StringExternal("Param/Value/99827D41"), StringExternal("Param/Value/A28B7D22"), c_objectiveStateHidden, true);
+    TextExpressionSetToken("Param/Expression/99827D41", "A", gv_heroname);
+    ObjectiveCreate(TextExpressionAssemble("Param/Expression/99827D41"), StringExternal("Param/Value/A28B7D22"), c_objectiveStateHidden, true);
     gv_objectiveOvermindTendrils = ObjectiveLastCreated();
     lib5BD4895D_gf_AP_Core_addCategoryObjectiveWithCounter(gv_objectiveOvermindTendrils, lib5BD4895D_ge_APObjectiveCategory_Primary, "", gv_overmindTendrilsVisited, 4, false);
     lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveOvermindTendrils, gv_LOCATION_ID_NORTHEAST_TENDRIL);
@@ -5573,12 +5593,15 @@ bool gt_ObjectiveOvermindTendrilsCreateHidden_Func (bool testConds, bool runActi
     lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveOvermindTendrils, gv_LOCATION_ID_SOUTHEAST_TENDRIL);
     lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveOvermindTendrils, gv_LOCATION_ID_SOUTHWEST_TENDRIL);
     lib5BD4895D_gf_AP_Core_associateObjectiveWithLocation(gv_objectiveOvermindTendrils, lib5BD4895D_gv_aP_Core_locationVictory);
-    libCamp_gf_RegisterMissionObjective(libCamp_ge_MissionObjective_TZeratul03Objective2, ObjectiveLastCreated(), StringExternal("Param/Value/51A16B0B"));
-    ObjectiveCreate(StringExternal("Param/Value/062D6BA5"), StringExternal("Param/Value/873AE416"), c_objectiveStateHidden, true);
+    TextExpressionSetToken("Param/Expression/51A16B0B", "A", gv_heroname);
+    libCamp_gf_RegisterMissionObjective(libCamp_ge_MissionObjective_TZeratul03Objective2, ObjectiveLastCreated(), TextExpressionAssemble("Param/Expression/51A16B0B"));
+    TextExpressionSetToken("Param/Expression/062D6BA5", "A", gv_heroname);
+    ObjectiveCreate(TextExpressionAssemble("Param/Expression/062D6BA5"), StringExternal("Param/Value/873AE416"), c_objectiveStateHidden, true);
     gv_objectiveZeratulMustSurvive = ObjectiveLastCreated();
     lib5BD4895D_gf_AP_Core_addCategoryObjectiveSimple(gv_objectiveZeratulMustSurvive, lib5BD4895D_ge_APObjectiveCategory_Primary, false);
     lib5BD4895D_gf_AP_Core_setObjectiveVisibility(gv_objectiveZeratulMustSurvive, true);
-    libCamp_gf_RegisterMissionObjective(libCamp_ge_MissionObjective_TZeratul03Objective4, ObjectiveLastCreated(), StringExternal("Param/Value/383549AC"));
+    TextExpressionSetToken("Param/Expression/383549AC", "A", gv_heroname);
+    libCamp_gf_RegisterMissionObjective(libCamp_ge_MissionObjective_TZeratul03Objective4, ObjectiveLastCreated(), TextExpressionAssemble("Param/Expression/383549AC"));
     return true;
 }
 
@@ -7090,6 +7113,10 @@ bool gt_MidCineCleanup_Func (bool testConds, bool runActions) {
     UnitBehaviorRemove(gv_zeratul, "Read", 1);
     UnitBehaviorRemove(gv_zeratul, "SuppressCloak", 1);
     CreepSetSpeed(c_creepSpeedDecay, 100.0);
+    if ((libABFE498B_gv_aP_Triggers_Option_HeroPresence != 0)) {
+        lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveZeratulMustSurvive);
+    }
+
     if ((gv_midColossusCinematicCompleted == true)) {
         lv_fadeDuration = 2.0;
     }

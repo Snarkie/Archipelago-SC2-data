@@ -210,6 +210,7 @@ Trigger/Name/FDEED29C=Overmind Tendril Beacon - Zerglings (SW)
 Trigger/Name/FE9BE274=Victory Cine - Scene 4 Stuff
 Trigger/Name/FEF04D0F=Zerg P03 - Wave 4 - Muta + Z/B
 Variable/Name/0013587A=RainOn
+Variable/Name/01342AF6=hero name
 Variable/Name/05779900=ZergFrenzyTimer
 Variable/Name/079D347B=group
 Variable/Name/08AF1674=FadeDuration
