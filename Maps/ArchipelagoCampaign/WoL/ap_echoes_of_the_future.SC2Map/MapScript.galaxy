@@ -1310,8 +1310,7 @@ bool gt_StartGameStage2_Func (bool testConds, bool runActions) {
     Wait(10.0, c_timeGame);
     TriggerExecute(gt_ObjectiveResourcePickupsCreate, true, false);
     CreepSetSpeed(c_creepSpeedGrowth, 100.0);
-    Wait(10.0, c_timeGame);
-    Wait(30.0, c_timeGame);
+    Wait(40.0, c_timeGame);
     TriggerExecute(gt_TransmissionUseObserversQ, true, false);
     Wait(70.0, c_timeGame);
     TriggerExecute(gt_ObjectiveNorthIslandHiveCreate, true, false);
@@ -6016,8 +6015,6 @@ bool gt_ObjectiveResourcePickupsComplete_Func (bool testConds, bool runActions) 
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveResourcePickups, gv_resourcePickupsCollected);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_RESOURCE_PICKUPS);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveResourcePickups);
-    Wait(30.0, c_timeReal);
-    lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveResourcePickups);
     return true;
 }
 
@@ -6134,8 +6131,6 @@ bool gt_ObjectiveNeutralBuildingsComplete_Func (bool testConds, bool runActions)
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveNeutralBuildings, gv_neutralBuildingsobtained);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NEUTRAL_BUILDINGS);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveNeutralBuildings);
-    Wait(30.0, c_timeReal);
-    lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveNeutralBuildings);
     return true;
 }
 
@@ -6243,12 +6238,6 @@ bool gt_ObjectiveNorthIslandHiveComplete_Func (bool testConds, bool runActions) 
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveNorthIslandHives, gv_northIslandHivesKilled);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveNorthIslandHives);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_NORTH_ISLAND);
-    Wait(30.0, c_timeReal);
-    if ((gv_eastIslandHivesKilled >= 2)) {
-        lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveNorthIslandHives);
-        lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveEastIslandHives);
-    }
-
     return true;
 }
 
@@ -6356,12 +6345,6 @@ bool gt_ObjectiveEastIslandHiveComplete_Func (bool testConds, bool runActions) {
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveEastIslandHives, gv_eastIslandHivesKilled);
     lib5BD4895D_gf_AP_Core_setObjectiveCompleted(gv_objectiveEastIslandHives);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_EAST_ISLAND);
-    Wait(30.0, c_timeReal);
-    if ((gv_northIslandHivesKilled >= 2)) {
-        lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveNorthIslandHives);
-        lib5BD4895D_gf_AP_Core_deleteObjective(gv_objectiveEastIslandHives);
-    }
-
     return true;
 }
 
