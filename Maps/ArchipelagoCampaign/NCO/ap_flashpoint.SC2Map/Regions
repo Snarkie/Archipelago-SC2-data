@@ -1259,4 +1259,14 @@
             <radius value="6.1032"/>
         </shape>
     </region>
+    <region id="106">
+        <name value="Spawn Trap"/>
+        <invisible/>
+        <shape type="rect">
+            <quad value="61,16.5,72,30"/>
+        </shape>
+        <shape type="rect">
+            <quad value="23,58,35,68.5"/>
+        </shape>
+    </region>
 </Regions>

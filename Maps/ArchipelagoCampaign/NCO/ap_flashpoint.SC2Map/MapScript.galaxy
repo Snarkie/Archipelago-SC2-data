@@ -1844,12 +1844,22 @@ void gt_onDifficultyBrutal_Init () {
 // Trigger: Arch Init
 //--------------------------------------------------------------------------------------------------
 bool gt_ArchInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_spawnTrapPlayer;
+    region lv_spawnTrapRegion;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_spawnTrapPlayer = gv_pLAYER_02_ZERG;
+    lv_spawnTrapRegion = RegionFromId(106);
+
     // Actions
     if (!runActions) {
         return true;
     }
 
+    AP_GhostSpawn_playerOverride = lv_spawnTrapPlayer;
+    AP_GhostSpawn_regionOverride = lv_spawnTrapRegion;
     TriggerExecute(libD62A7F54_gt_AP_Player_NCOConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
     TriggerExecute(gt_Init03Units, true, false);
@@ -1901,15 +1911,14 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
 
     if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Prot";
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
         libABFE498B_gv_aP_Triggers_Option_HeroPresence = 0;
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
         libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 2);
+        libABFE498B_gf_AP_Triggers_unlockGhostSpawn(gv_pLAYER_01_USER, 4);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
-        libABFE498B_gf_AP_Triggers_Protoss_unlockPylonPsiEnhancement(1);
     }
 
     lv_group = UnitGroup(null, gv_pLAYER_01_USER, RegionFromId(71), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);

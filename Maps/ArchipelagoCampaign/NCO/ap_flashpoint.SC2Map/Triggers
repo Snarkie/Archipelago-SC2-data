@@ -573,7 +573,10 @@
         <Item Type="Trigger" Id="AD6F97C7"/>
     </Element>
     <Element Type="Trigger" Id="B6D246AA">
+        <Variable Type="Variable" Id="850EF863"/>
+        <Variable Type="Variable" Id="AFFB771D"/>
         <Event Type="FunctionCall" Id="3DC5D083"/>
+        <Action Type="FunctionCall" Id="87408065"/>
         <Action Type="FunctionCall" Id="7FBD2CF5"/>
         <Action Type="FunctionCall" Id="6D1B16D8"/>
         <Action Type="FunctionCall" Id="6FDC43EC"/>
@@ -583,8 +586,34 @@
         <Action Type="FunctionCall" Id="33249128"/>
         <Action Type="FunctionCall" Id="A4372CD7"/>
     </Element>
+    <Element Type="Variable" Id="850EF863">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="E1A6A5BE"/>
+    </Element>
+    <Element Type="Param" Id="E1A6A5BE">
+        <Variable Type="Variable" Id="58FF3EDE"/>
+    </Element>
+    <Element Type="Variable" Id="AFFB771D">
+        <VariableType>
+            <Type Value="region"/>
+        </VariableType>
+        <Value Type="Param" Id="FE1476B7"/>
+    </Element>
+    <Element Type="Param" Id="FE1476B7">
+        <ValueType Type="region"/>
+        <ValueId Id="106"/>
+    </Element>
     <Element Type="FunctionCall" Id="3DC5D083">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+    </Element>
+    <Element Type="FunctionCall" Id="87408065">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <ScriptCode>
+            AP_GhostSpawn_playerOverride = lv_spawnTrapPlayer;
+            AP_GhostSpawn_regionOverride = lv_spawnTrapRegion;
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="7FBD2CF5">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
@@ -759,11 +788,12 @@
         <FunctionCall Type="FunctionCall" Id="ABA1E87D"/>
         <FunctionCall Type="FunctionCall" Id="A60873A5"/>
         <FunctionCall Type="FunctionCall" Id="2E99E8CD"/>
+        <FunctionCall Type="FunctionCall" Id="9D1ADC62"/>
         <FunctionCall Type="FunctionCall" Id="5B6CA810"/>
-        <FunctionCall Type="FunctionCall" Id="6B6D5BC6"/>
         <FunctionCall Type="FunctionCall" Id="3956E6B9"/>
     </Element>
     <Element Type="FunctionCall" Id="4CE6E8E3">
+        <Disabled/>
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
         <Parameter Type="Param" Id="E5FCA03E"/>
@@ -862,6 +892,21 @@
         <Value>2</Value>
         <ValueType Type="int"/>
     </Element>
+    <Element Type="FunctionCall" Id="9D1ADC62">
+        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="9B77391C"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="ED56ECF5"/>
+        <Parameter Type="Param" Id="173A6F12"/>
+    </Element>
+    <Element Type="Param" Id="ED56ECF5">
+        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="A58C0756"/>
+        <Variable Type="Variable" Id="ACBB807D"/>
+    </Element>
+    <Element Type="Param" Id="173A6F12">
+        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="160C5666"/>
+        <Value>4</Value>
+        <ValueType Type="int"/>
+    </Element>
     <Element Type="FunctionCall" Id="5B6CA810">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
@@ -880,16 +925,6 @@
     <Element Type="Param" Id="8A6C58DB">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000182"/>
         <Variable Type="Variable" Library="ABFE498B" Id="30D87F14"/>
-    </Element>
-    <Element Type="FunctionCall" Id="6B6D5BC6">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="D57F7AC3"/>
-        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="D0D0D470"/>
-    </Element>
-    <Element Type="Param" Id="D0D0D470">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="11F3E59D"/>
-        <Value>1</Value>
-        <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="3956E6B9">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
