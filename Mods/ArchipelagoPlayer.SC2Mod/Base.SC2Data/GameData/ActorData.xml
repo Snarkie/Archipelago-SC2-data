@@ -19742,6 +19742,7 @@
         <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="AP_HiveQueenMeleeAttackForce"/>
     </CActorAction>
     <CActorAction id="AP_HiveQueenTalonsLMAttack" parent="GenericAttack" effectImpact="AP_HiveQueenTalonsDamage" effectLaunch="AP_HiveQueenTalonsLM">
+        <Missile value="AP_TalonsLMAttackMissile"/>
         <LaunchAttachQuery Methods="Weapon"/>
         <LaunchAssets Sound="AcidSpines_AttackLaunch"/>
         <ImpactMap index="None" Model="QueenMissileImpact" Sound="AcidSpines_AttackImpact"/>
@@ -19750,6 +19751,7 @@
         <ImpactPhysics Name="AcidSpinesImpact" MatchKeys="Basic" Physics="QueenAttackDeathForce"/>
     </CActorAction>
     <CActorAction id="AP_HiveQueenAcidSpinesAttack" parent="GenericAttack" effectImpact="AP_HiveQueenAcidSpinesDamage" effectLaunch="AP_HiveQueenAcidSpinesLM">
+        <Missile value="AP_AcidSpinesAttackMissile"/>
         <LaunchAttachQuery Methods="Weapon"/>
         <LaunchAssets Sound="AcidSpines_AttackLaunch"/>
         <ImpactMap index="None" Sound="AcidSpines_AttackImpact"/>
