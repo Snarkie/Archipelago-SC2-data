@@ -103307,6 +103307,7 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000076"/>
         </Element>
         <Element Type="FunctionCall" Id="31C04379">
+            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="ABFE498B" Id="20590D75"/>
@@ -103344,6 +103345,7 @@
             <Preset Type="PresetValue" Library="Ntve" Id="E66C6645"/>
         </Element>
         <Element Type="FunctionCall" Id="10FDF789">
+            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="ABFE498B" Id="66890F5C"/>
@@ -104366,6 +104368,7 @@
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000076"/>
         </Element>
         <Element Type="FunctionCall" Id="97CB40CD">
+            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="ABFE498B" Id="F5C72063"/>
@@ -104403,6 +104406,7 @@
             <Preset Type="PresetValue" Library="Ntve" Id="E66C6645"/>
         </Element>
         <Element Type="FunctionCall" Id="BC4FE5C7">
+            <Disabled/>
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
             <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
             <Parameter Type="Param" Library="ABFE498B" Id="5371B6BE"/>
