@@ -9021,4 +9021,9 @@
         <CombineArray value="AP_CasterIsMarauder"/>
         <CombineArray value="AP_CasterIsHammerSecurity"/>
     </CValidatorCombine>
+    <CValidatorLocationCompareRange id="AP_ImmortalThornsRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="15"/>
+    </CValidatorLocationCompareRange>
 </Catalog>

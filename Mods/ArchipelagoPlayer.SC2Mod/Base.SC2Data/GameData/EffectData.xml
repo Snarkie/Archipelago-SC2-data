@@ -27591,6 +27591,7 @@
     </CEffectDamage>
     <CEffectSet id="AP_ImmortalOverloadSet">
         <ValidatorArray value="TargetIsEnemy"/>
+        <ValidatorArray value="AP_ImmortalThornsRange"/>
         <EffectArray value="AP_ImmortalOverloadDamage"/>
     </CEffectSet>
     <CEffectSet id="AP_ImmortalStarterDummy"/>
