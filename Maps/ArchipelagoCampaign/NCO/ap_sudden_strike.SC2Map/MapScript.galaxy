@@ -92,6 +92,8 @@ int gv_alliedUnitsLost;
 int gv_achievement_SpiderMineKills;
 int gv_anniversaryAchievementTermSpiderMineKills;
 int gv_attackWavesActive;
+fixed gv_attackWaveTimeNorth;
+fixed gv_attackWaveTimeEast;
 point[16] gv_lastWaypointsNorth;
 point[16] gv_lastWaypointsEast;
 int gv_northWaveCount;
@@ -1148,13 +1150,13 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
 
     if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
-        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 7;
+        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 0;
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
         libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 2);
+        libABFE498B_gf_AP_Triggers_unlockVoidDuplicate(1, 5);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
     }
 
@@ -5286,6 +5288,7 @@ bool gt_AttackWaveManager_Func (bool testConds, bool runActions) {
     int lv_waveGroupPing;
     fixed lv_m;
     fixed lv_b;
+    bool lv_makePing;
 
     // Automatic Variable Declarations
     int autoD843421D_val;
@@ -5325,6 +5328,11 @@ bool gt_AttackWaveManager_Func (bool testConds, bool runActions) {
     lv_attackWavePlayer = UnitGetOwner(UnitGroupUnit(lv_waveGroup, 1));
     autoD843421D_val = lv_attackWavePlayer;
     if (autoD843421D_val == gv_pLAYER_02_DOMINION2) {
+        if (((GameGetMissionTime() - gv_attackWaveTimeNorth) >= 5.0)) {
+            lv_makePing = true;
+        }
+
+        gv_attackWaveTimeNorth = GameGetMissionTime();
         lv_gatherPoint = PointFromId(98);
         lv_targetPoint = PointFromId(100);
         auto48375123_var = 1;
@@ -5336,6 +5344,11 @@ bool gt_AttackWaveManager_Func (bool testConds, bool runActions) {
         }
     }
     else if (autoD843421D_val == gv_pLAYER_02_DOMINION3) {
+        if (((GameGetMissionTime() - gv_attackWaveTimeEast) >= 5.0)) {
+            lv_makePing = true;
+        }
+
+        gv_attackWaveTimeEast = GameGetMissionTime();
         lv_gatherPoint = PointFromId(101);
         lv_targetPoint = PointFromId(103);
         auto77B61292_var = 1;
@@ -5348,21 +5361,25 @@ bool gt_AttackWaveManager_Func (bool testConds, bool runActions) {
     }
     else {
     }
-    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingAlert", lv_gatherPoint, ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 0.0, 270.0);
-    lv_waveGroupPing = PingLastCreated();
-    if ((libLotv_gf_DifficultyValueInt2(1, 1, 0, 0) == 1)) {
-        autoD95C684D_var = 1;
-        for ( ; autoD95C684D_var <= autoD95C684D_ae; autoD95C684D_var += 1 ) {
-            if ((lv_targetWaypoints[autoD95C684D_var] != null)) {
-                libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingArrow", lv_targetWaypoints[autoD95C684D_var], Color(100.00, 0.00, 0.00), 0.0, PointGetFacing(lv_targetWaypoints[autoD95C684D_var]));
-                PingSetScale(PingLastCreated(), 0.5);
-                lv_telegraphPings[autoD95C684D_var] = PingLastCreated();
-                Wait(0.5, c_timeAI);
-            }
+    if ((lv_makePing == true)) {
+        libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingAlert", lv_gatherPoint, ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 0.0, 270.0);
+        lv_waveGroupPing = PingLastCreated();
+        if ((libLotv_gf_DifficultyValueInt2(1, 1, 0, 0) == 1)) {
+            autoD95C684D_var = 1;
+            for ( ; autoD95C684D_var <= autoD95C684D_ae; autoD95C684D_var += 1 ) {
+                if ((lv_targetWaypoints[autoD95C684D_var] != null)) {
+                    libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingArrow", lv_targetWaypoints[autoD95C684D_var], Color(100.00, 0.00, 0.00), 0.0, PointGetFacing(lv_targetWaypoints[autoD95C684D_var]));
+                    PingSetScale(PingLastCreated(), 0.5);
+                    lv_telegraphPings[autoD95C684D_var] = PingLastCreated();
+                    Wait(0.5, c_timeAI);
+                }
 
+            }
         }
+
     }
 
+    gv_attackWaveTimeNorth = GameGetMissionTime();
     while (!((DistanceBetweenPoints(UnitGroupCenterOfGroup(lv_waveGroup), lv_targetPoint) < DistanceBetweenPoints(lv_gatherPoint, lv_targetPoint)))) {
         Wait(0.5, c_timeAI);
     }
