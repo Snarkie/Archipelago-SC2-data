@@ -863,7 +863,7 @@ void gf_handleUnitGarrisonEnter (unit lp_enteredUnit) {
     // Variable Initialization
 
     // Implementation
-    if ((libNCMI_gf_GameIsOver() == false) && (libNCMI_gf_PlayerInCinematicModeCampaign() == false) && (TriggerIsEnabled(TriggerGetCurrent()) == true) && (lp_enteredUnit != gv_nova) && (UnitFilterMatch(lp_enteredUnit, gv_pLAYER_01_USER, UnitFilter((1 << c_targetFilterGround), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32)))) == true) && (UnitHasBehavior(lp_enteredUnit, "AP_HallucinationTimedLife") == false) && (UnitHasBehavior(lp_enteredUnit, "AP_HighTemplarSCBWHallucination@TimedLife") == false) && (gv_currentStage == 1)) {
+    if ((libNCMI_gf_GameIsOver() == false) && (libNCMI_gf_PlayerInCinematicModeCampaign() == false) && (TriggerIsEnabled(TriggerGetCurrent()) == true) && (lp_enteredUnit != gv_nova) && (UnitFilterMatch(lp_enteredUnit, gv_pLAYER_01_USER, UnitFilter((1 << c_targetFilterGround), 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterWorker) | (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterInvulnerable - 32)) | (1 << (c_targetFilterSummoned - 32)))) == true) && (UnitHasBehavior(lp_enteredUnit, "AP_HallucinationTimedLife") == false) && (UnitHasBehavior(lp_enteredUnit, "AP_HighTemplarSCBWHallucination@TimedLife") == false) && (gv_currentStage == 1)) {
         autoA03C75C1_ae = gv_s1_GarrisonSpotsCount;
         lv_iter = 1;
         for ( ; ( (autoA03C75C1_ai >= 0 && lv_iter <= autoA03C75C1_ae) || (autoA03C75C1_ai < 0 && lv_iter >= autoA03C75C1_ae) ) ; lv_iter += autoA03C75C1_ai ) {
@@ -1612,10 +1612,11 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
-        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 0;
+        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 2;
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
         libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 2);
+        libABFE498B_gf_AP_Triggers_Zerg_SwarmQueenDeepTunnel(1);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
     }
 
@@ -4496,6 +4497,10 @@ void gt_S1GarrisonFilledQ_Init () {
 //--------------------------------------------------------------------------------------------------
 bool gt_S1GarrisonsAllFilledUp_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
+    unitgroup auto6232D8B6_g;
+    int auto6232D8B6_u;
+    unit auto6232D8B6_var;
+
     // Conditions
     if (testConds) {
         if (!((libNCMI_gf_GameIsOver() == false))) {
@@ -4519,7 +4524,15 @@ bool gt_S1GarrisonsAllFilledUp_Func (bool testConds, bool runActions) {
     TriggerEnable(TriggerGetCurrent(), false);
     TriggerExecute(gt_ObjectiveRecoverDownedForcesCreate, true, false);
     TriggerExecute(gt_ObjectiveFillGarrisonsComplete, true, true);
-    libNtve_gf_ChangeUnitDamage(gv_nova, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_No);
+    libABFE498B_gf_AP_Triggers_Debug_reviveKerrigan(gv_pLAYER_01_USER);
+    auto6232D8B6_g = libABFE498B_gv_aP_Triggers_HeroUnits;
+    auto6232D8B6_u = UnitGroupCount(auto6232D8B6_g, c_unitCountAll);
+    for (;; auto6232D8B6_u -= 1) {
+        auto6232D8B6_var = UnitGroupUnitFromEnd(auto6232D8B6_g, auto6232D8B6_u);
+        if (auto6232D8B6_var == null) { break; }
+        libABFE498B_gf_AP_Triggers_Debug_reviveHero(auto6232D8B6_var);
+        libNtve_gf_ChangeUnitDamage(auto6232D8B6_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_No);
+    }
     if ((gv_achievement_PlayerSupplyExceeded35 == false) && (libLotv_gf_DifficultyValueInt2(0, 0, 1, 1) == 1)) {
     }
 
@@ -11762,6 +11775,9 @@ bool gt_MidCleanup_Func (bool testConds, bool runActions) {
     unitgroup auto48A69EC5_g;
     int auto48A69EC5_u;
     unit auto48A69EC5_var;
+    unitgroup autoF23E3B77_g;
+    int autoF23E3B77_u;
+    unit autoF23E3B77_var;
     playergroup auto4544C4E9_g;
     unitgroup autoA3F09016_g;
     int autoA3F09016_u;
@@ -11807,8 +11823,14 @@ bool gt_MidCleanup_Func (bool testConds, bool runActions) {
     VisExploreArea(gv_pLAYER_01_USER, RegionEntireMap(), false, false);
     RegionPlayableMapSet(RegionFromId(8));
     TriggerEnable(gt_VictoryStatDOMKills, true);
-    UnitIssueOrder(gv_nova, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
-    libNtve_gf_ChangeUnitDamage(gv_nova, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Full);
+    autoF23E3B77_g = libABFE498B_gv_aP_Triggers_HeroUnits;
+    autoF23E3B77_u = UnitGroupCount(autoF23E3B77_g, c_unitCountAll);
+    for (;; autoF23E3B77_u -= 1) {
+        autoF23E3B77_var = UnitGroupUnitFromEnd(autoF23E3B77_g, autoF23E3B77_u);
+        if (autoF23E3B77_var == null) { break; }
+        UnitIssueOrder(autoF23E3B77_var, Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+        libNtve_gf_ChangeUnitDamage(autoF23E3B77_var, libNtve_ge_UnitDamageTakenDealt_Damage_Take, libNtve_ge_UnitDamageChangeOption_Full);
+    }
     if ((gv_cinematicCompleted == false)) {
         UnitSetPosition(gv_nova, PointFromId(163), false);
         UnitIssueOrder(gv_nova, OrderTargetingPoint(AbilityCommand("move", 4), PointWithOffsetPolar(PointFromId(163), 1.0, PointGetFacing(PointFromId(163)))), c_orderQueueAddToEnd);
