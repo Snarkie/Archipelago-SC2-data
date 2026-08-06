@@ -2502,14 +2502,15 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
 
     if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
+        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Terr";
         libABFE498B_gv_aP_Triggers_DebugMode = true;
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
-        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 0;
+        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 2;
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         TriggerExecute(gt_onDifficultyBrutal, true, false);
         GameSetSpeedValue(c_gameSpeedFaster);
         libABFE498B_gf_AP_Triggers_Debug_Tech(gv_pLAYER_01_USER, 5);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaGadgetHoloDecoy(1);
     }
 
     autoF291B6F2_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
@@ -12919,8 +12920,13 @@ bool gt_MidSetup_Func (bool testConds, bool runActions) {
         autoA98116E9_var = UnitGroupUnitFromEnd(autoA98116E9_g, autoA98116E9_u);
         if (autoA98116E9_var == null) { break; }
         if ((libNtve_gf_UnitIsPaused(autoA98116E9_var) == false) && (UnitGroupHasUnit(gv_s1_PlayerForces, autoA98116E9_var) == false)) {
-            UnitGroupAdd(gv_cinematicPausedUnits, autoA98116E9_var);
-            libNtve_gf_PauseUnit(autoA98116E9_var, true);
+            if ((UnitGetOwner(autoA98116E9_var) == gv_pLAYER_01_USER)) {
+                UnitRemove(autoA98116E9_var);
+            }
+            else {
+                UnitGroupAdd(gv_cinematicPausedUnits, autoA98116E9_var);
+                libNtve_gf_PauseUnit(autoA98116E9_var, true);
+            }
         }
 
     }
