@@ -880,6 +880,9 @@ void gf_ReplaceWithWarpIn (unitgroup lp_newUnits, region lp_region, int lp_owner
         else if (autoB76ABA75_val == "Oracle") {
             lv_warpInType = AbilityCommand("SuperWarpGateTrainVoid", 1);
         }
+        else if (autoB76ABA75_val == "Archon") {
+            lv_warpInType = AbilityCommand("SuperWarpGateTrain", 9);
+        }
         else {
         }
         UnitRemove(autoF7666C8C_var);
@@ -888,6 +891,9 @@ void gf_ReplaceWithWarpIn (unitgroup lp_newUnits, region lp_region, int lp_owner
         }
         else {
             libNtve_gf_CreateUnitsWithDefaultFacing(1, lv_pickedUnitType, 0, lp_owner, RegionRandomPoint(lp_region));
+            UnitGroupAdd(gv_lastReplacedWithWarpInGroup, UnitLastCreated());
+            gf_CreateWarpInEffect(UnitLastCreated());
+            libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit(UnitLastCreated());
             UnitGroupAdd(gv_lastReplacedWithWarpInGroup, UnitLastCreated());
             gf_CreateWarpInEffect(UnitLastCreated());
         }
@@ -1077,6 +1083,7 @@ bool gt_ArchInit_Func (bool testConds, bool runActions) {
         return true;
     }
 
+    libABFE498B_gv_aP_Triggers_VoidDuplicate_TargetOverride = true;
     TriggerExecute(lib30B9E51A_gt_ArchipelagoPlayerLotvHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
     TriggerExecute(gt_Init03Units, true, false);
@@ -1117,13 +1124,13 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
 
     if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Terr";
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
-        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 2;
+        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 0;
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
-        libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 2);
+        libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 4);
+        libABFE498B_gf_AP_Triggers_unlockVoidDuplicate(1, 5);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
     }
 
@@ -3391,7 +3398,9 @@ bool gt_AIReplaceWithWarpIn_Func (bool testConds, bool runActions) {
     if ((gv_waveGroupIndex < gv_waveGroupUBound)) {
         gv_waveGroupIndex += 1;
     }
-
+    else {
+        gv_waveGroupIndex -= 5;
+    }
     lv_waveGroup = cai_wave_createdUnits(gv_waveData[gv_waveGroupIndex], gv_pLAYER_02_TALDARIM);
     lv_warpInRegion = gf_GetWarpInRegion();
     if ((lv_warpInRegion == RegionFromId(30))) {
@@ -3530,7 +3539,9 @@ bool gt_AIReplaceWithWarpInSpecial_Func (bool testConds, bool runActions) {
     if ((gv_specialWaveGroupIndex < gv_specialWaveGroupUBound)) {
         gv_specialWaveGroupIndex += 1;
     }
-
+    else {
+        gv_specialWaveGroupIndex -= 1;
+    }
     lv_waveGroup = cai_wave_createdUnits(gv_specialWaveData[gv_specialWaveGroupIndex], gv_pLAYER_05_TALDARIM);
     gf_ReplaceWithWarpIn(lv_waveGroup, gf_GetWarpInRegion(), gv_pLAYER_05_TALDARIM);
     return true;
@@ -3575,6 +3586,8 @@ bool gt_SpecialEscortWave01Q_Func (bool testConds, bool runActions) {
     PingSetScale(PingLastCreated(), 0.75);
     PingSetTooltip(PingLastCreated(), StringExternal("Param/Value/7B663D79"));
     gf_UpdateWaveGroupPing(gv_lastReplacedWithWarpInGroup, PingLastCreated());
+    AIAttackWaveUseGroup(gv_pLAYER_05_TALDARIM, gv_lastReplacedWithWarpInGroup);
+    AIAttackWaveSend(gv_pLAYER_05_TALDARIM, 0, false);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Ping", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
     Wait(2.0, c_timeGame);
@@ -3639,6 +3652,8 @@ bool gt_SpecialEscortWave02Q_Func (bool testConds, bool runActions) {
     Wait(2.0, c_timeGame);
     libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingAlert", RegionGetCenter(RegionFromId(23)), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 0.0, 270.0);
     gf_UpdateWaveGroupPing(gv_lastReplacedWithWarpInGroup, PingLastCreated());
+    AIAttackWaveUseGroup(gv_pLAYER_05_TALDARIM, gv_lastReplacedWithWarpInGroup);
+    AIAttackWaveSend(gv_pLAYER_05_TALDARIM, 0, false);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Ping", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
     Wait(2.0, c_timeGame);
@@ -3697,6 +3712,8 @@ bool gt_SpecialEscortWave03Q_Func (bool testConds, bool runActions) {
     Wait(2.0, c_timeGame);
     libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingAlert", RegionGetCenter(RegionFromId(23)), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 0.0, 270.0);
     gf_UpdateWaveGroupPing(gv_lastReplacedWithWarpInGroup, PingLastCreated());
+    AIAttackWaveUseGroup(gv_pLAYER_05_TALDARIM, gv_lastReplacedWithWarpInGroup);
+    AIAttackWaveSend(gv_pLAYER_05_TALDARIM, 0, false);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Ping", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
     Wait(2.0, c_timeGame);
@@ -3755,6 +3772,8 @@ bool gt_SpecialEscortWave04Q_Func (bool testConds, bool runActions) {
     Wait(2.0, c_timeGame);
     libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingAlert", RegionGetCenter(RegionFromId(23)), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 0.0, 270.0);
     gf_UpdateWaveGroupPing(gv_lastReplacedWithWarpInGroup, PingLastCreated());
+    AIAttackWaveUseGroup(gv_pLAYER_05_TALDARIM, gv_lastReplacedWithWarpInGroup);
+    AIAttackWaveSend(gv_pLAYER_05_TALDARIM, 0, false);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Ping", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
     Wait(2.0, c_timeGame);
@@ -3815,6 +3834,8 @@ bool gt_SpecialEscortWave05RepeatableQ_Func (bool testConds, bool runActions) {
     Wait(2.0, c_timeGame);
     libNtve_gf_CreatePingFacingAngle(PlayerGroupAll(), "PingBoss", RegionGetCenter(RegionFromId(23)), ColorWithAlpha(100.00, 0.00, 0.00, 0.00), 0.0, 270.0);
     gf_UpdateWaveGroupPing(gv_lastReplacedWithWarpInGroup, PingLastCreated());
+    AIAttackWaveUseGroup(gv_pLAYER_05_TALDARIM, gv_lastReplacedWithWarpInGroup);
+    AIAttackWaveSend(gv_pLAYER_05_TALDARIM, 0, false);
     TriggerQueueEnter();
     SoundPlayForPlayer(SoundLink("Ping", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
     Wait(2.0, c_timeGame);
