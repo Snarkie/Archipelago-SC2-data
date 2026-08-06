@@ -3228,6 +3228,7 @@ Button/Tooltip/AP_FluxVanes=Increases movement speed.
 Button/Tooltip/AP_ForceField=Barrier that lasts <d time="15"/> and impedes movement of ground units. Massive units will shatter Force Fields on contact.
 Button/Tooltip/AP_Forge=Contains weapon and armor upgrades for Protoss ground units and shield upgrades for all Protoss units and structures.
 Button/Tooltip/AP_FortifiedBunker=Bunkers are fortified and have more life.
+Button/Tooltip/AP_FourBanelingsCocoon=This cocoon contains a Morphling that is morphing into 4 Banelings.
 Button/Tooltip/AP_FungalGrowth=Immobilizes target units and deals 60 damage over <d time="4"/>. Reveals cloaked and burrowed units.
 Button/Tooltip/AP_FusionCore=Contains Battlecruiser upgrades. <n/><n/><c val="ffff8a">Enables:</c><n/>- Battlecruisers at the Starport<n/>- Hercules at the Starport
 Button/Tooltip/AP_FusionCoreFusionReactor=Regenerates energy of nearby friendly units and buildings at a rate of <d ref="Behavior,AP_FusionCoreFusionReactorBuff,Modification.VitalRegenArray[Energy]"/> per second.
@@ -6650,6 +6651,7 @@ Unit/Name/AP_Firebat=Firebat
 Unit/Name/AP_FleetBeacon=Fleet Beacon
 Unit/Name/AP_ForceField=Force Field
 Unit/Name/AP_Forge=Forge
+Unit/Name/AP_FourBanelingsCocoon=Baneling Cocoon
 Unit/Name/AP_FungalGrowthMissile=Fungal Growth
 Unit/Name/AP_FusionCore=Fusion Core
 Unit/Name/AP_G4ChargeWeapon=G-4 Charge

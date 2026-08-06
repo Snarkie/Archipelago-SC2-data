@@ -1715,6 +1715,8 @@
         <EffectArray Reference="Unit,AP_InfestorTerranBurrowed,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AP_BanelingCocoon,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AP_BanelingCocoon,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,AP_FourBanelingsCocoon,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,AP_FourBanelingsCocoon,LifeArmor" Value="1"/>
         <!--        <EffectArray Reference="Unit,LocustMP,LifeArmorLevel" Value="1"/>-->
         <!--        <EffectArray Reference="Unit,LocustMP,LifeArmor" Value="1"/>-->
         <!--        <EffectArray Reference="Unit,SwarmHostMP,LifeArmorLevel" Value="1"/>-->
@@ -10538,6 +10540,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_KerriganInfestBroodling,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_InfestorTerran,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_BanelingCocoon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_FourBanelingsCocoon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,LocustMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,SwarmHostMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,Dehaka,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
@@ -10609,6 +10612,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_KerriganInfestBroodling,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_InfestorTerran,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_BanelingCocoon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_FourBanelingsCocoon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,LocustMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,SwarmHostMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,Dehaka,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
@@ -10680,6 +10684,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_KerriganInfestBroodling,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_InfestorTerran,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_BanelingCocoon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_FourBanelingsCocoon,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,LocustMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,SwarmHostMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,Dehaka,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
@@ -10751,6 +10756,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_KerriganInfestBroodling,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_InfestorTerran,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level4.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_BanelingCocoon,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level4.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_FourBanelingsCocoon,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level4.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,LocustMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,SwarmHostMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,Dehaka,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
@@ -10822,6 +10828,7 @@
         <EffectArray Operation="Set" Reference="Actor,AP_KerriganInfestBroodling,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_InfestorTerran,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level5.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AP_BanelingCocoon,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level5.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AP_FourBanelingsCocoon,LifeArmorIcon" Value="AP\Assets\Custom\Textures\btn-upgrade-zerg-groundcarapace-level5.dds"/>
         <!--        <EffectArray Operation="Set" Reference="Actor,LocustMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,SwarmHostMP,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->
         <!--        <EffectArray Operation="Set" Reference="Actor,Dehaka,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>-->

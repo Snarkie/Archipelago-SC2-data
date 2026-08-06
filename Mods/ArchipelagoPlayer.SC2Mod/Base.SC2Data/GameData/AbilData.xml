@@ -7457,7 +7457,7 @@
         <ActorKey value="BanelingAspect"/>
         <Flags index="KillOnFinish" value="1"/>
         <Flags index="Select" value="1"/>
-        <MorphUnit value="AP_BanelingCocoon"/>
+        <MorphUnit value="AP_FourBanelingsCocoon"/>
         <InfoArray index="Train1" Time="29" Alert="MorphComplete_Zerg">
             <Button DefaultButtonFace="Baneling" Requirements="AP_HotSHaveBaneling">
                 <Flags index="ShowInGlossary" value="1"/>

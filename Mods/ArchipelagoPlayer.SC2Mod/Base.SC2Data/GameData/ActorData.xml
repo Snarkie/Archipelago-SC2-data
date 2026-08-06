@@ -8888,6 +8888,8 @@
     <CActorSound id="AP_BanelingCocoonBirth" parent="SoundOneShot">
         <On Terms="AbilMorph.*.Finish; MorphTo AP_BanelingCocoon; MorphFrom AP_Zergling" Send="Create"/>
         <On Terms="AbilMorph.*.Cancel; MorphTo AP_BanelingCocoon; MorphFrom AP_Zergling" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_FourBanelingsCocoon; MorphFrom AP_Morphling" Send="Create"/>
+        <On Terms="AbilMorph.*.Cancel; MorphTo AP_FourBanelingsCocoon; MorphFrom AP_Morphling" Send="Destroy"/>
         <Sound value="BanelingEgg_Creation"/>
     </CActorSound>
     <CActorModel id="AP_BanelingCocoonDeath">
@@ -48915,4 +48917,38 @@
         <EditorCategories value=""/>
         <AutoScaleFactor value="0.300000"/>
     </CActorModel>
+    <CActorUnit id="AP_FourBanelingsCocoon" parent="GenericUnitMorph" unitName="AP_FourBanelingsCocoon">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_FourBanelingsCocoon; MorphFrom AP_Morphling" Send="AnimBaselineStop"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo AP_FourBanelingsCocoon; MorphFrom AP_Morphling" Send="$Birth 0 0.000000 -1.000000 0.000000"/>
+        <On Terms="AnimDone; AnimName Birth" Send="AnimBaselineStart"/>
+        <HostSiteOps Ops="SOpRotVariancerForward30"/>
+        <Model value="BanelingCocoon"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="BanelingCocoon"/>
+        <DeathArray index="Normal" ModelLink="BanelingCocoonDeath" SoundLink="BanelingEgg_Explode"/>
+        <PlacementModel value="BanelingCocoon"/>
+        <PortraitModel value="BanelingCocoonPortrait"/>
+        <BarOffset value="40"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Zerg-BanelingEgg.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\Wireframe-Zerg-BanelingEgg.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-upgrade-zerg-swarmfrenzy.dds"/>
+        <SoundArray index="What" value="Egg_What"/>
+        <StatusColors index="Shields">
+            <ColorArray index="0" value="255,0,128,0"/>
+        </StatusColors>
+        <UnitIcon value="Assets\Textures\Wireframe-Zerg-BanelingEgg.dds"/>
+        <VitalColors index="Shields">
+            <ColorArray value="255,0,128,0"/>
+        </VitalColors>
+        <VitalNames index="Shields" value="Vital/ZergShields"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Zerg-BanelingEgg.dds"/>
+        </Wireframe>
+        <WireframeShieldColor value="255,0,128,0"/>
+    </CActorUnit>
 </Catalog>

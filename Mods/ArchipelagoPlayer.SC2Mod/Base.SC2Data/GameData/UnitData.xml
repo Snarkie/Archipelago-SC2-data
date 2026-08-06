@@ -32922,4 +32922,46 @@
         <Mover value="IonCannonsWeapon"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
+    <CUnit id="AP_FourBanelingsCocoon">
+        <DeathRevealRadius value="3"/>
+        <Race value="Zerg"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="50"/>
+        <LifeMax value="50"/>
+        <LifeArmor value="2"/>
+        <LifeRegenRate value="0.2734"/>
+        <LifeArmorName value="Unit/LifeArmorName/ZergGroundArmor"/>
+        <Speed value="2.5"/>
+        <StationaryTurningRate value="719.4726"/>
+        <TurningRate value="719.4726"/>
+        <Sight value="5"/>
+        <Food value="-2"/>
+        <CostResource index="Minerals" value="200"/>
+        <CostResource index="Vespene" value="60"/>
+        <RepairTime value="15"/>
+        <AttackTargetPriority value="10"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="25"/>
+        <AbilArray Link="que1"/>
+        <AbilArray Link="Rally"/>
+        <CardLayouts>
+            <LayoutButtons Face="CancelCocoonMorph" Type="AbilCmd" AbilCmd="que1,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="2" Column="4"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <ScoreKill value="75"/>
+        <SubgroupPriority value="1"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+    </CUnit>
 </Catalog>
