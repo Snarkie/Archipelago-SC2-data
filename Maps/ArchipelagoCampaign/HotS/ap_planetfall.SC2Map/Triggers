@@ -203,7 +203,10 @@
     <Element Type="Trigger" Id="3DE1D766">
         <Variable Type="Variable" Id="1EAFFC94"/>
         <Variable Type="Variable" Id="CB57F799"/>
+        <Variable Type="Variable" Id="36129A95"/>
+        <Variable Type="Variable" Id="546B1B21"/>
         <Event Type="FunctionCall" Id="185C6AB4"/>
+        <Action Type="FunctionCall" Id="87FEDF07"/>
         <Action Type="FunctionCall" Id="48EC5911"/>
         <Action Type="FunctionCall" Id="0A3126FF"/>
         <Action Type="FunctionCall" Id="C2FAA593"/>
@@ -239,8 +242,34 @@
         <Value>0</Value>
         <ValueType Type="int"/>
     </Element>
+    <Element Type="Variable" Id="36129A95">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="3339D446"/>
+    </Element>
+    <Element Type="Param" Id="3339D446">
+        <Variable Type="Variable" Id="6D3B7274"/>
+    </Element>
+    <Element Type="Variable" Id="546B1B21">
+        <VariableType>
+            <Type Value="region"/>
+        </VariableType>
+        <Value Type="Param" Id="91B953FE"/>
+    </Element>
+    <Element Type="Param" Id="91B953FE">
+        <ValueType Type="region"/>
+        <ValueId Id="51"/>
+    </Element>
     <Element Type="FunctionCall" Id="185C6AB4">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+    </Element>
+    <Element Type="FunctionCall" Id="87FEDF07">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <ScriptCode>
+            AP_GhostSpawn_playerOverride = lv_spawnTrapPlayer;
+            AP_GhostSpawn_regionOverride = lv_spawnTrapRegion;
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="48EC5911">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
@@ -450,10 +479,12 @@
         <FunctionCall Type="FunctionCall" Id="146A885E"/>
         <FunctionCall Type="FunctionCall" Id="69F6C20E"/>
         <FunctionCall Type="FunctionCall" Id="D72FF9F8"/>
+        <FunctionCall Type="FunctionCall" Id="BA7C4A5C"/>
         <FunctionCall Type="FunctionCall" Id="D6A83E2A"/>
         <FunctionCall Type="FunctionCall" Id="9B1F239E"/>
     </Element>
     <Element Type="FunctionCall" Id="4D198B16">
+        <Disabled/>
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
         <Parameter Type="Param" Id="59F56646"/>
@@ -511,7 +542,7 @@
     </Element>
     <Element Type="Param" Id="9E8051BD">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-        <Value>7</Value>
+        <Value>0</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="146A885E">
@@ -550,6 +581,22 @@
     <Element Type="Param" Id="75B46177">
         <ParameterDef Type="ParamDef" Library="ABFE498B" Id="1CD057A3"/>
         <Value>2</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="FunctionCall" Id="BA7C4A5C">
+        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="9B77391C"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="9E2854EE"/>
+        <Parameter Type="Param" Id="02082931"/>
+    </Element>
+    <Element Type="Param" Id="9E2854EE">
+        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="A58C0756"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="02082931">
+        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="160C5666"/>
+        <Value>4</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="D6A83E2A">

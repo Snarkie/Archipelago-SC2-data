@@ -726,4 +726,31 @@
             <radius value="2.3725"/>
         </shape>
     </region>
+    <region id="51">
+        <name value="Spawn Trap"/>
+        <invisible/>
+        <shape type="diamond">
+            <center value="127.75,130"/>
+            <width value="10.959"/>
+            <height value="13.08"/>
+        </shape>
+        <shape type="diamond">
+            <center value="147,135.5"/>
+            <width value="11.3125"/>
+            <height value="22.625"/>
+        </shape>
+        <shape type="diamond">
+            <center value="148.75,30.75"/>
+            <width value="13.4335"/>
+            <height value="14.1406"/>
+        </shape>
+        <shape type="diamond">
+            <center value="103.75,120"/>
+            <width value="15.9082"/>
+            <height value="16.6152"/>
+        </shape>
+        <shape type="rect">
+            <quad value="49,137,71,145.5"/>
+        </shape>
+    </region>
 </Regions>
