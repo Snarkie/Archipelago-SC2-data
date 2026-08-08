@@ -1177,6 +1177,7 @@ bool gt_Init02Players_Func (bool testConds, bool runActions) {
         auto47DFF85C_var = UnitGroupUnitFromEnd(auto47DFF85C_g, auto47DFF85C_u);
         if (auto47DFF85C_var == null) { break; }
         AISetUnitScriptControlled(auto47DFF85C_var, true);
+        libNtve_gf_ShowHideUnit(auto47DFF85C_var, false);
         libNtve_gf_PauseUnit(auto47DFF85C_var, true);
     }
     return true;
@@ -1193,6 +1194,7 @@ void gt_Init02Players_Init () {
 bool gt_Init03Units_Func (bool testConds, bool runActions) {
     // Variable Declarations
     fixed lv_i;
+    unitgroup lv_g;
 
     // Automatic Variable Declarations
     unitgroup auto272E9EB2_g;
@@ -1227,6 +1229,7 @@ bool gt_Init03Units_Func (bool testConds, bool runActions) {
     unit auto8D4DC1FD_var;
 
     // Variable Initialization
+    lv_g = UnitGroupEmpty();
 
     // Actions
     if (!runActions) {
@@ -1235,7 +1238,9 @@ bool gt_Init03Units_Func (bool testConds, bool runActions) {
 
     UnitIssueOrder(UnitFromId(528), Order(AbilityCommand("move", 2)), c_orderQueueReplace);
     UnitIssueOrder(UnitFromId(583), Order(AbilityCommand("move", 2)), c_orderQueueReplace);
-    auto272E9EB2_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterCanHaveEnergy), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    lv_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterCanHaveEnergy), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    UnitGroupRemove(lv_g, lib15EF4C78_gv_pM_SoAAutonomousCaster[gv_p1_USER]);
+    auto272E9EB2_g = lv_g;
     auto272E9EB2_u = UnitGroupCount(auto272E9EB2_g, c_unitCountAll);
     for (;; auto272E9EB2_u -= 1) {
         auto272E9EB2_var = UnitGroupUnitFromEnd(auto272E9EB2_g, auto272E9EB2_u);
@@ -1243,7 +1248,6 @@ bool gt_Init03Units_Func (bool testConds, bool runActions) {
         UnitSetPropertyFixed(auto272E9EB2_var, c_unitPropEnergyPercent, 100.0);
     }
     UnitSetPropertyFixed(gv_tosh, c_unitPropEnergyPercent, 100.0);
-    lib15EF4C78_gf_AP_Player_ResetSoA(gv_p1_USER);
     TriggerExecute(gt_InitWaypoints, true, false);
     libNtve_gf_ShowHideUnit(UnitFromId(485), false);
     libNtve_gf_MakeUnitInvulnerable(UnitFromId(922), true);

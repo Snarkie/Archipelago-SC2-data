@@ -366,6 +366,7 @@ Variable/Name/C316CDB5=RandomPoint
 Variable/Name/C4BB7745=vehicle
 Variable/Name/C4CC1694=PatrolGroup
 Variable/Name/C6F2D136=IndicatorTimeout
+Variable/Name/C6FB08B9=g
 Variable/Name/C94A4865=vehicleGroup
 Variable/Name/C9AF399B=i
 Variable/Name/CA66476B=SnipeFilter
