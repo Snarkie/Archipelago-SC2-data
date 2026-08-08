@@ -1053,13 +1053,23 @@ bool auto_gf_IntroVoidRiftEventSpawning_TriggerFunc (bool testConds, bool runAct
 // Trigger: Arch Init
 //--------------------------------------------------------------------------------------------------
 bool gt_ArchInit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_spawnTrapPlayer;
+    region lv_spawnTrapRegion;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_spawnTrapPlayer = gv_pLAYER_06_VOIDFORCES;
+    lv_spawnTrapRegion = RegionFromId(2);
+
     // Actions
     if (!runActions) {
         return true;
     }
 
     AP_GhostSpawn_waveTargetOverride = true;
+    AP_GhostSpawn_playerOverride = lv_spawnTrapPlayer;
+    AP_GhostSpawn_regionOverride = lv_spawnTrapRegion;
     libABFE498B_gv_aP_Triggers_VoidDuplicate_TargetOverride = true;
     TriggerExecute(lib30B9E51A_gt_ArchipelagoPlayerLotvHandlersConstructor, true, false);
     TriggerExecute(gt_Init02Players, true, false);
@@ -1104,6 +1114,7 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
         libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 5);
         libABFE498B_gf_AP_Triggers_unlockVoidDuplicate(1, 5);
+        libABFE498B_gf_AP_Triggers_unlockGhostSpawn(1, 4);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
     }
 

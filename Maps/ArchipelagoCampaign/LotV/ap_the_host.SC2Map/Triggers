@@ -128,6 +128,8 @@
         <Item Type="Trigger" Id="2FF2FA21"/>
     </Element>
     <Element Type="Trigger" Id="13F04451">
+        <Variable Type="Variable" Id="FC5D6772"/>
+        <Variable Type="Variable" Id="2D62C8A0"/>
         <Event Type="FunctionCall" Id="01AF8409"/>
         <Action Type="FunctionCall" Id="8E7151D0"/>
         <Action Type="FunctionCall" Id="91A8CFCC"/>
@@ -140,6 +142,25 @@
         <Action Type="FunctionCall" Id="463A2EAA"/>
         <Action Type="FunctionCall" Id="AC101D46"/>
     </Element>
+    <Element Type="Variable" Id="FC5D6772">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="12D4EE36"/>
+    </Element>
+    <Element Type="Param" Id="12D4EE36">
+        <Variable Type="Variable" Id="7937C09A"/>
+    </Element>
+    <Element Type="Variable" Id="2D62C8A0">
+        <VariableType>
+            <Type Value="region"/>
+        </VariableType>
+        <Value Type="Param" Id="0CB34E1F"/>
+    </Element>
+    <Element Type="Param" Id="0CB34E1F">
+        <ValueType Type="region"/>
+        <ValueId Id="2"/>
+    </Element>
     <Element Type="FunctionCall" Id="01AF8409">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
     </Element>
@@ -147,6 +168,8 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <ScriptCode>
             AP_GhostSpawn_waveTargetOverride = true;
+            AP_GhostSpawn_playerOverride = lv_spawnTrapPlayer;
+            AP_GhostSpawn_regionOverride = lv_spawnTrapRegion;
         </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="91A8CFCC">
@@ -296,6 +319,7 @@
         <FunctionCall Type="FunctionCall" Id="37B5D6ED"/>
         <FunctionCall Type="FunctionCall" Id="4791B228"/>
         <FunctionCall Type="FunctionCall" Id="A292AC2E"/>
+        <FunctionCall Type="FunctionCall" Id="F99B9BB4"/>
         <FunctionCall Type="FunctionCall" Id="B8856AFD"/>
         <FunctionCall Type="FunctionCall" Id="8C94F829"/>
     </Element>
@@ -412,6 +436,22 @@
     <Element Type="Param" Id="A22EB4A3">
         <ParameterDef Type="ParamDef" Library="ABFE498B" Id="810973FE"/>
         <Value>5</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="FunctionCall" Id="F99B9BB4">
+        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="9B77391C"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+        <Parameter Type="Param" Id="F16C9022"/>
+        <Parameter Type="Param" Id="5903DFB0"/>
+    </Element>
+    <Element Type="Param" Id="F16C9022">
+        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="A58C0756"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="5903DFB0">
+        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="160C5666"/>
+        <Value>4</Value>
         <ValueType Type="int"/>
     </Element>
     <Element Type="FunctionCall" Id="B8856AFD">

@@ -433,15 +433,15 @@
         <name value="BO Region 03"/>
         <color value="255,255,255,0"/>
         <shape type="circle">
-            <center value="160.8298,148.6586"/>
+            <center value="160.6318,148.3757"/>
             <radius value="8.4016"/>
         </shape>
         <shape type="circle">
-            <center value="165.5368,145.3935"/>
+            <center value="165.3388,145.1105"/>
             <radius value="8.4016"/>
         </shape>
         <shape type="circle">
-            <center value="167.7275,147.7973"/>
+            <center value="167.5295,147.5144"/>
             <radius value="8.4016"/>
         </shape>
     </region>
@@ -492,6 +492,26 @@
         <shape type="circle">
             <center value="159.0437,70.1018"/>
             <radius value="20"/>
+        </shape>
+    </region>
+    <region id="2">
+        <name value="Spawn Trap"/>
+        <invisible/>
+        <shape type="diamond">
+            <center value="55.5,28"/>
+            <width value="20.504"/>
+            <height value="20.504"/>
+        </shape>
+        <shape type="rect">
+            <quad value="74,129.5,88,147"/>
+        </shape>
+        <shape type="rect">
+            <quad value="43,95,63.5,106.5"/>
+        </shape>
+        <shape type="diamond">
+            <center value="157.5002,143.0002"/>
+            <width value="20.5053"/>
+            <height value="17.6757"/>
         </shape>
     </region>
 </Regions>
