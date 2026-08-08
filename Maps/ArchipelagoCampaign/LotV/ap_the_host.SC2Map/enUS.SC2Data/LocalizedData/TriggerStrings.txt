@@ -252,6 +252,7 @@ Variable/Name/AB76E62A=TimerShockwave
 Variable/Name/AFABC06D=UnitsOfWave
 Variable/Name/B1A00750=TargetPoint
 Variable/Name/B3633E3A=TargetPointTargetCount
+Variable/Name/B5E81E8D=BigWavesTime
 Variable/Name/B85EEA21=WavePing
 Variable/Name/B9074EBA=WarpInZoneCleared01
 Variable/Name/BB7A6C29=VoidShardGenericCooldown
