@@ -168,7 +168,7 @@ static bool SpawnLoop(unit spawnBuilding) {
     if (AP_GhostSpawn_gatherPointOverride != null) {
         gatherPoint = AP_GhostSpawn_gatherPointOverride;
     }
-    else if (gatherPoint == null || PointPathingCost(spawnLocation, gatherPoint) > 225) {
+    else if (gatherPoint == null || PointPathingCost(spawnLocation, gatherPoint) > 12) {
         // log("Failed to get valid gather point, using fallback");
         gatherPoint = PointWithOffset(location, 0, -3);
     }
