@@ -1544,6 +1544,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_RavagerSpawnRoachlingsOnDeath">
         <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-unit-zerg-roachlings.dds"/>
         <Requirements value="AP_HotSHaveRavagerRoachlingBile"/>
