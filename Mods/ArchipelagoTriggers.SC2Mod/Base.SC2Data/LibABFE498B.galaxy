@@ -46,6 +46,7 @@ void libABFE498B_InitVariables () {
     libABFE498B_gv_aP_Triggers_VoidDuplicate_WaveIndex = 45;
     libABFE498B_gv_aP_Triggers_warpInSuperWarpGates = UnitGroupEmpty();
     libABFE498B_gv_aP_Triggers_lastWarpedUnits = UnitGroupEmpty();
+    libABFE498B_gv_aP_Triggers_MapPath = "";
 }
 
 // Custom Script
@@ -13153,7 +13154,6 @@ bool libABFE498B_gt_AP_HeroChoiceClicked_Func (bool testConds, bool runActions) 
         }
     }
     return true;
-    return true;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14258,6 +14258,34 @@ void libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_Debug_reload
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libABFE498B_gv_aP_Triggers_DebugMode == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TriggerDebugOutput(1, (StringExternal("Param/Value/lib_ABFE498B_ADB18837")), true);
+    lib5BD4895D_gf_AP_Core_bankLoadMission();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2_Init () {
+    libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2 = TriggerCreate("libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2_Func");
+    TriggerAddEventChatMessage(libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2, c_playerAny, "-reload", true);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: AP_Triggers_InitMusic
 //--------------------------------------------------------------------------------------------------
 bool libABFE498B_gt_AP_Triggers_InitMusic_Func (bool testConds, bool runActions) {
@@ -14799,6 +14827,27 @@ void libABFE498B_gt_AP_Triggers_RescueUnitsFix_Init () {
     TriggerAddEventUnitChangeOwner(libABFE498B_gt_AP_Triggers_RescueUnitsFix, null);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Trigger: AP_Triggers_loadGame
+//--------------------------------------------------------------------------------------------------
+bool libABFE498B_gt_AP_Triggers_loadGame_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib5BD4895D_gf_AP_Core_sendChatMessage(0, "Load Save Game detected, attempting to reconnect Archipelago...");
+    lib5BD4895D_gf_AP_Core_bankLoadMission();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libABFE498B_gt_AP_Triggers_loadGame_Init () {
+    libABFE498B_gt_AP_Triggers_loadGame = TriggerCreate("libABFE498B_gt_AP_Triggers_loadGame_Func");
+    TriggerAddEventLoadGameDone(libABFE498B_gt_AP_Triggers_loadGame);
+}
+
 void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_PatchesInit_Init();
     libABFE498B_gt_AP_Triggers_bankInit_Init();
@@ -14833,6 +14882,7 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsBoth_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsPassive_Init();
     libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive_Init();
+    libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2_Init();
     libABFE498B_gt_AP_Triggers_InitMusic_Init();
     libABFE498B_gt_AP_Triggers_ChangeMusic_Init();
     libABFE498B_gt_AP_Triggers_tradeStructureBuilt_Init();
@@ -14845,6 +14895,7 @@ void libABFE498B_InitTriggers () {
     libABFE498B_gt_AP_Triggers_warpGateSafety_Init();
     libABFE498B_gt_AP_Triggers_ObjectGroupFix_Init();
     libABFE498B_gt_AP_Triggers_RescueUnitsFix_Init();
+    libABFE498B_gt_AP_Triggers_loadGame_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

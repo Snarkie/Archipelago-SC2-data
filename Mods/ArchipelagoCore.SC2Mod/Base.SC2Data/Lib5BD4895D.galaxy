@@ -289,10 +289,15 @@ bool auto_lib5BD4895D_gf_AP_Core_bankCoreOptionsRead_TriggerFunc (bool testConds
         Wait(0.0625, c_timeGame);
     }
     if ((lv_loadFinishReceived == true) && (lib5BD4895D_gv_aP_Core_bankCoreOptionsInitialized == false)) {
-        lib5BD4895D_gv_aP_Core_bankCoreOptionsInitialized = true;
-        TextExpressionSetToken("Param/Expression/lib_5BD4895D_95694AE0", "A", FixedToText(GameGetMissionTime(), 3));
-        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_5BD4895D_95694AE0"), false);
-        lib5BD4895D_gf_AP_Core_onLoadFinished();
+        TextExpressionSetToken("Param/Expression/lib_5BD4895D_33270A5D", "A", FixedToText(GameGetMissionTime(), 3));
+        TriggerDebugOutput(1, TextExpressionAssemble("Param/Expression/lib_5BD4895D_33270A5D"), false);
+    }
+
+    lv_key = lib5BD4895D_gv_aP_Core_BANK_CORE_OPTIONS_KEY_LOAD_SAVE_GAME;
+    if ((BankKeyExists(lib5BD4895D_gv_aP_Core_bankCoreOptions, lv_section, lv_key) == true)) {
+        lv_value = BankValueGetAsString(lib5BD4895D_gv_aP_Core_bankCoreOptions, lv_section, lv_key);
+        BankKeyRemove(lib5BD4895D_gv_aP_Core_bankCoreOptions, lv_section, lv_key);
+        lib5BD4895D_gf_AP_Core_loadSaveGameSuccesful();
     }
 
     return true;
@@ -514,8 +519,44 @@ void lib5BD4895D_gf_AP_Core_bankVoidTradeSendReceiveRequest (unit lp_voidTrainUn
 }
 
 void lib5BD4895D_gf_AP_Core_bankUpdatePrompt () {
+    // Variable Declarations
+    string lv_section;
+    string lv_key;
+    string lv_value;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_section = "";
+    lv_key = "";
+    lv_value = "";
+
     // Implementation
+    lv_section = lib5BD4895D_gv_aP_Core_BANK_UPDATE_SECTION_UPDATE;
+    lv_key = lib5BD4895D_gv_aP_Core_BANK_UPDATE_KEY_ITEMS;
+    lv_value = "1";
+    BankSectionRemove(lib5BD4895D_gv_aP_Core_bankUpdate, lv_section);
+    BankValueSetFromString(lib5BD4895D_gv_aP_Core_bankUpdate, lv_section, lv_key, lv_value);
+    BankSave(lib5BD4895D_gv_aP_Core_bankUpdate);
+}
+
+void lib5BD4895D_gf_AP_Core_bankLoadMission () {
+    // Variable Declarations
+    string lv_section;
+    string lv_key;
+    string lv_value;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_section = "";
+    lv_key = "";
+    lv_value = "";
+
+    // Implementation
+    lv_section = lib5BD4895D_gv_aP_Core_BANK_UPDATE_SECTION_UPDATE;
+    lv_key = lib5BD4895D_gv_aP_Core_BANK_UPDATE_KEY_LOAD;
+    lv_value = GameMapPath();
+    BankSectionRemove(lib5BD4895D_gv_aP_Core_bankUpdate, lv_section);
+    BankValueSetFromString(lib5BD4895D_gv_aP_Core_bankUpdate, lv_section, lv_key, lv_value);
     BankSave(lib5BD4895D_gv_aP_Core_bankUpdate);
 }
 
@@ -979,6 +1020,12 @@ void lib5BD4895D_gf_AP_Core_tradeReceiveUnit (int lp_player, string lp_receivedS
     else {
         lib5BD4895D_gf_AP_Core_sendChatMessage(lp_player, (lib5BD4895D_gv_aP_Core_tradeFlavorName + " successful, but the trading structure couldn't be found. The received units are lost to the void..."));
     }
+}
+
+void lib5BD4895D_gf_AP_Core_loadSaveGameSuccesful () {
+    // Automatic Variable Declarations
+    // Implementation
+    lib5BD4895D_gf_AP_Core_sendChatMessage(0, "Loading saved game successful, reconnected to Archipelago.");
 }
 
 trigger auto_lib5BD4895D_gf_AP_Core_SwitchKerriganSwarmToPrimalZerg_Trigger = null;
@@ -2446,6 +2493,7 @@ bool lib5BD4895D_gt_AP_Core_bankUpdateInit_Func (bool testConds, bool runActions
     lv_user = lib5BD4895D_gf_AP_Core_getUser();
     BankLoad(lib5BD4895D_gv_aP_Core_BANK_UPDATE_FILE_NAME, lv_user);
     lib5BD4895D_gv_aP_Core_bankUpdate = BankLastCreated();
+    BankSave(BankLastCreated());
     return true;
 }
 

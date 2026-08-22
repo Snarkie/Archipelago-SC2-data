@@ -1,7 +1,7 @@
 ﻿DocInfo/DescLong=Completely devoid of any description whatsoever.
 DocInfo/DescShort=Any
 DocInfo/Name=Just Another StarCraft II Mod
-Param/Expression/lib_5BD4895D_95694AE0=Loading all banks finished at: ~A~
+Param/Expression/lib_5BD4895D_33270A5D=Core options loaded at: ~A~
 Param/Expression/lib_5BD4895D_9D1F97B6=~style_start~~text~~style_end~ 
 Param/Expression/lib_5BD4895D_A595B870=~style_start~~counter_val~~counter_max~~counter_suffix~~style_end~ 
 Param/Expression/lib_5BD4895D_AA94B924=~style_start~~checks~~text~~style_end~ 

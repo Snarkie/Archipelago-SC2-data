@@ -163,6 +163,7 @@ unitgroup libABFE498B_gv_aP_Triggers_warpInSuperWarpGates;
 unit libABFE498B_gv_aP_Triggers_lastWarpedUnit;
 unitgroup libABFE498B_gv_aP_Triggers_lastWarpedUnits;
 fixed libABFE498B_gv_aP_Triggers_lastWarpedTime;
+string libABFE498B_gv_aP_Triggers_MapPath;
 
 // Function Declarations
 void libABFE498B_gf_AP_Triggers_MapConfig_setMissionBuild (bool lp_build);
@@ -1306,6 +1307,7 @@ trigger libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsAll;
 trigger libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsBoth;
 trigger libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsPassive;
 trigger libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive;
+trigger libABFE498B_gt_AP_Triggers_Debug_ArtanisAspectsActive2;
 trigger libABFE498B_gt_AP_Triggers_InitMusic;
 trigger libABFE498B_gt_AP_Triggers_ChangeMusic;
 trigger libABFE498B_gt_AP_Triggers_tradeStructureBuilt;
@@ -1318,6 +1320,7 @@ trigger libABFE498B_gt_AP_Triggers_warpInEventHandler;
 trigger libABFE498B_gt_AP_Triggers_warpGateSafety;
 trigger libABFE498B_gt_AP_Triggers_ObjectGroupFix;
 trigger libABFE498B_gt_AP_Triggers_RescueUnitsFix;
+trigger libABFE498B_gt_AP_Triggers_loadGame;
 
 // Library Initialization
 void libABFE498B_InitVariables ();

@@ -12,6 +12,7 @@
             <Item Type="Category" Library="ABFE498B" Id="A51C36C4"/>
             <Item Type="Category" Library="ABFE498B" Id="D8BA770C"/>
             <Item Type="Category" Library="ABFE498B" Id="0B18D5D6"/>
+            <Item Type="Category" Library="ABFE498B" Id="4C6E2CAF"/>
         </Root>
         <Element Type="Category" Id="2ACCBDE6">
             <Item Type="Trigger" Library="ABFE498B" Id="4F60B833"/>
@@ -105427,6 +105428,7 @@
             <Item Type="Trigger" Library="ABFE498B" Id="A242AF99"/>
             <Item Type="Trigger" Library="ABFE498B" Id="E2F01EBF"/>
             <Item Type="Trigger" Library="ABFE498B" Id="79122D3D"/>
+            <Item Type="Trigger" Library="ABFE498B" Id="7845106C"/>
             <Item Type="Trigger" Library="ABFE498B" Id="80476AAA"/>
             <Item Type="Trigger" Library="ABFE498B" Id="EE9956F3"/>
         </Element>
@@ -113087,6 +113089,80 @@
             <ValueType Type="gamelink"/>
             <ValueGameType Type="Upgrade"/>
         </Element>
+        <Element Type="Trigger" Id="7845106C">
+            <Identifier>AP_Triggers_Debug_ArtanisAspectsActive2</Identifier>
+            <Event Type="FunctionCall" Library="ABFE498B" Id="379AFAD2"/>
+            <Condition Type="FunctionCall" Library="ABFE498B" Id="1D002DF9"/>
+            <Action Type="FunctionCall" Library="ABFE498B" Id="37FEEDFE"/>
+            <Action Type="FunctionCall" Library="ABFE498B" Id="2244080E"/>
+        </Element>
+        <Element Type="FunctionCall" Id="379AFAD2">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000121"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="FE89A130"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="A9052E72"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="49320B1F"/>
+        </Element>
+        <Element Type="Param" Id="FE89A130">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000191"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="2999701E"/>
+        </Element>
+        <Element Type="Param" Id="A9052E72">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000193"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000073"/>
+        </Element>
+        <Element Type="Param" Id="49320B1F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000192"/>
+            <Value>-reload</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="FunctionCall" Id="1D002DF9">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="380A6CE6"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="53C335BF"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="78666345"/>
+        </Element>
+        <Element Type="Param" Id="380A6CE6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="ABFE498B" Id="4644CBA9"/>
+        </Element>
+        <Element Type="Param" Id="53C335BF">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="78666345">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>true</Value>
+            <ValueType Type="bool"/>
+        </Element>
+        <Element Type="FunctionCall" Id="37FEEDFE">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000118"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="BAEF2766"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="4784637F"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="48348CF8"/>
+        </Element>
+        <Element Type="Param" Id="BAEF2766">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="C3CF50B0"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="AEB4446D"/>
+        </Element>
+        <Element Type="Param" Id="4784637F">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000187"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="00000071"/>
+        </Element>
+        <Element Type="Param" Id="48348CF8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000186"/>
+            <FunctionCall Type="FunctionCall" Library="ABFE498B" Id="E70FC254"/>
+        </Element>
+        <Element Type="FunctionCall" Id="E70FC254">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="5A89F099"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="ADB18837"/>
+        </Element>
+        <Element Type="Param" Id="ADB18837">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4DF6106C"/>
+            <ValueType Type="text"/>
+        </Element>
+        <Element Type="FunctionCall" Id="2244080E">
+            <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="6641563B"/>
+        </Element>
         <Element Type="Trigger" Id="80476AAA">
             <Template/>
             <Event Type="FunctionCall" Library="ABFE498B" Id="C4773A03"/>
@@ -120623,6 +120699,45 @@
         </Element>
         <Element Type="FunctionCall" Id="3547002F">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000092"/>
+        </Element>
+        <Element Type="Category" Id="4C6E2CAF">
+            <Item Type="Variable" Library="ABFE498B" Id="4E46CA99"/>
+            <Item Type="Trigger" Library="ABFE498B" Id="4149F9CE"/>
+        </Element>
+        <Element Type="Variable" Id="4E46CA99">
+            <VariableType>
+                <Type Value="string"/>
+            </VariableType>
+            <Value Type="Param" Library="ABFE498B" Id="ED58D46A"/>
+        </Element>
+        <Element Type="Param" Id="ED58D46A">
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="Trigger" Id="4149F9CE">
+            <Event Type="FunctionCall" Library="ABFE498B" Id="50A68069"/>
+            <Action Type="FunctionCall" Library="ABFE498B" Id="4AE828DA"/>
+            <Action Type="FunctionCall" Library="ABFE498B" Id="50253CEC"/>
+        </Element>
+        <Element Type="FunctionCall" Id="50A68069">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="7718C008"/>
+        </Element>
+        <Element Type="FunctionCall" Id="4AE828DA">
+            <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="8A66A37E"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="62ACF7E2"/>
+            <Parameter Type="Param" Library="ABFE498B" Id="E6020DC2"/>
+        </Element>
+        <Element Type="Param" Id="62ACF7E2">
+            <ParameterDef Type="ParamDef" Library="5BD4895D" Id="325F25F9"/>
+            <Value>0</Value>
+            <ValueType Type="int"/>
+        </Element>
+        <Element Type="Param" Id="E6020DC2">
+            <ParameterDef Type="ParamDef" Library="5BD4895D" Id="48480682"/>
+            <Value>Load Save Game detected, attempting to reconnect Archipelago...</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="FunctionCall" Id="50253CEC">
+            <FunctionDef Type="FunctionDef" Library="5BD4895D" Id="6641563B"/>
         </Element>
     </Library>
 </TriggerData>
