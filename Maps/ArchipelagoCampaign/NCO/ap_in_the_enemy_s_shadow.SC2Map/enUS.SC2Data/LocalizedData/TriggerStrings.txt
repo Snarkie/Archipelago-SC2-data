@@ -5,6 +5,7 @@ Category/Name/0F21C069======== GAMEPLAY =======
 Category/Name/1711147E=Stage 3 - Stone Encounter
 Category/Name/174F78D7=Achievement
 Category/Name/17C56F5B=Bonus Objective - Investigate Power Signal
+Category/Name/1C19C9E1=Init
 Category/Name/2410AC14=Mid Stone Intro
 Category/Name/2BADD72A=Debug
 Category/Name/33CA9975=Global
@@ -133,6 +134,7 @@ Trigger/Name/3E62A8F4=S2 - Nova Overhears Conversations 01 Q
 Trigger/Name/40203D9A=Victory Sequence
 Trigger/Name/420FB235=Objective Obtain Blink Suit Failed
 Trigger/Name/48BE6A97=Init 03 Units
+Trigger/Name/48BF42CA=Hero Summons
 Trigger/Name/4CAA45D7=onDifficultyNormal
 Trigger/Name/4CB62326=Undominated Scientist Crosses Trip Wire
 Trigger/Name/4CD3F66B=Objective Investigate Power Signal Complete
