@@ -3199,6 +3199,10 @@ bool gt_HeroSummons_Func (bool testConds, bool runActions) {
         if (!((UnitFilterMatch(EventUnitCreatedUnit(), gv_pLAYER_01_USER, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterItem), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
             return false;
         }
+
+        if (!((UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_HeroUnits, EventUnit()) == true))) {
+            return false;
+        }
     }
 
     // Actions
@@ -3213,7 +3217,7 @@ bool gt_HeroSummons_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_HeroSummons_Init () {
     gt_HeroSummons = TriggerCreate("gt_HeroSummons_Func");
-    TriggerAddEventUnitCreated(gt_HeroSummons, UnitRefFromVariable("gv_artanis"), null, null);
+    TriggerAddEventUnitCreated(gt_HeroSummons, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------

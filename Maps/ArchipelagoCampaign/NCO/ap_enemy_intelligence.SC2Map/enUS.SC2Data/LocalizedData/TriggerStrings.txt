@@ -218,6 +218,7 @@ Trigger/Name/79B7CC87=onDifficultyHard
 Trigger/Name/7A701181=Briefing Zerg Attack
 Trigger/Name/7B7E3398=S1 - Attack Wave Overseer Returns Home
 Trigger/Name/7C91FD5A=Nova Picks Up Restoration Charge 2
+Trigger/Name/7DB7B1F5=Hero Summons
 Trigger/Name/8160E23A=Briefing Q
 Trigger/Name/83282642=Objective Fill Garrisons Complete
 Trigger/Name/8427B8B1=S2 - Nova Enters Initial Encounter

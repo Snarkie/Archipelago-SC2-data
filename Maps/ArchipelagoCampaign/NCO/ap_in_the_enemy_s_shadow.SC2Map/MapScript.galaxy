@@ -116,7 +116,6 @@ timer gv_tripWire_FriendlyTrip_TransmissionTimer;
 int gv_tripWire_FriendlyTrip_TransmissionIter_Trooper;
 int gv_tripWire_FriendlyTrip_TransmissionIter_Generic;
 unit gv_dominatedBuddyUnit;
-unitgroup gv_holoDecoyUnits;
 int gv_startGameTransmission;
 bool gv_holdFireActivated;
 string gv_lighting_Sewers;
@@ -222,7 +221,6 @@ void InitGlobals () {
     gv_scientistsGroup = UnitGroupEmpty();
     gv_tripWire_FriendlyTrip_TransmissionCooldown = 20.0;
     gv_tripWire_FriendlyTrip_TransmissionTimer = TimerCreate();
-    gv_holoDecoyUnits = UnitGroupEmpty();
     gv_startGameTransmission = c_invalidTransmissionId;
     gv_lighting_Sewers = "CompoundSewer";
     gv_lighting_Facility = "CompoundMansion";
@@ -344,7 +342,6 @@ trigger gt_DominatedUnitGivenAttackOrder;
 trigger gt_DominatedUnitUsesAbility;
 trigger gt_NovaAttackedWhileHavingHarmlessDominatedBuddy;
 trigger gt_DominatedUnitGoesHostileToDOM;
-trigger gt_HoloDecoyIsCreated;
 trigger gt_HeroSummons;
 trigger gt_StartGameCleanup;
 trigger gt_StartGame01IntroQ;
@@ -4143,46 +4140,6 @@ void gt_DominatedUnitGoesHostileToDOM_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
-// Trigger: Holo Decoy Is Created
-//--------------------------------------------------------------------------------------------------
-bool gt_HoloDecoyIsCreated_Func (bool testConds, bool runActions) {
-    // Automatic Variable Declarations
-    // Conditions
-    if (testConds) {
-        if (!((libNCMI_gf_GameIsOver() == false))) {
-            return false;
-        }
-
-        if (!((libNCMI_gf_PlayerInCinematicModeCampaign() == false))) {
-            return false;
-        }
-
-        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
-            return false;
-        }
-
-        if (!((UnitGetType(EventUnitCreatedUnit()) == "AP_NovaHoloDecoy"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    libNCMI_gf_StealthAIAddUnitToStealthAIEnemyUnitGroup(EventUnitCreatedUnit());
-    UnitGroupAdd(gv_holoDecoyUnits, EventUnitCreatedUnit());
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void gt_HoloDecoyIsCreated_Init () {
-    gt_HoloDecoyIsCreated = TriggerCreate("gt_HoloDecoyIsCreated_Func");
-    TriggerAddEventUnitCreated(gt_HoloDecoyIsCreated, UnitRefFromVariable("gv_nova"), null, null);
-}
-
-//--------------------------------------------------------------------------------------------------
 // Trigger: Hero Summons
 //--------------------------------------------------------------------------------------------------
 bool gt_HeroSummons_Func (bool testConds, bool runActions) {
@@ -4201,11 +4158,11 @@ bool gt_HeroSummons_Func (bool testConds, bool runActions) {
             return false;
         }
 
-        if (!((UnitGetType(EventUnitCreatedUnit()) != "AP_NovaHoloDecoy"))) {
+        if (!((UnitFilterMatch(EventUnitCreatedUnit(), gv_pLAYER_01_USER, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterItem), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
             return false;
         }
 
-        if (!((UnitFilterMatch(EventUnitCreatedUnit(), gv_pLAYER_01_USER, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterItem), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
+        if (!((UnitGroupHasUnit(libABFE498B_gv_aP_Triggers_HeroUnits, EventUnit()) == true))) {
             return false;
         }
     }
@@ -4222,7 +4179,7 @@ bool gt_HeroSummons_Func (bool testConds, bool runActions) {
 //--------------------------------------------------------------------------------------------------
 void gt_HeroSummons_Init () {
     gt_HeroSummons = TriggerCreate("gt_HeroSummons_Func");
-    TriggerAddEventUnitCreated(gt_HeroSummons, UnitRefFromVariable("gv_nova"), null, null);
+    TriggerAddEventUnitCreated(gt_HeroSummons, null, null, null);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11972,7 +11929,6 @@ void InitTriggers () {
     gt_DominatedUnitUsesAbility_Init();
     gt_NovaAttackedWhileHavingHarmlessDominatedBuddy_Init();
     gt_DominatedUnitGoesHostileToDOM_Init();
-    gt_HoloDecoyIsCreated_Init();
     gt_HeroSummons_Init();
     gt_StartGameCleanup_Init();
     gt_StartGame01IntroQ_Init();
