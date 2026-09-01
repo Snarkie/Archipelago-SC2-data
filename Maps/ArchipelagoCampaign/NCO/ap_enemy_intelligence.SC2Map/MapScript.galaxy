@@ -269,6 +269,7 @@ trigger gt_NovaLosesDetectorConeDetectedEMPedQ;
 trigger gt_NovaLosesDetectorConeDetectedStillCloakedQ;
 trigger gt_NovaReCloaksTransmissionQ;
 trigger gt_HeroSummons;
+trigger gt_UnitIsDominated;
 trigger gt_StartGame01QGarrisonSpots;
 trigger gt_StartGame02QReachCommsHub;
 trigger gt_StartGame03QReachCommandRoom;
@@ -3570,6 +3571,58 @@ void gt_HeroSummons_Init () {
 }
 
 //--------------------------------------------------------------------------------------------------
+// Trigger: Unit Is Dominated
+//--------------------------------------------------------------------------------------------------
+bool gt_UnitIsDominated_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libNCMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((libNCMI_gf_PlayerInCinematicModeCampaign() == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNCMI_gf_StealthAISetStealthAIUnitState(EventUnit(), libNCMI_ge_StealthAIUnitState_Unavailable);
+    UnitAbilityEnable(EventUnit(), "NovaAlarmBotToggleDetectionVisionMode", false);
+    UnitAbilityShow(EventUnit(), "NovaAlarmBotToggleDetectionVisionMode", false);
+    while ((libNCMI_gf_GameIsOver() == false) && (UnitIsAlive(EventUnit()) == true) && ((UnitGetType(EventUnit()) == "GhostDetectorCone") || (UnitGetType(EventUnit()) == "GhostAlternateDetectorCone"))) {
+        UnitIssueOrder(EventUnit(), Order(AbilityCommand("GhostDetetorConeExit", 0)), c_orderQueueReplace);
+        UnitIssueOrder(EventUnit(), Order(AbilityCommand("GhostAlternateDetetorConeExit", 0)), c_orderQueueReplace);
+        UnitAbilityEnable(EventUnit(), "GhostDetetorConeEnter", false);
+        UnitAbilityEnable(EventUnit(), "GhostAlternateDetetorConeEnter", false);
+        UnitAbilityShow(EventUnit(), "GhostDetetorConeEnter", false);
+        UnitAbilityShow(EventUnit(), "GhostAlternateDetetorConeEnter", false);
+        UnitBehaviorRemove(EventUnit(), "DetectorCone9", 1);
+        Wait(0.0625, c_timeAI);
+    }
+    UnitIssueOrder(EventUnit(), Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    Wait(5.0, c_timeAI);
+    libNCMI_gf_StealthAIAddUnitToStealthAIEnemyUnitGroup(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UnitIsDominated_Init () {
+    gt_UnitIsDominated = TriggerCreate("gt_UnitIsDominated_Func");
+    TriggerEnable(gt_UnitIsDominated, false);
+    TriggerAddEventUnitBehaviorChange(gt_UnitIsDominated, null, "NovaDomination", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(gt_UnitIsDominated, null, "AP_NovaDomination", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
 // Trigger: Start Game 01 Q - Garrison Spots
 //--------------------------------------------------------------------------------------------------
 bool gt_StartGame01QGarrisonSpots_Func (bool testConds, bool runActions) {
@@ -3687,6 +3740,7 @@ bool gt_StartGame02QReachCommsHub_Func (bool testConds, bool runActions) {
     UIAlertPoint("Trigger", gv_pLAYER_01_USER, StringExternal("Param/Value/30FCFA14"), null, PointFromId(163));
     libNCMI_gf_CreateMissionAutosavePoint(StringExternal("Param/Value/52DC9371"));
     TriggerEnable(gt_HeroSummons, true);
+    TriggerEnable(gt_UnitIsDominated, true);
     TriggerEnable(gt_S2FirstUnitsFleeStealthedNova, true);
     TriggerEnable(gt_S2HallwayUnitsConfrontStealthedNova, true);
     auto99FF777A_g = UnitGroup(null, gv_pLAYER_06_DEFENDERSOFMAN, RegionFromId(32), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
@@ -12667,6 +12721,7 @@ void InitTriggers () {
     gt_NovaLosesDetectorConeDetectedStillCloakedQ_Init();
     gt_NovaReCloaksTransmissionQ_Init();
     gt_HeroSummons_Init();
+    gt_UnitIsDominated_Init();
     gt_StartGame01QGarrisonSpots_Init();
     gt_StartGame02QReachCommsHub_Init();
     gt_StartGame03QReachCommandRoom_Init();

@@ -238,6 +238,7 @@ Trigger/Name/E1199D05=onDifficultyBrutal
 Trigger/Name/E1DB31FD=Back Way Guards - Hear Something Q
 Trigger/Name/E810591B=Victory Cleanup
 Trigger/Name/E850EAAA=Stat - Nova Damaged by Warhawk
+Trigger/Name/ECFF74FC=Unit Is Dominated
 Trigger/Name/ED3FE4EF=Escape - Destruction 103 Trigger
 Trigger/Name/EE93D492=Intro Cleanup
 Trigger/Name/F00F4FA8=Healerbot Ready

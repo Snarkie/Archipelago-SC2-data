@@ -254,6 +254,7 @@ trigger gt_HealerbotReady;
 trigger gt_HealerbotMouseoverTip;
 trigger gt_NovaPicksUpRestorationCharge;
 trigger gt_HeroSummons;
+trigger gt_UnitIsDominated;
 trigger gt_StartGameQ;
 trigger gt_StartGameVultureQ;
 trigger gt_CleanupSection1;
@@ -3218,6 +3219,57 @@ bool gt_HeroSummons_Func (bool testConds, bool runActions) {
 void gt_HeroSummons_Init () {
     gt_HeroSummons = TriggerCreate("gt_HeroSummons_Func");
     TriggerAddEventUnitCreated(gt_HeroSummons, null, null, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Is Dominated
+//--------------------------------------------------------------------------------------------------
+bool gt_UnitIsDominated_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libNCMI_gf_GameIsOver() == false))) {
+            return false;
+        }
+
+        if (!((libNCMI_gf_PlayerInCinematicModeCampaign() == false))) {
+            return false;
+        }
+
+        if (!((TriggerIsEnabled(TriggerGetCurrent()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNCMI_gf_StealthAISetStealthAIUnitState(EventUnit(), libNCMI_ge_StealthAIUnitState_Unavailable);
+    UnitAbilityEnable(EventUnit(), "NovaAlarmBotToggleDetectionVisionMode", false);
+    UnitAbilityShow(EventUnit(), "NovaAlarmBotToggleDetectionVisionMode", false);
+    while ((libNCMI_gf_GameIsOver() == false) && (UnitIsAlive(EventUnit()) == true) && ((UnitGetType(EventUnit()) == "GhostDetectorCone") || (UnitGetType(EventUnit()) == "GhostAlternateDetectorCone"))) {
+        UnitIssueOrder(EventUnit(), Order(AbilityCommand("GhostDetetorConeExit", 0)), c_orderQueueReplace);
+        UnitIssueOrder(EventUnit(), Order(AbilityCommand("GhostAlternateDetetorConeExit", 0)), c_orderQueueReplace);
+        UnitAbilityEnable(EventUnit(), "GhostDetetorConeEnter", false);
+        UnitAbilityEnable(EventUnit(), "GhostAlternateDetetorConeEnter", false);
+        UnitAbilityShow(EventUnit(), "GhostDetetorConeEnter", false);
+        UnitAbilityShow(EventUnit(), "GhostAlternateDetetorConeEnter", false);
+        UnitBehaviorRemove(EventUnit(), "DetectorCone9", 1);
+        Wait(0.0625, c_timeAI);
+    }
+    UnitIssueOrder(EventUnit(), Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    Wait(5.0, c_timeAI);
+    libNCMI_gf_StealthAIAddUnitToStealthAIEnemyUnitGroup(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void gt_UnitIsDominated_Init () {
+    gt_UnitIsDominated = TriggerCreate("gt_UnitIsDominated_Func");
+    TriggerAddEventUnitBehaviorChange(gt_UnitIsDominated, null, "NovaDomination", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(gt_UnitIsDominated, null, "AP_NovaDomination", c_unitBehaviorChangeCreate);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10680,6 +10732,7 @@ void InitTriggers () {
     gt_HealerbotMouseoverTip_Init();
     gt_NovaPicksUpRestorationCharge_Init();
     gt_HeroSummons_Init();
+    gt_UnitIsDominated_Init();
     gt_StartGameQ_Init();
     gt_StartGameVultureQ_Init();
     gt_CleanupSection1_Init();
