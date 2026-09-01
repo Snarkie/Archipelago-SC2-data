@@ -12539,6 +12539,12 @@ void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
         libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankMaelstromRounds(lp_player);
         libABFE498B_gf_AP_Triggers_Terran_unlockMercenaryMunitions(lp_player);
         libABFE498B_gf_AP_Triggers_Terran_unlockProgressiveRegenerativeBioSteel(lp_player, 3);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaDomination(lp_player);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaGadgetHoloDecoy(lp_player);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaGadgetFlashbangGrenades(lp_player);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaArmoredSuit(lp_player);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaJumpSuit(lp_player);
+        libABFE498B_gf_AP_Triggers_Terran_unlockNovaGhostVisor(lp_player);
         libABFE498B_gf_AP_Triggers_Zerg_unlockTyrannozor(lp_player);
         libABFE498B_gf_AP_Triggers_Zerg_TyrannozorBarrageofSpikes(lp_player);
         libABFE498B_gf_AP_Triggers_Zerg_TyrannozorTyrantsProtection(lp_player);
