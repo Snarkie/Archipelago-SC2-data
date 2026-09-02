@@ -599,48 +599,6 @@
         <Find value="1"/>
         <Value value="AP_HaveHotSViciousGlaive"/>
     </CValidatorPlayerRequirement>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack11Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="11"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack13Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="13"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack15Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="15"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack3Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="3"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack5Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="5"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack7Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="7"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_HaveImmortalTaldarimMissileSpeedStack9Plus">
-        <WhichUnit Value="Caster"/>
-        <Compare value="GE"/>
-        <Value value="9"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitFilters id="AP_ImmortalShakurasShadowCannonTargetFilters">
         <WhichUnit Effect="AP_ImmortalShakurasShadowCannonTargetingCP"/>
         <Filters value="-;Stasis,Dead,Hidden,Invulnerable"/>
@@ -952,10 +910,6 @@
     <CValidatorUnitType id="AP_IsVanillaFactory">
         <Value value="Factory"/>
     </CValidatorUnitType>
-    <CValidatorCombine id="AP_IsBunkerOrSIBunker">
-        <CombineArray value="AP_IsBunker"/>
-        <CombineArray value="AP_SIInfestedBunker"/>
-    </CValidatorCombine>
     <CValidatorCombine id="IsFactory" parent="CValidatorCombine">
         <!-- Override -->
         <CombineArray value="AP_IsVanillaFactory"/>
@@ -2347,11 +2301,6 @@
         <CombineArray value="AP_NotAPSupplyDropEnRoute"/>
         <ResultFailed value="MustTargetStructures,Error/AlreadyHasExtraSupplies"/>
     </CValidatorCombine>
-    <CValidatorPlayerRequirement id="AP_SCVUpgraded">
-        <ResultNoPlayer value="Error"/>
-        <Find value="1"/>
-        <Value value="AP_HaveFusionWelder"/>
-    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="AP_HaveAutoHarvester">
         <Find value="1"/>
         <Value value="AP_AutoHarvesterResearched"/>
@@ -2642,12 +2591,6 @@
         <Compare value="NE"/>
         <Value value="1"/>
         <Behavior value="MothershipCorePurifyNexus"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_IsNotAPMothershipCorePurifyNexus">
-        <ResultFailed value="Error,Error/MothershipCorePurifyNexus"/>
-        <Compare value="NE"/>
-        <Value value="1"/>
-        <Behavior value="AP_MothershipCorePurifyNexus"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorCombine id="AP_IsNotMothershipCorePurifyNexus">
         <Type value="And"/>
@@ -3486,10 +3429,6 @@
         <!-- TODO -->
         <CombineArray value="AP_NotDummy"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="AP_HasMothershipCorePurifyNexus">
-        <Behavior value="AP_MothershipCorePurifyNexus"/>
-        <Value value="1"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AP_IsNotVanillaChronoBoosted">
         <ResultFailed value="Error,Error/AP_AlreadyChronoBoosted"/>
         <Behavior value="TimeWarpProduction"/>

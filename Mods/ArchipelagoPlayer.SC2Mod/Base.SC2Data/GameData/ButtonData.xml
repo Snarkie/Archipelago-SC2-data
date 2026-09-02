@@ -638,10 +638,6 @@
         <HotkeySet value="HoldFire"/>
         <HidesForSimpleText value="0"/>
     </CButton>
-    <CButton id="AP_SpectreMindSplatter">
-        <Icon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
-        <EditorCategories value="Race:Terran"/>
-    </CButton>
     <CButton id="AP_SpectreNukeCalldown">
         <Icon value="Assets\Textures\btn-ability-terran-nuclearstrike-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-nuclearstrike-color.dds"/>
@@ -1000,7 +996,7 @@
     </CButton>
     <CButton id="AP_AutomatedRefinery">
         <Icon value="AP\Assets\Textures\btn-building-terran-refineryautomated.dds"/>
-        <AlertIcon value="AP\Assets\Textures\btn-building-terran-refinery.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-building-terran-refineryautomated.dds"/>
         <Hotkey value="Button/Hotkey/Refinery"/>
         <EditorCategories value="Race:Terran"/>
         <HotkeyAlias value="Refinery"/>

@@ -575,7 +575,6 @@ Button/Hotkey/AP_SpecterPsiRound=R
 Button/Hotkey/AP_Spectre=S
 Button/Hotkey/AP_SpectreConsumption=T
 Button/Hotkey/AP_SpectreHoldFire=F
-Button/Hotkey/AP_SpectreMindSplatter=R
 Button/Hotkey/AP_SpectreNukeCalldown=N
 Button/Hotkey/AP_SpectreShadowClones=D
 Button/Hotkey/AP_SpectreWeaponsFree=G

@@ -5942,7 +5942,7 @@ bool gt_MidSetup_Func (bool testConds, bool runActions) {
     UnitSetPosition(UnitFromId(686), PointFromId(1204), false);
     UnitSetFacing(UnitFromId(686), PointGetFacing(PointFromId(1204)), 0.0);
     libNtve_gf_ShowHideUnit(gv_kerrigan2, true);
-    if ((UnitIsAlive(gv_ultra1) == false)) {
+    if (((UnitIsAlive(gv_ultra1) == false) && (TechTreeUnitCount(gv_pLAYER_01_USER, "AP_Tyrannozor", c_techCountQueuedOrBetter) == 0) && (TechTreeUnitCount(gv_pLAYER_01_USER, "AP_TyrannozorBurrowed", c_techCountQueuedOrBetter) == 0))) {
         auto7D306F07_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
         if (auto7D306F07_val == "Neut") {
             UnitCreate(1, "AP_Ultralisk", 0, gv_pLAYER_01_USER, PointFromId(1206), 270.0);
@@ -5958,7 +5958,7 @@ bool gt_MidSetup_Func (bool testConds, bool runActions) {
         gv_ultra1 = UnitLastCreated();
     }
 
-    if ((UnitIsAlive(gv_ultra2) == false)) {
+    if (((UnitIsAlive(gv_ultra2) == false) && (TechTreeUnitCount(gv_pLAYER_01_USER, "AP_Tyrannozor", c_techCountQueuedOrBetter) == 0) && (TechTreeUnitCount(gv_pLAYER_01_USER, "AP_TyrannozorBurrowed", c_techCountQueuedOrBetter) == 0))) {
         auto0CA1ABEB_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
         if (auto0CA1ABEB_val == "Neut") {
             UnitCreate(1, "AP_Ultralisk", 0, gv_pLAYER_01_USER, PointFromId(1207), 270.0);

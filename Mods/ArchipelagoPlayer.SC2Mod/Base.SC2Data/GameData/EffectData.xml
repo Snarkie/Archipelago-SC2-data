@@ -41,7 +41,6 @@
     <CEffectModifyUnit id="AP_ImmortalBarrierCDFix">
         <ValidatorArray value="BarrierOnCooldown"/>
         <Cost Behavior="ImmortalBarrierSupressed" CooldownOperation="Add" CooldownTimeUse="15"/>
-        <Cost Behavior="AP_ImmortalBarrierSupressed" CooldownOperation="Add" CooldownTimeUse="15"/>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="AP_250mmStrikeCannonsApplyBehavior">
         <ValidatorArray index="0" value="AP_NotHeroic"/>
@@ -82,7 +81,6 @@
         <EffectArray value="AP_250mmStrikeCannonsDummy"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_330mmBarrageCannonsApplyBehavior">
-        <ValidatorArray index="0" value="AP_330mmCannonValidators"/>
         <EditorCategories value="Race:Terran"/>
         <Behavior value="AP_330mmBarrageCannons"/>
     </CEffectApplyBehavior>
@@ -624,7 +622,6 @@
         <EditorCategories value="Race:Zerg"/>
         <SpawnEffect value="AP_HellbatLeapSet"/>
         <!--SpawnUnit value="HellbatPlaceholder"/-->
-        <SpawnUnit value="AP_Hellbat"/>
         <SpawnRange value="1"/>
         <SpawnOffset value="0,-1"/>
         <CreateFlags index="UseFood" value="0"/>
@@ -1599,7 +1596,6 @@
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="AP_EMPLaunchMissile">
-        <ValidatorArray index="0" value="AP_EMPTargetFilters"/>
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetPoint"/>
         <ImpactEffect value="AP_EMPSearch"/>
@@ -4888,7 +4884,6 @@
         <ValidatorArray value="NotHidden"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="AP_AcidSalivaLM">
-        <ValidatorArray index="0" value="RoachLMTargetFilters"/>
         <EditorCategories value="Race:Zerg"/>
         <ImpactEffect value="AP_AcidSalivaSet"/>
         <AmmoUnit value="AP_AcidSalivaWeapon"/>
@@ -5835,8 +5830,6 @@
         <EffectArray value="AP_RoachCorpserSpawnRoachlings"/>
     </CEffectSet>
     <CEffectLaunchMissile id="AP_RoachCorpserAcidSalivaLM">
-        <ValidatorArray index="0" value="AP_RoachLMTargetFilters"/>
-        <!-- Validator doesn't exist in Vanilla? -->
         <EditorCategories value="Race:Zerg"/>
         <ImpactEffect value="AP_RoachCorpserAcidSalivaSet"/>
         <AmmoUnit value="AP_RoachCorpserAcidSalivaWeapon"/>
@@ -10071,50 +10064,6 @@
         <EffectArray value="AP_PhaseDisruptorsStrafeDamage"/>
         <EffectArray value="AP_ImmortalSplashStrafeSearch"/>
     </CEffectSet>
-    <CEffectRemoveBehavior id="AP_ImmortalTaldarimMissileSpeedStackRB">
-        <EditorCategories value="Race:Protoss"/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="AP_ImmortalTaldarimMissileSpeedStack"/>
-        <Count value="16"/>
-    </CEffectRemoveBehavior>
-    <CEffectSwitch id="AP_ImmortalTaldarimMissileSpeedStackSwitch">
-        <EditorCategories value="Race:Protoss"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack15Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer7"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack13Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer6"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack11Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer5"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack9Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer4"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack7Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer3"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack5Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer2"/>
-        <CaseArray Validator="AP_HaveImmortalTaldarimMissileSpeedStack3Plus" Effect="AP_ImmortalTaldarimMissileSpeedStackTransfer1"/>
-    </CEffectSwitch>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer1">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack1"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer2">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack2"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer3">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack3"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer4">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack4"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer5">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack5"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer6">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack6"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="AP_ImmortalTaldarimMissileSpeedStackTransfer7">
-        <WhichUnit Value="Source"/>
-        <Behavior value="AP_ImmortalTaldarimMissileSpeedStack7"/>
-    </CEffectApplyBehavior>
     <CEffectDamage id="AP_ImmortalTaldarimWeaponDamage" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Protoss"/>
         <Amount value="8"/>
@@ -25381,7 +25330,6 @@
         <Death value="Disintegrate"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="AP_MercRoachCorpserAcidSalivaLM">
-        <ValidatorArray index="0" value="AP_RoachLMTargetFilters"/>
         <EditorCategories value="Race:Zerg"/>
         <ImpactEffect value="AP_MercRoachCorpserAcidSalivaSet"/>
         <AmmoUnit value="AP_MercRoachCorpserAcidSalivaWeapon"/>
@@ -26184,7 +26132,6 @@
         <Behavior value="AP_ScoutTaldarimVulcanBlaster"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AP_ScoutTaldarimVulcanBlasterApplyInitial">
-        <ValidatorArray index="0" value="Ap_ScoutTaldarimVulcanBlasterApplyTargetFilters"/>
         <EditorCategories value="Race:Protoss"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="AP_ScoutTaldarimVulcanBlasterInitial"/>

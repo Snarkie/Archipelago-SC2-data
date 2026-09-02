@@ -428,11 +428,6 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="15"/>
-        <ExpireEffect value="AP_SpecDefensiveMatrixIssueOrder"/>
-        <!-- Looks like unused -->
-        <Modification>
-            <AbilLinkDisableArray value="AP_BattlecruiserSpecialize"/>
-        </Modification>
         <DamageResponse ModifyMinimumDamage="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_SpecHurricane">
@@ -441,11 +436,6 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="15"/>
-        <ExpireEffect value="AP_SpecHurricaneIssueOrder"/>
-        <!-- Looks like unused -->
-        <Modification>
-            <AbilLinkDisableArray value="AP_BattlecruiserSpecialize"/>
-        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_SpecYamato">
         <InfoFlags index="Hidden" value="1"/>
@@ -453,11 +443,6 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="15"/>
-        <ExpireEffect value="AP_SpecYamatoIssueOrder"/>
-        <!-- Looks like unused -->
-        <Modification>
-            <AbilLinkDisableArray value="AP_BattlecruiserSpecialize"/>
-        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_HyperjumpTeleportOutTargetSuppressCollision">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -694,17 +679,6 @@
             <BehaviorLinkDisableArray value="Detector12"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_SpectreMindSplatter">
-        <Alignment value="Negative"/>
-        <InfoFlags index="Hidden" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-ability-zerg-explode-color.dds"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Duration value="1"/>
-        <Modification>
-            <DeathResponse Chance="1" Effect="AP_SpectreMindSplatterExplosionDamage"/>
-        </Modification>
-        <!-- Appears to be unused in Vanilla -->
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_SpectreNuclearReactorQueue">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
@@ -752,7 +726,6 @@
     <CBehaviorBuff id="AP_ThorEnergyUse">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="AP_DontHave250mmCannons"/>
         <Modification>
             <VitalMaxArray index="Energy" value="-200"/>
         </Modification>
@@ -760,7 +733,6 @@
     <CBehaviorBuff id="AP_ThorEnergyUseCellular">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
-        <DisableValidatorArray value="AP_DontHave250mmCannonsHaveCellularReactors"/>
         <Modification>
             <VitalMaxArray index="Energy" value="-100"/>
         </Modification>
@@ -818,7 +790,6 @@
             <StateFlags index="SuppressCombat" value="1"/>
             <AbilClassEnableArray index="CAbilStop" value="1"/>
             <BehaviorLinkDisableArray value="ImmortalBarrierSupressed"/>
-            <BehaviorLinkDisableArray value="AP_ImmortalBarrierSupressed"/>
             <WeaponDisableArray value="InterceptorLaunch"/>
             <WeaponDisableArray value="AP_InterceptorLaunch"/>
         </Modification>
@@ -1315,7 +1286,6 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Requirements value="AP_HellstormMissilesResearched"/>
         <Modification>
-            <WeaponEnableArray value="AP_MissileTurret"/>
             <WeaponEnableArray value="AP_HailstormMissilePods"/>
         </Modification>
     </CBehaviorBuff>
@@ -1333,10 +1303,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <Modification>
             <WeaponEnableArray value="AP_HailstormMissilePods"/>
-            <WeaponDisableArray value="AP_MissileTurret"/>
-            <WeaponDisableArray value="AP_DevastatorMissiles"/>
         </Modification>
-        <InitialEffect value="AP_MissileTurretWeaponSwapSwitchToHailstorm"/>
         <!-- Looks like Unused in Vanilla -->
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_SensorTowerRadar">
@@ -1490,7 +1457,6 @@
     <CBehaviorBuff id="AP_RoachCorpserSpray">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
-        <Requirements value="AP_HaveHotSBurstingGlands"/>
         <Modification>
             <WeaponEnableArray value="AP_RoachCorpserSpray"/>
             <WeaponDisableArray value="AP_RoachCorpserAcidSaliva"/>
@@ -1515,7 +1481,6 @@
     <CBehaviorBuff id="AP_RoachSpray">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
-        <Requirements value="AP_HaveHotSBurstingGlands"/>
         <Modification>
             <WeaponEnableArray value="AP_RoachSpray"/>
             <WeaponDisableArray value="AP_AcidSaliva"/>
@@ -1525,7 +1490,6 @@
     <CBehaviorBuff id="AP_RoachVileSpray">
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
-        <Requirements value="AP_HaveHotSBurstingGlands"/>
         <Modification>
             <WeaponEnableArray value="AP_RoachVileSpray"/>
             <WeaponDisableArray value="AP_RoachVileAcidSaliva"/>
@@ -3386,39 +3350,6 @@
             <StateFlags index="SuppressAttack" value="1"/>
         </Modification>
     </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack1">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.833"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack2">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.714"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack3">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.625"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack4">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.555"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack5">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.5"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack6">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.454"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack7">
-        <InfoFlags index="Hidden" value="1"/>
-        <Modification TimeScale="0.416"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_ImmortalTaldarimMissileSpeedStack8">
-        <InfoFlags index="Hidden" value="1"/>
-        <MaxStackCount value="16"/>
-        <Duration value="2"/>
-    </CBehaviorBuff>
     <CBehaviorBuff id="AP_VoidMPImmortalRevive">
         <Alignment value="Positive"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -4013,23 +3944,6 @@
             <VitalRegenArray index="Energy" value="-0.1992"/>
         </Modification>
         <BehaviorCategories index="Fast" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="AP_MothershipCorePurifyNexus">
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <Modification>
-            <ModifyFlags index="SuppressMoving" value="1"/>
-            <StateFlags index="SuppressEnergyRegen" value="1"/>
-            <AbilLinkDisableArray value="move"/>
-            <!-- TODO: Implement those -->
-            <AbilLinkDisableArray value="AP_MothershipCorePurifyNexus"/>
-            <AbilLinkDisableArray value="AP_MorphToMothership"/>
-            <AbilLinkDisableArray value="AP_MothershipCoreEnergize"/>
-            <AbilLinkDisableArray value="AP_MothershipCoreMassRecall"/>
-            <AbilLinkDisableArray value="AP_MothershipCoreWeapon"/>
-            <WeaponEnableArray value="AP_MothershipCoreWeapon"/>
-            <WeaponDisableArray value="AP_RepulsorCannon"/>
-        </Modification>
-        <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_ArbiterMPCloakField">
         <Alignment value="Positive"/>
@@ -8044,7 +7958,6 @@
         <Requirements value="AP_HaveResourceEfficiencyUltralisk"/>
         <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
         <Duration value="0.1"/>
-        <ExpireEffect value="AP_UltraliskResourceEfficiencyMorph"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_UltraliskOrganicCarapaceIndicator">
         <!-- Indicator of passive upgrade - full command card -->
@@ -11212,7 +11125,6 @@
             <DamageDealtScaled index="Spell" value="10"/>
             <DamageDealtScaled index="Ranged" value="2"/>
             <LifeArmorBonus value="1"/>
-            <BehaviorLinkDisableArray value="AP_ScoutNerazimHeight"/>
         </Modification>
         <Alignment value="Positive"/>
         <InitialEffect value="AP_ScoutNerazimPilotDownOffset"/>

@@ -230,6 +230,7 @@ Variable/Name/28E0C47D=LOOP
 Variable/Name/2D3416A6=LargestZergForce
 Variable/Name/2DE73C59=GorgonPing
 Variable/Name/2FCDCD22=IntroReticle
+Variable/Name/315490E8=unit
 Variable/Name/352210F5=ScourgeNestGroup
 Variable/Name/352875C4=VictoryZergLeft
 Variable/Name/3552BB61=THE_ONE_KERRIGAN

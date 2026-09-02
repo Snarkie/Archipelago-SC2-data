@@ -44,6 +44,13 @@ Light
 Soundtrack=Ambience_##id##
 TerrainTex=##id##Dirt,##id##Fossils,##id##LavaCracks,##id##Mud,##id##Panels,##id##Rock,##id##RockyDirt,##id##Rough
 
+[Unit]
+id=RedstoneLavaCritterBurrowed
+Abil=RedstoneLavaCritterUnburrow,move,stop
+Actor=AP_GimbalZTurret,AP_TrooperMengsk_ModelSwap_AS,BlipVisual,CommandUIHarnessAttackProtoss,CommandUIHarnessAttackTerran,CommandUIHarnessAttackZerg,CommandUIHarnessConfirmProtoss,CommandUIHarnessConfirmTerran,CommandUIHarnessConfirmZerg,CommandUIHarnessMoveProtoss,CommandUIHarnessMoveTerran,CommandUIHarnessMoveZerg,CommandUIHarnessRallyProtoss,CommandUIHarnessRallyTerran,CommandUIHarnessRallyZerg,ConfirmationLocalAirAttack,ConfirmationLocalGroundAttack,ConfirmationSyncAirAttack,ConfirmationSyncGroundAttack,ConstructionRefundTextAlly,ConstructionRefundTextEnemy,FlyerShadow,GroundShadow,RedstoneLavaCritter,##id##Splat,SalvagedTextAlly,SalvagedTextEnemy,ShieldImpact,TerrainMgr,UnitPointsTextAll
+Behavior=CritterBurrow,CritterExplode
+Button=Attack,BurrowUp,Move,MoveHoldPosition,MovePatrol,Stop
+
 [Water]
 id=Template 1
 asset=Assets\Textures\DefaultWater.dds

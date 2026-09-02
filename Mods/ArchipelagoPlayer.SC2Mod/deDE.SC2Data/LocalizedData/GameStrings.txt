@@ -1,4 +1,4 @@
-AP_Raptor=Gattung Raptor /// Raptor Strain
+﻿AP_Raptor=Gattung Raptor /// Raptor Strain
 AP_RaptorSwarmling=Raptor + Schwarmling /// Raptor + Swarmling
 AP_Swarmling=Gattung Schwarmling /// Swarmling Strain
 Abil/Alert/AP_AscendantSacrificeInstant=No Supplicant nearby
@@ -1947,7 +1947,6 @@ Button/Name/AP_SpecterPsiRound=Phantom - Psi-Geschoss /// Spectre Psi Round
 Button/Name/AP_Spectre=Phantom ausbilden /// Train Spectre
 Button/Name/AP_SpectreConsumption=Aufzehren /// Consumption
 Button/Name/AP_SpectreHoldFire=Feuer Einstellen /// Hold Fire
-Button/Name/AP_SpectreMindSplatter=Hirnexplosion /// Mind Splatter
 Button/Name/AP_SpectreNukeCalldown=Taktischer Nuklearschlag /// Tac Nuke Strike
 Button/Name/AP_SpectreShadowClones=Schattenklon /// Shadow Clone
 Button/Name/AP_SpectreWeaponsFree=Feuer frei /// Weapons Free
@@ -3535,7 +3534,6 @@ Button/Tooltip/AP_SpecterPsiRound=Feuert eine mit Psi geladene Kugel und verursa
 Button/Tooltip/AP_Spectre=Infiltrationseinheit. Kann die Fähigkeiten "Ultraschall-Impuls" und "Tarnen" einsetzen. Kann auch taktische Nuklearraketen aus der Ghost-Akademie anfordern.<n/><n/><c val="#ColorAttackInfo">Kann Boden- und Lufteinheiten angreifen.</c>
 Button/Tooltip/AP_SpectreConsumption=Opfert eine befreundete biologische Einheit und verschafft dem Phantom 2 Energie für jeden entzogenen Trefferpunkt. /// Drains half the life from a friendly biological unit and gives the Spectre 2 energy for each point of life drained.
 Button/Tooltip/AP_SpectreHoldFire=Befiehlt ausgewählten Einheiten, ihre Waffen wegzustecken und die Konfrontation mit Feinden zu vermeiden, solange sie keinen direkten Befehl dazu erhalten. Einheiten, die das Feuer eingestellt haben, fliehen, wenn sie angegriffen werden. /// Orders selected units to holster their weapons and avoid engaging enemies, unless given a direct command. Units holding fire will flee if attacked.
-Button/Tooltip/AP_SpectreMindSplatter=Verursacht <d ref="Effect,AP_SpectreMindSplatterInitialDamage,Amount"/> Schaden bei der biologischen Einheit. Wenn die Einheit stirbt, explodiert sie und verursacht <d ref="Effect,AP_SpectreMindSplatterExplosionDamage,Amount"/> Schaden bei in der Nähe befindlichen feindlichen Truppen. /// Deals <d ref="Effect,SpectreMindSplatterInitialDamage,Amount"/> damage to the target biological unit. When the unit dies, it explodes and deals <d ref="Effect,SpectreMindSplatterExplosionDamage,Amount"/> damage to nearby enemy units.
 Button/Tooltip/AP_SpectreNukeCalldown=Fordert im Zielgebiet einen Nuklearschlag an. Taktische Nuklearraketen benötigen <d time="10"/> bis zum Einschlag, fügen Feinden in einem großen Bereich aber bis zu 300 Schaden (+200 gegen Gebäude) zu.
 Button/Tooltip/AP_SpectreShadowClones=Das Phantom erschafft einen Klon seiner selbst. Dieser Klon kann dazu verwendet werden, feindliches Feuer von verbündeten Einheiten abzulenken. Der Klon kann keinen Schaden verursachen und bleibt <d ref="Behavior,ToshShadowCloneTimedLife,Duration"/> Sekunden lang bestehen.<n/>
 Button/Tooltip/AP_SpectreWeaponsFree=Befiehlt ausgewählten Einheiten, nach eigenem Ermessen zu feuern. Sie werden Feinde in Reichweite angreifen und wie gewohnt verfolgen. /// Orders selected units to fire at will. They will engage enemy units within range and chase them as normal.

@@ -11425,9 +11425,9 @@
         <Effect index="0" value="AP_MedicMengskDefensiveMatrixAB"/>
         <Flags index="AllowMovement" value="1"/>
         <Cost>
-            <Vital index="Energy" value="50"/>
+            <Vital index="Energy" value="75"/>
         </Cost>
-        <TargetFilters value="-;Self,Structure,RawResource,HarvestableResource,Item,Dead,Hidden,Invulnerable"/>
+        <TargetFilters value="-;Self,Enemy,Structure,RawResource,HarvestableResource,Item,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_MedicMengskDefensiveMatrix" State="Restricted" Requirements="AP_HaveMedicMengskVeterancyLevel2">

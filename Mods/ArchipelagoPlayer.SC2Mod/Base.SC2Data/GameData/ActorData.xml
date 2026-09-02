@@ -5509,30 +5509,6 @@
         <AutoScaleFactor value="0.700000"/>
     </CActorModel>
     <CActorMissile id="AP_SpectreLockdownMissile" parent="GenericAttackMissile" unitName="AP_SpectreLockdownWeapon"/>
-    <CActorModel id="AP_SpectreMindSplatterBuffModel" parent="ModelAddition">
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,50"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 255,175,250"/>
-        <On Terms="Behavior.AP_SpectreMindSplatter.On" Send="Create"/>
-        <On Terms="Behavior.AP_SpectreMindSplatter.Off" Send="Destroy"/>
-        <Host Subject="_Unit" Actor="Create"/>
-        <HostSiteOps Ops="SOpAttachHead"/>
-        <Model value="AP_MindSplatterBuff"/>
-    </CActorModel>
-    <CActorModel id="AP_SpectreMindSplatterCastModel" parent="ModelAnimationStyleOneShot">
-        <On Terms="ActorCreation" Send="SetTintColor 255,0,50"/>
-        <On Terms="Abil.AP_SpectreMindSplatter.SourceCastStart" Send="Create"/>
-        <Host Subject="_Unit"/>
-        <HostSiteOps Ops="SOpAttachWeapon"/>
-        <Model value="AP_MindSplatterBuff"/>
-    </CActorModel>
-    <CActorModel id="AP_SpectreMindSplatterExplosion" parent="ModelAnimationStyleOneShot">
-        <On Terms="Behavior.AP_SpectreMindSplatter.Off" Send="Create"/>
-    </CActorModel>
-    <CActorRange id="AP_SpectreMindSplatterRange" parent="RangeAbil" abil="AP_SpectreMindSplatter"/>
-    <CActorUnit id="AP_SpectreNuke" parent="GenericUnitStandard" unitName="AP_SpectreNuke">
-        <Model value="Invisible"/>
-        <SoundArray index="Ready" value="Alert_TerranNukeReady"/>
-    </CActorUnit>
     <CActorModel id="AP_SpectreNukeCollateralFire">
         <On Terms="Effect.AP_SpectreNukeDamage.Start; At Target" Send="Create"/>
     </CActorModel>
@@ -9232,7 +9208,6 @@
         <On Terms="Abil.AP_GatherSpecialObject.SourceCastStop" Send="TimerKill Gather"/>
         <On Terms="Behavior.AP_CarryChrysalisEgg.Create" Send="AnimGroupApply Gather"/>
         <On Terms="Behavior.AP_CarryChrysalisEgg.Destroy" Send="AnimGroupRemove Gather"/>
-        <On Terms="ActorCreation; ValidateUnit AP_SCVUpgraded" Send="ModelSwap AP_SCVFusionWelder"/>
         <On Terms="Upgrade.AP_FusionWelder.Add" Send="ModelSwap AP_SCVFusionWelder"/>
         <On Terms="Upgrade.AP_DualFusionWelders.Add" Send="ModelSwap AP_SCVFusionWelder"/>
         <Model value="SCV"/>

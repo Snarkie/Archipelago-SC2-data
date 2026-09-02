@@ -166,7 +166,9 @@ void InitGlobals () {
 //--------------------------------------------------------------------------------------------------
 text gf_DebugUnitInfo (unit lp_u);
 void gf_NightDefenderSpawn (unit lp_attackedStructure);
+region gf_PickRegion ();
 void gf_SpawnFactory (region lp_pickedRegion);
+void gf_WarpInRoboticsFacility (region lp_pickedRegion);
 void gf_ResearchZergUpgrades (int lp_qty, string lp_upgrade);
 void gf_PrepareAttackDirection (int lp_direction);
 void gf_AttackWaveFromDirection (int lp_direction, int lp_delay, bool lp_waitOption, int lp_qty1, int lp_qty2, int lp_qty3);
@@ -399,6 +401,24 @@ void gf_NightDefenderSpawn (unit lp_attackedStructure) {
 
 }
 
+region gf_PickRegion () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(41), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
+        return RegionFromId(41);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(46), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
+        return RegionFromId(46);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(47), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
+        return RegionFromId(47);
+    }
+    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(48), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
+        return RegionFromId(48);
+    }
+    return null;
+}
+
 void gf_SpawnFactory (region lp_pickedRegion) {
     // Variable Declarations
     unit lv_factory;
@@ -427,6 +447,48 @@ void gf_SpawnFactory (region lp_pickedRegion) {
         UnitIssueOrder(lv_factory, OrderTargetingPoint(AbilityCommand("AP_FactoryLand", 0), RegionGetCenter(lp_pickedRegion)), c_orderQueueReplace);
         libNtve_gf_MakeUnitInvulnerable(lv_factory, false);
         libNtve_gf_MakeUnitUncommandable(lv_factory, false);
+    }
+}
+
+void gf_WarpInRoboticsFacility (region lp_pickedRegion) {
+    // Variable Declarations
+    unit lv_RoboticsFacility;
+    actor lv_RoboticsFacilityModel;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_pickedRegion == null)) {
+        libNtve_gf_CreateModelWithPointFacing("RoboticsFacilityBirth", RegionGetCenter(RegionFromId(41)));
+        libNtve_gf_MakeModelFaceAngle(libNtve_gf_ActorLastCreated(), 225.0);
+        lv_RoboticsFacilityModel = libNtve_gf_ActorLastCreated();
+        libNtve_gf_CreateUnitsAtPoint2(1, "AP_RoboticsFacility", 0, gv_pLAYER_08_SWANN, RegionGetCenter(RegionFromId(41)));
+        lv_RoboticsFacility = UnitLastCreated();
+        libNtve_gf_SendActorMessageToUnit(lv_RoboticsFacility, "SetOpacity");
+        SoundPlay(SoundLink("Protoss_BuildingWarpIn", -1), PlayerGroupAll(), 100.0, 0.0);
+        libNtve_gf_PlayAnimation(lv_RoboticsFacilityModel, "BuildEnd", "Stand Build End", c_animFlagNonLooping, c_animTimeDefault);
+        AnimWait(lv_RoboticsFacilityModel, "BuildEnd", 0.0, c_animationOffsetEnd);
+        libNtve_gf_KillModel(lv_RoboticsFacilityModel);
+        libNtve_gf_SendActorMessageToUnit(lv_RoboticsFacility, "SetOpacity 1.000000");
+        UIAlertUnit("Trigger", gv_pLAYER_01_USER, StringExternal("Param/Value/52930BEE"), null, lv_RoboticsFacility);
+        MinimapPing(PlayerGroupAll(), UnitGetPosition(lv_RoboticsFacility), 2.0, Color(100.00, 100.00, 0.00));
+        libNtve_gf_RescueUnit(lv_RoboticsFacility, gv_pLAYER_01_USER, true);
+    }
+    else {
+        libNtve_gf_CreateModelWithPointFacing("RoboticsFacilityBuild", RegionGetCenter(lp_pickedRegion));
+        lv_RoboticsFacilityModel = libNtve_gf_ActorLastCreated();
+        libNtve_gf_CreateUnitsAtPoint2(1, "AP_RoboticsFacility", 0, gv_pLAYER_08_SWANN, RegionGetCenter(lp_pickedRegion));
+        lv_RoboticsFacility = UnitLastCreated();
+        libNtve_gf_SendActorMessageToUnit(lv_RoboticsFacility, "SetOpacity");
+        SoundPlay(SoundLink("Protoss_BuildingWarpIn", -1), PlayerGroupAll(), 100.0, 0.0);
+        libNtve_gf_PlayAnimation(lv_RoboticsFacilityModel, "BuildEnd", "Stand Build End", c_animFlagNonLooping, c_animTimeDefault);
+        AnimWait(lv_RoboticsFacilityModel, "BuildEnd", 0.0, c_animationOffsetEnd);
+        libNtve_gf_KillModel(lv_RoboticsFacilityModel);
+        libNtve_gf_SendActorMessageToUnit(lv_RoboticsFacility, "SetOpacity 1.000000");
+        UIAlertUnit("Trigger", gv_pLAYER_01_USER, StringExternal("Param/Value/90FAAD04"), null, lv_RoboticsFacility);
+        MinimapPing(PlayerGroupAll(), UnitGetPosition(lv_RoboticsFacility), 2.0, Color(100.00, 100.00, 0.00));
+        libNtve_gf_RescueUnit(lv_RoboticsFacility, gv_pLAYER_01_USER, true);
     }
 }
 
@@ -578,13 +640,13 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
     }
 
     if ((lib5BD4895D_gv_aP_Core_testMode == true)) {
-        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Zerg";
+        libABFE498B_gv_aP_Triggers_Option_overridePlayerRace = "Prot";
         libABFE498B_gv_aP_Triggers_skipCutscenes = true;
         libABFE498B_gv_aP_Triggers_DebugMode = true;
-        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 1;
+        libABFE498B_gv_aP_Triggers_Option_HeroPresence = 0;
+        libABFE498B_gf_AP_Triggers_Debug_Tech(gv_pLAYER_01_USER, 0);
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
-        libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 2);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
     }
 
@@ -1249,7 +1311,7 @@ bool gt_Init02Players_Func (bool testConds, bool runActions) {
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_04_INFESTEDREFUGEES, libNtve_ge_AllianceSetting_Enemy);
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_05_REFUGEES, libNtve_ge_AllianceSetting_AllyWithSharedVisionAndPushable);
     libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_06_INFESTORS, libNtve_ge_AllianceSetting_Enemy);
-    libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_08_SWANN, libNtve_ge_AllianceSetting_Ally);
+    libNtve_gf_SetAlliance(gv_pLAYER_01_USER, gv_pLAYER_08_SWANN, libNtve_ge_AllianceSetting_AllyWithSharedVision);
     libNtve_gf_SetAlliance(gv_pLAYER_02_REFUGEES, gv_pLAYER_05_REFUGEES, libNtve_ge_AllianceSetting_Neutral);
     libNtve_gf_SetAlliance(gv_pLAYER_02_REFUGEES, gv_pLAYER_06_INFESTORS, libNtve_ge_AllianceSetting_NeutralWithSharedVision);
     libNtve_gf_SetAlliance(gv_pLAYER_02_REFUGEES, gv_pLAYER_08_SWANN, libNtve_ge_AllianceSetting_Neutral);
@@ -1265,6 +1327,7 @@ bool gt_Init02Players_Func (bool testConds, bool runActions) {
     libNtve_gf_SetAlliance(gv_pLAYER_06_INFESTORS, gv_pLAYER_08_SWANN, libNtve_ge_AllianceSetting_Neutral);
     PlayerModifyPropertyInt(gv_pLAYER_01_USER, c_playerPropMinerals, c_playerPropOperSetTo, 400);
     PlayerModifyPropertyInt(gv_pLAYER_01_USER, c_playerPropVespene, c_playerPropOperSetTo, 100);
+    PlayerModifyPropertyInt(gv_pLAYER_08_SWANN, c_playerPropSuppliesMade, c_playerPropOperSetTo, 100);
     PlayerGroupAdd(gv_zergPlayerGroup, gv_pLAYER_02_REFUGEES);
     PlayerGroupAdd(gv_zergPlayerGroup, gv_pLAYER_03_INFESTED_REFUGEES);
     PlayerGroupAdd(gv_zergPlayerGroup, gv_pLAYER_04_INFESTEDREFUGEES);
@@ -1293,6 +1356,18 @@ bool gt_Init03Units_Func (bool testConds, bool runActions) {
     unitgroup autoC2C40852_g;
     int autoC2C40852_u;
     unit autoC2C40852_var;
+    unitgroup auto45C84B0D_g;
+    int auto45C84B0D_u;
+    unit auto45C84B0D_var;
+    unitgroup autoD11C4E77_g;
+    int autoD11C4E77_u;
+    unit autoD11C4E77_var;
+    unitgroup auto211956BF_g;
+    int auto211956BF_u;
+    unit auto211956BF_var;
+    unitgroup auto42EFA45A_g;
+    int auto42EFA45A_u;
+    unit auto42EFA45A_var;
 
     // Variable Initialization
 
@@ -1352,6 +1427,34 @@ bool gt_Init03Units_Func (bool testConds, bool runActions) {
         autoC2C40852_var = UnitGroupUnitFromEnd(autoC2C40852_g, autoC2C40852_u);
         if (autoC2C40852_var == null) { break; }
         UnitSetPropertyFixed(autoC2C40852_var, c_unitPropEnergyPercent, 100.0);
+    }
+    auto45C84B0D_g = UnitGroup("AP_Medic", gv_pLAYER_01_USER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto45C84B0D_u = UnitGroupCount(auto45C84B0D_g, c_unitCountAll);
+    for (;; auto45C84B0D_u -= 1) {
+        auto45C84B0D_var = UnitGroupUnitFromEnd(auto45C84B0D_g, auto45C84B0D_u);
+        if (auto45C84B0D_var == null) { break; }
+        UnitSetPropertyFixed(auto45C84B0D_var, c_unitPropEnergyPercent, 100.0);
+    }
+    autoD11C4E77_g = UnitGroup("AP_Queen", gv_pLAYER_01_USER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoD11C4E77_u = UnitGroupCount(autoD11C4E77_g, c_unitCountAll);
+    for (;; autoD11C4E77_u -= 1) {
+        autoD11C4E77_var = UnitGroupUnitFromEnd(autoD11C4E77_g, autoD11C4E77_u);
+        if (autoD11C4E77_var == null) { break; }
+        UnitSetPropertyFixed(autoD11C4E77_var, c_unitPropEnergyPercent, 100.0);
+    }
+    auto211956BF_g = UnitGroup("AP_SentryPurifier", gv_pLAYER_01_USER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto211956BF_u = UnitGroupCount(auto211956BF_g, c_unitCountAll);
+    for (;; auto211956BF_u -= 1) {
+        auto211956BF_var = UnitGroupUnitFromEnd(auto211956BF_g, auto211956BF_u);
+        if (auto211956BF_var == null) { break; }
+        UnitSetPropertyFixed(auto211956BF_var, c_unitPropEnergyPercent, 100.0);
+    }
+    auto42EFA45A_g = UnitGroup("AP_ShieldBattery", gv_pLAYER_01_USER, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto42EFA45A_u = UnitGroupCount(auto42EFA45A_g, c_unitCountAll);
+    for (;; auto42EFA45A_u -= 1) {
+        auto42EFA45A_var = UnitGroupUnitFromEnd(auto42EFA45A_g, auto42EFA45A_u);
+        if (auto42EFA45A_var == null) { break; }
+        UnitSetPropertyFixed(auto42EFA45A_var, c_unitPropEnergyPercent, 100.0);
     }
     return true;
 }
@@ -3388,12 +3491,17 @@ bool gt_IntroHellions_Func (bool testConds, bool runActions) {
     unit lv_factory;
     region lv_pickedRegion;
     unitgroup lv_introHellionGroup;
+    unitgroup lv_InfestationPit;
 
     // Automatic Variable Declarations
     string auto7E55C479_val;
+    unitgroup autoACA145E1_g;
+    int autoACA145E1_u;
+    unit autoACA145E1_var;
 
     // Variable Initialization
     lv_introHellionGroup = UnitGroupEmpty();
+    lv_InfestationPit = UnitGroupEmpty();
 
     // Conditions
     if (testConds) {
@@ -3408,22 +3516,35 @@ bool gt_IntroHellions_Func (bool testConds, bool runActions) {
     }
 
     TriggerEnable(TriggerGetCurrent(), false);
+    libABFE498B_gf_AP_Triggers_warpInSetup(gv_pLAYER_08_SWANN, null);
     while (!((TimerGetRemaining(gv_mainTimer) <= 210.0))) {
         Wait(0.1, c_timeGame);
     }
     auto7E55C479_val = libABFE498B_gv_aP_Triggers_Option_overridePlayerRace;
     if (auto7E55C479_val == "Prot") {
-        UnitCreate(1, "AP_ImmortalTaldarim", 0, gv_pLAYER_08_SWANN, PointFromId(1385), 270.0);
-        UnitGroupAddUnitGroup(lv_introHellionGroup, UnitLastCreatedGroup());
-        libCamp_gf_CreateDropPod(libCamp_ge_DropPodRace_Terran, PointFromId(930), lv_introHellionGroup, true);
-        libNtve_gf_RescueUnit2(lv_introHellionGroup, gv_pLAYER_01_USER, true);
-        SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "THanson02MusicSwann", c_soundtrackCueAny, c_soundtrackIndexAny, false);
+        libABFE498B_gf_AP_Triggers_warpInUnit("AP_ImmortalPurifier", gv_pLAYER_08_SWANN, PointWithOffset(PointFromId(930), 0.5, 0.5), true);
+        Wait(0.0625, c_timeGame);
+        libABFE498B_gf_AP_Triggers_warpInUnit("AP_ImmortalPurifier", gv_pLAYER_08_SWANN, PointWithOffset(PointFromId(930), -0.5, -0.5), true);
+        Wait(5.0625, c_timeGame);
+        autoACA145E1_g = UnitGroup("AP_ImmortalPurifier", gv_pLAYER_08_SWANN, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        autoACA145E1_u = UnitGroupCount(autoACA145E1_g, c_unitCountAll);
+        for (;; autoACA145E1_u -= 1) {
+            autoACA145E1_var = UnitGroupUnitFromEnd(autoACA145E1_g, autoACA145E1_u);
+            if (autoACA145E1_var == null) { break; }
+            libNtve_gf_RescueUnit(autoACA145E1_var, gv_pLAYER_01_USER, true);
+        }
+        lv_pickedRegion = gf_PickRegion();
+        gf_WarpInRoboticsFacility(lv_pickedRegion);
         TriggerExecute(gt_TransmissionHellionIntroQ, true, true);
     }
     else if (auto7E55C479_val == "Zerg") {
         UnitCreate(3, "AP_SwarmHost", 0, gv_pLAYER_01_USER, PointFromId(1385), 270.0);
         UnitGroupAddUnitGroup(lv_introHellionGroup, UnitLastCreatedGroup());
         libCamp_gf_CreateDropPod(libCamp_ge_DropPodRace_Zerg, PointFromId(930), lv_introHellionGroup, true);
+        lv_pickedRegion = gf_PickRegion();
+        UnitCreate(1, "AP_InfestationPit", 0, gv_pLAYER_01_USER, PointWithOffset(RegionGetCenter(lv_pickedRegion), -0.5, 0.0), 270.0);
+        UnitGroupAddUnitGroup(lv_InfestationPit, UnitLastCreatedGroup());
+        libCamp_gf_CreateDropPod(libCamp_ge_DropPodRace_Zerg, RegionGetCenter(lv_pickedRegion), lv_InfestationPit, true);
         SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "THanson02MusicSwann", c_soundtrackCueAny, c_soundtrackIndexAny, false);
         TriggerExecute(gt_TransmissionHellionIntroQ, true, true);
     }
@@ -3441,22 +3562,7 @@ bool gt_IntroHellions_Func (bool testConds, bool runActions) {
     }
 
     Wait(3.0, c_timeGame);
-    if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(41), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
-        lv_pickedRegion = RegionFromId(41);
-
-    }
-    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(46), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
-        lv_pickedRegion = RegionFromId(46);
-
-    }
-    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(47), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
-        lv_pickedRegion = RegionFromId(47);
-
-    }
-    else if ((UnitGroupCount(UnitGroup(null, c_playerAny, RegionFromId(48), UnitFilter((1 << c_targetFilterStructure), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive) == 0)) {
-        lv_pickedRegion = RegionFromId(48);
-
-    }
+    lv_pickedRegion = gf_PickRegion();
     if (((libABFE498B_gv_aP_Triggers_Option_overridePlayerRace == "Terr") || (libABFE498B_gv_aP_Triggers_Option_overridePlayerRace == "Neut"))) {
         gf_SpawnFactory(lv_pickedRegion);
         TriggerExecute(gt_TransmissionHellionIntroQ, true, true);
