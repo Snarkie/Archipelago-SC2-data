@@ -6714,9 +6714,25 @@
         <AlertIcon value="Assets\Textures\btn-ability-tychus-medivac.dds"/>
         <EditorCategories value="Race:Protoss"/>
     </CButton>
-    <CButton id="AP_MedivacSiegeTankAirlift">
+    <CButton id="AP_SiegeTankMengskAirlift">
         <Icon value="Assets\Textures\btn-ability-mengsk-siegetank-flyingtankarmament.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-mengsk-siegetank-flyingtankarmament.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_SiegeTankMengskSmartServos">
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_SiegeTankMengskNapalmRounds">
+        <Icon value="AP\Assets\Textures\btn-upgrade-terran-lava-strike.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-terran-lava-strike.dds"/>
+        <TooltipAppender Validator="AP_HaveSiegeTankMengskNapalmRoundsAndAirlift" Text="Button/Tooltip/AP_SiegeTankMengskNapalmRoundsAirliftWarning"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_SiegeTankMengskImprovedTankMode">
+        <Icon value="AP\Assets\Textures\btn-upgrade-terran-retrofitted-cannons.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-terran-retrofitted-cannons.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="AP_ReaperKineticFoam">
@@ -7449,12 +7465,6 @@
         <EditorCategories value="Race:Terran"/>
         <HotkeySet value="TankModes"/>
     </CButton>
-    <CButton id="AP_SiegeTankMengskBlink">
-        <Icon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-blink-color.dds"/>
-        <EditorCategories value="Race:Terran"/>
-        <Universal value="1"/>
-    </CButton>
     <CButton id="AP_GoliathMengskJump">
         <Icon value="Assets\Textures\btn-upgrade-terran-jumpjets.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-terran-jumpjets.dds"/>
@@ -7464,7 +7474,6 @@
         <Universal value="1"/>
     </CButton>
     <CButton id="AP_SiegeTankMengskVeterancy" parent="AP_RoyalGuardMengsk">
-        <TooltipAppender Text="Button/Tooltip/AP_SiegeTankMengskSpiderMines"/>
         <TooltipAppender Validator="AP_CasterLevelLT2" Text="Button/Tooltip/AP_SiegeTankMengskRank1Preview"/>
         <TooltipAppender Validator="AP_CasterLevelGTE2" Text="Button/Tooltip/AP_SiegeTankMengskRank1"/>
         <TooltipAppender Validator="AP_CasterLevelLT3" Text="Button/Tooltip/AP_SiegeTankMengskRank2Preview"/>
@@ -7543,6 +7552,21 @@
     <CButton id="AP_ThorMengskArmorAura">
         <Icon value="Assets\Textures\btn-ability-mengsk-thor-bigboycover.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-mengsk-thor-bigboycover.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_ThorMengskSmartServos">
+        <Icon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-mengsk-armory-smartservos.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_ThorMengskHammerOfTheLaw">
+        <Icon value="AP\Assets\Textures\btn-upgrade-hammer-of-the-law.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-hammer-of-the-law.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_ThorMengskInfernoBlitz">
+        <Icon value="Assets\Textures\btn-ability-stetmann-corruptormissilebarrage.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-stetmann-corruptormissilebarrage.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="AP_MarauderMengskShield">
@@ -7812,6 +7836,26 @@
         <Name value="Button/Name/AP_MengskCombatDiagnosis"/>
         <Tooltip value="Button/Tooltip/AP_MengskCombatDiagnosis"/>
         <TooltipAppender Text="Button/Tooltip/AP_GoliathMengskCombatDiagnosis"/>
+    </CButton>
+    <CButton id="AP_GoliathMengskMoebiusDefenseMatrix">
+        <Icon value="AP\Assets\Textures\btn-upgrade-defense-protocol.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-defense-protocol.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_GoliathMengskJumpJetsMKII">
+        <Icon value="AP\Assets\Textures\btn-upgrade-goliath-mengsk-cliff-jump.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-goliath-mengsk-cliff-jump.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_GoliathMengskParalysisInducers">
+        <Icon value="AP\Assets\Textures\btn-upgrade-terran-neural-inhibitors.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-terran-neural-inhibitors.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="AP_GoliathMengskAresClassTargetingAddon">
+        <Icon value="AP\Assets\Textures\btn-upgrade-terran-aresclasstargetingaddon.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-upgrade-terran-aresclasstargetingaddon.dds"/>
+        <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="AP_GoliathMengsk">
         <Icon value="AP\Assets\Textures\btn-unit-terran-goliath-mengsk.dds"/>

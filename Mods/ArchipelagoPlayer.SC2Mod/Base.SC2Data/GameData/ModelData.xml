@@ -20223,6 +20223,17 @@
         <Model value="Assets\COOP\Mengsk\Effects\SiegeTank_Mengsk_COOP_Impact_Air\SiegeTank_Mengsk_COOP_Impact_Air.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
+    <CModel id="AP_SiegeTankMengskNapalmRounds" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Neutral\GroundFire_Coop\GroundFire_Coop.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.800000,0.800000,0.100000"/>
+        <ScaleMin value="0.800000,0.800000,0.100000"/>
+    </CModel>
+    <CModel id="AP_SiegeTankMengskTankModeSplashImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\Griffin_BombRun_Impact_COOP\Griffin_BombRun_Impact_COOP.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
     <CModel id="AP_SiegeTankMengskSiegedAttackImprovedAoEDamage" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\FireImpact\FireImpact.m3"/>
         <EditorCategories value="Race:Terran"/>
@@ -20324,9 +20335,9 @@
         </Events>
     </CModel>
     <CModel id="AP_SiegeTankMengskPortrait" parent="SiegeTankPortraitBase">
-        <Model value="Assets\Portraits\Terran\SiegeTankPortrait\SiegeTankPortrait.m3"/>
-        <Image value="Assets\Textures\SiegeTankPortrait_Static.dds"/>
-        <Lighting value="SiegeTankPortrait"/>
+        <Model value="AP\Assets\Units\Terran\SiegeTankMengsk\Siegetank_mengsk_collection_portrait.m3"/>
+        <Image value="AP\Assets\Textures\siegetank_mengsk_collection_portrait_static.dds"/>
+        <Lighting value="Banshee_Junker_Collection_Portrait"/>
     </CModel>
     <CModel id="AP_SiegeTankMengskSiegedAttackDamage" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\FireImpact\FireImpact.m3"/>
@@ -20460,8 +20471,8 @@
     </CModel>
     <CModel id="AP_ThorMengsk" parent="ThorBase">
         <Model value="Assets\COOP\Mengsk\Units\Thor_Mengsk_COOP\Thor_Mengsk_COOP.m3"/>
-        <ScaleMax value="0.550000,0.550000,0.550000"/>
-        <ScaleMin value="0.550000,0.550000,0.550000"/>
+        <ScaleMax value="0.620000,0.620000,0.620000"/>
+        <ScaleMin value="0.620000,0.620000,0.620000"/>
         <Events>
             <Anim value="Spell,A,00"/>
             <Name value="TerranMengsk_ServoMv_Clunk_01"/>
@@ -20603,9 +20614,9 @@
         <EditorCategories value="Race:Terran"/>
     </CModel>
     <CModel id="AP_ThorMengskPortrait" parent="ThorPortraitBase">
-        <Model value="Assets\Portraits\Terran\ThorPortrait\ThorPortrait.m3"/>
-        <Image value="Assets\Textures\ThorPortrait_Static.dds"/>
-        <Lighting value="ThorPortrait"/>
+        <Model value="AP\Assets\Units\Terran\ThorMengsk\Thor_Mengsk_Collection_Portrait.m3"/>
+        <Image value="AP\Assets\Textures\thor_mengsk_collection_portrait_static.dds"/>
+        <Lighting value="Thor_Umojan_Portrait"/>
     </CModel>
     <CModel id="AP_ThorMengskSiegedAirAttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\WidowMineAirImpact\WidowMineAirImpact.m3"/>
@@ -21173,6 +21184,14 @@
         <Model value="AP\Assets\Units\Terran\GoliathMengsk\Goliath_Mengsk_COOP.m3"/>
         <TextureDeclares index="0" removed="1"/>
         <Variations index="0" removed="1"/>
+        <AttachProps Id="Ref_Origin" SquibType="Shield" RadiusShield="2.500000">
+            <Keys index="Shield" value="1"/>
+        </AttachProps>
+    </CModel>
+    <CModel id="AP_GoliathMengskPortrait" parent="AP_GoliathPortrait">
+        <Model value="AP\Assets\Units\Terran\GoliathMengsk\GoliathMengskPortrait.m3"/>
+        <Image value="AP\Assets\Textures\goliath_mengsk_portrait_static.dds"/>
+        <Lighting value="MarinePortrait"/>
     </CModel>
     <CModel id="AP_GoliathMengskDeath" parent="AP_GoliathDeath">
         <Model value="AP\Assets\Units\Terran\GoliathMengsk\Goliath_Mengsk_COOP_Death.m3"/>
@@ -22285,12 +22304,6 @@
     </CModel>
     <CModel id="AP_StalkerPurifierReconstructionAttachment">
         <Model value="Assets\Effects\Zerg\Void_Kerrigan_QuantumRay_Hand_Charge\Void_Kerrigan_QuantumRay_Hand_Charge.m3"/>
-    </CModel>
-    <CModel id="AP_ThorMengskWreckageAttachment">
-        <Model value="Assets\Units\Terran\SiegeTankRebuild\SiegeTankRebuild.m3"/>
-    </CModel>
-    <CModel id="AP_ThorMengskWreckageAttachmentLightning">
-        <Model value="Assets\Doodads\ZerusLightning\ZerusLightning.m3"/>
     </CModel>
     <CModel id="AP_SupplicantDeath">
         <Model value="Assets\Effects\Protoss\HighTemplarTaldarim_MindBlast\HighTemplarTaldarim_MindBlast.m3"/>

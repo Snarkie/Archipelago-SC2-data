@@ -190,6 +190,7 @@ void libABFE498B_gf_AP_Triggers_unlockTerranArmory5 (int lp_player, int lp_bitAr
 void libABFE498B_gf_AP_Triggers_unlockTerranArmory6 (int lp_player, int lp_bitArrayValue);
 void libABFE498B_gf_AP_Triggers_unlockTerranArmory7 (int lp_player, int lp_bitArrayValue);
 void libABFE498B_gf_AP_Triggers_unlockTerranArmory8 (int lp_player, int lp_bitArrayValue);
+void libABFE498B_gf_AP_Triggers_unlockTerranArmory9 (int lp_player, int lp_bitArrayValue);
 void libABFE498B_gf_AP_Triggers_unlockTerranLaboratory (int lp_player, int lp_bitArrayValue);
 void libABFE498B_gf_AP_Triggers_unlockTerranMercenaries (int lp_player, int lp_bitArrayValue);
 void libABFE498B_gf_AP_Triggers_unlockTerranBuildings (int lp_player, int lp_bitArrayValue);
@@ -383,7 +384,7 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankAdvancedSiegeTech (int lp_
 void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankInternalTechModule (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankShapedHull (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankResourceEfficiency (int lp_player);
-void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankProgressiveTransportHook (int lp_player, int lp_level);
+void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankTransportHook (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockSiegeTankEnhancedCombustionEngines (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockPredatorResourceEfficiency (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockPredatorCloak (int lp_player);
@@ -527,6 +528,18 @@ void libABFE498B_gf_AP_Triggers_Terran_unlockNightWolfShockwaveArtillery (int lp
 void libABFE498B_gf_AP_Triggers_Terran_unlockNightWolfPreyseekerMissiles (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockNightWolfEnergizedBacklash (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockNightWolfElusiveRotors (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockShockDivisionSmartServos (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockShockDivisionNapalmStrike (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockShockDivisionRetrofittedCannons (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockShockDivisionArmamentStabilizers (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBulwarkCompanyMoebiusShielding (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBulwarkCompanyAresClassTargetingAddon (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBulwarkCompanyJumpJetsMKII (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBulwarkCompanyNeuralShutdown (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBlackhammerHammerOfTheLaw (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBlackhammerInfernoBlitz (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBlackhammerSmartServos (int lp_player);
+void libABFE498B_gf_AP_Triggers_Terran_unlockBlackhammerBulwarkField (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockHiveMindEmulatorZerg (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockHiveMindEmulatorProtoss (int lp_player);
 void libABFE498B_gf_AP_Triggers_Terran_unlockHiveMindEmulatorTerran (int lp_player);

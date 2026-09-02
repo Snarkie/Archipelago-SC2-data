@@ -278,6 +278,18 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_NotPossibleSiegeMode" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeNotPossibleTankModeCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_NotPossibleTankMode" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeNotPossibleWalkerModeCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_NotPossibleWalkerMode" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeNotPossibleOverwatchModeCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_NotPossibleOverwatchMode" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_CountUpgradeMaelstromRoundsCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_MaelstromRounds" State="CompleteOnly"/>
@@ -6677,8 +6689,20 @@
         <Count Link="AP_SiegeTankTransportHook" State="CompleteOnly"/>
         <Flags index="TechTreeCheat" value="0"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_CountUpgradeMedivacSiegeTankAirliftCompleteOnly">
-        <Count Link="AP_MedivacSiegeTankAirlift" State="CompleteOnly"/>
+    <CRequirementCountUpgrade id="AP_CountUpgradeSiegeTankMengskAirliftCompleteOnly">
+        <Count Link="AP_SiegeTankMengskAirlift" State="CompleteOnly"/>
+        <Flags index="TechTreeCheat" value="0"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeSiegeTankMengskSmartServosCompleteOnly">
+        <Count Link="AP_SiegeTankMengskSmartServos" State="CompleteOnly"/>
+        <Flags index="TechTreeCheat" value="0"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeSiegeTankMengskNapalmRoundsCompleteOnly">
+        <Count Link="AP_SiegeTankMengskNapalmRounds" State="CompleteOnly"/>
+        <Flags index="TechTreeCheat" value="0"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeSiegeTankMengskImprovedTankModeCompleteOnly">
+        <Count Link="AP_SiegeTankMengskImprovedTankMode" State="CompleteOnly"/>
         <Flags index="TechTreeCheat" value="0"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_CountUpgradeResourceEfficiencyReaperCompleteOnly">
@@ -7353,9 +7377,14 @@
         <OperandArray index="0" value="AP_CountBehaviorMengskVeterancySiegeTankMengskCompleteOnlyAtUnit"/>
         <OperandArray index="1" value="2"/>
     </CRequirementGTE>
-    <CRequirementAnd id="AP_AndGTECountBehaviorMengskVeterancySiegeTankMengskCompleteOnlyAtUnit2CountUpgradeNotPossibleSiegeModeCompleteOnly">
-        <OperandArray value="AP_GTECountBehaviorMengskVeterancySiegeTankMengskCompleteOnlyAtUnit2"/>
-        <OperandArray value="AP_CountUpgradeNotPossibleSiegeModeCompleteOnly"/>
+    <CRequirementOr id="AP_SiegeTankMengskTankModeStunAccess">
+        <Tooltip value="Upgrade/Name/AP_NotPossibleSiegeMode"/>
+        <OperandArray index="0" value="AP_CountUpgradeSiegeTankMengskImprovedTankModeCompleteOnly"/>
+        <OperandArray index="1" value="AP_CountUpgradeNotPossibleSiegeModeCompleteOnly"/>
+    </CRequirementOr>
+    <CRequirementAnd id="AP_SiegeTankMengskTankModeStunRequirements">
+        <OperandArray index="0" value="AP_GTECountBehaviorMengskVeterancySiegeTankMengskCompleteOnlyAtUnit2"/>
+        <OperandArray index="1" value="AP_SiegeTankMengskTankModeStunAccess"/>
     </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_CountUpgradeWarpRelocateCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -7376,6 +7405,18 @@
     <CRequirementCountUpgrade id="AP_CountUpgradeThorMengskArmorAuraCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_ThorMengskArmorAura" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeThorMengskSmartServosCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_ThorMengskSmartServos" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeThorMengskHammerOfTheLawCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_ThorMengskHammerOfTheLaw" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeThorMengskInfernoBlitzCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_ThorMengskInfernoBlitz" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountBehavior id="AP_CountBehaviorMengskVeterancyMarauderMengskCompleteOnlyAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -7564,6 +7605,22 @@
         <OperandArray index="0" value="AP_CountBehaviorMengskVeterancyGoliathMengskCompleteOnlyAtUnit"/>
         <OperandArray index="1" value="4"/>
     </CRequirementGTE>
+    <CRequirementCountUpgrade id="AP_CountUpgradeGoliathMengskMoebiusDefenseMatrixCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_GoliathMengskMoebiusDefenseMatrix" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeGoliathMengskJumpJetsMKIICompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_GoliathMengskJumpJetsMKII" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeGoliathMengskParalysisInducersCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_GoliathMengskParalysisInducers" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_CountUpgradeGoliathMengskAresClassTargetingAddonCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AP_GoliathMengskAresClassTargetingAddon" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_CountUpgradeStalwartLatticedShieldsCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_StalwartLatticedShields" State="CompleteOnly"/>

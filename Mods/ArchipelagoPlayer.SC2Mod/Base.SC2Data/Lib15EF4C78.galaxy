@@ -9165,10 +9165,6 @@ bool lib15EF4C78_gt_MedivacTankPickup_Func (bool testConds, bool runActions) {
 
     lv_medivac = EventUnit();
     lv_tank = EventUnitCargo();
-    if ((TechTreeUpgradeCount(UnitGetOwner(lv_medivac), "AP_MedivacSiegeTankAirlift", c_techCountQueuedOrBetter) >= 1)) {
-        UnitBehaviorAdd(lv_medivac, "AP_MedivacSiegeTankAirlift", lv_tank, 1);
-    }
-
     UnitBehaviorAdd(lv_medivac, "AP_SiegeTankSiegeModeProgressiveRangeIncease", lv_tank, UnitBehaviorCount(lv_tank, "AP_SiegeTankSiegeModeProgressiveRangeIncease"));
     return true;
 }
@@ -9248,10 +9244,6 @@ bool lib15EF4C78_gt_MedivacMercTankPickup_Func (bool testConds, bool runActions)
 
     lv_medivac = EventUnit();
     lv_tank = EventUnitCargo();
-    if ((TechTreeUpgradeCount(UnitGetOwner(lv_medivac), "AP_MedivacSiegeTankAirlift", c_techCountQueuedOrBetter) >= 1)) {
-        UnitBehaviorAdd(lv_medivac, "AP_MedivacMercSiegeTankAirlift", lv_tank, 1);
-    }
-
     UnitBehaviorAdd(lv_medivac, "AP_SiegeTankSiegeModeProgressiveRangeIncease", lv_tank, UnitBehaviorCount(lv_tank, "AP_SiegeTankSiegeModeProgressiveRangeIncease"));
     return true;
 }
@@ -9331,10 +9323,6 @@ bool lib15EF4C78_gt_MedivacInfestedTankPickup_Func (bool testConds, bool runActi
 
     lv_medivac = EventUnit();
     lv_tank = EventUnitCargo();
-    if ((TechTreeUpgradeCount(UnitGetOwner(lv_medivac), "AP_MedivacSiegeTankAirlift", c_techCountQueuedOrBetter) >= 1)) {
-        UnitBehaviorAdd(lv_medivac, "AP_MedivacInfestedSiegeBreakerAirlift", lv_tank, 1);
-    }
-
     UnitBehaviorAdd(lv_medivac, "AP_SiegeTankSiegeModeProgressiveRangeIncease", lv_tank, UnitBehaviorCount(lv_tank, "AP_SiegeTankSiegeModeProgressiveRangeIncease"));
     return true;
 }
@@ -9414,8 +9402,8 @@ bool lib15EF4C78_gt_MedivacShockDivisionPickup_Func (bool testConds, bool runAct
 
     lv_medivac = EventUnit();
     lv_tank = EventUnitCargo();
-    if ((TechTreeUpgradeCount(UnitGetOwner(lv_medivac), "AP_MedivacSiegeTankAirlift", c_techCountQueuedOrBetter) >= 1)) {
-        UnitBehaviorAdd(lv_medivac, "AP_MedivacMengskSiegeTankAirlift", lv_tank, 1);
+    if ((TechTreeUpgradeCount(UnitGetOwner(lv_medivac), "AP_SiegeTankMengskAirlift", c_techCountQueuedOrBetter) >= 1)) {
+        UnitBehaviorAdd(lv_medivac, "AP_SiegeTankMengskAirlift", lv_tank, 1);
     }
 
     UnitBehaviorAdd(lv_medivac, "AP_SiegeTankSiegeModeProgressiveRangeIncease", lv_tank, UnitBehaviorCount(lv_tank, "AP_SiegeTankSiegeModeProgressiveRangeIncease"));
@@ -9466,7 +9454,7 @@ bool lib15EF4C78_gt_MedivacShockDivisionDrop_Func (bool testConds, bool runActio
 
     lv_medivac = EventUnit();
     lv_tank = EventUnitCargo();
-    UnitBehaviorRemove(lv_medivac, "AP_MedivacMengskSiegeTankAirlift", 1);
+    UnitBehaviorRemove(lv_medivac, "AP_SiegeTankMengskAirlift", 1);
     UnitBehaviorRemove(lv_medivac, "AP_SiegeTankSiegeModeProgressiveRangeIncease", c_unitBehaviorCountAll);
     UnitBehaviorAdd(lv_tank, "AP_VeterancySuppressEffects", lv_tank, 1);
     UnitXPSetCurrentXP(lv_tank, "AP_MengskVeterancySiegeTankMengsk", UnitXPGetCurrentXP(lv_medivac, "AP_MengskVeterancyMedivac"));

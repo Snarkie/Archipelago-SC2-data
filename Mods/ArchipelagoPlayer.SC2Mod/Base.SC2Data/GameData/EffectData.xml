@@ -9758,7 +9758,8 @@
         <EditorCategories value="Race:Protoss"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="30"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
@@ -11771,6 +11772,7 @@
     </CEffectTeleport>
     <CEffectCreateUnit id="AP_GoliathMengskJump">
         <ValidatorArray value="AP_CasterNotFungalGrowthed"/>
+        <ValidatorArray value="AP_GoliathMengskJumpTargetVision"/>
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Birth" value="0"/>
@@ -11933,7 +11935,9 @@
         <EditorCategories value="Race:Zerg"/>
         <AttributeBonus index="Structure" value="40"/>
         <Kind value="Splash"/>
-        <Amount value="40"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
+        </Amount>
         <Death value="Disintegrate"/>
     </CEffectDamage>
     <CEffectSet id="AP_HotSBanelingExplodeLargeFriendlySet">
@@ -20622,68 +20626,6 @@
     <CEffectApplyBehavior id="AP_DetectorRadarDetected">
         <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
-    <CEffectSet id="AP_CrucioShockCannonAirliftSet">
-        <EditorCategories value="Race:Terran"/>
-        <EffectArray value="AP_CrucioShockCannonAirliftBlast"/>
-        <EffectArray value="AP_CrucioShockCannonAirliftDirected"/>
-        <EffectArray value="AP_MaelstromRounds"/>
-    </CEffectSet>
-    <CEffectDamage id="AP_CrucioShockCannonAirliftDirected" parent="AP_CrucioShockCannonDirected"/>
-    <CEffectDamage id="AP_CrucioShockCannonAirliftBlast">
-        <ValidatorArray value="TargetRadiusSmall"/>
-        <EditorCategories value="Race:Terran"/>
-        <Marker Link="Effect/AP_CrucioShockCannonBlast"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <ArmorReduction value="1"/>
-        <Flags index="Notification" value="1"/>
-        <Kind value="Ranged"/>
-        <KindSplash value="Splash"/>
-        <Amount value="100"/>
-        <Death value="Blast"/>
-        <AreaArray Radius="0.4687" Fraction="1"/>
-        <AreaArray Radius="0.7812" Fraction="0.5"/>
-        <AreaArray Radius="1.25" Fraction="0.25"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFilters value="Air;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="OffsetAreaByAngle" value="1"/>
-    </CEffectDamage>
-    <CEffectSet id="AP_ArcliteShockCannonAirliftSet">
-        <EditorCategories value="Race:Terran"/>
-        <EffectArray value="AP_ArcliteShockCannonAirliftBlast"/>
-        <EffectArray value="AP_ArcliteShockCannonAirliftDirected"/>
-        <EffectArray value="AP_MaelstromRounds"/>
-    </CEffectSet>
-    <CEffectDamage id="AP_ArcliteShockCannonAirliftDirected" parent="AP_ArcliteShockCannonDirected"/>
-    <CEffectDamage id="AP_ArcliteShockCannonAirliftBlast">
-        <ValidatorArray value="TargetRadiusSmall"/>
-        <EditorCategories value="Race:Terran"/>
-        <Marker Link="Effect/AP_CrucioShockCannonBlast"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-        <ArmorReduction value="1"/>
-        <Flags index="Notification" value="1"/>
-        <Kind value="Ranged"/>
-        <KindSplash value="Splash"/>
-        <Amount value="100"/>
-        <Death value="Blast"/>
-        <AreaArray Radius="0.4687" Fraction="1"/>
-        <AreaArray Radius="0.7812" Fraction="0.5"/>
-        <AreaArray Radius="1.25" Fraction="0.25"/>
-        <ExcludeArray Value="Target"/>
-        <SearchFilters value="Air;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <SearchFlags index="CallForHelp" value="1"/>
-        <SearchFlags index="OffsetAreaByAngle" value="1"/>
-    </CEffectDamage>
-    <CEffectSet id="AP_InfestedArcliteShockCannonAirliftSet">
-        <EditorCategories value="Race:Terran"/>
-        <EffectArray value="AP_InfestedArcliteShockCannonAirliftBlast"/>
-        <EffectArray value="AP_InfestedArcliteShockCannonAirliftDirected"/>
-        <EffectArray value="AP_MaelstromRounds"/>
-    </CEffectSet>
-    <CEffectDamage id="AP_InfestedArcliteShockCannonAirliftDirected" parent="AP_ArcliteShockCannonAirliftDirected"/>
-    <CEffectDamage id="AP_InfestedArcliteShockCannonAirliftBlast" parent="AP_ArcliteShockCannonAirliftBlast"/>
     <CEffectApplyBehavior id="AP_GrapplePullApplyBehavior">
         <ValidatorArray value="NotViking"/>
         <EditorCategories value="Race:Zerg"/>
@@ -22893,13 +22835,14 @@
         <Marker Link="Effect/CrucioShockCannonBlast"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeFactor index="Armored" value="0.75"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="40">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
         <AreaArray Radius="0.6562" Fraction="1"/>
@@ -22914,6 +22857,7 @@
         <EffectArray value="AP_SiegeTankMengskSiegedDirected"/>
         <EffectArray value="AP_SiegeTankMengskSiegedImprovedAoEBlast"/>
         <EffectArray value="AP_SiegeTankMengskSiegedImprovedAoEStunSearch"/>
+        <EffectArray value="AP_SiegeTankMengskNapalmRounds"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_SiegeTankMengskSiegedSlowHeroicAB">
         <ValidatorArray index="0" value="AP_IsHeroic"/>
@@ -22935,13 +22879,13 @@
         <SearchFilters value="Ground;Player,Ally,Neutral,Structure,Missile,Destructible,Item,Stasis,Dead,Invulnerable"/>
         <AreaArray Radius="1.75" Effect="AP_SiegeTankMengskSiegedStunSet"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="AP_MedivacMengskSiegeTankAirliftStunSearch">
+    <CEffectEnumArea id="AP_SiegeTankMengskAirliftStunSearch">
         <ValidatorArray value="AP_CasterLevelGTE2"/>
         <EditorCategories value=""/>
         <SearchFilters value="Air;Player,Ally,Neutral,Structure,Missile,Destructible,Item,Stasis,Dead,Invulnerable"/>
         <AreaArray Radius="1.25" Effect="AP_SiegeTankMengskSiegedStunSet"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="AP_MedivacMengskSiegeTankAirliftImprovedAoEStunSearch" parent="AP_MedivacMengskSiegeTankAirliftStunSearch">
+    <CEffectEnumArea id="AP_SiegeTankMengskAirliftImprovedAoEStunSearch" parent="AP_SiegeTankMengskAirliftStunSearch">
         <AreaArray index="0" Radius="1.75"/>
     </CEffectEnumArea>
     <CEffectSet id="AP_SiegeTankMengskSiegedStunSet">
@@ -22956,33 +22900,36 @@
         <CaseArray Validator="AP_CasterLevelGTE4" Effect="AP_SiegeTankMengskSiegedImprovedAoESet"/>
         <CaseDefault value="AP_SiegeTankMengskSiegedSet"/>
     </CEffectSwitch>
-    <CEffectSwitch id="AP_MedivacMengskSiegeTankAirliftSwitch">
+    <CEffectSwitch id="AP_SiegeTankMengskAirliftSwitch">
         <EditorCategories value=""/>
-        <CaseArray Validator="AP_CasterLevelGTE4" Effect="AP_MedivacMengskSiegeTankAirliftImprovedAoESet"/>
-        <CaseDefault value="AP_MedivacMengskSiegeTankAirliftSet"/>
+        <CaseArray Validator="AP_CasterLevelGTE4" Effect="AP_SiegeTankMengskAirliftImprovedAoESet"/>
+        <CaseDefault value="AP_SiegeTankMengskAirliftSet"/>
     </CEffectSwitch>
-    <CEffectSet id="AP_MedivacMengskSiegeTankAirliftImprovedAoESet">
-        <EffectArray value="AP_MedivacMengskSiegeTankAirliftDirected"/>
-        <EffectArray value="AP_MedivacMengskSiegeTankAirliftImprovedAoEBlast"/>
-        <EffectArray value="AP_MedivacMengskSiegeTankAirliftImprovedAoEStunSearch"/>
+    <CEffectSet id="AP_SiegeTankMengskAirliftImprovedAoESet">
+        <EffectArray value="AP_SiegeTankMengskAirliftDirected"/>
+        <EffectArray value="AP_SiegeTankMengskAirliftImprovedAoEBlast"/>
+        <EffectArray value="AP_SiegeTankMengskAirliftImprovedAoEStunSearch"/>
     </CEffectSet>
-    <CEffectSet id="AP_MedivacMengskSiegeTankAirliftSet">
-        <EffectArray value="AP_MedivacMengskSiegeTankAirliftDirected"/>
-        <EffectArray value="AP_MedivacMengskSiegeTankAirliftBlast"/>
-        <EffectArray value="AP_MedivacMengskSiegeTankAirliftStunSearch"/>
+    <CEffectSet id="AP_SiegeTankMengskAirliftSet">
+        <EffectArray value="AP_SiegeTankMengskAirliftDirected"/>
+        <EffectArray value="AP_SiegeTankMengskAirliftBlast"/>
+        <EffectArray value="AP_SiegeTankMengskAirliftStunSearch"/>
     </CEffectSet>
-    <CEffectDamage id="AP_MedivacMengskSiegeTankAirliftImprovedAoEBlast">
+    <CEffectDamage id="AP_SiegeTankMengskAirliftImprovedAoEBlast">
         <ValidatorArray value="TargetRadiusSmall"/>
         <EditorCategories value="Race:Terran"/>
         <Marker Link="Effect/CrucioShockCannonBlast"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="30"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="40"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
+        </Amount>
         <Death value="Blast"/>
         <AreaArray Radius="0.6562" Fraction="1"/>
         <AreaArray Radius="1.0937" Fraction="0.5"/>
@@ -22992,18 +22939,21 @@
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="OffsetAreaByAngle" value="1"/>
     </CEffectDamage>
-    <CEffectDamage id="AP_MedivacMengskSiegeTankAirliftBlast">
+    <CEffectDamage id="AP_SiegeTankMengskAirliftBlast">
         <ValidatorArray value="TargetRadiusSmall"/>
         <EditorCategories value="Race:Terran"/>
         <Marker Link="Effect/CrucioShockCannonBlast"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="30"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="40"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
+        </Amount>
         <Death value="Blast"/>
         <AreaArray Radius="0.4687" Fraction="1"/>
         <AreaArray Radius="0.7812" Fraction="0.5"/>
@@ -23013,20 +22963,23 @@
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="OffsetAreaByAngle" value="1"/>
     </CEffectDamage>
-    <CEffectDamage id="AP_MedivacMengskSiegeTankAirliftDirected">
+    <CEffectDamage id="AP_SiegeTankMengskAirliftDirected">
         <ValidatorArray value="TargetRadiusLarge"/>
         <EditorCategories value="Race:Terran"/>
         <Marker Link="Effect/CrucioShockCannonDirected"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Armored" value="30"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="40"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
+        </Amount>
         <Death value="Blast"/>
-        <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Air;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
         <SearchFlags index="OffsetAreaByAngle" value="1"/>
@@ -23037,13 +22990,14 @@
         <Marker Link="Effect/CrucioShockCannonBlast"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeFactor index="Armored" value="0.75"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="40">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
         <AreaArray Radius="0.4687" Fraction="1"/>
@@ -23060,13 +23014,14 @@
         <Marker Link="Effect/CrucioShockCannonDirected"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeFactor index="Armored" value="0.75"/>
+        <AttributeBonus index="Armored" value="-5"/>
+        <AttributeFactor index="Armored" value="1"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="40">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="45">
+            <AccumulatorArray value="AP_5DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
         <SearchFilters value="Ground;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -23074,30 +23029,80 @@
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
         <SearchFlags index="OffsetAreaByAngle" value="1"/>
     </CEffectDamage>
-    <CEffectDamage id="AP_SiegeTankMengskSiegedDummy" parent="DU_WEAP">
-        <EditorCategories value="Race:Terran"/>
-        <AttributeFactor index="Armored" value="0.75"/>
-        <Kind value="Splash"/>
-        <KindSplash value="Splash"/>
-        <Amount value="40">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
-        </Amount>
-        <Death value="Blast"/>
-    </CEffectDamage>
     <CEffectSet id="AP_SiegeTankMengskSiegedSet">
         <EffectArray value="AP_SiegeTankMengskSiegedDirected"/>
         <EffectArray value="AP_SiegeTankMengskSiegedBlast"/>
         <EffectArray value="AP_SiegeTankMengskSiegedStunSearch"/>
+        <EffectArray value="AP_SiegeTankMengskNapalmRounds"/>
     </CEffectSet>
     <CEffectModifyUnit id="AP_90mmCannonsMengskLookAt"/>
     <CEffectDamage id="AP_SiegeTankMengskDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <AttributeFactor index="Armored" value="0.6"/>
+        <AttributeBonus index="Armored" value="-1"/>
+        <AttributeFactor index="Armored" value="0.666667"/>
         <Kind value="Ranged"/>
         <Amount value="25">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+            <AccumulatorArray value="AP_3DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectSwitch id="AP_SiegeTankMengskNapalmRounds">
+        <ValidatorArray value="AP_HaveSiegeTankMengskNapalmRounds"/>
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="AP_CasterLevelGTE4" Effect="AP_SiegeTankMengskNapalmRoundsImprovedCP"/>
+        <CaseDefault value="AP_SiegeTankMengskNapalmRoundsCP"/>
+    </CEffectSwitch>
+    <CEffectDamage id="AP_SiegeTankMengskNapalmRoundsDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Visibility value="Hidden"/>
+        <Death value="Fire"/>
+        <Amount value="8"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="AP_SiegeTankMengskNapalmRoundsCP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <PeriodCount value="6"/>
+        <PeriodicEffectArray value="AP_SiegeTankMengskNapalmRoundsSearch"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="AP_SiegeTankMengskNapalmRoundsImprovedCP" parent="AP_SiegeTankMengskNapalmRoundsCP">
+        <PeriodicEffectArray index="0" value="AP_SiegeTankMengskNapalmRoundsImprovedSearch"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="AP_SiegeTankMengskNapalmRoundsSearch">
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.25" Effect="AP_SiegeTankMengskNapalmRoundsDamage"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="AP_SiegeTankMengskNapalmRoundsImprovedSearch" parent="AP_SiegeTankMengskNapalmRoundsSearch">
+        <AreaArray index="0" Radius="1.75"/>
+    </CEffectEnumArea>
+    <CEffectSet id="AP_SiegeTankMengskImprovedTankModeSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AP_SiegeTankMengskTankModeSplashSwitch"/>
+        <EffectArray value="AP_SiegeTankMengskTankModeStunSwitch"/>
+    </CEffectSet>
+    <CEffectSwitch id="AP_SiegeTankMengskTankModeSplashSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="AP_CasterLevelGTE4" Effect="AP_SiegeTankMengskTankModeImprovedSplash"/>
+        <CaseDefault value="AP_SiegeTankMengskTankModeSplash"/>
+    </CEffectSwitch>
+    <CEffectSwitch id="AP_SiegeTankMengskTankModeStunSwitch">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="AP_CasterLevelGTE4" Effect="AP_SiegeTankMengskSiegedImprovedAoEStunSearch"/>
+        <CaseDefault value="AP_SiegeTankMengskSiegedStunSearch"/>
+    </CEffectSwitch>
+    <CEffectDamage id="AP_SiegeTankMengskTankModeSplash" parent="AP_SiegeTankMengskDamage">
+        <EditorCategories value="Race:Terran"/>
+        <KindSplash value="Splash"/>
+        <AreaArray Radius="1.25" Fraction="0.2"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="AP_SiegeTankMengskTankModeImprovedSplash" parent="AP_SiegeTankMengskTankModeSplash">
+        <AreaArray index="0" Radius="1.75"/>
     </CEffectDamage>
     <CEffectModifyUnit id="AP_DeploySpiderMinesMengskAddCharge">
         <EditorCategories value="Race:Zerg"/>
@@ -23132,8 +23137,8 @@
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="8">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="10">
+            <AccumulatorArray value="AP_1DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
         <AreaArray Radius="1.5" Fraction="1"/>
@@ -23143,25 +23148,50 @@
     <CEffectLaunchMissile id="AP_ThorMengskSiegedLM">
         <ValidatorArray index="0" value="AP_ThorMengskSiegeTarget"/>
         <EditorCategories value="Race:Zerg"/>
+        <LaunchEffect value="AP_ThorMengskInfernoBlitzAB"/>
         <ImpactEffect value="AP_ThorMengskSiegedDamage"/>
         <AmmoUnit value="AP_ThorMengskSiegedWeapon"/>
     </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="AP_ThorMengskInfernoBlitzAB">
+        <ValidatorArray value="AP_HaveThorMengskInfernoBlitz"/>
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AP_ThorMengskInfernoBlitzStack"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AP_ThorMengskInfernoBlitzRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AP_ThorMengskInfernoBlitzStack"/>
+    </CEffectRemoveBehavior>
     <CEffectDamage id="AP_ThorsHammerMengskDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
-        <Amount value="65">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="75">
+            <AccumulatorArray value="AP_10DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
     </CEffectDamage>
+    <CEffectDamage id="AP_ThorsHammerMengskHammerOfTheLawSplash" parent="AP_ThorsHammerMengskDamage">
+        <ValidatorArray value="AP_HaveThorMengskHammerOfTheLaw"/>
+        <KindSplash value="Splash"/>
+        <AreaArray Radius="1.25" Fraction="0.2"/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="AP_ThorsHammerMengskImpactSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="AP_ThorsHammerMengskDamage"/>
+        <EffectArray value="AP_ThorsHammerMengskHammerOfTheLawSplash"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="AP_ThorsHammerMengsk">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <TimeScaleSource Value="Caster"/>
         <Flags index="Channeled" value="1"/>
         <PeriodCount value="2"/>
-        <PeriodicEffectArray value="AP_ThorsHammerMengskDamage"/>
-        <PeriodicEffectArray value="AP_ThorsHammerMengskDamage"/>
+        <PeriodicEffectArray value="AP_ThorsHammerMengskImpactSet"/>
+        <PeriodicEffectArray value="AP_ThorsHammerMengskImpactSet"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.375"/>
     </CEffectCreatePersistent>
@@ -23170,8 +23200,8 @@
         <AttributeFactor index="Light" value="0.5"/>
         <Kind value="Ranged"/>
         <KindSplash value="Splash"/>
-        <Amount value="12">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="14">
+            <AccumulatorArray value="AP_2DamagePerRank"/>
         </Amount>
         <Death value="Blast"/>
         <AreaArray Radius="0.5" Fraction="1"/>
@@ -23203,9 +23233,14 @@
         <AreaArray Radius="5" Effect="AP_ThorMengskArmorAuraTargetAB"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="AP_ThorMengskArmorAuraTargetAB">
-        <ValidatorArray value="AP_UnitNotCollideWithColossus"/>
         <EditorCategories value="Race:Terran"/>
         <Behavior value="AP_ThorMengskArmorAuraTarget"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="AP_ThorMengskArmorAuraSiegedSearch" parent="AP_ThorMengskArmorAuraSearch">
+        <AreaArray index="0" Effect="AP_ThorMengskArmorAuraSiegedTargetAB"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="AP_ThorMengskArmorAuraSiegedTargetAB" parent="AP_ThorMengskArmorAuraTargetAB">
+        <Behavior value="AP_ThorMengskArmorAuraSiegedTarget"/>
     </CEffectApplyBehavior>
     <CEffectIssueOrder id="AP_ThorMengskSiegeOrder">
         <EditorCategories value=""/>
@@ -23214,17 +23249,6 @@
         <Player Value="Creator"/>
         <Target Value="CasterUnit"/>
     </CEffectIssueOrder>
-    <CEffectIssueOrder id="AP_ThorMengskNormalModeFollowedBySiegeOrder">
-        <EditorCategories value=""/>
-        <WhichUnit Value="Caster"/>
-        <Abil value="AP_ThorMengskNormalModeFollowedBySiege"/>
-        <Player Value="Creator"/>
-        <Target Value="CasterUnit"/>
-    </CEffectIssueOrder>
-    <CEffectSet id="AP_ThorMengskNormalModeFollowedBySiegeOrderSet">
-        <EffectArray value="AP_ThorMengskSiegeMorphingAB"/>
-        <EffectArray value="AP_ThorMengskNormalModeFollowedBySiegeOrder"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="AP_ThorMengskSiegeTargetAB">
         <EditorCategories value=""/>
         <Behavior value="AP_ThorMengskSiegeTarget"/>
@@ -23252,22 +23276,18 @@
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="3"/>
         <PeriodicValidator value="CasterNotDead"/>
-        <PeriodicEffectArray value="AP_ThorMengskSiegeOrderSwitch"/>
+        <PeriodicEffectArray value="AP_ThorMengskSiegeOrder"/>
         <PeriodicEffectArray value="AP_ThorMengskSiegeTargetCP"/>
     </CEffectCreatePersistent>
     <CEffectCreatePersistent id="AP_ThorMengskSiegeTargetLargeAoEDelayCP">
         <EditorCategories value=""/>
         <PeriodCount value="2"/>
         <PeriodicValidator value="CasterNotDead"/>
-        <PeriodicEffectArray value="AP_ThorMengskSiegeOrderSwitch"/>
+        <PeriodicEffectArray value="AP_ThorMengskSiegeOrder"/>
         <PeriodicEffectArray value="AP_ThorMengskSiegeTargetLargeAoECP"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="3"/>
     </CEffectCreatePersistent>
-    <CEffectSwitch id="AP_ThorMengskSiegeOrderSwitch">
-        <CaseArray Validator="AP_CasterThorMengskAP" Effect="AP_ThorMengskNormalModeFollowedBySiegeOrderSet"/>
-        <CaseDefault value="AP_ThorMengskSiegeOrder"/>
-    </CEffectSwitch>
     <CEffectEnumArea id="AP_ThorMengskSiegeTargetSearch">
         <EditorCategories value=""/>
         <SearchFilters value="Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
@@ -23278,36 +23298,6 @@
         <SearchFilters value="Air,Visible;Self,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="6" Effect="AP_ThorMengskSiegeTargetAB"/>
     </CEffectEnumArea>
-    <CEffectDamage id="AP_LanceMissileLaunchersMengskDamage" parent="DU_WEAP_SPLASH">
-        <EditorCategories value="Race:Terran"/>
-        <Kind value="Ranged"/>
-        <KindSplash value="Splash"/>
-        <AttributeBonus index="Massive" value="10"/>
-        <Amount value="40">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
-        </Amount>
-        <Death value="Blast"/>
-        <ValidatorArray value="AP_TargetIsNotGroundOrNotInThorGroundRange"/>
-        <SearchFilters value="Air;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <SearchFlags index="OffsetByUnitRadius" value="0"/>
-    </CEffectDamage>
-    <CEffectIssueOrder id="AP_ThorMengskContinueMorphingToAP">
-        <EditorCategories value="Race:Terran"/>
-        <WhichUnit Value="Caster"/>
-        <Abil value="AP_ThorMengskAPModeFromSiegeStage2"/>
-        <Player Value="Creator"/>
-        <Target Value="CasterUnit"/>
-    </CEffectIssueOrder>
-    <CEffectApplyBehavior id="AP_ThorMengskSiegeMorphingAB">
-        <EditorCategories value="Race:Terran"/>
-        <WhichUnit Value="Caster"/>
-        <Behavior value="AP_ThorMengskSiegeMorphing"/>
-    </CEffectApplyBehavior>
-    <CEffectRemoveBehavior id="AP_ThorMengskSiegeMorphingRB">
-        <EditorCategories value="Race:Zerg"/>
-        <WhichUnit Value="Caster"/>
-        <BehaviorLink value="AP_ThorMengskSiegeMorphing"/>
-    </CEffectRemoveBehavior>
     <CEffectLaunchMissile id="AP_PunisherGrenadesMengskLM">
         <EditorCategories value="Race:Terran"/>
         <ImpactEffect value="AP_PunisherGrenadesMengskSet"/>
@@ -24155,32 +24145,56 @@
     </CEffectLaunchMissile>
     <CEffectDamage id="AP_GoliathMengskAU" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Terran"/>
-        <AttributeFactor index="Armored" value="1"/>
-        <Amount value="11">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <AttributeBonus index="Armored" value="4"/>
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="12">
+            <AccumulatorArray value="AP_2DamagePerRank"/>
         </Amount>
     </CEffectDamage>
     <CEffectSet id="AP_GoliathMengskAULockdownSet">
         <EffectArray value="AP_GoliathMengskAU"/>
-        <EffectArray value="AP_GoliathMengskLockdownAB"/>
+        <EffectArray value="AP_GoliathMengskMechanicalLockdownSet"/>
+        <EffectArray value="AP_GoliathMengskBiologicalLockdownSet"/>
     </CEffectSet>
     <CEffectDamage id="AP_GoliathMengskG" parent="DU_WEAP">
         <ValidatorArray value="CasterIsNotHidden"/>
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
-        <Amount value="20">
-            <AccumulatorArray value="AP_BaseMengskVeterancyDamageMultiplier"/>
+        <Amount value="24">
+            <AccumulatorArray value="AP_3DamagePerRank"/>
         </Amount>
     </CEffectDamage>
     <CEffectApplyBehavior id="AP_GoliathMengskLockdownAB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="AP_NovaUnitLockdown"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AP_GoliathMengskLockdownStunImmunityAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="AP_GoliathMengskLockdownStunImmunity"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AP_GoliathMengskMechanicalLockdownSet">
         <ValidatorArray value="AP_CasterLevelEq4"/>
         <ValidatorArray value="AP_NovaUnitLockdownABTargetFilters"/>
+        <ValidatorArray value="AP_NotHeroic"/>
         <ValidatorArray value="AP_IsMechanical"/>
         <ValidatorArray value="NotStructure"/>
         <ValidatorArray value="AP_NoPreventKnockback"/>
-    </CEffectApplyBehavior>
+        <ValidatorArray value="AP_NoGoliathMengskLockdownStunImmunity"/>
+        <EffectArray value="AP_GoliathMengskLockdownAB"/>
+        <EffectArray value="AP_GoliathMengskLockdownStunImmunityAB"/>
+    </CEffectSet>
+    <CEffectSet id="AP_GoliathMengskBiologicalLockdownSet">
+        <ValidatorArray value="AP_CasterLevelEq4"/>
+        <ValidatorArray value="AP_HaveGoliathMengskParalysisInducers"/>
+        <ValidatorArray value="AP_NovaUnitLockdownABTargetFilters"/>
+        <ValidatorArray value="AP_NotHeroic"/>
+        <ValidatorArray value="AP_IsBiological"/>
+        <ValidatorArray value="NotStructure"/>
+        <ValidatorArray value="AP_NoPreventKnockback"/>
+        <ValidatorArray value="AP_NoGoliathMengskLockdownStunImmunity"/>
+        <EffectArray value="AP_GoliathMengskLockdownAB"/>
+        <EffectArray value="AP_GoliathMengskLockdownStunImmunityAB"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="AP_MedicMengskHealScanPersistent">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="CasterUnit"/>

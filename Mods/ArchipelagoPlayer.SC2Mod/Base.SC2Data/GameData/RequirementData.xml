@@ -4014,8 +4014,32 @@
     <CRequirement id="AP_HaveSiegeTankTransportHook">
         <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankTransportHookCompleteOnly"/>
     </CRequirement>
-    <CRequirement id="AP_HaveMedivacSiegeTankAirlift">
-        <NodeArray index="Show" Link="AP_CountUpgradeMedivacSiegeTankAirliftCompleteOnly"/>
+    <CRequirement id="AP_HaveSiegeTankMengskAirlift">
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskAirliftCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_TankModeHaveSiegeTankMengskAirlift">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AP_CountUpgradeNotPossibleSiegeModeCompleteOnly"/>
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskAirliftCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveSiegeTankMengskSmartServos">
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskSmartServosCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveSiegeTankMengskNapalmRounds">
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskNapalmRoundsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_TankModeHaveSiegeTankMengskNapalmRounds">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AP_CountUpgradeNotPossibleSiegeModeCompleteOnly"/>
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskNapalmRoundsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveSiegeTankMengskImprovedTankMode">
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskImprovedTankModeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_SiegeModeHaveSiegeTankMengskImprovedTankMode">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AP_CountUpgradeNotPossibleTankModeCompleteOnly"/>
+        <NodeArray index="Show" Link="AP_CountUpgradeSiegeTankMengskImprovedTankModeCompleteOnly"/>
     </CRequirement>
     <CRequirement id="AP_HaveResourceEfficiencyReaper">
         <NodeArray index="Show" Link="AP_CountUpgradeResourceEfficiencyReaperCompleteOnly"/>
@@ -4500,7 +4524,7 @@
         <NodeArray index="Use" Link="AP_GTECountBehaviorMengskVeterancySiegeTankMengskCompleteOnlyAtUnit2"/>
     </CRequirement>
     <CRequirement id="AP_HaveMengskVeterancySiegeTankMengskGELevel2TankMode">
-        <NodeArray index="Use" Link="AP_AndGTECountBehaviorMengskVeterancySiegeTankMengskCompleteOnlyAtUnit2CountUpgradeNotPossibleSiegeModeCompleteOnly"/>
+        <NodeArray index="Use" Link="AP_SiegeTankMengskTankModeStunRequirements"/>
     </CRequirement>
     <CRequirement id="AP_ThorMengskSiegedTargetIncreasedRange">
         <NodeArray index="Show" Link="AP_GTECountBehaviorMengskVeterancyThorMengskCompleteOnlyAtUnit2"/>
@@ -4510,6 +4534,25 @@
     </CRequirement>
     <CRequirement id="AP_HaveThorMengskArmorAura">
         <NodeArray index="Show" Link="AP_CountUpgradeThorMengskArmorAuraCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveThorMengskSmartServos">
+        <NodeArray index="Show" Link="AP_CountUpgradeThorMengskSmartServosCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveThorMengskHammerOfTheLaw">
+        <NodeArray index="Show" Link="AP_CountUpgradeThorMengskHammerOfTheLawCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_OverwatchModeHaveThorMengskHammerOfTheLaw">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AP_CountUpgradeNotPossibleWalkerModeCompleteOnly"/>
+        <NodeArray index="Show" Link="AP_CountUpgradeThorMengskHammerOfTheLawCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveThorMengskInfernoBlitz">
+        <NodeArray index="Show" Link="AP_CountUpgradeThorMengskInfernoBlitzCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_WalkerModeHaveThorMengskInfernoBlitz">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AP_CountUpgradeNotPossibleOverwatchModeCompleteOnly"/>
+        <NodeArray index="Show" Link="AP_CountUpgradeThorMengskInfernoBlitzCompleteOnly"/>
     </CRequirement>
     <CRequirement id="AP_HaveMengskVeterancyMarauderMengskGELevel2">
         <NodeArray index="Use" Link="AP_GTECountBehaviorMengskVeterancyMarauderMengskCompleteOnlyAtUnit2"/>
@@ -4657,6 +4700,20 @@
     </CRequirement>
     <CRequirement id="AP_HaveGoliathMengskVeterancyLevel4">
         <NodeArray index="Use" Link="AP_GTECountBehaviorMengskVeterancyGoliathMengskCompleteOnlyAtUnit4"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveGoliathMengskMoebiusDefenseMatrix">
+        <NodeArray index="Show" Link="AP_CountUpgradeGoliathMengskMoebiusDefenseMatrixCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveGoliathMengskJumpJetsMKII">
+        <NodeArray index="Show" Link="AP_CountUpgradeGoliathMengskJumpJetsMKIICompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveGoliathMengskParalysisInducers">
+        <NodeArray index="Show" Link="AP_CountUpgradeGoliathMengskParalysisInducersCompleteOnly"/>
+        <NodeArray index="Use" Link="AP_GTECountBehaviorMengskVeterancyGoliathMengskCompleteOnlyAtUnit4"/>
+    </CRequirement>
+    <CRequirement id="AP_HaveGoliathMengskAresClassTargetingAddon">
+        <NodeArray index="Show" Link="AP_CountUpgradeGoliathMengskAresClassTargetingAddonCompleteOnly"/>
+        <NodeArray index="Use" Link="AP_GTECountBehaviorMengskVeterancyGoliathMengskCompleteOnlyAtUnit3"/>
     </CRequirement>
     <CRequirement id="AP_HaveMedicMengskDoubleBeamHeal">
         <NodeArray index="Show" Link="AP_GTECountBehaviorMengskVeterancyMedicMengskCompleteOnlyAtUnit4"/>

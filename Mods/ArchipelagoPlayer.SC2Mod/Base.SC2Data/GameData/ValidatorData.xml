@@ -6713,6 +6713,31 @@
         <Find value="1"/>
         <Value value="AP_HaveSiegeTankTransportHook"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="AP_HaveSiegeTankMengskAirlift">
+        <Find value="1"/>
+        <Value value="AP_HaveSiegeTankMengskAirlift"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="AP_HaveSiegeTankMengskSmartServos">
+        <Find value="1"/>
+        <Value value="AP_HaveSiegeTankMengskSmartServos"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="AP_HaveSiegeTankMengskNapalmRounds">
+        <Find value="1"/>
+        <Value value="AP_HaveSiegeTankMengskNapalmRounds"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="AP_HaveSiegeTankMengskNapalmRoundsAndAirlift">
+        <Type value="And"/>
+        <CombineArray value="AP_HaveSiegeTankMengskNapalmRounds"/>
+        <CombineArray value="AP_HaveSiegeTankMengskAirlift"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="AP_HaveEitherSiegeTankSmartServos">
+        <CombineArray value="AP_HaveMultiTaskMAFServosSiegeTank"/>
+        <CombineArray value="AP_HaveSiegeTankMengskSmartServos"/>
+    </CValidatorCombine>
+    <CValidatorPlayerRequirement id="AP_HaveSiegeTankMengskImprovedTankMode">
+        <Find value="1"/>
+        <Value value="AP_HaveSiegeTankMengskImprovedTankMode"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="AP_HaveSiegeTankEnhancedCombustionEngines">
         <Find value="1"/>
         <Value value="AP_HaveSiegeTankEnhancedCombustionEngines"/>
@@ -6852,6 +6877,10 @@
     <CValidatorUnitFilters id="AP_TargetIsArmored">
         <WhichUnit Value="Target"/>
         <Filters value="Armored;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="AP_TargetIsLight">
+        <WhichUnit Value="Target"/>
+        <Filters value="Light;-"/>
     </CValidatorUnitFilters>
     <CValidatorUnitCompareBehaviorCount id="AP_CasterHasVoidRaySwarmArmoredTarget">
         <WhichUnit Value="Caster"/>
@@ -7270,6 +7299,12 @@
         <Compare value="GE"/>
         <Value value="3"/>
     </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareBehaviorCount id="AP_NoSiegeTankMengskSiegedStunImmunity">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Value value="1"/>
+        <Behavior value="AP_SiegeTankMengskStunImmunity"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareVeterancyLevel id="AP_CasterLevelGTE3">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>
@@ -7676,29 +7711,18 @@
         <Find value="1"/>
         <Value value="AP_HaveImprovedSiegeMode"/>
     </CValidatorPlayerRequirement>
-    <CValidatorUnitType id="AP_IsAPThorMengskBaseMode">
-        <Value value="AP_ThorMengsk"/>
-    </CValidatorUnitType>
     <CValidatorUnitType id="AP_CasterThorMengskSieged">
         <WhichUnit Value="Caster"/>
         <Value value="AP_ThorMengskSieged"/>
     </CValidatorUnitType>
-    <CValidatorCombine id="AP_ThorMengskSiegedOrMorphing">
-        <CombineArray value="AP_CasterThorMengskSieged"/>
-        <CombineArray value="AP_CasterHasThorMengskSiegeMorphing"/>
-    </CValidatorCombine>
-    <CValidatorUnitType id="AP_CasterThorMengskAP">
-        <WhichUnit Value="Caster"/>
-        <Value value="AP_ThorMengskAP"/>
-    </CValidatorUnitType>
     <CValidatorCombine id="AP_CasterThorMengskSiegedNotDead">
         <Type value="And"/>
-        <CombineArray value="AP_ThorMengskSiegedOrMorphing"/>
+        <CombineArray value="AP_CasterThorMengskSieged"/>
         <CombineArray value="CasterNotDead"/>
     </CValidatorCombine>
     <CValidatorCombine id="AP_CasterThorMengskSiegedSmallAoE">
         <Type value="And"/>
-        <CombineArray value="AP_ThorMengskSiegedOrMorphing"/>
+        <CombineArray value="AP_CasterThorMengskSieged"/>
         <CombineArray value="CasterNotDead"/>
         <CombineArray value="AP_CasterLevelLT3"/>
     </CValidatorCombine>
@@ -7712,15 +7736,25 @@
         <Behavior value="AP_ThorMengskSiegeTarget"/>
         <RequireOriginPlayer Value="Caster"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="AP_CasterHasThorMengskSiegeMorphing">
-        <WhichUnit Value="Caster"/>
-        <Value value="1"/>
-        <Behavior value="AP_ThorMengskSiegeMorphing"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="AP_HaveThorMengskArmorAura">
         <Find value="1"/>
         <Value value="AP_HaveThorMengskArmorAura"/>
     </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="AP_HaveThorMengskSmartServos">
+        <Find value="1"/>
+        <Value value="AP_HaveThorMengskSmartServos"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="AP_HaveThorMengskHammerOfTheLaw">
+        <Find value="1"/>
+        <Value value="AP_HaveThorMengskHammerOfTheLaw"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="AP_HaveThorMengskInfernoBlitz">
+        <Find value="1"/>
+        <Value value="AP_HaveThorMengskInfernoBlitz"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="AP_NotHaveThorMengskArmorAuraSiegedTarget">
+        <Behavior value="AP_ThorMengskArmorAuraSiegedTarget"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="AP_NoMarauderMengskAbsorbReapplicator">
         <WhichUnit Value="Caster"/>
         <Behavior value="AP_MarauderMengskAbsorbReapplicator"/>
@@ -7909,9 +7943,37 @@
     <CValidatorUnitFilters id="AP_NovaUnitLockdownABTargetFilters">
         <Filters value="-;Player,Ally,Neutral,Heroic,User1"/>
     </CValidatorUnitFilters>
+    <CValidatorUnitCompareBehaviorCount id="AP_NoGoliathMengskLockdownStunImmunity">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Value value="1"/>
+        <Behavior value="AP_GoliathMengskLockdownStunImmunity"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitType id="AP_IsGoliathMengsk">
         <Value value="AP_GoliathMengsk"/>
     </CValidatorUnitType>
+    <CValidatorLocationVision id="AP_GoliathMengskJumpTargetVision">
+        <ResultFailed value="CantFindPlacementLocation"/>
+        <WhichLocation Value="TargetPoint"/>
+        <WhichPlayer Value="Caster"/>
+    </CValidatorLocationVision>
+    <CValidatorPlayerRequirement id="AP_HaveGoliathMengskMoebiusDefenseMatrix">
+        <Find value="1"/>
+        <Value value="AP_HaveGoliathMengskMoebiusDefenseMatrix"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareVeterancyLevel id="AP_GoliathMengskBelowRank2">
+        <Compare value="LT"/>
+        <Value value="3"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="AP_GoliathMengskRank2OrHigher">
+        <Compare value="GE"/>
+        <Value value="3"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorPlayerRequirement id="AP_HaveGoliathMengskParalysisInducers">
+        <WhichPlayer Value="Caster"/>
+        <Find value="1"/>
+        <Value value="AP_HaveGoliathMengskParalysisInducers"/>
+    </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="AP_HaveAdaptiveMedPacks">
         <Find value="1"/>
         <Value value="AP_HaveAdaptiveMedPacks"/>

@@ -14,6 +14,42 @@
         <BonusPerLevel value="0.25"/>
         <PreviousValueFactor value="1"/>
     </CAccumulatorVeterancyLevel>
+    <CAccumulatorVeterancyLevel id="AP_1DamagePerRank">
+        <MinAccumulation value="0"/>
+        <Amount value="-1"/>
+        <BonusPerLevel value="1"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
+    <CAccumulatorVeterancyLevel id="AP_2DamagePerRank">
+        <MinAccumulation value="0"/>
+        <Amount value="-2"/>
+        <BonusPerLevel value="2"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
+    <CAccumulatorVeterancyLevel id="AP_3DamagePerRank">
+        <MinAccumulation value="0"/>
+        <Amount value="-3"/>
+        <BonusPerLevel value="3"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
+    <CAccumulatorVeterancyLevel id="AP_4DamagePerRank">
+        <MinAccumulation value="0"/>
+        <Amount value="-4"/>
+        <BonusPerLevel value="4"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
+    <CAccumulatorVeterancyLevel id="AP_5DamagePerRank">
+        <MinAccumulation value="0"/>
+        <Amount value="-5"/>
+        <BonusPerLevel value="5"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
+    <CAccumulatorVeterancyLevel id="AP_10DamagePerRank">
+        <MinAccumulation value="0"/>
+        <Amount value="-10"/>
+        <BonusPerLevel value="10"/>
+        <PreviousValueFactor value="1"/>
+    </CAccumulatorVeterancyLevel>
     <CAccumulatorArithmetic id="AP_MarineMengskProdigalSonDamageBonus">
         <Parameters value="0">
             <AccumulatorArray value="AP_MarineMengskProdigalSonRank3BonusCount"/>

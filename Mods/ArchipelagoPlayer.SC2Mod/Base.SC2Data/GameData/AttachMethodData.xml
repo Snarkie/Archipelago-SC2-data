@@ -132,11 +132,6 @@
         <Driver value="AP_LanceMissileLaunchersDamage"/>
         <Base value="::RollingIndex"/>
     </CAttachMethodPattern>
-    <CAttachMethodPattern id="AP_AMPatternThorMengskAALance">
-        <Keyword value="Weapon"/>
-        <Driver value="AP_LanceMissileLaunchersMengskDamage"/>
-        <Base value="::RollingIndex"/>
-    </CAttachMethodPattern>
     <CAttachMethodPattern id="AP_MercAMPatternThorAALance">
         <Keyword value="Weapon"/>
         <Driver value="AP_MercLanceMissileLaunchersDamage"/>

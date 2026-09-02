@@ -438,83 +438,6 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
-    <CAbilMorph id="AP_ThorMengskNormalMode">
-        <AbilSetId value="NormalMode"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_ExplosiveMode">
-            <Flags index="ShowInGlossary" value="0"/>
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
-        <Flags index="Interruptible" value="1"/>
-        <Flags index="IgnoreFacing" value="1"/>
-        <Flags index="SuppressMovement" value="1"/>
-        <InfoArray Unit="AP_ThorMengsk" RandomDelayMax="0.5">
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="2.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="2.5"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="2.5"/>
-            </SectionArray>
-        </InfoArray>
-        <!--SectionArray index="Abils">
-                <DurationArray index="Delay" value="0.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray-->
-    </CAbilMorph>
-    <CAbilMorph id="AP_ThorMengskNormalModeFollowedBySiege" parent="AP_ThorMengskNormalMode">
-        <Flags index="Interruptible" value="0"/>
-        <InfoArray index="0">
-            <SectionArray index="Actor">
-                <EffectArray index="Finish" value="AP_ThorMengskSiegeOrder"/>
-            </SectionArray>
-        </InfoArray>
-    </CAbilMorph>
-    <CAbilMorph id="AP_ThorMengskAPMode">
-        <AbilSetId value="ThorAPMode"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_ArmorpiercingMode" Requirements="AP_HaveThorMorph">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
-        <Flags index="Interruptible" value="1"/>
-        <Flags index="IgnoreFacing" value="1"/>
-        <Flags index="SuppressMovement" value="1"/>
-        <InfoArray Unit="AP_ThorMengskAP" RandomDelayMax="0.5">
-            <!--SectionArray index="Abils">
-                <DurationArray index="Delay" value="0.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3.5417"/>
-            </SectionArray-->
-            <SectionArray index="Abils">
-                <DurationArray index="Delay" value="2.5"/>
-            </SectionArray>
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="2.5"/>
-            </SectionArray>
-            <SectionArray index="Stats">
-                <DurationArray index="Delay" value="2.5"/>
-            </SectionArray>
-        </InfoArray>
-    </CAbilMorph>
-    <CAbilMorph id="AP_ThorMengskAPModeFromSiegeStage2" parent="AP_ThorMengskAPMode">
-        <Flags index="Interruptible" value="0"/>
-    </CAbilMorph>
     <CAbilEffectInstant id="AP_StimpackBase">
         <AbilSetId value="Stimpack"/>
         <AINotifyEffect value="Stimpack"/>
@@ -4292,21 +4215,6 @@
         <Range value="500"/>
         <Arc value="360"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_Blink" State="Restricted" Requirements="AP_NotHaveStalkerPhaseReactor">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-    </CAbilEffectTarget>
-    <CAbilEffectTarget id="AP_SiegeTankMengskBlink">
-        <AbilSetId value="Blnk"/>
-        <Effect index="0" value="AP_Blink"/>
-        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
-        <Flags index="BestUnit" value="0"/>
-        <Flags index="RequireTargetVision" value="0"/>
-        <Cost>
-            <Cooldown Link="AP_BlinkBlink" TimeUse="8"/>
-        </Cost>
-        <Range value="500"/>
-        <Arc value="360"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_SiegeTankMengskBlink" State="Restricted" Requirements="AP_HaveHoverSiegeTank">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
@@ -13107,7 +13015,7 @@
         <InfoArray Unit="AP_InfestedSiegeBreakerSiegedTransportable"/>
     </CAbilMorph>
     <CAbilMorph id="AP_SiegeTankMengskSiegedTransportableMorph">
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_SiegeTankSieged" Requirements="AP_HaveSiegeTankTransportHook"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_SiegeTankSieged" Requirements="AP_HaveSiegeTankMengskAirlift"/>
         <Flags index="Automatic" value="1"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <InfoArray Unit="AP_SiegeTankMengskSiegedTransportable"/>
@@ -14505,7 +14413,6 @@
         <InfoArray Unit="AP_ThorMengskSieged">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="3"/>
-                <EffectArray index="Finish" value="AP_ThorMengskSiegeMorphingRB"/>
             </SectionArray>
         </InfoArray>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_ThorMengskSiege"/>
@@ -14528,25 +14435,14 @@
         <AbilSetId value="NormalMode"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <InfoArray Unit="AP_ThorMengsk">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value="AP_ThorMengskInfernoBlitzRB"/>
+            </SectionArray>
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="3"/>
             </SectionArray>
         </InfoArray>
         <CmdButtonArray index="Execute" DefaultButtonFace="AP_ThorMengskUnsiege">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <Flags index="IgnoreFacing" value="1"/>
-    </CAbilMorph>
-    <CAbilMorph id="AP_ThorMengskUnsiegeAPMode">
-        <AbilSetId value="ThorAPMode"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
-        <InfoArray Unit="AP_ThorMengsk">
-            <SectionArray index="Actor">
-                <DurationArray index="Duration" value="3"/>
-                <EffectArray index="Finish" value="AP_ThorMengskContinueMorphingToAP"/>
-            </SectionArray>
-        </InfoArray>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_ThorMengskUnsiege" Requirements="AP_HaveThorMorph">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
         <Flags index="IgnoreFacing" value="1"/>

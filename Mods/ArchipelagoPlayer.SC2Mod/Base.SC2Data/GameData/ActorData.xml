@@ -1105,10 +1105,8 @@
         <On Terms="UnitDeath" Target="::actor.AP_Thor" Send="Signal Dead"/>
         <On Terms="UnitDeath" Target="::actor.AP_MercThor" Send="Signal Dead"/>
         <On Terms="AbilTransport.AP_MedivacTransport.TransportLoad; AbilTransport AP_ThorMengsk" Send="Create AP_ThorMengskTransit"/>
-        <On Terms="AbilTransport.AP_MedivacTransport.TransportLoad; AbilTransport AP_ThorMengskAP" Send="Create AP_ThorMengskTransit"/>
         <On Terms="Signal.*.ThorTransit" Send="RefSetFromMsg ::actor.AP_ThorMengsk ::Sender"/>
         <On Terms="AbilTransport.AP_MedivacTransport.PassengerKilled; AbilTransport AP_ThorMengsk" Target="::actor.AP_ThorMengsk" Send="Signal Dead"/>
-        <On Terms="AbilTransport.AP_MedivacTransport.PassengerKilled; AbilTransport AP_ThorMengskAP" Target="::actor.AP_ThorMengsk" Send="Signal Dead"/>
         <On Terms="UnitDeath" Target="::actor.AP_ThorMengsk" Send="Signal Dead"/>
         <On Terms="ActorCreation; !ScopeContains AP_SiegeTankLoadTransit" Send="Create AP_SiegeTankLoadTransit"/>
         <On Terms="ActorCreation" Send="Attach _Turret1 {Center 0} AP_SiegeTankLoadSOpOffset"/>
@@ -1293,7 +1291,7 @@
         <BarWidth value="140"/>
         <GlossaryAnim value="Stand"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-thor-mengsk.dds"/>
         </GroupIcon>
         <GroupSoundArray index="What" value="Thor_GroupWhat"/>
         <GroupSoundArray index="Yes" value="Thor_GroupYes"/>
@@ -1327,7 +1325,7 @@
         <SoundArray index="Highlight" value="Thor_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-thormengsk.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-thor-mengsk.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorUnit default="1" id="AP_ThorMengskBase" parent="AP_ThorMengskBaseNoEvents">
@@ -1340,10 +1338,16 @@
         <On Terms="WeaponStop.AP_JavelinMissileLaunchersMengsk.AttackStop" Send="TimerSet 2.500000 CoverDelay"/>
         <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimClear Cover"/>
         <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimPlay CoverStand Cover,Stand PlayForever"/>
-        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
-        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B"/>
-        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; WeaponTargetElevation GE 20.000000; !ValidateUnit AP_HaveThorMengskHammerOfTheLaw" Send="AnimBracketStart Attack Attack,Superior"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; WeaponTargetElevation LE -20.000000; !ValidateUnit AP_HaveThorMengskHammerOfTheLaw" Send="AnimBracketStart Attack Attack,Inferior"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; WeaponTargetDistance LE 1.000000; !ValidateUnit AP_HaveThorMengskHammerOfTheLaw" Send="AnimBracketStart Attack Spell,B"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengsk.AttackStart; !ValidateUnit AP_HaveThorMengskHammerOfTheLaw" Send="AnimBracketStart Attack Attack"/>
+        <!-- See Respective Weapons in WeaponData.xml -->
+        <On Terms="WeaponStart.AP_ThorsHammerMengskHammerOfTheLawRank0.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior {} {} 0 2.5 AsTimeScale"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengskHammerOfTheLawRank0.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior {} {} 0 2.5 AsTimeScale"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengskHammerOfTheLawRank0.AttackStart; WeaponTargetDistance LE 1.000000" Send="AnimBracketStart Attack Spell,B {} {} 0 2.5 AsTimeScale"/>
+        <On Terms="WeaponStart.AP_ThorsHammerMengskHammerOfTheLawRank0.AttackStart" Send="AnimBracketStart Attack Attack {} {} 0 2.5 AsTimeScale"/>
+        <On Terms="Effect.AP_ThorsHammerMengsk.Start; At Caster; ValidateUnit AP_HaveThorMengskHammerOfTheLaw" Send="AnimSetTimeScale Attack 1.000000"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="AbilTransport.*.CargoUnload" Send="AnimPlay Unload Spell,A 0 0.000000"/>
@@ -1352,24 +1356,6 @@
         <On Terms="ModelEvent; ModelEventName SquibStartLeft" Send="Create ThorLeftCheerSquib"/>
         <On Terms="ModelEvent; ModelEventName SquibStartRight" Send="Create ThorRightCheerSquib"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create AP_ThorMengskTransitLandSound"/>
-        <On Terms="ActorCreation" Send="StatusSet WeaponNext 0"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster" Send="AnimPlay SpellD Spell,D"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster" Send="StatusIncrement WeaponNext"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 4" Send="StatusSet WeaponNext 0"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 0" Send="AnimClear Attack3"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 0" Send="AnimPlay Attack4 Spell,C,02"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 1" Send="AnimClear Attack4"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 1" Send="AnimPlay Attack1 Spell,C,01"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 2" Send="AnimClear Attack1"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 2" Send="AnimPlay Attack2 Spell,C,03"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 3" Send="AnimClear Attack2"/>
-        <On Terms="Effect.AP_LanceMissileLaunchersMengskDamage.Start; At Caster; IsStatus WeaponNext 3" Send="AnimPlay Attack3 Spell,C,00"/>
-        <On Terms="UnitBirth.AP_ThorMengskAP" Send="SetWireframe 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengsk" Send="SetWireframe 0 Assets\Textures\wireframe-terran-thor.dds"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengskAP" Send="SetWireframe 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
-        <On Terms="UnitBirth.AP_ThorMengskAP" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengsk" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thor.dds"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengskAP" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
         <On Terms="Upgrade.AP_ThorMengskArmorAura.Add; !ScopeContains AP_ThorMengskArmorAuraRange" Send="Create AP_ThorMengskArmorAuraRange"/>
         <On Terms="ActorCreation; ValidateUnit AP_HaveThorMengskArmorAura; !ScopeContains AP_ThorMengskArmorAuraRange" Send="Create AP_ThorMengskArmorAuraRange"/>
     </CActorUnit>
@@ -1489,9 +1475,6 @@
         <WalkAnimMoveSpeed value="3.6093"/>
         <BarOffset value="75"/>
         <BarWidth value="66"/>
-        <GroupIcon>
-            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath.dds"/>
-        </GroupIcon>
         <GroupSoundArray index="Birth" value="AP_Goliath_Birth"/>
         <GroupSoundArray index="Ready" value="AP_Goliath_Ready"/>
         <GroupSoundArray index="Help" value="AP_Goliath_Help"/>
@@ -1508,9 +1491,6 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-goliath.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-goliath.dds"/>
-        <Wireframe>
-            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath.dds"/>
-        </Wireframe>
     </CActorUnit>
     <CActorUnit id="AP_MedicBase" default="1" parent="GenericUnitStandard">
         <Aliases value="_UnitSmall"/>
@@ -3512,6 +3492,12 @@
         <On Terms="Behavior.AP_GoliathCliffJump.LandDown" Send="AnimPlay AP_Jump Unload,End"/>
         <On Terms="Behavior.AP_GoliathCliffJump.LandUpDone" Send="AnimClear AP_Jump 1.000000"/>
         <On Terms="Behavior.AP_GoliathCliffJump.LandDownDone" Send="AnimClear AP_Jump 1.000000"/>
+        <Wireframe>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath.dds"/>
+        </Wireframe>
+        <GroupIcon>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath.dds"/>
+        </GroupIcon>
     </CActorUnit>
     <CActorModel id="AP_GoliathDeath" parent="UnitDeathModel">
         <AcceptedTransfers index="Textures" value="1"/>
@@ -3976,8 +3962,6 @@
         <On Terms="AbilTransport.AP_MedivacTransport.TransportUnload;AbilTransport AP_SiegeTankSiegedTransportable" Send="SetVisibility"/>
         <On Terms="Signal.*.Dead" Send="Create ThorTransitDeath"/>
         <On Terms="Signal.*.Dead" Send="Destroy"/>
-        <On Terms="Signal.*.AP_BlackOpsTank" Send="ModelSwap AP_SiegeTank_BlackOps"/>
-        <On Terms="Upgrade.AP_HoverSiegeTank.Add" Send="ModelSwap AP_SiegeTank_BlackOps"/>
         <On Terms="ActorCreation; ValidateUnit AP_HaveHoverSiegeTank" Send="ModelSwap AP_SiegeTank_BlackOps"/>
         <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
@@ -4002,30 +3986,11 @@
         <DamageModel value="AP_SiegeTankAttackDamageModel"/>
         <ShieldFlashType value="Full"/>
     </CActorAction>
-    <CActorAction id="AP_SiegeTankSiegedAttackAirlift" parent="GenericAttack" effectAttack="AP_CrucioShockCannonAirliftBlast">
-        <LaunchAssets Model="SiegeTankSiegedAttackLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <LaunchModel value="AP_SiegeTankSiegedAttackAirliftAttackLaunchModel"/>
-        <ImpactSiteOps Ops="SOpActionCenter SOpTargetUnitZ" HoldPosition="1"/>
-        <ImpactMap index="None" Model="SiegeTankSiegedAttackImpact" Sound="SiegeTank_SiegedAttackImpact"/>
-        <DamageSiteOps Ops="SOpAttachHarness"/>
-        <DamageMap index="None" Model="SiegeTankSiegedAttackDamage"/>
-        <DamageModel value="AP_SiegeTankAttackDamageModel"/>
-        <ShieldFlashType value="Full"/>
-    </CActorAction>
     <CActorModel id="AP_SiegeTankSiegedAttackAirliftAttackLaunchModel" parent="GenericAttackModel">
         <Host Subject="AP_SiegeTankLoadTransit"/>
     </CActorModel>
     <CActorAction id="AP_SiegeTankSiegedAttackDirected" parent="GenericAttack" effectAttack="AP_CrucioShockCannonDirected">
         <LaunchAssets Model="SiegeTankSiegedAttackDirectedLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
-        <ImpactMap index="None" Model="SiegeTankSiegedAttackDirectedImpact" Sound="SiegeTank_SiegedAttackImpact"/>
-        <DamageMap index="None" Model="SiegeTankSiegedAttackDirectedDamage"/>
-        <DamageModel value="AP_SiegeTankAttackDamageModel"/>
-        <ShieldFlashType value="Header"/>
-    </CActorAction>
-    <CActorAction id="AP_SiegeTankSiegedAttackDirectedAirlift" parent="GenericAttack" effectAttack="AP_CrucioShockCannonAirliftDirected">
-        <LaunchAssets Model="SiegeTankSiegedAttackDirectedLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <LaunchModel value="AP_SiegeTankSiegedAttackAirliftAttackLaunchModel"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
         <ImpactMap index="None" Model="SiegeTankSiegedAttackDirectedImpact" Sound="SiegeTank_SiegedAttackImpact"/>
         <DamageMap index="None" Model="SiegeTankSiegedAttackDirectedDamage"/>
@@ -4323,8 +4288,8 @@
         <On Terms="AbilMorph.*.Start; MorphFrom AP_InfestedSiegeBreakerTransportable; MorphTo AP_InfestedSiegeBreaker" Send="Destroy"/>
     </CActorTurret>
     <CActorUnit id="AP_Medivac" parent="AP_MedivacBase" unitName="AP_Medivac">
-        <On Terms="Behavior.AP_MedivacMengskSiegeTankAirlift.On" Send="Create AP_MedivacCustomFrame"/>
-        <On Terms="Behavior.AP_MedivacMengskSiegeTankAirlift.On" Send="Destroy"/>
+        <On Terms="Behavior.AP_SiegeTankMengskAirlift.On" Send="Create AP_MedivacCustomFrame"/>
+        <On Terms="Behavior.AP_SiegeTankMengskAirlift.On" Send="Destroy"/>
     </CActorUnit>
     <CActorUnit id="AP_MedivacCustomFrame" parent="AP_MedivacBase" unitName="AP_MedivacCustomFrame">
         <CustomUnitStatusFrame value="AP_Coop_UnitStatus_Mengsk/MengskMedivac_StatusFrame"/>
@@ -4332,8 +4297,8 @@
         <StatusBarOn index="Custom" value="1"/>
         <UnitFlags index="ShowBlobShadow" value="1"/>
 <!--        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>-->
-        <On Terms="Behavior.AP_MedivacMengskSiegeTankAirlift.Off" Send="Create AP_Medivac"/>
-        <On Terms="Behavior.AP_MedivacMengskSiegeTankAirlift.Off" Send="Destroy"/>
+        <On Terms="Behavior.AP_SiegeTankMengskAirlift.Off" Send="Create AP_Medivac"/>
+        <On Terms="Behavior.AP_SiegeTankMengskAirlift.Off" Send="Destroy"/>
         <On Terms="ActorCreation" Send="SetShowStatusBar 0 Life"/>
         <On Terms="ActorCreation" Send="SetShowStatusBar 0 Shields"/>
         <On Terms="ActorCreation" Send="SetShowStatusBar 0 Energy"/>
@@ -4349,17 +4314,8 @@
         <RollOutDuration value="1.200000"/>
         <RollMax value="10.000000"/>
     </CActorSiteOpBankerUnit>
-    <CActorTurret id="AP_MedivacSiegeTankAirliftTurret">
-        <On Terms="TurretEnable.AP_MedivacSiegeTankAirliftTurret" Send="Create"/>
-        <TurretBody Subject="AP_SiegeTankLoadTransit"/>
-        <Aliases />
-    </CActorTurret>
-    <CActorTurret id="AP_MedivacMercSiegeTankAirliftTurret">
-        <On Terms="TurretEnable.AP_MedivacMercSiegeTankAirliftTurret" Send="Create"/>
-        <TurretBody Subject="AP_SiegeBreakerLoadTransit"/>
-    </CActorTurret>
-    <CActorTurret id="AP_MedivacMengskSiegeTankAirliftTurret">
-        <On Terms="TurretEnable.AP_MedivacMengskSiegeTankAirliftTurret" Send="Create"/>
+    <CActorTurret id="AP_SiegeTankMengskAirliftTurret">
+        <On Terms="TurretEnable.AP_SiegeTankMengskAirliftTurret" Send="Create"/>
         <TurretBody Subject="AP_SiegeTankMengskSiegedTransit"/>
         <Aliases/>
     </CActorTurret>
@@ -8797,11 +8753,8 @@
     <CActorRange id="AP_DarkTemplarShadowDash_Range" parent="RangeAbil" abil="AP_DarkTemplarShadowDash">
         <Abil Link="AP_BlinkDummy"/>
     </CActorRange>
-    <CActorRange id="AP_SiegeTankMengskBlink_Range" parent="RangeAbil" abil="AP_SiegeTankMengskBlink">
-        <Abil Link="AP_BlinkDummy"/>
-    </CActorRange>
-    <CActorRange id="AP_GoliathMengskJump_Range" parent="RangeAbil" abil="AP_GoliathMengskJump">
-        <Abil Link="AP_BlinkDummy"/>
+    <CActorRange id="AP_GoliathMengskJumpRange" parent="RangeAbil" abil="AP_GoliathMengskJump">
+        <Range value="9.000000"/>
     </CActorRange>
     <CActorUnit id="AP_Baneling" parent="AP_BanelingBase" unitName="AP_Baneling">
         <On Terms="AbilMorph.*.Finish; MorphTo AP_Baneling; MorphFrom AP_BanelingCocoon" Send="Create"/>
@@ -30621,7 +30574,6 @@
         <HostSiteOps Ops="SOpAttachCenter AP_SiegeBreakerLoadSOpOffset"/>
         <On Terms="ActorCreation" Target="::Creator" Send="Signal AP_SiegeBreakerLoadTransit"/>
         <On Terms="ActorCreation" Send="AnimPlay Start Stand,Work,Start"/>
-        <On Terms="ActorCreation" Send="Create AP_MedivacMercSiegeTankAirliftTurret"/>
         <On Terms="AnimDone; AnimName Start" Send="AnimPlay Work Stand,Work PlayForever"/>
         <On Terms="ActorCreation" Send="SetVisibility"/>
         <On Terms="AbilTransport.AP_MedivacTransport.TransportLoad; AbilTransport AP_SiegeBreakerSiegedTransportable" Send="SetVisibility 1"/>
@@ -30630,9 +30582,6 @@
         <On Terms="AbilTransport.AP_MedivacTransport.TransportUnload; AbilTransport AP_InfestedSiegeBreakerSiegedTransportable" Send="SetVisibility"/>
         <On Terms="Signal.*.Dead" Send="Create ThorTransitDeath"/>
         <On Terms="Signal.*.Dead" Send="Destroy"/>
-        <On Terms="Signal.*.AP_BlackOpsTank" Send="ModelSwap AP_Merc_SiegeTank_BlackOps"/>
-        <On Terms="Upgrade.AP_HoverSiegeTank.Add" Send="ModelSwap AP_Merc_SiegeTank_BlackOps"/>
-        <On Terms="ActorCreation; ValidateUnit AP_HaveHoverSiegeTank" Send="ModelSwap AP_Merc_SiegeTank_BlackOps"/>
         <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <Aliases value="_Turret2"/>
@@ -30654,27 +30603,10 @@
         <DamageSiteOps Ops="SOpAttachHarness"/>
         <ShieldFlashType value="Full"/>
     </CActorAction>
-    <CActorAction id="AP_SiegeBreakerSiegedAirliftAttack" parent="GenericAttack" effectAttack="AP_ArcliteShockCannonAirliftBlast">
-        <On Terms="Effect.AP_InfestedArcliteShockCannonAirliftBlast.Start; At Caster" Send="Create"/>
-        <LaunchAssets Model="AP_SiegeBreakerSiegedAttackLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <LaunchModel value="AP_SiegeBreakerSiegedAttackAirliftAttackLaunchModel"/>
-        <ImpactSiteOps Ops="SOpActionCenter SOpTargetUnitZ" HoldPosition="1"/>
-        <ImpactMap index="None" Model="AP_SiegeBreakerSiegedAttackImpact" Sound="SiegeTank_SiegedAttackImpact"/>
-        <DamageSiteOps Ops="SOpAttachHarness"/>
-        <ShieldFlashType value="Full"/>
-    </CActorAction>
     <CActorAction id="AP_SiegeBreakerSiegedAttackDirected" parent="GenericAttack" effectAttack="AP_ArcliteShockCannonDirected">
         <LaunchAssets Sound="SiegeTank_SiegedAttackLaunch"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
         <ImpactMap index="None" Sound="SiegeTank_SiegedAttackImpact"/>
-        <ShieldFlashType value="Header"/>
-    </CActorAction>
-    <CActorAction id="AP_SiegeBreakerSiegedAirliftAttackDirected" parent="GenericAttack" effectAttack="AP_ArcliteShockCannonAirliftDirected">
-        <On Terms="Effect.AP_InfestedArcliteShockCannonAirliftDirected.Start; At Caster" Send="Create"/>
-        <LaunchAssets Model="AP_SiegeBreakerSiegedAttackDirectedLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <LaunchModel value="AP_SiegeBreakerSiegedAttackAirliftAttackLaunchModel"/>
-        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
-        <ImpactMap index="None" Model="AP_SiegeBreakerSiegedAttackDirectedImpact" Sound="SiegeTank_SiegedAttackImpact"/>
         <ShieldFlashType value="Header"/>
     </CActorAction>
     <CActorModel id="AP_SiegeBreakerSiegedAttackAirliftAttackLaunchModel" parent="GenericAttackModel">
@@ -41411,7 +41343,7 @@
         <BarWidth value="102"/>
         <CustomUnitStatusFrame value="AP_Coop_UnitStatus_Mengsk/MengskSiegeTank_StatusFrame"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode.dds"/>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode-mengsk.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetanksiegemode.dds"/>
         <HighlightTooltip value="Unit/Name/AP_SiegeTankMengsk"/>
@@ -41425,7 +41357,7 @@
         <StatusBarOn index="Custom" value="1"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-siegetanksiegemode.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode.dds"/>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode-mengsk.dds"/>
         </Wireframe>
         <StatusBarFlags index="Shields" value="0"/>
         <StatusBarFlags index="Life" value="0"/>
@@ -41590,7 +41522,7 @@
         <ErrorArray Error="CouldntReachTarget" Sound="UI_GenericError" GroupSound="UI_GenericError"/>
         <GlossaryAnim value="Stand"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-TankMode.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-siegetank-mengsk-tankmode.dds"/>
         </GroupIcon>
         <GroupSoundArray index="What" value="SiegeTank_GroupWhat"/>
         <GroupSoundArray index="Yes" value="SiegeTank_GroupYes"/>
@@ -41636,7 +41568,7 @@
         <StatusBarGroups index="All" value="1"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-siegetankmengsk.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-TankMode.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-siegetank-mengsk-tankmode.dds"/>
         </Wireframe>
         <Model value="AP_SiegeTank_Mengsk_COOP"/>
     </CActorUnit>
@@ -41715,7 +41647,7 @@
         <BuildModel value="SiegeTank_Mengsk_COOP_Sieged"/>
         <DeathArray index="Normal">
             <AnimProps value="Death"/>
-            <ModelLink value="SiegeTankMengskSiegedDeath"/>
+            <ModelLink value="AP_SiegeTankMengskSiegedDeath"/>
             <SoundLink value="SiegeTank_Explode"/>
             <VoiceLink value="SiegeTankSiegedDeathVoice"/>
         </DeathArray>
@@ -41731,7 +41663,7 @@
         <DeathCustoms ModelLink="ZergSmallUnitDeathLow" Name="AntiGravZerg"/>
         <DeathCustoms ModelLink="Invisible" Name="Vortex"/>
         <DeathCustoms ModelLink="TerranLargeUnitDeathLow" Name="AntiGravTerran"/>
-        <DeathCustoms ActorModel="AP_SiegeTankMengskDeathRagdoll" ModelLink="AP_SiegeTankMengskSiegedDeathRagdoll" Name="RagdollBasic">
+        <DeathCustoms ActorModel="SiegeTankDeathRagdoll" ModelLink="AP_SiegeTankMengskSiegedDeathRagdoll" Name="RagdollBasic">
             <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
         </DeathCustoms>
         <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
@@ -41810,7 +41742,7 @@
         <ErrorArray Error="CouldntReachTarget" Sound="UI_GenericError" GroupSound="UI_GenericError"/>
         <GlossaryAnim value="Stand"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode.dds"/>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode-mengsk.dds"/>
         </GroupIcon>
         <GroupSoundArray index="What" value="SiegeTankSieged_GroupWhat"/>
         <GroupSoundArray index="Yes" value="SiegeTankSieged_GroupYes"/>
@@ -41844,7 +41776,7 @@
         <SoundArray index="Highlight" value="SiegeTankSieged_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-siegetankmengsksieged.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode.dds"/>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode-mengsk.dds"/>
         </Wireframe>
         <Model value="AP_SiegeTank_Mengsk_COOP_Sieged"/>
     </CActorUnit>
@@ -41853,10 +41785,10 @@
         <On Terms="AbilMorph.*.Start; MorphFrom AP_SiegeTankMengsk" Send="Destroy"/>
     </CActorTurret>
     <CActorSound id="AP_SiegeTankMengskUnsiegeMorphSound" parent="SoundOneShot">
-        <On Terms="AbilMorph.*.Start; MorphTo AP_SiegeTankMengsk; !ValidateUnit AP_HaveMultiTaskMAFServosSiegeTank" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_SiegeTankMengsk; !ValidateUnit AP_HaveEitherSiegeTankSmartServos" Send="Create"/>
     </CActorSound>
     <CActorSound id="AP_SiegeTankMengskUnsiegeMorphFastSound" parent="SoundOneShot">
-        <On Terms="AbilMorph.*.Start; MorphTo AP_SiegeTankMengsk; ValidateUnit AP_HaveMultiTaskMAFServosSiegeTank" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo AP_SiegeTankMengsk; ValidateUnit AP_HaveEitherSiegeTankSmartServos" Send="Create"/>
     </CActorSound>
     <CActorModel id="AP_SiegeTankMengskSiegedTransitDeath">
         <On Terms="ActorCreation" Send="$Death"/>
@@ -41865,12 +41797,12 @@
         <Model value="TerranLargeUnitDeath"/>
     </CActorModel>
     <CActorSound id="AP_SiegeTankMengskSiegeMorphSound" parent="SoundOneShot">
-        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSieged; !ValidateUnit AP_HaveMultiTaskMAFServosSiegeTank" Send="Create"/>
-        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSiegedTransportable; !ValidateUnit AP_HaveMultiTaskMAFServosSiegeTank" Send="Create"/>
+        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSieged; !ValidateUnit AP_HaveEitherSiegeTankSmartServos" Send="Create"/>
+        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSiegedTransportable; !ValidateUnit AP_HaveEitherSiegeTankSmartServos" Send="Create"/>
     </CActorSound>
     <CActorSound id="AP_SiegeTankMengskSiegeMorphFastSound" parent="SoundOneShot">
-        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSieged; ValidateUnit AP_HaveMultiTaskMAFServosSiegeTank" Send="Create"/>
-        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSiegedTransportable; ValidateUnit AP_HaveMultiTaskMAFServosSiegeTank" Send="Create"/>
+        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSieged; ValidateUnit AP_HaveEitherSiegeTankSmartServos" Send="Create"/>
+        <On Terms="AbilMorph.AP_SiegeModeMengsk.Start; MorphTo AP_SiegeTankMengskSiegedTransportable; ValidateUnit AP_HaveEitherSiegeTankSmartServos" Send="Create"/>
     </CActorSound>
     <CActorUnit id="AP_SiegeTankMengskMorph" parent="GenericUnitBaseMorphTransition" unitName="AP_TankModeMorphModel">
         <Aliases value="_UnitLarge"/>
@@ -41913,13 +41845,13 @@
         <CreepRateShrink value="Shrink"/>
         <DeathArray index="Normal" ModelLink="TerranLargeUnitDeath" SoundLink="SiegeTank_Explode"/>
         <DeathCustoms ModelLink="TerranLargeUnitDeathLow" Name="AntiGravTerran"/>
-        <PortraitModel value="SiegeTankPortrait"/>
+        <PortraitModel value="AP_SiegeTankMengskPortrait"/>
         <AbilSoundArray AbilCmd="SiegeMode,Execute" Sound="SiegeTank_SiegeModeVO"/>
         <BarOffset value="80"/>
         <BarWidth value="102"/>
         <CustomUnitStatusFrame value="AP_Coop_UnitStatus_Mengsk/MengskSiegeTank_StatusFrame"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-TankMode.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-siegetank-mengsk-tankmode.dds"/>
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetankmengsk.dds"/>
         <HighlightTooltip value="Unit/Name/AP_SiegeTankMengsk"/>
@@ -41934,7 +41866,7 @@
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-siegetankmengsk.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-TankMode.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-siegetank-mengsk-tankmode.dds"/>
         </Wireframe>
         <StatusBarFlags index="Shields" value="0"/>
         <StatusBarFlags index="Life" value="0"/>
@@ -41968,6 +41900,36 @@
         <DamageMap index="Shield" Sound="AP_SiegeTankMengskSiegedAttackDamageShield" ModelReaction="AP_SiegeTankMengskSiegedAttackDamageReactionShield"/>
         <DamageModel value="AP_SiegeTankMengskAttackImprovedAoEDamageModel"/>
         <ShieldFlashType value="Full"/>
+    </CActorAction>
+    <CActorModel id="AP_SiegeTankMengskNapalmRounds" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.AP_SiegeTankMengskNapalmRoundsCP.Start" Send="Create"/>
+        <On Terms="Effect.AP_SiegeTankMengskNapalmRoundsCP.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.350000"/>
+        <HostSiteOps Ops="SOpShadow" HoldPosition="1"/>
+        <Model value="AP_SiegeTankMengskNapalmRounds"/>
+        <Scale value="2.500000"/>
+    </CActorModel>
+    <CActorModel id="AP_SiegeTankMengskNapalmRoundsImproved" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.AP_SiegeTankMengskNapalmRoundsImprovedCP.Start" Send="Create"/>
+        <On Terms="Effect.AP_SiegeTankMengskNapalmRoundsImprovedCP.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.350000"/>
+        <HostSiteOps Ops="SOpShadow" HoldPosition="1"/>
+        <Model value="AP_SiegeTankMengskNapalmRounds"/>
+        <Scale value="3.500000"/>
+    </CActorModel>
+    <CActorAction id="AP_SiegeTankMengskTankModeSplashAttack" parent="GenericAttack" effectAttack="AP_SiegeTankMengskTankModeSplash">
+        <LaunchAttachQuery Methods="AMPatternRollingStripe"/>
+        <LaunchAssets Model="AP_SiegeTankMengskAttackLaunch" Sound="SiegeTank_AttackLaunch"/>
+        <ImpactMap index="None" Model="AP_SiegeTankMengskAttackImpact" Sound="SiegeTank_AttackImpact"/>
+        <ImpactPhysics Name="90mmCannonImpact" MatchKeys="Basic" Physics="SiegeTankAttackForce"/>
+        <ShieldFlashType value="None"/>
+    </CActorAction>
+    <CActorAction id="AP_SiegeTankMengskTankModeImprovedSplashAttack" parent="GenericAttack" effectAttack="AP_SiegeTankMengskTankModeImprovedSplash">
+        <LaunchAttachQuery Methods="AMPatternRollingStripe"/>
+        <LaunchAssets Model="AP_SiegeTankMengskAttackLaunch" Sound="SiegeTank_AttackLaunch"/>
+        <ImpactMap index="None" Model="AP_SiegeTankMengskAttackImpact" Sound="SiegeTank_AttackImpact"/>
+        <ImpactPhysics Name="90mmCannonImpact" MatchKeys="Basic" Physics="SiegeTankAttackForce"/>
+        <ShieldFlashType value="None"/>
     </CActorAction>
     <CActorAction id="AP_SiegeTankMengskSiegedAttackImprovedAoEDirected" parent="GenericAttack" effectAttack="AP_SiegeTankMengskSiegedDirected">
         <LaunchAssets Model="AP_SiegeTankMengskSiegedAttackDirectedLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
@@ -42059,50 +42021,50 @@
     <CActorSiteOpLocalOffset id="AP_SiegeTankMengskSiegedCargoSOpOffset">
         <LocalOffset value="0.000000,0.000000,-1.500000"/>
     </CActorSiteOpLocalOffset>
-    <CActorAction id="AP_MedivacMengskSiegeTankAirliftImprovedAoEAttackDirected" parent="GenericAttack" effectAttack="AP_MedivacMengskSiegeTankAirliftDirected">
+    <CActorAction id="AP_SiegeTankMengskAirliftImprovedAoEAttackDirected" parent="GenericAttack" effectAttack="AP_SiegeTankMengskAirliftDirected">
         <LaunchAssets Model="AP_SiegeTankMengskSiegedAttackDirectedLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <LaunchModel value="AP_MedivacMengskSiegeTankAirliftAttackLaunchModel"/>
-        <Beam value="AP_MedivacMengskSiegeTankAirliftAttackDirectedBeam"/>
-        <Missile value="AP_MedivacMengskSiegeTankAirliftAttackDirectedMissile"/>
+        <LaunchModel value="AP_SiegeTankMengskAirliftAttackLaunchModel"/>
+        <Beam value="AP_SiegeTankMengskAirliftAttackDirectedBeam"/>
+        <Missile value="AP_SiegeTankMengskAirliftAttackDirectedMissile"/>
         <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpForwardLaunchGuide"/>
-        <ImpactMap index="None" Model="AP_SiegeTankMengskSiegedAttackDirectedImpact" Sound="SiegeTank_SiegedAttackImpact" ModelReaction="MedivacMengskSiegeTankAirliftAttackDirectedImpactReaction"/>
-        <ImpactMap index="Shield" Sound="AP_MedivacMengskSiegeTankAirliftAttackDirectedImpactShield" ModelReaction="AP_MedivacMengskSiegeTankAirliftAttackDirectedImpactReactionShield"/>
+        <ImpactMap index="None" Model="AP_SiegeTankMengskSiegedAttackDirectedImpact" Sound="SiegeTank_SiegedAttackImpact" ModelReaction="SiegeTankMengskAirliftAttackDirectedImpactReaction"/>
+        <ImpactMap index="Shield" Sound="AP_SiegeTankMengskAirliftAttackDirectedImpactShield" ModelReaction="AP_SiegeTankMengskAirliftAttackDirectedImpactReactionShield"/>
         <ImpactPhysics Name="Explosion" MatchKeys="Basic" Physics="SiegeTankSiegedForce"/>
-        <DamageMap index="None" Model="AP_SiegeTankMengskSiegedAttackDirectedDamage" Sound="AP_MedivacMengskSiegeTankAirliftAttackDirectedDamage" ModelReaction="AP_MedivacMengskSiegeTankAirliftAttackDirectedDamageReaction"/>
-        <DamageMap index="Shield" Sound="AP_MedivacMengskSiegeTankAirliftAttackDirectedDamageShield" ModelReaction="AP_MedivacMengskSiegeTankAirliftAttackDirectedDamageReactionShield"/>
-        <DamageModel value="AP_MedivacMengskSiegeTankAirliftAttackDamageModel"/>
+        <DamageMap index="None" Model="AP_SiegeTankMengskSiegedAttackDirectedDamage" Sound="AP_SiegeTankMengskAirliftAttackDirectedDamage" ModelReaction="AP_SiegeTankMengskAirliftAttackDirectedDamageReaction"/>
+        <DamageMap index="Shield" Sound="AP_SiegeTankMengskAirliftAttackDirectedDamageShield" ModelReaction="AP_SiegeTankMengskAirliftAttackDirectedDamageReactionShield"/>
+        <DamageModel value="AP_SiegeTankMengskAirliftAttackDamageModel"/>
         <ShieldFlashType value="Header"/>
     </CActorAction>
-    <CActorSite id="AP_MedivacMengskSiegeTankAirliftAttackSite">
+    <CActorSite id="AP_SiegeTankMengskAirliftAttackSite">
         <Host Subject="AP_SiegeTankMengskSiegedTransit"/>
     </CActorSite>
-    <CActorModel id="AP_MedivacMengskSiegeTankAirliftAttackLaunchModel" parent="GenericAttackModel">
+    <CActorModel id="AP_SiegeTankMengskAirliftAttackLaunchModel" parent="GenericAttackModel">
         <Host Subject="AP_SiegeTankMengskSiegedTransit"/>
     </CActorModel>
-    <CActorAction id="AP_MedivacMengskSiegeTankAirliftImprovedAoESiegedAttack" parent="GenericAttack" effectAttack="AP_MedivacMengskSiegeTankAirliftImprovedAoEBlast">
+    <CActorAction id="AP_SiegeTankMengskAirliftImprovedAoESiegedAttack" parent="GenericAttack" effectAttack="AP_SiegeTankMengskAirliftImprovedAoEBlast">
         <LaunchAssets Model="AP_SiegeTankMengskSiegedAttackLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
-        <LaunchModel value="AP_MedivacMengskSiegeTankAirliftAttackLaunchModel"/>
-        <Beam value="AP_MedivacMengskSiegeTankAirliftSiegedAttackBeam"/>
-        <Missile value="AP_MedivacMengskSiegeTankAirliftSiegedAttackMissile"/>
-        <ImpactMap index="None" Model="AP_SiegeTankMengskSiegedAttackAirImprovedAoEImpact" Sound="SiegeTank_SiegedAttackImpact" ModelReaction="AP_MedivacMengskSiegeTankAirliftSiegedAttackImpactReaction"/>
-        <ImpactMap index="Shield" Sound="AP_MedivacMengskSiegeTankAirliftSiegedAttackImpactShield" ModelReaction="AP_MedivacMengskSiegeTankAirliftSiegedAttackImpactReactionShield"/>
+        <LaunchModel value="AP_SiegeTankMengskAirliftAttackLaunchModel"/>
+        <Beam value="AP_SiegeTankMengskAirliftSiegedAttackBeam"/>
+        <Missile value="AP_SiegeTankMengskAirliftSiegedAttackMissile"/>
+        <ImpactMap index="None" Model="AP_SiegeTankMengskSiegedAttackAirImprovedAoEImpact" Sound="SiegeTank_SiegedAttackImpact" ModelReaction="AP_SiegeTankMengskAirliftSiegedAttackImpactReaction"/>
+        <ImpactMap index="Shield" Sound="AP_SiegeTankMengskAirliftSiegedAttackImpactShield" ModelReaction="AP_SiegeTankMengskAirliftSiegedAttackImpactReactionShield"/>
         <ImpactPhysics Name="Explosion" MatchKeys="Basic" Physics="SiegeTankSiegedForce"/>
         <DamageSiteOps Ops="SOpAttachHarness"/>
-        <DamageMap index="None" Model="AP_SiegeTankMengskSiegedAttackDamage" Sound="AP_MedivacMengskSiegeTankAirliftSiegedAttackDamage" ModelReaction="AP_MedivacMengskSiegeTankAirliftSiegedAttackDamageReaction"/>
-        <DamageMap index="Shield" Sound="AP_MedivacMengskSiegeTankAirliftSiegedAttackDamageShield" ModelReaction="AP_MedivacMengskSiegeTankAirliftSiegedAttackDamageReactionShield"/>
-        <DamageModel value="AP_MedivacMengskSiegeTankAirliftAttackDamageModel"/>
+        <DamageMap index="None" Model="AP_SiegeTankMengskSiegedAttackDamage" Sound="AP_SiegeTankMengskAirliftSiegedAttackDamage" ModelReaction="AP_SiegeTankMengskAirliftSiegedAttackDamageReaction"/>
+        <DamageMap index="Shield" Sound="AP_SiegeTankMengskAirliftSiegedAttackDamageShield" ModelReaction="AP_SiegeTankMengskAirliftSiegedAttackDamageReactionShield"/>
+        <DamageModel value="AP_SiegeTankMengskAirliftAttackDamageModel"/>
         <ShieldFlashType value="Full"/>
         <ImpactSiteOps Ops="SOpAttachCenterStationary" HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
-    <CActorAction id="AP_MedivacMengskSiegeTankAirliftSiegedAttack" parent="GenericAttack" effectAttack="AP_MedivacMengskSiegeTankAirliftBlast">
+    <CActorAction id="AP_SiegeTankMengskAirliftSiegedAttack" parent="GenericAttack" effectAttack="AP_SiegeTankMengskAirliftBlast">
         <LaunchAssets Model="AP_SiegeTankMengskSiegedAttackLaunch" Sound="SiegeTank_SiegedAttackLaunch"/>
         <ImpactMap index="None" Model="AP_SiegeTankMengskSiegedAttackAirImpact" Sound="SiegeTank_SiegedAttackImpact"/>
         <ImpactPhysics Name="Explosion" MatchKeys="Basic" Physics="SiegeTankSiegedForce"/>
         <DamageSiteOps Ops="SOpAttachHarness"/>
         <DamageMap index="None" Model="AP_SiegeTankMengskSiegedAttackDamage"/>
-        <DamageModel value="AP_MedivacMengskSiegeTankAirliftAttackDamageModel"/>
+        <DamageModel value="AP_SiegeTankMengskAirliftAttackDamageModel"/>
         <ShieldFlashType value="Full"/>
-        <LaunchModel value="AP_MedivacMengskSiegeTankAirliftAttackLaunchModel"/>
+        <LaunchModel value="AP_SiegeTankMengskAirliftAttackLaunchModel"/>
         <ImpactSiteOps Ops="SOpAttachCenterStationary" HoldPosition="1" HoldRotation="1"/>
     </CActorAction>
     <CActorModel id="AP_FactoryMengskBuild" parent="TerranBuildingBuild"/>
@@ -42141,14 +42103,14 @@
         <Inherits index="TeamColor" value="1"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
-        <On Terms="ActorCreation; !ValidateCreationEffect AP_HaveMultiTaskMAFServosThor" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="ActorCreation; ValidateCreationEffect AP_HaveMultiTaskMAFServosThor" Send="AnimBracketStart BSD Birth Stand Death 0 1.000000 AsDuration"/>
-        <On Terms="Effect.ThorMengskSiegeTargetLargeAoEDelayCP.Start" Send="Create"/>
-        <On Terms="Effect.ThorMengskSiegeTargetLargeAoEDelayCP.Stop" Send="Destroy"/>
+        <On Terms="ActorCreation; !ValidateCreationEffect AP_HaveThorMengskSmartServos" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation; ValidateCreationEffect AP_HaveThorMengskSmartServos" Send="AnimBracketStart BSD Birth Stand Death 0 0.750000 AsDuration"/>
+        <On Terms="Effect.AP_ThorMengskSiegeTargetLargeAoEDelayCP.Start" Send="Create"/>
+        <On Terms="Effect.AP_ThorMengskSiegeTargetLargeAoEDelayCP.Stop" Send="Destroy"/>
         <HostForProps Subject="_Unit" Scope="Caster"/>
         <HostSiteOps Ops="SOpTargetPoint SOpShadowSyncGround"/>
         <ScopeBearingsTracking value="ForceOff"/>
-        <Model value="ThorMengskSiegeTargetedBirthSearchIndicator"/>
+        <Model value="AP_ThorMengskSiegeTargetedBirthSearchIndicator"/>
         <Scale value="1.500000"/>
     </CActorModel>
     <CActorSplat id="AP_ThorMengskSiegeTargetedCursorSplat" parent="CursorSplat" abil="AP_ThorMengskSiegeTargeted"/>
@@ -42174,8 +42136,8 @@
         <Inherits index="TeamColor" value="1"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="AnimBracketState.*.AfterClosing; !AnimBracketExitReason ModelSwap; AnimName BSD" Send="Destroy"/>
-        <On Terms="ActorCreation; !ValidateCreationEffect AP_HaveMultiTaskMAFServosThor" Send="AnimBracketStart BSD Birth Stand Death"/>
-        <On Terms="ActorCreation; ValidateCreationEffect AP_HaveMultiTaskMAFServosThor" Send="AnimBracketStart BSD Birth Stand Death 0 1.000000 AsDuration"/>
+        <On Terms="ActorCreation; !ValidateCreationEffect AP_HaveThorMengskSmartServos" Send="AnimBracketStart BSD Birth Stand Death"/>
+        <On Terms="ActorCreation; ValidateCreationEffect AP_HaveThorMengskSmartServos" Send="AnimBracketStart BSD Birth Stand Death 0 0.750000 AsDuration"/>
         <On Terms="Effect.AP_ThorMengskSiegeTargetDelayCP.Start" Send="Create"/>
         <On Terms="Effect.AP_ThorMengskSiegeTargetDelayCP.Stop" Send="Destroy"/>
         <HostForProps Subject="_Unit" Scope="Caster"/>
@@ -42187,11 +42149,10 @@
         <IconArcLength value="3.250000"/>
     </CActorRange>
     <CActorSound id="AP_ThorMengskSiegeSound" parent="SoundOneShot">
-        <On Terms="Abil.AP_ThorMengskSiege.Start; !ValidateUnit AP_HaveMultiTaskMAFServosThor" Send="Create"/>
+        <On Terms="Abil.AP_ThorMengskSiege.Start; !ValidateUnit AP_HaveThorMengskSmartServos" Send="Create"/>
     </CActorSound>
     <CActorSound id="AP_ThorMengskSiegeFastSound" parent="SoundOneShot">
-        <On Terms="Abil.AP_ThorMengskSiege.Start; ValidateUnit AP_HaveMultiTaskMAFServosThor" Send="Create"/>
-        <On Terms="Abil.AP_ThorMengskWreckage.Start" Send="Create"/>
+        <On Terms="Abil.AP_ThorMengskSiege.Start; ValidateUnit AP_HaveThorMengskSmartServos" Send="Create"/>
     </CActorSound>
     <CActorModel id="AP_ThorMengskSiegeTargetedLargeAoESearchIndicator">
         <Inherits index="TeamColor" value="1"/>
@@ -42205,20 +42166,11 @@
         <Model value="AP_ThorMengskSiegeTargetedSearchIndicator"/>
         <Scale value="1.500000"/>
     </CActorModel>
-    <CActorSimple id="AP_ThorMengskRebornSoundTimer">
-        <On Terms="Abil.AP_ThorMengskReborn.Start" Send="Create"/>
-        <On Terms="Abil.AP_ThorMengskRebornFree.Start" Send="Create"/>
-        <On Terms="ActorCreation" Send="TimerSet 9 DelayDestroy"/>
-        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Create AP_ThorMengskUnsiegeSound"/>
-        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
-    </CActorSimple>
     <CActorSound id="AP_ThorMengskUnsiegeSound" parent="SoundOneShot">
-        <On Terms="Abil.AP_ThorMengskUnsiege.Start; !ValidateUnit AP_HaveMultiTaskMAFServosThor" Send="Create"/>
-        <On Terms="Abil.AP_ThorMengskUnsiegeAPMode.Start; !ValidateUnit AP_HaveMultiTaskMAFServosThor" Send="Create"/>
+        <On Terms="Abil.AP_ThorMengskUnsiege.Start; !ValidateUnit AP_HaveThorMengskSmartServos" Send="Create"/>
     </CActorSound>
     <CActorSound id="AP_ThorMengskUnsiegeFastSound" parent="SoundOneShot">
-        <On Terms="Abil.AP_ThorMengskUnsiege.Start; ValidateUnit AP_HaveMultiTaskMAFServosThor" Send="Create"/>
-        <On Terms="Abil.AP_ThorMengskUnsiegeAPMode.Start; ValidateUnit AP_HaveMultiTaskMAFServosThor" Send="Create"/>
+        <On Terms="Abil.AP_ThorMengskUnsiege.Start; ValidateUnit AP_HaveThorMengskSmartServos" Send="Create"/>
     </CActorSound>
     <CActorAction id="AP_ThorMengskSiegedAirAttack" parent="GenericAttack" effectImpact="AP_ThorMengskSiegedDamage" effectLaunch="AP_ThorMengskSiegedLM">
         <LaunchAttachQuery Methods="AP_FilterWeapon01Thru04 AP_ThorMengskPattern"/>
@@ -42236,23 +42188,29 @@
         <Baselines index="Stand" AnimProps="Stand" BlendIn="-1.000000" BlendOut="-1.000000"/>
         <Baselines index="Walk" AnimProps="Walk" BlendIn="-1.000000" BlendOut="-1.000000"/>
         <On Terms="ActorCreation" Send="$Birth 0 0.000000"/>
-        <On Terms="UnitBirth.AP_ThorMengskAP" Send="Create"/>
-        <On Terms="UnitBirth.AP_ThorMengskAP" Send="AnimBracketStart Morph IGNORE Morph,Stand Morph,End"/>
         <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengsk; MorphFrom AP_ThorMengskSieged" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengsk; MorphTo AP_ThorMengskSieged" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengskAP; MorphFrom AP_ThorMengskSieged" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskAP; MorphTo AP_ThorMengskSieged" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Start; MorphTo AP_ThorMengskAP; MorphFrom AP_ThorMengsk" Send="AnimBracketStart Morph Morph Morph,Stand Morph,End"/>
-        <On Terms="AbilMorph.*.Start; MorphTo AP_ThorMengsk; MorphFrom AP_ThorMengskAP" Send="AnimBracketStop Morph"/>
         <DeathArray index="Normal" ModelLink="AP_ThorMengskDeath"/>
+        <GroupIcon>
+            <Image index="0" value="AP\Assets\Textures\wireframe-terran-thor-mengsk.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="AP\Assets\Textures\wireframe-terran-thor-mengsk.dds"/>
+        </Wireframe>
     </CActorUnit>
     <CActorUnit id="AP_ThorMengskSieged" parent="AP_ThorMengskBase" unitName="AP_ThorMengskSieged">
         <On Terms="ActorCreation" Send="AnimBracketStart Work IGNORE Work,Stand IGNORE Instant"/>
         <On Terms="AbilMorph.*.Finish; MorphTo AP_ThorMengskSieged" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskSieged" Send="Destroy"/>
         <DeathCustoms index="6" ActorModel="" ModelLink="" Name="RagdollBasic"/>
+        <GroupIcon>
+            <Image index="0" value="AP\Assets\Textures\wireframe-terran-thor-mengsk-overwatch.dds"/>
+        </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-thormengsksieged.dds"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-thormengsksieged.dds"/>
+        <Wireframe>
+            <Image index="0" value="AP\Assets\Textures\wireframe-terran-thor-mengsk-overwatch.dds"/>
+        </Wireframe>
     </CActorUnit>
     <CActorUnit id="AP_ThorMengskMorph" parent="GenericUnitBaseMorphTransition" unitName="AP_ThorMengskMorph">
         <CustomUnitStatusFrame value="AP_Coop_UnitStatus_Mengsk/MengskThor_StatusFrame"/>
@@ -42260,9 +42218,11 @@
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
         <On Terms="ActorCreation" Send="AnimPlay CoverStand Cover,Stand PlayForever 0.000000"/>
         <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengsk; MorphTo AP_ThorMengskSieged" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengsk; MorphTo AP_ThorMengskSieged" Send="AnimPlay Morph Work,Stand,Start PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengsk; MorphTo AP_ThorMengskSieged; !ValidateUnit AP_HaveThorMengskSmartServos" Send="AnimPlay Morph Work,Stand,Start PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengsk; MorphTo AP_ThorMengskSieged; ValidateUnit AP_HaveThorMengskSmartServos" Send="AnimPlay Morph Work,Stand,Start PlayForever,NonLooping 0.000000 0.000000 0.750000 AsDuration"/>
         <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskSieged; MorphTo AP_ThorMengsk" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskSieged; MorphTo AP_ThorMengsk" Send="AnimPlay Morph Work,Stand,End PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskSieged; MorphTo AP_ThorMengsk; !ValidateUnit AP_HaveThorMengskSmartServos" Send="AnimPlay Morph Work,Stand,End PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskSieged; MorphTo AP_ThorMengsk; ValidateUnit AP_HaveThorMengskSmartServos" Send="AnimPlay Morph Work,Stand,End PlayForever,NonLooping 0.000000 0.000000 0.750000 AsDuration"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_ThorMengskSieged; MorphTo AP_ThorMengsk" Send="Destroy"/>
         <On Terms="AbilMorph.*.Finish; MorphFrom AP_ThorMengsk; MorphTo AP_ThorMengskSieged" Send="Destroy"/>
         <On Terms="Upgrade.AP_ThorMengskArmorAura.Add; !ScopeContains AP_ThorMengskArmorAuraRange" Send="Create AP_ThorMengskArmorAuraRange"/>
@@ -42324,7 +42284,7 @@
         <ModelFlags index="OutlineEmitter" value="1"/>
         <PortraitModel value="AP_ThorMengskPortrait"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-thor-mengsk-overwatch.dds"/>
         </GroupIcon>
         <GroupSoundArray index="What" value="Thor_GroupWhat"/>
         <GroupSoundArray index="Yes" value="Thor_GroupYes"/>
@@ -42367,7 +42327,7 @@
         </StatusColors>
         <UnitIcon value="Assets\Textures\btn-unit-terran-thormengsk.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-Thor.dds"/>
+            <Image value="AP\Assets\Textures\wireframe-terran-thor-mengsk-overwatch.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorAction id="AP_ThorMengskAAAttack" parent="GenericAttack" effectImpact="AP_JavelinMissileLaunchersMengskDamage" effectLaunch="AP_JavelinMissileLaunchersMengskLM">
@@ -42393,7 +42353,6 @@
         <On Terms="ActorCreation" Send="AnimPlay Start Stand,Work,Start"/>
         <On Terms="AnimDone; AnimName Start" Send="AnimPlay Work Stand,Work PlayForever"/>
         <On Terms="AbilTransport.AP_MedivacTransport.TransportUnload; AbilTransport AP_ThorMengsk" Send="Destroy"/>
-        <On Terms="AbilTransport.AP_MedivacTransport.TransportUnload; AbilTransport AP_ThorMengskAP" Send="Destroy"/>
         <On Terms="Signal.*.Dead" Send="Create AP_ThorMengskTransitDeath"/>
         <On Terms="Signal.*.Dead" Send="Destroy"/>
         <Host Subject="::Creator"/>
@@ -42409,41 +42368,12 @@
         <Sound value="AP_ThorMengskTransitLand"/>
         <Layers Sound="AP_SiegeTank_Land_RockDebris"/>
     </CActorSound>
-    <CActorAction id="AP_ThorMengskAALanceAttack" parent="GenericAttack" effectAttack="AP_LanceMissileLaunchersMengskDamage">
-        <LaunchAttachQuery Methods="AMFilterWeaponSetA2 AP_AMPatternThorMengskAALance"/>
-        <LaunchAssets Model="" Sound=""/>
-        <DamageMap index="None" Sound=""/>
-        <AcquisitionYawHalfArc value="10.000000"/>
-        <AcquisitionPitchHalfArc value="15.000000"/>
-        <AccuracyHalfArc value="5.000000"/>
-        <ImpactMap index="None" Model="ThorAAAttackImpactLance" Sound="250mmStrikeCannonsSound"/>
-        <ImpactPhysics Name="JavelinImpact" MatchKeys="Basic" Physics="ThorAAAttackForce"/>
-    </CActorAction>
     <CActorRange id="AP_ThorMengskArmorAuraRange">
         <Range value="5"/>
         <On Terms="SelectionLocalUpdate.*.Start" Send="SetVisibility 1"/>
         <On Terms="SelectionLocalUpdate.*.Stop" Send="SetVisibility"/>
         <On Terms="ActorCreation; !Selected" Send="SetVisibility"/>
-        <Icon value="Assets\Textures\RadarIcon2.dds"/>
     </CActorRange>
-    <CActorSound id="AP_ThorWrecakgeLoopSound" parent="SoundContinuous">
-        <Sound value="AP_Thor_ImmortalityProtocolWeldLoop"/>
-    </CActorSound>
-    <CActorModel id="AP_ThorWrecakgeOverlayModel" parent="ModelAnimationStyleContinuous">
-        <On Terms="AbilMorph.AP_ThorMengskAPWreckage.Start; !ScopeContains AP_ThorWrecakgeOverlayModel" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; !ScopeContains AP_ThorWrecakgeOverlayModel; MorphTo AP_ThorMengskWreckage" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom AP_ThorMengskWreckage" Send="Destroy"/>
-        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor 127,127,127 0.5 OneShot AP_ThorWrecakgeOverlayModel"/>
-        <On Terms="ActorDestruction" Target="_Unit" Send="ClearTintColor 3 AP_ThorWrecakgeOverlayModel"/>
-        <On Terms="ActorCreation" Send="SetVisibility"/>
-        <Model value="RavenScramblerMissileBehavior"/>
-        <HostSiteOps Ops="SOpAttachCenter" HoldRotation="1"/>
-        <Host Subject="_Selectable"/>
-        <Inherits index="BaseModelScale" value="1"/>
-        <Inherits index="Scale" value="1"/>
-        <Inherits index="Visibility" value="1"/>
-        <AutoScaleFactor value="1.000000"/>
-    </CActorModel>
     <CActorUnit id="BroodLord">
         <!-- Override -->
         <!-- Part of infinite Broodling fix -->
@@ -43985,6 +43915,18 @@
         <CustomUnitStatusFrame value="AP_Coop_UnitStatus_Mengsk/MengskGoliath_StatusFrame"/>
         <StatusBarOn index="Custom" value="1"/>
         <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <On Terms="Upgrade.AP_GoliathMengskMoebiusDefenseMatrix.Add" Send="Create ShieldImpact"/>
+        <On Terms="ActorCreation; ValidateUnit CasterShieldsGE1" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="ActorCreation; ValidateUnit CasterShieldsGE1" Send="StatusSet ShieldCover 1"/>
+        <On Terms="ActorCreation; ValidateUnit CasterShieldsGE1" Send="TimerSet 0.100000 ShieldCoverCheck"/>
+        <On Terms="Upgrade.AP_GoliathMengskMoebiusDefenseMatrix.Add; ValidateUnit CasterShieldsGE1" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Upgrade.AP_GoliathMengskMoebiusDefenseMatrix.Add; ValidateUnit CasterShieldsGE1" Send="StatusSet ShieldCover 1"/>
+        <On Terms="Upgrade.AP_GoliathMengskMoebiusDefenseMatrix.Add" Send="TimerSet 0.100000 ShieldCoverCheck"/>
+        <On Terms="TimerExpired; TimerName ShieldCoverCheck; ValidateUnit CasterShieldsGE1; IsStatus ShieldCover 0" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="TimerExpired; TimerName ShieldCoverCheck; ValidateUnit CasterShieldsGE1; IsStatus ShieldCover 0" Send="StatusSet ShieldCover 1"/>
+        <On Terms="TimerExpired; TimerName ShieldCoverCheck; ValidateUnit CasterShieldsLT1; IsStatus ShieldCover 1" Send="AnimBracketStop Cover"/>
+        <On Terms="TimerExpired; TimerName ShieldCoverCheck; ValidateUnit CasterShieldsLT1; IsStatus ShieldCover 1" Send="StatusSet ShieldCover 0"/>
+        <On Terms="TimerExpired; TimerName ShieldCoverCheck" Send="TimerSet 0.100000 ShieldCoverCheck"/>
         <On Terms="WeaponStart.AP_GoliathMengskG.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.AP_GoliathMengskG.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="WeaponStart.AP_GoliathMengskA.AttackStart" Send="AnimBracketStart Spell Spell"/>
@@ -44013,13 +43955,24 @@
         <On Terms="Behavior.AP_GoliathCliffJump.LandDown" Send="AnimPlay AP_Jump Unload,End"/>
         <On Terms="Behavior.AP_GoliathCliffJump.LandUpDone" Send="AnimClear AP_Jump 1.000000"/>
         <On Terms="Behavior.AP_GoliathCliffJump.LandDownDone" Send="AnimClear AP_Jump 1.000000"/>
-        <On Terms="Behavior.AP_GoliathCliffJump.Launch" Send="Create AP_GoliathMengskJumpJet"/>
         <On Terms="WeaponStart.AP_GoliathMengskGUpgraded.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.AP_GoliathMengskGUpgraded.AttackStop" Send="AnimBracketStop Attack"/>
         <Model value="AP_GoliathMengsk"/>
         <DeathActorModel value="AP_GoliathMengskDeath"/>
+        <PortraitModel value="AP_GoliathMengskPortrait"/>
         <HeroIcon value="AP\Assets\Textures\btn-unit-terran-goliath-mengsk.dds"/>
         <UnitIcon value="AP\Assets\Textures\btn-unit-terran-goliath-mengsk.dds"/>
+        <Wireframe>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath-mengsk.dds"/>
+        </Wireframe>
+        <GroupIcon>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath-mengsk.dds"/>
+        </GroupIcon>
+        <WireframeShield>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath-mengsk-shield01.dds"/>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath-mengsk-shield02.dds"/>
+            <Image value="AP\Assets\Textures\Wireframe-Terran-goliath-mengsk-shield03.dds"/>
+        </WireframeShield>
     </CActorUnit>
     <CActorModel id="AP_GoliathMengskDeath" parent="UnitDeathModel">
         <AcceptedTransfers index="Textures" value="1"/>

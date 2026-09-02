@@ -761,6 +761,7 @@ Behavior/Name/AP_SentryReclamation=Reclamation
 Behavior/Name/AP_ShadowCharging=Shadow Charging
 Behavior/Name/AP_SiegeTankMengskSlowHeroic=Shock and Awe
 Behavior/Name/AP_SiegeTankMengskStun=Shock and Awe
+Behavior/Name/AP_SiegeTankMengskTransportHookIndicator=Transport Hook
 Behavior/Name/AP_SkirmisherAttackspeed=Terrazine Injectors
 Behavior/Name/AP_Slow=Slow
 Behavior/Name/AP_SoASuperShield=Shield Overcharge
@@ -789,6 +790,7 @@ Behavior/Name/AP_SwarmGrenade=Swarm Grenade
 Behavior/Name/AP_MothershipTaldarimGroundSlowDebuff=Shadow of Death
 Behavior/Name/AP_ThermalLancesFireBeam=Burning
 Behavior/Name/AP_ThorMengskArmorAuraTarget=Bulwark Field
+Behavior/Name/AP_ThorMengskArmorAuraSiegedTarget=Bulwark Field
 Behavior/Name/AP_TimeFieldAiur=Decelerated
 Behavior/Name/AP_TimeFieldAiurHeroic=Decelerated (Heroic)
 Behavior/Name/AP_TimeFieldPurifier=Accelerated
@@ -1077,6 +1079,7 @@ Behavior/Tooltip/AP_SensorTowerRangeBuff=This structure has increased attack ran
 Behavior/Tooltip/AP_SentryReclamation=This unit is temporarily under Karax's control. It will self-destruct once this effect expires.
 Behavior/Tooltip/AP_SiegeTankMengskSlowHeroic=Target's movement speed is reduced for a short period of time.
 Behavior/Tooltip/AP_SiegeTankMengskStun=Target is stunned.
+Behavior/Tooltip/AP_SiegeTankMengskTransportHookIndicator=Can be picked up by a Medivac to fire from it.
 Behavior/Tooltip/AP_SkirmisherAttackspeed=This unit has modified attack speed  and loses life over time.
 Behavior/Tooltip/AP_Slow=Target's movement speed is reduced for a short period of time.
 Behavior/Tooltip/AP_SoASuperShield=This unit or structure is absorbing damage.
@@ -1101,6 +1104,7 @@ Behavior/Tooltip/AP_SwarmGrenade=This unit is slowed and cannot attack or use en
 Behavior/Tooltip/AP_MothershipTaldarimGroundSlowDebuff=Attack and movement speed reduced by <d ref="(1 - Behavior,AP_MothershipTaldarimGroundSlowDebuff,Modification.MoveSpeedMultiplier) * 100"/>%.
 Behavior/Tooltip/AP_ThermalLancesFireBeam=This unit is taking additional damage over time.
 Behavior/Tooltip/AP_ThorMengskArmorAuraTarget=A Blackhammer is granting this unit +<d ref="Behavior,AP_ThorMengskArmorAuraTarget,Modification.LifeArmorBonus"/> armor.
+Behavior/Tooltip/AP_ThorMengskArmorAuraSiegedTarget=A Blackhammer in Overwatch Mode is granting this unit +<d ref="Behavior,AP_ThorMengskArmorAuraSiegedTarget,Modification.LifeArmorBonus"/> armor.
 Behavior/Tooltip/AP_TimeFieldAiur=Attack and move speed reduced by <d ref="(1 - Behavior,AP_TimeFieldAiur,Modification.MoveSpeedMultiplier) * 100"/>%.
 Behavior/Tooltip/AP_TimeFieldAiurHeroic=Attack and move speed reduced by <d ref="(1 - Behavior,AP_TimeFieldAiurHeroic,Modification.MoveSpeedMultiplier) * 100"/>%.
 Behavior/Tooltip/AP_TimeFieldPurifier=Attack and move speed increased by <d ref="((Behavior,AP_TimeFieldPurifier,Modification.MoveSpeedMultiplier) * 100) - 100"/>%.
@@ -1587,8 +1591,12 @@ Button/Name/AP_GhostSCBWLockdown=Lockdown
 Button/Name/AP_GlialReconstitution=Glial Reconstitution
 Button/Name/AP_Goliath=Build Goliath
 Button/Name/AP_GoliathMengsk=Build Bulwark Company
+Button/Name/AP_GoliathMengskAresClassTargetingAddon=Ares-Class Targeting Add-on
 Button/Name/AP_GoliathMengskJump=Jump Jets
+Button/Name/AP_GoliathMengskJumpJetsMKII=Jump Jets MKII
+Button/Name/AP_GoliathMengskMoebiusDefenseMatrix=Moebius Shielding
 Button/Name/AP_GoliathMengskMultilock=Multi-Lock Weapons System
+Button/Name/AP_GoliathMengskParalysisInducers=Neural Shutdown
 Button/Name/AP_GraviticDrive=Gravitic Drive
 Button/Name/AP_GravitonBeam=Graviton Beam
 Button/Name/AP_GravitonBeamVoidCampaign=Graviton Beam
@@ -1863,7 +1871,6 @@ Button/Name/AP_MedivacExpandedHull=Expanded Hull
 Button/Name/AP_MedivacPermanentCloak=Permanently Cloaked
 Button/Name/AP_MedivacRapidReignitionSystem=Rapid Reignition System
 Button/Name/AP_MedivacShield=Scatter Veil
-Button/Name/AP_MedivacSiegeTankAirlift=Armament Stabilizers
 Button/Name/AP_MedivacSpeedBoost=Ignite Afterburners
 Button/Name/AP_MengskCombatDiagnosis=Combat Diagnosis
 Button/Name/AP_MercCompound=Build Merc Compound
@@ -2336,7 +2343,10 @@ Button/Name/AP_SiegeTank=Build Siege Tank
 Button/Name/AP_SiegeTankEnhancedCombustionEngines=All-Terrain Treads
 Button/Name/AP_SiegeTankJumpJet=Jump Jets
 Button/Name/AP_SiegeTankMengsk=Build Shock Division
-Button/Name/AP_SiegeTankMengskBlink=Blink
+Button/Name/AP_SiegeTankMengskAirlift=Armament Stabilizers
+Button/Name/AP_SiegeTankMengskImprovedTankMode=Retrofitted Cannons
+Button/Name/AP_SiegeTankMengskNapalmRounds=Napalm Strike
+Button/Name/AP_SiegeTankMengskSmartServos=Smart Servos
 Button/Name/AP_SiegeTankMengskStun=Shock and Awe
 Button/Name/AP_SiegeTankTransportHook=Transport Hook
 Button/Name/AP_SingularityAnchor=Tomahawk Power Cells
@@ -2524,8 +2534,10 @@ Button/Name/AP_TerranVehicleWeaponsUltraCapacitorsLevel5=Upgrade Vehicle Weapons
 Button/Name/AP_Thor=Build Thor
 Button/Name/AP_ThorMengsk=Build Blackhammer
 Button/Name/AP_ThorMengskArmorAura=Bulwark Field
+Button/Name/AP_ThorMengskHammerOfTheLaw=Hammer of the Law
+Button/Name/AP_ThorMengskInfernoBlitz=Inferno Blitz
 Button/Name/AP_ThorMengskSiege=Overwatch Mode
-Button/Name/AP_ThorMengskSiegedCombatDiagnosis=Combat Diagnosis
+Button/Name/AP_ThorMengskSmartServos=Smart Servos
 Button/Name/AP_ThorMengskUnsiege=Walker Mode
 Button/Name/AP_ThorRapidReload=Rapid Reload
 Button/Name/AP_TimeFieldAiur=Deceleration Field
@@ -3266,15 +3278,19 @@ Button/Tooltip/AP_GhostSCBWLockdown=Fires a Lockdown round disabling a mechanica
 Button/Tooltip/AP_GlialReconstitution=Increases movement speed.
 Button/Tooltip/AP_Goliath=Heavy-fire support unit.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_GoliathMengsk=Royal Guard heavy-fire support unit.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
-Button/Tooltip/AP_GoliathMengskCombatDiagnosis=<n/><n/>The stats for the Bulwark Company are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_GoliathMengsk,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancyGoliathMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Ground Weapon Damage:</c> <d ref="Effect,AP_GoliathMengskG,Amount"/> (+<d ref="Effect,AP_GoliathMengskG,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Air Weapon Damage:</c> <d ref="Effect,AP_GoliathMengskAU,Amount"/>, <d ref="Effect,AP_GoliathMengskAU,Amount * (1 + Effect,AP_GoliathMengskAU,AttributeFactor[Armored])" precision="2"/> vs armored (+<d ref="Effect,AP_GoliathMengskAU,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/>/<d ref="Effect,AP_GoliathMengskAU,Amount * (1 + Effect,AP_GoliathMengskAU,AttributeFactor[Armored]) * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_GoliathMengsk,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancyGoliathMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
+Button/Tooltip/AP_GoliathMengskAresClassTargetingAddon=Increases the Bulwark Company's anti-air attack range by <c val="ffff8a">+2</c> and ground attack range by <c val="ffff8a">+1</c>.
+Button/Tooltip/AP_GoliathMengskCombatDiagnosis=<n/><n/>The stats for the Bulwark Company are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_GoliathMengsk,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancyGoliathMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Ground Weapon Damage:</c> <d ref="Effect,AP_GoliathMengskG,Amount"/> (+3 per rank)<n/><c val="ffff8a">Air Weapon Damage:</c> <d ref="Effect,AP_GoliathMengskAU,Amount"/>, <d ref="(Effect,AP_GoliathMengskAU,Amount + Effect,AP_GoliathMengskAU,AttributeBonus[Armored]) * (1 + Effect,AP_GoliathMengskAU,AttributeFactor[Armored])" precision="2"/> vs armored (+2/+3 per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_GoliathMengsk,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancyGoliathMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
 Button/Tooltip/AP_GoliathMengskJump=Jump to a nearby target location.
+Button/Tooltip/AP_GoliathMengskJumpJetsMKII=Allows the Bulwark Company to jump up and down cliffs and increases the range of its Jump Jets ability by <c val="ffff8a">33%</c>.
+Button/Tooltip/AP_GoliathMengskMoebiusDefenseMatrix=Grants the Bulwark Company <c val="ffff8a">60</c> shields. Shield regeneration starts at <c val="ffff8a">1</c> and increases by <c val="ffff8a">+1</c> per Rank.
 Button/Tooltip/AP_GoliathMengskMultilock=The Bulwark Company can target ground and air units simultaneously.
+Button/Tooltip/AP_GoliathMengskParalysisInducers=Lockdown Missiles now also stun Biological targets.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/AP_GoliathMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Gains the Jump Jets ability.
 Button/Tooltip/AP_GoliathMengskRank1Preview=<n/><c val="777777">Rank 1: Gains the Jump Jets ability.</c>
 Button/Tooltip/AP_GoliathMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Can attack ground and air targets simultaneously.
 Button/Tooltip/AP_GoliathMengskRank2Preview=<n/><c val="777777">Rank 2: Can attack ground and air targets simultaneously.</c>
-Button/Tooltip/AP_GoliathMengskRank3=<n/><c val="ffff8a">Rank 3:</c> Gains the Lockdown Missiles ability.
-Button/Tooltip/AP_GoliathMengskRank3Preview=<n/><c val="777777">Rank 3: Gains the Lockdown Missiles ability.</c>
+Button/Tooltip/AP_GoliathMengskRank3=<n/><c val="ffff8a">Rank 3:</c> Gains the Lockdown Missiles passive.
+Button/Tooltip/AP_GoliathMengskRank3Preview=<n/><c val="777777">Rank 3: Gains the Lockdown Missiles passive.</c>
 Button/Tooltip/AP_GoliathShapedHull=Increases Goliath life by 25.
 Button/Tooltip/AP_GraviticDrive=Increases the movement speed of <c val="ffff8a">Warp Prisms</c>.
 Button/Tooltip/AP_GravitonBeam=Makes the target unit float in the air, disabling its abilities and dealing damage over time. Effect lasts up to <d time="10"/>.<n/><n/><c val="#ColorAttackInfo">Massive units are immune.</c>
@@ -3635,7 +3651,6 @@ Button/Tooltip/AP_MedivacExpandedHull=Increases Medivac's cargo space by 4.
 Button/Tooltip/AP_MedivacPermanentCloak=The Medivac is permanently cloaked.
 Button/Tooltip/AP_MedivacRapidReignitionSystem=Slightly increases Medivac movement speed. Ignite Afterburners cooldown is reduced by 7 seconds.
 Button/Tooltip/AP_MedivacShield=Provides Medivacs with a shield that absorbs <d ref="$UpgradeEffectArrayValue:AP_MedivacShield:Unit,AP_Medivac,ShieldsMax$"/> damage.
-Button/Tooltip/AP_MedivacSiegeTankAirlift=Siege Tanks in Siege Mode can now attack while loaded in a Medivac's cargo. Targets air units only.
 Button/Tooltip/AP_MedivacSpeedBoost=Increases the Medivac's movement speed by 70% for <d time="8"/>.
 Button/Tooltip/AP_MengskCombatDiagnosis=<c val="ffff8a">Royal Guards</c> do not benefit from weapon and armor upgrades, but their stats are increased by their <c val="ffff8a">Rank</c>.
 Button/Tooltip/AP_MercCompound=Trains Mercenary units.
@@ -3757,7 +3772,7 @@ Button/Tooltip/AP_NovaNukeArm=Arms the Silo with a Tactical Nuke.<n/><n/>Nukes t
 Button/Tooltip/AP_NovaReleaseMinion=Releases Nova's current Domination target, returning it to its original alliance.
 Button/Tooltip/AP_NovaRespawn=Nova has been placed in stasis as she recovers from her injuries.
 Button/Tooltip/AP_NovaSilentkill=Instantly kill target enemy unit. Nova must move within melee range to execute the attack.
-Button/Tooltip/AP_NovaUnitLockdown=Stuns and disables the detection of mechanical units hit by the Bulwark Company's anti-air attacks for <d ref="Behavior,AP_NovaUnitLockdown,Duration"/> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
+Button/Tooltip/AP_NovaUnitLockdown=Stuns and disables the <c val="FFE303">Detection</c> of mechanical units hit by the Bulwark Company's anti-air attacks for <c val="ffff8a"><d ref="Behavior,AP_NovaUnitLockdown,Duration"/></c> seconds. Affected units cannot be stunned by Lockdown Missiles again for <c val="ffff8a"><d ref="Behavior,AP_GoliathMengskLockdownStunImmunity,Duration"/></c> seconds.<n/><n/><c val="#ColorAttackInfo">Heroic units are immune.</c>
 Button/Tooltip/AP_NovaWeaponBlazefireBladeShadowFury=Rapidly jump to random enemies within <d ref="Effect,AP_NovaWeaponBlazefireBladeShadowFurySearch,AreaArray[0].Radius"/> radius <d ref="Behavior,AP_NovaWeaponBlazefireBladeShadowFuryController,PeriodCount+1"/> times, attacking each of them for <d ref="Effect,AP_NovaWeaponBlazefireBladeShadowFuryDamage,Amount"/> damage. A single target can be hit more than once. Can target ground and air units.
 Button/Tooltip/AP_NovaWeaponBlazefireBladeSwap=Damage: <d ref="Effect,AP_NovaWeaponBlazefireBladeDamageUncloaked,Amount"/> (+ <d ref="Effect,AP_NovaWeaponBlazefireBladeDamageCloaked,Amount - Effect,AP_NovaWeaponBlazefireBladeDamageUncloaked,Amount"/> if cloaked) (Ground), <d ref="Effect,AP_NovaWeaponBlazefireBladeGunDamageCloaked,Amount"/> (Air)<n/>Range: Melee (Ground), <d ref="Weapon,AP_NovaWeaponBlazefireBladeGun,Range"/> (Air)<n/>Fire Rate: <d ref="Weapon,AP_NovaWeaponBlazefireBlade,Period" precision="2"/> seconds<n/><n/>Special: Fury of One
 Button/Tooltip/AP_NovaWeaponCanisterRifleSnipe=Deals <d ref="Effect,AP_NovaWeaponCanisterRifleSnipe,Amount"/> damage to target enemy ground or air unit from long range.</n></n><C val = "#ColorAttackInfo">Cannot target structures.</c>
@@ -4143,19 +4158,21 @@ Button/Tooltip/AP_SiegeTank=Heavy tank. Long-range artillery in Siege Mode.<n/><
 Button/Tooltip/AP_SiegeTankEnhancedCombustionEngines=Increases Siege Tank movement speed.
 Button/Tooltip/AP_SiegeTankJumpJet=Repositions the Siege Tank to a target location. Can be used to jump up and down cliffs.
 Button/Tooltip/AP_SiegeTankMengsk=Royal Guard heavy tank. Can switch into Siege Mode to provide long-range artillery support.<n/><n/><c val="FFFF8A">Can attack ground units.</c>
-Button/Tooltip/AP_SiegeTankMengskBlink=Teleports the Shock Division to a nearby target location. Ability can only be used once every <d ref="Abil,AP_SiegeTankMengskBlink,Cost[0].Cooldown.TimeUse"/> seconds.
-Button/Tooltip/AP_SiegeTankMengskCombatDiagnosis=<n/><n/>The stats for the Shock Division are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_SiegeTankMengsk,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Tank Weapon Damage:</c> <d ref="Effect,AP_SiegeTankMengskDamage,Amount"/>, <d ref="Effect,AP_SiegeTankMengskDamage,Amount * (1 + Effect,AP_SiegeTankMengskDamage,AttributeFactor[Armored])" precision="2"/> vs armored (+<d ref="Effect,AP_SiegeTankMengskDamage,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/>/<d ref="Effect,AP_SiegeTankMengskDamage,Amount * (1 + Effect,AP_SiegeTankMengskDamage,AttributeFactor[Armored]) * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_SiegeTankMengsk,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
-Button/Tooltip/AP_SiegeTankMengskSiegedCombatDiagnosis=<n/><n/>The stats for the Shock Division are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_SiegeTankMengskSieged,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Siege Weapon Damage:</c> <d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount"/>, <d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount * (1 + Effect,AP_SiegeTankMengskSiegedDummy,AttributeFactor[Armored])" precision="2"/> vs armored (+<d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/>/<d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount * (1 + Effect,AP_SiegeTankMengskSiegedDummy,AttributeFactor[Armored]) * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_SiegeTankMengskSieged,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
-Button/Tooltip/AP_SiegeTankMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Gains the Shock and Awe ability.
-Button/Tooltip/AP_SiegeTankMengskRank1Preview=<n/><c val="777777">Rank 1: Gains the Shock and Awe ability.</c>
-Button/Tooltip/AP_SiegeTankMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Increases vision and attack range by 2 in Siege Mode.
-Button/Tooltip/AP_SiegeTankMengskRank2Preview=<n/><c val="777777">Rank 2: Increases vision and attack range by 2 in Siege Mode.</c>
-Button/Tooltip/AP_SiegeTankMengskRank3=<n/><c val="ffff8a">Rank 3:</c> Increases the area of sieged attacks by <d ref="(Effect,AP_SiegeTankMengskSiegedImprovedAoEBlast,AreaArray[2].Radius/Effect,AP_SiegeTankMengskSiegedBlast,AreaArray[2].Radius-1)*100" precision="0"/>%.
-Button/Tooltip/AP_SiegeTankMengskRank3Preview=<n/><c val="777777">Rank 3: Increases the area of sieged attacks by <d ref="(Effect,AP_SiegeTankMengskSiegedImprovedAoEBlast,AreaArray[2].Radius/Effect,AP_SiegeTankMengskSiegedBlast,AreaArray[2].Radius-1)*100" precision="0"/>%.</c>
+Button/Tooltip/AP_SiegeTankMengskAirlift=Allows a Shock Division in Siege Mode to attack air units while loaded in a Medivac. Its carried attack is <c val="ffff8a">50%</c> slower than its normal sieged attack.
+Button/Tooltip/AP_SiegeTankMengskCombatDiagnosis=<n/><n/>The stats for the Shock Division are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_SiegeTankMengsk,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Tank Weapon Damage:</c> <d ref="Effect,AP_SiegeTankMengskDamage,Amount"/>, <d ref="(Effect,AP_SiegeTankMengskDamage,Amount + Effect,AP_SiegeTankMengskDamage,AttributeBonus[Armored]) * (1 + Effect,AP_SiegeTankMengskDamage,AttributeFactor[Armored])" precision="2"/> vs armored (+3/+5 per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_SiegeTankMengsk,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
+Button/Tooltip/AP_SiegeTankMengskImprovedTankMode=Tank Mode attacks deal <c val="ffff8a">20%</c> damage to nearby enemies. The Shock Division's Rank bonuses also apply to the Tank Mode weapon.
+Button/Tooltip/AP_SiegeTankMengskNapalmRounds=Sieged attacks ignite the ground for 3 seconds, dealing <c val="ffff8a"><d ref="Effect,AP_SiegeTankMengskNapalmRoundsDamage,Amount * 6"/></c> damage over <c val="ffff8a">3</c> seconds. The fire radius matches the attack's splash radius.
+Button/Tooltip/AP_SiegeTankMengskNapalmRoundsAirliftWarning=<n/><n/>Attacks made while lifted by a Medivac do not create fire.
+Button/Tooltip/AP_SiegeTankMengskSiegedCombatDiagnosis=<n/><n/>The stats for the Shock Division are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_SiegeTankMengskSieged,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Siege Weapon Damage:</c> <d ref="Effect,AP_SiegeTankMengskSiegedDirected,Amount"/>, <d ref="(Effect,AP_SiegeTankMengskSiegedDirected,Amount + Effect,AP_SiegeTankMengskSiegedDirected,AttributeBonus[Armored]) * (1 + Effect,AP_SiegeTankMengskSiegedDirected,AttributeFactor[Armored])" precision="2"/> vs armored (+5/+10 per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_SiegeTankMengskSieged,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
+Button/Tooltip/AP_SiegeTankMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Gains the Shock and Awe passive.
+Button/Tooltip/AP_SiegeTankMengskRank1Preview=<n/><c val="777777">Rank 1: Gains the Shock and Awe passive.</c>
+Button/Tooltip/AP_SiegeTankMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Increases vision and attack range by <c val="ffff8a">2</c> in Siege Mode.
+Button/Tooltip/AP_SiegeTankMengskRank2Preview=<n/><c val="777777">Rank 2: Increases vision and attack range by <c val="ffff8a">2</c> in Siege Mode.</c>
+Button/Tooltip/AP_SiegeTankMengskRank3=<n/><c val="ffff8a">Rank 3:</c> Increases the area of sieged attacks by <c val="ffff8a"><d ref="(Effect,AP_SiegeTankMengskSiegedImprovedAoEBlast,AreaArray[2].Radius/Effect,AP_SiegeTankMengskSiegedBlast,AreaArray[2].Radius-1)*100" precision="0"/>%</c>.
+Button/Tooltip/AP_SiegeTankMengskRank3Preview=<n/><c val="777777">Rank 3: Increases the area of sieged attacks by <c val="ffff8a"><d ref="(Effect,AP_SiegeTankMengskSiegedImprovedAoEBlast,AreaArray[2].Radius/Effect,AP_SiegeTankMengskSiegedBlast,AreaArray[2].Radius-1)*100" precision="0"/>%</c>.</c>
 Button/Tooltip/AP_SiegeTankMengskSieged=Royal Guard Heavy tank. Can switch into Tank Mode to provide mobile tank support.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
-Button/Tooltip/AP_SiegeTankMengskSiegedCombatDiagnosis=<c val="ffff8a">Royal Guards</c> do not benefit from weapon and armor upgrades, but their stats are increased by their <c val="ffff8a">Rank</c>.<n/><n/>The base stats for the Shock Division are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_SiegeTankMengskSieged,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Siege Weapon Damage:</c> <d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount"/>, <d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount * (1 + Effect,AP_SiegeTankMengskSiegedDummy,AttributeFactor[Armored])" precision="2"/> vs armored (+<d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/>/<d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount * (1 + Effect,AP_SiegeTankMengskSiegedDummy,AttributeFactor[Armored]) * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_SiegeTankMengskSieged,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancySiegeTankMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
-Button/Tooltip/AP_SiegeTankMengskSpiderMines=Spider Mines ability gets an additional charge for each rank gained.
-Button/Tooltip/AP_SiegeTankMengskStun=In Siege Mode, this unit's attacks now stun enemy units for <d ref="Behavior,AP_SiegeTankMengskStun,Duration"/> second. Can only occur once every <d ref="Behavior,AP_SiegeTankMengskStunImmunity,Duration"/> seconds on each unit.<n/><n/><c val="#ColorAttackInfo">Heroic units are slowed.</c>
+Button/Tooltip/AP_SiegeTankMengskSmartServos=Shock Divisions transform between Tank Mode and Siege Mode <c val="ffff8a">3</c> times as fast.
+Button/Tooltip/AP_SiegeTankMengskStun=In Siege Mode, this unit's attacks now stun enemy units for <c val="ffff8a"><d ref="Behavior,AP_SiegeTankMengskStun,Duration"/></c> second. Can only occur once every <c val="ffff8a"><d ref="Behavior,AP_SiegeTankMengskStunImmunity,Duration"/></c> seconds on each unit.<n/><n/><c val="#ColorAttackInfo">Heroic units are slowed.</c>
 Button/Tooltip/AP_SiegeTankShapedHull=Increases Siege Tank life by 25.
 Button/Tooltip/AP_SiegeTankSieged=Heavy tank. Long-range artillery in Siege Mode.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/AP_SiegeTankTransportHook=Allows Siege Tanks to be transported while in Siege Mode.
@@ -4364,16 +4381,19 @@ Button/Tooltip/AP_TerranVehicleWeaponsUltraCapacitorsLevel4=Maximizes the damage
 Button/Tooltip/AP_TerranVehicleWeaponsUltraCapacitorsLevel5=Maximizes the damage dealt by and firing speed of ground vehicles.
 Button/Tooltip/AP_Thor=Heavy assault mech.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_ThorMengsk=Royal Guard heavy assault mech. Can use Overwatch Mode.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
-Button/Tooltip/AP_ThorMengskArmorAura=Other nearby friendly ground units gain +<d ref="Behavior,AP_ThorMengskArmorAuraTarget,Modification.LifeArmorBonus"/> armor.
-Button/Tooltip/AP_ThorMengskCombatDiagnosis=<n/><n/>The stats for the Blackhammer are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_ThorMengsk,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Ground Weapon Damage:</c> <d ref="Effect,AP_ThorsHammerMengskDamage,Amount"/> (+<d ref="Effect,AP_ThorsHammerMengskDamage,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Air Weapon Damage:</c> <d ref="Effect,AP_JavelinMissileLaunchersMengskDamage,Amount"/>, <d ref="Effect,AP_JavelinMissileLaunchersMengskDamage,Amount * (1 + Effect,AP_JavelinMissileLaunchersMengskDamage,AttributeFactor[Light])" precision="2"/> vs light (+<d ref="Effect,AP_JavelinMissileLaunchersMengskDamage,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/>/<d ref="Effect,AP_JavelinMissileLaunchersMengskDamage,Amount * (1 + Effect,AP_JavelinMissileLaunchersMengskDamage,AttributeFactor[Light]) * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_ThorMengsk,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
-Button/Tooltip/AP_ThorMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Increases the range of Overwatch Mode by <d ref="Abil,AP_ThorMengskSiegeTargetedIncreasedRange,Range[0]-Abil,AP_ThorMengskSiegeTargeted,Range[0]"/>.
-Button/Tooltip/AP_ThorMengskRank1Preview=<n/><c val="777777">Rank 1: Increases the range of Overwatch Mode by <d ref="Abil,AP_ThorMengskSiegeTargetedIncreasedRange,Range[0]-Abil,AP_ThorMengskSiegeTargeted,Range[0]"/>.</c>
-Button/Tooltip/AP_ThorMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Increases the area of effect of Overwatch Mode by <d ref="(Effect,AP_ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,AP_ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%.
-Button/Tooltip/AP_ThorMengskRank2Preview=<n/><c val="777777">Rank 2: Increases the area of effect of Overwatch Mode by <d ref="(Effect,AP_ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,AP_ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%.</c>
-Button/Tooltip/AP_ThorMengskRank3=<n/><c val="ffff8a">Rank 3:</c> Increases attack speed in Overwatch Mode by <d ref="(Behavior,AP_ThorMengskSiegeAttackRate,Modification.AttackSpeedMultiplier-1)*100" precision="0"/>%.
-Button/Tooltip/AP_ThorMengskRank3Preview=<n/><c val="777777">Rank 3: Increases attack speed in Overwatch Mode by <d ref="(Behavior,AP_ThorMengskSiegeAttackRate,Modification.AttackSpeedMultiplier-1)*100" precision="0"/>%.</c>
+Button/Tooltip/AP_ThorMengskArmorAura=Grants <c val="ffff8a">+<d ref="Behavior,AP_ThorMengskArmorAuraTarget,Modification.LifeArmorBonus"/></c> armor to nearby friendly ground units. Grants <c val="ffff8a">+<d ref="Behavior,AP_ThorMengskArmorAuraSiegedTarget,Modification.LifeArmorBonus"/></c> armor instead while in Overwatch Mode.
+Button/Tooltip/AP_ThorMengskCombatDiagnosis=<n/><n/>The stats for the Blackhammer are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_ThorMengsk,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Ground Weapon Damage:</c> <d ref="Effect,AP_ThorsHammerMengskDamage,Amount"/> (+10 per rank)<n/><c val="ffff8a">Air Weapon Damage:</c> <d ref="Effect,AP_JavelinMissileLaunchersMengskDamage,Amount"/>, <d ref="Effect,AP_JavelinMissileLaunchersMengskDamage,Amount * (1 + Effect,AP_JavelinMissileLaunchersMengskDamage,AttributeFactor[Light])" precision="2"/> vs light (+2/+3 per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_ThorMengsk,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
+Button/Tooltip/AP_ThorMengskHammerOfTheLaw=Reduces the windup of Thor's Hammer. Thor's Hammer deals <c val="ffff8a">20%</c> of its damage as splash damage in a small area around their target.
+Button/Tooltip/AP_ThorMengskInfernoBlitz=Each attack made in Overwatch Mode grants <c val="ffff8a">3%</c> attack speed for <c val="ffff8a">6</c> seconds, stacking up to <c val="ffff8a">30</c> times. Stacks are lost immediately upon leaving Overwatch Mode.
+Button/Tooltip/AP_ThorMengskRank1=<n/><c val="ffff8a">Rank 1:</c> Increases the range of Overwatch Mode by <c val="ffff8a"><d ref="Abil,AP_ThorMengskSiegeTargetedIncreasedRange,Range[0]-Abil,AP_ThorMengskSiegeTargeted,Range[0]"/></c>.
+Button/Tooltip/AP_ThorMengskRank1Preview=<n/><c val="777777">Rank 1: Increases the range of Overwatch Mode by <c val="ffff8a"><d ref="Abil,AP_ThorMengskSiegeTargetedIncreasedRange,Range[0]-Abil,AP_ThorMengskSiegeTargeted,Range[0]"/></c>.</c>
+Button/Tooltip/AP_ThorMengskRank2=<n/><c val="ffff8a">Rank 2:</c> Increases the area of effect of Overwatch Mode by <c val="ffff8a"><d ref="(Effect,AP_ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,AP_ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%</c>.
+Button/Tooltip/AP_ThorMengskRank2Preview=<n/><c val="777777">Rank 2: Increases the area of effect of Overwatch Mode by <c val="ffff8a"><d ref="(Effect,AP_ThorMengskSiegeTargetLargeAoESearch,AreaArray[0].Radius/Effect,AP_ThorMengskSiegeTargetSearch,AreaArray[0].Radius-1)*100" precision="0"/>%</c>.</c>
+Button/Tooltip/AP_ThorMengskRank3=<n/><c val="ffff8a">Rank 3:</c> Increases attack speed in Overwatch Mode by <c val="ffff8a">33%</c>.
+Button/Tooltip/AP_ThorMengskRank3Preview=<n/><c val="777777">Rank 3: Increases attack speed in Overwatch Mode by <c val="ffff8a">33%</c>.</c>
 Button/Tooltip/AP_ThorMengskSiege=Deploys into Overwatch Mode. In this mode Blackhammers inflict heavy area damage to air units. Blackhammers in this mode cannot move.
-Button/Tooltip/AP_ThorMengskSiegedCombatDiagnosis=<c val="ffff8a">Royal Guards</c> do not benefit from weapon and armor upgrades, but their stats are increased by their <c val="ffff8a">Rank</c>.<n/><n/>The base stats for the Blackhammer are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_ThorMengskSieged,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Overwatch Damage:</c> <d ref="Effect,AP_ThorMengskSiegedDamage,Amount"/> (+<d ref="Effect,AP_ThorMengskSiegedDamage,Amount * Accumulator,AP_BaseMengskVeterancyDamageFactor,BonusPerLevel" precision="2"/> per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_ThorMengskSieged,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
+Button/Tooltip/AP_ThorMengskSiegedCombatDiagnosis=<n/><n/>The stats for the Blackhammer are listed below:<n/><c val="ffff8a">Life:</c> <d ref="Unit,AP_ThorMengskSieged,LifeMax"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.VitalMaxArray[Life]"/> per rank)<n/><c val="ffff8a">Overwatch Damage:</c> <d ref="Effect,AP_ThorMengskSiegedDamage,Amount"/> (+1 per rank)<n/><c val="ffff8a">Armor:</c> <d ref="Unit,AP_ThorMengskSieged,LifeArmor"/> (+<d ref="Behavior,AP_MengskVeterancyThorMengsk,VeterancyLevelArray[1].Modification.LifeArmorBonus"/> per rank)
+Button/Tooltip/AP_ThorMengskSmartServos=Blackhammers transform between Walker Mode and Overwatch Mode <c val="ffff8a">3</c> times as fast.
 Button/Tooltip/AP_ThorMengskUnsiege=Reverts to Walker Mode. In this mode Blackhammers can move.
 Button/Tooltip/AP_ThorRapidReload=Increases Thor's ground attack speed.
 Button/Tooltip/AP_ThorUpgraded=Heavy assault mech. Can use 330mm Barrage Cannons.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
@@ -6787,6 +6807,7 @@ Unit/Name/AP_MarineMengsk=Son of Korhal
 Unit/Name/AP_Medic=Medic
 Unit/Name/AP_MedicMengsk=Field Response Theta
 Unit/Name/AP_Medivac=Medivac
+Unit/Name/AP_MedivacCustomFrame=Medivac
 Unit/Name/AP_MercCompound=Merc Compound
 Unit/Name/AP_MercLiberator=Midnight Rider
 Unit/Name/AP_MercMedic=Skibi's Angel
@@ -6985,7 +7006,6 @@ Unit/Name/AP_TemplarArchive=Templar Archives
 Unit/Name/AP_Thor=Thor
 Unit/Name/AP_ThorAAWeapon=Thor AA
 Unit/Name/AP_ThorMengsk=Blackhammer
-Unit/Name/AP_ThorMengskWreckage=Blackhammer Wreckage
 Unit/Name/AP_ThorWreckage=Thor Wreckage
 Unit/Name/AP_TornadoMissileDummyWeapon=Tornado Missile Dummy
 Unit/Name/AP_TornadoMissileWeapon=Tornado Missile
@@ -7291,10 +7311,13 @@ Upgrade/Name/AP_NotPossibleLand=Landed
 Upgrade/Name/AP_NotPossibleLiftOff=Lifted Off
 Upgrade/Name/AP_NotPossibleNukeArmed=No missile in this structure
 Upgrade/Name/AP_NotPossibleRooted=Rooted
+Upgrade/Name/AP_NotPossibleOverwatchMode=Overwatch Mode
 Upgrade/Name/AP_NotPossibleSiegeMode=Siege Mode
+Upgrade/Name/AP_NotPossibleTankMode=Tank Mode
 Upgrade/Name/AP_NotPossibleTransportMode=Transport Mode
 Upgrade/Name/AP_NotPossibleVikingAssault=Assault Mode
 Upgrade/Name/AP_NotPossibleVikingFighter=Fighter Mode
+Upgrade/Name/AP_NotPossibleWalkerMode=Walker Mode
 Upgrade/Name/AP_NotPossibleWidowMineBurrowed=Widow Mine activated
 Upgrade/Name/AP_NovaArmorApolloInfantrySuit=Apollo Infantry Suit
 Upgrade/Name/AP_NovaArmorBlinkSuit=NovaArmorBlinkSuit
@@ -7694,7 +7717,6 @@ Weapon/Name/AP_KhaydarinBeam=Khaydarin Beam
 Weapon/Name/AP_KhaydarinBeam1=Khaydarin Beam1
 Weapon/Name/AP_KhaydarinBeam3=Khaydarin Beam3
 Weapon/Name/AP_LanceMissileLaunchers=250mm Punisher Cannons
-Weapon/Name/AP_LanceMissileLaunchersMengsk=250mm Punisher Cannons
 Weapon/Name/AP_LanzerTorpedoes=Lanzer Torpedoes
 Weapon/Name/AP_LaserDrillTripodLaserBeam=Laser Drill
 Weapon/Name/AP_LiberatorAGWeapon=Concord Cannon
@@ -7795,6 +7817,7 @@ Weapon/Name/AP_SentryBot=Defender Cannon
 Weapon/Name/AP_ShrikeTurret=Shrike Turret
 Weapon/Name/AP_SiegeBreaker=90mm Cannons
 Weapon/Name/AP_SiegeTankMengsk=90mm Cannons
+Weapon/Name/AP_SiegeTankMengskAirlift=Crucio Shock Cannon
 Weapon/Name/AP_SiegeTankMengskSieged=Crucio Shock Cannon
 Weapon/Name/AP_SlaynMissileTurret=Particle Cannon
 Weapon/Name/AP_SolariteReaper=Psi Blades
@@ -7868,7 +7891,7 @@ Weapon/Tip/AP_Impaler=<c val="#ColorAttackInfo">Must be burrowed to attack.</c>
 Weapon/Tip/AP_LocustFlyingLaunch=<c val="#ColorAttackInfo">Must be rooted or burrowed to attack.</c>
 Weapon/Tip/AP_LocustLaunch=<c val="#ColorAttackInfo">Must be rooted or burrowed to attack.</c>
 Weapon/Tip/AP_Lurker=<c val="#ColorAttackInfo">Must be burrowed to attack.</c>
-Weapon/Tip/AP_MedivacSiegeTankAirlift=Requires a loaded Siege Tank in Siege mode.<n/><n/><n/>If used with Siege Breakers, deals <d ref="Effect,AP_ArcliteShockCannonDummy,Amount"/> damage.<n/><n/>If used with Shock Divisions, deals damage depending on rank:<n/>Rank 0: <d ref="Effect,AP_SiegeTankMengskSiegedDummy,Amount" precision="2"/> + <d ref="Effect,AP_SiegeTankMengskSiegedDummy,AttributeBonus[Armored]"/> vs Armoured.<n/>+25% damage per rank.<n/>Has <d ref="Behavior,AP_SiegeTankMengskRangeBonus,Modification.WeaponRange"/> extra range if Shock Division is at least at rank 2.
+Weapon/Tip/AP_SiegeTankMengskAirlift=Requires a loaded Shock Division in Siege Mode.<n/><n/>Damage, range, and splash scale with the carried Shock Division's rank.
 Weapon/Tip/AP_NovaWeaponBlazefireBlade=Deals <d ref="Effect,AP_NovaWeaponBlazefireBladeDamageCloaked,Amount - Effect,AP_NovaWeaponBlazefireBladeDamageUncloaked,Amount"/> extra damage if Nova is cloaked
 Weapon/Tip/AP_PrismaticBeam=Deals <d ref="Effect,AP_PrismaticBeamMUx2,Amount"/> (<d ref="Effect,AP_PrismaticBeamMUx2,Amount + Effect,AP_PrismaticBeamMUx2,AttributeBonus[Armored]"/> vs Armored) damage if halfway charged,<n/><d ref="Effect,AP_PrismaticBeamMUx3,Amount"/> (<d ref="Effect,AP_PrismaticBeamMUx3,Amount + Effect,AP_PrismaticBeamMUx3,AttributeBonus[Armored]"/> vs Armored) damage if fully charged.
 Weapon/Tip/AP_MothershipPurifierWeapon=Deals damage to up to <c val="#ColorTooltipNumber"><d ref="Effect,AP_MothershipPurifierWeaponSearch,AreaArray[0].MaxCount + 1"/> targets</c> within range of the Purifier Mothership.
