@@ -1469,6 +1469,40 @@ static void DarkTemplarShadowFuryFunc(int player) {
 static void BloodHunterAlaraksCallFunc(int player) {
     lib15EF4C78_gf_AP_Player_Protoss_activateBloodHunterResourceEfficiency(player);
 }
+
+static void ArtanisAiurAspectFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_ArtanisAiurAspectUnlocked", 1);
+}
+static void ArtanisNerazimAspectFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_ArtanisNerazimAspectUnlocked", 1);
+}
+
+static void ArtanisPurifierAspectFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_ArtanisPurifierAspectUnlocked", 1);
+}
+
+static void ArtanisTaldarimAspectFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_DarkTemplarShaAP_ArtanisTaldarimAspectUnlockeddowFuryAll", 1);
+}
+
+static void NexusPowerFunc(int player) {
+    unitgroup g;
+    unit u;
+    int i;
+    g = UnitGroup("AP_Nexus", player, RegionEntireMap(), UnitFilterStandard, 0);
+    for (i = 1; i <= UnitGroupCount(g, c_unitCountAll); i += 1) {
+        u = UnitGroupUnit(g, i);
+        lib15EF4C78_gf_AP_Player_ReapplyDefaultBehaviorsToUnit(u);
+    }
+}
+
+static void QuatroFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_ProtossAirArmorsQuatro", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ProtossAirWeaponsQuatro", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ProtossGroundArmorsQuatro", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ProtossGroundWeaponsQuatro", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ProtossShieldsQuatro", 1);
+}
 static void RegisterProtossItems() {
 
     // ********************** //
@@ -1599,25 +1633,296 @@ static void RegisterProtossItems() {
     // * Robotics Facility  * //
     // ********************** //
 
-    // RegisterProtossItem(, "AP_");
+    // Immortal
+    RegisterProtossItem(49, "AP_ImmortalAirAttack");
+    RegisterProtossItem(143, "AP_ImmortalBarrierThorns");
+    RegisterProtossItem(144, "AP_ImmortalWarpRelocate");
+    RegisterProtossItemFunc(145, "AP_ImmortalStarter", UnlockRoboticsFacility); // Eternal Duty
+    RegisterProtossItem(146, "AP_ImmortalRegen");
+    RegisterProtossItem(186, "AP_ImmortalImprovedBarrier");
+
+    // Annihilator
+    RegisterProtossItem(48, "AP_ImmortalIncreasedRange"); // SingularityCharge
+    RegisterProtossItem(80, "AP_VoidImmortalWeaponSplash"); // Disruptor Dispersion
+    RegisterProtossItem(147, "AP_AnnihilatorCloak");
+    RegisterProtossItem(148, "AP_AnnihilatorResourceEfficiency");
+    RegisterProtossItem(149, "AP_AnnihilatorAirAttack");
+    RegisterProtossItem(189, "AP_AnnihilatorTwilightChassis");
+
+    // Vanguard
+    RegisterProtossItem(46, "AP_AlarakVanguardLongshot");
+    RegisterProtossItem(47, "AP_AlarakVanguardIncreaseSplashArea");
+    RegisterProtossItem(150, "AP_VanguardAcceleratedWarp");
+    RegisterProtossItem(151, "AP_VanguardArmor");
+    RegisterProtossItem(152, "AP_VanguardFlare");
+    RegisterProtossItem(187, "AP_VanguardRapidfireCannon");
+    RegisterProtossItem(188, "AP_VanguardFusionMortars");
+
+    // Stalwart
+    RegisterProtossItem(87, "AP_StalwartHighVoltageCapacitors");
+    RegisterProtossItem(88, "AP_StalwartStrutEnhancements");
+    RegisterProtossItem(89, "AP_StalwartStabilizedElectrodes");
+    RegisterProtossItem(90, "AP_StalwartLatticedShields");
+    RegisterProtossItem(135, "AP_StalwartImprovedBarrier");
+    RegisterProtossItem(190, "AP_StalwartArcInducers");
+
+    // Colossus
+    RegisterProtossItem(50, "AP_ColossusRapidIgnition"); // Pacification Protocols
+    RegisterProtossItem(191, "AP_ColossusFireLance");
+
+    // Wrathwalker
+    RegisterProtossItem(51, "AP_AlarakColossusChargedBlastChargeTime");
+    RegisterProtossItem(52, "AP_WrathwalkerLongRangeChargedBlast");
+    RegisterProtossItem(192, "AP_WrathwalkerAerialTracking");
+
+    // Reaver
+    RegisterProtossItem(42, "AP_ScarabDamageUpgrade");
+    RegisterProtossItem(43, "AP_ReaverIncreasedScarabSplashRadius");
+    RegisterProtossItem(44, "AP_ReaverHangarIncreaseUpgrade");
+    RegisterProtossItem(45, "AP_ResourceEfficiencyReaver");
+    RegisterProtossItem(120, "AP_ReaverBargainBinPrices");
+    RegisterProtossItem(193, "AP_ReaverKhalaiReplicators");
+
+    // Disruptor
+    RegisterProtossItem(81, "AP_DisruptorPermanentCloak");
+    RegisterProtossItem(82, "AP_DisruptorPerfectedPower");
+    RegisterProtossItem(83, "AP_DisruptorRestrainedDestruction");
+    RegisterProtossItem(194, "AP_DisruptorRestructuredThrusters");
+
+    // Observer
+    RegisterProtossItem(40, "AP_ObserverGraviticBooster");
+    RegisterProtossItem(41, "AP_ObserverSightUpgrade");
+    RegisterProtossItem(196, "AP_ObserverScopophobia");
+
+    // Warp Prism
+    RegisterProtossItem(37, "AP_GraviticDrive");
+    RegisterProtossItem(38, "AP_WarpPrismPhaseBlaster");
+    RegisterProtossItem(39, "AP_WarpPrismWarConfiguration");
+    RegisterProtossItem(195, "AP_WarpPrismWarpRefraction");
+
+    // ********************** //
+    // *      Stargate      * //
+    // ********************** //
+
+    // Phoenix
+    RegisterProtossItem(19, "AP_ImprovedIonCannons");
+    RegisterProtossItem(20, "AP_AnionPulseCrystals");
+    RegisterProtossItem(154, "AP_PhoenixAcceleratedWarp");
+    RegisterProtossItem(155, "AP_PhoenixShield");
+    RegisterProtossItem(156, "AP_PhoenixGravitonBuilding");
+    RegisterProtossItem(157, "AP_PhoenixGravitonChain");
+    RegisterProtossItem(197, "AP_VoidPhoenixDoubleGraviton");
+
+    // Mirage
+    RegisterProtossItemFunc(158, "AP_MirageEternalDuty", UnlockStargateAndFleetBeacon);
+    RegisterProtossItem(159, "AP_MiragePhaseAlignment");
+    RegisterProtossItem(160, "AP_MirageIllusion");
+    RegisterProtossItem(161, "AP_MirageDetector");
+    RegisterProtossItem(199, "AP_MirageGravitonBeam");
+
+    // Corsair
+    RegisterProtossItem(21, "AP_CorsairPermanentCloak");
+    RegisterProtossItem(22, "AP_CorsairArgusJewel");
+    RegisterProtossItem(23, "AP_CorsairSustainingDisruption");
+    RegisterProtossItem(24, "AP_CorsairShieldUpgrade");
+    RegisterProtossItem(198, "AP_CorsairNetworkDisruption");
+
+    // Skirmisher
+    RegisterProtossItem(162, "AP_SkirmisherSuicide");
+    RegisterProtossItem(163, "AP_SkirmisherResourceEfficiency");
+    RegisterProtossItem(164, "AP_SkirmisherLifesteal");
+    RegisterProtossItem(165, "AP_SkirmisherHP");
+    RegisterProtossItem(166, "AP_SkirmisherAttackspeed");
+    RegisterProtossItem(200, "AP_SkirmisherPeerContempt");
+
+    // Void Ray
+    RegisterProtossItem(35, "AP_VoidRaySpeedUpgrade");
+    RegisterProtossItem(201, "AP_VoidRayPrismaticRange");
+
+    // Destroyer
+    RegisterProtossItem(36, "AP_DestroyerResourceEfficiency");
+    RegisterProtossItem(202, "AP_DestroyerChargingBeam");
+
+    // Pulsar
+    RegisterProtossItem(96, "AP_VoidRayAiurChronoclysm");
+    RegisterProtossItem(97, "AP_VoidRayAiurAutoRepair");
+    RegisterProtossItem(203, "AP_VoidRayAiurChronoShear");
+
+    // Dawnbringer
+    RegisterProtossItem(85, "AP_VoidRayPurifierAntiGroundArmor");
+    RegisterProtossItem(86, "AP_VoidRayPurifierShieldCapacity");
+    RegisterProtossItem(204, "AP_VoidRayPurifierRange");
+
+    // Scout
+    RegisterProtossItem(12, "AP_ScoutWeaponRange");
+    RegisterProtossItem(13, "AP_ScoutSCBWSightUpgrade");
+    RegisterProtossItem(14, "AP_ScoutSCBWSpeedUpgrade");
+    RegisterProtossItem(15, "AP_ScoutAdvancedPhotonBlasters");
+    RegisterProtossItem(79, "AP_ScoutResourceEfficiency");
+    RegisterProtossItem(119, "AP_ScoutSupplyEfficiency");
+    RegisterProtossItem(209, "AP_ScoutExpeditionaryHull");
+
+    // Oppressor
+    RegisterProtossItem(108, "AP_ScoutTaldarimOptimizedLogistics");
+    RegisterProtossItem(109, "AP_ScoutTaldarimArmorMeltingBlasters");
+    RegisterProtossItem(215, "AP_ScoutTaldarimVulcanBlaster");
+
+    // Caladrius
+    RegisterProtossItem(110, "AP_ScoutPurifierSideMissiles");
+    RegisterProtossItem(111, "AP_ScoutPurifierStructureTargeting");
+    RegisterProtossItem(112, "AP_ScoutPurifierSolariteReactor");
+    RegisterProtossItem(216, "AP_ScoutPurifierCoronaBeam");
+
+    // Mist Wing
+    RegisterProtossItem(113, "AP_ScoutNerazimSuperCloak");
+    RegisterProtossItem(114, "AP_ScoutNerazimPilot");
+    RegisterProtossItem(217, "AP_ScoutNerazimPhantomDash");
+
+    // Carrier
+    RegisterProtossItem(33, "AP_CarrierAiurLaunchSpeedUpgrade");
+    RegisterProtossItem(34, "AP_CarrierStructuralIntegrityReinforcements"); // Hull of Past Glories
+    RegisterProtossItem(205, "AP_CarrierAiurRepairDrones");
+
+    // Skylord
+    RegisterProtossItem(206, "AP_SkylordHyperjump");
+
+    // Trireme
+    RegisterProtossItem(207, "AP_CarrierPurifierHangarUpgrade");
+
+    // Mothership
+    RegisterProtossItem(98, "AP_CanInstallTimeField");
+    RegisterProtossItem(99, "AP_CanInstallWormholeModule");
+    RegisterProtossItem(100, "AP_MothershipHangarInstallation");
+
+    // Mothership Taldarim
+    RegisterProtossItem(103, "AP_CanInstallSummonDeathFleet");
+    RegisterProtossItem(123, "AP_CanInstallMothershipTaldarimGroundSlow");
+    RegisterProtossItem(124, "AP_CanInstallMothershipTaldarimDeathHeal");
+    RegisterProtossItem(125, "AP_CanInstallMothershipTaldarimFastAttack");
+    RegisterProtossItem(212, "AP_MothershipTaldarimIntegratedPower");
+
+    // Mothership Aiur
+    RegisterProtossItem(101, "AP_CanInstallAstralRestoration");
+    RegisterProtossItem(104, "AP_CanInstallMothershipAiurFeedback");
+    RegisterProtossItem(105, "AP_CanInstallMothershipAiurShieldRestore");
+    RegisterProtossItem(106, "AP_CanInstallMothershipAiurEnergyRegenAura");
+    RegisterProtossItem(213, "AP_MothershipAiurShieldArmorAura");
+
+    // Mothership Purifier
+    RegisterProtossItem(102, "AP_CanInstallPlanetCracker");
+    RegisterProtossItem(107, "AP_CanInstallMothershipPurifierShielding");
+    RegisterProtossItem(121, "AP_CanInstallMothershipPurifierAttackSpeedBoost");
+    RegisterProtossItem(122, "AP_CanInstallMothershipPurifierDebuff");
+    RegisterProtossItem(214, "AP_MothershipPurifierPowerSource");
+
+    // Tempest
+    RegisterProtossItem(16, "AP_TempestTectonicDestabilizers");
+    RegisterProtossItem(17, "AP_TempestQuanticReactor");
+    RegisterProtossItem(18, "AP_TempestGravitySling");
+    RegisterProtossItem(84, "AP_TempestInterplanetaryRange");
+    RegisterProtossItem(127, "AP_TempestDistributedAttack");
+    RegisterProtossItem(208, "AP_TempestDisintegration");
+
+    // Arbiter
+    RegisterProtossItem(28, "AP_ArbiterReinforcedHull");
+    RegisterProtossItem(29, "AP_ArbiterEnergyUpgrade");
+    RegisterProtossItem(30, "AP_ArbiterSustainingStasisField");
+    RegisterProtossItem(31, "AP_ResourceEfficiencyArbiter");
+    RegisterProtossItem(32, "AP_ArbiterCloakFieldRange");
+    RegisterProtossItem(210, "AP_ArbiterAbilityEfficiency");
+
+    // Oracle
+    RegisterProtossItem(25, "AP_OraclePermanentCloak");
+    RegisterProtossItem(26, "AP_OracleStasisWardAir");
+    RegisterProtossItem(27, "AP_OracleSustainablePulsarBeam");
+    RegisterProtossItem(78, "AP_OracleEnergyUpgrade");
+    RegisterProtossItem(126, "AP_OracleGround");
+    RegisterProtossItem(211, "AP_OracleStasisWardUpgrade");
+
+    // ********************** //
+    // *      Buildings     * //
+    // ********************** //
 
 
+    // Nexus
+    RegisterProtossItem(232, "AP_SOARadar");
+    RegisterProtossItemFunc(246, "AP_NexusPowerField", NexusPowerFunc);
+    RegisterProtossItem(253, "AP_ChronoBoostEfficiency");
 
-    // Robotics Facility
-    // RegisterProtossUnit(4, "AP_UnlockImmortal", UnlockRoboticsFacility);
-    // RegisterProtossUnit(26, "AP_UnlockAnnihilator", UnlockRoboticsFacility);
-    // RegisterProtossUnit(27, "AP_UnlockVanguard", UnlockRoboticsFacility);
-    // RegisterProtossUnit(39, "AP_UnlockStalwart", UnlockRoboticsFacility);
+    // Pylon
+    RegisterProtossItem(230, "AP_SOAMatrixOverload");
+    RegisterProtossItem(245, "AP_PylonImproved");
 
-    // RegisterProtossUnit(5, "AP_UnlockColossus", UnlockRoboticsAndBay);
-    // RegisterProtossUnit(28, "AP_UnlockWrathwalker", UnlockRoboticsAndBay);
-    // RegisterProtossUnit(29, "AP_UnlockReaver", UnlockRoboticsAndBay);
-    // RegisterProtossUnit(30, "AP_UnlockDisruptor", UnlockRoboticsAndBay);
+    // Assimilators
+    RegisterProtossItem(233, "AP_SOAAutoAssimilator");
+    RegisterProtossItem(242, "AP_AmplifiedAssimilators");
 
-    // RegisterProtossUnit(9, "AP_UnlockObserver", UnlockRoboticsFacility);
-    // RegisterProtossUnit(25, "AP_UnlockWarpPrism", UnlockRoboticsFacility);
+    // Probe
+    RegisterProtossItem(136, "AP_ProbePermanentCloak");
+    RegisterProtossItem(241, "AP_KaraxInstantStructureWarp");
+    RegisterProtossItem(243, "AP_ProbeWarpin");
+    RegisterProtossItem(244, "AP_ElderProbes");
 
-    // RegisterProtossItem(, "AP_");
+    // Other
+    RegisterProtossItem(234, "AP_SOAWarpTech");
+    RegisterProtossItem(252, "AP_WarpHarmonizationStargate");
+    RegisterProtossItem(238, "AP_SuperiorWarpGates");
+    RegisterProtossItem(247, "AP_OperationalEfficiencyFleetBeacon");
+    RegisterProtossItem(248, "AP_OperationalEfficiencyRoboticsBay");
+    RegisterProtossItem(249, "AP_OperationalEfficiencyTemplarArchive");
+    RegisterProtossItem(250, "AP_OperationalEfficiencyDarkShrine");
+    RegisterProtossItem(251, "AP_OperationalEfficiencyProtossProduction");
+    RegisterProtossItem(239, "AP_KaraxTurretRange");
+    RegisterProtossItem(240, "AP_KaraxTurretAttackSpeed");
+    RegisterProtossItem(254, "AP_ProtossBuildingShields");
+
+    // ********************** //
+    // *   Spear of Adun    * //
+    // ********************** //
+
+    // SoA actives
+    RegisterProtossItem(219, "AP_SOASuperChrono");
+    RegisterProtossItem(220, "AP_SOAPylonOvercharge");
+    RegisterProtossItem(221, "AP_SOAOrbitalStrike");
+    RegisterProtossItem(222, "AP_SOAGravitonBomb");
+    RegisterProtossItem(223, "AP_SOAThermalLance");
+    RegisterProtossItem(224, "AP_SOARecall");
+    RegisterProtossItem(225, "AP_SoASuperShield");
+    RegisterProtossItem(226, "AP_SOAFenix");
+    RegisterProtossItem(227, "AP_SOAPurifierBeam");
+    RegisterProtossItem(228, "AP_SOATimeFreeze");
+    RegisterProtossItem(229, "AP_SOAStrafeAttack");
+
+    // SoA passives
+    RegisterProtossItemFunc(231, null, QuatroFunc);
+    RegisterProtossItem(235, "AP_SOAHeroicShield");
+    RegisterProtossItem(236, "AP_SOARepairBeam");
+    RegisterProtossItem(237, "AP_SOAOverWatch");
+
+    // ********************** //
+    // *      Artanis       * //
+    // ********************** //
+
+    RegisterProtossItem(255, "AP_ArtanisLightningDash");
+    RegisterProtossItem(256, "AP_ArtanisPhasePrism");
+    RegisterProtossItem(257, "AP_ArtanisValorOfTheFirstborn");
+    RegisterProtossItem(258, "AP_ArtanisVoltaicShock");
+    RegisterProtossItem(259, "AP_ArtanisAstralWind");
+    RegisterProtossItem(260, "AP_ArtanisShieldOverload");
+    RegisterProtossItem(261, "AP_ArtanisResurgence");
+    RegisterProtossItem(262, "AP_ArtanisAirAttack");
+    RegisterProtossItem(263, "AP_ArtanisForceOfWill");
+    RegisterProtossItem(264, "AP_ArtanisTemperedInTwilight");
+    RegisterProtossItem(265, "AP_ArtanisStrengthInUnity");
+    RegisterProtossItem(266, "AP_ArtanisSuppressionPulse");
+    RegisterProtossItemFunc(267, "AP_ArtanisTaldarimAspectActive", ArtanisTaldarimAspectFunc);
+    RegisterProtossItemFunc(268, "AP_ArtanisTaldarimAspectPassive", ArtanisTaldarimAspectFunc);
+    RegisterProtossItemFunc(269, "AP_ArtanisPurifierAspectActive", ArtanisPurifierAspectFunc);
+    RegisterProtossItemFunc(270, "AP_ArtanisPurifierAspectPassive", ArtanisPurifierAspectFunc);
+    RegisterProtossItemFunc(271, "AP_ArtanisNerazimAspectActive", ArtanisNerazimAspectFunc);
+    RegisterProtossItemFunc(272, "AP_ArtanisNerazimAspectPassive", ArtanisNerazimAspectFunc);
+    RegisterProtossItemFunc(273, "AP_ArtanisAiurAspectActive", ArtanisAiurAspectFunc);
+    RegisterProtossItemFunc(274, "AP_ArtanisAiurAspectPassive", ArtanisAiurAspectFunc);
 }
 
 void AP_Triggers_UnlockInit() {
