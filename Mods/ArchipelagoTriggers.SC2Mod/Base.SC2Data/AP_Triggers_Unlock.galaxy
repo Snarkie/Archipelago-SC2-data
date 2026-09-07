@@ -9,6 +9,7 @@ static const int TYPE_ZERG_UNIT = 2;
 static const int TYPE_ZERG_ITEM = 3;
 static const int TYPE_PROTOSS_UNIT = 4;
 static const int TYPE_PROTOSS_ITEM = 5;
+
 static const int OFFSET_TERRAN_UNIT = 0;
 static const int OFFSET_TERRAN_ITEM = OFFSET_TERRAN_UNIT + 200;
 static const int OFFSET_ZERG_UNIT = OFFSET_TERRAN_ITEM + 500;
@@ -17,8 +18,14 @@ static const int OFFSET_PROTOSS_UNIT = OFFSET_ZERG_ITEM + 500;
 static const int OFFSET_PROTOSS_ITEM = OFFSET_PROTOSS_UNIT + 200;
 
 
-static const int PROGRESSIVE_SPACE = 200;
-static const int OFFSET_UPGRADE = 50;
+static const int PROGRESSIVE_SPACE = 300;
+static const int OFFSET_TERRAN_PROGRESSIVE = 0;
+static const int OFFSET_TERRAN_UPGRADE = OFFSET_TERRAN_PROGRESSIVE + 50;
+static const int OFFSET_ZERG_PROGRESSIVE = OFFSET_TERRAN_UPGRADE + 20;
+static const int OFFSET_ZERG_UPGRADE = OFFSET_ZERG_PROGRESSIVE + 50;
+static const int OFFSET_PROTOSS_PROGRESSIVE = OFFSET_ZERG_UPGRADE + 20;
+static const int OFFSET_PROTOSS_UPGRADE = OFFSET_PROTOSS_PROGRESSIVE + 50;
+
 
 // Globals
 static void ItemFuncSignature(int player) {}
@@ -30,7 +37,7 @@ struct AP_Item {
 };
 static AP_Item[ITEM_SPACE] ItemDatabase;
 static int[20] TypeToOffset;
-static string[12][5] WAUpgradeDatabase;
+static string[22][5] WAUpgradeDatabase;
 
 static void ProgressiveFuncSignature(int player, int level) {}
 typedef funcref<ProgressiveFuncSignature> AP_ProgressiveFunc;
@@ -81,7 +88,6 @@ static void RegisterProtossItemFunc(int id, string upgrade,  AP_ItemFunc itemFun
     RegisterItem(id, TYPE_PROTOSS_ITEM, upgrade, itemFunc);
 }
 
-
 static void RegisterProgressive(int id, int offset, int bits, string upgrade1, string upgrade2, AP_ProgressiveFunc itemFunc) {
     int index = id/bits + offset;
     ProgressiveDatabase[index].Id = id;
@@ -91,20 +97,35 @@ static void RegisterProgressive(int id, int offset, int bits, string upgrade1, s
 }
 
 static void RegisterTerranProgressiveFunc(int id, AP_ProgressiveFunc itemFunc) {
-    RegisterProgressive(id, 0, 2, null, null, itemFunc);
+    // most progressives that need a function don't seem to want to set the upgrades
+    RegisterProgressive(id, OFFSET_TERRAN_PROGRESSIVE, 2, null, null, itemFunc);
 }
 
 static void RegisterTerranProgressive(int id, string upgrade1, string upgrade2) {
     // common case of progressive with 2 levels. More levels/upgrades needs to handle it with the function.
-    RegisterProgressive(id, 0, 2, upgrade1, upgrade2, null);
+    RegisterProgressive(id, OFFSET_TERRAN_PROGRESSIVE, 2, upgrade1, upgrade2, null);
+}
+
+static void RegisterProtossProgressiveFunc(int id, AP_ProgressiveFunc itemFunc) {
+    RegisterProgressive(id, OFFSET_PROTOSS_PROGRESSIVE, 2, null, null, itemFunc);
+}
+
+static void RegisterProtossProgressive(int id, string upgrade1, string upgrade2) {
+    RegisterProgressive(id, OFFSET_PROTOSS_PROGRESSIVE, 2, upgrade1, upgrade2, null);
 }
 
 static void RegisterTerranUpgrade(int id, AP_ProgressiveFunc itemFunc) {
-    RegisterProgressive(id, OFFSET_UPGRADE, 4, null, null, itemFunc);
+    RegisterProgressive(id, OFFSET_TERRAN_UPGRADE, 4, null, null, itemFunc);
 }
+
+static void RegisterProtossUpgrade(int id, AP_ProgressiveFunc itemFunc) {
+    RegisterProgressive(id, OFFSET_PROTOSS_UPGRADE, 4, null, null, itemFunc);
+}
+
 static void UnlockItem(int player, int index) {
-    log("unlocking index: "+IntToString(index));
+    // log("unlocking index: "+IntToString(index));
     if (ItemDatabase[index].Upgrade != null) {
+        // log("upgrade: "+ ItemDatabase[index].Upgrade);
         TechTreeUpgradeAddLevel(player, ItemDatabase[index].Upgrade, 1);
     }
     if (ItemDatabase[index].UnlockFunc != null) {
@@ -112,9 +133,8 @@ static void UnlockItem(int player, int index) {
     }
 }
 
-static void UnlockProgressive(int player, int index, int offset, int level) {
-    int slot = ProgressiveDatabase[index + offset].Id;
-    index += offset;
+static void UnlockProgressive(int player, int index, int level) {
+    int slot = ProgressiveDatabase[index].Id;
     // log("unlocking progressive level: " + IntToString(level) + " at slot: "+ IntToString(slot));
     if (level >= 1 && ProgressiveDatabase[index].UpgradeLevel1 != null) {
         TechTreeUpgradeAddLevel(player, ProgressiveDatabase[index].UpgradeLevel1, 1);
@@ -133,15 +153,10 @@ static void UnlockItems(int player, int type, string hexInput) {
     int index;
     int offset = TypeToOffset[type];
     int i; int j;
-    for (i = OFFSET_PROTOSS_UNIT; i < OFFSET_PROTOSS_UNIT + 200; i += 1) {
-        if (ItemDatabase[i].Upgrade != null) {
-            log("Upgrade " + ItemDatabase[i].Upgrade + " at index: " + IntToString(i));
-        }
-    }
-    log("Input: "+hexInput);
+    // log("Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
-        log("four bits "+IntToString(i)+": "+IntToString(fourBits));
+        // log("four bits "+IntToString(i)+": "+IntToString(fourBits));
         if (fourBits <= 0) { continue; }
         for (j = 0; j < 4; j += 1) {
             index = (4 * (length - i)) + j + offset;
@@ -155,28 +170,28 @@ static void UnlockItems(int player, int type, string hexInput) {
 
 // Regular progressive items always consume 2 bits (which means their max lvl is 3)
 // anything with higher lvls needs to be handled separately
-static void UnlockProgressives(int player, string hexInput) {
+static void UnlockProgressives(int player, int offset, string hexInput) {
     int length = StringLength(hexInput);
     int fourBits;
     int level;
     int index;
     int i; int j;
-    //log("Input: "+hexInput);
+    // log("Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
-        //log("FourBits: " + IntToString(fourBits));
+        // log("FourBits: " + IntToString(fourBits));
         for (j = 0; j < 2; j += 1) {
             if (fourBits <= 0) { continue; }
             index = 2 * (length - i) + j;
             level = fourBits & 3;
-            UnlockProgressive(player, index, 0, level);
+            UnlockProgressive(player, index + offset, level);
             fourBits = (fourBits >> 2);
         }
     }
 }
 
 // W/A upgrades always consume 1 full hex char
-static void UnlockUpgrades(int player, string hexInput) {
+static void UnlockUpgrades(int player, int offset, string hexInput) {
     int length = StringLength(hexInput);
     int fourBits;
     int level;
@@ -188,7 +203,7 @@ static void UnlockUpgrades(int player, string hexInput) {
         // log("FourBits: " + IntToString(fourBits));
         if (fourBits <= 0) { continue; }
         index = length - i;
-        UnlockProgressive(player, index, OFFSET_UPGRADE, fourBits);
+        UnlockProgressive(player, index + offset, fourBits);
     }
 }
 
@@ -567,17 +582,13 @@ static void BioSteelFunc(int player, int level) {
 
 static void HandleTerranUpgrade(int player, int level, int index, int modifier) {
     int i;
-    log("handle terran upgrade. Index:" + IntToString(index) + ", Level: " + IntToString(level));
     if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
-        log("full auto");
         for (i = 0; i < level; i += 1) {
             TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index][i], 1);
         }
     }
     else {
-        log("manual");
         for (i = 0; i < level; i += 1) {
-            log("allowing upgrade: " + WAUpgradeDatabase[index][i]);
             TechTreeUpgradeAllow(player, WAUpgradeDatabase[index][i], true);
             TechTreeUpgradeAllow(player, WAUpgradeDatabase[index + modifier][i], true);
         }
@@ -587,10 +598,8 @@ static void HandleTerranUpgrade(int player, int level, int index, int modifier) 
 static void TerranInfantryWeaponFunc (int player, int level) {
     int index = 0;
     int modifier = 1;
-    log("terran infantry weapons");
     UnlockEngineeringBay(player);
     if (TechTreeUpgradeCount(player, "AP_UltraCapacitors", c_techCountCompleteOnly) > 0 ) {
-        log("with ultra capacitors");
         index += 1;
         modifier = -1;
     }
@@ -654,10 +663,6 @@ static void TerranShipArmorFunc (int player, int level) {
 }
 
 static void Setup() {
-    int level; int i; int j;
-    string[3] unitTypes;
-    string[2] add;
-    string id;
     TypeToOffset[TYPE_TERRAN_UNIT] = OFFSET_TERRAN_UNIT;
     TypeToOffset[TYPE_TERRAN_ITEM] = OFFSET_TERRAN_ITEM;
     TypeToOffset[TYPE_ZERG_UNIT] = OFFSET_ZERG_UNIT;
@@ -665,25 +670,121 @@ static void Setup() {
     TypeToOffset[TYPE_PROTOSS_UNIT] = OFFSET_PROTOSS_UNIT;
     TypeToOffset[TYPE_PROTOSS_ITEM] = OFFSET_PROTOSS_ITEM;
 
-    // Weapon Upgrades Setup
-    unitTypes[0] = "Infantry";
-    unitTypes[1] = "Vehicle";
-    unitTypes[2] =  "Ship";
-    add[0] = "UltraCapacitors";
-    add[1] = "VanadiumPlating";
-    for (i = 0; i < 3; i += 1) {
-        for (j = 0; j < 5; j += 1) {
-            level = j + 1;
-            id = "AP_Terran" + unitTypes[i] + "Weapons" + "Level" + IntToString(level);
-            WAUpgradeDatabase[4 * i][j] = id;
-            id = "AP_Terran" + unitTypes[i] + "Weapons" + add[0] + "Level" + IntToString(level);
-            WAUpgradeDatabase[4 * i + 1][j] = id;
-            id = "AP_Terran" + unitTypes[i] + "Armors" + "Level" + IntToString(level);
-            WAUpgradeDatabase[4 * i + 2][j] = id;
-            id = "AP_Terran" + unitTypes[i] + "Armors" + add[1] + "Level" + IntToString(level);
-            WAUpgradeDatabase[4 * i + 3][j] = id;
-        }
-    }
+    // Terran Weapon Upgrades
+    WAUpgradeDatabase[0][0] = "AP_TerranInfantryWeaponsLevel1";
+    WAUpgradeDatabase[0][1] = "AP_TerranInfantryWeaponsLevel2";
+    WAUpgradeDatabase[0][2] = "AP_TerranInfantryWeaponsLevel3";
+    WAUpgradeDatabase[0][3] = "AP_TerranInfantryWeaponsLevel4";
+    WAUpgradeDatabase[0][4] = "AP_TerranInfantryWeaponsLevel5";
+    WAUpgradeDatabase[1][0] = "AP_TerranInfantryWeaponsUltraCapacitorsLevel1";
+    WAUpgradeDatabase[1][1] = "AP_TerranInfantryWeaponsUltraCapacitorsLevel2";
+    WAUpgradeDatabase[1][2] = "AP_TerranInfantryWeaponsUltraCapacitorsLevel3";
+    WAUpgradeDatabase[1][3] = "AP_TerranInfantryWeaponsUltraCapacitorsLevel4";
+    WAUpgradeDatabase[1][4] = "AP_TerranInfantryWeaponsUltraCapacitorsLevel5";
+    WAUpgradeDatabase[2][0] = "AP_TerranInfantryArmorsLevel1";
+    WAUpgradeDatabase[2][1] = "AP_TerranInfantryArmorsLevel2";
+    WAUpgradeDatabase[2][2] = "AP_TerranInfantryArmorsLevel3";
+    WAUpgradeDatabase[2][3] = "AP_TerranInfantryArmorsLevel4";
+    WAUpgradeDatabase[2][4] = "AP_TerranInfantryArmorsLevel5";
+    WAUpgradeDatabase[3][0] = "AP_TerranInfantryArmorsVanadiumPlatingLevel1";
+    WAUpgradeDatabase[3][1] = "AP_TerranInfantryArmorsVanadiumPlatingLevel2";
+    WAUpgradeDatabase[3][2] = "AP_TerranInfantryArmorsVanadiumPlatingLevel3";
+    WAUpgradeDatabase[3][3] = "AP_TerranInfantryArmorsVanadiumPlatingLevel4";
+    WAUpgradeDatabase[3][4] = "AP_TerranInfantryArmorsVanadiumPlatingLevel5";
+    WAUpgradeDatabase[4][0] = "AP_TerranVehicleWeaponsLevel1";
+    WAUpgradeDatabase[4][1] = "AP_TerranVehicleWeaponsLevel2";
+    WAUpgradeDatabase[4][2] = "AP_TerranVehicleWeaponsLevel3";
+    WAUpgradeDatabase[4][3] = "AP_TerranVehicleWeaponsLevel4";
+    WAUpgradeDatabase[4][4] = "AP_TerranVehicleWeaponsLevel5";
+    WAUpgradeDatabase[5][0] = "AP_TerranVehicleWeaponsUltraCapacitorsLevel1";
+    WAUpgradeDatabase[5][1] = "AP_TerranVehicleWeaponsUltraCapacitorsLevel2";
+    WAUpgradeDatabase[5][2] = "AP_TerranVehicleWeaponsUltraCapacitorsLevel3";
+    WAUpgradeDatabase[5][3] = "AP_TerranVehicleWeaponsUltraCapacitorsLevel4";
+    WAUpgradeDatabase[5][4] = "AP_TerranVehicleWeaponsUltraCapacitorsLevel5";
+    WAUpgradeDatabase[6][0] = "AP_TerranVehicleArmorsLevel1";
+    WAUpgradeDatabase[6][1] = "AP_TerranVehicleArmorsLevel2";
+    WAUpgradeDatabase[6][2] = "AP_TerranVehicleArmorsLevel3";
+    WAUpgradeDatabase[6][3] = "AP_TerranVehicleArmorsLevel4";
+    WAUpgradeDatabase[6][4] = "AP_TerranVehicleArmorsLevel5";
+    WAUpgradeDatabase[7][0] = "AP_TerranVehicleArmorsVanadiumPlatingLevel1";
+    WAUpgradeDatabase[7][1] = "AP_TerranVehicleArmorsVanadiumPlatingLevel2";
+    WAUpgradeDatabase[7][2] = "AP_TerranVehicleArmorsVanadiumPlatingLevel3";
+    WAUpgradeDatabase[7][3] = "AP_TerranVehicleArmorsVanadiumPlatingLevel4";
+    WAUpgradeDatabase[7][4] = "AP_TerranVehicleArmorsVanadiumPlatingLevel5";
+    WAUpgradeDatabase[8][0] = "AP_TerranShipWeaponsLevel1";
+    WAUpgradeDatabase[8][1] = "AP_TerranShipWeaponsLevel2";
+    WAUpgradeDatabase[8][2] = "AP_TerranShipWeaponsLevel3";
+    WAUpgradeDatabase[8][3] = "AP_TerranShipWeaponsLevel4";
+    WAUpgradeDatabase[8][4] = "AP_TerranShipWeaponsLevel5";
+    WAUpgradeDatabase[9][0] = "AP_TerranShipWeaponsUltraCapacitorsLevel1";
+    WAUpgradeDatabase[9][1] = "AP_TerranShipWeaponsUltraCapacitorsLevel2";
+    WAUpgradeDatabase[9][2] = "AP_TerranShipWeaponsUltraCapacitorsLevel3";
+    WAUpgradeDatabase[9][3] = "AP_TerranShipWeaponsUltraCapacitorsLevel4";
+    WAUpgradeDatabase[9][4] = "AP_TerranShipWeaponsUltraCapacitorsLevel5";
+    WAUpgradeDatabase[10][0] = "AP_TerranShipArmorsLevel1";
+    WAUpgradeDatabase[10][1] = "AP_TerranShipArmorsLevel2";
+    WAUpgradeDatabase[10][2] = "AP_TerranShipArmorsLevel3";
+    WAUpgradeDatabase[10][3] = "AP_TerranShipArmorsLevel4";
+    WAUpgradeDatabase[10][4] = "AP_TerranShipArmorsLevel5";
+    WAUpgradeDatabase[11][0] = "AP_TerranShipArmorsVanadiumPlatingLevel1";
+    WAUpgradeDatabase[11][1] = "AP_TerranShipArmorsVanadiumPlatingLevel2";
+    WAUpgradeDatabase[11][2] = "AP_TerranShipArmorsVanadiumPlatingLevel3";
+    WAUpgradeDatabase[11][3] = "AP_TerranShipArmorsVanadiumPlatingLevel4";
+    WAUpgradeDatabase[11][4] = "AP_TerranShipArmorsVanadiumPlatingLevel5";
+
+    // Zerg Weapon Upgrades
+    WAUpgradeDatabase[12][0] = "AP_ZergMeleeWeaponsLevel1";
+    WAUpgradeDatabase[12][1] = "AP_ZergMeleeWeaponsLevel2";
+    WAUpgradeDatabase[12][2] = "AP_ZergMeleeWeaponsLevel3";
+    WAUpgradeDatabase[12][3] = "AP_ZergMeleeWeaponsLevel4";
+    WAUpgradeDatabase[12][4] = "AP_ZergMeleeWeaponsLevel5";
+    WAUpgradeDatabase[13][0] = "AP_ZergMissileWeaponsLevel1";
+    WAUpgradeDatabase[13][1] = "AP_ZergMissileWeaponsLevel2";
+    WAUpgradeDatabase[13][2] = "AP_ZergMissileWeaponsLevel3";
+    WAUpgradeDatabase[13][3] = "AP_ZergMissileWeaponsLevel4";
+    WAUpgradeDatabase[13][4] = "AP_ZergMissileWeaponsLevel5";
+    WAUpgradeDatabase[14][0] = "AP_ZergGroundArmorsLevel1";
+    WAUpgradeDatabase[14][1] = "AP_ZergGroundArmorsLevel2";
+    WAUpgradeDatabase[14][2] = "AP_ZergGroundArmorsLevel3";
+    WAUpgradeDatabase[14][3] = "AP_ZergGroundArmorsLevel4";
+    WAUpgradeDatabase[14][4] = "AP_ZergGroundArmorsLevel5";
+    WAUpgradeDatabase[15][0] = "AP_ZergFlyerWeaponsLevel1";
+    WAUpgradeDatabase[15][1] = "AP_ZergFlyerWeaponsLevel2";
+    WAUpgradeDatabase[15][2] = "AP_ZergFlyerWeaponsLevel3";
+    WAUpgradeDatabase[15][3] = "AP_ZergFlyerWeaponsLevel4";
+    WAUpgradeDatabase[15][4] = "AP_ZergFlyerWeaponsLevel5";
+    WAUpgradeDatabase[16][0] = "AP_ZergFlyerArmorsLevel1";
+    WAUpgradeDatabase[16][1] = "AP_ZergFlyerArmorsLevel2";
+    WAUpgradeDatabase[16][2] = "AP_ZergFlyerArmorsLevel3";
+    WAUpgradeDatabase[16][3] = "AP_ZergFlyerArmorsLevel4";
+    WAUpgradeDatabase[16][4] = "AP_ZergFlyerArmorsLevel5";
+
+    // Protoss Weapon Upgrades
+    WAUpgradeDatabase[17][0] = "AP_ProtossGroundWeaponsLevel1";
+    WAUpgradeDatabase[17][1] = "AP_ProtossGroundWeaponsLevel2";
+    WAUpgradeDatabase[17][2] = "AP_ProtossGroundWeaponsLevel3";
+    WAUpgradeDatabase[17][3] = "AP_ProtossGroundWeaponsLevel4";
+    WAUpgradeDatabase[17][4] = "AP_ProtossGroundWeaponsLevel5";
+    WAUpgradeDatabase[18][0] = "AP_ProtossGroundArmorsLevel1";
+    WAUpgradeDatabase[18][1] = "AP_ProtossGroundArmorsLevel2";
+    WAUpgradeDatabase[18][2] = "AP_ProtossGroundArmorsLevel3";
+    WAUpgradeDatabase[18][3] = "AP_ProtossGroundArmorsLevel4";
+    WAUpgradeDatabase[18][4] = "AP_ProtossGroundArmorsLevel5";
+    WAUpgradeDatabase[19][0] = "AP_ProtossAirWeaponsLevel1";
+    WAUpgradeDatabase[19][1] = "AP_ProtossAirWeaponsLevel2";
+    WAUpgradeDatabase[19][2] = "AP_ProtossAirWeaponsLevel3";
+    WAUpgradeDatabase[19][3] = "AP_ProtossAirWeaponsLevel4";
+    WAUpgradeDatabase[19][4] = "AP_ProtossAirWeaponsLevel5";
+    WAUpgradeDatabase[20][0] = "AP_ProtossAirArmorsLevel1";
+    WAUpgradeDatabase[20][1] = "AP_ProtossAirArmorsLevel2";
+    WAUpgradeDatabase[20][2] = "AP_ProtossAirArmorsLevel3";
+    WAUpgradeDatabase[20][3] = "AP_ProtossAirArmorsLevel4";
+    WAUpgradeDatabase[20][4] = "AP_ProtossAirArmorsLevel5";
+    WAUpgradeDatabase[21][0] = "AP_ProtossShieldsLevel1";
+    WAUpgradeDatabase[21][1] = "AP_ProtossShieldsLevel2";
+    WAUpgradeDatabase[21][2] = "AP_ProtossShieldsLevel3";
+    WAUpgradeDatabase[21][3] = "AP_ProtossShieldsLevel4";
+    WAUpgradeDatabase[21][4] = "AP_ProtossShieldsLevel5";
 }
 
 void AP_UnlockTerranUnits(int player, string hexInput) {
@@ -691,7 +792,6 @@ void AP_UnlockTerranUnits(int player, string hexInput) {
 }
 
 void AP_UnlockProtossUnits(int player, string hexInput) {
-    log("unlocking protoss units");
     UnlockItems(player, TYPE_PROTOSS_UNIT, hexInput);
 }
 
@@ -704,20 +804,20 @@ void AP_UnlockProtossItems(int player, string hexInput) {
 }
 
 void AP_UnlockTerranProgressives(int player, string hexInput) {
-    UnlockProgressives(player, hexInput);
+    UnlockProgressives(player, OFFSET_TERRAN_PROGRESSIVE, hexInput);
 }
 
 void AP_UnlockProtossProgressives(int player, string hexInput) {
+    UnlockProgressives(player, OFFSET_PROTOSS_PROGRESSIVE, hexInput);
 }
 
 void AP_UnlockTerranUpgrades(int player, string hexInput) {
-    UnlockUpgrades(player, hexInput);
+    UnlockUpgrades(player, OFFSET_TERRAN_UPGRADE, hexInput);
 }
 
 void AP_UnlockProtossUpgrades(int player, string hexInput) {
+    UnlockUpgrades(player, OFFSET_PROTOSS_UPGRADE, hexInput);
 }
-
-
 
 void AP_ResetTerranTech(int player) {
     //for testing
@@ -1217,6 +1317,30 @@ static void RegisterTerranItems() {
     RegisterTerranItem(194 , "AP_TechReactor");
 
     // ********************** //
+    // *        Nova        * //
+    // ********************** //
+
+    RegisterTerranItem(266, "AP_NovaHelmetGhostVisor");
+    RegisterTerranItem(267, "AP_NovaHelmetRangefinderOculus");
+    RegisterTerranItem(268, "AP_NovaHelmetDominationVisor");
+    RegisterTerranItem(269, "AP_NovaArmorBlinkSuit");
+    RegisterTerranItem(270, "AP_NovaArmorApolloInfantrySuit");
+    RegisterTerranItem(271, "AP_NovaArmoredSuit");
+    RegisterTerranItem(272, "AP_NovaArmorJumpSuit");
+    RegisterTerranItem(273, "AP_NovaWeaponCanisterRifle");
+    RegisterTerranItem(274, "AP_NovaWeaponHellfireShotgun");
+    RegisterTerranItem(275, "AP_NovaWeaponPlasmaRifle");
+    RegisterTerranItem(276, "AP_NovaWeaponPsiBlade");
+    RegisterTerranItem(277, "AP_NovaWeaponBlazefireBlade");
+    RegisterTerranItem(278, "AP_SuperStimpackNova");
+    RegisterTerranItem(279, "AP_NovaGadgetPulseGrenades");
+    RegisterTerranItem(280, "AP_NovaGadgetFlashBangGrenades");
+    RegisterTerranItem(281, "AP_NovaGadgetPersonalDefensiveMatrix");
+    RegisterTerranItem(282, "AP_NovaGadgetHolographicDecoy");
+    RegisterTerranItemFunc(283, "AP_NovaGadgetNovaNuke", UnlockBarracksAndShadowOps);
+    RegisterTerranProgressive(24, "AP_NovaCloak", "AP_NovaArmorStealthSuit");
+
+    // ********************** //
     // *       Other        * //
     // ********************** //
 
@@ -1248,27 +1372,6 @@ static void RegisterTerranItems() {
     RegisterTerranItem(214, "AP_JuggernautThrusters");
     RegisterTerranProgressive(0, "AP_FireSuppressionSystems", "AP_FireSuppressionSystemsUpgraded");
     RegisterTerranProgressiveFunc(20, BioSteelFunc);
-
-    // Nova
-    RegisterTerranItem(266, "AP_NovaHelmetGhostVisor");
-    RegisterTerranItem(267, "AP_NovaHelmetRangefinderOculus");
-    RegisterTerranItem(268, "AP_NovaHelmetDominationVisor");
-    RegisterTerranItem(269, "AP_NovaArmorBlinkSuit");
-    RegisterTerranItem(270, "AP_NovaArmorApolloInfantrySuit");
-    RegisterTerranItem(271, "AP_NovaArmoredSuit");
-    RegisterTerranItem(272, "AP_NovaArmorJumpSuit");
-    RegisterTerranItem(273, "AP_NovaWeaponCanisterRifle");
-    RegisterTerranItem(274, "AP_NovaWeaponHellfireShotgun");
-    RegisterTerranItem(275, "AP_NovaWeaponPlasmaRifle");
-    RegisterTerranItem(276, "AP_NovaWeaponPsiBlade");
-    RegisterTerranItem(277, "AP_NovaWeaponBlazefireBlade");
-    RegisterTerranItem(278, "AP_SuperStimpackNova");
-    RegisterTerranItem(279, "AP_NovaGadgetPulseGrenades");
-    RegisterTerranItem(280, "AP_NovaGadgetFlashBangGrenades");
-    RegisterTerranItem(281, "AP_NovaGadgetPersonalDefensiveMatrix");
-    RegisterTerranItem(282, "AP_NovaGadgetHolographicDecoy");
-    RegisterTerranItemFunc(283, "AP_NovaGadgetNovaNuke", UnlockBarracksAndShadowOps);
-    RegisterTerranProgressive(24, "AP_NovaCloak", "AP_NovaArmorStealthSuit");
 
     // W/A Upgrades
     RegisterTerranUpgrade(0, TerranInfantryWeaponFunc);
@@ -1503,6 +1606,56 @@ static void QuatroFunc(int player) {
     TechTreeUpgradeAddLevel(player, "AP_ProtossGroundWeaponsQuatro", 1);
     TechTreeUpgradeAddLevel(player, "AP_ProtossShieldsQuatro", 1);
 }
+
+static void SoAProxyPylonFunc(int player, int level) {
+    if (level == 1) {
+        libNtve_gf_SetUpgradeLevelForPlayer(player, "AP_SOAProxyPylon", 1);
+    }
+    if (level >= 2) {
+        libNtve_gf_SetUpgradeLevelForPlayer(player, "AP_SOAProxyPylon", 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(player, "AP_SOAWarpInReinforcements", 1);
+    }
+}
+
+static void HandleProtossUpgrade(int player, int level, int index) {
+    int i;
+    if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
+        for (i = 0; i < level; i += 1) {
+            TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index + 17][i], 1);
+        }
+    }
+    else {
+        for (i = 0; i < level; i += 1) {
+            TechTreeUpgradeAllow(player, WAUpgradeDatabase[index + 17][i], true);
+        }
+    }
+}
+
+static void ProtossGroundWeaponFunc (int player, int level) {
+    UnlockForge(player);
+    HandleProtossUpgrade(player, level, 0);
+}
+
+static void ProtossGroundArmorFunc (int player, int level) {
+    UnlockForge(player);
+    HandleProtossUpgrade(player, level, 1);
+}
+
+static void ProtossAirWeaponFunc (int player, int level) {
+    UnlockForge(player);
+    HandleProtossUpgrade(player, level, 2);
+}
+
+static void ProtossAirArmorFunc (int player, int level) {
+    UnlockForge(player);
+    HandleProtossUpgrade(player, level, 3);
+}
+
+static void ProtossShieldsFunc (int player, int level) {
+    UnlockForge(player);
+    HandleProtossUpgrade(player, level, 4);
+}
+
 static void RegisterProtossItems() {
 
     // ********************** //
@@ -1857,13 +2010,7 @@ static void RegisterProtossItems() {
     RegisterProtossItem(233, "AP_SOAAutoAssimilator");
     RegisterProtossItem(242, "AP_AmplifiedAssimilators");
 
-    // Probe
-    RegisterProtossItem(136, "AP_ProbePermanentCloak");
-    RegisterProtossItem(241, "AP_KaraxInstantStructureWarp");
-    RegisterProtossItem(243, "AP_ProbeWarpin");
-    RegisterProtossItem(244, "AP_ElderProbes");
-
-    // Other
+    // Global
     RegisterProtossItem(234, "AP_SOAWarpTech");
     RegisterProtossItem(252, "AP_WarpHarmonizationStargate");
     RegisterProtossItem(238, "AP_SuperiorWarpGates");
@@ -1875,6 +2022,7 @@ static void RegisterProtossItems() {
     RegisterProtossItem(239, "AP_KaraxTurretRange");
     RegisterProtossItem(240, "AP_KaraxTurretAttackSpeed");
     RegisterProtossItem(254, "AP_ProtossBuildingShields");
+    RegisterProtossProgressive(2, "AP_WarpRelocateLevel1", "AP_WarpRelocateLevel2");
 
     // ********************** //
     // *   Spear of Adun    * //
@@ -1892,6 +2040,7 @@ static void RegisterProtossItems() {
     RegisterProtossItem(227, "AP_SOAPurifierBeam");
     RegisterProtossItem(228, "AP_SOATimeFreeze");
     RegisterProtossItem(229, "AP_SOAStrafeAttack");
+    RegisterProtossProgressiveFunc(0, SoAProxyPylonFunc);
 
     // SoA passives
     RegisterProtossItemFunc(231, null, QuatroFunc);
@@ -1923,6 +2072,24 @@ static void RegisterProtossItems() {
     RegisterProtossItemFunc(272, "AP_ArtanisNerazimAspectPassive", ArtanisNerazimAspectFunc);
     RegisterProtossItemFunc(273, "AP_ArtanisAiurAspectActive", ArtanisAiurAspectFunc);
     RegisterProtossItemFunc(274, "AP_ArtanisAiurAspectPassive", ArtanisAiurAspectFunc);
+
+    // ********************** //
+    // *       Other        * //
+    // ********************** //
+
+    // Probe
+    RegisterProtossItem(136, "AP_ProbePermanentCloak");
+    RegisterProtossItem(241, "AP_KaraxInstantStructureWarp");
+    RegisterProtossItem(243, "AP_ProbeWarpin");
+    RegisterProtossItem(244, "AP_ElderProbes");
+
+
+    // W/A Upgrades
+    RegisterProtossUpgrade(0, ProtossGroundWeaponFunc);
+    RegisterProtossUpgrade(4, ProtossGroundArmorFunc);
+    RegisterProtossUpgrade(8, ProtossAirWeaponFunc);
+    RegisterProtossUpgrade(12, ProtossAirArmorFunc);
+    RegisterProtossUpgrade(16, ProtossShieldsFunc);
 }
 
 void AP_Triggers_UnlockInit() {
