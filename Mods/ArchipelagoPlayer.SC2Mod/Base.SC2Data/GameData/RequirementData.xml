@@ -5783,6 +5783,214 @@
         <NodeArray index="Show" Link="AP_UnlockHiveMindEmulator"/>
         <NodeArray index="Use" Link="AP_CountUnitEngineeringBayCompleteOnlyTechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="AP_UnlockZergling">
+        <NodeArray index="Show" Link="AP_UnlockZergling"/>
+        <NodeArray index="Use" Link="AP_CountUnitSpawningPoolCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSwarmQueen">
+        <NodeArray index="Show" Link="AP_UnlockSwarmQueen"/>
+        <NodeArray index="Use" Link="AP_CountUnitSpawningPoolCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockRoach">
+        <NodeArray index="Show" Link="AP_UnlockRoach"/>
+        <NodeArray index="Use" Link="AP_CountUnitRoachWarrenCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHydralisk">
+        <NodeArray index="Show" Link="AP_UnlockHydralisk"/>
+        <NodeArray index="Use" Link="AP_CountUnitAlias_HydraliskDenCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBaneling">
+        <NodeArray index="Show" Link="AP_UnlockBaneling"/>
+        <NodeArray index="Use" Link="AP_CountUnitBanelingNestCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockAberration">
+        <NodeArray index="Show" Link="AP_UnlockAberration"/>
+        <NodeArray index="Use" Link="AP_AndCountUnitAlias_LairCompleteOnlyTechTreeCheatCountUnitEvolutionChamberCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockMutalisk">
+        <NodeArray index="Show" Link="AP_UnlockMutalisk"/>
+        <NodeArray index="Use" Link="AP_CountUnitAlias_SpireCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSwarmHost">
+        <NodeArray index="Show" Link="AP_UnlockSwarmHost"/>
+        <NodeArray index="Use" Link="AP_CountUnitInfestationPitCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestor">
+        <NodeArray index="Show" Link="AP_UnlockInfestor"/>
+        <NodeArray index="Use" Link="AP_CountUnitInfestationPitCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockUltralisk">
+        <NodeArray index="Show" Link="AP_UnlockUltralisk"/>
+        <NodeArray index="Use" Link="AP_CountUnitUltraliskCavernCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSporeCrawler">
+        <NodeArray index="Show" Link="AP_UnlockSporeCrawler"/>
+        <NodeArray index="Use" Link="AP_CountUnitEvolutionChamberCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSpineCrawler">
+        <NodeArray index="Show" Link="AP_UnlockSpineCrawler"/>
+        <NodeArray index="Use" Link="AP_CountUnitEvolutionChamberCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockCorruptor">
+        <NodeArray index="Show" Link="AP_UnlockCorruptor"/>
+        <NodeArray index="Use" Link="AP_CountUnitAlias_SpireCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockScourge">
+        <NodeArray index="Show" Link="AP_UnlockScourge"/>
+        <NodeArray index="Use" Link="AP_CountUnitAlias_SpireCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBroodQueen">
+        <NodeArray index="Show" Link="AP_UnlockBroodQueen"/>
+        <NodeArray index="Use" Link="AP_CountUnitAlias_SpireCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockDefiler">
+        <NodeArray index="Show" Link="AP_UnlockDefiler"/>
+        <NodeArray index="Use" Link="AP_CountUnitInfestationPitCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedMarine">
+        <NodeArray index="Show" Link="AP_UnlockInfestedMarine"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedBunker">
+        <NodeArray index="Show" Link="AP_UnlockInfestedBunker"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockNydusWorm">
+        <NodeArray index="Show" Link="AP_UnlockNydusWorm"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockEchidnaWorm">
+        <NodeArray index="Show" Link="AP_UnlockEchidnaWorm"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedSiegeTank">
+        <NodeArray index="Show" Link="AP_UnlockInfestedSiegeTank"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedDiamondback">
+        <NodeArray index="Show" Link="AP_UnlockInfestedDiamondback"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedBanshee">
+        <NodeArray index="Show" Link="AP_UnlockInfestedBanshee"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedLiberator">
+        <NodeArray index="Show" Link="AP_UnlockInfestedLiberator"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedMissileTurret">
+        <NodeArray index="Show" Link="AP_UnlockInfestedMissileTurret"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockPygalisk">
+        <NodeArray index="Show" Link="AP_UnlockPygalisk"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBileLauncher">
+        <NodeArray index="Show" Link="AP_UnlockBileLauncher"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBullfrog">
+        <NodeArray index="Show" Link="AP_UnlockBullfrog"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHiveQueen">
+        <NodeArray index="Show" Link="AP_UnlockHiveQueen"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockImpaler">
+        <NodeArray index="Show" Link="AP_UnlockImpaler"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockLurker">
+        <NodeArray index="Show" Link="AP_UnlockLurker"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBroodLord">
+        <NodeArray index="Show" Link="AP_UnlockBroodLord"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockViper">
+        <NodeArray index="Show" Link="AP_UnlockViper"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedMedics">
+        <NodeArray index="Show" Link="AP_UnlockInfestedMedics"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedSiegeBreakers">
+        <NodeArray index="Show" Link="AP_UnlockInfestedSiegeBreakers"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedDuskWings">
+        <NodeArray index="Show" Link="AP_UnlockInfestedDuskWings"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockDevouringOnes">
+        <NodeArray index="Show" Link="AP_UnlockDevouringOnes"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHunterKillers">
+        <NodeArray index="Show" Link="AP_UnlockHunterKillers"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockWiseOldTorrasque">
+        <NodeArray index="Show" Link="AP_UnlockWiseOldTorrasque"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHunterling">
+        <NodeArray index="Show" Link="AP_UnlockHunterling"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockYggdrasil">
+        <NodeArray index="Show" Link="AP_UnlockYggdrasil"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockCausticHorrors">
+        <NodeArray index="Show" Link="AP_UnlockCausticHorrors"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockGuardian">
+        <NodeArray index="Show" Link="AP_UnlockGuardian"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockDevourer">
+        <NodeArray index="Show" Link="AP_UnlockDevourer"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockRavager">
+        <NodeArray index="Show" Link="AP_UnlockRavager"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockOverseer">
+        <NodeArray index="Show" Link="AP_UnlockOverseer"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockPrimalIgniter">
+        <NodeArray index="Show" Link="AP_UnlockPrimalIgniter"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockTyrannozor">
+        <NodeArray index="Show" Link="AP_UnlockTyrannozor"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSpawningPool">
+        <NodeArray index="Show" Link="AP_UnlockSpawningPool"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockEvolutionChamber">
+        <NodeArray index="Show" Link="AP_UnlockEvolutionChamber"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockRoachWarren">
+        <NodeArray index="Show" Link="AP_UnlockRoachWarren"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBanelingNest">
+        <NodeArray index="Show" Link="AP_UnlockBanelingNest"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHydraliskDen">
+        <NodeArray index="Show" Link="AP_UnlockHydraliskDen"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockGreaterHydraliskDen">
+        <NodeArray index="Show" Link="AP_UnlockGreaterHydraliskDen"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestationPit">
+        <NodeArray index="Show" Link="AP_UnlockInfestationPit"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSpire">
+        <NodeArray index="Show" Link="AP_UnlockSpire"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockGreaterSpire">
+        <NodeArray index="Show" Link="AP_UnlockGreaterSpire"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockUltraliskDen">
+        <NodeArray index="Show" Link="AP_UnlockUltraliskDen"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockPredatorNest">
+        <NodeArray index="Show" Link="AP_UnlockPredatorNest"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedBarracks">
+        <NodeArray index="Show" Link="AP_UnlockInfestedBarracks"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedFactory">
+        <NodeArray index="Show" Link="AP_UnlockInfestedFactory"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockInfestedStarport">
+        <NodeArray index="Show" Link="AP_UnlockInfestedStarport"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHive">
+        <NodeArray index="Show" Link="AP_UnlockHive"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockNydusNetwork">
+        <NodeArray index="Show" Link="AP_UnlockNydusNetwork"/>
+    </CRequirement>
     <CRequirement id="AP_UnlockGateway">
         <NodeArray index="Show" Link="AP_UnlockGateway"/>
         <NodeArray index="Use" Link="AP_CountUnitNexusCompleteOnlyTechTreeCheat"/>

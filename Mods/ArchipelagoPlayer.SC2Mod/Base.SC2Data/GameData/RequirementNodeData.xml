@@ -9049,6 +9049,198 @@
     <CRequirementCountUpgrade id="AP_UnlockHiveMindEmulator">
         <Count Link="AP_UnlockHiveMindEmulator" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockZergling">
+        <Count Link="AP_UnlockZergling" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockSwarmQueen">
+        <Count Link="AP_UnlockSwarmQueen" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockRoach">
+        <Count Link="AP_UnlockRoach" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockHydralisk">
+        <Count Link="AP_UnlockHydralisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockBaneling">
+        <Count Link="AP_UnlockBaneling" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockAberration">
+        <Count Link="AP_UnlockAberration" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockMutalisk">
+        <Count Link="AP_UnlockMutalisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockSwarmHost">
+        <Count Link="AP_UnlockSwarmHost" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestor">
+        <Count Link="AP_UnlockInfestor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockUltralisk">
+        <Count Link="AP_UnlockUltralisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockSporeCrawler">
+        <Count Link="AP_UnlockSporeCrawler" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockSpineCrawler">
+        <Count Link="AP_UnlockSpineCrawler" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockCorruptor">
+        <Count Link="AP_UnlockCorruptor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockScourge">
+        <Count Link="AP_UnlockScourge" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockBroodQueen">
+        <Count Link="AP_UnlockBroodQueen" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockDefiler">
+        <Count Link="AP_UnlockDefiler" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedMarine">
+        <Count Link="AP_UnlockInfestedMarine" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedBunker">
+        <Count Link="AP_UnlockInfestedBunker" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockNydusWorm">
+        <Count Link="AP_UnlockNydusWorm" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockEchidnaWorm">
+        <Count Link="AP_UnlockEchidnaWorm" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedSiegeTank">
+        <Count Link="AP_UnlockInfestedSiegeTank" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedDiamondback">
+        <Count Link="AP_UnlockInfestedDiamondback" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedBanshee">
+        <Count Link="AP_UnlockInfestedBanshee" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedLiberator">
+        <Count Link="AP_UnlockInfestedLiberator" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedMissileTurret">
+        <Count Link="AP_UnlockInfestedMissileTurret" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockPygalisk">
+        <Count Link="AP_UnlockPygalisk" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockBileLauncher">
+        <Count Link="AP_UnlockBileLauncher" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockBullfrog">
+        <Count Link="AP_UnlockBullfrog" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockHiveQueen">
+        <Count Link="AP_UnlockHiveQueen" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockImpaler">
+        <Count Link="AP_UnlockImpaler" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockLurker">
+        <Count Link="AP_UnlockLurker" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockBroodLord">
+        <Count Link="AP_UnlockBroodLord" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockViper">
+        <Count Link="AP_UnlockViper" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedMedics">
+        <Count Link="AP_UnlockInfestedMedics" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedSiegeBreakers">
+        <Count Link="AP_UnlockInfestedSiegeBreakers" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedDuskWings">
+        <Count Link="AP_UnlockInfestedDuskWings" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockDevouringOnes">
+        <Count Link="AP_UnlockDevouringOnes" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockHunterKillers">
+        <Count Link="AP_UnlockHunterKillers" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockWiseOldTorrasque">
+        <Count Link="AP_UnlockWiseOldTorrasque" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockHunterling">
+        <Count Link="AP_UnlockHunterling" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockYggdrasil">
+        <Count Link="AP_UnlockYggdrasil" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockCausticHorrors">
+        <Count Link="AP_UnlockCausticHorrors" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockGuardian">
+        <Count Link="AP_UnlockGuardian" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockDevourer">
+        <Count Link="AP_UnlockDevourer" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockRavager">
+        <Count Link="AP_UnlockRavager" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockOverseer">
+        <Count Link="AP_UnlockOverseer" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockPrimalIgniter">
+        <Count Link="AP_UnlockPrimalIgniter" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockTyrannozor">
+        <Count Link="AP_UnlockTyrannozor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockSpawningPool">
+        <Count Link="AP_UnlockSpawningPool" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockEvolutionChamber">
+        <Count Link="AP_UnlockEvolutionChamber" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockRoachWarren">
+        <Count Link="AP_UnlockRoachWarren" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockBanelingNest">
+        <Count Link="AP_UnlockBanelingNest" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockHydraliskDen">
+        <Count Link="AP_UnlockHydraliskDen" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockGreaterHydraliskDen">
+        <Count Link="AP_UnlockGreaterHydraliskDen" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestationPit">
+        <Count Link="AP_UnlockInfestationPit" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockSpire">
+        <Count Link="AP_UnlockSpire" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockGreaterSpire">
+        <Count Link="AP_UnlockGreaterSpire" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockUltraliskDen">
+        <Count Link="AP_UnlockUltraliskDen" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockPredatorNest">
+        <Count Link="AP_UnlockPredatorNest" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedBarracks">
+        <Count Link="AP_UnlockInfestedBarracks" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedFactory">
+        <Count Link="AP_UnlockInfestedFactory" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedStarport">
+        <Count Link="AP_UnlockInfestedStarport" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockHive">
+        <Count Link="AP_UnlockHive" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockNydusNetwork">
+        <Count Link="AP_UnlockNydusNetwork" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockGateway">
         <Count Link="AP_UnlockGateway" State="CompleteOnly"/>
     </CRequirementCountUpgrade>

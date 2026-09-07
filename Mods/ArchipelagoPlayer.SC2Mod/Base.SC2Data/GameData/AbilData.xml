@@ -8693,7 +8693,7 @@
             <Unit value=""/>
         </InfoArray>
         <InfoArray index="Train2" Time="24">
-            <Button DefaultButtonFace="AP_Zergling" Requirements="AP_HaveSpawningPool"/>
+            <Button DefaultButtonFace="AP_Zergling" Requirements="AP_UnlockZergling"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
         </InfoArray>
@@ -8702,15 +8702,15 @@
             <Unit value="AP_Overlord"/>
         </InfoArray>
         <InfoArray index="Train4" Time="33">
-            <Button DefaultButtonFace="AP_Hydralisk" Requirements="AP_HaveHydraliskDen"/>
+            <Button DefaultButtonFace="AP_Hydralisk" Requirements="AP_UnlockHydralisk"/>
             <Unit value="AP_Hydralisk"/>
         </InfoArray>
         <InfoArray index="Train5" Time="33">
-            <Button DefaultButtonFace="AP_Mutalisk" Requirements="AP_HaveSpire"/>
+            <Button DefaultButtonFace="AP_Mutalisk" Requirements="AP_UnlockMutalisk"/>
             <Unit value="AP_Mutalisk"/>
         </InfoArray>
         <InfoArray index="Train7" Time="70">
-            <Button DefaultButtonFace="AP_Ultralisk" Requirements="AP_HaveUltraliskCavern"/>
+            <Button DefaultButtonFace="AP_Ultralisk" Requirements="AP_UnlockUltralisk"/>
             <Unit value="AP_Ultralisk"/>
         </InfoArray>
         <!--        <InfoArray index="Train8" Time="35">-->
@@ -8718,35 +8718,35 @@
         <!--            <Unit value="AP_Baneling"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Train10" Time="27">
-            <Button DefaultButtonFace="AP_Roach" Requirements="AP_HaveRoachWarren"/>
+            <Button DefaultButtonFace="AP_Roach" Requirements="AP_UnlockRoach"/>
             <Unit value="AP_Roach"/>
         </InfoArray>
         <InfoArray index="Train11" Time="50">
-            <Button DefaultButtonFace="AP_Infestor" Requirements="AP_HaveInfestationPit"/>
+            <Button DefaultButtonFace="AP_Infestor" Requirements="AP_UnlockInfestor"/>
             <Unit value="AP_Infestor"/>
         </InfoArray>
         <InfoArray index="Train12" Time="40">
-            <Button DefaultButtonFace="AP_Corruptor" Requirements="AP_HaveSpire"/>
+            <Button DefaultButtonFace="AP_Corruptor" Requirements="AP_UnlockCorruptor"/>
             <Unit value="AP_Corruptor"/>
         </InfoArray>
         <InfoArray index="Train13" Time="40">
-            <Button DefaultButtonFace="AP_SIQueen" Requirements="AP_HaveSpire"/>
+            <Button DefaultButtonFace="AP_SIQueen" Requirements="AP_UnlockBroodQueen"/>
             <Unit value="AP_SIQueen"/>
         </InfoArray>
         <InfoArray index="Train14" Time="50">
-            <Button DefaultButtonFace="AP_DefilerSCBW" Requirements="AP_HaveInfestationPit"/>
+            <Button DefaultButtonFace="AP_DefilerSCBW" Requirements="AP_UnlockDefiler"/>
             <Unit value="AP_DefilerSCBW"/>
         </InfoArray>
         <InfoArray index="Train15" Time="40">
-            <Button DefaultButtonFace="AP_SwarmHost" Requirements="AP_HaveInfestationPit"/>
+            <Button DefaultButtonFace="AP_SwarmHost" Requirements="AP_UnlockSwarmHost"/>
             <Unit value="AP_SwarmHost"/>
         </InfoArray>
         <InfoArray index="Train16" Time="10">
-            <Button DefaultButtonFace="AP_Morphling" Requirements="AP_MorphlingEnabled"/>
+            <Button DefaultButtonFace="AP_Morphling" Requirements="AP_UnlockMorphling"/>
             <Unit value="AP_Morphling"/>
         </InfoArray>
         <InfoArray index="Train17" Time="24">
-            <Button DefaultButtonFace="AP_Pygalisk" Requirements="AP_HaveSpawningPool"/>
+            <Button DefaultButtonFace="AP_Pygalisk" Requirements="AP_UnlockPygalisk"/>
             <Unit value="AP_Pygalisk"/>
         </InfoArray>
     </CAbilTrain>
@@ -8827,13 +8827,13 @@
             <Unit value="AP_SwarmHost"/>
         </InfoArray>
         <InfoArray index="Train28" Time="30">
-            <Button DefaultButtonFace="AP_InfestedAbomination" Requirements="AP_HaveLairAndEvolutionChamber"/>
+            <Button DefaultButtonFace="AP_InfestedAbomination" Requirements="AP_UnlockAberration"/>
             <Unit value="AP_InfestedAbomination"/>
         </InfoArray>
         <InfoArray index="Train30" Time="30">
             <Resource index="Minerals" value="25"/>
             <Resource index="Vespene" value="75"/>
-            <Button DefaultButtonFace="AP_Scourge" Requirements="AP_HaveSpire"/>
+            <Button DefaultButtonFace="AP_Scourge" Requirements="AP_UnlockScourge"/>
             <Unit value="AP_Scourge"/>
             <Unit value="AP_Scourge"/>
             <Unit value=""/>
@@ -11809,13 +11809,13 @@
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
         <Activity value="UI/Spawning"/>
         <InfoArray index="Train1" Time="30" Effect="AP_QueenBirth">
-            <Button DefaultButtonFace="AP_Queen" Requirements="AP_HaveSpawningPool">
+            <Button DefaultButtonFace="AP_Queen"  Requirements="AP_UnlockSwarmQueen">
                 <Flags index="ToSelection" value="1"/>
             </Button>
             <Unit value="AP_Queen"/>
         </InfoArray>
         <InfoArray index="Train2" Time="40">
-            <Button DefaultButtonFace="AP_HiveQueen" Requirements="AP_HaveHiveQueen">
+            <Button DefaultButtonFace="AP_HiveQueen" Requirements="AP_UnlockHiveQueen">
                 <Flags index="ToSelection" value="1"/>
             </Button>
             <Unit value="AP_HiveQueen"/>
@@ -11899,38 +11899,38 @@
             <ValidatorArray value="HasVespene"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="AP_SpawningPool" Time="30">
-            <Button DefaultButtonFace="AP_SpawningPool" State="Restricted" Requirements="AP_HaveHatchery"/>
+            <Button DefaultButtonFace="AP_SpawningPool" State="Restricted" Requirements="AP_UnlockSpawningPool"/>
         </InfoArray>
         <InfoArray index="Build5" Unit="AP_EvolutionChamber" Time="40">
-            <Button DefaultButtonFace="AP_EvolutionChamber" State="Restricted" Requirements="AP_HaveHatchery"/>
+            <Button DefaultButtonFace="AP_EvolutionChamber" State="Restricted" Requirements="AP_UnlockEvolutionChamber"/>
         </InfoArray>
         <InfoArray index="Build6" Unit="AP_HydraliskDen" Time="40">
-            <Button DefaultButtonFace="AP_HydraliskDen" State="Restricted" Requirements="AP_HaveLair"/>
+            <Button DefaultButtonFace="AP_HydraliskDen" State="Restricted" Requirements="AP_UnlockHydraliskDen"/>
         </InfoArray>
         <InfoArray index="Build7" Unit="AP_Spire" Time="40">
-            <Button DefaultButtonFace="AP_Spire" State="Restricted" Requirements="AP_HaveLair"/>
+            <Button DefaultButtonFace="AP_Spire" State="Restricted" Requirements="AP_UnlockSpire"/>
         </InfoArray>
         <InfoArray index="Build8" Unit="AP_UltraliskCavern" Time="50">
-            <Button DefaultButtonFace="AP_UltraliskCavern" State="Restricted" Requirements="AP_HaveHive"/>
+            <Button DefaultButtonFace="AP_UltraliskCavern" State="Restricted" Requirements="AP_UnlockUltraliskCavern"/>
         </InfoArray>
         <InfoArray index="Build9" Unit="AP_InfestationPit" Time="40">
-            <Button DefaultButtonFace="AP_InfestationPit" State="Restricted" Requirements="AP_HaveLair"/>
+            <Button DefaultButtonFace="AP_InfestationPit" State="Restricted" Requirements="AP_UnlockInfestationPit"/>
         </InfoArray>
         <InfoArray index="Build10" Unit="AP_NydusNetwork" Time="40">
-            <Button DefaultButtonFace="AP_NydusNetwork" State="Restricted" Requirements="AP_HaveLair"/>
+            <Button DefaultButtonFace="AP_NydusNetwork" State="Restricted" Requirements="AP_UnlockNydusNetwork"/>
         </InfoArray>
         <InfoArray index="Build11" Unit="AP_BanelingNest" Time="30">
-            <Button DefaultButtonFace="AP_BanelingNest" State="Restricted" Requirements="AP_HaveHatchery"/>
+            <Button DefaultButtonFace="AP_BanelingNest" State="Restricted" Requirements="AP_UnlockBanelingNest"/>
         </InfoArray>
         <InfoArray index="Build13" Time="70"/>
         <InfoArray index="Build14" Unit="AP_RoachWarren" Time="40">
-            <Button DefaultButtonFace="AP_RoachWarren" State="Restricted" Requirements="AP_HaveHatchery"/>
+            <Button DefaultButtonFace="AP_RoachWarren" State="Restricted" Requirements="AP_UnlockRoachWarren"/>
         </InfoArray>
         <InfoArray index="Build15" Unit="AP_SpineCrawler" Time="30">
-            <Button DefaultButtonFace="AP_SpineCrawler" State="Restricted" Requirements="AP_HaveSpawningPool"/>
+            <Button DefaultButtonFace="AP_SpineCrawler" State="Restricted" Requirements="AP_UnlockSpineCrawler"/>
         </InfoArray>
         <InfoArray index="Build16" Unit="AP_SporeCrawler" Time="30">
-            <Button DefaultButtonFace="AP_SporeCrawler" State="Restricted" Requirements="AP_HaveEvolutionChamber"/>
+            <Button DefaultButtonFace="AP_SporeCrawler" State="Restricted" Requirements="AP_UnlockSporeCrawler"/>
         </InfoArray>
         <!--        <InfoArray index="Build18" Unit="Virophage" Time="15">-->
         <!--            <Button DefaultButtonFace="MorphToPlaguebringer"/>-->
@@ -11939,13 +11939,13 @@
             <Button DefaultButtonFace="AP_AutomatedExtractor" Requirements="AP_UseAutomatedExtractor"/>
         </InfoArray>
         <InfoArray index="Build20" Unit="AP_BileLauncher" Time="40">
-            <Button DefaultButtonFace="AP_BuildBileLauncher" Requirements="AP_HaveSpawningPool"/>
+            <Button DefaultButtonFace="AP_BuildBileLauncher" Requirements="AP_UnlockBileLauncher"/>
         </InfoArray>
         <!--        <InfoArray index="Build21" Unit="Digester" Time="30">-->
         <!--            <Button DefaultButtonFace="Digester" Requirements="HaveSpawningPool"/>-->
         <!--        </InfoArray>-->
-        <InfoArray index="Build22" Unit="AP_ZergMercenaryCompound" Time="50">
-            <Button DefaultButtonFace="AP_ZergMercenaryCompound" State="Restricted" Requirements="AP_HaveHatchery"/>
+        <InfoArray index="Build22" Unit="AP_ZergMercenaryCompound" Time="50">s
+            <Button DefaultButtonFace="AP_ZergMercenaryCompound" State="Restricted" Requirements="UnlockPredatorNest"/>
         </InfoArray>
         <InfoArray index="Build23" Unit="AP_TradeStructure" Time="40">
             <Button DefaultButtonFace="AP_TradeStructure" State="Restricted" Requirements="AP_NotHaveTradeStructure"/>

@@ -59,6 +59,9 @@ static void log(string s) {
 
 static void RegisterItem(int id, int type, string upgrade, AP_ItemFunc itemFunc) {
     int index = id + TypeToOffset[type];
+    if (ItemDatabase[index].Id != 0) {
+        log("Warning: Multiple uses of Item index " + IntToString(index));
+    }
     ItemDatabase[index].Id = id;
     ItemDatabase[index].Upgrade = upgrade;
     ItemDatabase[index].UnlockFunc = itemFunc;
@@ -66,6 +69,10 @@ static void RegisterItem(int id, int type, string upgrade, AP_ItemFunc itemFunc)
 
 static void RegisterTerranUnit(int id, string upgrade,  AP_ItemFunc itemFunc) {
     RegisterItem(id, TYPE_TERRAN_UNIT, upgrade, itemFunc);
+}
+
+static void RegisterZergUnit(int id, string upgrade,  AP_ItemFunc itemFunc) {
+    RegisterItem(id, TYPE_ZERG_UNIT, upgrade, itemFunc);
 }
 
 static void RegisterProtossUnit(int id, string upgrade,  AP_ItemFunc itemFunc) {
@@ -80,6 +87,14 @@ static void RegisterTerranItemFunc(int id, string upgrade, AP_ItemFunc itemFunc)
     RegisterItem(id, TYPE_TERRAN_ITEM, upgrade, itemFunc);
 }
 
+static void RegisterZergItem(int id, string upgrade) {
+    RegisterItem(id, TYPE_ZERG_ITEM, upgrade, null);
+}
+
+static void RegisterZergItemFunc(int id, string upgrade, AP_ItemFunc itemFunc) {
+    RegisterItem(id, TYPE_ZERG_ITEM, upgrade, itemFunc);
+}
+
 static void RegisterProtossItem(int id, string upgrade) {
     RegisterItem(id, TYPE_PROTOSS_ITEM, upgrade, null);
 }
@@ -90,6 +105,9 @@ static void RegisterProtossItemFunc(int id, string upgrade,  AP_ItemFunc itemFun
 
 static void RegisterProgressive(int id, int offset, int bits, string upgrade1, string upgrade2, AP_ProgressiveFunc itemFunc) {
     int index = id/bits + offset;
+    if (ProgressiveDatabase[index].Id != 0) {
+        log("Warning: Multiple uses of Item index " + IntToString(index));
+    }
     ProgressiveDatabase[index].Id = id;
     ProgressiveDatabase[index].UpgradeLevel1 = upgrade1;
     ProgressiveDatabase[index].UpgradeLevel2 = upgrade2;
@@ -106,6 +124,14 @@ static void RegisterTerranProgressive(int id, string upgrade1, string upgrade2) 
     RegisterProgressive(id, OFFSET_TERRAN_PROGRESSIVE, 2, upgrade1, upgrade2, null);
 }
 
+static void RegisterZergProgressiveFunc(int id, AP_ProgressiveFunc itemFunc) {
+    RegisterProgressive(id, OFFSET_ZERG_PROGRESSIVE, 2, null, null, itemFunc);
+}
+
+static void RegisterZergProgressive(int id, string upgrade1, string upgrade2) {
+    RegisterProgressive(id, OFFSET_ZERG_PROGRESSIVE, 2, upgrade1, upgrade2, null);
+}
+
 static void RegisterProtossProgressiveFunc(int id, AP_ProgressiveFunc itemFunc) {
     RegisterProgressive(id, OFFSET_PROTOSS_PROGRESSIVE, 2, null, null, itemFunc);
 }
@@ -118,14 +144,18 @@ static void RegisterTerranUpgrade(int id, AP_ProgressiveFunc itemFunc) {
     RegisterProgressive(id, OFFSET_TERRAN_UPGRADE, 4, null, null, itemFunc);
 }
 
+static void RegisterZergUpgrade(int id, AP_ProgressiveFunc itemFunc) {
+    RegisterProgressive(id, OFFSET_ZERG_UPGRADE, 4, null, null, itemFunc);
+}
+
 static void RegisterProtossUpgrade(int id, AP_ProgressiveFunc itemFunc) {
     RegisterProgressive(id, OFFSET_PROTOSS_UPGRADE, 4, null, null, itemFunc);
 }
 
 static void UnlockItem(int player, int index) {
-    // log("unlocking index: "+IntToString(index));
+    log("unlocking index: "+IntToString(index));
     if (ItemDatabase[index].Upgrade != null) {
-        // log("upgrade: "+ ItemDatabase[index].Upgrade);
+        log("upgrade: "+ ItemDatabase[index].Upgrade);
         TechTreeUpgradeAddLevel(player, ItemDatabase[index].Upgrade, 1);
     }
     if (ItemDatabase[index].UnlockFunc != null) {
@@ -135,7 +165,7 @@ static void UnlockItem(int player, int index) {
 
 static void UnlockProgressive(int player, int index, int level) {
     int slot = ProgressiveDatabase[index].Id;
-    // log("unlocking progressive level: " + IntToString(level) + " at slot: "+ IntToString(slot));
+    log("unlocking progressive level: " + IntToString(level) + " at slot: "+ IntToString(slot));
     if (level >= 1 && ProgressiveDatabase[index].UpgradeLevel1 != null) {
         TechTreeUpgradeAddLevel(player, ProgressiveDatabase[index].UpgradeLevel1, 1);
     }
@@ -153,10 +183,10 @@ static void UnlockItems(int player, int type, string hexInput) {
     int index;
     int offset = TypeToOffset[type];
     int i; int j;
-    // log("Input: "+hexInput);
+     log("Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
-        // log("four bits "+IntToString(i)+": "+IntToString(fourBits));
+        log("four bits "+IntToString(i)+": "+IntToString(fourBits));
         if (fourBits <= 0) { continue; }
         for (j = 0; j < 4; j += 1) {
             index = (4 * (length - i)) + j + offset;
@@ -176,10 +206,10 @@ static void UnlockProgressives(int player, int offset, string hexInput) {
     int level;
     int index;
     int i; int j;
-    // log("Input: "+hexInput);
+    log("Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
-        // log("FourBits: " + IntToString(fourBits));
+        log("FourBits: " + IntToString(fourBits));
         for (j = 0; j < 2; j += 1) {
             if (fourBits <= 0) { continue; }
             index = 2 * (length - i) + j;
@@ -197,10 +227,10 @@ static void UnlockUpgrades(int player, int offset, string hexInput) {
     int level;
     int index;
     int i;
-    // log("Upgrades Input: "+hexInput);
+    log("Upgrades Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
-        // log("FourBits: " + IntToString(fourBits));
+        log("FourBits: " + IntToString(fourBits));
         if (fourBits <= 0) { continue; }
         index = length - i;
         UnlockProgressive(player, index + offset, fourBits);
@@ -663,12 +693,21 @@ static void TerranShipArmorFunc (int player, int level) {
 }
 
 static void Setup() {
+    int i;
     TypeToOffset[TYPE_TERRAN_UNIT] = OFFSET_TERRAN_UNIT;
     TypeToOffset[TYPE_TERRAN_ITEM] = OFFSET_TERRAN_ITEM;
     TypeToOffset[TYPE_ZERG_UNIT] = OFFSET_ZERG_UNIT;
     TypeToOffset[TYPE_ZERG_ITEM] = OFFSET_ZERG_ITEM;
     TypeToOffset[TYPE_PROTOSS_UNIT] = OFFSET_PROTOSS_UNIT;
     TypeToOffset[TYPE_PROTOSS_ITEM] = OFFSET_PROTOSS_ITEM;
+
+    for (i = 0; i < ITEM_SPACE; i += 1) {
+        ItemDatabase[i].Id = 0;
+    }
+
+    for (i = 0; i < PROGRESSIVE_SPACE; i += 1) {
+        ProgressiveDatabase[i].Id = 0;
+    }
 
     // Terran Weapon Upgrades
     WAUpgradeDatabase[0][0] = "AP_TerranInfantryWeaponsLevel1";
@@ -791,12 +830,20 @@ void AP_UnlockTerranUnits(int player, string hexInput) {
     UnlockItems(player, TYPE_TERRAN_UNIT, hexInput);
 }
 
+void AP_UnlockZergUnits(int player, string hexInput) {
+    UnlockItems(player, TYPE_ZERG_UNIT, hexInput);
+}
+
 void AP_UnlockProtossUnits(int player, string hexInput) {
     UnlockItems(player, TYPE_PROTOSS_UNIT, hexInput);
 }
 
 void AP_UnlockTerranItems(int player, string hexInput) {
     UnlockItems(player, TYPE_TERRAN_ITEM, hexInput);
+}
+
+void AP_UnlockZergItems(int player, string hexInput) {
+    UnlockItems(player, TYPE_ZERG_ITEM, hexInput);
 }
 
 void AP_UnlockProtossItems(int player, string hexInput) {
@@ -807,6 +854,10 @@ void AP_UnlockTerranProgressives(int player, string hexInput) {
     UnlockProgressives(player, OFFSET_TERRAN_PROGRESSIVE, hexInput);
 }
 
+void AP_UnlockZergProgressives(int player, string hexInput) {
+    UnlockProgressives(player, OFFSET_ZERG_PROGRESSIVE, hexInput);
+}
+
 void AP_UnlockProtossProgressives(int player, string hexInput) {
     UnlockProgressives(player, OFFSET_PROTOSS_PROGRESSIVE, hexInput);
 }
@@ -815,25 +866,12 @@ void AP_UnlockTerranUpgrades(int player, string hexInput) {
     UnlockUpgrades(player, OFFSET_TERRAN_UPGRADE, hexInput);
 }
 
-void AP_UnlockProtossUpgrades(int player, string hexInput) {
-    UnlockUpgrades(player, OFFSET_PROTOSS_UPGRADE, hexInput);
+void AP_UnlockZergUpgrades(int player, string hexInput) {
+    UnlockUpgrades(player, OFFSET_ZERG_UPGRADE, hexInput);
 }
 
-void AP_ResetTerranTech(int player) {
-    //for testing
-    TechTreeUpgradeAddLevel(player, "AP_UnlockBarracks" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_UnlockBarracksReactor" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_UnlockBarracksTechLab" , -1);
-
-    TechTreeUpgradeAddLevel(player, "AP_UnlockMarine" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_UnlockMedic" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_UnlockFirebat" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_UnlockMarauder" , -1);
-
-    TechTreeUpgradeAddLevel(player, "AP_CombatShield" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_MarineStimpack" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_SuperStimpackMarine" , -1);
-    TechTreeUpgradeAddLevel(player, "AP_LaserTargetingSystemMarine" , -1);
+void AP_UnlockProtossUpgrades(int player, string hexInput) {
+    UnlockUpgrades(player, OFFSET_PROTOSS_UPGRADE, hexInput);
 }
 
 static void RegisterTerranUnits() {
@@ -1380,6 +1418,666 @@ static void RegisterTerranItems() {
     RegisterTerranUpgrade(12, TerranVehicleArmorFunc);
     RegisterTerranUpgrade(16, TerranShipWeaponFunc);
     RegisterTerranUpgrade(20, TerranShipArmorFunc);
+}
+
+static void UnlockHive (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockHive", 1);
+}
+
+static void UnlockSpawningPool (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockSpawningPool", 1);
+}
+
+static void UnlockEvolutionChamber (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockEvolutionChamber", 1);
+}
+
+static void UnlockRoachWarren (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockRoachWarren", 1);
+}
+
+static void UnlockBanelingNest (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockBanelingNest", 1);
+}
+
+static void UnlockHydraliskDen (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockHydraliskDen", 1);
+}
+
+static void UnlockGreaterHydraliskDen (int player) {
+    UnlockHydraliskDen(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockGreaterHydraliskDen", 1);
+}
+
+static void UnlockInfestationPit (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestationPit", 1);
+}
+
+static void UnlockSpire (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockSpire", 1);
+}
+
+static void UnlockGreaterSpire (int player) {
+    UnlockHive(player);
+    UnlockSpire(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockGreaterSpire", 1);
+}
+
+static void UnlockUltraliskDen (int player) {
+    UnlockHive(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockUltraliskDen", 1);
+}
+
+static void UnlockInfestedSCV(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedSCV", 1);
+}
+
+static void UnlockInfestedBarracks (int player) {
+    UnlockInfestedSCV(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedBarracks", 1);
+}
+
+static void UnlockInfestedFactory (int player) {
+    UnlockInfestedSCV(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedFactory", 1);
+}
+
+static void UnlockInfestedStarport (int player) {
+    UnlockInfestedSCV(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedStarport", 1);
+}
+
+static void UnlockNydusNetwork (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockNydusNetwork", 1);
+}
+
+static void UnlockMercSC2(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockPredatorNest", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ZergMercCompoundSC2" , 1);
+}
+
+static void UnlockMercBroodWar(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockPredatorNest", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ZergMercCompoundBroodWar" , 1);
+}
+
+static void UnlockMercInfested(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockPredatorNest", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ZergMercCompoundInfested" , 1);
+}
+
+static void UnlockMorphling(int player) {
+    if (libABFE498B_gv_aP_Triggers_Option_enableMorphling) {
+        TechTreeUpgradeAddLevel(player, "AP_UnlockMorphling", 1);
+    }
+}
+static void UnlockTyrannozorFunc(int player) {
+    UnlockUltraliskDen(player);
+    UnlockMorphling(player);
+}
+
+static void UnlockPrimalIgniterFunc(int player) {
+    UnlockRoachWarren(player);
+    UnlockMorphling(player);
+}
+
+static void UnlockImpalerFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "", 1);
+    UnlockGreaterHydraliskDen(player);
+    UnlockMorphling(player);
+}
+
+static void UnlockFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "", 1);
+    Unlock(player);
+    UnlockMorphling(player);
+}
+
+
+static void RegisterZergUnits() {
+    // Hatchery
+    RegisterZergUnit(1, "AP_UnlockSwarmQueen", UnlockSpawningPool);
+    RegisterZergUnit(28, "AP_UnlockHiveQueen", null);
+
+    // Larva Basic
+    RegisterZergUnit(0, "AP_UnlockZergling", UnlockSpawningPool);
+    RegisterZergUnit(2, "AP_UnlockRoach", UnlockRoachWarren);
+    RegisterZergUnit(3, "AP_UnlockHydralisk", UnlockHydraliskDen);
+    RegisterZergUnit(4, "AP_UnlockBaneling", UnlockBanelingNest);
+    RegisterZergUnit(5, "AP_UnlockAberration", UnlockEvolutionChamber);
+    RegisterZergUnit(6, "AP_UnlockMutalisk", UnlockSpire);
+    RegisterZergUnit(7, "AP_UnlockSwarmHost", UnlockInfestationPit);
+    RegisterZergUnit(8, "AP_UnlockInfestor", UnlockInfestationPit);
+    RegisterZergUnit(9, "AP_UnlockUltralisk", UnlockUltraliskDen);
+    RegisterZergUnit(12, "AP_UnlockCorruptor", UnlockSpire);
+
+    //Larva Advanced
+    RegisterZergUnit(25, "AP_UnlockPygalisk", UnlockSpawningPool);
+    RegisterZergUnit(13, "AP_UnlockScourge", UnlockSpire);
+    RegisterZergUnit(14, "AP_UnlockBroodQueen", UnlockSpire);
+    RegisterZergUnit(15, "AP_UnlockDefiler", UnlockInfestationPit);
+
+    // Morphs
+    RegisterZergUnit(29, "AP_UnlockImpaler", UnlockImpalerFunc);
+    RegisterZergUnit(30, "AP_UnlockLurker", UnlockLurkerFunc);
+    RegisterZergUnit(31, "AP_UnlockBroodLord", UnlockBroodLordFunc);
+    RegisterZergUnit(32, "AP_UnlockViper", UnlockViperFunc);
+    RegisterZergUnit(42, "AP_UnlockGuardian", UnlockGuardianFunc);
+    RegisterZergUnit(43, "AP_UnlockDevourer", UnlockDevourerFunc);
+    RegisterZergUnit(44, "AP_UnlockRavager", UnlockRavagerFunc);
+
+    RegisterZergUnit(45, "AP_UnlockOverseer", null);
+
+    // Infested
+    RegisterZergUnit(16, "AP_UnlockInfestedMarine", UnlockInfestedBarracks);
+    RegisterZergUnit(20, "AP_UnlockInfestedSiegeTank", UnlockInfestedFactory);
+    RegisterZergUnit(21, "AP_UnlockInfestedDiamondback", UnlockInfestedFactory);
+    RegisterZergUnit(22, "AP_UnlockInfestedBanshee", UnlockInfestedStarport);
+    RegisterZergUnit(23, "AP_UnlockInfestedLiberator", UnlockInfestedStarport);
+    RegisterZergUnit(27, "AP_UnlockBullfrog", UnlockInfestedFactory);
+
+    // Primals
+    RegisterZergUnit(46, "AP_UnlockPrimalIgniter", UnlockPrimalIgniterFunc);
+    RegisterZergUnit(47, "AP_UnlockTyrannozor", UnlockTyrannozorFunc);
+
+    // Mercenaries
+    RegisterZergUnit(33, "AP_UnlockInfestedMedics", UnlockMercInfested);
+    RegisterZergUnit(34, "AP_UnlockInfestedSiegeBreakers", UnlockMercInfested);
+    RegisterZergUnit(35, "AP_UnlockInfestedDuskWings", UnlockMercInfested);
+    RegisterZergUnit(36, "AP_UnlockDevouringOnes", UnlockMercBroodWar);
+    RegisterZergUnit(37, "AP_UnlockHunterKillers", UnlockMercBroodWar);
+    RegisterZergUnit(38, "AP_UnlockWiseOldTorrasque", UnlockMercBroodWar);
+    RegisterZergUnit(39, "AP_UnlockHunterling", UnlockMercSC2);
+    RegisterZergUnit(40, "AP_UnlockYggdrasil", UnlockMercBroodWar);
+    RegisterZergUnit(41, "AP_UnlockCausticHorrors", UnlockMercSC2);
+
+    // Building
+    RegisterZergUnit(10, "AP_UnlockSporeCrawler", UnlockEvolutionChamber);
+    RegisterZergUnit(11, "AP_UnlockSpineCrawler", UnlockSpawningPool);
+    RegisterZergUnit(18, "AP_UnlockNydusWorm", UnlockNydusNetwork);
+    RegisterZergUnit(19, "AP_UnlockEchidnaWorm", UnlockNydusNetwork);
+    RegisterZergUnit(17, "AP_UnlockInfestedBunker", UnlockInfestedBarracks);
+    RegisterZergUnit(24, "AP_UnlockInfestedMissileTurret", UnlockInfestedBarracks);
+    RegisterZergUnit(26, "AP_UnlockBileLauncher", UnlockSpawningPool);
+}
+
+static void ZerglingStrainFunc (int player) {
+    if (TechTreeUpgradeCount(player, "AP_HotSHaveRaptor", c_techCountCompleteOnly) >= 1
+    && TechTreeUpgradeCount(player, "AP_HotSHaveSwarmling", c_techCountCompleteOnly) >= 1)
+    {
+        TechTreeUpgradeAddLevel(player, "AP_HotSHaveRaptorSwarmling", 1);
+    }
+}
+
+static void RoachStrainFunc (int player) {
+    if (TechTreeUpgradeCount(player, "AP_RoachVile", c_techCountCompleteOnly) >= 1
+    && TechTreeUpgradeCount(player, "AP_RoachCorpser", c_techCountCompleteOnly) >= 1)
+    {
+        TechTreeUpgradeAddLevel(player, "AP_RoachVileCorpser", 1);
+    }
+}
+
+static void RoachTunnelSpeedFunc (int player) {
+    if (TechTreeUpgradeCount(player, "AP_HotSTunnelingClaws", c_techCountCompleteOnly) >= 1
+    && TechTreeUpgradeCount(player, "AP_HotSRoachSpeed", c_techCountCompleteOnly) >= 1)
+    {
+        TechTreeUpgradeAddLevel(player, "AP_GlialReconstitutionTunnelingClaws", 1);
+    }
+}
+
+static void BanelingStrainFunc (int player) {
+    if (TechTreeUpgradeCount(player, "AP_HotSSplitter", c_techCountCompleteOnly) >= 1
+    && TechTreeUpgradeCount(player, "AP_HotSHunter", c_techCountCompleteOnly) >= 1)
+    {
+        TechTreeUpgradeAddLevel(player, "AP_HotSHunterSplitter", 1);
+    }
+}
+
+static void SwarmHostStrainFunc (int player) {
+    if (TechTreeUpgradeCount(player, "AP_HotSHaveSwarmHostSplitA", c_techCountCompleteOnly) >= 1
+    && TechTreeUpgradeCount(player, "AP_HotSHaveSwarmHostSplitB", c_techCountCompleteOnly) >= 1)
+    {
+        TechTreeUpgradeAddLevel(player, "AP_HotSHaveSwarmHostSplitAB", 1);
+    }
+}
+
+static void UltraliskStrainFunc (int player) {
+    if (TechTreeUpgradeCount(player, "AP_HotSNoxious", c_techCountCompleteOnly) >= 1
+    && TechTreeUpgradeCount(player, "AP_HotSTorrasque", c_techCountCompleteOnly) >= 1)
+    {
+        TechTreeUpgradeAddLevel(player, "AP_HotSNoxiousTorrasque", 1);
+    }
+}
+
+static void EvolutionaryLeapFunc (int player) {
+    int i;
+    fixed cooldown;
+    string field;
+    if (TechTreeUpgradeCount(player,"AP_EvolutionaryLeapLevel1",c_techCountCompleteOnly) > 0) {
+        return;
+    }
+    TechTreeUpgradeAddLevel(player,"AP_EvolutionaryLeapLevel1",1);
+    for (i = 0; i < lib15EF4C78_gv_aP_Player_MERC_COOLDOWN_LINK_SIZE; i += 1) {
+        if ( lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_BROODWAR
+        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_INFESTED
+        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_SCTWO
+        ) {
+            field = "InfoArray[" + IntToString(lib15EF4C78_gv_aP_Player_MercAbilityInfoArrayIndex[i]) + "].Cooldown.TimeStart";
+            cooldown = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, lib15EF4C78_gv_aP_Player_MercAbility[i], field, player);
+            PlayerAddCooldown(player, lib15EF4C78_gv_aP_Player_MercCooldownLinks[i], 0.0 - cooldown);
+        }
+    }
+}
+
+static void MalignantCreepFunc(int player) {
+    int i;
+    unit u;
+    unitgroup g;
+    if (TechTreeUpgradeCount(player, "AP_K5CreepBonuses", c_techCountQueuedOrBetter) > 0) {
+        return;
+    }
+    TechTreeUpgradeAddLevel(player, "AP_K5CreepBonuses", 1);
+    g = UnitGroup(null, player, RegionEntireMap(), UnitFilterStandard, 0);
+    for (i = 1; i <= UnitGroupCount(g, c_unitCountAll); i += 1) {
+        u = UnitGroupUnit(g, i);
+        lib15EF4C78_gf_AP_Player_applyMalignantCreepFix(u);
+    }
+}
+
+static void HandleZergUpgrade(int player, int level, int index) {
+    int i;
+    if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
+        for (i = 0; i < level; i += 1) {
+            TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index + 12][i], 1);
+        }
+    }
+    else {
+        for (i = 0; i < level; i += 1) {
+            TechTreeUpgradeAllow(player, WAUpgradeDatabase[index + 12][i], true);
+        }
+    }
+}
+
+static void ZergMeleeWeaponFunc (int player, int level) {
+    UnlockEvolutionChamber(player);
+    HandleZergUpgrade(player, level, 0);
+}
+
+static void ZergMissileWeaponFunc (int player, int level) {
+    UnlockEvolutionChamber(player);
+    HandleZergUpgrade(player, level, 1);
+}
+
+static void ZergCarapaceFunc (int player, int level) {
+    UnlockEvolutionChamber(player);
+    HandleZergUpgrade(player, level, 2);
+}
+
+static void ZergFlyerWeaponFunc (int player, int level) {
+    UnlockSpire(player);
+    HandleZergUpgrade(player, level, 3);
+}
+
+static void ZergFlyerArmorFunc (int player, int level) {
+    UnlockSpire(player);
+    HandleZergUpgrade(player, level, 4);
+}
+
+static void RegisterZergItems() {
+
+    // ********************** //
+    // *    Larva Basic     * //
+    // ********************** //
+
+    // Zergling
+    RegisterZergItem(1, "AP_HotSZerglingFrenzy");
+    RegisterZergItem(0, "AP_HotSZerglingHealth");
+    RegisterZergItem(2, "AP_HotSMetabolicBoost");
+    RegisterZergItem(26, "AP_ZerglingArmorShred");
+    RegisterZergItemFunc(100, "AP_HotSHaveRaptor", ZerglingStrainFunc);
+    RegisterZergItemFunc(101, "AP_HotSHaveSwarmling", ZerglingStrainFunc);
+    RegisterZergItem(162, "AP_K5ZerglingRespawn");
+
+    // Roach
+    RegisterZergItem(3, "AP_HotSRoachDamage");
+    RegisterZergItem(4, "AP_HotSRoachShield");
+    RegisterZergItemFunc(5, "AP_HotSTunnelingClaws", RoachTunnelSpeedFunc);
+    RegisterZergItemFunc(27, "AP_HotSRoachSpeed", RoachTunnelSpeedFunc);
+    RegisterZergItem(28, "AP_HotSRoachHealth");
+    RegisterZergItemFunc(102, "AP_RoachVile", RoachStrainFunc);
+    RegisterZergItemFunc(103, "AP_RoachCorpser", RoachStrainFunc);
+
+    // Hydralisk
+    RegisterZergItem(6, "AP_HotSHydraliskFrenzy");
+    RegisterZergItem(7, "AP_HotSHydraliskHealth");
+    RegisterZergItem(8, "AP_HotSGroovedSpines");
+    RegisterZergItem(29, "AP_MuscularAugments");
+    RegisterZergItemFunc(30, "AP_ResourceEfficiencyHydralisk", SelfSufficientFix);
+
+    // Baneling
+    RegisterZergItem(9, "AP_HotSBanelingCorrosiveBile");
+    RegisterZergItem(10, "AP_HotSRupture");
+    RegisterZergItem(11, "AP_HotSBanelingHeal");
+    RegisterZergItem(31, "AP_CentrificalHooks");
+    RegisterZergItem(32, "AP_BanelingBurrowMove");
+    RegisterZergItem(33, "AP_HotSRapidMetamorph");
+    RegisterZergItemFunc(104, "AP_HotSSplitter", BanelingStrainFunc);
+    RegisterZergItemFunc(105, "AP_HotSHunter", BanelingStrainFunc);
+
+    // Aberration
+    RegisterZergItem(81, "AP_AberrationMonstrousResilience");
+    RegisterZergItem(82, "AP_AberrationConstructRegeneration");
+    RegisterZergItem(83, "AP_AberrationBanelingIncubation");
+    RegisterZergItem(84, "AP_AberrationArmorAura");
+    RegisterZergItem(85, "AP_AberrationResourceEfficiency");
+    RegisterZergProgressive(4, "AP_AberrationBanelingLaunch", "AP_AberrationBanelingLaunchLevel2");
+
+    // Mutalisk
+    RegisterZergItem(12, "AP_HotSViciousGlaive");
+    RegisterZergItem(13, "AP_HotSRapidRegeneration");
+    RegisterZergItem(14, "AP_HotSExplosiveGlaive");
+    RegisterZergItem(34, "AP_MutaliskRange");
+    RegisterZergItem(35, "AP_MutaliskSeveringGlave");
+
+    // Swarm Host
+    RegisterZergItem(15, "AP_HotSBurrowSwarmHost");
+    RegisterZergItem(16, "AP_HotSRapidIncubation");
+    RegisterZergItem(17, "AP_HotSPressurizedGlands");
+    RegisterZergItem(36, "AP_HotSLocustSpeed");
+    RegisterZergItem(37, "AP_LocustLifetimeIncrease");
+    RegisterZergItem(38, "AP_SwarmHostOrganicCarapace");
+    RegisterZergItem(39, "AP_ResourceEfficiencySwarmHost");
+    RegisterZergItemFunc(106, "AP_HotSHaveSwarmHostSplitA", SwarmHostStrainFunc);
+    RegisterZergItemFunc(107, "AP_HotSHaveSwarmHostSplitB", SwarmHostStrainFunc);
+
+    // Infestor
+    RegisterZergItem(66, "AP_InfestorInfestedTerran");
+    RegisterZergItem(67, "AP_InfestorMicrobialShroud");
+
+    // Ultralisk
+    RegisterZergItem(18, "AP_HotSUltraliskBurrowCharge");
+    RegisterZergItem(19, "AP_HotSTissueAssimilation");
+    RegisterZergItem(20, "AP_HotSMonarchBlades");
+    RegisterZergItem(40, "AP_AnabolicSynthesis");
+    RegisterZergItem(41, "AP_ChitinousPlating");
+    RegisterZergItem(42, "AP_UltraliskOrganicCarapace");
+    RegisterZergItemFunc(43, "AP_ResourceEfficiencyUltralisk", SelfSufficientFix);
+    RegisterZergItemFunc(108, "AP_HotSNoxious", UltraliskStrainFunc);
+    RegisterZergItemFunc(109, "AP_HotSTorrasque", UltraliskStrainFunc);
+
+    // Corruptor
+    RegisterZergItem(21, "AP_HotSCorruptorCausticSpray");
+    RegisterZergItem(22, "AP_HotSCorruptorCorruption");
+    RegisterZergItem(86, "AP_CorruptorMonstrousResilience");
+    RegisterZergItem(87, "AP_CorruptorConstructRegeneration");
+    RegisterZergItem(88, "AP_CorruptorScourgeIncubation");
+    RegisterZergItem(89, "AP_CorruptorResourceEfficiency");
+    RegisterZergItem(149, "AP_CorruptorSporefall");
+
+
+    // ********************** //
+    // *   Larva Advanced   * //
+    // ********************** //
+
+    // Pygalisk
+    RegisterZergItem(139, "AP_PygaliskStim");
+    RegisterZergItem(140, "AP_PygaliskDucalBlades");
+    RegisterZergItem(141, "AP_PygaliskCombatCarapace");
+
+    // Scourge
+    RegisterZergItem(23, "AP_HotSScourgeSplash");
+    RegisterZergItem(24, "AP_HotSScourgeCost");
+    RegisterZergItem(25, "AP_HotSScourgeAmount");
+
+    // Brood Queen
+    RegisterZergItem(74, "AP_SIQueenFungalGrowth");
+    RegisterZergItem(75, "AP_BroodQueenEnsnare");
+    RegisterZergItem(76, "AP_SIQueenEnergy");
+
+    // Defiler
+    RegisterZergItem(77, "AP_DefilerImprovedCastRange");
+    RegisterZergItem(78, "AP_DefilerBurrowCast");
+    RegisterZergItem(79, "AP_DefilerPredatoryConsumption");
+    RegisterZergItem(80, "AP_DefilerImprovedPlague");
+
+    // Swarm Queen
+    RegisterZergItem(68, "AP_SwarmQueenWildMutation");
+    RegisterZergItem(69, "AP_QueenDeepTunnel");
+    RegisterZergItem(70, "AP_QueenOrganicCarapace");
+    RegisterZergItem(71, "AP_AbathurBioMechanicalTransfusion");
+    RegisterZergItem(72, "AP_ResourceEfficiencyQueen");
+    RegisterZergItem(73, "AP_AbathurHatcheryDoubleQueue");
+
+    // Hive Queen
+    RegisterZergItem(153, "AP_HiveQueenPsionicMitochondria");
+    RegisterZergItem(154, "AP_HiveQueenStrainInjection");
+    RegisterZergItem(155, "AP_HiveQueenSwelledTransfusion");
+
+    // ********************** //
+    // *       Morphs       * //
+    // ********************** //
+
+    // Impaler
+    RegisterZergItem(51, "AP_DiggingClaws");
+    RegisterZergItem(52, "AP_ImpalerGenerateCreep");
+    RegisterZergItem(53, "AP_ImpalerDamage");
+    RegisterZergItem(150, "AP_ImpalerDistributedAttack");
+    RegisterZergItem(151, "AP_ImpalerTentacleExtensions");
+    RegisterZergItem(152, "AP_ImpalerDeepTunnel");
+
+    // Lurker
+    RegisterZergItem(54, "AP_LurkerRange");
+    RegisterZergItem(55, "AP_LurkerNormalDamage");
+    RegisterZergItem(179, "AP_LurkerCarapace");
+    RegisterZergItem(180, "AP_LurkerDetection");
+    RegisterZergItem(181, "AP_LurkerRangeCreep");
+    RegisterZergItem(182, "AP_LurkerFastMorph");
+
+    // Brood Lord
+    RegisterZergItem(62, "AP_KerriganVoidCoopBroodlordSpeed");
+    RegisterZergItem(63, "AP_BroodLordHealth");
+    RegisterZergItem(64, "AP_HotsKeneticMitosis");
+    RegisterZergItem(65, "AP_KerriganVoidCoopBroodlordCost");
+
+    // Viper
+    RegisterZergItem(59, "AP_ViperParasiticBomb");
+    RegisterZergItem(60, "AP_ViperAbductImprovedStun");
+    RegisterZergItem(61, "AP_ViperImprovedCastRange");
+
+    // Guardian
+    RegisterZergItem(48, "AP_GuardianAttackRangeIncrease");
+    RegisterZergItem(49, "AP_GuardianAirAttack");
+    RegisterZergItem(50, "AP_GuardianAttackDamage");
+    RegisterZergItem(127, "AP_GuardianPropellantSacs");
+    RegisterZergItem(128, "AP_GuardianExplosiveSpores");
+    RegisterZergItem(129, "AP_GuardianPrimordialFury");
+
+    // Devourer
+    RegisterZergItem(44, "AP_DevourerCorrosiveSpray");
+    RegisterZergItem(45, "AP_HotSGapingMaw");
+    RegisterZergItem(46, "AP_HotSImprovedOsmosis");
+    RegisterZergItem(47, "AP_HotSImprovedSporeTracking");
+
+    // Ravager
+    RegisterZergItem(56, "AP_HotSRavagerPotentBile");
+    RegisterZergItem(57, "AP_HotSRavagerBloatedBileDucts");
+    RegisterZergItem(58, "AP_DeepTunnel");
+    RegisterZergItem(187, "AP_HotSRavagerDisintegratingAcid");
+    RegisterZergItem(188, "AP_HotSRavagerAerialCorrosiveBile");
+    RegisterZergItem(189, "AP_HotSRavagerBurrowedBombardment");
+    RegisterZergItem(190, "AP_HotSRavagerBonePlating");
+    RegisterZergItem(191, "AP_HotSRavagerRoachlingBile");
+
+    // Overseer
+
+    // ********************** //
+    // *      Infested      * //
+    // ********************** //
+
+    // Infested Marine
+    RegisterZergItem(93, "AP_SIMarinePlaguedMunitions");
+    RegisterZergItem(94, "AP_SIMarineTrooperRange");
+    RegisterZergItem(183, "AP_InfestedMarineExtended");
+    RegisterZergItem(184, "AP_InfestedMarineSpeed");
+
+    // Infested Siege Tank
+    RegisterZergItem(119, "AP_AcidicEnzymes");
+    RegisterZergItem(120, "AP_SISiegeTankDeepTunnel");
+    RegisterZergItem(130, "AP_InfestedSiegeTankSeismicSonar");
+    RegisterZergItem(132, "AP_InfestedSiegeTankBalancedRoots");
+    RegisterZergItem(134, "AP_FrightfulFleshwelderInfestedSiegeTank");
+    RegisterZergProgressive(0, "AP_AutomatedMitosis", "AP_AutomatedMitosisTierTwo");
+
+    // Infested Diamondback
+    RegisterZergItem(121, "AP_SIDiamondbackSnailTrail");
+    RegisterZergItem(122, "AP_InfestedDiamondbackViolentEnzymes");
+    RegisterZergItem(133, "AP_InfestedDiamondbackConcentratedSpew");
+    RegisterZergItem(135, "AP_FrightfulFleshwelderInfestedDiamondBack");
+    RegisterZergProgressive(2, "AP_InfestedDiamondbackBasicEnsnare", "AP_SIDiamondbackImprovedEnsnare");
+
+    // Infested Banshee
+    RegisterZergItem(123, "AP_StukovInfestedBansheeInfestedLife");
+    RegisterZergItem(124, "AP_StukovInfestedBansheeBurrowRegeneration");
+    RegisterZergItem(131, "AP_InfestedBansheeAdvancedOptics");
+    RegisterZergItem(136, "AP_FrightfulFleshwelderInfestedBanshee");
+
+    // Infested Liberator
+    RegisterZergItem(125, "AP_LiberatorInfestedBecomeSwarm");
+    RegisterZergItem(126, "AP_SILiberatorImprovedAoeAttack");
+    RegisterZergItem(137, "AP_FrightfulFleshwelderInfestedLiberator");
+    RegisterZergItem(138, "AP_SILiberatorDefenderMode");
+
+    // Bullfrog
+    RegisterZergItem(144, "AP_InfBullfrogWildMutation");
+    RegisterZergItem(145, "AP_InfBullfrogBroodlings");
+    RegisterZergItem(146, "AP_InfBullfrogHardImpact");
+    RegisterZergItem(147, "AP_InfBullfrogRange");
+
+
+    // ********************** //
+    // *      Primals       * //
+    // ********************** //
+
+    // Primal Igniter
+    RegisterZergItem(90, "AP_PrimalIgniterFireBreath");
+    RegisterZergItem(91, "AP_PrimalIgniterToughness");
+
+    // Tyrannozor
+    RegisterZergItem(110, "AP_TyrannozorTyrantsProtection");
+    RegisterZergItem(111, "AP_TyrannozorBarrageOfSpikes");
+    RegisterZergItem(112, "AP_ImpalingStrike");
+    RegisterZergItem(113, "AP_HealingAdaptation");
+
+    // ********************** //
+    // *     Buildings      * //
+    // ********************** //
+
+    // Spore Crawler
+    RegisterZergItem(148, "AP_SporeCrawlerBioBonus");
+
+    // Spine Crawler
+
+    // Nydus/Echidna Worm
+    RegisterZergItem(114, "AP_NydusWormSubterraneanScales");
+    RegisterZergItem(115, "AP_NydusWormJormungandrStrain");
+    RegisterZergItem(116, "AP_NydusWormResourceEfficiency");
+    RegisterZergItem(117, "AP_EchidnaWormOuroborosStrain");
+    RegisterZergItem(118, "AP_NydusWormRavenousAppetite");
+
+    // Bile Launcher
+    RegisterZergItem(142, "AP_BileLauncherArtilleryDucts");
+    RegisterZergItem(143, "AP_BileLauncherRapidBombardment");
+
+    // Infested Bunker
+    RegisterZergItem(95, "AP_SIBunkerArmor");
+    RegisterZergItem(96, "AP_SIBunkerLifeRegen");
+    RegisterZergItem(97, "AP_SIInfestedBunkerImprovedCargo");
+
+    // Infested Missile Turret
+    RegisterZergItem(98, "AP_BioelectricPayload");
+    RegisterZergItem(99, "AP_AcidSporeVents");
+
+    // Extractor
+    RegisterZergItem(164, "AP_K5AutoExtractor");
+    RegisterZergItem(170, "AP_K5GasBonuses");
+
+    // ********************** //
+    // *      Kerrigan      * //
+    // ********************** //
+
+    // Actives
+    RegisterZergItem(156, "AP_K5MindBolt");
+    RegisterZergItem(158, "AP_K5PrimalSlash");
+    RegisterZergItem(159, "AP_K5CrushingGrip");
+    RegisterZergItem(161, "AP_K5PsiStrike");
+    RegisterZergItem(165, "AP_K5WildMutation");
+    RegisterZergItem(166, "AP_K5SpawnBanelings");
+    RegisterZergItem(167, "AP_K5Mend");
+
+    // Passives
+    RegisterZergItem(157, "AP_K5HeroicFortitude");
+    RegisterZergItem(160, "AP_K5ChainLightning");
+    RegisterZergItem(171, "AP_K5InfestBroodlings");
+    RegisterZergItem(172, "AP_K5Fury");
+    RegisterZergItem(173, "AP_K5Cooldowns");
+
+    RegisterZergItemFunc(212, null, libABFE498B_gf_AP_Triggers_setKerriganPrimal);
+
+    // Ultimates
+    RegisterZergItem(174, "AP_K5Apocalypse");
+    RegisterZergItem(175, "AP_K5Leviathan");
+    RegisterZergItem(176, "AP_K5DropPods");
+    RegisterZergItem(177, "AP_KerriganAssimilationAura");
+    RegisterZergItem(178, "AP_KerriganImmobilizationWave");
+
+
+    // ********************** //
+    // *       Other        * //
+    // ********************** //
+
+    // Drone
+    RegisterZergItem(168, "AP_K5TwoDrones");
+
+    // Overlord
+    RegisterZergItem(163, "AP_K5ImprovedOverlords");
+    RegisterZergItem(192, "AP_overlordtransport");
+    RegisterZergItem(193, "AP_OverlordGenerateCreep");
+    RegisterZergItem(194, "AP_OverlordSightUpgrade");
+    RegisterZergItem(195, "AP_OverlordSpeed");
+
+    // Infested SCV
+    RegisterZergItem(92, "AP_SISCVBuildChargeCount");
+    RegisterZergItem(185, "AP_InfestedSCVRepairBio");
+    RegisterZergItem(186, "AP_InfestedSCVRepairFree");
+
+    // Mercenaries
+    RegisterZergItem(202, "AP_CellDivision");
+    RegisterZergItem(203, "AP_SelfSufficient");
+    RegisterZergItem(204, "AP_UnrestrictedMutation");
+    RegisterZergItemFunc(205, null, EvolutionaryLeapFunc);
+
+    // Global
+    RegisterZergItemFunc(169, null, MalignantCreepFunc);
+    RegisterZergItem(196, "AP_ZergExcavatingClaws");
+    RegisterZergItem(197, "AP_ZergCreepStomach");
+    RegisterZergItem(198, "AP_HiveClusterMaturation");
+    RegisterZergItem(199, "AP_ZergStructureRapidRegen");
+    RegisterZergItem(200, "AP_BioMechanicalStockpiling");
+    RegisterZergItem(201, "AP_ZergBroodlingPacking");
+    RegisterZergItem(206, "AP_HydraliskDenMaturation");
+    RegisterZergItem(207, "AP_ZergBuildingSpawnSplitterlings");
+    RegisterZergItemFunc(208, "AP_BanelingSpawn", UnlockBanelingNest);
+    RegisterZergItemFunc(209, "AP_ScourgeSpawn", UnlockSpire);
+    RegisterZergItem(210, "AP_SpireMaturation");
+    RegisterZergItem(211, "AP_CreepTumorSuperCloak");
+
+
+    // W/A Upgrades
+    RegisterZergUpgrade(0, ZergMeleeWeaponFunc);
+    RegisterZergUpgrade(4, ZergMissileWeaponFunc);
+    RegisterZergUpgrade(8, ZergCarapaceFunc);
+    RegisterZergUpgrade(12, ZergFlyerWeaponFunc);
+    RegisterZergUpgrade(16, ZergFlyerArmorFunc);
 }
 
 void UnlockGateway(int player) {
@@ -2028,7 +2726,7 @@ static void RegisterProtossItems() {
     // *   Spear of Adun    * //
     // ********************** //
 
-    // SoA actives
+    // Actives
     RegisterProtossItem(219, "AP_SOASuperChrono");
     RegisterProtossItem(220, "AP_SOAPylonOvercharge");
     RegisterProtossItem(221, "AP_SOAOrbitalStrike");
@@ -2042,7 +2740,7 @@ static void RegisterProtossItems() {
     RegisterProtossItem(229, "AP_SOAStrafeAttack");
     RegisterProtossProgressiveFunc(0, SoAProxyPylonFunc);
 
-    // SoA passives
+    // Passives
     RegisterProtossItemFunc(231, null, QuatroFunc);
     RegisterProtossItem(235, "AP_SOAHeroicShield");
     RegisterProtossItem(236, "AP_SOARepairBeam");
@@ -2052,18 +2750,23 @@ static void RegisterProtossItems() {
     // *      Artanis       * //
     // ********************** //
 
+    // Actives
     RegisterProtossItem(255, "AP_ArtanisLightningDash");
     RegisterProtossItem(256, "AP_ArtanisPhasePrism");
-    RegisterProtossItem(257, "AP_ArtanisValorOfTheFirstborn");
     RegisterProtossItem(258, "AP_ArtanisVoltaicShock");
     RegisterProtossItem(259, "AP_ArtanisAstralWind");
+    RegisterProtossItem(265, "AP_ArtanisStrengthInUnity");
+    RegisterProtossItem(266, "AP_ArtanisSuppressionPulse");
+
+    // Passives
+    RegisterProtossItem(257, "AP_ArtanisValorOfTheFirstborn");
     RegisterProtossItem(260, "AP_ArtanisShieldOverload");
     RegisterProtossItem(261, "AP_ArtanisResurgence");
     RegisterProtossItem(262, "AP_ArtanisAirAttack");
     RegisterProtossItem(263, "AP_ArtanisForceOfWill");
     RegisterProtossItem(264, "AP_ArtanisTemperedInTwilight");
-    RegisterProtossItem(265, "AP_ArtanisStrengthInUnity");
-    RegisterProtossItem(266, "AP_ArtanisSuppressionPulse");
+
+    // Aspects
     RegisterProtossItemFunc(267, "AP_ArtanisTaldarimAspectActive", ArtanisTaldarimAspectFunc);
     RegisterProtossItemFunc(268, "AP_ArtanisTaldarimAspectPassive", ArtanisTaldarimAspectFunc);
     RegisterProtossItemFunc(269, "AP_ArtanisPurifierAspectActive", ArtanisPurifierAspectFunc);
@@ -2096,6 +2799,8 @@ void AP_Triggers_UnlockInit() {
     Setup();
     RegisterTerranUnits();
     RegisterTerranItems();
+    RegisterZergUnits();
+    RegisterZergItems();
     RegisterProtossUnits();
     RegisterProtossItems();
 }
