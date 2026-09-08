@@ -8622,7 +8622,6 @@
         <Flags index="NoDamageTimerReset" value="1"/>
     </CEffectDamage>
     <CEffectSet id="AP_YoinkImpactSet">
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="AP_KillRemove"/>
         <EffectArray value="AP_YoinkRemoveBehavior"/>
@@ -8804,7 +8803,6 @@
     </CEffectRemoveBehavior>
     <CEffectSet id="AP_YoinkSet">
         <ValidatorArray value="AP_NoBurrowChargingRevD"/>
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <!-- LotV change; AP Viper is based on HotS -->
         <!-- ValidatorArray value="AP_IsNotRecallingCombine"/ -->
         <EditorCategories value="Race:Zerg"/>
@@ -8852,7 +8850,6 @@
         <ValidatorArray value="NotViking"/>
         <ValidatorArray value="AP_NoYoink"/>
         <ValidatorArray value="AP_NoBurrowChargingRevD"/>
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <ValidatorArray value="AP_IsNotRecallingCombine"/>
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="CasterUnitOrPoint"/>
@@ -8914,7 +8911,6 @@
         <Behavior value="AP_PrecursorYoink"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AP_YoinkStartSet">
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <EditorCategories value="Race:Zerg"/>
         <Marker Link="YoinkMarker"/>
         <EffectArray value="AP_YoinkMarkerBehavior"/>
@@ -18229,7 +18225,6 @@
     </CEffectEnumArea>
     <CEffectSet id="AP_SOAVortexSet">
         <ValidatorArray value="AP_NoYoink"/>
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <EditorCategories value="Race:Protoss"/>
         <EffectArray value="AP_SOAVortexKillForcefield"/>
         <EffectArray value="AP_SOAVortexUnburrow"/>
@@ -20617,7 +20612,6 @@
         <Flags index="NoDamageTimerReset" value="1"/>
     </CEffectDamage>
     <CEffectSet id="AP_GrapplePullImpactSet">
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <EditorCategories value="Race:Zerg"/>
         <EffectArray value="AP_KillRemove"/>
         <EffectArray value="AP_GrapplePullRemoveBehavior"/>
@@ -20701,7 +20695,6 @@
     </CEffectRemoveBehavior>
     <CEffectSet id="AP_GrapplePullSet">
         <ValidatorArray value="AP_NoBurrowChargingRevD"/>
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <!-- LotV change; AP Viper is based on HotS -->
         <!-- ValidatorArray value="AP_IsNotRecallingCombine"/ -->
         <EditorCategories value="Race:Zerg"/>
@@ -20722,7 +20715,6 @@
         <ValidatorArray value="IsNotLarva"/>
         <ValidatorArray value="AP_NoYoink"/>
         <ValidatorArray value="AP_NoBurrowChargingRevD"/>
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <ValidatorArray value="AP_IsNotRecallingCombine"/>
         <EditorCategories value="Race:Zerg"/>
         <WhichLocation Value="CasterUnitOrPoint"/>
@@ -20744,7 +20736,6 @@
         <Behavior value="AP_PrecursorYoink"/>
     </CEffectApplyBehavior>
     <CEffectSet id="AP_GrapplePullStartSet">
-        <ValidatorArray value="AP_IsNotMothershipCorePurifyNexus"/>
         <EditorCategories value="Race:Zerg"/>
         <Marker Link="YoinkMarker"/>
         <EffectArray value="AP_GrapplePullMarkerBehavior"/>

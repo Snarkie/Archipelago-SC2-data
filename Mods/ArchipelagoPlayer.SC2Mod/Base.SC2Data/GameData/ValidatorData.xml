@@ -2586,17 +2586,6 @@
         <WhichUnit Effect="AP_GrapplePullStartCreatePlaceholder"/>
         <Filters value="-;Self,Player,Ally"/>
     </CValidatorUnitFilters>
-    <CValidatorUnitCompareBehaviorCount id="AP_IsNotVanillaMothershipCorePurifyNexus">
-        <ResultFailed value="Error,Error/MothershipCorePurifyNexus"/>
-        <Compare value="NE"/>
-        <Value value="1"/>
-        <Behavior value="MothershipCorePurifyNexus"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorCombine id="AP_IsNotMothershipCorePurifyNexus">
-        <Type value="And"/>
-        <CombineArray value="AP_IsNotAPMothershipCorePurifyNexus"/>
-        <CombineArray value="AP_IsNotVanillaMothershipCorePurifyNexus"/>
-    </CValidatorCombine>
     <CValidatorUnitFilters id="AP_NotHiddenYoink">
         <WhichUnit Effect="AP_YoinkLaunchMissile"/>
         <Filters value="-;Hidden"/>
