@@ -12273,7 +12273,6 @@
         <Upgrades Upgrade="AP_GameTimeGreaterthan5Seconds" Count="1"/>
     </CEffectModifyPlayer>
     <CEffectDamage id="AP_NexusDeathKillMothershipCore">
-        <ValidatorArray value="AP_IsMothershipCoreAndHasPurifyNexus"/>
         <ImpactLocation Value="TargetUnit"/>
         <Flags index="Kill" value="1"/>
     </CEffectDamage>

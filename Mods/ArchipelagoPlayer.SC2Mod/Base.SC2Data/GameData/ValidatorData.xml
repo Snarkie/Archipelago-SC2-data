@@ -3409,11 +3409,6 @@
         <CombineArray value="AP_NoDarkProtoss"/>
         <CombineArray value="IsNotConstructing"/>
     </CValidatorCombine>
-    <CValidatorCombine id="AP_IsMothershipCoreAndHasPurifyNexus">
-        <Type value="And"/>
-        <CombineArray value="AP_IsMothershipCore"/>
-        <CombineArray value="AP_HasMothershipCorePurifyNexus"/>
-    </CValidatorCombine>
     <CValidatorCombine id="AP_IsMothershipCore">
         <!-- TODO -->
         <CombineArray value="AP_NotDummy"/>
