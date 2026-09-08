@@ -3300,7 +3300,7 @@
     </CUpgrade>
     <CUpgrade id="AP_AdvancedMedicTraining">
         <Flags index="UpgradeCheat" value="0"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train5].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train5].Button.Requirements" Value ="AP_UnlockMedicInternalTechModule"/>
         <!-- Train AP_Medic -->
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
     </CUpgrade>
@@ -11949,7 +11949,7 @@
     <CUpgrade id="AP_PredatorCharge"/>
     <CUpgrade id="AP_ThorNuke"/>
     <CUpgrade id="AP_InternalFusionModuleHercules">
-        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train6].Button.Requirements" Value="AP_UnlockHerculesInternalTechModule"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train6].Button.Requirements" Value="AP_UnlockHerculesInternalFusionModule"/>
     </CUpgrade>
     <CUpgrade id="AP_HerculesHyperjump"/>
     <CUpgrade id="AP_ThorImmortalityFree">

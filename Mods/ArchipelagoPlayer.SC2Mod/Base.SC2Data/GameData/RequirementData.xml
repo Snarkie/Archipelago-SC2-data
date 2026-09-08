@@ -5561,6 +5561,9 @@
         <NodeArray index="Show" Link="AP_UnlockMedic"/>
         <NodeArray index="Use" Link="AP_OrCountUnitAlias_TechLabCompleteOnlyAtUnitTechTreeCheatCountUpgradeAdvancedMedicTrainingCompleteOnly"/>
     </CRequirement>
+    <CRequirement id="AP_UnlockMedicInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockMedic"/>
+    </CRequirement>
     <CRequirement id="AP_UnlockFirebat">
         <NodeArray index="Show" Link="AP_UnlockFirebat"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
@@ -5569,7 +5572,7 @@
         <NodeArray index="Show" Link="AP_UnlockMarauder"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockMarauderInternalTechLab">
+    <CRequirement id="AP_UnlockMarauderInternalTechModule">
         <NodeArray index="Show" Link="AP_UnlockMarauder"/>
     </CRequirement>
     <CRequirement id="AP_UnlockReaper">
