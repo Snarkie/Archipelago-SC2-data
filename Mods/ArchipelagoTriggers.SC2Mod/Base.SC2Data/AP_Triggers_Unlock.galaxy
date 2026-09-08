@@ -520,9 +520,9 @@ static void RapidReinforcementFunc (int player) {
     }
     TechTreeUpgradeAddLevel(player, "AP_RapidReinforcement", 1);
     for (i = 0; i < lib15EF4C78_gv_aP_Player_MERC_COOLDOWN_LINK_SIZE; i += 1) {
-        if ( lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryOFFSET_INFANTRY
-        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryOFFSET_VEHICLE
-        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryOFFSET_STARSHIP
+        if ( lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_INFANTRY
+        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_VEHICLE
+        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_STARSHIP
         ) {
             cooldownLink = lib15EF4C78_gv_aP_Player_MercCooldownLinks[i];
             PlayerAddCooldown(player, cooldownLink, -60.0);
@@ -1708,9 +1708,9 @@ static void EvolutionaryLeapFunc (int player) {
     }
     TechTreeUpgradeAddLevel(player,"AP_EvolutionaryLeapLevel1",1);
     for (i = 0; i < lib15EF4C78_gv_aP_Player_MERC_COOLDOWN_LINK_SIZE; i += 1) {
-        if ( lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryOFFSET_BROODWAR
-        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryOFFSET_INFESTED
-        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryOFFSET_SCTWO
+        if ( lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_BROODWAR
+        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_INFESTED
+        || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_SCTWO
         ) {
             field = "InfoArray[" + IntToString(lib15EF4C78_gv_aP_Player_MercAbilityInfoArrayIndex[i]) + "].Cooldown.TimeStart";
             cooldown = libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogAbil, lib15EF4C78_gv_aP_Player_MercAbility[i], field, player);
