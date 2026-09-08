@@ -5898,32 +5898,32 @@
     <CRequirement id="AP_UnlockViper">
         <NodeArray index="Show" Link="AP_UnlockViper"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockInfestedMedics">
-        <NodeArray index="Show" Link="AP_UnlockInfestedMedics"/>
+    <CRequirement id="AP_MakeInfestedMedics">
+        <NodeArray index="Show" Link="AP_MakeInfestedMedics"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockInfestedSiegeBreakers">
-        <NodeArray index="Show" Link="AP_UnlockInfestedSiegeBreakers"/>
+    <CRequirement id="AP_MakeInfestedSiegeBreakers">
+        <NodeArray index="Show" Link="AP_MakeInfestedSiegeBreakers"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockInfestedDuskWings">
-        <NodeArray index="Show" Link="AP_UnlockInfestedDuskWings"/>
+    <CRequirement id="AP_MakeInfestedDuskWings">
+        <NodeArray index="Show" Link="AP_MakeInfestedDuskWings"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockDevouringOnes">
-        <NodeArray index="Show" Link="AP_UnlockDevouringOnes"/>
+    <CRequirement id="AP_MakeDevouringOnes">
+        <NodeArray index="Show" Link="AP_MakeDevouringOnes"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockHunterKillers">
-        <NodeArray index="Show" Link="AP_UnlockHunterKillers"/>
+    <CRequirement id="AP_MakeHunterKillers">
+        <NodeArray index="Show" Link="AP_MakeHunterKillers"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockWiseOldTorrasque">
-        <NodeArray index="Show" Link="AP_UnlockWiseOldTorrasque"/>
+    <CRequirement id="AP_MakeWiseOldTorrasque">
+        <NodeArray index="Show" Link="AP_MakeWiseOldTorrasque"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockHunterling">
-        <NodeArray index="Show" Link="AP_UnlockHunterling"/>
+    <CRequirement id="AP_MakeHunterlings">
+        <NodeArray index="Show" Link="AP_MakeHunterlings"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockYggdrasil">
-        <NodeArray index="Show" Link="AP_UnlockYggdrasil"/>
+    <CRequirement id="AP_MakeYggdrasil">
+        <NodeArray index="Show" Link="AP_MakeYggdrasil"/>
     </CRequirement>
-    <CRequirement id="AP_UnlockCausticHorrors">
-        <NodeArray index="Show" Link="AP_UnlockCausticHorrors"/>
+    <CRequirement id="AP_MakeCausticHorrors">
+        <NodeArray index="Show" Link="AP_MakeCausticHorrors"/>
     </CRequirement>
     <CRequirement id="AP_UnlockGuardian">
         <NodeArray index="Show" Link="AP_UnlockGuardian"/>

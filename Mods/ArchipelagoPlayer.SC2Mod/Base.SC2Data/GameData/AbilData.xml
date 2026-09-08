@@ -5611,7 +5611,7 @@
     </CAbilEffectTarget>
     <CAbilMorph id="AP_MorphToRavager">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ravager" Requirements="AP_HaveLairAndRoachWarren"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_Ravager" Requirements="AP_UnlockRavager"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <Flags index="BestUnit" value="1"/>
         <Flags index="Birth" value="1"/>
@@ -5656,7 +5656,7 @@
         <Flags index="WaitForFood" value="0"/>
         <MorphUnit value="AP_RavagerCocoon"/>
         <InfoArray index="Train1" Time="39" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_Ravager" Requirements="AP_HaveLairAndRoachWarren">
+            <Button DefaultButtonFace="AP_Ravager" Requirements="AP_UnlockRavager">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Ravager"/>
@@ -5679,7 +5679,7 @@
         <Flags index="WaitForFood" value="0"/>
         <MorphUnit value="AP_ImpalerEgg"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_Impaler" Requirements="AP_HaveImpalerDen">
+            <Button DefaultButtonFace="AP_Impaler" Requirements="AP_UnlockImpaler">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Impaler"/>
@@ -5702,7 +5702,7 @@
         <Flags index="WaitForFood" value="0"/>
         <MorphUnit value="AP_ImpalerEggMorphling"/>
         <InfoArray index="Train1" Time="40" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_Impaler" Requirements="AP_HaveImpalerDen">
+            <Button DefaultButtonFace="AP_Impaler" Requirements="AP_UnlockImpaler">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Impaler"/>
@@ -5725,7 +5725,7 @@
         <Flags index="WaitForFood" value="0"/>
         <MorphUnit value="AP_HydraliskLurkerEgg"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_Lurker" Requirements="AP_HaveLurkerDen">
+            <Button DefaultButtonFace="AP_Lurker" Requirements="AP_UnlockLurker">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Lurker"/>
@@ -5748,7 +5748,7 @@
         <Flags index="WaitForFood" value="0"/>
         <MorphUnit value="AP_HydraliskLurkerEggMorphling"/>
         <InfoArray index="Train1" Time="40" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_Lurker" Requirements="AP_HaveLurkerDen">
+            <Button DefaultButtonFace="AP_Lurker" Requirements="AP_UnlockLurker">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Lurker"/>
@@ -6353,7 +6353,7 @@
     </CAbilEffectTarget>
     <CAbilMorph id="AP_MorphToBroodLord">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_HaveGreaterSpire"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodlord"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <ActorKey value="GuardianAspect"/>
         <Flags index="BestUnit" value="1"/>
@@ -6398,7 +6398,7 @@
         <MorphUnit value="AP_BroodLordCocoon"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_HaveGreaterSpireAndHotSBroodlord">
+            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodlord">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_BroodLord"/>
@@ -6421,7 +6421,7 @@
         <MorphUnit value="AP_BroodLordCocoon"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="69" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_HaveGreaterSpireAndHotSBroodlord">
+            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodlord">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_BroodLord"/>
@@ -6444,7 +6444,7 @@
         <MorphUnit value="AP_ViperCocoon"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_HaveGreaterSpireAndHotSViper">
+            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockViper">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Viper"/>
@@ -6467,7 +6467,7 @@
         <MorphUnit value="AP_ViperCocoon"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="50" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_HaveGreaterSpireAndHotSViper">
+            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockViper">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Viper"/>
@@ -7360,7 +7360,7 @@
         <Flags index="Select" value="1"/>
         <MorphUnit value="AP_FourBanelingsCocoon"/>
         <InfoArray index="Train1" Time="29" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="Baneling" Requirements="AP_HotSHaveBaneling">
+            <Button DefaultButtonFace="Baneling" Requirements="AP_UnlockBaneling">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Baneling"/>
@@ -12274,7 +12274,7 @@
                 <TimeStart value="300"/>
                 <TimeUse value="300"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_InfestedMedic" State="Restricted" Requirements="AP_ZergMercCompoundInfested"/>
+            <Button DefaultButtonFace="AP_InfestedMedic" State="Restricted" Requirements="AP_MakeInfestedMedics"/>
             <Unit value="AP_InfestedMedic"/>
             <Unit value="AP_InfestedMedic"/>
             <Unit value=""/>
@@ -12295,7 +12295,7 @@
                 <TimeStart value="420"/>
                 <TimeUse value="420"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_InfestedSiegeBreaker" State="Restricted" Requirements="AP_ZergMercCompoundInfested"/>
+            <Button DefaultButtonFace="AP_InfestedSiegeBreaker" State="Restricted" Requirements="AP_MakeInfestedSiegeBreakers"/>
             <Unit value="AP_InfestedSiegeBreaker"/>
             <Unit value="AP_InfestedSiegeBreaker"/>
             <Unit value=""/>
@@ -12315,7 +12315,7 @@
                 <TimeStart value="420"/>
                 <TimeUse value="420"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_InfestedDuskWing" State="Restricted" Requirements="AP_ZergMercCompoundInfested"/>
+            <Button DefaultButtonFace="AP_InfestedDuskWing" State="Restricted" Requirements="AP_MakeInfestedDuskWings"/>
             <Unit value="AP_InfestedDuskWing"/>
             <Unit value="AP_InfestedDuskWing"/>
             <Unit value=""/>
@@ -12335,7 +12335,7 @@
                 <TimeStart value="240"/>
                 <TimeUse value="240"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_MercZergling" State="Restricted" Requirements="AP_ZergMercCompoundBroodWar"/>
+            <Button DefaultButtonFace="AP_MercZergling" State="Restricted" Requirements="AP_MakeDevouringOnes"/>
             <Unit value="AP_MercZergling"/>
             <Unit value="AP_MercZergling"/>
             <Unit value="AP_MercZergling"/>
@@ -12368,7 +12368,7 @@
                 <TimeStart value="300"/>
                 <TimeUse value="300"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_SummonHunterKiller" State="Restricted" Requirements="AP_ZergMercCompoundBroodWar"/>
+            <Button DefaultButtonFace="AP_SummonHunterKiller" State="Restricted" Requirements="AP_MakeHunterKillers"/>
             <Unit value="AP_HunterKiller"/>
             <Unit value="AP_HunterKiller"/>
             <Unit value=""/>
@@ -12390,7 +12390,7 @@
                 <TimeStart value="420"/>
                 <TimeUse value="420"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_MercUltraliskSummon" State="Restricted" Requirements="AP_TorrasqueHighlander"/>
+            <Button DefaultButtonFace="AP_MercUltraliskSummon" State="Restricted" Requirements="AP_MakeWiseOldTorrasque"/>
             <Unit value="AP_MercUltralisk"/>
             <Unit value=""/>
             <Unit value=""/>
@@ -12409,7 +12409,7 @@
                 <TimeStart value="300"/>
                 <TimeUse value="300"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_HunterlingSummon" State="Restricted" Requirements="AP_ZergMercCompoundSC2"/>
+            <Button DefaultButtonFace="AP_HunterlingSummon" State="Restricted" Requirements="AP_MakeHunterlings"/>
             <Unit value="AP_Hunterling"/>
             <Unit value="AP_Hunterling"/>
             <Unit value=""/>
@@ -12429,7 +12429,7 @@
                 <TimeStart value="240"/>
                 <TimeUse value="240"/>
             </Cooldown>
-            <Button DefaultButtonFace="AP_SummonYggdrasil" State="Restricted" Requirements="AP_ZergMercCompoundBroodWar"/>
+            <Button DefaultButtonFace="AP_SummonYggdrasil" State="Restricted" Requirements="AP_MakeYggdrasil"/>
             <Unit value="AP_Yggdrasil"/>
             <Unit value=""/>
             <Unit value=""/>
@@ -12445,7 +12445,7 @@
                 <Location value="Player"/>
             </Charge>
             <Cooldown Location="Player" TimeStart="300" TimeUse="300" Link="AP_MercRoachSummon"/>
-            <Button DefaultButtonFace="AP_SummonMercRoach" State="Restricted" Requirements="AP_ZergMercCompoundSC2"/>
+            <Button DefaultButtonFace="AP_SummonMercRoach" State="Restricted" Requirements="AP_MakeCausticHorrors"/>
             <Unit value="AP_MercRoach"/>
             <Unit value="AP_MercRoach"/>
             <Unit value=""/>
@@ -12696,7 +12696,7 @@
         <MorphUnit value="AP_DevourerSCBWEgg"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_DevourerSCBW" State="Restricted" Requirements="AP_HaveDevourerAspect">
+            <Button DefaultButtonFace="AP_DevourerSCBW" State="Restricted" Requirements="AP_UnlockDevourer">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_DevourerSCBW"/>
@@ -12719,7 +12719,7 @@
         <MorphUnit value="AP_DevourerSCBWEgg"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="50" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_DevourerSCBW" State="Restricted" Requirements="AP_HaveDevourerAspect">
+            <Button DefaultButtonFace="AP_DevourerSCBW" State="Restricted" Requirements="AP_UnlockDevourer">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_DevourerSCBW"/>
@@ -12742,7 +12742,7 @@
         <MorphUnit value="AP_GuardianSCBWEgg"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_GuardianSCBW" State="Restricted" Requirements="AP_HaveGuardianAspect">
+            <Button DefaultButtonFace="AP_GuardianSCBW" State="Restricted" Requirements="AP_UnlockGuardian">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_GuardianSCBW"/>
@@ -12765,7 +12765,7 @@
         <MorphUnit value="AP_GuardianSCBWEgg"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="50" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="AP_GuardianSCBW" State="Restricted" Requirements="AP_HaveGuardianAspect">
+            <Button DefaultButtonFace="AP_GuardianSCBW" State="Restricted" Requirements="AP_UnlockGuardian">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_GuardianSCBW"/>
@@ -13187,19 +13187,19 @@
     </CAbilMorph>
     <CAbilMerge id="AP_PrimalIgniterMerge">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_PrimalIgniterMerge" State="Restricted" Requirements="AP_HaveRoachWarren">
+        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_PrimalIgniterMerge" State="Restricted" Requirements="AP_UnlockPrimalIgniter">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_PrimalIgniterMerge" State="Restricted" Requirements="AP_HaveRoachWarren"/>
+        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_PrimalIgniterMerge" State="Restricted" Requirements="AP_UnlockPrimalIgniter"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <Info Unit="AP_PrimalIgniter" Time="8"/>
     </CAbilMerge>
     <CAbilMerge id="AP_MorphlingToPrimalIgniterMerge">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_MorphlingToPrimalIgniterMerge" State="Restricted" Requirements="AP_HaveRoachWarren">
+        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_MorphlingToPrimalIgniterMerge" State="Restricted" Requirements="AP_UnlockPrimalIgniter">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_MorphlingToPrimalIgniterMerge" State="Restricted" Requirements="AP_HaveRoachWarren"/>
+        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_MorphlingToPrimalIgniterMerge" State="Restricted" Requirements="AP_UnlockPrimalIgniter"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <Info Unit="AP_PrimalIgniter" Time="35">
             <Resource index="Minerals" value="50"/>
@@ -13397,19 +13397,19 @@
     </CAbilEffectTarget>
     <CAbilMerge id="AP_TyrannozorMerge">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_TyrannozorMerge" State="Restricted" Requirements="AP_HaveUltraliskCavern">
+        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_TyrannozorMerge" State="Restricted" Requirements="AP_UnlockTyrannozor">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_TyrannozorMerge" State="Restricted" Requirements="AP_HaveUltraliskCavern"/>
+        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_TyrannozorMerge" State="Restricted" Requirements="AP_UnlockTyrannozor"/>
         <Flags index="IgnoreUnitCost" value="1"/>
         <Info Unit="AP_Tyrannozor" Time="8"/>
     </CAbilMerge>
     <CAbilMerge id="AP_MorphlingToTyrannozorMerge">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_MorphlingToTyrannozorMerge" State="Restricted" Requirements="AP_HaveTyrannozorSupplyAndUltraliskCavern">
+        <CmdButtonArray index="SelectedUnits" DefaultButtonFace="AP_MorphlingToTyrannozorMerge" State="Restricted" Requirements="AP_UnlockTyrannozor">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_MorphlingToTyrannozorMerge" State="Restricted" Requirements="AP_HaveTyrannozorSupplyAndUltraliskCavern"/>
+        <CmdButtonArray index="WithTarget" DefaultButtonFace="AP_MorphlingToTyrannozorMerge" State="Restricted" Requirements="AP_UnlockTyrannozor"/>
         <Flags index="IgnoreUnitCost" value="0"/>
         <Info Unit="AP_Tyrannozor" Time="78">
             <Resource index="Minerals" value="-100"/>
@@ -13484,7 +13484,7 @@
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
     <CAbilMorph id="AP_MorphlingToTyrannozorMergeDummy">
-        <CmdButtonArray index="Execute" DefaultButtonFace="AP_MorphlingToTyrannozorMerge"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="AP_UnlockTyrannozor"/>
         <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
     </CAbilMorph>
     <CAbilEffectInstant id="AP_MercCompoundInfantry">

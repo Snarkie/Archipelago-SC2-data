@@ -1,5 +1,3 @@
 include "TriggerLibs/natives"
 
-static void ItemFuncSignature(int player);
 void AP_Triggers_UnlockInit();
-static void RegisterItems();

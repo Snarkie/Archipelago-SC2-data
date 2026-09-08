@@ -8969,7 +8969,7 @@
         <OperandArray value="AP_HaveDuskWings"/>
         <OperandArray value="AP_CountUpgradeMercCompoundStarshipsSelectedCompleteOnly"/>
     </CRequirementAnd>
-    <CRequirementCountUpgrade id="AP_HaveJacksonsRevenge">
+    <CRequirementCountUpgrade id="AP_HaveJacksonsRevenge">ke
         <Count Link="AP_UnlockJacksonsRevenge" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementAnd id="AP_UnlockJacksonsRevenge">
@@ -9151,30 +9151,66 @@
     <CRequirementCountUpgrade id="AP_UnlockInfestedMedics">
         <Count Link="AP_UnlockInfestedMedics" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeInfestedMedics">
+        <OperandArray value="AP_UnlockInfestedMedics"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundInfestedSelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockInfestedSiegeBreakers">
         <Count Link="AP_UnlockInfestedSiegeBreakers" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeInfestedSiegeBreakers">
+        <OperandArray value="AP_UnlockInfestedSiegeBreakers"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundInfestedSelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockInfestedDuskWings">
         <Count Link="AP_UnlockInfestedDuskWings" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeInfestedDuskWings">
+        <OperandArray value="AP_UnlockInfestedDuskWings"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundInfestedSelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockDevouringOnes">
         <Count Link="AP_UnlockDevouringOnes" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeDevouringOnes">
+        <OperandArray value="AP_UnlockDevouringOnes"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundBroodWarSelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockHunterKillers">
         <Count Link="AP_UnlockHunterKillers" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeHunterKillers">
+        <OperandArray value="AP_UnlockHunterKillers"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundBroodWarSelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockWiseOldTorrasque">
         <Count Link="AP_UnlockWiseOldTorrasque" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_UnlockHunterling">
-        <Count Link="AP_UnlockHunterling" State="CompleteOnly"/>
+    <CRequirementAnd id="AP_MakeWiseOldTorrasque">
+        <OperandArray value="AP_UnlockWiseOldTorrasque"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundBroodWarSelectedCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementCountUpgrade id="AP_UnlockHunterlings">
+        <Count Link="AP_UnlockHunterlings" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeHunterlings">
+        <OperandArray value="AP_UnlockHunterlings"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundSC2SelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockYggdrasil">
         <Count Link="AP_UnlockYggdrasil" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeYggdrasil">
+        <OperandArray value="AP_UnlockYggdrasil"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundBroodWarSelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockCausticHorrors">
         <Count Link="AP_UnlockCausticHorrors" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeCausticHorrors">
+        <OperandArray value="AP_UnlockCausticHorrors"/>
+        <OperandArray value="AP_CountUpgradeZergMercCompoundSC2SelectedCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockGuardian">
         <Count Link="AP_UnlockGuardian" State="CompleteOnly"/>
     </CRequirementCountUpgrade>

@@ -1420,6 +1420,10 @@ static void RegisterTerranItems() {
     RegisterTerranUpgrade(20, TerranShipArmorFunc);
 }
 
+static void UnlockLair (int player) {
+    TechTreeUpgradeAddLevel(player, "AP_UnlockLair", 1);
+}
+
 static void UnlockHive (int player) {
     TechTreeUpgradeAddLevel(player, "AP_UnlockHive", 1);
 }
@@ -1511,6 +1515,69 @@ static void UnlockMorphling(int player) {
         TechTreeUpgradeAddLevel(player, "AP_UnlockMorphling", 1);
     }
 }
+
+static void UnlockBaneling(int player) {
+    UnlockBanelingNest(player);
+    UnlockMorphling(player);
+}
+
+static void UnlockLurkerImpalerFunc(int player) {
+    UnlockGreaterHydraliskDen(player);
+    UnlockMorphling(player);
+    if (TechTreeUpgradeCount(player,"AP_HotSImpaler", c_techCountCompleteOnly) > 0
+    && TechTreeUpgradeCount(player,"AP_HotSLurker", c_techCountCompleteOnly) > 0) {
+        TechTreeUpgradeAddLevel(player, "AP_HotSLurkerImpaler", 1);
+    }
+}
+
+static void UnlockImpalerFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_HotSImpaler", 1);
+    UnlockLurkerImpalerFunc(player);
+}
+
+static void UnlockLurkerFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_HotSLurker", 1);
+    UnlockLurkerImpalerFunc(player);
+}
+
+static void UnlockBroodLordViperFunc(int player) {
+    UnlockGreaterSpire(player);
+    UnlockMorphling(player);
+    if (TechTreeUpgradeCount(player,"AP_HotSMutaliskViper", c_techCountCompleteOnly) > 0
+    && TechTreeUpgradeCount(player,"AP_HotSMutaliskBroodlord", c_techCountCompleteOnly) > 0) {
+        TechTreeUpgradeAddLevel(player, "AP_HotSLurkerImpaler", 1);
+    }
+}
+
+static void UnlockBroodLordFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_HotSMutaliskBroodlord", 1);
+    UnlockBroodLordViperFunc(player);
+}
+
+static void UnlockViperFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_HotSMutaliskViper", 1);
+    UnlockBroodLordViperFunc(player);
+}
+
+static void UnlockGuardianFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_GuardianAspect", 1);
+    UnlockGreaterSpire(player);
+    UnlockMorphling(player);
+}
+
+static void UnlockDevourerFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_DevourerAspect", 1);
+    UnlockGreaterSpire(player);
+    UnlockMorphling(player);
+}
+
+static void UnlockRavagerFunc(int player) {
+    TechTreeUpgradeAddLevel(player, "AP_MorphToRavager", 1);
+    UnlockRoachWarren(player);
+    UnlockLair(player);
+    UnlockMorphling(player);
+}
+
 static void UnlockTyrannozorFunc(int player) {
     UnlockUltraliskDen(player);
     UnlockMorphling(player);
@@ -1521,19 +1588,6 @@ static void UnlockPrimalIgniterFunc(int player) {
     UnlockMorphling(player);
 }
 
-static void UnlockImpalerFunc(int player) {
-    TechTreeUpgradeAddLevel(player, "", 1);
-    UnlockGreaterHydraliskDen(player);
-    UnlockMorphling(player);
-}
-
-static void UnlockFunc(int player) {
-    TechTreeUpgradeAddLevel(player, "", 1);
-    Unlock(player);
-    UnlockMorphling(player);
-}
-
-
 static void RegisterZergUnits() {
     // Hatchery
     RegisterZergUnit(1, "AP_UnlockSwarmQueen", UnlockSpawningPool);
@@ -1543,7 +1597,6 @@ static void RegisterZergUnits() {
     RegisterZergUnit(0, "AP_UnlockZergling", UnlockSpawningPool);
     RegisterZergUnit(2, "AP_UnlockRoach", UnlockRoachWarren);
     RegisterZergUnit(3, "AP_UnlockHydralisk", UnlockHydraliskDen);
-    RegisterZergUnit(4, "AP_UnlockBaneling", UnlockBanelingNest);
     RegisterZergUnit(5, "AP_UnlockAberration", UnlockEvolutionChamber);
     RegisterZergUnit(6, "AP_UnlockMutalisk", UnlockSpire);
     RegisterZergUnit(7, "AP_UnlockSwarmHost", UnlockInfestationPit);
@@ -1558,6 +1611,7 @@ static void RegisterZergUnits() {
     RegisterZergUnit(15, "AP_UnlockDefiler", UnlockInfestationPit);
 
     // Morphs
+    RegisterZergUnit(4, "AP_UnlockBaneling", UnlockBanelingNest);
     RegisterZergUnit(29, "AP_UnlockImpaler", UnlockImpalerFunc);
     RegisterZergUnit(30, "AP_UnlockLurker", UnlockLurkerFunc);
     RegisterZergUnit(31, "AP_UnlockBroodLord", UnlockBroodLordFunc);
@@ -1566,7 +1620,7 @@ static void RegisterZergUnits() {
     RegisterZergUnit(43, "AP_UnlockDevourer", UnlockDevourerFunc);
     RegisterZergUnit(44, "AP_UnlockRavager", UnlockRavagerFunc);
 
-    RegisterZergUnit(45, "AP_UnlockOverseer", null);
+    RegisterZergUnit(45, "AP_OverlordMorphOverseer", null);
 
     // Infested
     RegisterZergUnit(16, "AP_UnlockInfestedMarine", UnlockInfestedBarracks);
@@ -1587,7 +1641,7 @@ static void RegisterZergUnits() {
     RegisterZergUnit(36, "AP_UnlockDevouringOnes", UnlockMercBroodWar);
     RegisterZergUnit(37, "AP_UnlockHunterKillers", UnlockMercBroodWar);
     RegisterZergUnit(38, "AP_UnlockWiseOldTorrasque", UnlockMercBroodWar);
-    RegisterZergUnit(39, "AP_UnlockHunterling", UnlockMercSC2);
+    RegisterZergUnit(39, "AP_UnlockHunterlings", UnlockMercSC2);
     RegisterZergUnit(40, "AP_UnlockYggdrasil", UnlockMercBroodWar);
     RegisterZergUnit(41, "AP_UnlockCausticHorrors", UnlockMercSC2);
 
