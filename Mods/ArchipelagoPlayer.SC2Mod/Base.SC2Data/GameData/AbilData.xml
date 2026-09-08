@@ -92,7 +92,7 @@
         <FlagArray index="PeonMaintained" value="0"/>
         <InfoArray index="Build1" Unit="AP_EchidnaWorm" Time="20">
             <Cooldown TimeUse="60"/>
-            <Button DefaultButtonFace="AP_EchidnaWorm" State="Restricted" Requirements="AP_HaveNydusNetwork"/>
+            <Button DefaultButtonFace="AP_EchidnaWorm" State="Restricted" Requirements="AP_UnlockEchidnaWorm"/>
         </InfoArray>
         <Range value="500"/>
         <EffectArray index="Start" value="NydusAlertDummy"/>
@@ -117,7 +117,7 @@
         <Range value="5"/>
         <InfoArray index="Train1" Time="8" Rotation="Source">
             <Resource index="Minerals" value="-5"/>
-            <Button DefaultButtonFace="AP_BirthZergling" State="Restricted" Requirements="AP_HaveOuroborosSpawning"/>
+            <Button DefaultButtonFace="AP_BirthZergling" State="Restricted" Requirements="AP_MakeZerglingEchidna"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
         </InfoArray>
@@ -142,7 +142,7 @@
         <InfoArray index="Train5" Time="9" Rotation="Source">
             <Resource index="Minerals" value="-8"/>
             <Resource index="Vespene" value="-3"/>
-            <Button DefaultButtonFace="AP_BirthRoach" State="Restricted" Requirements="AP_HaveOuroborosWarren"/>
+            <Button DefaultButtonFace="AP_BirthRoach" State="Restricted" Requirements="AP_MakeRoachEchidna"/>
             <Unit value="AP_Roach"/>
         </InfoArray>
         <InfoArray index="Train6" Time="9" Rotation="Source">
@@ -160,7 +160,7 @@
         <InfoArray index="Train8" Time="11" Rotation="Source">
             <Resource index="Minerals" value="-10"/>
             <Resource index="Vespene" value="-5"/>
-            <Button DefaultButtonFace="AP_BirthHydralisk" State="Restricted" Requirements="AP_HaveOuroborosDen"/>
+            <Button DefaultButtonFace="AP_BirthHydralisk" State="Restricted" Requirements="AP_MakeHydraliskEchidna"/>
             <Unit value="AP_Hydralisk"/>
         </InfoArray>
         <InfoArray index="Train9" Time="11" Rotation="Source">
@@ -179,12 +179,12 @@
             <Resource index="Minerals" value="-20"/>
             <Resource index="Vespene" value="-8"/>
             <Display index="Custom" value="1"/>
-            <Button DefaultButtonFace="AP_BirthAberration" State="Restricted" Requirements="AP_HaveOuroborosLairAndChamber"/>
+            <Button DefaultButtonFace="AP_BirthAberration" State="Restricted" Requirements="AP_MakeAberrationEchidna"/>
             <Unit value="AP_InfestedAbomination"/>
         </InfoArray>
         <InfoArray index="Train12" Time="8" Rotation="Source">
             <Resource index="Minerals" value="-8"/>
-            <Button DefaultButtonFace="AP_BirthPygalisk" State="Restricted" Requirements="AP_HaveOuroborosSpawning"/>
+            <Button DefaultButtonFace="AP_BirthPygalisk" State="Restricted" Requirements="AP_MakePygaliskEchidna"/>
             <Unit value="AP_Pygalisk"/>
         </InfoArray>
         <ProxyOffset value="1,-25"/>
@@ -301,7 +301,7 @@
         <FlagArray index="PeonMaintained" value="0"/>
         <InfoArray index="Build1" Unit="AP_NydusWorm" Time="10">
             <Cooldown TimeUse="30"/>
-            <Button DefaultButtonFace="AP_NydusWorm" State="Restricted" Requirements="AP_HaveNydusNetwork"/>
+            <Button DefaultButtonFace="AP_NydusWorm" State="Restricted" Requirements="AP_UnlockNydusWorm"/>
         </InfoArray>
         <Range value="500"/>
         <EffectArray index="Start" value="NydusAlertDummy"/>
@@ -6353,7 +6353,7 @@
     </CAbilEffectTarget>
     <CAbilMorph id="AP_MorphToBroodLord">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodlord"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodLord"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <ActorKey value="GuardianAspect"/>
         <Flags index="BestUnit" value="1"/>
@@ -6398,7 +6398,7 @@
         <MorphUnit value="AP_BroodLordCocoon"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="15" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodlord">
+            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodLord">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_BroodLord"/>
@@ -6421,7 +6421,7 @@
         <MorphUnit value="AP_BroodLordCocoon"/>
         <Range value="10"/>
         <InfoArray index="Train1" Time="69" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodlord">
+            <Button DefaultButtonFace="BroodLord" State="Restricted" Requirements="AP_UnlockBroodLord">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_BroodLord"/>
@@ -7338,7 +7338,7 @@
         <Flags index="Select" value="1"/>
         <MorphUnit value="AP_BanelingCocoon"/>
         <InfoArray index="Train1" Time="10" Alert="MorphComplete_Zerg">
-            <Button DefaultButtonFace="Baneling" Requirements="AP_HotSHaveBaneling">
+            <Button DefaultButtonFace="Baneling" Requirements="AP_UnlockBaneling">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
             <Unit value="AP_Baneling"/>
@@ -8760,7 +8760,7 @@
         <MorphUnit value="AP_Egg"/>
         <Range value="4"/>
         <InfoArray index="Train1" Time="27">
-            <Button DefaultButtonFace="AP_RoachVile" Requirements="AP_HaveRoachWarrenAndVile"/>
+            <Button DefaultButtonFace="AP_MorphToVile" Requirements="AP_MakeRoachVile"/>
             <Unit value="AP_Roach"/>
         </InfoArray>
         <!--        <InfoArray index="Train3" Time="50">-->
@@ -8772,7 +8772,7 @@
         <!--            <Unit value="Devourer"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Train7" Time="24">
-            <Button DefaultButtonFace="AP_MorphToRaptor" Requirements="AP_HaveSpawningPoolAndRaptor"/>
+            <Button DefaultButtonFace="AP_MorphToRaptor" Requirements="AP_MakeRaptorling"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
             <Unit value=""/>
@@ -8791,39 +8791,39 @@
         <!--            <Unit value="Lurker"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Train17" Time="60">
-            <Button DefaultButtonFace="AP_HotSTorrasque" Requirements="AP_HaveUltraliskCavernAndTorrasque"/>
+            <Button DefaultButtonFace="AP_HotSTorrasque" Requirements="AP_MakeUltraliskTorrasque"/>
             <Unit value="AP_Ultralisk"/>
         </InfoArray>
         <InfoArray index="Train18" Time="60">
-            <Button DefaultButtonFace="AP_HotSNoxious" Requirements="AP_HaveUltraliskCavernAndNoxious"/>
+            <Button DefaultButtonFace="AP_HotSNoxious" Requirements="AP_MakeUltraliskNoxious"/>
             <Unit value="AP_Ultralisk"/>
         </InfoArray>
         <InfoArray index="Train21" Time="30">
-            <Button DefaultButtonFace="AP_HydraliskImpaler" Requirements="AP_HaveHydraliskDenAndImpaler"/>
+            <Button DefaultButtonFace="AP_HydraliskImpaler" Requirements="AP_MakeHydraliskImpaler"/>
             <Unit value="AP_Hydralisk"/>
         </InfoArray>
         <InfoArray index="Train22" Time="30">
-            <Button DefaultButtonFace="AP_HydraliskLurker" Requirements="AP_HaveHydraliskDenAndLurker"/>
+            <Button DefaultButtonFace="AP_HydraliskLurker" Requirements="AP_MakeHydraliskLurker"/>
             <Unit value="AP_Hydralisk"/>
         </InfoArray>
         <InfoArray index="Train23" Time="27">
-            <Button DefaultButtonFace="AP_MorphToCorpser" Requirements="AP_HaveRoachWarrenAndCorpser"/>
+            <Button DefaultButtonFace="AP_MorphToCorpser" Requirements="AP_MakeRoachCorpser"/>
             <Unit value="AP_Roach"/>
         </InfoArray>
         <InfoArray index="Train24" Time="33">
-            <Button DefaultButtonFace="AP_MutaliskBroodlord" Requirements="AP_HaveSpireAndBroodLord"/>
+            <Button DefaultButtonFace="AP_MutaliskBroodlord" Requirements="AP_MakeMutaliskBroodLord"/>
             <Unit value="AP_Mutalisk"/>
         </InfoArray>
         <InfoArray index="Train25" Time="33">
-            <Button DefaultButtonFace="AP_MutaliskViper" Requirements="AP_HaveSpireAndViper"/>
+            <Button DefaultButtonFace="AP_MutaliskViper" Requirements="AP_MakeMutaliskViper"/>
             <Unit value="AP_Mutalisk"/>
         </InfoArray>
         <InfoArray index="Train26" Time="40">
-            <Button DefaultButtonFace="AP_SwarmHostSplitA" Requirements="AP_HaveInfestationPitAndCarrion"/>
+            <Button DefaultButtonFace="AP_SwarmHostSplitA" Requirements="AP_MakeSwarmHostCarrion"/>
             <Unit value="AP_SwarmHost"/>
         </InfoArray>
         <InfoArray index="Train27" Time="40">
-            <Button DefaultButtonFace="AP_SwarmHostSplitB" Requirements="AP_HaveInfestationPitAndCreeper"/>
+            <Button DefaultButtonFace="AP_SwarmHostSplitB" Requirements="AP-MakeSwarmHostCreeper"/>
             <Unit value="AP_SwarmHost"/>
         </InfoArray>
         <InfoArray index="Train28" Time="30">
@@ -8851,14 +8851,14 @@
         <Range value="4"/>
         <InfoArray index="Train1" Time="2.4">
             <Resource index="Minerals" value="50"/>
-            <Button DefaultButtonFace="AP_MorphToSwarmling" State="Restricted" Requirements="AP_HaveSpawningPoolAndSwarmling"/>
+            <Button DefaultButtonFace="AP_MorphToSwarmling" State="Restricted" Requirements="AP_MakeSwarmling"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
         </InfoArray>
         <InfoArray index="Train2" Time="2.4">
             <Resource index="Minerals" value="50"/>
-            <Button DefaultButtonFace="AP_MorphToRaptor" State="Restricted" Requirements="AP_HaveSpawningPoolAndRaptorSwarmling"/>
+            <Button DefaultButtonFace="AP_MorphToRaptor" State="Restricted" Requirements="AP_MakeRaptorSwarmling"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
             <Unit value="AP_Zergling"/>
@@ -9780,7 +9780,7 @@
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
             <Cooldown TimeStart="20"/>
-            <Button DefaultButtonFace="AP_SISCV">
+            <Button DefaultButtonFace="AP_SISCV" Requirements="AP_UnlockInfestedSCV">
                 <Flags index="ToSelection" value="1"/>
             </Button>
             <Unit value="AP_SICocoonInfestedSCV"/>
@@ -9836,7 +9836,7 @@
         <MorphUnit value="AP_SICocoonInfestedMarine"/>
         <InfoArray index="Train1" Time="10" Effect="AP_SIBarracksTrainTimedLifeAB">
             <Resource index="Minerals" value="15"/>
-            <Button DefaultButtonFace="AP_SIInfestedMarine">
+            <Button DefaultButtonFace="AP_SIInfestedMarine" Requirements="AP_UnlockInfestedMarine">
                 <Flags index="UseDefaultButton" value="1"/>
             </Button>
             <Unit value="AP_SIInfestedMarine"/>
@@ -11823,7 +11823,7 @@
     </CAbilTrain>
     <CAbilMorph id="AP_UpgradeToHive">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Hive"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Hive" Requirements="AP_UnlockHive"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelMutateMorph"/>
         <ActorKey value="HiveUpgrade"/>
         <Flags index="BestUnit" value="1"/>
@@ -11854,7 +11854,7 @@
     </CAbilMorph>
     <CAbilMorph id="AP_UpgradeToLair">
         <EditorCategories value="Race:Zerg,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="Lair"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Lair" Requirements="AP_UnlockLair"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelMutateMorph"/>
         <ActorKey value="LairUpgrade"/>
         <Flags index="BestUnit" value="1"/>
@@ -11945,7 +11945,7 @@
         <!--            <Button DefaultButtonFace="Digester" Requirements="HaveSpawningPool"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Build22" Unit="AP_ZergMercenaryCompound" Time="50">s
-            <Button DefaultButtonFace="AP_ZergMercenaryCompound" State="Restricted" Requirements="UnlockPredatorNest"/>
+            <Button DefaultButtonFace="AP_ZergMercenaryCompound" State="Restricted" Requirements="AP_UnlockPredatorNest"/>
         </InfoArray>
         <InfoArray index="Build23" Unit="AP_TradeStructure" Time="40">
             <Button DefaultButtonFace="AP_TradeStructure" State="Restricted" Requirements="AP_NotHaveTradeStructure"/>
@@ -13874,7 +13874,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <BuildMorphAbil value="AP_SIFactoryLiftOff"/>
         <InfoArray index="Build1" Unit="AP_SIFactoryTechLab" Time="25">
-            <Button DefaultButtonFace="AP_BuildSITechLabFactory"/>
+            <Button DefaultButtonFace="AP_BuildSITechLabFactory" Requirements="AP_UnlockInfestedFactoryTechLab"/>
         </InfoArray>
         <Name value="Abil/Name/AP_SIFactoryAddOns"/>
     </CAbilBuild>
@@ -13882,7 +13882,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <BuildMorphAbil value="AP_SIStarportLiftOff"/>
         <InfoArray index="Build1" Unit="AP_SIStarportTechLab" Time="25">
-            <Button DefaultButtonFace="AP_BuildSITechLabStarport"/>
+            <Button DefaultButtonFace="AP_BuildSITechLabStarport" Requirements="AP_UnlockInfestedStarportTechLab"/>
         </InfoArray>
         <Name value="Abil/Name/AP_SIStarportAddOns"/>
     </CAbilBuild>
@@ -13927,7 +13927,7 @@
                 <TimeUse value="20"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_TrainInfestedSiegeTank" Requirements="HaveAttachedTechLab"/>
+            <Button DefaultButtonFace="AP_TrainInfestedSiegeTank" Requirements="AP_UnlockInfestedSiegeTank"/>
             <Unit value="AP_SICocoonInfestedSiegeTank"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>
@@ -13941,7 +13941,7 @@
                 <TimeUse value="20"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_TrainInfestedDiamondBack"/>
+            <Button DefaultButtonFace="AP_TrainInfestedDiamondBack" Requirements="AP_UnlockInfestedDiamondBack"/>
             <Unit value="AP_SICocoonInfestedDiamondBack"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>
@@ -13955,7 +13955,7 @@
                 <TimeUse value="20"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_InfestedBullfrog"/>
+            <Button DefaultButtonFace="AP_InfestedBullfrog" Requirements="AP_UnlockInfestedBullfrog"/>
             <Unit value="AP_SICocoonInfestedBullfrog"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>

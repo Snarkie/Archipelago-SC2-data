@@ -1425,6 +1425,7 @@ static void UnlockLair (int player) {
 }
 
 static void UnlockHive (int player) {
+    UnlockLair(player);
     TechTreeUpgradeAddLevel(player, "AP_UnlockHive", 1);
 }
 
@@ -1445,6 +1446,7 @@ static void UnlockBanelingNest (int player) {
 }
 
 static void UnlockHydraliskDen (int player) {
+    UnlockLair(player);
     TechTreeUpgradeAddLevel(player, "AP_UnlockHydraliskDen", 1);
 }
 
@@ -1454,10 +1456,12 @@ static void UnlockGreaterHydraliskDen (int player) {
 }
 
 static void UnlockInfestationPit (int player) {
+    UnlockLair(player);
     TechTreeUpgradeAddLevel(player, "AP_UnlockInfestationPit", 1);
 }
 
 static void UnlockSpire (int player) {
+    UnlockLair(player);
     TechTreeUpgradeAddLevel(player, "AP_UnlockSpire", 1);
 }
 
@@ -1486,9 +1490,20 @@ static void UnlockInfestedFactory (int player) {
     TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedFactory", 1);
 }
 
+static void UnlockInfestedFactoryTechLab (int player) {
+    UnlockInfestedFactory(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedFactoryTechLab", 1);
+}
+
+
 static void UnlockInfestedStarport (int player) {
     UnlockInfestedSCV(player);
     TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedStarport", 1);
+}
+
+static void UnlockInfestedStarportTechLab (int player) {
+    UnlockInfestedStarport(player);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockInfestedStarportTechLab", 1);
 }
 
 static void UnlockNydusNetwork (int player) {
@@ -1545,7 +1560,7 @@ static void UnlockBroodLordViperFunc(int player) {
     UnlockMorphling(player);
     if (TechTreeUpgradeCount(player,"AP_HotSMutaliskViper", c_techCountCompleteOnly) > 0
     && TechTreeUpgradeCount(player,"AP_HotSMutaliskBroodlord", c_techCountCompleteOnly) > 0) {
-        TechTreeUpgradeAddLevel(player, "AP_HotSLurkerImpaler", 1);
+        TechTreeUpgradeAddLevel(player, "AP_HotSMutaliskBroodlordViper", 1);
     }
 }
 
@@ -1624,9 +1639,9 @@ static void RegisterZergUnits() {
 
     // Infested
     RegisterZergUnit(16, "AP_UnlockInfestedMarine", UnlockInfestedBarracks);
-    RegisterZergUnit(20, "AP_UnlockInfestedSiegeTank", UnlockInfestedFactory);
+    RegisterZergUnit(20, "AP_UnlockInfestedSiegeTank", UnlockInfestedFactoryTechLab);
     RegisterZergUnit(21, "AP_UnlockInfestedDiamondback", UnlockInfestedFactory);
-    RegisterZergUnit(22, "AP_UnlockInfestedBanshee", UnlockInfestedStarport);
+    RegisterZergUnit(22, "AP_UnlockInfestedBanshee", UnlockInfestedStarportTechLab);
     RegisterZergUnit(23, "AP_UnlockInfestedLiberator", UnlockInfestedStarport);
     RegisterZergUnit(27, "AP_UnlockBullfrog", UnlockInfestedFactory);
 
@@ -1740,6 +1755,12 @@ static void MalignantCreepFunc(int player) {
 
 static void HandleZergUpgrade(int player, int level, int index) {
     int i;
+    if (level >= 2) {
+        UnlockLair(player);
+    }
+    if (level >= 3) {
+        UnlockHive(player);
+    }
     if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
         for (i = 0; i < level; i += 1) {
             TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index + 12][i], 1);
@@ -1841,8 +1862,8 @@ static void RegisterZergItems() {
     RegisterZergItem(37, "AP_LocustLifetimeIncrease");
     RegisterZergItem(38, "AP_SwarmHostOrganicCarapace");
     RegisterZergItem(39, "AP_ResourceEfficiencySwarmHost");
-    RegisterZergItemFunc(106, "AP_HotSHaveSwarmHostSplitA", SwarmHostStrainFunc);
-    RegisterZergItemFunc(107, "AP_HotSHaveSwarmHostSplitB", SwarmHostStrainFunc);
+    RegisterZergItemFunc(106, "AP_HotSHaveSwarmHostSplitA", SwarmHostStrainFunc); // Carrion Strain
+    RegisterZergItemFunc(107, "AP_HotSHaveSwarmHostSplitB", SwarmHostStrainFunc); // Creeper Strain
 
     // Infestor
     RegisterZergItem(66, "AP_InfestorInfestedTerran");

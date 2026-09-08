@@ -7002,31 +7002,31 @@
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_HotSHaveRaptorCompleteOnly">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_HotSHaveRaptorCompleteOnly"/>
+        <OperandArray value="AP_MakeRaptorling"/>
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_HotSHaveRaptorSwarmlingCompleteOnly">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_HotSHaveRaptorSwarmlingCompleteOnly"/>
+        <OperandArray value="AP_MakeSwarmling"/>
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_HotSHaveSwarmlingCompleteOnly">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_HotSHaveSwarmlingCompleteOnly"/>
+        <OperandArray value="AP_MakeRaptorSwarmling"/>
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_HotSImpalerCompleteOnlyTechTreeCheat">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_HotSImpalerCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="AP_MakeHydraliskImpaler"/>
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_HotSLurkerCompleteOnlyTechTreeCheat">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_HotSLurkerCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="AP_MakeHydraliskLurker"/>
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_RoachCorpserCompleteOnlyTechTreeCheat">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_RoachCorpserCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="AP_MakeRoachCorpser"/>
     </CRequirementAnd>
     <CRequirementAnd id="AP_AndCountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnlyCountUpgradeAP_RoachVileCompleteOnlyTechTreeCheat">
         <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
-        <OperandArray value="AP_CountUpgradeAP_RoachVileCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="AP_MakeRoachVile"/>
     </CRequirementAnd>
     <CRequirementCountUnit id="AP_CountUnitAP_EvolutionChamberCompleteOnlyTechTreeCheat">
         <Tooltip value="RequirementNode/Tooltip/##id##"/>
@@ -9052,21 +9052,102 @@
     <CRequirementCountUpgrade id="AP_UnlockZergling">
         <Count Link="AP_UnlockZergling" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeZerglingEchidna">
+        <OperandArray value="AP_UnlockZergling"/>
+        <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeRaptorling">
+        <OperandArray value="AP_UnlockZergling"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveRaptorCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeSwarmling">
+        <OperandArray value="AP_UnlockZergling"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveSwarmlingCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeRaptorSwarmling">
+        <OperandArray value="AP_UnlockZergling"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveRaptorCompleteOnly"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveSwarmlingCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockSwarmQueen">
         <Count Link="AP_UnlockSwarmQueen" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockRoach">
         <Count Link="AP_UnlockRoach" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeRoachEchidna">
+        <OperandArray value="AP_UnlockRoach"/>
+        <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeRoachCorpser">
+        <OperandArray value="AP_UnlockRoach"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveCorpserCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeRoachVile">
+        <OperandArray value="AP_UnlockRoach"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveVileCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeRoachVileCorpser">
+        <OperandArray value="AP_UnlockRoach"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveCorpserCompleteOnly"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveVileCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockHydralisk">
         <Count Link="AP_UnlockHydralisk" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeHydraliskLurker">
+        <OperandArray value="AP_UnlockHydralisk"/>
+        <OperandArray value="AP_CountUpgradeHotsLurkerCompleteOnlyTechTreeCheat"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeHydraliskImpaler">
+        <OperandArray value="AP_UnlockHydralisk"/>
+        <OperandArray value="AP_CountUpgradeHotSImpalerCompleteOnlyTechTreeCheat"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeHydraliskLurkerImpaler">
+        <OperandArray value="AP_UnlockHydralisk"/>
+        <OperandArray value="AP_CountUpgradeHotsLurkerCompleteOnlyTechTreeCheat"/>
+        <OperandArray value="AP_CountUpgradeHotSImpalerCompleteOnlyTechTreeCheat"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeHydraliskEchidna">
+        <OperandArray value="AP_UnlockHydralisk"/>
+        <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeMutaliskBroodLord">
+        <OperandArray value="AP_UnlockMutalisk"/>
+        <OperandArray value="AP_CountUpgradeHotSMutaliskBroodlordCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeMutaliskViper">
+        <OperandArray value="AP_UnlockMutalisk"/>
+        <OperandArray value="AP_CountUpgradeHotSMutaliskViperCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeMutaliskBroodLordViper">
+        <OperandArray value="AP_UnlockMutalisk"/>
+        <OperandArray value="AP_CountUpgradeHotSMutaliskBroodlordCompleteOnly"/>
+        <OperandArray value="AP_CountUpgradeHotSMutaliskViperCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeSwarmHostCarrion">
+        <OperandArray value="AP_UnlockSwarmHost"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveSwarmHostSplitACompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeSwarmHostCreeper">
+        <OperandArray value="AP_UnlockSwarmHost"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveSwarmHostSplitBCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeSwarmHostCarrionCreeper">
+        <OperandArray value="AP_UnlockSwarmHost"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveSwarmHostSplitACompleteOnly"/>
+        <OperandArray value="AP_CountUpgradeHotSHaveSwarmHostSplitBCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockBaneling">
         <Count Link="AP_UnlockBaneling" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockAberration">
         <Count Link="AP_UnlockAberration" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeAberrationEchidna">
+        <OperandArray value="AP_UnlockAberration"/>
+        <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockMutalisk">
         <Count Link="AP_UnlockMutalisk" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
@@ -9079,6 +9160,19 @@
     <CRequirementCountUpgrade id="AP_UnlockUltralisk">
         <Count Link="AP_UnlockUltralisk" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakeUltraliskNoxious">
+        <OperandArray value="AP_UnlockUltralisk"/>
+        <OperandArray value="AP_CountUpgradeHotSNoxiousCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeUltraliskTorrasque">
+        <OperandArray value="AP_UnlockUltralisk"/>
+        <OperandArray value="AP_CountUpgradeHotSTorrasqueCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AP_MakeUltraliskNoxiousTorrasque">
+        <OperandArray value="AP_UnlockUltralisk"/>
+        <OperandArray value="AP_CountUpgradeHotSNoxiousCompleteOnly"/>
+        <OperandArray value="AP_CountUpgradeHotSTorrasqueCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockSporeCrawler">
         <Count Link="AP_UnlockSporeCrawler" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
@@ -9127,6 +9221,10 @@
     <CRequirementCountUpgrade id="AP_UnlockPygalisk">
         <Count Link="AP_UnlockPygalisk" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_MakePygaliskEchidna">
+        <OperandArray value="AP_UnlockPygalisk"/>
+        <OperandArray value="AP_CountUpgradeAP_EchidnaWormOuroborosStrainCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockBileLauncher">
         <Count Link="AP_UnlockBileLauncher" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
@@ -9256,8 +9354,8 @@
     <CRequirementCountUpgrade id="AP_UnlockGreaterSpire">
         <Count Link="AP_UnlockGreaterSpire" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_UnlockUltraliskDen">
-        <Count Link="AP_UnlockUltraliskDen" State="CompleteOnly"/>
+    <CRequirementCountUpgrade id="AP_UnlockUltraliskCavern">
+        <Count Link="AP_UnlockUltraliskCavern" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockPredatorNest">
         <Count Link="AP_UnlockPredatorNest" State="CompleteOnly"/>
@@ -9270,6 +9368,21 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockInfestedStarport">
         <Count Link="AP_UnlockInfestedStarport" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedFactoryTechLab">
+        <Count Link="AP_UnlockInfestedFactoryTechLab" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedStarportTechLab">
+        <Count Link="AP_UnlockInfestedStarportTechLab" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockMorphling">
+        <Count Link="AP_UnlockMorphling" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockInfestedSCV">
+        <Count Link="AP_UnlockInfestedSCV" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockLair">
+        <Count Link="AP_UnlockLair" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockHive">
         <Count Link="AP_UnlockHive" State="CompleteOnly"/>
