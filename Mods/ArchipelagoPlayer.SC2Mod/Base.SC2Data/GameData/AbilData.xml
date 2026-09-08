@@ -9720,25 +9720,25 @@
         <!--            <ValidatorArray value="HasVespene"/>-->
         <!--        </InfoArray>-->
                 <InfoArray index="Build4" Unit="AP_SIBarracks" Time="60">
-                    <Button DefaultButtonFace="AP_SIBarracks"/>
+                    <Button DefaultButtonFace="AP_SIBarracks" Requirements="AP_UnlockInfestedBarracks"/>
                 </InfoArray>
         <!--        <InfoArray index="Build5" Unit="SIEngineeringBay" Time="35">-->
         <!--            <Button DefaultButtonFace="SIEngineeringBay" Requirements="HaveSICommandCenter"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Build6" Unit="AP_SIMissileTurret" Time="25">
-            <Button DefaultButtonFace="AP_SIMissileTurret" Requirements="AP_HaveSIBarracks"/>
+            <Button DefaultButtonFace="AP_SIMissileTurret" Requirements="AP_UnlockInfestedMissileTurret"/>
         </InfoArray>
         <InfoArray index="Build11" Unit="AP_SIFactory" Time="60">
-            <Button DefaultButtonFace="AP_SIFactory"/>
+            <Button DefaultButtonFace="AP_SIFactory" Requirements="AP_UnlockInfestedFactory"/>
         </InfoArray>
         <InfoArray index="Build12" Unit="AP_SIStarport" Time="50">
-            <Button DefaultButtonFace="AP_SIStarport"/>
+            <Button DefaultButtonFace="AP_SIStarport" Requirements="AP_UnlockInfestedStarport"/>
         </InfoArray>
         <!--        <InfoArray index="Build14" Unit="SIArmory" Time="65">-->
         <!--            <Button DefaultButtonFace="SIArmory" Requirements="HaveInfestedFactory"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Build15" Unit="AP_SIInfestedBunker" Time="45">
-            <Button DefaultButtonFace="AP_SIInfestedBunker" Requirements="AP_HaveSIBarracks"/>
+            <Button DefaultButtonFace="AP_SIInfestedBunker" Requirements="AP_UnlockInfestedBunker"/>
         </InfoArray>
         <!--            <Button DefaultButtonFace="AP_SIInfestedBunker" Requirements="HaveInfestedBarracks"/>-->
         <!--        <InfoArray index="Build17" Unit="SICivilianStructure" Time="60">-->
@@ -9821,7 +9821,7 @@
                 <TimeStart value="5"/>
                 <TimeUse value="5"/>
             </Charge>
-            <Button DefaultButtonFace="AP_SIInfestedMarine"/>
+            <Button DefaultButtonFace="AP_SIInfestedMarine" Requirements="AP_UnlockInfestedMarine"/>
             <Unit value="AP_SICocoonInfestedMarine"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>
@@ -9836,7 +9836,7 @@
         <MorphUnit value="AP_SICocoonInfestedMarine"/>
         <InfoArray index="Train1" Time="10" Effect="AP_SIBarracksTrainTimedLifeAB">
             <Resource index="Minerals" value="15"/>
-            <Button DefaultButtonFace="AP_SIInfestedMarine" Requirements="AP_UnlockInfestedMarine">
+            <Button DefaultButtonFace="AP_SIInfestedMarine">
                 <Flags index="UseDefaultButton" value="1"/>
             </Button>
             <Unit value="AP_SIInfestedMarine"/>
@@ -13955,7 +13955,7 @@
                 <TimeUse value="20"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_InfestedBullfrog" Requirements="AP_UnlockInfestedBullfrog"/>
+            <Button DefaultButtonFace="AP_InfestedBullfrog" Requirements="AP_UnlockBullfrog"/>
             <Unit value="AP_SICocoonInfestedBullfrog"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>
@@ -13975,7 +13975,7 @@
                 <TimeStart value="20"/>
                 <TimeUse value="20"/>
             </Charge>
-            <Button DefaultButtonFace="AP_SIBanshee" Requirements="HaveAttachedTechLab"/>
+            <Button DefaultButtonFace="AP_SIBanshee" Requirements="AP_UnlockInfestedBanshee"/>
             <Unit value="AP_SICocoonInfestedBanshee"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>
@@ -13988,7 +13988,7 @@
                 <TimeStart value="20"/>
                 <TimeUse value="20"/>
             </Charge>
-            <Button DefaultButtonFace="AP_SILiberator"/>
+            <Button DefaultButtonFace="AP_SILiberator" Requirements="AP_UnlockInfestedLiberator"/>
             <Unit value="AP_SICocoonInfestedLiberator"/>
             <Flags index="InheritRally" value="1"/>
         </InfoArray>
