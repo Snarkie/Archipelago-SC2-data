@@ -5569,7 +5569,10 @@
         <NodeArray index="Show" Link="AP_UnlockMarauder"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
-        <CRequirement id="AP_UnlockReaper">
+    <CRequirement id="AP_UnlockMarauderInternalTechLab">
+        <NodeArray index="Show" Link="AP_UnlockMarauder"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockReaper">
         <NodeArray index="Show" Link="AP_UnlockReaper"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
@@ -5598,6 +5601,9 @@
         <NodeArray index="Show" Link="AP_UnlockGoliath"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="AP_UnlockGoliathInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockGoliath"/>
+    </CRequirement>
     <CRequirement id="AP_UnlockDiamondback">
         <NodeArray index="Show" Link="AP_UnlockDiamondback"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
@@ -5605,6 +5611,9 @@
     <CRequirement id="AP_UnlockSiegeTank">
         <NodeArray index="Show" Link="AP_UnlockSiegeTank"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockSiegeTankInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockSiegeTank"/>
     </CRequirement>
     <CRequirement id="AP_UnlockThor">
         <NodeArray index="Show" Link="AP_UnlockThor"/>
@@ -5616,6 +5625,9 @@
     <CRequirement id="AP_UnlockCyclone">
         <NodeArray index="Show" Link="AP_UnlockCyclone"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockCycloneInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockCyclone"/>
     </CRequirement>
     <CRequirement id="AP_UnlockWarhound">
         <NodeArray index="Show" Link="AP_UnlockWarhound"/>
@@ -5632,6 +5644,9 @@
         <NodeArray index="Show" Link="AP_UnlockWraith"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="AP_UnlockWraithInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockWraith"/>
+    </CRequirement>
     <CRequirement id="AP_UnlockViking">
         <NodeArray index="Show" Link="AP_UnlockViking"/>
     </CRequirement>
@@ -5639,9 +5654,16 @@
         <NodeArray index="Show" Link="AP_UnlockBanshee"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="AP_UnlockBansheeInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockBanshee"/>
+    </CRequirement>
     <CRequirement id="AP_UnlockBattlecruiser">
         <NodeArray index="Show" Link="AP_UnlockBattlecruiser"/>
         <NodeArray index="Use" Link="AP_AndCountUnitAlias_TechLabCompleteOnlyAtUnitTechTreeCheatCountUnitFusionCoreCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockBattlecruiserInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockBattlecruiser"/>
+        <NodeArray index="Use" Link="AP_CountUnitFusionCoreCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="AP_UnlockLiberator">
         <NodeArray index="Show" Link="AP_UnlockLiberator"/>
@@ -5654,6 +5676,9 @@
         <NodeArray index="Show" Link="AP_UnlockRaven"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
+    <CRequirement id="AP_UnlockRavenInternalTechModule">
+        <NodeArray index="Show" Link="AP_UnlockRaven"/>
+    </CRequirement>
     <CRequirement id="AP_UnlockScienceVessel">
         <NodeArray index="Show" Link="AP_UnlockScienceVessel"/>
         <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
@@ -5661,6 +5686,10 @@
     <CRequirement id="AP_UnlockHercules">
         <NodeArray index="Show" Link="AP_UnlockHercules"/>
         <NodeArray index="Use" Link="AP_AndCountUnitAlias_TechLabCompleteOnlyAtUnitTechTreeCheatCountUnitFusionCoreCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockHerculesInternalFusionModule">
+        <NodeArray index="Show" Link="AP_UnlockHercules"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TechLabCompleteOnlyAtUnit2589852481TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="AP_UnlockAegisGuard">
         <NodeArray index="Show" Link="AP_UnlockAegisGuard"/>

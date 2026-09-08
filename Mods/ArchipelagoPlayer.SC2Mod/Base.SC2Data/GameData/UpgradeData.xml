@@ -8232,7 +8232,7 @@
         <ScoreResult value="BuildOrder"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Marauder"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train4].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_BarracksTrain,InfoArray[Train4].Button.Requirements" Value="AP_UnlockMarauderInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_InternalizedTechModuleSiegeTank">
         <Flags index="UpgradeCheat" value="0"/>
@@ -8242,7 +8242,7 @@
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_SiegeTank"/>
         <AffectedUnitArray value="AP_SiegeTankSieged"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_FactoryTrain,InfoArray[Train2].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_FactoryTrain,InfoArray[Train2].Button.Requirements" Value="AP_UnlockSiegeTankInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_InternalizedTechModuleBattlecruiser">
         <Flags index="UpgradeCheat" value="0"/>
@@ -8252,13 +8252,13 @@
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Starport"/>
         <AffectedUnitArray value="Battlecruiser"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train4].Button.Requirements" Value="AP_HaveFusionCore"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train4].Button.Requirements" Value="AP_UnlockBattlecruiserInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_InternalizedTechModuleRaven">
         <Flags index="UpgradeCheat" value="0"/>
         <InfoTooltipPriority value="2"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train3].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train3].Button.Requirements" Value="AP_UnlockRavenInternalTechModule"/>
         <AffectedUnitArray value="AP_Raven"/>
         <AffectedUnitArray value="AP_Starport"/>
     </CUpgrade>
@@ -8267,7 +8267,7 @@
         <InfoTooltipPriority value="2"/>
         <Race value="Prot"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train2].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train2].Button.Requirements" Value="AP_UnlockBansheeInternalTechModule"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Banshee"/>
     </CUpgrade>
@@ -11674,7 +11674,7 @@
         <ScoreResult value="BuildOrder"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Goliath"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_FactoryTrain,InfoArray[Train7].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_FactoryTrain,InfoArray[Train7].Button.Requirements" Value="AP_UnlockGoliathInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_ResourceEfficiencyCyclone">
         <EffectArray Operation="Subtract" Reference="Unit,AP_Cyclone,CostResource[Minerals]" Value="25"/>
@@ -11689,7 +11689,7 @@
         <ScoreResult value="BuildOrder"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Cyclone"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_FactoryTrain,InfoArray[Train12].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_FactoryTrain,InfoArray[Train12].Button.Requirements" Value="AP_UnlockCycloneInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_ReplenishSpiderMineFree">
         <EffectArray Operation="Set" Reference="Abil,AP_MakeVultureSpiderMines,InfoArray[Specialize1].Resource[Minerals]" Value="0"/>
@@ -11812,7 +11812,7 @@
         <ScoreResult value="BuildOrder"/>
         <EditorCategories value="Race:Terran,UpgradeType:Talents"/>
         <AffectedUnitArray value="AP_Wraith"/>
-        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train8].Button.Requirements"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train8].Button.Requirements" Value="AP_UnlockWraithInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_ResourceEfficiencyRaven">
         <EffectArray Operation="Subtract" Reference="Unit,AP_Raven,CostResource[Vespene]" Value="50"/>
@@ -11949,7 +11949,7 @@
     <CUpgrade id="AP_PredatorCharge"/>
     <CUpgrade id="AP_ThorNuke"/>
     <CUpgrade id="AP_InternalFusionModuleHercules">
-        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train6].Button.Requirements" Value="HaveAttachedTechLab"/>
+        <EffectArray Operation="Set" Reference="Abil,AP_StarportTrain,InfoArray[Train6].Button.Requirements" Value="AP_UnlockHerculesInternalTechModule"/>
     </CUpgrade>
     <CUpgrade id="AP_HerculesHyperjump"/>
     <CUpgrade id="AP_ThorImmortalityFree">
