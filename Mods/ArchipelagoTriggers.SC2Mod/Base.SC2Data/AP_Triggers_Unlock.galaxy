@@ -3,20 +3,20 @@ include "AP_Triggers_Unlock.h"
 
 // Constants
 static const int ITEM_SPACE = 5000;
-static const int OFFSET_TERRAN_UNIT = 0;
-static const int OFFSET_TERRAN_ITEM = OFFSET_TERRAN_UNIT + 200;
-static const int OFFSET_ZERG_UNIT = OFFSET_TERRAN_ITEM + 500;
-static const int OFFSET_ZERG_ITEM = OFFSET_ZERG_UNIT + 200;
-static const int OFFSET_PROTOSS_UNIT = OFFSET_ZERG_ITEM + 500;
-static const int OFFSET_PROTOSS_ITEM = OFFSET_PROTOSS_UNIT + 200;
+static const int OFFSET_TERRAN_UNIT = 0;                                    // In Use: < 70
+static const int OFFSET_TERRAN_ITEM = OFFSET_TERRAN_UNIT + 200;             // < 300
+static const int OFFSET_ZERG_UNIT = OFFSET_TERRAN_ITEM + 500;               // < 50
+static const int OFFSET_ZERG_ITEM = OFFSET_ZERG_UNIT + 200;                 // < 210
+static const int OFFSET_PROTOSS_UNIT = OFFSET_ZERG_ITEM + 500;              // < 60
+static const int OFFSET_PROTOSS_ITEM = OFFSET_PROTOSS_UNIT + 200;           // < 270
 
 static const int PROGRESSIVE_SPACE = 300;
-static const int OFFSET_TERRAN_PROGRESSIVE = 0;
-static const int OFFSET_TERRAN_UPGRADE = OFFSET_TERRAN_PROGRESSIVE + 50;
-static const int OFFSET_ZERG_PROGRESSIVE = OFFSET_TERRAN_UPGRADE + 20;
-static const int OFFSET_ZERG_UPGRADE = OFFSET_ZERG_PROGRESSIVE + 50;
-static const int OFFSET_PROTOSS_PROGRESSIVE = OFFSET_ZERG_UPGRADE + 20;
-static const int OFFSET_PROTOSS_UPGRADE = OFFSET_PROTOSS_PROGRESSIVE + 50;
+static const int OFFSET_TERRAN_PROGRESSIVE = 0;                             // < 20
+static const int OFFSET_TERRAN_UPGRADE = OFFSET_TERRAN_PROGRESSIVE + 50;    // < 20
+static const int OFFSET_ZERG_PROGRESSIVE = OFFSET_TERRAN_UPGRADE + 20;      // < 10
+static const int OFFSET_ZERG_UPGRADE = OFFSET_ZERG_PROGRESSIVE + 50;        // < 10
+static const int OFFSET_PROTOSS_PROGRESSIVE = OFFSET_ZERG_UPGRADE + 20;     // < 10
+static const int OFFSET_PROTOSS_UPGRADE = OFFSET_PROTOSS_PROGRESSIVE + 50;  // < 10
 
 // Globals
 static void ItemFuncSignature(int player) {}
