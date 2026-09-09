@@ -30337,11 +30337,11 @@
             <LayoutButtons Face="AP_PerditionTurret" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,19" Row="1" Column="2"/>
             <LayoutButtons Face="AP_PsiDisruptor" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,7" Row="1" Column="3"/>
             <LayoutButtons Face="AP_BuildDevastatorTurret" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,Build25" Row="1" Column="4"/>
+            <LayoutButtons Face="AP_BunkerFortified" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,22" Row="2" Column="0"/>
             <LayoutButtons Face="AP_Bunker" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,6" Row="2" Column="0"/>
             <LayoutButtons Face="AP_MissileTurret" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,5" Row="2" Column="1"/>
             <LayoutButtons Face="AP_SensorTower" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,8" Row="2" Column="2"/>
             <LayoutButtons Face="AP_HiveMindEmulator" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,21" Row="2" Column="3"/>
-            <LayoutButtons Face="AP_BunkerFortified" Type="AbilCmd" AbilCmd="AP_TrooperMengskBuild,22" Row="2" Column="0"/>
             <LayoutButtons Face="Cancel" Type="CancelSubmenu" Row="2" Column="4"/>
         </CardLayouts>
         <Radius value="0.375"/>

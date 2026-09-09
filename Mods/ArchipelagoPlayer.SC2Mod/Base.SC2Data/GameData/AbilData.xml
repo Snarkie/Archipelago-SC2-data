@@ -10350,7 +10350,7 @@
             <Button DefaultButtonFace="AP_BunkerFortified" State="Restricted" Requirements="AP_BuildFortifiedBunker"/>
         </InfoArray>
         <InfoArray index="Build24" Unit="AP_ThorBuild" Time="60">
-            <Button DefaultButtonFace="AP_Thor" State="Restricted" Requirements="AP_BuildThorBySCV"/>
+            <Button DefaultButtonFace="AP_Thor" State="Restricted" Requirements="AP_BuildThor"/>
         </InfoArray>
         <InfoArray index="Build25" Unit="AP_DevastatorTurret" Time="30">
             <Button DefaultButtonFace="AP_BuildDevastatorTurret" State="Restricted" Requirements="AP_UnlockDevastatorTurret"/>
@@ -14661,31 +14661,31 @@
         <FlagArray index="Interruptible" value="1"/>
         <FlagArray index="PeonDisableCollision" value="1"/>
         <InfoArray index="Build6" Unit="AP_MissileTurret" Time="25">
-            <Button DefaultButtonFace="AP_MissileTurret" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
+            <Button DefaultButtonFace="AP_MissileTurret" State="Restricted" Requirements="AP_UnlockMissileTurret"/>
         </InfoArray>
         <InfoArray index="Build7" Unit="AP_Bunker" Time="30">
-            <Button DefaultButtonFace="AP_Bunker" State="Restricted" Requirements="AP_HideFortifiedBunker"/>
+            <Button DefaultButtonFace="AP_Bunker" State="Restricted" Requirements="AP_UnlockBunker"/>
         </InfoArray>
         <InfoArray index="Build8" Unit="AP_PsiDisruptor" Time="50">
-            <Button DefaultButtonFace="AP_PsiDisruptor" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
+            <Button DefaultButtonFace="AP_PsiDisruptor" State="Restricted" Requirements="AP_UnlockPsiDisrupter"/>
         </InfoArray>
         <InfoArray index="Build9" Unit="AP_SensorTower" Time="25">
-            <Button DefaultButtonFace="AP_SensorTower" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
+            <Button DefaultButtonFace="AP_SensorTower" State="Restricted" Requirements="AP_UnlockSensorTower"/>
         </InfoArray>
         <InfoArray index="Build20" Unit="AP_PerditionTurret" Time="35">
-            <Button DefaultButtonFace="AP_PerditionTurret" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
+            <Button DefaultButtonFace="AP_PerditionTurret" State="Restricted" Requirements="AP_UnlockPerditionTurret"/>
         </InfoArray>
         <InfoArray index="Build22" Unit="AP_HiveMindEmulator" Time="50">
-            <Button DefaultButtonFace="AP_HiveMindEmulator" State="Restricted" Requirements="AP_HaveEngineeringBay"/>
+            <Button DefaultButtonFace="AP_HiveMindEmulator" State="Restricted" Requirements="AP_UnlockHiveMindEmulator"/>
         </InfoArray>
         <InfoArray index="Build23" Unit="AP_Bunker" Time="30">
-            <Button DefaultButtonFace="AP_BunkerFortified" State="Restricted" Requirements="AP_UseFortifiedBunker"/>
+            <Button DefaultButtonFace="AP_BunkerFortified" State="Restricted" Requirements="AP_BuildFortifiedBunker"/>
         </InfoArray>
         <InfoArray index="Build24" Unit="AP_ThorBuild" Time="60">
-            <Button DefaultButtonFace="AP_Thor" State="Restricted" Requirements="AP_BuildThorBySCV"/>
+            <Button DefaultButtonFace="AP_Thor" State="Restricted" Requirements="AP_BuildThor"/>
         </InfoArray>
         <InfoArray index="Build25" Unit="AP_DevastatorTurret" Time="30">
-            <Button DefaultButtonFace="AP_BuildDevastatorTurret" State="Restricted" Requirements="AP_HaveFactory"/>
+            <Button DefaultButtonFace="AP_BuildDevastatorTurret" State="Restricted" Requirements="AP_UnlockDevastatorTurret"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilMorph id="AP_TrooperMengskSpecializeAA">

@@ -3176,11 +3176,6 @@
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="AP_CountUpgradeLaserTargetingSystemThorCompleteOnly"/>
     </CRequirement>
-    <CRequirement id="AP_BuildThorBySCV">
-        <EditorCategories value="Race:Terran,TechType:Unit"/>
-        <NodeArray index="Show" Link="AP_CountUpgradeBuildThorBySCVCompleteOnly"/>
-        <NodeArray index="Use" Link="AP_AndCountUnitAlias_FactoryCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
     <CRequirement id="AP_HaveGhostBargainBinPrices">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="AP_CountUpgradeGhostBargainBinPricesCompleteOnly"/>
@@ -5497,22 +5492,22 @@
         <NodeArray index="Show" Link="AP_UnlockBarracks"/>
     </CRequirement>
     <CRequirement id="AP_UnlockBarracksTechLab">
-        <NodeArray index="Show" Link="AP_UnlockBarracksTechLab"/>
+        <NodeArray index="Show" Link="AP_BuildBarracksTechLab"/>
     </CRequirement>
     <CRequirement id="AP_UnlockBarracksReactor">
-        <NodeArray index="Show" Link="AP_UnlockBarracksReactor"/>
+        <NodeArray index="Show" Link="AP_BuildBarracksReactor"/>
     </CRequirement>
         <CRequirement id="AP_UnlockFactoryReactor">
-        <NodeArray index="Show" Link="AP_UnlockFactoryReactor"/>
+        <NodeArray index="Show" Link="AP_BuildFactoryReactor"/>
     </CRequirement>
     <CRequirement id="AP_UnlockFactoryTechLab">
-        <NodeArray index="Show" Link="AP_UnlockFactoryTechLab"/>
+        <NodeArray index="Show" Link="AP_BuildFactoryTechLab"/>
     </CRequirement>
     <CRequirement id="AP_UnlockStarportReactor">
-        <NodeArray index="Show" Link="AP_UnlockStarportReactor"/>
+        <NodeArray index="Show" Link="AP_BuildStarportReactor"/>
     </CRequirement>
     <CRequirement id="AP_UnlockStarportTechLab">
-        <NodeArray index="Show" Link="AP_UnlockStarportTechLab"/>
+        <NodeArray index="Show" Link="AP_BuildStarportTechLab"/>
     </CRequirement>
     <CRequirement id="AP_UnlockShadowOps">
         <NodeArray index="Show" Link="AP_UnlockShadowOps"/>
@@ -5621,6 +5616,10 @@
     <CRequirement id="AP_UnlockThor">
         <NodeArray index="Show" Link="AP_UnlockThor"/>
         <NodeArray index="Use" Link="AP_AndCountUnitAlias_TechLabCompleteOnlyAtUnitTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AP_BuildThor">
+        <NodeArray index="Show" Link="AP_BuildThor"/>
+        <NodeArray index="Use" Link="AP_AndCountUnitAlias_FactoryCompleteOnlyTechTreeCheatCountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="AP_UnlockWidowMine">
         <NodeArray index="Show" Link="AP_UnlockWidowMine"/>

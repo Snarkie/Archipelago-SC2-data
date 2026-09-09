@@ -8752,21 +8752,45 @@
     <CRequirementCountUpgrade id="AP_UnlockBarracksTechLab">
         <Count Link="AP_UnlockBarracksTechLab" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_BuildBarracksTechLab">
+        <OperandArray value="AP_UnlockBarracksTechLab"/>
+        <OperandArray value="AP_NotCountUpgradeTechReactorCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockBarracksReactor">
         <Count Link="AP_UnlockBarracksReactor" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-        <CRequirementCountUpgrade id="AP_UnlockFactoryReactor">
-        <Count Link="AP_UnlockFactoryReactor" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_BuildBarracksReactor">
+        <OperandArray value="AP_UnlockBarracks"/>
+        <OperandArray value="AP_NotCountUpgradeTechReactorCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockFactoryTechLab">
         <Count Link="AP_UnlockFactoryTechLab" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_UnlockStarportReactor">
-        <Count Link="AP_UnlockStarportReactor" State="CompleteOnly"/>
+    <CRequirementAnd id="AP_BuildFactoryTechLab">
+        <OperandArray value="AP_UnlockFactoryTechLab"/>
+        <OperandArray value="AP_NotCountUpgradeTechReactorCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementCountUpgrade id="AP_UnlockFactoryReactor">
+        <Count Link="AP_UnlockFactoryReactor" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_BuildFactoryReactor">
+        <OperandArray value="AP_UnlockFactory"/>
+        <OperandArray value="AP_NotCountUpgradeTechReactorCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockStarportTechLab">
         <Count Link="AP_UnlockStarportTechLab" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_BuildStarportTechLab">
+        <OperandArray value="AP_UnlockStarportTechLab"/>
+        <OperandArray value="AP_NotCountUpgradeTechReactorCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementCountUpgrade id="AP_UnlockStarportReactor">
+        <Count Link="AP_UnlockStarportReactor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_BuildStarportReactor">
+        <OperandArray value="AP_UnlockStarport"/>
+        <OperandArray value="AP_NotCountUpgradeTechReactorCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockShadowOps">
         <Count Link="AP_UnlockShadowOps" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
@@ -8842,6 +8866,10 @@
     <CRequirementCountUpgrade id="AP_UnlockThor">
         <Count Link="AP_UnlockThor" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementAnd id="AP_BuildThor">
+        <OperandArray value="AP_UnlockThor"/>
+        <OperandArray value="AP_CountUpgradeBuildThorBySCVCompleteOnly"/>
+    </CRequirementAnd>
     <CRequirementCountUpgrade id="AP_UnlockWidowMine">
         <Count Link="AP_UnlockWidowMine" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
