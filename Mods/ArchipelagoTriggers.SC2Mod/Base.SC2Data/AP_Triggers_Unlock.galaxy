@@ -599,9 +599,13 @@ static void BioSteelFunc(int player, int level) {
     }
 }
 
+static bool IsUpgradeAuto(int player) {
+    return false; // TODO: Re-Implement
+}
+
 static void HandleTerranUpgrade(int player, int level, int index, int modifier) {
     int i;
-    if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
+    if (IsUpgradeAuto(player)) {
         for (i = 0; i < level; i += 1) {
             TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index][i], 1);
         }
@@ -1742,7 +1746,7 @@ static void HandleZergUpgrade(int player, int level, int index) {
     if (level >= 3) {
         UnlockHive(player);
     }
-    if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
+    if (IsUpgradeAuto(player)) {
         for (i = 0; i < level; i += 1) {
             TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index + 12][i], 1);
         }
@@ -2373,7 +2377,7 @@ static void SoAProxyPylonFunc(int player, int level) {
 
 static void HandleProtossUpgrade(int player, int level, int index) {
     int i;
-    if (libABFE498B_gf_AP_Triggers_isGenericUpgradeAutoUnlock()) {
+    if (IsUpgradeAuto(player)) {
         for (i = 0; i < level; i += 1) {
             TechTreeUpgradeAddLevel(player, WAUpgradeDatabase[index + 17][i], 1);
         }
