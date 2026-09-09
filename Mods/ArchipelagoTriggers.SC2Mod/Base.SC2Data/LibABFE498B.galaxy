@@ -2307,19 +2307,26 @@ void libABFE498B_gf_AP_Triggers_giveMiscTech (string lp_inputString) {
     string lv_buildingSpeedValue;
     string lv_researchSpeedValue;
     string lv_researchCostValue;
+    string lv_shieldRegenerationValue;
+    string lv_heroLevelValue;
 
     // Automatic Variable Declarations
     playergroup auto3315FF2A_g;
+    int auto516F654A_val;
 
     // Variable Initialization
     lv_buildingSpeedValue = "";
     lv_researchSpeedValue = "";
     lv_researchCostValue = "";
+    lv_shieldRegenerationValue = "";
+    lv_heroLevelValue = "";
 
     // Implementation
     lv_buildingSpeedValue = StringWord(lp_inputString, 1);
     lv_researchSpeedValue = StringWord(lp_inputString, 2);
     lv_researchCostValue = StringWord(lp_inputString, 3);
+    lv_shieldRegenerationValue = StringWord(lp_inputString, 4);
+    lv_heroLevelValue = StringWord(lp_inputString, 5);
     auto3315FF2A_g = lib5BD4895D_gv_aP_Core_affectedPlayers;
     lv_currentPlayer = -1;
     while (true) {
@@ -2328,6 +2335,17 @@ void libABFE498B_gf_AP_Triggers_giveMiscTech (string lp_inputString) {
         libABFE498B_gf_AP_Triggers_giveBuildingSpeed(lv_currentPlayer, StringToInt(lv_buildingSpeedValue));
         libABFE498B_gf_AP_Triggers_giveResearchSpeed(lv_currentPlayer, StringToInt(lv_researchSpeedValue));
         libABFE498B_gf_AP_Triggers_giveResearchCost(lv_currentPlayer, StringToInt(lv_researchCostValue));
+        libABFE498B_gf_AP_Triggers_giveShieldRegeneration(lv_currentPlayer, StringToInt(lv_shieldRegenerationValue));
+        auto516F654A_val = libABFE498B_gv_aP_Triggers_Option_grantStoryLevels;
+        if (auto516F654A_val == 1) {
+            lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(lv_currentPlayer, (libABFE498B_gv_aP_Triggers_MapConfig_Kerrigan_StoryTechMinLevel + StringToInt(lv_heroLevelValue)));
+        }
+        else if (auto516F654A_val == 2) {
+            lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(lv_currentPlayer, MaxI(libABFE498B_gv_aP_Triggers_MapConfig_Kerrigan_StoryTechMinLevel, StringToInt(lv_heroLevelValue)));
+        }
+        else {
+            lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(lv_currentPlayer, StringToInt(lv_heroLevelValue));
+        }
     }
 }
 
