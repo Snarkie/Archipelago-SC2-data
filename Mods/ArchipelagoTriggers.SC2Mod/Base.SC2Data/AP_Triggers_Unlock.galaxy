@@ -2855,6 +2855,34 @@ static void RegisterProtossItems() {
     RegisterProtossUpgrade(16, ProtossShieldsFunc);
 }
 
+void AP_DebugTech(int player, int lvl) {
+    // Unlocks a "standard" AP loadout for single player testing
+    // for a mission of the given difficulty
+    // 0 - very easy, 1 - easy, 2 - medium, 3 - hard, 4 - very hard
+    int i;
+    if (lvl == 0) {
+        AP_UnlockTerranUnits(player,"1");
+        AP_UnlockZergUnits(player,"1");
+        AP_UnlockProtossUnits(player,"1");
+    }
+    if (lvl >= 5) {
+        // just unlock f*cking everything!
+        for (i = 0; i < ITEM_SPACE; i += 1) {
+            UnlockItem(player, i);
+        }
+        for (i = 0; i < PROGRESSIVE_SPACE; i += 1) {
+            UnlockProgressive(player, i, lvl);
+        }
+    }
+    for (i = 0; i < 5; i += 1) {
+        HandleTerranUpgrade(player, lvl, i, 0);
+        HandleZergUpgrade(player, lvl, i);
+        HandleProtossUpgrade(player, lvl, i);
+        lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(player, 10 * lvl);
+    }
+    HandleTerranUpgrade(player, lvl, 6, 0);
+}
+
 void AP_Triggers_UnlockInit() {
     Setup();
     RegisterTerranUnits();

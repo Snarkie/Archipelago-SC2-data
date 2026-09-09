@@ -1753,23 +1753,7 @@ unit libABFE498B_gf_AP_Triggers_VoidDuplicate_prepareUnit (unit lp_u) {
 void libABFE498B_gf_AP_Triggers_Debug_Tech (int lp_player, int lp_level) {
     // Automatic Variable Declarations
     // Implementation
-    if ((lp_level >= 0)) {
-    }
-
-    if ((lp_level >= 1)) {
-    }
-
-    if ((lp_level >= 2)) {
-    }
-
-    if ((lp_level >= 3)) {
-        libABFE498B_gf_AP_Triggers_setKerriganPrimal(lp_player);
-    }
-
-    if ((lp_level >= 4)) {
-    }
-
-    lib15EF4C78_gf_ZS_ApplyKerriganLevelBonus(lp_player, (lp_level * 10));
+    AP_DebugTech(lp_player, lp_level);
 }
 
 void libABFE498B_gf_AP_Triggers_Debug_reviveKerrigan (int lp_player) {

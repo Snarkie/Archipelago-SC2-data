@@ -8823,7 +8823,7 @@
             <Unit value="AP_SwarmHost"/>
         </InfoArray>
         <InfoArray index="Train27" Time="40">
-            <Button DefaultButtonFace="AP_SwarmHostSplitB" Requirements="AP-MakeSwarmHostCreeper"/>
+            <Button DefaultButtonFace="AP_SwarmHostSplitB" Requirements="AP_MakeSwarmHostCreeper"/>
             <Unit value="AP_SwarmHost"/>
         </InfoArray>
         <InfoArray index="Train28" Time="30">
