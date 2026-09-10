@@ -1858,7 +1858,6 @@ bool libABFE498B_gf_AP_Triggers_checkSoA (int lp_player, int lp_mode, bool lp_no
     else {
         return libABFE498B_gf_AP_Triggers_checkSoAPassives(lp_nobuildsection);
     }
-    return false;
 }
 
 bool libABFE498B_gf_AP_Triggers_checkSoAActives (bool lp_nobuildsection) {
