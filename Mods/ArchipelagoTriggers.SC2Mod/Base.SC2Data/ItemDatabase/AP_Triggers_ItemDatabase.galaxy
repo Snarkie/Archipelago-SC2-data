@@ -1672,10 +1672,10 @@ static void RegisterZergItems() {
     // ********************** //
 
     // Actives
-    AP_RegisterZergItem(156, "AP_K5MindBolt");
-    AP_RegisterZergItem(158, "AP_K5PrimalSlash");
+    AP_RegisterZergItem(156, "AP_K5MindBolt"); // Kinetic Blast
+    AP_RegisterZergItem(158, "AP_K5PrimalSlash"); // Psionic Shift
     AP_RegisterZergItem(159, "AP_K5CrushingGrip");
-    AP_RegisterZergItem(161, "AP_K5PsiStrike");
+    AP_RegisterZergItem(161, "AP_K5PsiStrike"); // Leaping Strike
     AP_RegisterZergItem(165, "AP_K5WildMutation");
     AP_RegisterZergItem(166, "AP_K5SpawnBanelings");
     AP_RegisterZergItem(167, "AP_K5Mend");

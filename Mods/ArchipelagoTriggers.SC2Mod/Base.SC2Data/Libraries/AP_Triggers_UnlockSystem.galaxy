@@ -175,6 +175,9 @@ static void UnlockItems(int player, int offset, string hexInput) {
     int fourBits;
     int index;
     int i; int j;
+    if (player <= 0) {
+        player = lib5BD4895D_gf_AP_Core_getUser();
+    }
     //  log("Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
@@ -198,6 +201,9 @@ static void UnlockProgressives(int player, int offset, string hexInput) {
     int level;
     int index;
     int i; int j;
+    if (player <= 0) {
+        player = lib5BD4895D_gf_AP_Core_getUser();
+    }
     // log("Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
@@ -219,6 +225,9 @@ static void UnlockUpgrades(int player, int offset, string hexInput) {
     int level;
     int index;
     int i;
+    if (player <= 0) {
+        player = lib5BD4895D_gf_AP_Core_getUser();
+    }
     // log("Upgrades Input: "+hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
@@ -358,17 +367,20 @@ void AP_DebugTech(int player, int lvl) {
     // for a mission of the given difficulty
     // 0 - very easy, 1 - easy, 2 - medium, 3 - hard, 4 - very hard
     int i;
+    int step;
+    lvl = MinI(5, MaxI(0, lvl));
     if (lvl == 0) {
         AP_UnlockTerranUnits(player,"1");
         AP_UnlockZergUnits(player,"1");
         AP_UnlockProtossUnits(player,"1");
     }
-    if (lvl >= 5) {
-        // just unlock everything
-        for (i = 0; i < ITEM_SPACE; i += 1) {
+    if (lvl >= 1) {
+        // lazy implementation. TODO (Snarky): Select a proper loadout for each tech level
+        step = 6 - lvl; // lvl 1: unlock every 5th item. lvl 5: unlock every item
+        for (i = 0; i < ITEM_SPACE; i += step) {
             UnlockItem(player, i);
         }
-        for (i = 0; i < PROGRESSIVE_SPACE; i += 1) {
+        for (i = 0; i < PROGRESSIVE_SPACE; i += step) {
             UnlockProgressive(player, i, lvl);
         }
     }
