@@ -16450,7 +16450,6 @@
         <AbilArray Link="AP_ZerglingRespawnTrain"/>
         <AbilArray Link="AP_WarpRelocate"/>
         <AbilArray Link="AP_ElderProbeReconstruction"/>
-        <BehaviorArray Link="AP_NexusDeath"/>
         <BehaviorArray Link="AP_FakePowerUser"/>
         <BehaviorArray Link="AP_SOARadar"/>
         <BehaviorArray Link="AP_GameTime5Seconds"/>
