@@ -65,6 +65,7 @@ Param/Value/9AE4F875=Communication Terminal
 Param/Value/9B173852=5 Days
 Param/Value/9B78F450=Garrison Complete
 Param/Value/9EC2169E=This unit can be used as a garrison in Hellion Mode. Provides 1 garrison strength.
+Param/Value/A08B658E=DEBUG: Clearing first garrison
 Param/Value/A3A12973=Zerg Activity
 Param/Value/A9946050=Destroy Infestation Pustule
 Param/Value/B15823BF=Garrison Strength

@@ -1621,7 +1621,6 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         libABFE498B_gf_AP_Triggers_setDifficulty("B");
         libABFE498B_gf_AP_Triggers_setGameSpeed("5");
         libABFE498B_gf_AP_Triggers_Debug_Tech(lib5BD4895D_gf_AP_Core_getUser(), 2);
-        libABFE498B_gf_AP_Triggers_Zerg_SwarmQueenDeepTunnel(1);
         TriggerExecute(libABFE498B_gv_aP_Triggers_onDifficultyBrutal, true, false);
     }
 
@@ -2100,7 +2099,6 @@ bool gt_Init02Players_Func (bool testConds, bool runActions) {
     PlayerSetState(gv_pLAYER_02_NOVASUPPORT, c_playerStateFoodIgnored, true);
     TechTreeUpgradeAddLevel(gv_pLAYER_02_NOVASUPPORT, "GarrisonRadiusReduction", 1);
     libABFE498B_gf_AP_Triggers_giveTerranDefaultTech(gv_pLAYER_02_NOVASUPPORT);
-    libABFE498B_gf_AP_Triggers_Zerg_SwarmHostCarrion(gv_pLAYER_02_NOVASUPPORT);
     return true;
 }
 
@@ -11964,10 +11962,11 @@ bool gt_MidCleanup_Func (bool testConds, bool runActions) {
         while (true) {
             lv_player = PlayerGroupNextPlayer(auto4544C4E9_g, lv_player);
             if (lv_player < 0) { break; }
-            libABFE498B_gf_AP_Triggers_Terran_unlockNovaWeaponMonomolecularBlade(lv_player);
-            libABFE498B_gf_AP_Triggers_Terran_unlockNovaProgressiveCloak(lv_player, 2);
-            libABFE498B_gf_AP_Triggers_Terran_unlockNovaGadgetFlashbangGrenades(lv_player);
-            libABFE498B_gf_AP_Triggers_Terran_unlockNovaGhostVisor(lv_player);
+            TechTreeUpgradeAddLevel(gv_pLAYER_01_USER, "AP_NovaWeaponPsiBlade", 1);
+            TechTreeUpgradeAddLevel(gv_pLAYER_01_USER, "AP_NovaCloak", 1);
+            TechTreeUpgradeAddLevel(gv_pLAYER_01_USER, "AP_NovaArmorStealthSuit", 1);
+            TechTreeUpgradeAddLevel(gv_pLAYER_01_USER, "AP_NovaGadgetFlashBangGrenades", 1);
+            TechTreeUpgradeAddLevel(gv_pLAYER_01_USER, "AP_NovaHelmetGhostVisor", 1);
         }
     }
 
