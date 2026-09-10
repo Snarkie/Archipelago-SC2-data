@@ -8856,20 +8856,22 @@
         <Item Type="Trigger" Id="6557A22D"/>
     </Element>
     <Element Type="Trigger" Id="E4E322C1">
+        <Variable Type="Variable" Id="5C923676"/>
         <Event Type="FunctionCall" Id="725C269F"/>
         <Condition Type="FunctionCall" Id="CA8313D9"/>
         <Condition Type="FunctionCall" Id="029D674C"/>
         <Condition Type="FunctionCall" Id="7B920B20"/>
         <Action Type="FunctionCall" Id="BE84A5AF"/>
-        <Action Type="FunctionCall" Id="C84A1B8B"/>
-        <Action Type="FunctionCall" Id="CED5B20E"/>
-        <Action Type="FunctionCall" Id="9F65A7FD"/>
-        <Action Type="FunctionCall" Id="7D9C182B"/>
-        <Action Type="FunctionCall" Id="2C0BE1F0"/>
-        <Action Type="FunctionCall" Id="D4522E6C"/>
-        <Action Type="FunctionCall" Id="7B5DAE51"/>
-        <Action Type="FunctionCall" Id="B9386285"/>
-        <Action Type="FunctionCall" Id="F32E73B0"/>
+        <Action Type="FunctionCall" Id="095868B4"/>
+    </Element>
+    <Element Type="Variable" Id="5C923676">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="F51301BB"/>
+    </Element>
+    <Element Type="Param" Id="F51301BB">
+        <Variable Type="Variable" Id="B470D8B8"/>
     </Element>
     <Element Type="FunctionCall" Id="725C269F">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000121"/>
@@ -8965,77 +8967,13 @@
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000186"/>
         <ValueType Type="text"/>
     </Element>
-    <Element Type="FunctionCall" Id="C84A1B8B">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="E7107153"/>
-        <Parameter Type="Param" Id="1B9AC5C8"/>
-    </Element>
-    <Element Type="Param" Id="1B9AC5C8">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="46C1897F"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="CED5B20E">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="78B0DFD7"/>
-        <Parameter Type="Param" Id="F8962329"/>
-    </Element>
-    <Element Type="Param" Id="F8962329">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="39BAA566"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="9F65A7FD">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="DA66DCED"/>
-        <Parameter Type="Param" Id="3802BE7C"/>
-    </Element>
-    <Element Type="Param" Id="3802BE7C">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="DC190A03"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="7D9C182B">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="BD6A20C5"/>
-        <Parameter Type="Param" Id="A9E2DB1A"/>
-    </Element>
-    <Element Type="Param" Id="A9E2DB1A">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="7F50B92A"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="2C0BE1F0">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="D4C5B753"/>
-        <Parameter Type="Param" Id="3B9EA2C2"/>
-    </Element>
-    <Element Type="Param" Id="3B9EA2C2">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="BA701225"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="D4522E6C">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="E1E9188B"/>
-        <Parameter Type="Param" Id="0EBA36B5"/>
-    </Element>
-    <Element Type="Param" Id="0EBA36B5">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="C9699C93"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="7B5DAE51">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="B6C4E35F"/>
-        <Parameter Type="Param" Id="AE8BFF07"/>
-    </Element>
-    <Element Type="Param" Id="AE8BFF07">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="5316ADC0"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="B9386285">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="81F6D62E"/>
-        <Parameter Type="Param" Id="90A0B265"/>
-    </Element>
-    <Element Type="Param" Id="90A0B265">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="CB32EAFA"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="FunctionCall" Id="F32E73B0">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="57935DDA"/>
-        <Parameter Type="Param" Id="D2539B80"/>
-    </Element>
-    <Element Type="Param" Id="D2539B80">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="C354A116"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+    <Element Type="FunctionCall" Id="095868B4">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(lv_p,&quot;b&quot;); // Marine, Marauder, Medic
+            AP_UnlockZergUnits(lv_p,&quot;d&quot;); // Zergling, Roach, Hydra
+            AP_UnlockProtossUnits(lv_p,&quot;4003&quot;); // Zealot, Stalker, Sentry
+        </ScriptCode>
     </Element>
     <Element Type="Trigger" Id="56BE4CEE">
         <Event Type="FunctionCall" Id="A8943583"/>
@@ -19781,17 +19719,15 @@
     </Element>
     <Element Type="FunctionCall" Id="224A9F18">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="611A783A"/>
+        <FunctionCall Type="FunctionCall" Id="D35B86DB"/>
         <FunctionCall Type="FunctionCall" Id="7C8FCFB3"/>
     </Element>
-    <Element Type="FunctionCall" Id="611A783A">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="E7107153"/>
+    <Element Type="FunctionCall" Id="D35B86DB">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="96173B27"/>
-    </Element>
-    <Element Type="Param" Id="96173B27">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="46C1897F"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;1&quot;); // Zergling
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="7C8FCFB3">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -21789,17 +21725,17 @@
     </Element>
     <Element Type="FunctionCall" Id="73364B1A">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="F7F11C00"/>
+        <FunctionCall Type="FunctionCall" Id="A67EB7C1"/>
         <FunctionCall Type="FunctionCall" Id="F0F38EB4"/>
     </Element>
-    <Element Type="FunctionCall" Id="F7F11C00">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="78B0DFD7"/>
+    <Element Type="FunctionCall" Id="A67EB7C1">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="9E908844"/>
-    </Element>
-    <Element Type="Param" Id="9E908844">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="39BAA566"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;4&quot;); // Marauder
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;2&quot;); // Roach
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;2&quot;); // Stalker
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="F0F38EB4">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -23156,17 +23092,17 @@
     </Element>
     <Element Type="FunctionCall" Id="68E8B074">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="57FA7B6F"/>
+        <FunctionCall Type="FunctionCall" Id="D7DB1FC9"/>
         <FunctionCall Type="FunctionCall" Id="BD336BC1"/>
     </Element>
-    <Element Type="FunctionCall" Id="57FA7B6F">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="DA66DCED"/>
+    <Element Type="FunctionCall" Id="D7DB1FC9">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="7479841B"/>
-    </Element>
-    <Element Type="Param" Id="7479841B">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="DC190A03"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;b&quot;); // Marine, Marauder, Medic
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;d&quot;); // Zergling, Roach, Hydra
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;4003&quot;); // Zealot, Stalker, Sentry
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="BD336BC1">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -62848,28 +62784,15 @@
     </Element>
     <Element Type="FunctionCall" Id="BEA5C2A6">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="05BA8C2B"/>
+        <FunctionCall Type="FunctionCall" Id="5C7C4AF3"/>
         <FunctionCall Type="FunctionCall" Id="FF4BC4CE"/>
     </Element>
-    <Element Type="FunctionCall" Id="05BA8C2B">
-        <FunctionDef Type="FunctionDef" Library="Ntve" Id="0F7C3248"/>
+    <Element Type="FunctionCall" Id="5C7C4AF3">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="0CAF9ACD"/>
-        <Parameter Type="Param" Id="49659011"/>
-        <Parameter Type="Param" Id="75CCCEBF"/>
-    </Element>
-    <Element Type="Param" Id="0CAF9ACD">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="BFF56EB0"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
-    </Element>
-    <Element Type="Param" Id="49659011">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="09B7BAEA"/>
-        <Preset Type="PresetValue" Library="Ntve" Id="00000106"/>
-    </Element>
-    <Element Type="Param" Id="75CCCEBF">
-        <ParameterDef Type="ParamDef" Library="Ntve" Id="9B01128C"/>
-        <Value>AP_TerranUnitSpawns</Value>
-        <ValueType Type="abilcmd"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;1&quot;); // Marine
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="FF4BC4CE">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -63789,6 +63712,7 @@
         <Action Type="FunctionCall" Id="30546A13"/>
         <Action Type="FunctionCall" Id="A03F906E"/>
         <Action Type="FunctionCall" Id="3EA7BDEB"/>
+        <Action Type="FunctionCall" Id="5E6DD451"/>
         <Action Type="FunctionCall" Id="1E1199E8"/>
         <Action Type="FunctionCall" Id="CB7A7B95"/>
         <Action Type="FunctionCall" Id="CA739E92"/>
@@ -64118,17 +64042,17 @@
     </Element>
     <Element Type="FunctionCall" Id="1515315E">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="94DAFB2A"/>
+        <FunctionCall Type="FunctionCall" Id="B0702497"/>
         <FunctionCall Type="FunctionCall" Id="2436B6AA"/>
     </Element>
-    <Element Type="FunctionCall" Id="94DAFB2A">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="D4C5B753"/>
+    <Element Type="FunctionCall" Id="B0702497">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="BDB5089A"/>
-    </Element>
-    <Element Type="Param" Id="BDB5089A">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="BA701225"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;4&quot;); // Marauder
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;2&quot;); // Roach
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;2&quot;); // Stalker
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="2436B6AA">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -64226,6 +64150,25 @@
     <Element Type="Param" Id="E775F61B">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000151"/>
         <Variable Type="Variable" Id="BEB028CC"/>
+    </Element>
+    <Element Type="FunctionCall" Id="5E6DD451">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
+        <Parameter Type="Param" Id="2BA1DED9"/>
+        <Parameter Type="Param" Id="174BFFFC"/>
+        <Parameter Type="Param" Id="7B0B178B"/>
+    </Element>
+    <Element Type="Param" Id="2BA1DED9">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000151"/>
+        <Variable Type="Variable" Id="BEB028CC"/>
+    </Element>
+    <Element Type="Param" Id="174BFFFC">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000152"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="4BB8CC7B"/>
+    </Element>
+    <Element Type="Param" Id="7B0B178B">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000153"/>
+        <Value>2.5</Value>
+        <ValueType Type="fixed"/>
     </Element>
     <Element Type="FunctionCall" Id="1E1199E8">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="943DF2F7"/>
@@ -64842,17 +64785,17 @@
     </Element>
     <Element Type="FunctionCall" Id="54CAF541">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="22D3455E"/>
+        <FunctionCall Type="FunctionCall" Id="E5E4E620"/>
         <FunctionCall Type="FunctionCall" Id="463F7009"/>
     </Element>
-    <Element Type="FunctionCall" Id="22D3455E">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="E1E9188B"/>
+    <Element Type="FunctionCall" Id="E5E4E620">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="3DE4CB48"/>
-    </Element>
-    <Element Type="Param" Id="3DE4CB48">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="C9699C93"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;b&quot;); // Marine, Marauder, Medic
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;d&quot;); // Zergling, Roach, Hydra
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;4003&quot;); // Zealot, Stalker, Sentry
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="463F7009">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -67086,17 +67029,15 @@
     </Element>
     <Element Type="FunctionCall" Id="744D63F8">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="594D52D7"/>
+        <FunctionCall Type="FunctionCall" Id="6A339C1E"/>
         <FunctionCall Type="FunctionCall" Id="8F7DC739"/>
     </Element>
-    <Element Type="FunctionCall" Id="594D52D7">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="B6C4E35F"/>
+    <Element Type="FunctionCall" Id="6A339C1E">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="452990C0"/>
-    </Element>
-    <Element Type="Param" Id="452990C0">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="5316ADC0"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;1&quot;); // Zealot
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="8F7DC739">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -68324,6 +68265,7 @@
         <Action Type="FunctionCall" Id="7FA50E8F"/>
         <Action Type="FunctionCall" Id="03F7827A"/>
         <Action Type="FunctionCall" Id="9A7BB4FF"/>
+        <Action Type="FunctionCall" Id="DCF1EEC2"/>
         <Action Type="FunctionCall" Id="13F27315"/>
         <Action Type="FunctionCall" Id="A4BFBB8B"/>
         <Action Type="FunctionCall" Id="32D04D0D"/>
@@ -68668,17 +68610,17 @@
     </Element>
     <Element Type="FunctionCall" Id="DA109A53">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="C34C898A"/>
+        <FunctionCall Type="FunctionCall" Id="5686D2E3"/>
         <FunctionCall Type="FunctionCall" Id="C3BF2DE3"/>
     </Element>
-    <Element Type="FunctionCall" Id="C34C898A">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="81F6D62E"/>
+    <Element Type="FunctionCall" Id="5686D2E3">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="F7B86D85"/>
-    </Element>
-    <Element Type="Param" Id="F7B86D85">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="CB32EAFA"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;4&quot;); // Marauder
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;2&quot;); // Roach
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;2&quot;); // Stalker
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="C3BF2DE3">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -68818,6 +68760,25 @@
     <Element Type="Param" Id="F9EFD9C6">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="00000151"/>
         <Variable Type="Variable" Id="BEB028CC"/>
+    </Element>
+    <Element Type="FunctionCall" Id="DCF1EEC2">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
+        <Parameter Type="Param" Id="363B09CA"/>
+        <Parameter Type="Param" Id="724027B9"/>
+        <Parameter Type="Param" Id="4CCA5EAE"/>
+    </Element>
+    <Element Type="Param" Id="363B09CA">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000151"/>
+        <Variable Type="Variable" Id="BEB028CC"/>
+    </Element>
+    <Element Type="Param" Id="724027B9">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000152"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="4BB8CC7B"/>
+    </Element>
+    <Element Type="Param" Id="4CCA5EAE">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000153"/>
+        <Value>2.5</Value>
+        <ValueType Type="fixed"/>
     </Element>
     <Element Type="FunctionCall" Id="13F27315">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="943DF2F7"/>
@@ -69636,17 +69597,17 @@
     </Element>
     <Element Type="FunctionCall" Id="B03F1386">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
-        <FunctionCall Type="FunctionCall" Id="2B24A975"/>
+        <FunctionCall Type="FunctionCall" Id="CC1478DA"/>
         <FunctionCall Type="FunctionCall" Id="1F05175E"/>
     </Element>
-    <Element Type="FunctionCall" Id="2B24A975">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="57935DDA"/>
+    <Element Type="FunctionCall" Id="CC1478DA">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
-        <Parameter Type="Param" Id="5AFE4CE3"/>
-    </Element>
-    <Element Type="Param" Id="5AFE4CE3">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="C354A116"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+        <ScriptCode>
+            AP_UnlockTerranUnits(gv_pLAYER_01_USER,&quot;b&quot;); // Marine, Marauder, Medic
+            AP_UnlockZergUnits(gv_pLAYER_01_USER,&quot;d&quot;); // Zergling, Roach, Hydra
+            AP_UnlockProtossUnits(gv_pLAYER_01_USER,&quot;4003&quot;); // Zealot, Stalker, Sentry
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="1F05175E">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -70386,6 +70347,7 @@
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000419"/>
     </Element>
     <Element Type="Trigger" Id="045B5947">
+        <Variable Type="Variable" Id="D4AB3E0C"/>
         <Action Type="Comment" Id="4434F3DD"/>
         <Action Type="FunctionCall" Id="5561FCCD"/>
         <Action Type="FunctionCall" Id="78554C4B"/>
@@ -70408,8 +70370,18 @@
         <Action Type="FunctionCall" Id="E9910BAB"/>
         <Action Type="FunctionCall" Id="18B43CB4"/>
         <Action Type="Comment" Id="B196E776"/>
-        <Action Type="FunctionCall" Id="C8ABC426"/>
-        <Action Type="FunctionCall" Id="2A6987FD"/>
+        <Action Type="FunctionCall" Id="934ACBC9"/>
+        <Action Type="FunctionCall" Id="05D8938F"/>
+    </Element>
+    <Element Type="Variable" Id="D4AB3E0C">
+        <VariableType>
+            <Type Value="int"/>
+        </VariableType>
+        <Value Type="Param" Id="A2014BFB"/>
+    </Element>
+    <Element Type="Param" Id="A2014BFB">
+        <Value>0</Value>
+        <ValueType Type="int"/>
     </Element>
     <Element Type="Comment" Id="4434F3DD">
         <Comment>
@@ -70771,21 +70743,49 @@
             Grant these automatically
         </Comment>
     </Element>
-    <Element Type="FunctionCall" Id="C8ABC426">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="FB5E9D13"/>
-        <Parameter Type="Param" Id="692533EF"/>
+    <Element Type="FunctionCall" Id="934ACBC9">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <Parameter Type="Param" Id="B6CECFE6"/>
+        <Parameter Type="Param" Id="3F0FB0D2"/>
+        <Parameter Type="Param" Id="33C83586"/>
     </Element>
-    <Element Type="Param" Id="692533EF">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="081F8B1E"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+    <Element Type="Param" Id="B6CECFE6">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
     </Element>
-    <Element Type="FunctionCall" Id="2A6987FD">
-        <FunctionDef Type="FunctionDef" Library="ABFE498B" Id="18563025"/>
-        <Parameter Type="Param" Id="8DC03BC3"/>
+    <Element Type="Param" Id="3F0FB0D2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
     </Element>
-    <Element Type="Param" Id="8DC03BC3">
-        <ParameterDef Type="ParamDef" Library="ABFE498B" Id="92406FA7"/>
-        <Variable Type="Variable" Id="B470D8B8"/>
+    <Element Type="Param" Id="33C83586">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>AP_ReaverKhalaiReplicators</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
+    </Element>
+    <Element Type="FunctionCall" Id="05D8938F">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000158"/>
+        <Parameter Type="Param" Id="A5957D91"/>
+        <Parameter Type="Param" Id="546C6A8E"/>
+        <Parameter Type="Param" Id="E905BFE0"/>
+    </Element>
+    <Element Type="Param" Id="A5957D91">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000255"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="546C6A8E">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000257"/>
+        <Value>1</Value>
+        <ValueType Type="int"/>
+    </Element>
+    <Element Type="Param" Id="E905BFE0">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000256"/>
+        <Value>AP_SOAWarpTech</Value>
+        <ValueType Type="gamelink"/>
+        <ValueGameType Type="Upgrade"/>
     </Element>
     <Element Type="FunctionDef" Id="4171DB9C">
         <FlagAction/>

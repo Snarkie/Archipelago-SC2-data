@@ -2146,7 +2146,13 @@ void gt_Init07Help_Init () {
 // Trigger: DEBUG - Unlock Basic Units
 //--------------------------------------------------------------------------------------------------
 bool gt_DEBUGUnlockBasicUnits_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_p = gv_pLAYER_01_USER;
+
     // Conditions
     if (testConds) {
         if (!((gv_gameOver == false))) {
@@ -2168,15 +2174,9 @@ bool gt_DEBUGUnlockBasicUnits_Func (bool testConds, bool runActions) {
     }
 
     TriggerDebugOutput(1, StringExternal("Param/Value/7B36D394"), true);
-    libABFE498B_gf_AP_Triggers_Zerg_unlockZergling(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Zerg_unlockRoach(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Zerg_unlockHydralisk(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Terran_unlockMarine(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Terran_unlockMarauder(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Terran_unlockMedic(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Protoss_unlockAiurZealot(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Protoss_unlockStalkerShakuras(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Protoss_unlockSentryAiur(gv_pLAYER_01_USER);
+    AP_UnlockTerranUnits(lv_p,"b"); // Marine, Marauder, Medic
+    AP_UnlockZergUnits(lv_p,"d"); // Zergling, Roach, Hydra
+    AP_UnlockProtossUnits(lv_p,"4003"); // Zealot, Stalker, Sentry
     return true;
 }
 
@@ -3344,7 +3344,7 @@ bool gt_MorphtoSwarmQueenComplete_Func (bool testConds, bool runActions) {
     TriggerEnable(TriggerGetCurrent(), false);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_FIRST_NIADRA_EVOLUTION);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Zerg_unlockZergling(gv_pLAYER_01_USER);
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"1"); // Zergling
     }
 
     TriggerExecute(gt_ObjectiveGrowComplete, true, false);
@@ -3538,7 +3538,9 @@ bool gt_MorphtoLargeSwarmQueenComplete_Func (bool testConds, bool runActions) {
     gv_additionalGrows = 1;
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveGrowMore, gv_additionalGrows);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Zerg_unlockRoach(gv_pLAYER_01_USER);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"4"); // Marauder
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"2"); // Roach
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"2"); // Stalker
     }
 
     gv_tHE_ONE_QUEEN = EventUnit();
@@ -3717,7 +3719,9 @@ bool gt_MorphtoHugeSwarmQueenComplete_Func (bool testConds, bool runActions) {
     lib5BD4895D_gf_AP_Core_setObjectiveCounter(gv_objectiveGrowMore, gv_additionalGrows);
     TriggerExecute(gt_ObjectiveGrowMoreComplete, true, false);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Zerg_unlockHydralisk(gv_pLAYER_01_USER);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"b"); // Marine, Marauder, Medic
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"d"); // Zergling, Roach, Hydra
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"4003"); // Zealot, Stalker, Sentry
     }
 
     gv_tHE_ONE_QUEEN = EventUnit();
@@ -9094,7 +9098,7 @@ bool gt_TerranUpgrade1ReachSafeSpace_Func (bool testConds, bool runActions) {
     TriggerEnable(TriggerGetCurrent(), false);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_FIRST_NIADRA_EVOLUTION);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        TechTreeAbilityAllow(gv_pLAYER_01_USER, AbilityCommand("AP_TerranUnitSpawns", 0), true);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"1"); // Marine
     }
 
     TriggerExecute(gt_ObjectiveGrowComplete, true, false);
@@ -9188,13 +9192,16 @@ bool gt_TerranUpgrade2_Func (bool testConds, bool runActions) {
     UISetButtonHighlighted(PlayerGroupAll(), AbilityCommand("AP_StetmanUpgrade", 0), false);
     Wait(5.0, c_timeGame);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Terran_unlockMarauder(gv_pLAYER_01_USER);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"4"); // Marauder
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"2"); // Roach
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"2"); // Stalker
     }
 
     gv_tHE_ONE_QUEEN = EventUnit();
     UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropEnergyPercent, 100.0);
     UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropLifeMax, gv_swarmQueenLife[3]);
     UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropMovementSpeed, 2.5);
     PlayerModifyPropertyInt(gv_pLAYER_01_USER, c_playerPropSuppliesMade, c_playerPropOperAdd, gv_supplyModifier[3]);
     gv_terranSpawnUnitTypesActiveMax += 1;
     libSCDH_gf_CreateHeroPing(gv_tHE_ONE_QUEEN, libSCDH_ge_HeroPingType_Ally);
@@ -9261,7 +9268,9 @@ bool gt_TerranUpgrade3_Func (bool testConds, bool runActions) {
     Wait(5.0, c_timeGame);
     TriggerExecute(gt_ObjectiveGrowMoreComplete, true, false);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Terran_unlockMedic(gv_pLAYER_01_USER);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"b"); // Marine, Marauder, Medic
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"d"); // Zergling, Roach, Hydra
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"4003"); // Zealot, Stalker, Sentry
     }
 
     gv_tHE_ONE_QUEEN = EventUnit();
@@ -9338,7 +9347,7 @@ bool gt_ProbeUpgrade1BuildWarpgate_Func (bool testConds, bool runActions) {
     TriggerEnable(TriggerGetCurrent(), false);
     lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(gv_LOCATION_ID_FIRST_NIADRA_EVOLUTION);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Protoss_unlockAiurZealot(gv_pLAYER_01_USER);
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"1"); // Zealot
     }
 
     TriggerExecute(gt_ObjectiveGrowComplete, true, false);
@@ -9451,7 +9460,9 @@ bool gt_ProbeUpgrade2_Func (bool testConds, bool runActions) {
     UISetButtonHighlighted(PlayerGroupAll(), AbilityCommand("AP_UpgradeProbeHero", 0), false);
     Wait(5.0, c_timeGame);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Protoss_unlockStalkerShakuras(gv_pLAYER_01_USER);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"4"); // Marauder
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"2"); // Roach
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"2"); // Stalker
     }
 
     gv_tHE_ONE_QUEEN = EventUnit();
@@ -9460,6 +9471,7 @@ bool gt_ProbeUpgrade2_Func (bool testConds, bool runActions) {
     UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropLifePercent, 100.0);
     UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropShieldsMax, gv_swarmQueenShields[3]);
     UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropShieldsPercent, 100.0);
+    UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropMovementSpeed, 2.5);
     PlayerModifyPropertyInt(gv_pLAYER_01_USER, c_playerPropSuppliesMade, c_playerPropOperAdd, gv_supplyModifier[3]);
     libSCDH_gf_CreateHeroPing(gv_tHE_ONE_QUEEN, libSCDH_ge_HeroPingType_Ally);
     if ((TechTreeAbilityIsAllowed(gv_pLAYER_01_USER, AbilityCommand("AP_ProtossBuild", 7)) == true)) {
@@ -9538,7 +9550,9 @@ bool gt_ProbeUpgrade3_Func (bool testConds, bool runActions) {
     Wait(5.0, c_timeGame);
     TriggerExecute(gt_ObjectiveGrowMoreComplete, true, false);
     if ((libABFE498B_gv_aP_Triggers_Option_grantStoryTech == true)) {
-        libABFE498B_gf_AP_Triggers_Protoss_unlockSentryAiur(gv_pLAYER_01_USER);
+        AP_UnlockTerranUnits(gv_pLAYER_01_USER,"b"); // Marine, Marauder, Medic
+        AP_UnlockZergUnits(gv_pLAYER_01_USER,"d"); // Zergling, Roach, Hydra
+        AP_UnlockProtossUnits(gv_pLAYER_01_USER,"4003"); // Zealot, Stalker, Sentry
     }
 
     gv_tHE_ONE_QUEEN = EventUnit();
@@ -9619,7 +9633,12 @@ void gt_ProtossStructuresTimedLife_Init () {
 // Trigger: Protoss Technology
 //--------------------------------------------------------------------------------------------------
 bool gt_ProtossTechnology_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_p;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+
     // Actions
     if (!runActions) {
         return true;
@@ -9642,8 +9661,8 @@ bool gt_ProtossTechnology_Func (bool testConds, bool runActions) {
     TechTreeUnitAllow(gv_pLAYER_01_USER, "AP_ColossusTaldarim", false);
     TechTreeUnitAllow(gv_pLAYER_01_USER, "AP_Observer", false);
     TechTreeUnitAllow(gv_pLAYER_01_USER, "AP_WarpPrism", false);
-    libABFE498B_gf_AP_Triggers_Protoss_unlockWarpHarmonization(gv_pLAYER_01_USER);
-    libABFE498B_gf_AP_Triggers_Protoss_unlockReaverKhalaiReplicators(gv_pLAYER_01_USER);
+    TechTreeUpgradeAddLevel(1, "AP_ReaverKhalaiReplicators", 1);
+    TechTreeUpgradeAddLevel(1, "AP_SOAWarpTech", 1);
     return true;
 }
 
