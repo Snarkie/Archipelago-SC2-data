@@ -2137,8 +2137,8 @@ bool libABFE498B_gt_AP_Triggers_PatchesInit_Func (bool testConds, bool runAction
 
     lib6EE41A55_InitLib();
     AP_GhostSpawn_init();
-    AP_Triggers_UnlockInit();
-    AP_Triggers_ItemRegisterInit();
+    AP_Triggers_UnlockSystemInit();
+    AP_Triggers_ItemDatabaseInit();
     TriggerExecute(lib6EE41A55_gt_AP_Patches_Constructor, true, false);
     return true;
 }

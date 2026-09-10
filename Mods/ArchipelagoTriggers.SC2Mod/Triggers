@@ -30,8 +30,8 @@
             <ScriptCode>
                 lib6EE41A55_InitLib();
                 AP_GhostSpawn_init();
-                AP_Triggers_UnlockInit();
-                AP_Triggers_ItemRegisterInit();
+                AP_Triggers_UnlockSystemInit();
+                AP_Triggers_ItemDatabaseInit();
             </ScriptCode>
         </Element>
         <Element Type="FunctionCall" Id="D06FE85F">

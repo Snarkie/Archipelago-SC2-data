@@ -541,6 +541,6 @@ static void Setup() {
     WAUpgradeSpeedupDatabase[15][1] = "AP_ProtossAirArmorTimeReductionL5";
 }
 
-void AP_Triggers_UnlockInit() {
+void AP_Triggers_UnlockSystemInit() {
     Setup();
 }

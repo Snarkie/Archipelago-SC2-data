@@ -2454,7 +2454,7 @@ static void RegisterProtossItems() {
     AP_RegisterProtossUpgrade(16, ProtossShieldsFunc);
 }
 
-void AP_Triggers_ItemRegisterInit() {
+void AP_Triggers_ItemDatabaseInit() {
     RegisterTerranUnits();
     RegisterTerranItems();
     RegisterZergUnits();
