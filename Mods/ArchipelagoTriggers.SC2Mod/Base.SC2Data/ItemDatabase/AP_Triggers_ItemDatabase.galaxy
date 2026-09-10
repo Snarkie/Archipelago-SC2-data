@@ -1807,6 +1807,12 @@ void UnlockStargateAndFleetBeacon(int player) {
     UnlockFleetBeacon(player);
 }
 
+void UnlockStargateCyberAndFleetBeacon(int player) {
+    UnlockStargate(player);
+    UnlockCyberneticsCore(player);
+    UnlockFleetBeacon(player);
+}
+
 void UnlockForge(int player) {
     TechTreeUpgradeAddLevel(player, "AP_UnlockForge", 1);
 }
@@ -1873,8 +1879,8 @@ static void RegisterProtossUnits() {
     AP_RegisterProtossUnit(43, "AP_UnlockTrireme", UnlockStargateAndFleetBeacon);
 
     AP_RegisterProtossUnit(36, "AP_UnlockMothershipTaldarim", UnlockStargateAndFleetBeacon);
-    AP_RegisterProtossUnit(45, "AP_UnlockMothershipAiur", UnlockStargateAndFleetBeacon);
-    AP_RegisterProtossUnit(46, "AP_UnlockMothershipPurifier", UnlockStargateAndFleetBeacon);
+    AP_RegisterProtossUnit(45, "AP_UnlockMothershipAiur", UnlockStargateCyberAndFleetBeacon);
+    AP_RegisterProtossUnit(46, "AP_UnlockMothershipPurifier", UnlockStargateCyberAndFleetBeacon);
 
     AP_RegisterProtossUnit(35, "AP_UnlockTempest", UnlockStargateAndFleetBeacon);
     AP_RegisterProtossUnit(37, "AP_UnlockArbiter", UnlockStargateAndFleetBeacon);

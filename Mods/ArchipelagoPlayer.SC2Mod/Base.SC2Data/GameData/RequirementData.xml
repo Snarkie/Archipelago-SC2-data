@@ -2626,10 +2626,12 @@
     </CRequirement>
     <CRequirement id="AP_MothershipAiurCoreRequirements">
         <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Show" Link="AP_UnlockMothershipAiur"/>
         <NodeArray index="Use" Link="AP_AndCountUnitCyberneticsCoreCompleteOnlyTechTreeCheatEqCountUnitMothershipAiurQueuedOrBetter0"/>
     </CRequirement>
     <CRequirement id="AP_MothershipPurifierCoreRequirements">
         <EditorCategories value="Race:Protoss,TechType:Unit"/>
+        <NodeArray index="Show" Link="AP_UnlockMothershipPurifier"/>
         <NodeArray index="Use" Link="AP_AndCountUnitCyberneticsCoreCompleteOnlyTechTreeCheatEqCountUnitMothershipPurifierQueuedOrBetter0"/>
     </CRequirement>
     <CRequirement id="AP_CanInstallPlanetCracker">
@@ -6355,6 +6357,9 @@
     </CRequirement>
     <CRequirement id="AP_UnlockMothershipPurifier">
         <NodeArray index="Show" Link="AP_UnlockMothershipPurifier"/>
+    </CRequirement>
+    <CRequirement id="AP_UnlockOppressor">
+        <NodeArray index="Show" Link="AP_UnlockOppressor"/>
     </CRequirement>
     <CRequirement id="AP_UnlockCaladrius">
         <NodeArray index="Show" Link="AP_UnlockCaladrius"/>

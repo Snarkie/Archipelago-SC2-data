@@ -9586,6 +9586,9 @@
     <CRequirementCountUpgrade id="AP_UnlockMothershipPurifier">
         <Count Link="AP_UnlockMothershipPurifier" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="AP_UnlockOppressor">
+        <Count Link="AP_UnlockOppressor" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockCaladrius">
         <Count Link="AP_UnlockCaladrius" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
