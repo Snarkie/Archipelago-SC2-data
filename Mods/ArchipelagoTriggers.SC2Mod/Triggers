@@ -31,6 +31,7 @@
                 lib6EE41A55_InitLib();
                 AP_GhostSpawn_init();
                 AP_Triggers_UnlockInit();
+                AP_Triggers_ItemRegisterInit();
             </ScriptCode>
         </Element>
         <Element Type="FunctionCall" Id="D06FE85F">
@@ -54,12 +55,11 @@
         </Element>
         <Element Type="CustomScript" Id="27EAD97B">
             <ScriptCode>
-                include &quot;AP_Triggers_PlayerConsumer&quot;
-                include &quot;AP_Triggers_Util&quot;
-                include &quot;AP_Triggers_BaseDetection&quot;
-                include &quot;AP_Triggers_GhostSpawn&quot;
-                include &quot;AP_Triggers_Hex&quot;
-                include &quot;AP_Triggers_Unlock&quot;
+                include &quot;Libraries/AP_Triggers_BaseDetection&quot;
+                include &quot;Libraries/AP_Triggers_Hex&quot;
+                include &quot;Libraries/AP_Triggers_UnlockSystem&quot;
+                include &quot;ItemDatabase/AP_Triggers_ItemDatabase&quot;
+                include &quot;Mutators/AP_Triggers_GhostSpawn&quot;
             </ScriptCode>
         </Element>
         <Element Type="Category" Id="323FB199">

@@ -1,4 +1,4 @@
-include "AP_Triggers_GhostSpawn.h"
+include "Mutators/AP_Triggers_GhostSpawn.h"
 
 // Constants
 static const int MAX_TRIES = 20;
