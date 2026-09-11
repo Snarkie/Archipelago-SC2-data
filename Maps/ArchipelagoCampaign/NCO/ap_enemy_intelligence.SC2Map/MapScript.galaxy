@@ -916,8 +916,8 @@ bool auto_gf_S1GarrisonUnit_TriggerFunc (bool testConds, bool runActions) {
         VisRevealArea(gv_pLAYER_02_NOVASUPPORT, gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonSightRegion, 0.0, false);
     }
 
-    if ((gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonUnitCount >= gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonUnitMax) && (lp_garrisonIndex != 0)) {
-        if ((gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonSpotCompleted == false)) {
+    if ((gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonUnitCount >= gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonUnitMax)) {
+        if ((gv_s1_GarrisonSpots[lp_garrisonIndex].lv_garrisonSpotCompleted == false) && (lp_garrisonIndex != 0)) {
             lib5BD4895D_gf_AP_Core_collectLocationUpdateObjective(lp_garrisonIndex);
         }
 
