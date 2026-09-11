@@ -452,7 +452,7 @@ static void PlanetaryLiftoffFunc(int player, int level) {
     if (level >= 1) {
         TechTreeUpgradeAddLevel(player, "AP_PlanetaryFortressLiftOff", 1);
         if (level >= 2) {
-            TechTreeUpgradeAddLevel(player, "AP_PlanetaryFortressLevel", 1);
+            TechTreeUpgradeAddLevel(player, "AP_PlanetaryFortressWeapon", 1);
             if (TechTreeUpgradeCount(player, "AP_PlanetaryFortressAirAttack", c_techCountCompleteOnly) > 0) {
                 TechTreeUpgradeAddLevel(player, "AP_PlanetaryFortressAirAttackFlying", 1);
             }
@@ -688,7 +688,7 @@ static void RegisterTerranItems() {
     AP_RegisterTerranItem(66, "AP_HoverSiegeTank"); // Jump Jets
     AP_RegisterTerranItem(67, "AP_SiegeSpiderMines");
     AP_RegisterTerranItem(68, "AP_MultiTaskMAFServosSiegeTank"); // Smart Servos
-    AP_RegisterTerranItemFunc(69, "AP_SiegeTankSiegeModeProgressiveRangeIncrease", GraduatingRangeFunc);
+    AP_RegisterTerranItemFunc(69, "AP_SiegeTankSiegeModeProgressiveRangeIncease", GraduatingRangeFunc); // Typo intended for now
     AP_RegisterTerranItem(70, "AP_LaserTargetingSystemSiegeTank");
     AP_RegisterTerranItem(71, "AP_RaynorImprovedSiegeMode"); // Advanced Siege Tech
     AP_RegisterTerranItem(72, "AP_InternalizedTechModuleSiegeTank");
@@ -756,7 +756,7 @@ static void RegisterTerranItems() {
     AP_RegisterTerranItem(122, "AP_HHWraithFury");
     AP_RegisterTerranItem(123, "AP_InternalizedTechModuleWraith");
     AP_RegisterTerranItem(124, "AP_ResourceEfficiencyWraith");
-    AP_RegisterTerranProgressive(6, "AP_WraithDynamicPowerRouting", "AP_PermanentCloakWraith");
+    AP_RegisterTerranProgressive(6, "AP_DynamicPowerRouting", "AP_PermanentCloakWraith");
 
     // Viking
     AP_RegisterTerranItem(77, "AP_MultiTaskMAFServosViking"); // Smart Servos
@@ -837,19 +837,19 @@ static void RegisterTerranItems() {
     // ********************** //
 
     // Aegis Guard
-    AP_RegisterTerranItem(257, "AP_MarauderMengskIncapacitorShells");
+    AP_RegisterTerranItem(257, "AP_MarauderMengskIncapacitatorShells");
     AP_RegisterTerranItem(258, "AP_MarauderMengskAddictiveSupplements");
     AP_RegisterTerranItem(259, "AP_MarauderMengskBolsteredBarrier");
     AP_RegisterTerranItem(260, "AP_MarauderMengskSovereignNeosteel");
 
     // Emperors Shadow
     AP_RegisterTerranItem(222, "AP_GhostMengskGuidedStrike"); // Sovereign Tactical Missiles
-    AP_RegisterTerranItem(241, "AP_GhostMengskPsychicEnhancers");
+    AP_RegisterTerranItem(241, "AP_GhostMengskPsychicEnhancer");
     AP_RegisterTerranItem(247, "AP_GhostMengskPhasingSuit");
     AP_RegisterTerranItem(248, "AP_GhostMengskNemesisRounds");
 
     // Son of Korhal
-    AP_RegisterTerranItem(249, "AP_MarineMengskProgidalSon");
+    AP_RegisterTerranItem(249, "AP_MarineMengskProdigalSon");
     AP_RegisterTerranItem(250, "AP_MarineMengskCombatShield");
     AP_RegisterTerranItem(251, "AP_MarineMengskBuildABoom");
     AP_RegisterTerranItem(252, "AP_MarineMengskSpiderMineLob");
@@ -1078,9 +1078,9 @@ static void UnlockGreaterSpire (int player) {
     TechTreeUpgradeAddLevel(player, "AP_UnlockGreaterSpire", 1);
 }
 
-static void UnlockUltraliskDen (int player) {
+static void UnlockUltraliskCavern (int player) {
     UnlockHive(player);
-    TechTreeUpgradeAddLevel(player, "AP_UnlockUltraliskDen", 1);
+    TechTreeUpgradeAddLevel(player, "AP_UnlockUltraliskCavern", 1);
 }
 
 static void UnlockInfestedSCV(int player) {
@@ -1139,7 +1139,7 @@ static void UnlockMorphling(int player) {
     }
 }
 
-static void UnlockBaneling(int player) {
+static void UnlockBanelingFunc(int player) {
     UnlockBanelingNest(player);
     UnlockMorphling(player);
 }
@@ -1202,7 +1202,7 @@ static void UnlockRavagerFunc(int player) {
 }
 
 static void UnlockTyrannozorFunc(int player) {
-    UnlockUltraliskDen(player);
+    UnlockUltraliskCavern(player);
     UnlockMorphling(player);
 }
 
@@ -1225,7 +1225,7 @@ static void RegisterZergUnits() {
     AP_RegisterZergUnit(6, "AP_UnlockMutalisk", UnlockSpire);
     AP_RegisterZergUnit(7, "AP_UnlockSwarmHost", UnlockInfestationPit);
     AP_RegisterZergUnit(8, "AP_UnlockInfestor", UnlockInfestationPit);
-    AP_RegisterZergUnit(9, "AP_UnlockUltralisk", UnlockUltraliskDen);
+    AP_RegisterZergUnit(9, "AP_UnlockUltralisk", UnlockUltraliskCavern);
     AP_RegisterZergUnit(12, "AP_UnlockCorruptor", UnlockSpire);
 
     //Larva Advanced
@@ -1235,7 +1235,7 @@ static void RegisterZergUnits() {
     AP_RegisterZergUnit(15, "AP_UnlockDefiler", UnlockInfestationPit);
 
     // Morphs
-    AP_RegisterZergUnit(4, "AP_UnlockBaneling", UnlockBanelingNest);
+    AP_RegisterZergUnit(4, "AP_UnlockBaneling", UnlockBanelingFunc);
     AP_RegisterZergUnit(29, "AP_UnlockImpaler", UnlockImpalerFunc);
     AP_RegisterZergUnit(30, "AP_UnlockLurker", UnlockLurkerFunc);
     AP_RegisterZergUnit(31, "AP_UnlockBroodLord", UnlockBroodLordFunc);
@@ -1962,7 +1962,7 @@ static void ArtanisPurifierAspectFunc(int player) {
 }
 
 static void ArtanisTaldarimAspectFunc(int player) {
-    TechTreeUpgradeAddLevel(player, "AP_DarkTemplarShaAP_ArtanisTaldarimAspectUnlockeddowFuryAll", 1);
+    TechTreeUpgradeAddLevel(player, "AP_ArtanisTaldarimAspectUnlocked", 1);
 }
 
 static void NexusPowerFunc(int player) {
@@ -2122,7 +2122,7 @@ static void RegisterProtossItems() {
     AP_RegisterProtossItem(62, "AP_DarkArchonFeedback");
     AP_RegisterProtossItem(63, "AP_DarkArchonMaelstrom");
     AP_RegisterProtossItem(64, "AP_ArgusTalisman");
-    AP_RegisterProtossItem(185, "AP_DarkArchonIndomidableWill");
+    AP_RegisterProtossItem(185, "AP_DarkArchonIndomitableWill");
 
     // Dark Templar
     AP_RegisterProtossItem(53, "AP_ShroudOfAdun");
