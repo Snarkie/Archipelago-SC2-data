@@ -47,7 +47,7 @@ static unitfilter UnitFilterStandard = UnitFilter(0, 0, (1 << c_targetFilterMiss
 
 // Functions
 static void log(string s) {
-    TriggerDebugOutput(1, StringToText("Item Unlock System: " + s), true);
+    TriggerDebugOutput(1, StringToText("Item Unlock System: " + s), false);
 }
 
 static void RegisterItem(int id, int offset, string upgrade, AP_ItemFunc itemFunc) {
@@ -146,9 +146,9 @@ void AP_RegisterProtossUpgrade(int id, AP_ProgressiveFunc itemFunc) {
 }
 
 static void UnlockItem(int player, int index) {
-    log("unlocking index: " + IntToString(index));
+    // log("unlocking index: " + IntToString(index));
     if (ItemDatabase[index].Upgrade != null) {
-        log("upgrade: " + ItemDatabase[index].Upgrade);
+        // log("upgrade: " + ItemDatabase[index].Upgrade);
         TechTreeUpgradeAddLevel(player, ItemDatabase[index].Upgrade, 1);
     }
     if (ItemDatabase[index].UnlockFunc != null) {
@@ -178,10 +178,10 @@ static void UnlockItems(int player, int offset, string hexInput) {
     if (player <= 0) {
         player = lib5BD4895D_gf_AP_Core_getUser();
     }
-     log("Input: " + hexInput);
+    // log("Input: " + hexInput);
     for (i = length; i > 0; i -= 1) {
         fourBits = AP_HexDigitToInt(StringSub(hexInput, i, i));
-        log("four bits " + IntToString(i) + ": " + IntToString(fourBits));
+        // log("four bits " + IntToString(i) + ": " + IntToString(fourBits));
         if (fourBits <= 0) { continue; }
         for (j = 0; j < 4; j += 1) {
             index = (4 * (length - i)) + j + offset;

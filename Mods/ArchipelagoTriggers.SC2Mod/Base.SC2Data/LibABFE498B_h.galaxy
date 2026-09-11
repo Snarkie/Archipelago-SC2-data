@@ -177,7 +177,6 @@ void libABFE498B_gf_AP_Triggers_replaceUpgrade (int lp_player, string lp_oldUpgr
 
 // Trigger Declarations
 trigger libABFE498B_gt_AP_Triggers_PatchesInit;
-trigger libABFE498B_gt_AP_Triggers_techTreeInit;
 trigger libABFE498B_gt_AP_Triggers_bankInit;
 trigger libABFE498B_gt_AP_Triggers_bankOptionsInit;
 trigger libABFE498B_gt_AP_Triggers_bankItemsInit;
