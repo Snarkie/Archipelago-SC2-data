@@ -4,9 +4,6 @@ include "Libraries/AP_Triggers_Hex_h"
 // Constants
 static const string ALPHABET = "0123456789ABCDEF";
 
-// Globals
-static int[16] HexToInt;
-
 static void log(string s) {
     TriggerDebugOutput(1, StringToText("Hex: " + s), true);
 }
