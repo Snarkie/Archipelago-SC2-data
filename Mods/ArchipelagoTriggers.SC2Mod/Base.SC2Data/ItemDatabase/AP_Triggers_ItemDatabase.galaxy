@@ -239,8 +239,8 @@ static void GraduatingRangeFunc (int player) {
         || type == "AP_InfestedSiegeBreakerSieged"
         || type == "AP_InfestedSiegeBreakerSiegedTransportable"
         )
-        && !UnitHasBehavior2(u, "AP_SiegeTankSiegeModeProgressiveRangeIncrease")) {
-            UnitBehaviorAdd(u, "AP_SiegeTankSiegeModeProgressiveRangeIncrease", u, 1);
+        && !UnitHasBehavior2(u, "AP_SiegeTankSiegeModeProgressiveRangeIncease")) {   // Typo intended for now
+            UnitBehaviorAdd(u, "AP_SiegeTankSiegeModeProgressiveRangeIncease", u, 1);
         }
     }
 }
