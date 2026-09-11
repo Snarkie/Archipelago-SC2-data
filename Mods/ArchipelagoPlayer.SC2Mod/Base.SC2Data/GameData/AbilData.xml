@@ -13849,15 +13849,15 @@
     <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
     <Range value="5"/>
         <InfoArray index="Train1" Time="45">
-            <Button DefaultButtonFace="AP_SiegeTankMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_SiegeTankMengsk" State="Restricted" Requirements="AP_UnlockShockDivision"/>
             <Unit value="AP_SiegeTankMengsk"/>
         </InfoArray>
         <InfoArray index="Train2" Time="60">
-            <Button DefaultButtonFace="AP_ThorMengsk" State="Restricted" Requirements="AP_HaveArmory"/>
+            <Button DefaultButtonFace="AP_ThorMengsk" State="Restricted" Requirements="AP_UnlockBlackhammer"/>
             <Unit value="AP_ThorMengsk"/>
         </InfoArray>
         <InfoArray index="Train3" Time="40">
-            <Button DefaultButtonFace="AP_GoliathMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_GoliathMengsk" State="Restricted" Requirements="AP_UnlockBulwarkCompany"/>
             <Unit value="AP_GoliathMengsk"/>
         </InfoArray>
     </CAbilTrain>

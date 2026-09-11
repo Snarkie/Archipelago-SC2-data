@@ -5713,6 +5713,7 @@
     </CRequirement>
     <CRequirement id="AP_UnlockBlackhammer">
         <NodeArray index="Show" Link="AP_UnlockBlackhammer"/>
+        <NodeArray index="Use" Link="AP_CountUnitArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="AP_UnlockBulwarkCompany">
         <NodeArray index="Show" Link="AP_UnlockBulwarkCompany"/>
