@@ -608,6 +608,7 @@ static void RegisterTerranItems() {
     AP_RegisterTerranItem(51, "AP_ReaperSpiderMines");
     AP_RegisterTerranItem(52, "AP_CombatDrugs");
     AP_RegisterTerranItem(85, "AP_ResourceEfficiencyReaper");
+    AP_RegisterTerranItem(86, "AP_ReaperLifeBoost");  // Ballistic Flight Suit
     AP_RegisterTerranItem(245, "AP_SuperStimpackReaper"); // Med Pack
 
     // Ghost
