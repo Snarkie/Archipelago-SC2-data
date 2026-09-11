@@ -2006,12 +2006,12 @@ static void ProtossGroundArmorFunc (int player, int level) {
 }
 
 static void ProtossAirWeaponFunc (int player, int level) {
-    UnlockForge(player);
+    UnlockCyberneticsCore(player);
     AP_HandleProtossUpgrade(player, level, 2);
 }
 
 static void ProtossAirArmorFunc (int player, int level) {
-    UnlockForge(player);
+    UnlockCyberneticsCore(player);
     AP_HandleProtossUpgrade(player, level, 3);
 }
 
