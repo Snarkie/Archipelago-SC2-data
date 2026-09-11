@@ -6728,7 +6728,7 @@
                 <TimeUse value="28"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_PhoenixAiur" State="Restricted"/>
+            <Button DefaultButtonFace="AP_PhoenixAiur" State="Restricted" Requirements="AP_UnlockPhoenix"/>
         </InfoArray>
         <InfoArray index="Train2" Time="5" Unit="AP_PhoenixPurifier">
             <Charge Location="Unit">
@@ -6740,7 +6740,7 @@
                 <TimeUse value="28"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_PhoenixPurifier" State="Restricted"/>
+            <Button DefaultButtonFace="AP_PhoenixPurifier" State="Restricted" Requirements="AP_UnlockMirage"/>
         </InfoArray>
         <InfoArray index="Train3" Time="5" Unit="AP_CorsairMP">
             <Charge Location="Unit">
@@ -6752,7 +6752,7 @@
                 <TimeUse value="28"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_Corsair" State="Restricted"/>
+            <Button DefaultButtonFace="AP_Corsair" State="Restricted" Requirements="AP_UnlockCorsair"/>
         </InfoArray>
         <InfoArray index="Train4" Time="5" Unit="AP_VoidRayShakuras">
             <Charge Location="Unit">
@@ -6764,7 +6764,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_VoidRayShakuras" State="Restricted"/>
+            <Button DefaultButtonFace="AP_VoidRayShakuras" State="Restricted" Requirements="AP_UnlockVoidray"/>
         </InfoArray>
         <InfoArray index="Train5" Time="5" Unit="AP_VoidRayTaldarim">
             <Charge Location="Unit">
@@ -6776,7 +6776,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_VoidRayTaldarim" State="Restricted"/>
+            <Button DefaultButtonFace="AP_VoidRayTaldarim" State="Restricted" Requirements="AP_UnlockDestroyer"/>
         </InfoArray>
         <InfoArray index="Train6" Time="5" Unit="AP_TempestPurifier">
             <Charge Location="Unit">
@@ -6788,7 +6788,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_TempestPurifier" State="Restricted" Requirements="AP_HaveFleetBeacon"/>
+            <Button DefaultButtonFace="AP_TempestPurifier" State="Restricted" Requirements="AP_UnlockTempest"/>
         </InfoArray>
         <InfoArray index="Train7" Time="5" Unit="AP_CarrierAiur">
             <Charge Location="Unit">
@@ -6800,7 +6800,7 @@
                 <TimeUse value="96"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_CarrierAiur" State="Restricted" Requirements="AP_HaveFleetBeacon"/>
+            <Button DefaultButtonFace="AP_CarrierAiur" State="Restricted" Requirements="AP_UnlockCarrier"/>
         </InfoArray>
         <InfoArray index="Train8" Time="5" Unit="AP_ArbiterMP">
             <Charge Location="Unit">
@@ -6812,7 +6812,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_Arbiter" State="Restricted"/>
+            <Button DefaultButtonFace="AP_Arbiter" State="Restricted" Requirements="AP_UnlockArbiter"/>
         </InfoArray>
         <InfoArray index="Train9" Time="5" Unit="AP_SOAMothershipv4Placement">
             <Charge Location="Unit">
@@ -6824,7 +6824,7 @@
                 <TimeUse value="96"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_MothershipTaldarim" State="Restricted" Requirements="AP_MothershipTaldarimRequirements"/>
+            <Button DefaultButtonFace="AP_MothershipTaldarim" State="Restricted" Requirements="AP_UnlockMothershipTaldarim"/>
         </InfoArray>
         <InfoArray index="Train10" Time="5" Unit="AP_ScoutMP">
             <Charge Location="Unit">
@@ -6836,7 +6836,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_Scout" State="Restricted"/>
+            <Button DefaultButtonFace="AP_Scout" State="Restricted" Requirements="AP_UnlockScout"/>
         </InfoArray>
         <InfoArray index="Train11" Time="5" Unit="AP_Oracle">
             <Charge Location="Unit">
@@ -6848,7 +6848,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_Oracle" State="Restricted"/>
+            <Button DefaultButtonFace="AP_Oracle" State="Restricted" Requirements="AP_UnlockOracle"/>
         </InfoArray>
         <InfoArray index="Train12" Time="5" Unit="AP_VoidRayAiur">
             <Charge Location="Unit">
@@ -6860,7 +6860,7 @@
                 <TimeUse value="40"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_VoidRayAiur" State="Restricted"/>
+            <Button DefaultButtonFace="AP_VoidRayAiur" State="Restricted" Requirements="AP_UnlockPulsar"/>
         </InfoArray>
         <InfoArray index="Train13" Time="5" Unit="AP_VoidRayPurifier">
             <Charge Location="Unit">
@@ -6872,7 +6872,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_VoidRayPurifier" State="Restricted"/>
+            <Button DefaultButtonFace="AP_VoidRayPurifier" State="Restricted" Requirements="AP_UnlockDawnbringer"/>
         </InfoArray>
         <InfoArray index="Train14" Time="5" Unit="AP_CarrierTaldarim">
             <Charge Location="Unit">
@@ -6884,7 +6884,7 @@
                 <TimeUse value="96"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_CarrierTaldarim" State="Restricted" Requirements="AP_HaveFleetBeacon"/>
+            <Button DefaultButtonFace="AP_CarrierTaldarim" State="Restricted" Requirements="AP_UnlockSkylord"/>
         </InfoArray>
         <InfoArray index="Train15" Time="5" Unit="AP_CarrierPurifier">
             <Charge Location="Unit">
@@ -6896,8 +6896,7 @@
                 <TimeUse value="96"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_CarrierPurifier" State="Restricted" Requirements="AP_HaveFleetBeacon"/>
-        </InfoArray>
+            <Button DefaultButtonFace="AP_CarrierPurifier" State="Restricted" Requirements="AP_UnlockTrireme"/>        </InfoArray>
         <InfoArray index="Train16" Time="5" Unit="AP_PhoenixTaldarim">
             <Charge Location="Unit">
                 <CountMax value="1"/>
@@ -6908,7 +6907,7 @@
                 <TimeUse value="28"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_PhoenixTaldarim" State="Restricted"/>
+            <Button DefaultButtonFace="AP_PhoenixTaldarim" State="Restricted" Requirements="AP_UnlockSkirmisher"/>
         </InfoArray>
         <InfoArray index="Train17" Time="5" Unit="AP_ScoutTaldarim">
             <Charge>
@@ -6921,7 +6920,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ScoutTaldarim" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ScoutPurifier" State="Restricted" Requirements="AP_UnlockCaladrius"/>
         </InfoArray>
         <InfoArray index="Train18" Time="5" Unit="AP_ScoutPurifier">
             <Charge>
@@ -6934,7 +6933,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ScoutPurifier" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ScoutPurifier" State="Restricted" Requirements="AP_UnlockCaladrius"/>
         </InfoArray>
         <InfoArray index="Train19" Time="5" Unit="AP_ScoutNerazim">
             <Charge>
@@ -6947,7 +6946,7 @@
                 <TimeUse value="48"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ScoutNerazim" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ScoutNerazim" State="Restricted" Requirements="AP_UnlockMistwing"/>
         </InfoArray>
     </CAbilWarpTrain>
     <CAbilWarpTrain id="AP_StargateWarpTrainRedirect" parent="AP_StargateWarpTrain"/>
@@ -6982,7 +6981,7 @@
             <Unit value="AP_WarpPrism"/>
         </InfoArray>
         <InfoArray index="Train2" Time="30" Effect="WarpInEffect15">
-            <Button DefaultButtonFace="Observer" State="Restricted"/>
+            <Button DefaultButtonFace="Observer" State="Restricted" Requirements="AP_UnlockObserver"/>
             <Unit value="AP_Observer"/>
         </InfoArray>
         <InfoArray index="Train3" Time="75">
@@ -7030,7 +7029,7 @@
                 <TimeUse value="40"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_WarpPrism" State="Restricted"/>
+            <Button DefaultButtonFace="AP_WarpPrism" State="Restricted" Requirements="AP_UnlockWarpPrism"/>
         </InfoArray>
         <InfoArray index="Train2" Time="5" Unit="AP_Observer">
             <Charge Location="Unit">
@@ -7042,7 +7041,7 @@
                 <TimeUse value="30"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="Observer" State="Restricted"/>
+            <Button DefaultButtonFace="Observer" State="Restricted" Requirements="AP_UnlockObserver"/>
         </InfoArray>
         <InfoArray index="Train3" Time="5" Unit="AP_ColossusPurifier">
             <Charge Location="Unit">
@@ -7054,7 +7053,7 @@
                 <TimeUse value="60"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ColossusPurifier" State="Restricted" Requirements="AP_HaveRoboticsBay"/>
+            <Button DefaultButtonFace="AP_ColossusPurifier" State="Restricted" Requirements="AP_UnlockColossus"/>
         </InfoArray>
         <InfoArray index="Train4" Time="5" Unit="AP_ImmortalAiur">
             <Charge Location="Unit">
@@ -7078,7 +7077,7 @@
                 <TimeUse value="60"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ColossusTaldarim" State="Restricted" Requirements="AP_HaveRoboticsBay"/>
+            <Button DefaultButtonFace="AP_ColossusTaldarim" State="Restricted" Requirements="AP_UnlockWrathwalker"/>
         </InfoArray>
         <InfoArray index="Train6" Time="5" Unit="AP_ImmortalShakuras">
             <Charge Location="Unit">
@@ -7090,7 +7089,7 @@
                 <TimeUse value="44"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ImmortalShakuras" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ImmortalShakuras" State="Restricted" Requirements="AP_UnlockAnnihilator"/>
         </InfoArray>
         <InfoArray index="Train7" Time="5" Unit="AP_ImmortalTaldarim">
             <Charge Location="Unit">
@@ -7102,7 +7101,7 @@
                 <TimeUse value="44"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ImmortalTaldarim" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ImmortalTaldarim" State="Restricted" Requirements="AP_UnlockVanguard"/>
         </InfoArray>
         <InfoArray index="Train8" Time="5" Unit="AP_Reaver">
             <Charge Location="Unit">
@@ -7114,7 +7113,7 @@
                 <TimeUse value="60"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_Reaver" State="Restricted" Requirements="AP_HaveRoboticsBay"/>
+            <Button DefaultButtonFace="AP_Reaver" State="Restricted" Requirements="AP_UnlockReaver"/>
         </InfoArray>
         <InfoArray index="Train9" Time="5" Unit="AP_Disruptor">
             <Charge Location="Unit">
@@ -7126,7 +7125,7 @@
                 <TimeUse value="45"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_Disruptor" State="Restricted"/>
+            <Button DefaultButtonFace="AP_Disruptor" State="Restricted" Requirements="AP_UnlockDisruptor"/>
         </InfoArray>
         <InfoArray index="Train10" Time="5" Unit="AP_ImmortalPurifier">
             <Charge Location="Unit">
@@ -7138,7 +7137,7 @@
                 <TimeUse value="44"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ImmortalPurifier" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ImmortalPurifier" State="Restricted" Requirements="AP_UnlockStalwart"/>
         </InfoArray>
     </CAbilWarpTrain>
     <CAbilWarpTrain id="AP_RoboticsFacilityWarpTrainRedirect" parent="AP_RoboticsFacilityWarpTrain"/>
