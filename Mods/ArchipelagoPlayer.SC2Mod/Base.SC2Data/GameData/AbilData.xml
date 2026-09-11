@@ -14491,19 +14491,19 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <Range value="5"/>
         <InfoArray index="Train1" Time="30">
-            <Button DefaultButtonFace="AP_MarauderMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_MarauderMengsk" State="Restricted" Requirements="AP_UnlockAegisGuard"/>
             <Unit value="AP_MarauderMengsk"/>
         </InfoArray>
         <InfoArray index="Train2" Time="40">
-            <Button DefaultButtonFace="AP_GhostMengsk" State="Restricted" Requirements="AP_HaveShadowOps"/>
+            <Button DefaultButtonFace="AP_GhostMengsk" State="Restricted" Requirements="AP_UnlockEmperorsShadow"/>
             <Unit value="AP_GhostMengsk"/>
         </InfoArray>
         <InfoArray index="Train3" Time="25">
-            <Button DefaultButtonFace="AP_MarineMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_MarineMengsk" State="Restricted" Requirements="AP_UnlockSonOfKorhal"/>
             <Unit value="AP_MarineMengsk"/>
         </InfoArray>
         <InfoArray index="Train4" Time="25">
-            <Button DefaultButtonFace="AP_MedicMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_MedicMengsk" State="Restricted" Requirements="AP_UnlockFieldResponseTheta"/>
             <Unit value="AP_MedicMengsk"/>
         </InfoArray>
     </CAbilTrain>

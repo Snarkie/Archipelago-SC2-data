@@ -5700,6 +5700,7 @@
     </CRequirement>
     <CRequirement id="AP_UnlockEmperorsShadow">
         <NodeArray index="Show" Link="AP_UnlockEmperorsShadow"/>
+        <NodeArray index="Use" Link="AP_CountUnitGhostAcademyCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="AP_UnlockSonOfKorhal">
         <NodeArray index="Show" Link="AP_UnlockSonOfKorhal"/>
