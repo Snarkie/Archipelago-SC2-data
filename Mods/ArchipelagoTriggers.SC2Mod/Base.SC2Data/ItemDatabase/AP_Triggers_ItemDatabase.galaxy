@@ -1335,7 +1335,7 @@ static void EvolutionaryLeapFunc (int player) {
     if (TechTreeUpgradeCount(player,"AP_EvolutionaryLeapLevel1",c_techCountCompleteOnly) > 0) {
         return;
     }
-    TechTreeUpgradeAddLevel(player,"AP_EvolutionaryLeapLevel1",1);
+    TechTreeUpgradeAddLevel(player,"AP_EvolutionaryLeapLevel1", 1);
     for (i = 0; i < lib15EF4C78_gv_aP_Player_MERC_COOLDOWN_LINK_SIZE; i += 1) {
         if ( lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_BROODWAR
         || lib15EF4C78_gv_aP_Player_MercType[i] == lib15EF4C78_ge_AP_Player_MercenaryType_INFESTED
@@ -2451,13 +2451,53 @@ static void RegisterProtossItems() {
     AP_RegisterProtossItem(243, "AP_ProbeWarpin");
     AP_RegisterProtossItem(244, "AP_ElderProbes");
 
-
     // W/A Upgrades
     AP_RegisterProtossUpgrade(0, ProtossGroundWeaponFunc);
     AP_RegisterProtossUpgrade(4, ProtossGroundArmorFunc);
     AP_RegisterProtossUpgrade(8, ProtossAirWeaponFunc);
     AP_RegisterProtossUpgrade(12, ProtossAirArmorFunc);
     AP_RegisterProtossUpgrade(16, ProtossShieldsFunc);
+}
+
+static void ClearTech(int player) {
+    AP_ClearUpgrades(player);
+}
+
+static void UnlockDefaultTech(int player) {
+
+    // Terran
+    TechTreeUpgradeAddLevel(player,"AP_SiegeTech", 1);
+    TechTreeUpgradeAddLevel(player,"AP_WraithCloak", 1);
+    TechTreeUpgradeAddLevel(player,"AP_BansheeCloak", 1);
+    TechTreeUpgradeAddLevel(player,"AP_YamatoCannon", 1);
+    TechTreeUpgradeAddLevel(player,"AP_NovaBaseSuitEnhancements", 1);
+    TechTreeUpgradeAddLevel(player,"AP_ReaperSpeed", 1);
+
+    // Unlock Tech Labs + Reactors unconditionally to allow swap plays
+    TechTreeUpgradeAddLevel(player,"AP_UnlockBarracksReactor", 1);
+    TechTreeUpgradeAddLevel(player,"AP_UnlockBarracksTechLab", 1);
+    TechTreeUpgradeAddLevel(player,"AP_UnlockFactoryReactor", 1);
+    TechTreeUpgradeAddLevel(player,"AP_UnlockFactoryTechLab", 1);
+    TechTreeUpgradeAddLevel(player,"AP_UnlockStarportReactor", 1);
+    TechTreeUpgradeAddLevel(player,"AP_UnlockStarportTechLab", 1);
+
+    // Zerg
+    TechTreeUpgradeAddLevel(player,"AP_KerriganPostLabSounds", 1);
+    TechTreeUpgradeAddLevel(player,"AP_OverlordContaminate", 1);
+
+    // Protoss
+    TechTreeUpgradeAddLevel(player,"AP_SlayerConfig", 1);
+    TechTreeUpgradeAddLevel(player,"AP_AlarakStalkerPhasingArmor", 1);
+    TechTreeUpgradeAddLevel(player,"AP_VoidRayBeamCanCharge", 1);
+}
+
+static void InitTech() {
+    int i; int p;
+    for (i = 1; i <= PlayerGroupCount(lib5BD4895D_gv_aP_Core_affectedPlayers); i += 1) {
+        p = PlayerGroupPlayer(lib5BD4895D_gv_aP_Core_affectedPlayers, i);
+        ClearTech(p);
+        UnlockDefaultTech(p);
+    }
 }
 
 void AP_Triggers_ItemDatabaseInit() {
@@ -2467,4 +2507,5 @@ void AP_Triggers_ItemDatabaseInit() {
     RegisterZergItems();
     RegisterProtossUnits();
     RegisterProtossItems();
+    // InitTech();
 }
