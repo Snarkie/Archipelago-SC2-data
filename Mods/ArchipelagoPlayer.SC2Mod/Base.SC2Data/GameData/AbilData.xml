@@ -8472,11 +8472,11 @@
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Structures"/>
         <Activity value="UI/Warping"/>
         <InfoArray index="Train1" Time="38">
-            <Button DefaultButtonFace="AP_ZealotAiur" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ZealotAiur" State="Restricted" Requirements="AP_UnlockZealot"/>
             <Unit value="AP_ZealotAiur"/>
         </InfoArray>
         <InfoArray index="Train2" Time="42">
-            <Button DefaultButtonFace="AP_StalkerShakuras" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_StalkerShakuras" State="Restricted" Requirements="AP_UnlockStalker"/>
             <Unit value="AP_StalkerShakuras"/>
         </InfoArray>
         <!--        <InfoArray index="Train3" Time="37">-->
@@ -8484,19 +8484,19 @@
         <!--            <Unit value="Replicant"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Train4" Time="55">
-            <Button DefaultButtonFace="AP_HighTemplarAiur" State="Restricted" Requirements="AP_HaveTemplarArchives"/>
+            <Button DefaultButtonFace="AP_HighTemplarAiur" State="Restricted" Requirements="AP_UnlockHighTemplar"/>
             <Unit value="AP_HighArchonTemplar"/>
         </InfoArray>
         <InfoArray index="Train5" Time="55">
-            <Button DefaultButtonFace="AP_DarkTemplarShakuras" State="Restricted" Requirements="AP_HaveDarkShrine"/>
+            <Button DefaultButtonFace="AP_DarkTemplarShakuras" State="Restricted" Requirements="AP_UnlockDarkTemplar"/>
             <Unit value="AP_DarkTemplarShakuras"/>
         </InfoArray>
         <InfoArray index="Train6" Time="37">
-            <Button DefaultButtonFace="AP_SentryAiur" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_SentryAiur" State="Restricted" Requirements="AP_UnlockSentry"/>
             <Unit value="AP_SentryAiur"/>
         </InfoArray>
         <InfoArray index="Train7" Time="38">
-            <Button DefaultButtonFace="AP_WarpInAdept" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_WarpInAdept" State="Restricted" Requirements="AP_UnlockAdept"/>
             <Unit value="AP_Adept"/>
         </InfoArray>
         <!--        <InfoArray index="Train8" Time="55">-->
@@ -8504,56 +8504,56 @@
         <!--            <Unit value="ArchonAdvanced"/>-->
         <!--        </InfoArray>-->
         <InfoArray index="Train9" Time="38">
-            <Button DefaultButtonFace="AP_ZealotPurifier" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ZealotPurifier" State="Restricted" Requirements="AP_UnlockSentinel"/>
             <Unit value="AP_ZealotPurifier"/>
         </InfoArray>
         <InfoArray index="Train10" Time="38">
-            <Button DefaultButtonFace="AP_ZealotShakuras" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ZealotShakuras" State="Restricted" Requirements="AP_UnlockCenturion"/>
             <Unit value="AP_ZealotShakuras"/>
         </InfoArray>
         <InfoArray index="Train11" Time="28">
-            <Button DefaultButtonFace="AP_WarpInSupplicant" State="Restricted"/>
+            <Button DefaultButtonFace="AP_WarpInSupplicant" State="Restricted" Requirements="AP_UnlockSupplicant"/>
             <Unit value="AP_Supplicant"/>
             <Unit value="AP_Supplicant"/>
         </InfoArray>
         <InfoArray index="Train12" Time="42">
-            <Button DefaultButtonFace="AP_StalkerPurifier" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_StalkerPurifier" State="Restricted" Requirements="AP_UnlockInstigator"/>
             <Unit value="AP_StalkerPurifier"/>
         </InfoArray>
         <InfoArray index="Train13" Time="42">
-            <Button DefaultButtonFace="AP_Slayer" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_Slayer" State="Restricted" Requirements="AP_UnlockSlayer"/>
             <Unit value="AP_Slayer"/>
         </InfoArray>
         <InfoArray index="Train14" Time="55">
-            <Button DefaultButtonFace="AP_HighTemplarShakuras" State="Restricted" Requirements="AP_HaveTemplarArchives"/>
+            <Button DefaultButtonFace="AP_HighTemplarShakuras" State="Restricted" Requirements="AP_UnlockSignifier"/>
             <Unit value="AP_HighTemplarShakuras"/>
         </InfoArray>
         <InfoArray index="Train15" Time="55">
-            <Button DefaultButtonFace="AP_HighTemplarTaldarim" State="Restricted" Requirements="AP_HaveTemplarArchives"/>
+            <Button DefaultButtonFace="AP_HighTemplarTaldarim" State="Restricted" Requirements="AP_UnlockAscendant"/>
             <Unit value="AP_HighTemplarTaldarim"/>
         </InfoArray>
         <InfoArray index="Train16" Time="55">
-            <Button DefaultButtonFace="AP_DarkTemplarAiur" State="Restricted" Requirements="AP_HaveDarkShrine"/>
+            <Button DefaultButtonFace="AP_DarkTemplarAiur" State="Restricted" Requirements="AP_UnlockAvenger"/>
             <Unit value="AP_DarkTemplarAiur"/>
         </InfoArray>
         <InfoArray index="Train17" Time="55">
-            <Button DefaultButtonFace="AP_DarkTemplarTaldarim" State="Restricted" Requirements="AP_HaveDarkShrine"/>
+            <Button DefaultButtonFace="AP_DarkTemplarTaldarim" State="Restricted" Requirements="AP_UnlockBloodhunter"/>
             <Unit value="AP_DarkTemplarTaldarim"/>
         </InfoArray>
         <InfoArray index="Train18" Time="42">
-            <Button DefaultButtonFace="AP_Dragoon" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_Dragoon" State="Restricted" Requirements="AP_UnlockDragoon"/>
             <Unit value="AP_Dragoon"/>
         </InfoArray>
         <InfoArray index="Train19" Time="55">
-            <Button DefaultButtonFace="AP_DarkArchon" State="Restricted" Requirements="AP_HaveTemplarArchivesDarkArchon"/>
+            <Button DefaultButtonFace="AP_HighTemplarShakuras" State="Restricted" Requirements="AP_UnlockDarkArchon"/>
             <Unit value="AP_DarkArchon"/>
         </InfoArray>
         <InfoArray index="Train20" Time="37">
-            <Button DefaultButtonFace="AP_SentryPurifier" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_SentryPurifier" State="Restricted" Requirements="AP_UnlockEnergizer"/>
             <Unit value="AP_SentryPurifier"/>
         </InfoArray>
         <InfoArray index="Train21" Time="37">
-            <Button DefaultButtonFace="AP_Monitor" State="Restricted" Requirements="AP_HaveCyberneticsCore"/>
+            <Button DefaultButtonFace="AP_Monitor" State="Restricted" Requirements="AP_UnlockHavoc"/>
             <Unit value="AP_Monitor"/>
         </InfoArray>
     </CAbilTrain>
