@@ -2616,10 +2616,10 @@
             <Button DefaultButtonFace="BuildTechLabBarracks" State="Restricted" Requirements="AP_UnlockBarracksTechLab"/>
         </InfoArray>
         <InfoArray index="Build2" Unit="AP_BarracksReactor" Time="50">
-            <Button Requirements="AP_UnlockBarracksReactor"/>
+            <Button DefaultButtonFace="Reactor" State="Restricted" Requirements="AP_UnlockBarracksReactor"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="AP_BarracksTechReactor" Time="25" AddOnParentCmdPriority="-1">
-            <Button DefaultButtonFace="AP_TechReactor" Requirements="AP_UseTechReactor"/>
+            <Button DefaultButtonFace="AP_TechReactor" State="Restricted" Requirements="AP_UseTechReactor"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilMorph id="AP_BarracksLiftOff" parent="TerranBuildingLiftOff" unit="AP_BarracksFlying">
@@ -3331,10 +3331,10 @@
             <Button DefaultButtonFace="BuildTechLabFactory" State="Restricted" Requirements="AP_UnlockFactoryTechLab"/>
         </InfoArray>
         <InfoArray index="Build2" Unit="AP_FactoryReactor" Time="50">
-            <Button Requirements="AP_UnlockFactoryReactor"/>
+            <Button DefaultButtonFace="Reactor" State="Restricted" Requirements="AP_UnlockFactoryReactor"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="AP_FactoryTechReactor" Time="25" AddOnParentCmdPriority="-1">
-            <Button DefaultButtonFace="AP_TechReactor" Requirements="AP_UseTechReactor"/>
+            <Button DefaultButtonFace="AP_TechReactor" State="Restricted" Requirements="AP_UseTechReactor"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilBuild id="AP_StarportAddOns" parent="TerranAddOns">
@@ -3345,10 +3345,10 @@
             <Button DefaultButtonFace="BuildTechLabStarport" State="Restricted" Requirements="AP_UnlockStarportTechLab"/>
         </InfoArray>
         <InfoArray index="Build2" Unit="AP_StarportReactor" Time="50">
-            <Button Requirements="AP_UnlockStarportReactor"/>
+            <Button  DefaultButtonFace="Reactor" State="Restricted" Requirements="AP_UnlockStarportReactor"/>
         </InfoArray>
         <InfoArray index="Build4" Unit="AP_StarportTechReactor" Time="25" AddOnParentCmdPriority="-1">
-            <Button DefaultButtonFace="AP_TechReactor" Requirements="AP_UseTechReactor"/>
+            <Button DefaultButtonFace="AP_TechReactor" State="Restricted" Requirements="AP_UseTechReactor"/>
         </InfoArray>
     </CAbilBuild>
     <CAbilMorphPlacement id="AP_FactoryLand" parent="TerranBuildingLand" unit="AP_Factory">
