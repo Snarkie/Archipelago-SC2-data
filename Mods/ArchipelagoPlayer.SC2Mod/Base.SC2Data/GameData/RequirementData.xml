@@ -5718,6 +5718,7 @@
     </CRequirement>
     <CRequirement id="AP_UnlockPrideOfAugustgrad">
         <NodeArray index="Show" Link="AP_UnlockPrideOfAugustgrad"/>
+        <NodeArray index="Use" Link="AP_CountUnitFusionCoreCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="AP_UnlockSkyFury">
         <NodeArray index="Show" Link="AP_UnlockSkyFury"/>

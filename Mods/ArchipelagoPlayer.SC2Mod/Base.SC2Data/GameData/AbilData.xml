@@ -10356,13 +10356,13 @@
             <Button DefaultButtonFace="AP_BuildDevastatorTurret" State="Restricted" Requirements="AP_UnlockDevastatorTurret"/>
         </InfoArray>
         <InfoArray index="Build26" Unit="AP_StarportMengsk" Time="50">
-            <Button DefaultButtonFace="AP_StarportMengsk" State="Restricted" Requirements="AP_UnlockEliteBarracks"/>
+            <Button DefaultButtonFace="AP_StarportMengsk" State="Restricted" Requirements="AP_UnlockEliteStarport"/>
         </InfoArray>
         <InfoArray index="Build27" Unit="AP_FactoryMengsk" Time="60">
             <Button DefaultButtonFace="AP_FactoryMengsk" State="Restricted" Requirements="AP_UnlockEliteFactory"/>
         </InfoArray>
         <InfoArray index="Build28" Unit="AP_BarracksMengsk" Time="60">
-            <Button DefaultButtonFace="AP_BarracksMengsk" State="Restricted" Requirements="AP_UnlockEliteStarport"/>
+            <Button DefaultButtonFace="AP_BarracksMengsk" State="Restricted" Requirements="AP_UnlockEliteBarracks"/>
         </InfoArray>
         <InfoArray index="Build29" Unit="AP_TradeStructure" Time="40">
             <Button DefaultButtonFace="AP_TradeStructure" State="Restricted" Requirements="AP_NotHaveTradeStructure"/>
@@ -13825,23 +13825,23 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <Range value="5"/>
         <InfoArray index="Train1" Time="110">
-            <Button DefaultButtonFace="AP_BattlecruiserMengsk" State="Restricted" Requirements="AP_HaveFusionCore"/>
+            <Button DefaultButtonFace="AP_BattlecruiserMengsk" State="Restricted" Requirements="AP_UnlockPrideOfAugustgrad"/>
             <Unit value="AP_BattlecruiserMengsk"/>
         </InfoArray>
         <InfoArray index="Train2" Time="42">
-            <Button DefaultButtonFace="AP_VikingMengskFighter" State="Restricted"/>
+            <Button DefaultButtonFace="AP_VikingMengskFighter" State="Restricted" Requirements="AP_UnlockSkyFury"/>
             <Unit value="AP_VikingMengskFighter"/>
         </InfoArray>
         <InfoArray index="Train3" Time="60">
-            <Button DefaultButtonFace="AP_LiberatorMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_LiberatorMengsk" State="Restricted" Requirements="AP_UnlockEmperorsGuardian"/>
             <Unit value="AP_LiberatorMengsk"/>
         </InfoArray>
         <InfoArray index="Train4" Time="50">
-            <Button DefaultButtonFace="AP_WraithMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_WraithMengsk" State="Restricted" Requirements="AP_UnlockNightHawk"/>
             <Unit value="AP_WraithMengsk"/>
         </InfoArray>
         <InfoArray index="Train5" Time="60">
-            <Button DefaultButtonFace="AP_BansheeMengsk" State="Restricted"/>
+            <Button DefaultButtonFace="AP_BansheeMengsk" State="Restricted" Requirements="AP_UnlockNightWolf"/>
             <Unit value="AP_BansheeMengsk"/>
         </InfoArray>
     </CAbilTrain>
