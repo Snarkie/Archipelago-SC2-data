@@ -263,7 +263,7 @@ void AP_HandleTerranUpgrade(int player, int level, int index, int modifier) {
         }
         if (libABFE498B_gv_aP_Triggers_Option_genericUpgradeResearchSpeedup) {
             for (i = 0; i < level - 3; i += 1) {
-                TechTreeUpgradeAllow(player, WAUpgradeSpeedupDatabase[index][i], true);
+                TechTreeUpgradeAddLevel(player, WAUpgradeSpeedupDatabase[index / 2][i], true);
             }
         }
     }
@@ -288,7 +288,7 @@ void AP_HandleZergUpgrade(int player, int level, int index) {
         }
         if (libABFE498B_gv_aP_Triggers_Option_genericUpgradeResearchSpeedup) {
             for (i = 0; i < level - 3; i += 1) {
-                TechTreeUpgradeAllow(player, WAUpgradeSpeedupDatabase[index + 6][i], true);
+                TechTreeUpgradeAddLevel(player, WAUpgradeSpeedupDatabase[index + 6][i], true);
             }
         }
     }
@@ -307,7 +307,7 @@ void AP_HandleProtossUpgrade(int player, int level, int index) {
         }
         if (libABFE498B_gv_aP_Triggers_Option_genericUpgradeResearchSpeedup) {
             for (i = 0; i < level - 3; i += 1) {
-                TechTreeUpgradeAllow(player, WAUpgradeSpeedupDatabase[index + 11][i], true);
+                TechTreeUpgradeAddLevel(player, WAUpgradeSpeedupDatabase[index + 11][i], true);
             }
         }
     }
