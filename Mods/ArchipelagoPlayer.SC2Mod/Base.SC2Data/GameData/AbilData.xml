@@ -6989,7 +6989,7 @@
             <Unit value="AP_ColossusPurifier"/>
         </InfoArray>
         <InfoArray index="Train4" Time="55">
-            <Button DefaultButtonFace="AP_ImmortalAiur" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ImmortalAiur" State="Restricted" Requirements="AP_UnlockImmortal"/>
             <Unit value="AP_ImmortalAiur"/>
         </InfoArray>
         <InfoArray index="Train5" Time="75">
@@ -7065,7 +7065,7 @@
                 <TimeUse value="44"/>
                 <Flags index="EnableChargeTimeQueuing" value="1"/>
             </Charge>
-            <Button DefaultButtonFace="AP_ImmortalAiur" State="Restricted"/>
+            <Button DefaultButtonFace="AP_ImmortalAiur" State="Restricted" Requirements="AP_UnlockImmortal"/>
         </InfoArray>
         <InfoArray index="Train5" Time="5" Unit="AP_ColossusTaldarim">
             <Charge Location="Unit">
