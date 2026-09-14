@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+	<Frame type="Image" name="MutatorIconTemplate">
+		<Height val="50"/>
+		<Width val="50"/>
+		<Visible val="False"/>
+		<Frame type="Image" name="MutatorCountBackground">
+			<Anchor side="Bottom" relative="$parent" pos="Max" offset="3"/>
+			<Anchor side="Right" relative="$parent" pos="Max" offset="3"/>
+			<Height val="25"/>
+			<Width val="25"/>
+			<RenderPriority val="513"/>
+            <Texture val="@UI/Game_Console_Buttons_MenuBar_Counter"/>
+            <TextureType val="NineSlice"/>
+            <Color val="###StandardButtonCounter"/>
+			<Frame type="Label" name="MutatorCountLabel">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="3"/>
+				<Anchor side="Right" relative="$parent" pos="Max" offset="2"/>
+				<Height val="20"/>
+				<Width val="20"/>
+				<Text val="4"/>
+            	<Color val="f5e4ff"/>
+			</Frame>
+		</Frame>
+	</Frame>
+
+
+	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+		<Frame type="Frame" name="MutatorIconFrame">
+			<Anchor side="Bottom" relative="$parent/MinimapPanel" pos="Min" offset="-20"/>
+			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+			<Height val="80"/>
+			<Width val="300"/>
+			<Visible val="True"/>
+			<Handle val="ap_MutatorBar"/>
+			<Frame type="Frame" name="MutatorIconContainer">
+				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Left" relative="$parent" pos="Min" offset="20"/>
+				<Height val="80"/>
+				<Width val="300"/>
+				<Visible val="False"/>
+				<Frame type="Image" name="MutatorIcon1" template="ap_mutators/MutatorIconTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
+					<Visible val="True"/>
+					<AcceptsMouse val="True"/>
+					<Tooltip val="Ghost Spawn Lvl 5:&lt;n/&gt;&lt;n/&gt;Ghost attack waves try to nuke your base."/>
+				</Frame>
+				<Frame type="Image" name="MutatorIcon2" template="ap_mutators/MutatorIconTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon1" pos="Max" offset="0"/>
+					<Texture val="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
+					<Visible val="True"/>
+					<AcceptsMouse val="True"/>
+					<Tooltip val="Void Duplicate Lvl 5:&lt;n/&gt;&lt;n/&gt;Enemy attack wave size increased by 100%."/>
+				</Frame>
+				<Frame type="Image" name="MutatorIcon3" template="ap_mutators/MutatorIconTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon2" pos="Max" offset="0"/>
+					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
+					<Visible val="True"/>
+				</Frame>
+				<Frame type="Image" name="MutatorIcon4" template="ap_mutators/MutatorIconTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon3" pos="Max" offset="0"/>
+					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
+					<Visible val="True"/>
+				</Frame>
+				<Frame type="Image" name="MutatorIcon5" template="ap_mutators/MutatorIconTemplate">
+					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon4" pos="Max" offset="0"/>
+					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
+					<Visible val="True"/>
+				</Frame>
+			</Frame>
+			<Frame type="Button" name="ToggleOn" template="TriggerDialogFrame/TriggerControlButtonTemplate">
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Top" relative="$parent" pos="Mid" offset="-25"/>
+				<Height val="20"/>
+				<Width val="20"/>
+				<Tooltip val="Show Mutators"/>
+				<Frame type="Image" name="NormalImage">
+					<Texture val="Assets\Textures\ui_ingame_resourcesharing_arrowbutton_normalandpressed.dds"/>
+					<TextureType val="Normal"/>
+					<Rotation val="90"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<Texture val="Assets\Textures\ui_ingame_resourcesharing_arrowbutton_normaloverandpressedover.dds"/>
+					<TextureType val="Normal"/>
+					<Rotation val="90"/>
+				</Frame>
+				<Visible val="False"/>
+			</Frame>
+			<Frame type="Button" name="ToggleOff" template="TriggerDialogFrame/TriggerControlButtonTemplate">
+				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+				<Anchor side="Top" relative="$parent" pos="Mid" offset="-25"/>
+				<Height val="20"/>
+				<Width val="20"/>
+				<Tooltip val="Hide Mutators"/>
+				<Frame type="Image" name="NormalImage">
+					<Texture val="Assets\Textures\ui_ingame_resourcesharing_arrowbutton_normalandpressed.dds"/>
+					<TextureType val="Normal"/>
+					<Rotation val="270"/>
+				</Frame>
+				<Frame type="Image" name="HoverImage">
+					<Texture val="Assets\Textures\ui_ingame_resourcesharing_arrowbutton_normaloverandpressedover.dds"/>
+					<TextureType val="Normal"/>
+					<Rotation val="270"/>
+				</Frame>
+			</Frame>
+		</Frame>
+	</Frame>
+</Desc>
