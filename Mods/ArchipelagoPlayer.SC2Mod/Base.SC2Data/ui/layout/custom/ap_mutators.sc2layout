@@ -90,7 +90,7 @@
 					<TextureType val="Normal"/>
 					<Rotation val="90"/>
 				</Frame>
-				<Visible val="False"/>
+				<Visible val="True"/>
 			</Frame>
 			<Frame type="Button" name="ToggleOff" template="TriggerDialogFrame/TriggerControlButtonTemplate">
 				<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
@@ -108,6 +108,7 @@
 					<TextureType val="Normal"/>
 					<Rotation val="270"/>
 				</Frame>
+				<Visible val="False"/>
 			</Frame>
 		</Frame>
 	</Frame>
