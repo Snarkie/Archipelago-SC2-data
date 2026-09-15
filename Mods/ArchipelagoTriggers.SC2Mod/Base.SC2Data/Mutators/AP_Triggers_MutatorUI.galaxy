@@ -1,0 +1,47 @@
+include "Mutators/AP_Triggers_MutatorUI.h"
+
+// Constants
+static string FRAME_MAIN_REF = "$ap_MutatorBar";
+
+// Globals
+static int FrameMain;
+static int FrameButtonContainer;
+static int ButtonToggleOn;
+static int ButtonToggleOff;
+static playergroup user = PlayerGroupSingle(lib5BD4895D_gf_AP_Core_getUser());
+static trigger onToggleVisibility;
+
+static void log(string s) {
+    TriggerDebugOutput(1, StringToText("Mutator UI: " + s), false);
+}
+
+static void VisibilityToggle(bool visible) {
+    DialogControlSetVisible(FrameButtonContainer, user, visible);
+    DialogControlSetVisible(ButtonToggleOff, user, visible);
+    DialogControlSetVisible(ButtonToggleOn, user, visible != true);
+}
+
+bool AP_MutatorUI_VisibilityToggleFunc(bool testCond, bool runActions) {
+    int d = EventDialogControl();
+    if (d == ButtonToggleOn) {
+        VisibilityToggle(true);
+    }
+    if (d == ButtonToggleOff) {
+        VisibilityToggle(false);
+    }
+    return true;
+}
+
+static void LayoutHookup() {
+    FrameMain = DialogControlHookupStandard(c_triggerControlTypePanel, FRAME_MAIN_REF);
+    FrameButtonContainer = DialogControlHookup(FrameMain, c_triggerControlTypePanel, "MutatorIconContainer");
+    ButtonToggleOn = DialogControlHookup(FrameMain, c_triggerControlTypeButton, "ToggleOn");
+    ButtonToggleOff = DialogControlHookup(FrameMain, c_triggerControlTypeButton, "ToggleOff");
+
+    onToggleVisibility = TriggerCreate("AP_MutatorUI_VisibilityToggleFunc");
+    TriggerAddEventDialogControl(onToggleVisibility, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void AP_Triggers_MutatorUI_Init() {
+    LayoutHookup();
+}

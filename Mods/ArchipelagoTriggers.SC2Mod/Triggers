@@ -32,6 +32,7 @@
                 AP_GhostSpawn_init();
                 AP_Triggers_UnlockSystemInit();
                 AP_Triggers_ItemDatabaseInit();
+                AP_Triggers_MutatorUI_Init();
             </ScriptCode>
         </Element>
         <Element Type="FunctionCall" Id="D06FE85F">
@@ -60,6 +61,7 @@
                 include &quot;Libraries/AP_Triggers_UnlockSystem&quot;
                 include &quot;ItemDatabase/AP_Triggers_ItemDatabase&quot;
                 include &quot;Mutators/AP_Triggers_GhostSpawn&quot;
+                include &quot;Mutators/AP_Triggers_MutatorUI&quot;
             </ScriptCode>
         </Element>
         <Element Type="Category" Id="323FB199">
