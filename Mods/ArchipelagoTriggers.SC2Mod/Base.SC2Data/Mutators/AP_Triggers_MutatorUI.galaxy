@@ -39,6 +39,7 @@ static void VisibilityToggle(bool visible) {
 }
 
 static void UISetSlot(int mutator, int slot) {
+    int dialogItemIconBackground;
     int dialogItemIcon;
     int dialogItemLevelBackground;
     int dialogItemLevel;
@@ -46,17 +47,18 @@ static void UISetSlot(int mutator, int slot) {
     string filePath;
     MutatorDatabase[mutator].Slot = slot;
     MutatorFromSlot[slot] = mutator;
-    dialogItemIcon = DialogControlHookup(FrameButtonContainer, c_triggerControlTypeImage, icon);
+    dialogItemIconBackground = DialogControlHookup(FrameButtonContainer, c_triggerControlTypeImage, icon);
+    dialogItemIcon = DialogControlHookup(dialogItemIconBackground, c_triggerControlTypeImage, "MutatorIcon");
     MutatorDatabase[mutator].DialogItemIcon = dialogItemIcon;
     filePath = MutatorDatabase[mutator].IconPath;
     DialogControlSetPropertyAsString(dialogItemIcon, c_triggerControlPropertyImage, user, filePath);
-    dialogItemLevelBackground = DialogControlHookup(dialogItemIcon, c_triggerControlTypeImage, "MutatorCountBackground");
+    dialogItemLevelBackground = DialogControlHookup(dialogItemIconBackground, c_triggerControlTypeImage, "MutatorCountBackground");
     if (MutatorDatabase[mutator].MaxLevel <= 1) {
         DialogControlSetVisible(dialogItemLevelBackground, user, false);
     }
     dialogItemLevel = DialogControlHookup(dialogItemLevelBackground, c_triggerControlTypeLabel, "MutatorCountLabel");
     MutatorDatabase[mutator].DialogItemLevel = dialogItemLevel;
-    DialogControlSetVisible(dialogItemIcon, user, true);
+    DialogControlSetVisible(dialogItemIconBackground, user, true);
 }
 
 static void MutatorRemove(int mutator) {
