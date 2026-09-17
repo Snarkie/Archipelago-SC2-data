@@ -681,6 +681,7 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockGhostSpawn_TriggerFunc (bool testCond
         return true;
     }
 
+    libABFE498B_gf_AP_Triggers_MutatorUIUpdate(0, lp_level);
     if ((lp_level <= 0)) {
         libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "AP_GhostSpawn", lp_level);
         libABFE498B_gv_aP_Triggers_Traps_hasGhostSpawn[lp_player] = false;
@@ -736,6 +737,7 @@ bool auto_libABFE498B_gf_AP_Triggers_unlockVoidDuplicate_TriggerFunc (bool testC
         return true;
     }
 
+    libABFE498B_gf_AP_Triggers_MutatorUIUpdate(1, lp_level);
     libNtve_gf_SetUpgradeLevelForPlayer(1, "AP_BiggerAttackWaves", lp_level);
     libABFE498B_gv_aP_Triggers_VoidDuplicate_Threshold = lp_level;
     if ((lp_level > 0)) {
@@ -1535,6 +1537,12 @@ int libABFE498B_gf_AP_Triggers_Base_getBiggestPlayer () {
     // Automatic Variable Declarations
     // Implementation
     return AP_Base_getBiggestPlayer();
+}
+
+void libABFE498B_gf_AP_Triggers_MutatorUIUpdate (int lp_mutator, int lp_level) {
+    // Automatic Variable Declarations
+    // Implementation
+    AP_MutatorUIUpdate(lp_mutator, lp_level);
 }
 
 trigger auto_libABFE498B_gf_AP_Triggers_enableMutatorCloak_Trigger = null;

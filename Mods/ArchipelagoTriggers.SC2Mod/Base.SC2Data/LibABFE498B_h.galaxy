@@ -152,6 +152,7 @@ void libABFE498B_gf_AP_Triggers_Base_detect (int lp_player);
 void libABFE498B_gf_AP_Triggers_Base_show (int lp_player);
 int libABFE498B_gf_AP_Triggers_Base_getBiggestBaseIndex (int lp_player);
 int libABFE498B_gf_AP_Triggers_Base_getBiggestPlayer ();
+void libABFE498B_gf_AP_Triggers_MutatorUIUpdate (int lp_mutator, int lp_level);
 void libABFE498B_gf_AP_Triggers_enableMutatorCloak (int lp_player, bool lp_enable);
 void libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuilding (int lp_difficulty);
 void libABFE498B_gf_AP_Triggers_GhostSpawn_placeBuildingForPlayer (int lp_player, int lp_difficulty);
