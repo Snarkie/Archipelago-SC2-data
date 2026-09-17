@@ -35,6 +35,28 @@
 		</Frame>
 	</Frame>
 
+	<Frame type="Button" name="ToggleTemplate" template="TriggerDialogFrame/TriggerControlButtonTemplate">
+		<Height val="25"/>
+		<Width val="25"/>
+		<Frame type="Image" name="BackgroundImage">
+			<Anchor side="Right" relative="$parent" pos="Max" offset="10"/>
+			<Anchor side="Bottom" relative="$parent" pos="Max" offset="10"/>
+			<Height val="45"/>
+			<Width val="45"/>
+			<Texture val="@@@UI/Game_Console_Tooltip_Background"/>
+			<TextureType val="Border"/>
+			<LayerColor val="##StandardBorder"/>
+		</Frame>
+		<Frame type="Image" name="NormalImage">
+			<Texture val="@@UI/TeamResourceSpinnerArrowNormal"/>
+			<TextureType val="Normal"/>
+		</Frame>
+		<Frame type="Image" name="HoverImage">
+			<Texture val="@@UI/TeamResourceSpinnerArrowHover"/>
+			<TextureType val="Normal"/>
+		</Frame>
+	</Frame>
+
 
 	<Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
 		<Frame type="Frame" name="MutatorIconFrame">
@@ -71,48 +93,20 @@
 					<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 				</Frame>
 			</Frame>
-			<Frame type="Button" name="ToggleOn" template="TriggerDialogFrame/TriggerControlButtonTemplate">
+			<Frame type="Button" name="ToggleOn" template="ap_mutators/ToggleTemplate">
 				<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-				<Height val="25"/>
-				<Width val="25"/>
 				<Tooltip val="Show Mutators"/>
-				<Frame type="Image" name="BackgroundImage">
-					<Anchor relative="$parent"/>
-					<Texture val="@@UI/HelpPanelBorder"/>
-					<TextureType val="HorizontalBorder"/>
-					<LayerColor val="##StandardBorder"/>
-				</Frame>
-				<Frame type="Image" name="NormalImage">
-					<Texture val="@@UI/TeamResourceSpinnerArrowNormal"/>
-					<TextureType val="Normal"/>
-				</Frame>
-				<Frame type="Image" name="HoverImage">
-					<Texture val="@@UI/TeamResourceSpinnerArrowHover"/>
-					<TextureType val="Normal"/>
-				</Frame>
 				<Visible val="True"/>
 			</Frame>
-			<Frame type="Button" name="ToggleOff" template="TriggerDialogFrame/TriggerControlButtonTemplate">
+			<Frame type="Button" name="ToggleOff" template="ap_mutators/ToggleTemplate">
 				<Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
 				<Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
-				<Height val="25"/>
-				<Width val="25"/>
 				<Tooltip val="Hide Mutators"/>
-				<Frame type="Image" name="BackgroundImage">
-					<Anchor relative="$parent"/>
-					<Texture val="@@UI/HelpPanelBorder"/>
-					<TextureType val="HorizontalBorder"/>
-					<LayerColor val="##StandardBorder"/>
-				</Frame>
 				<Frame type="Image" name="NormalImage">
-					<Texture val="@@UI/TeamResourceSpinnerArrowNormal"/>
-					<TextureType val="Normal"/>
 					<Rotation val="180"/>
 				</Frame>
 				<Frame type="Image" name="HoverImage">
-					<Texture val="@@UI/TeamResourceSpinnerArrowHover"/>
-					<TextureType val="Normal"/>
 					<Rotation val="180"/>
 				</Frame>
 				<Visible val="False"/>
