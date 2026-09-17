@@ -3,7 +3,10 @@
 	<Frame type="Image" name="MutatorIconTemplate">
 		<Height val="50"/>
 		<Width val="50"/>
+		<Texture val=""/>
 		<Visible val="False"/>
+		<AcceptsMouse val="True"/>
+		<Tooltip val=""/>
 		<Frame type="Image" name="MutatorCountBackground">
 			<Anchor side="Bottom" relative="$parent" pos="Max" offset="3"/>
 			<Anchor side="Right" relative="$parent" pos="Max" offset="3"/>
@@ -31,7 +34,7 @@
 			<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
 			<Height val="80"/>
 			<Width val="300"/>
-			<Visible val="True"/>
+			<Visible val="False"/>
 			<Handle val="ap_MutatorBar"/>
 			<Frame type="Frame" name="MutatorIconContainer">
 				<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
@@ -39,39 +42,25 @@
 				<Height val="80"/>
 				<Width val="300"/>
 				<Visible val="False"/>
-				<Frame type="Image" name="MutatorIcon1" template="ap_mutators/MutatorIconTemplate">
+				<Frame type="Image" name="MutatorIcon00" template="ap_mutators/MutatorIconTemplate">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
 					<Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
-					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
-					<Visible val="True"/>
-					<AcceptsMouse val="True"/>
-					<Tooltip val="Ghost Spawn Lvl 5:&lt;n/&gt;&lt;n/&gt;Ghost attack waves try to nuke your base."/>
 				</Frame>
-				<Frame type="Image" name="MutatorIcon2" template="ap_mutators/MutatorIconTemplate">
+				<Frame type="Image" name="MutatorIcon01" template="ap_mutators/MutatorIconTemplate">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-					<Anchor side="Left" relative="$parent/MutatorIcon1" pos="Max" offset="0"/>
-					<Texture val="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
-					<Visible val="True"/>
-					<AcceptsMouse val="True"/>
-					<Tooltip val="Void Duplicate Lvl 5:&lt;n/&gt;&lt;n/&gt;Enemy attack wave size increased by 100%."/>
+					<Anchor side="Left" relative="$parent/MutatorIcon00" pos="Max" offset="0"/>
 				</Frame>
-				<Frame type="Image" name="MutatorIcon3" template="ap_mutators/MutatorIconTemplate">
+				<Frame type="Image" name="MutatorIcon02" template="ap_mutators/MutatorIconTemplate">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-					<Anchor side="Left" relative="$parent/MutatorIcon2" pos="Max" offset="0"/>
-					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
-					<Visible val="True"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon01" pos="Max" offset="0"/>
 				</Frame>
-				<Frame type="Image" name="MutatorIcon4" template="ap_mutators/MutatorIconTemplate">
+				<Frame type="Image" name="MutatorIcon03" template="ap_mutators/MutatorIconTemplate">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-					<Anchor side="Left" relative="$parent/MutatorIcon3" pos="Max" offset="0"/>
-					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
-					<Visible val="True"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon02" pos="Max" offset="0"/>
 				</Frame>
-				<Frame type="Image" name="MutatorIcon5" template="ap_mutators/MutatorIconTemplate">
+				<Frame type="Image" name="MutatorIcon04" template="ap_mutators/MutatorIconTemplate">
 					<Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
-					<Anchor side="Left" relative="$parent/MutatorIcon4" pos="Max" offset="0"/>
-					<Texture val="Assets\Textures\btn-progression-mengsk-10-nuclearannihilation.dds"/>
-					<Visible val="True"/>
+					<Anchor side="Left" relative="$parent/MutatorIcon03" pos="Max" offset="0"/>
 				</Frame>
 			</Frame>
 			<Frame type="Button" name="ToggleOn" template="TriggerDialogFrame/TriggerControlButtonTemplate">
