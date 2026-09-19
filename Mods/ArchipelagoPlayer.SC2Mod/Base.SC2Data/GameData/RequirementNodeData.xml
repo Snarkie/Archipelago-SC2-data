@@ -9618,9 +9618,6 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AP_KhaydarinMonolithWeaponUpgrade" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="AP_KhaydarinMonolithOptimizedOrdnance">
-        <Count Link="AP_KhaydarinMonolithOptimizedOrdnance" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="AP_UnlockPsiSpire">
         <Count Link="AP_UnlockPsiSpire" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
