@@ -13544,6 +13544,9 @@
     <CUpgrade id="AP_KaraxInstantStructureWarp">
         <Flags index="UpgradeCheat" value="0"/>
         <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build2].Time" Value="25"/>
+        <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build8].Time" Value="40"/>
+        <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build25].Time" Value="80"/>
+        <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build22].Time" Value="30"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <LeaderAlias value=""/>
     </CUpgrade>
