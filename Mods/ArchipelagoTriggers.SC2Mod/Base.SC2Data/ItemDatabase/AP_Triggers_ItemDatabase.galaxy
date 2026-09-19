@@ -122,7 +122,6 @@ static void UnlockMercShips(int player) {
 }
 
 // Terran Unit Unlock Functions
-
 static void UnlockHellion(int player) {
     UnlockFactory(player);
     TechTreeUpgradeAddLevel(player, "AP_ToggleHellbat", 1);
@@ -130,6 +129,7 @@ static void UnlockHellion(int player) {
 
 static void UnlockEmperorsShadow(int player) {
     UnlockEliteBarracks(player);
+    UnlockShadowOps(player);
     TechTreeUpgradeAddLevel(player, "AP_HaveGhostMengsk", 1);
 }
 
