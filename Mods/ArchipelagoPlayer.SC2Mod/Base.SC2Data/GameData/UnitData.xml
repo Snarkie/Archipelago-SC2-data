@@ -16479,7 +16479,8 @@
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="AP_RallyNexus,1" Row="1" Column="4"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="AP_RallyNexus,0" Row="1" Column="4"/>
             <LayoutButtons Face="AP_TimeWarp" Type="AbilCmd" AbilCmd="AP_TimeWarp,0" Row="2" Column="0"/>
-            <LayoutButtons Face="AP_TimeWarp" Type="AbilCmd" AbilCmd="AP_TimeWarp,0" Row="2" Column="0"/>
+            <LayoutButtons Face="AP_KaraxTurretRange" Type="Passive" Requirements="AP_HaveSOARadarAndKaraxTurretRange" Row="2" Column="1"/>
+            <LayoutButtons Face="AP_KaraxTurretAttackSpeed" Type="Passive" Requirements="AP_HaveSOARadarAndKaraxTurretAttackSpeed" Row="2" Column="2"/>
             <LayoutButtons Face="AP_SOARadarNexus" Type="Passive" Requirements="AP_HaveSOARadar" Row="2" Column="3"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5Passive,CancelLast" Row="2" Column="4"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
@@ -17452,9 +17453,10 @@
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="AP_KhaydarinMonolithWeaponUpgrade" Type="Passive" Requirements="AP_KhaydarinMonolithWeaponUpgrade" Row="1" Column="0"/>
+            <LayoutButtons Face="AP_KaraxTurretRange" Type="Passive" Requirements="AP_HaveKaraxTurretRange" Row="1" Column="0"/>
             <LayoutButtons Face="AP_KaraxTurretAttackSpeed" Type="Passive" Requirements="AP_KhaydarinMonolithOptimizedOrdnance" Row="1" Column="1"/>
             <LayoutButtons Face="AP_KhaydarinMonolithStun" Type="Passive" Requirements="AP_KhaydarinMonolithStun" Row="1" Column="2"/>
+            <LayoutButtons Face="AP_KhaydarinMonolithWeaponUpgrade" Type="Passive" Requirements="AP_KhaydarinMonolithWeaponUpgrade" Row="1" Column="3"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="AP_WarpRelocate" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build25" Row="2" Column="4"/>
         </CardLayouts>
@@ -23190,6 +23192,7 @@
             <LayoutButtons Face="AP_ShieldBatteryRecharge" Type="AbilCmd" AbilCmd="AP_ShieldBatteryRechargeChanneled,0" Row="2" Column="0"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="AP_KaraxTurretRange" Type="Passive" Requirements="AP_HaveKaraxTurretRange" Row="1" Column="0"/>
             <LayoutButtons Face="AP_KaraxEnergyRegenUpgrade" Type="Passive" Requirements="AP_HaveKaraxEnergyRegenUpgrade" Row="1" Column="1"/>
             <LayoutButtons Face="AP_WarpRelocate" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build22" Row="2" Column="4"/>
         </CardLayouts>
