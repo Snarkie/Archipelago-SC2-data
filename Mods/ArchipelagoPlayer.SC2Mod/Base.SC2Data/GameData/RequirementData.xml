@@ -6385,9 +6385,6 @@
     <CRequirement id="AP_KhaydarinMonolithWeaponUpgrade">
         <NodeArray index="Show" Link="AP_KhaydarinMonolithWeaponUpgrade"/>
     </CRequirement>
-    <CRequirement id="AP_KhaydarinMonolithOptimizedOrdnance">
-        <NodeArray index="Show" Link="AP_KhaydarinMonolithOptimizedOrdnance"/>
-    </CRequirement>
     <CRequirement id="AP_PhotonCannonShields">
         <NodeArray index="Show" Link="AP_PhotonCannonShields"/>
     </CRequirement>
