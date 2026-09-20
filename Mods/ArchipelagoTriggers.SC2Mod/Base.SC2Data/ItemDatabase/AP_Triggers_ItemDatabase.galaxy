@@ -845,7 +845,7 @@ static void RegisterTerranItems() {
 
     // Hercules
     AP_RegisterTerranItem(175, "AP_InternalFusionModuleHercules");
-    AP_RegisterTerranItem(176, "AP_HerculesHyperJump");
+    AP_RegisterTerranItem(176, "AP_HerculesHyperjump");
 
     // ********************** //
     // *  Elite Barracks    * //
