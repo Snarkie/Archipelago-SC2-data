@@ -13516,6 +13516,14 @@
         <EffectArray Reference="Weapon,AP_MothershipCoreWeaponSurgeSwitch,Range" Value="2"/>
         <EffectArray Reference="Weapon,AP_SOAPylonWeapon,Range" Value="2"/>
         <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
+        <EffectArray Reference="Abil,AP_PsiSpireStorm,AutoCastRange" Value="2"/>
+        <EffectArray Reference="Abil,AP_PsiSpireStorm,Range[0]" Value="2"/>
+        <EffectArray Reference="Weapon,AP_PsiSpireWeapon,MinScanRange" Value="2"/>
+        <EffectArray Reference="Weapon,AP_PsiSpireWeapon,Range" Value="2"/>
+        <EffectArray Reference="Weapon,AP_LaunchBayInterceptorsDummy,Range" Value="2"/>
+        <EffectArray Reference="Abil,AP_LaunchBayHangar,Leash" Value="2"/>
+        <EffectArray Reference="Actor,AP_LaunchBayRange,Range" Value="2.000000"/>
+        <EffectArray Reference="Actor,AP_PsiSpireRange,Range" Value="2.000000"/>
         <AffectedUnitArray value="AP_PhotonCannon"/>
         <AffectedUnitArray value="AP_ShieldBattery"/>
         <AffectedUnitArray value="AP_KhaydarinMonolith"/>
@@ -13536,6 +13544,10 @@
         <EffectArray Reference="Weapon,AP_MothershipCoreWeapon,RateMultiplier" Value="0.25"/>
         <EffectArray Reference="Weapon,AP_MothershipCoreWeaponSurgeSwitch,RateMultiplier" Value="0.25"/>
         <EffectArray Reference="Weapon,AP_SOAPylonWeapon,RateMultiplier" Value="0.25"/>
+        <EffectArray Reference="Weapon,AP_InterceptorLaunchBayWeapon,RateMultiplier" Value="0.25"/>
+        <EffectArray Reference="Weapon,AP_LaunchBayInterceptorsDummy,RateMultiplier" Value="0.25"/>
+        <EffectArray Reference="Weapon,AP_PsiSpireWeapon,RateMultiplier" Value="0.25"/>
+        <EffectArray Operation="Multiply" Reference="Abil,AP_PsiSpireStorm,Cost[0].Charge.TimeUse" Value="0.800000"/>
         <EditorCategories value="Race:Protoss,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="AP_PhotonCannon"/>
         <AffectedUnitArray value="AP_KhaydarinMonolith"/>
@@ -13547,6 +13559,8 @@
         <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build8].Time" Value="40"/>
         <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build25].Time" Value="80"/>
         <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build22].Time" Value="30"/>
+        <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build16].Time" Value="60"/>
+        <EffectArray Operation="Divide" Reference="Abil,AP_ProtossBuild,InfoArray[Build30].Time" Value="50"/>
         <EditorCategories value="Race:Protoss,UpgradeType:Talents"/>
         <LeaderAlias value=""/>
     </CUpgrade>

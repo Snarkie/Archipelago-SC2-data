@@ -17454,7 +17454,7 @@
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AP_KaraxTurretRange" Type="Passive" Requirements="AP_HaveKaraxTurretRange" Row="1" Column="0"/>
-            <LayoutButtons Face="AP_KaraxTurretAttackSpeed" Type="Passive" Requirements="AP_KhaydarinMonolithOptimizedOrdnance" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_KaraxTurretAttackSpeed" Type="Passive" Requirements="AP_HaveKaraxTurretAttackSpeed" Row="1" Column="1"/>
             <LayoutButtons Face="AP_KhaydarinMonolithStun" Type="Passive" Requirements="AP_KhaydarinMonolithStun" Row="1" Column="2"/>
             <LayoutButtons Face="AP_KhaydarinMonolithWeaponUpgrade" Type="Passive" Requirements="AP_KhaydarinMonolithWeaponUpgrade" Row="1" Column="3"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
@@ -32903,8 +32903,11 @@
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+
             <LayoutButtons Face="AP_LaunchBayGravitonCatapult" Type="Passive" Requirements="AP_LaunchBayGravitonCatapult" Row="1" Column="0"/>
             <LayoutButtons Face="AP_LaunchBayIgnoreArmor" Type="Passive" Requirements="AP_LaunchBayIgnoreArmor" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_LaunchBayOptimizedOrdnance" Type="Passive" Requirements="AP_HaveKaraxTurretAttackSpeed" Row="1" Column="2"/>
+            <LayoutButtons Face="AP_LaunchBayEnhancedTargeting" Type="Passive" Requirements="AP_HaveKaraxTurretRange" Row="1" Column="3"/>
 
             <LayoutButtons Face="AP_LaunchBayInterceptor" Type="AbilCmd" AbilCmd="AP_LaunchBayHangar,Ammo1" Row="2" Column="0"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
@@ -33035,8 +33038,12 @@
         <CardLayouts>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
             <LayoutButtons Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+
             <LayoutButtons Face="AP_PsiSpireRange" Type="Passive" Requirements="AP_PsiSpireRange" Row="1" Column="0"/>
             <LayoutButtons Face="AP_PsiSpireCripple" Type="Passive" Requirements="AP_PsiSpireCripple" Row="1" Column="1"/>
+            <LayoutButtons Face="AP_PsiSpireOptimizedOrdnance" Type="Passive" Requirements="AP_HaveKaraxTurretAttackSpeed" Row="1" Column="2"/>
+            <LayoutButtons Face="AP_PsiSpireEnhancedTargeting" Type="Passive" Requirements="AP_HaveKaraxTurretRange" Row="1" Column="3"/>
+
             <LayoutButtons Face="AP_PsiSpireStorm" Type="AbilCmd" AbilCmd="AP_PsiSpireStorm,Execute" Row="2" Column="0"/>
             <LayoutButtons Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
             <LayoutButtons Face="AP_WarpRelocate" Type="AbilCmd" AbilCmd="AP_WarpRelocate,Build30" Row="2" Column="4"/>

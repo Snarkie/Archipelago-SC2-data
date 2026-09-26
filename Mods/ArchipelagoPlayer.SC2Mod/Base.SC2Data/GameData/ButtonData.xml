@@ -9036,5 +9036,21 @@
     <CButton id="AP_KhaydarinMonolithStun">
         <Icon value="Assets\Textures\btn-upgrade-protoss-alarak-stunnonheroicenemies.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-protoss-alarak-stunnonheroicenemies.dds"/>
+    </CButton>    
+    <CButton id="AP_PsiSpireOptimizedOrdnance">
+        <Icon value="Assets\Textures\btn-upgrade-karax-turretattackspeed.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-karax-turretattackspeed.dds"/>
+    </CButton>
+    <CButton id="AP_PsiSpireEnhancedTargeting">
+        <Icon value="Assets\Textures\btn-upgrade-karax-turretrange.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-karax-turretrange.dds"/>
+    </CButton>
+    <CButton id="AP_LaunchBayOptimizedOrdnance">
+        <Icon value="Assets\Textures\btn-upgrade-karax-turretattackspeed.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-karax-turretattackspeed.dds"/>
+    </CButton>
+    <CButton id="AP_LaunchBayEnhancedTargeting">
+        <Icon value="Assets\Textures\btn-upgrade-karax-turretrange.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-karax-turretrange.dds"/>
     </CButton>
 </Catalog>
