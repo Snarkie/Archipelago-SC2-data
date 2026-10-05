@@ -83,12 +83,6 @@
         <!-- Override -->
         <BehaviorArray Link="AP_MindControlImmune"/>
     </CUnit>
-    <CUnit id="Odin">
-        <!-- Override -->
-        <BehaviorArray Link="AP_RegeneratorRegenBioSteelL1L2"/>
-        <BehaviorArray Link="AP_RegeneratorRegenBioSteelL3"/>
-        <FlagArray index="Hero" value="0"/>
-    </CUnit>
     <!-- Remove WoL hero handling. Expected to be added to HotS hero panel-->
     <CUnit id="DrakkenLaserDrill">
         <!-- Override -->
