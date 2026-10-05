@@ -12093,4 +12093,8 @@
         <InitialEffect value="AP_PsiSpireStormU"/>
         <PeriodicEffect value="AP_PsiSpireStormU"/>
     </CBehaviorBuff>
+    <CBehaviorPowerSource id="AP_PowerSourceFake">
+        <InfoFlags index="Hidden" value="1"/>
+        <PowerLink value="PowerSource"/>
+    </CBehaviorPowerSource>
 </Catalog>
