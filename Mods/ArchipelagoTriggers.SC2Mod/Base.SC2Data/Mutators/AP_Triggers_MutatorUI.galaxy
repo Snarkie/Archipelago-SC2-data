@@ -114,7 +114,7 @@ void AP_MutatorUIUpdate(int mutator, int level) {
             return;
         }
         if (slot <= 0 && level <= 0) {
-            log("acivating first mutator at level 0, skip");
+            // log("activating first mutator at level 0, skip");
             return;
         }
         UISetSlot(mutator, slot);
