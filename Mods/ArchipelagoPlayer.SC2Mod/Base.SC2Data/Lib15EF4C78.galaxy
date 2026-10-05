@@ -2621,6 +2621,18 @@ void lib15EF4C78_gf_SetHeroPanelUnit (int lp_index, unit lp_heroUnit, int lp_pla
             lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\zeratul_ingame_heroportrait.dds";
         }
 
+        if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Odin"))) {
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-ability-tychus-odin.dds";
+        }
+
+        if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("DrakkenLaserDrill"))) {
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-upgrade-swann-laserdrillattack.dds";
+        }
+
+        if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Artifact"))) {
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-tips-terran-energynova.dds";
+        }
+
     }
     lib15EF4C78_gf_ZS_UpdateHeroPanel(lp_player, lp_index);
     if ((lib15EF4C78_gv_zS_SwarmHeroUIUnit[lp_index] == null)) {
@@ -3006,9 +3018,15 @@ void lib15EF4C78_gf_ZS_UpdateHeroPanel (int lp_player, int lp_index) {
 }
 
 bool lib15EF4C78_gf_ZS_ForceEnergyUI (int lp_index) {
+    // Variable Declarations
+    string lv_unitTypeString;
+
     // Automatic Variable Declarations
+    // Variable Initialization
+    lv_unitTypeString = (UnitGetType(lib15EF4C78_gv_zS_SwarmHeroUIUnit[lp_index]));
+
     // Implementation
-    if ((UnitGetType(lib15EF4C78_gv_zS_SwarmHeroUIUnit[lp_index]) == UnitTypeFromString("Zeratul"))) {
+    if (((lv_unitTypeString == "Zeratul") || (lv_unitTypeString == "Odin") || (lv_unitTypeString == "Artifact") || (lv_unitTypeString == "DrakkenLaserDrill"))) {
         return true;
     }
 
