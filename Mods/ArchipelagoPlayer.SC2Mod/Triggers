@@ -54601,6 +54601,7 @@
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="AEA2EDB9"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="6BE05520"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="4C38ED3F"/>
+            <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="4CB1DE7C"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="14D5ABF5"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="BCE270D1"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="98DE3BDE"/>
@@ -55123,6 +55124,68 @@
             <Value>Assets\Textures\btn-hero-raynor.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="4CB1DE7C">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000005"/>
+            <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="0E55BAA5"/>
+            <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="AE38AAA7"/>
+        </Element>
+        <Element Type="FunctionCall" Id="0E55BAA5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000004"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="C1F27AA6"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="1AF447B2"/>
+        </Element>
+        <Element Type="Param" Id="C1F27AA6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+            <Variable Type="Variable" Library="15EF4C78" Id="13AE6777"/>
+            <Array Type="Param" Library="15EF4C78" Id="9DB24803"/>
+        </Element>
+        <Element Type="Param" Id="9DB24803">
+            <Parameter Type="ParamDef" Library="15EF4C78" Id="71251E14"/>
+        </Element>
+        <Element Type="Param" Id="1AF447B2">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+            <Value>Assets\Textures\btn-hero-kerriganqueenofblades.dds</Value>
+            <ValueType Type="filepath"/>
+            <ValueTypeInfo Value="5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="AE38AAA7">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="B9A4DAF8"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="A2362ED6"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="BECD5EFE"/>
+        </Element>
+        <Element Type="Param" Id="B9A4DAF8">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="9F2DCFC0"/>
+        </Element>
+        <Element Type="FunctionCall" Id="9F2DCFC0">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000079"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="15BC7003"/>
+        </Element>
+        <Element Type="Param" Id="15BC7003">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="00000138"/>
+            <Parameter Type="ParamDef" Library="15EF4C78" Id="7A85C336"/>
+        </Element>
+        <Element Type="Param" Id="A2362ED6">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="BECD5EFE">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="282285E5"/>
+        </Element>
+        <Element Type="FunctionCall" Id="282285E5">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="A0CD12F3"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="860C8EEC"/>
+        </Element>
+        <Element Type="Param" Id="860C8EEC">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="BFCBB195"/>
+            <Value>KerriganEpilogue02</Value>
+            <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionCall" Id="14D5ABF5">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000137"/>
@@ -62367,6 +62430,7 @@
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="CB78E74F"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="7615EE2E"/>
             <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="4E24E85A"/>
+            <FunctionCall Type="FunctionCall" Library="15EF4C78" Id="F7379A12"/>
         </Element>
         <Element Type="FunctionCall" Id="B05DD016">
             <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
@@ -62506,6 +62570,26 @@
         <Element Type="Param" Id="AE24F618">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
             <Value>RaynorCommando</Value>
+            <ValueType Type="string"/>
+        </Element>
+        <Element Type="FunctionCall" Id="F7379A12">
+            <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+            <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000001"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="F7A325E5"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="23ACB677"/>
+            <Parameter Type="Param" Library="15EF4C78" Id="3247969C"/>
+        </Element>
+        <Element Type="Param" Id="F7A325E5">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+            <Variable Type="Variable" Library="15EF4C78" Id="74A8B42F"/>
+        </Element>
+        <Element Type="Param" Id="23ACB677">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+            <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+        </Element>
+        <Element Type="Param" Id="3247969C">
+            <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+            <Value>KerriganEpilogue02</Value>
             <ValueType Type="string"/>
         </Element>
         <Element Type="FunctionCall" Id="0CF76755">
