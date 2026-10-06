@@ -2646,6 +2646,14 @@ void lib15EF4C78_gf_SetHeroPanelUnit (int lp_index, unit lp_heroUnit, int lp_pla
             lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-hero-kerriganqueenofblades.dds";
         }
 
+        if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Stetmann"))) {
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\ui_heroicons_portrait_stetmann.dds";
+        }
+
+        if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("AP_ProbeHero"))) {
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-hero-fenix-arbiter.dds";
+        }
+
     }
     lib15EF4C78_gf_ZS_UpdateHeroPanel(lp_player, lp_index);
     if ((lib15EF4C78_gv_zS_SwarmHeroUIUnit[lp_index] == null)) {
@@ -3039,7 +3047,7 @@ bool lib15EF4C78_gf_ZS_ForceEnergyUI (int lp_index) {
     lv_unitTypeString = (UnitGetType(lib15EF4C78_gv_zS_SwarmHeroUIUnit[lp_index]));
 
     // Implementation
-    if (((lv_unitTypeString == "Zeratul") || (lv_unitTypeString == "Odin") || (lv_unitTypeString == "Artifact") || (lv_unitTypeString == "DrakkenLaserDrill") || (lv_unitTypeString == "Raynor") || (lv_unitTypeString == "Raynor01") || (lv_unitTypeString == "RaynorCommando") || (lv_unitTypeString == "KerriganEpilogue02"))) {
+    if (((lv_unitTypeString == "Zeratul") || (lv_unitTypeString == "Odin") || (lv_unitTypeString == "Artifact") || (lv_unitTypeString == "DrakkenLaserDrill") || (lv_unitTypeString == "Raynor") || (lv_unitTypeString == "Raynor01") || (lv_unitTypeString == "RaynorCommando") || (lv_unitTypeString == "KerriganEpilogue02") || (lv_unitTypeString == "Stetmann") || (lv_unitTypeString == "AP_ProbeHero"))) {
         return true;
     }
 
