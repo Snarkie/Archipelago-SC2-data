@@ -79,6 +79,7 @@ static void MutatorRemove(int mutator) {
     tooltipString = tooltipString + MutatorDatabase[mutator].Tooltip;
     DialogControlSetPropertyAsText(dialogItemIcon, c_triggerControlPropertyTooltip, user, tooltip);
     DialogControlSetEnabled(dialogItemIcon, user, false);
+    MutatorDatabase[mutator].CurrentLevel = 0;
 }
 
 static void MutatorSetLevel(int mutator, int level) {
@@ -113,8 +114,7 @@ void AP_MutatorUIUpdate(int mutator, int level) {
             log("Warning: Mutator Icon UI limit reached");
             return;
         }
-        if (slot <= 0 && level <= 0) {
-            // log("activating first mutator at level 0, skip");
+        if (level <= 0 && MutatorDatabase[mutator].CurrentLevel <= 0) {
             return;
         }
         UISetSlot(mutator, slot);
