@@ -181,6 +181,8 @@
     </Element>
     <Element Type="Trigger" Id="534B103E">
         <Event Type="FunctionCall" Id="2E43D958"/>
+        <Action Type="FunctionCall" Id="C6AF6CB7"/>
+        <Action Type="FunctionCall" Id="9A308166"/>
         <Action Type="FunctionCall" Id="EA14B7C6"/>
         <Action Type="FunctionCall" Id="CA199473"/>
         <Action Type="FunctionCall" Id="887E0339"/>
@@ -192,6 +194,26 @@
     </Element>
     <Element Type="FunctionCall" Id="2E43D958">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000120"/>
+    </Element>
+    <Element Type="FunctionCall" Id="C6AF6CB7">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000136"/>
+        <Parameter Type="Param" Id="48C4ADF2"/>
+        <Parameter Type="Param" Id="2193412C"/>
+    </Element>
+    <Element Type="Param" Id="48C4ADF2">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000219"/>
+        <Variable Type="Variable" Library="ABFE498B" Id="938D8AAF"/>
+    </Element>
+    <Element Type="Param" Id="2193412C">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
+        <Value>true</Value>
+        <ValueType Type="bool"/>
+    </Element>
+    <Element Type="FunctionCall" Id="9A308166">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000123"/>
+        <ScriptCode>
+            AP_GhostSpawn_waveTargetOverride = true;
+        </ScriptCode>
     </Element>
     <Element Type="FunctionCall" Id="EA14B7C6">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000116"/>
