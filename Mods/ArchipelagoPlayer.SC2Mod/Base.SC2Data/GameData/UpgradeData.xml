@@ -17383,6 +17383,9 @@
         <EffectArray Reference="Unit,AP_PhotonCannon,ShieldArmorLevel" Value="2"/>
         <EffectArray Reference="Unit,AP_PhotonCannon,ShieldArmor" Value="2"/>
         <EffectArray Operation="Subtract" Reference="Unit,AP_PhotonCannon,ShieldRegenDelay" Value="10"/>
+        <EffectArray Reference="Unit,AP_PhotonCannonPhase,ShieldArmorLevel" Value="2"/>
+        <EffectArray Reference="Unit,AP_PhotonCannonPhase,ShieldArmor" Value="2"/>
+        <EffectArray Operation="Subtract" Reference="Unit,AP_PhotonCannonPhase,ShieldRegenDelay" Value="10"/>
         <!--  Cybernetics Core -->
         <EffectArray Reference="Unit,AP_CyberneticsCore,ShieldArmor" Value="2"/>
         <EffectArray Reference="Unit,AP_CyberneticsCore,ShieldArmorLevel" Value="2"/>
