@@ -2389,22 +2389,22 @@ static void RegisterProtossItems() {
     AP_RegisterProtossItem(242, "AP_AmplifiedAssimilators");
 
     // Cannon
-    AP_RegisterProtossItem(277, "AP_PhotonCannonShields");
-    AP_RegisterProtossItem(278, "AP_PhotonCannonPhase");
+    AP_RegisterProtossItem(275, "AP_PhotonCannonShields");
+    AP_RegisterProtossItem(276, "AP_PhotonCannonPhase");
 
     // Khaydarin Monolith
-    AP_RegisterProtossItem(279, "AP_KhaydarinMonolithWeaponUpgrade");
-    AP_RegisterProtossItem(280, "AP_KhaydarinMonolithStun");
+    AP_RegisterProtossItem(277, "AP_KhaydarinMonolithWeaponUpgrade");
+    AP_RegisterProtossItem(278, "AP_KhaydarinMonolithStun");
 
     // Shield Battery
 
     // Psi Spire
-    AP_RegisterProtossItem(281, "AP_PsiSpireRange");
-    AP_RegisterProtossItem(282, "AP_PsiSpireCripple");
+    AP_RegisterProtossItem(279, "AP_PsiSpireRange");
+    AP_RegisterProtossItem(280, "AP_PsiSpireCripple");
 
     // Launch Bay
-    AP_RegisterProtossItem(283, "AP_LaunchBayGravitonCatapult");
-    AP_RegisterProtossItem(284, "AP_LaunchBayIgnoreArmor");
+    AP_RegisterProtossItem(281, "AP_LaunchBayGravitonCatapult");
+    AP_RegisterProtossItem(282, "AP_LaunchBayIgnoreArmor");
 
     // Global
     AP_RegisterProtossItem(234, "AP_SOAWarpTech");
