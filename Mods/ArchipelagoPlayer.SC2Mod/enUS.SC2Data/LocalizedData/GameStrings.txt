@@ -1036,7 +1036,7 @@ Behavior/Tooltip/AP_PrimalHealSmall=Regenerating life.
 Behavior/Tooltip/AP_ProbePermanentCloak=This unit is cloaked and will only be revealed by detectors or effects.
 Behavior/Tooltip/AP_ProtossBuildingShields=Protoss Structures get +2 shield armor and can regenerate Shields in combat.
 Behavior/Tooltip/AP_PsiDisruption=Attack and movement speeds halved.
-Behavior/Tooltip/AP_PsiSpireStorm=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
+Behavior/Tooltip/AP_PsiSpireStorm=Target is under the effects of Psionic Storm and will take damage while in this area of effect.
 Behavior/Tooltip/AP_PsiStorm=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/AP_PsiStormShakuras=Target is under the effects of Psionic Storm and will take massive damage while in this area of effect.
 Behavior/Tooltip/AP_PsionicLiftDamage=Taking damage over time.
@@ -3512,7 +3512,7 @@ Button/Tooltip/AP_InstigatorBlinkOverdrive=Instigators gain another +<d ref="$Up
 Button/Tooltip/AP_InstigatorModernizedServos=Increases movement speed by <d ref="$UpgradeEffectArrayValue:AP_InstigatorModernizedServos:Unit,AP_StalkerPurifier,Speed$ / Unit,AP_StalkerPurifier,Speed * 100" player="0"/>%.<n/><n/><c val="FFE303">War Council Upgrade.</c>
 Button/Tooltip/AP_Interceptor=Builds Interceptors that automatically attack the Carrier's target. Carriers may not attack without Interceptors.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_InterceptorInstall=Allow the Mothership to build Interceptors that launch alongside it's primary weapon.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
-Button/Tooltip/AP_InterceptorLaunchBayUnit=Combat drones that automatically strafe their Carrier's target. Carriers may not attack without Interceptors.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
+Button/Tooltip/AP_InterceptorLaunchBayUnit=Combat drones that automatically strafe the Launch Bay's target. Launch Bays may not attack without Interceptors.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_InterceptorMothershipAiur=Builds Interceptors that automatically attack the Mothership's target.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
 Button/Tooltip/AP_InterceptorMothershipPurifier=Builds Bombers that automatically attack the Mothership's target.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/AP_InterceptorMothershipTaldarim=Builds Interceptors that automatically attack the Mothership's target.<n/><n/><c val="#ColorAttackInfo">Can attack ground and air units.</c>
