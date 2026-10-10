@@ -22712,12 +22712,6 @@
         <ShadowRadius value="4.000000"/>
         <Flags index="FreezeParticlesAndRibbonsOnAnimPause" value="1"/>
     </CModel>
-    <CModel id="AP_LaunchBayPortrait" parent="ProtossBuildingPortraitBase">
-        <Model value="Assets\Portraits\Protoss\ExecutorPortrait\ExecutorPortrait.m3"/>
-        <Flags index="Download" value="1"/>
-        <Image value="Assets\Textures\ExecutorPortrait_Static.dds"/>
-        <Lighting value="ExecutorPortrait"/>
-    </CModel>
     <CModel id="AP_InterceptorLaunchBayAttackBeam" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Protoss\DarkInterceptorMissile\DarkInterceptorMissile.m3"/>
         <EditorCategories value="Race:Protoss"/>
