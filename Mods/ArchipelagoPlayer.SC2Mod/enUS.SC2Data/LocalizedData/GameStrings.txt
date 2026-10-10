@@ -3560,7 +3560,7 @@ Button/Tooltip/AP_KerriganVoidCoopEconDropLT1Text=<s val="Kicker_Minerals">+5 <I
 Button/Tooltip/AP_KerriganVoidCoopEconDropLT1UpgradedText=<s val="Kicker_Minerals">+10 <IMG path="Assets\Textures\icon-mineral-zerg.dds" height="28" width="28"/>
 Button/Tooltip/AP_KhaydarinAmulet=Increases starting energy by 150 and maximum energy by 50.
 Button/Tooltip/AP_KhaydarinMonolith=Extremely powerful defensive structure. Has superior range and damage, but is very expensive and attacks slowly.<n/><n/><c val="ffff8a">Can attack ground and air units.
-Button/Tooltip/AP_KhaydarinMonolithStun=Stuns enemy units for <d ref="(Behavior,AP_KhaydarinBeamStun,Duration)"/> seconds, with <d ref="(Effect,AP_KhaydarinBeamStunCooldownAB,Duration)"/> seconds cooldown per enemy. Heroic units can be stunned, but with <d ref="(Effect,AP_KhaydarinBeamStunCooldownHeroicAB,Duration)"/> seconds cooldown instead.
+Button/Tooltip/AP_KhaydarinMonolithStun=Stuns enemy units for <d ref="(Behavior,AP_KhaydarinBeamStun,Duration)"/> seconds when attacking. An enemy can only be stunned once every <d ref="(Effect,AP_KhaydarinBeamStunCooldownAB,Duration)"/> seconds. Heroic units may only be stunned once every <d ref="(Effect,AP_KhaydarinBeamStunCooldownHeroicAB,Duration)"/> seconds.
 Button/Tooltip/AP_KhaydarinMonolithWeaponUpgrade=Reduces the charging time for Khaydarin Monoliths.
 Button/Tooltip/AP_KineticFoamHERC=Increases HERC life by 50.
 Button/Tooltip/AP_Lair=Evolved version of the Hatchery that allows additional upgrades and structures to be produced. Also spawns all Zerg units and receives gathered resources.
