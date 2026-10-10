@@ -13528,7 +13528,6 @@
         <AffectedUnitArray value="AP_ShieldBattery"/>
         <AffectedUnitArray value="AP_KhaydarinMonolith"/>
         <AffectedUnitArray value="AP_Nexus"/>
-        <AffectedUnitArray value="AP_PhotonCannon"/>
     </CUpgrade>
     <CUpgrade id="AP_KaraxTurretAttackSpeed">
         <Icon value="Assets\Textures\btn-upgrade-karax-turretattackspeed.dds"/>
