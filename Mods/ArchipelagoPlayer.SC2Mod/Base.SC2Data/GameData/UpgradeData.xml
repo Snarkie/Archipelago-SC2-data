@@ -13521,6 +13521,7 @@
         <EffectArray Reference="Weapon,AP_PsiSpireWeapon,MinScanRange" Value="2"/>
         <EffectArray Reference="Weapon,AP_PsiSpireWeapon,Range" Value="2"/>
         <EffectArray Reference="Weapon,AP_LaunchBayInterceptorsDummy,Range" Value="2"/>
+        <EffectArray Reference="Weapon,AP_LaunchBayInterceptorsLaunch,Range" Value="2"/>
         <EffectArray Reference="Abil,AP_LaunchBayHangar,Leash" Value="2"/>
         <EffectArray Reference="Actor,AP_LaunchBayRange,Range" Value="2.000000"/>
         <EffectArray Reference="Actor,AP_PsiSpireRange,Range" Value="2.000000"/>
