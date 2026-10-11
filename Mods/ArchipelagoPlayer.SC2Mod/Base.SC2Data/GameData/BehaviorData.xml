@@ -4840,6 +4840,7 @@
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-building-protoss-pylon.dds"/>
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
         <PowerLink value="PowerSource"/>
         <PoweredWhileUnderConstruction value="1"/>
     </CBehaviorPowerUser>
@@ -12074,9 +12075,10 @@
         <InfoFlags index="Hidden" value="1"/>
         <EditorCategories value="AbilityorEffectType:Units"/>
         <DisableValidatorArray value="AP_CasterLocationHasPower"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="AP_PhaseCannonMU"/>
         <Modification MoveSpeedMultiplier="5">
             <VitalRegenArray index="Life" value="10"/>
-            <VitalRegenArray index="Shields" value="10"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AP_PhotonCannonShields">

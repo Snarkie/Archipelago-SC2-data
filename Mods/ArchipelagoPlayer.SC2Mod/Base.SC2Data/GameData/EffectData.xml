@@ -28009,13 +28009,11 @@
         <EffectArray value="AP_RepairFixMU"/>
     </CEffectSet>
     <CEffectApplyBehavior id="AP_KhaydarinBeamStunAB">
-        <EditorCategories value=""/>
         <Behavior value="AP_KhaydarinBeamStun"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="AP_KhaydarinBeamStunCooldownAB">
         <ValidatorArray index="0" value="AP_NotHeroic"/>
         <ValidatorArray value="NotStructureTarget"/>
-        <EditorCategories value=""/>
         <Behavior value="AP_KhaydarinBeamStunCooldown"/>
         <Flags index="UseDuration" value="1"/>
         <Duration value="7"/>
@@ -28023,7 +28021,6 @@
     <CEffectApplyBehavior id="AP_KhaydarinBeamStunCooldownHeroicAB">
         <ValidatorArray index="0" value="AP_IsHeroic"/>
         <ValidatorArray value="NotStructureTarget"/>
-        <EditorCategories value=""/>
         <Behavior value="AP_KhaydarinBeamStunCooldown"/>
         <Flags index="UseDuration" value="1"/>
         <Duration value="12"/>
@@ -28033,7 +28030,6 @@
         <ValidatorArray value="TargetIsEnemy"/>
         <ValidatorArray value="NotStructureTarget"/>
         <ValidatorArray value="AP_KhaydarinBeamNotStunned"/>
-        <EditorCategories value=""/>
         <EffectArray value="AP_KhaydarinBeamStunAB"/>
         <EffectArray value="AP_KhaydarinBeamStunCooldownAB"/>
         <EffectArray value="AP_KhaydarinBeamStunCooldownHeroicAB"/>
@@ -28099,8 +28095,13 @@
         <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
     <CEffectModifyUnit id="AP_PhaseCannonCooldown">
-        <EditorCategories value=""/>
         <Cost Abil="AP_PhotonCannonPhase,Execute" CooldownTimeUse="30"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="AP_PhaseCannonMU">
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Shields">
+            <Change value="0.625"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="AP_PsiSpireStormAB">
         <EditorCategories value="Race:Protoss"/>
