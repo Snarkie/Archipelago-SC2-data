@@ -43914,7 +43914,7 @@
     </CActorModelMaterial>
     <CActorModelMaterial id="AP_LaunchBayRelocate" parent="GlazeParent">
         <On Terms="Behavior.AP_WarpRelocating.On; ValidateUnit AP_IsLaunchBay" Send="Create"/>
-        <On Terms="ActorCreation" Target="AP_PsiSpireSplat" Send="SetVisibility"/>
+        <On Terms="ActorCreation" Target="AP_LaunchBaySplat" Send="SetVisibility"/>
         <On Terms="ActorCreation" Target="_Unit" Send="ClearOpacity 0 WarpRelocateOpacity"/>
         <On Terms="ActorCreation" Target="_Unit" Send="SetOpacity 0 5"/>
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
@@ -43925,7 +43925,7 @@
         <On Terms="Signal.*.RelocateIn" Send="TimerSet 5"/>
         <On Terms="TimerExpired" Send="Destroy"/>
         <On Terms="ActorDestruction" Send="ModelMaterialRemoveFrom ::Main"/>
-        <On Terms="ActorDestruction" Target="AP_PsiSpireSplat" Send="SetVisibility 1"/>
+        <On Terms="ActorDestruction" Target="AP_LaunchBaySplat" Send="SetVisibility 1"/>
         <On Terms="ActorDestruction" Target="_Unit" Send="Signal ProtossPowerUp"/>
         <Model value="GlazeUnpowered"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
@@ -49033,7 +49033,6 @@
         <HostSiteOps Ops="SOpMoveDownByDot25"/>
     </CActorUnit>
     <CActorModel id="AP_PhotonCannonPhaseOut" parent="ModelAnimationStyleOneShotUNIT">
-        <EditorCategories value=""/>
         <HostSiteOps Ops="SOpAttachOrigin AP_PhotonCannonPhaseOutRotation"/>
         <On Terms="AbilMorph.*.Start; MorphTo AP_PhotonCannonPhase" Send="Create"/>
     </CActorModel>
@@ -49120,15 +49119,12 @@
     </CActorUnit>
     <CActorAction id="AP_InterceptorLaunchBayAttack" parent="GenericAttackBase">
         <On Terms="Effect.AP_InterceptorLaunchBayCP.Start; At Caster" Send="Create"/>
-        <On Terms="Effect.AP_InterceptorBeamDamage.Start; At Caster; FromEffectTreeDescendant" Send="ActionDamage"/>
-        <On Terms="Signal.*.DarkProtossTest" Send="RefSetFromMsg ::actor.sender ::Sender"/>
-        <On Terms="Signal.*.DarkProtossTest; ValidateUnit AP_NoDarkProtoss" Target="::actor.sender" Send="Signal DarkProtossSwap"/>
-        <On Terms="Effect.AP_InterceptorBeamDamage.Stop; At Caster; FromEffectTreeDescendant" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.AP_InterceptorLaunchBayU.Start; At Caster; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.AP_InterceptorLaunchBayU.Stop; At Caster; FromEffectTreeDescendant" Send="ActionDamagePhysics"/>
         <LaunchAttachQuery Methods="AMFilterWeapon"/>
         <LaunchAssets Sound="Interceptor_AttackLaunch"/>
         <BeamScope value="Caster"/>
         <ImpactMap index="None" Sound="Interceptor_AttackImpact"/>
-        <ImpactModel value="DarkInterceptorTestImpact"/>
         <DamagePhysics Name="InterceptorBeamImpact" MatchKeys="Basic" Physics="InterceptorAttackDeathForce"/>
         <DamagePhysics Name="InterceptorBeamImpact" MatchKeys="BasicAir" Physics="InterceptorAttackAirDeathForce"/>
         <ActionFlags index="ImpactMonitorsTeleports" value="1"/>
@@ -49139,7 +49135,6 @@
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
-        <On Terms="ActorCreation; ValidateUnit AP_NoDarkProtoss" Send="ModelSwap DarkInterceptorAttackBeam"/>
     </CActorBeamSimple>
     <CActorUnit id="AP_LaunchBay" parent="ProtossBuildingEx" unitName="AP_LaunchBay">
         <Aliases value="_UnitLarge"/>
@@ -49166,6 +49161,7 @@
         <DeathCustoms ModelLink="PhotonCannonTaldarimDeathUnpowered" Name="Variation3"/>
         <PlacementModel value="AP_LaunchBay"/>
         <PlacementActorModel value="AP_ProtossWarpInCursor"/>
+        <PortraitModel value="ExecutorPortrait"/>
         <BarOffset value="140"/>
         <BarWidth value="160"/>
         <GroupIcon>
@@ -49193,7 +49189,6 @@
     </CActorSplat>
     <CActorModelMaterial id="AP_ProtossWarpInFinish" parent="GlazeParent">
         <AcceptedHostedPropTransfers index="Opacity" value="0"/>
-        <EditorCategories value=""/>
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
         <On Terms="ActorCreation" Send="Create AP_ProtossWarpInFinishSound"/>
         <Model value="GlazeUnpowered"/>
@@ -49201,7 +49196,6 @@
     </CActorModelMaterial>
     <CActorModel id="AP_PsiSpireAttachment" parent="ModelAddition">
         <Inherits index="BaseModelScale" value="0"/>
-        <EditorCategories value=""/>
         <On Terms="UnitBirth.AP_PsiSpire; ValidateUnit NotUnderConstruction" Send="Create"/>
         <On Terms="ActorCreation" Send="SetScale 0.010000 0.000000 PowerDown"/>
         <On Terms="ActorCreation" Target="_Selectable" Send="Signal ProtossPowerUp"/>
@@ -49209,13 +49203,11 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CActorModel id="AP_PsiSpireBuild" parent="ProtossBuildingBuild">
-        <Model value="GatewayBuild"/>
         <Inherits index="Opacity" value="0"/>
+        <Model value="GatewayBuild"/>
     </CActorModel>
     <CActorModel id="AP_LaunchBayBuild" parent="ProtossBuildingBuild">
         <Inherits index="Opacity" value="0"/>
-        <On Terms="Signal.*.AP_ProtossConstructionEnd" Send="Print BuildEnd"/>
-        <On Terms="Signal.*.AP_ProtossConstructionEnd" Target="::Host" Send="Signal AP_ProtossConstructionEnd"/>
         <Model value="GatewayBuild"/>
     </CActorModel>
     <CActorModel id="AP_ProtossWarpInCursor" parent="PlacementModel">
@@ -49237,7 +49229,6 @@
         <On Terms="ActorCreation" Send="SetTintColor 0,64,255"/>
     </CActorModel>
     <CActorRange id="AP_PsiSpireRange">
-        <EditorCategories value=""/>
         <On Terms="SelectionLocalUpdate.AP_PsiSpire.Start" Send="Create"/>
         <On Terms="SelectionLocalUpdate.AP_PsiSpire.StartEditorGround" Send="Create"/>
         <On Terms="SelectionLocalUpdate.AP_PsiSpire.StartEditorFlyer" Send="Create"/>
@@ -49245,7 +49236,6 @@
         <Range value="5.000000"/>
     </CActorRange>
     <CActorRange id="AP_LaunchBayRange">
-        <EditorCategories value=""/>
         <On Terms="SelectionLocalUpdate.AP_LaunchBay.Start" Send="Create"/>
         <On Terms="SelectionLocalUpdate.AP_LaunchBay.StartEditorGround" Send="Create"/>
         <On Terms="SelectionLocalUpdate.AP_LaunchBay.StartEditorFlyer" Send="Create"/>
@@ -49284,7 +49274,6 @@
     </CActorModel>
     <CActorSite id="AP_PsiSpireStormSite">
         <Sharing value="PerEffectTree"/>
-        <EditorCategories value=""/>
         <On Terms="Effect.AP_PsiSpireStormCP.Start" Send="Create"/>
         <On Terms="Effect.AP_PsiSpireStormCP.Stop" Send="Destroy"/>
     </CActorSite>
@@ -49309,6 +49298,7 @@
         <PlacementSound value="Protoss_BuildingPlacementSmall"/>
         <PlacementActorModel value="AP_ProtossWarpInCursor"/>
         <PlaceholderActorModel value="AP_ProtossWarpInPlaceholder"/>
+        <PortraitModel value="ExecutorPortrait"/>
         <BarOffset value="60"/>
         <BarWidth value="75"/>
         <GroupIcon>
@@ -49333,7 +49323,7 @@
         <On Terms="Signal.*.ProtossPowerUp" Target="AP_PsiSpireAttachment" Send="ClearScale 0.500000 PowerDown"/>
         <On Terms="Signal.*.ProtossPowerDown" Send="DestroyParticles"/>
         <On Terms="UnitConstruction.AP_PsiSpire.Start" Target="AP_PsiSpireSplat" Send="SetVisibility"/>
-        <On Terms="UnitBirth.AP_LaunchBay; ValidateUnit NotUnderConstruction" Target="AP_PsiSpireSplat" Send="SetVisibility 1"/>
+        <On Terms="UnitBirth.AP_PsiSpire; ValidateUnit NotUnderConstruction" Target="AP_PsiSpireSplat" Send="SetVisibility 1"/>
         <On Terms="ProgressLevel.*.Start; Level 2" Send="StatusIncrement Level2"/>
         <On Terms="ProgressLevel.*.Start; Level 2; IsStatus Level2 2" Send="Create AP_PsiSpireBuildEnd"/>
         <On Terms="UnitBirth.AP_PsiSpire; ValidateUnit NotUnderConstruction" Target="AP_PsiSpireBuildEnd" Send="Destroy"/>
@@ -49349,7 +49339,6 @@
         <Model value="PsiStormCursorSplat"/>
     </CActorSplat>
     <CActorSiteOpRotationExplicit id="AP_PhotonCannonPhaseOutRotation">
-        <EditorCategories value=""/>
         <Forward value="1.000000,-1.000000,0.000000"/>
         <Up value="0.000000,0.000000,1.000000"/>
         <IsLocal value="1"/>
