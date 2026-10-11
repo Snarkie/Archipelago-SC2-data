@@ -4441,6 +4441,7 @@
         <EditorCategories value="Race:Protoss"/>
         <Icon value="Assets\Textures\btn-ability-protoss-psistorm-color.dds"/>
         <DisplayEffect value="AP_PsiSpireStormU"/>
+        <DisplayAttackCount value="6"/>
         <TargetFilters value="Visible;Player,Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Period value="15"/>
     </CWeaponLegacy>
