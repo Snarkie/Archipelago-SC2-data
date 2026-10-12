@@ -1903,7 +1903,7 @@ static void RegisterProtossUnits() {
     AP_RegisterProtossUnit(50, "AP_UnlockPhotonCannon", UnlockForge);
     AP_RegisterProtossUnit(51, "AP_UnlockKhaydarinMonolith", UnlockForge);
     AP_RegisterProtossUnit(52, "AP_UnlockShieldBattery", UnlockForge);
-    AP_RegisterProtossUnit(53, "AP_UnlockPsiSpire", UnlockTemplarArchives);
+    AP_RegisterProtossUnit(53, "AP_UnlockPsiSpire", UnlockGatewayAndTemplarArchives);
     AP_RegisterProtossUnit(54, "AP_UnlockLaunchBay", UnlockStargate);
 }
 
