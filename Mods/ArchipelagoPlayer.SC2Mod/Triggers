@@ -54652,7 +54652,7 @@
         </Element>
         <Element Type="Param" Id="BC1E0B14">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\btn-commander-nova.dds</Value>
+            <Value>Assets\Textures\novaex3_ingame_heroportrait.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>
@@ -54824,7 +54824,7 @@
         </Element>
         <Element Type="Param" Id="0F63F3CC">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\btn-ability-tychus-odin.dds</Value>
+            <Value>AP\Assets\Textures\btn-hero-tychus.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>
@@ -54886,7 +54886,7 @@
         </Element>
         <Element Type="Param" Id="05AE02D9">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\btn-upgrade-swann-laserdrillattack.dds</Value>
+            <Value>AP\Assets\Textures\btn-hero-drill.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>
@@ -54948,7 +54948,7 @@
         </Element>
         <Element Type="Param" Id="76C2B788">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\btn-tips-terran-energynova.dds</Value>
+            <Value>AP\Assets\Textures\btn-hero-artifact.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>
@@ -55010,7 +55010,7 @@
         </Element>
         <Element Type="Param" Id="1438FDAF">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\ui_heroicons_portrait_tosh.dds</Value>
+            <Value>AP\Assets\Textures\btn-hero-tosh.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>
@@ -55275,7 +55275,7 @@
         </Element>
         <Element Type="Param" Id="492CD8A6">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\ui_heroicons_portrait_stetmann.dds</Value>
+            <Value>AP\Assets\Textures\btn-hero-stetmann.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>
@@ -55337,7 +55337,7 @@
         </Element>
         <Element Type="Param" Id="1F679200">
             <ParameterDef Type="ParamDef" Library="Ntve" Id="00000220"/>
-            <Value>Assets\Textures\btn-hero-fenix-arbiter.dds</Value>
+            <Value>AP\Assets\Textures\btn-hero-probius.dds</Value>
             <ValueType Type="filepath"/>
             <ValueTypeInfo Value="5"/>
         </Element>

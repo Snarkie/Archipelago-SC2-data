@@ -2615,7 +2615,7 @@ void lib15EF4C78_gf_SetHeroPanelUnit (int lp_index, unit lp_heroUnit, int lp_pla
     else {
         lib15EF4C78_gv_zS_SwarmHeroUIShowLevel[lp_index] = false;
         if ((UnitGetType(lp_heroUnit) == "AP_NovaHero")) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-commander-nova.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\novaex3_ingame_heroportrait.dds";
         }
 
         if ((UnitGetType(lp_heroUnit) == "AP_ArtanisHero")) {
@@ -2627,19 +2627,19 @@ void lib15EF4C78_gf_SetHeroPanelUnit (int lp_index, unit lp_heroUnit, int lp_pla
         }
 
         if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Odin"))) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-ability-tychus-odin.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "AP\\Assets\\Textures\\btn-hero-tychus.dds";
         }
 
         if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("DrakkenLaserDrill"))) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-upgrade-swann-laserdrillattack.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "AP\\Assets\\Textures\\btn-hero-drill.dds";
         }
 
         if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Artifact"))) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-tips-terran-energynova.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "AP\\Assets\\Textures\\btn-hero-artifact.dds";
         }
 
         if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Tosh"))) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\ui_heroicons_portrait_tosh.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "AP\\Assets\\Textures\\btn-hero-tosh.dds";
         }
 
         if (((UnitGetType(lp_heroUnit) == UnitTypeFromString("Raynor")) || (UnitGetType(lp_heroUnit) == UnitTypeFromString("Raynor01")) || (UnitGetType(lp_heroUnit) == UnitTypeFromString("RaynorCommando")))) {
@@ -2651,11 +2651,11 @@ void lib15EF4C78_gf_SetHeroPanelUnit (int lp_index, unit lp_heroUnit, int lp_pla
         }
 
         if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("Stetmann"))) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\ui_heroicons_portrait_stetmann.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "AP\\Assets\\Textures\\btn-hero-stetmann.dds";
         }
 
         if ((UnitGetType(lp_heroUnit) == UnitTypeFromString("AP_ProbeHero"))) {
-            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "Assets\\Textures\\btn-hero-fenix-arbiter.dds";
+            lib15EF4C78_gv_zS_SwarmHeroUIIcon[lp_index] = "AP\\Assets\\Textures\\btn-hero-probius.dds";
         }
 
     }
