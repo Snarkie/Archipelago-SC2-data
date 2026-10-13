@@ -76,6 +76,10 @@
         <BehaviorArray Link="AP_RegeneratorRegenBioSteelL3"/>
         <FlagArray index="Hero" value="0"/>
     </CUnit>
+    <CUnit id="Tosh">
+        <!-- Override -->
+        <FlagArray index="Hero" value="0"/>
+    </CUnit>
     <CUnit id="HybridDestroyer">
         <!-- Override -->
         <BehaviorArray Link="AP_MindControlImmune"/>
