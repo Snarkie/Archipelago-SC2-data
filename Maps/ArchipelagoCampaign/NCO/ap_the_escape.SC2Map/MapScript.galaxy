@@ -10062,7 +10062,7 @@ bool gt_IntroSetup_Func (bool testConds, bool runActions) {
     for (;; auto19139987_u -= 1) {
         auto19139987_var = UnitGroupUnitFromEnd(auto19139987_g, auto19139987_u);
         if (auto19139987_var == null) { break; }
-        if ((libNtve_gf_UnitIsPaused(auto19139987_var) == false) && (libNtve_gf_UnitInRegion(auto19139987_var, RegionFromId(179)) == false)) {
+        if ((libNtve_gf_UnitIsPaused(auto19139987_var) == false) && (libNtve_gf_UnitInRegion(auto19139987_var, RegionFromId(179)) == false) && (UnitFilterMatch(auto19139987_var, UnitGetOwner(auto19139987_var), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterStasis - 32)) | (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterInvulnerable - 32)))) == true)) {
             UnitGroupAdd(gv_cinematicPausedUnits, auto19139987_var);
             libNtve_gf_PauseUnit(auto19139987_var, true);
             libNtve_gf_MakeUnitInvulnerable(auto19139987_var, true);
