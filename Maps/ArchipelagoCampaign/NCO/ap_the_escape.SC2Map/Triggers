@@ -97326,6 +97326,8 @@
         <FunctionCall Type="FunctionCall" Id="F231084B"/>
         <FunctionCall Type="FunctionCall" Id="32384303"/>
         <FunctionCall Type="FunctionCall" Id="CFE974F0"/>
+        <FunctionCall Type="Comment" Id="30DCD4B6"/>
+        <FunctionCall Type="FunctionCall" Id="648D349B"/>
     </Element>
     <Element Type="FunctionCall" Id="2320EE4D">
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="9435D821"/>
@@ -97444,6 +97446,65 @@
     <Element Type="Param" Id="C9D7CB8D">
         <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
         <Value>false</Value>
+        <ValueType Type="bool"/>
+    </Element>
+    <Element Type="Comment" Id="30DCD4B6">
+        <Comment>
+            Exclude structures that are already invulnerable, like gun/flame turrets
+        </Comment>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+    </Element>
+    <Element Type="FunctionCall" Id="648D349B">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="C439C375"/>
+        <SubFunctionType Type="SubFuncType" Library="Ntve" Id="00000003"/>
+        <Parameter Type="Param" Id="2F93D00C"/>
+        <Parameter Type="Param" Id="3608FE46"/>
+        <Parameter Type="Param" Id="F49899D6"/>
+    </Element>
+    <Element Type="Param" Id="2F93D00C">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="ABB380C4"/>
+        <FunctionCall Type="FunctionCall" Id="EF493B50"/>
+    </Element>
+    <Element Type="FunctionCall" Id="EF493B50">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="390C5C49"/>
+        <Parameter Type="Param" Id="558E9252"/>
+        <Parameter Type="Param" Id="C059F629"/>
+        <Parameter Type="Param" Id="917C863D"/>
+    </Element>
+    <Element Type="Param" Id="558E9252">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="3CE57EA9"/>
+        <FunctionCall Type="FunctionCall" Id="2F363B3F"/>
+    </Element>
+    <Element Type="FunctionCall" Id="2F363B3F">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="19CE733E"/>
+    </Element>
+    <Element Type="Param" Id="C059F629">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="31F6EE2C"/>
+        <FunctionCall Type="FunctionCall" Id="057F8515"/>
+    </Element>
+    <Element Type="FunctionCall" Id="057F8515">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000081"/>
+        <Parameter Type="Param" Id="08EE8062"/>
+    </Element>
+    <Element Type="Param" Id="08EE8062">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="00000140"/>
+        <FunctionCall Type="FunctionCall" Id="89857E92"/>
+    </Element>
+    <Element Type="FunctionCall" Id="89857E92">
+        <FunctionDef Type="FunctionDef" Library="Ntve" Id="19CE733E"/>
+    </Element>
+    <Element Type="Param" Id="917C863D">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="B6F93566"/>
+        <Value>-;Structure,Missile,Stasis,Dead,Hidden,Invulnerable</Value>
+        <ValueType Type="unitfilter"/>
+    </Element>
+    <Element Type="Param" Id="3608FE46">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="51567265"/>
+        <Preset Type="PresetValue" Library="Ntve" Id="1E7A4625"/>
+    </Element>
+    <Element Type="Param" Id="F49899D6">
+        <ParameterDef Type="ParamDef" Library="Ntve" Id="4A15EC5F"/>
+        <Value>true</Value>
         <ValueType Type="bool"/>
     </Element>
     <Element Type="FunctionCall" Id="D1FC610C">
