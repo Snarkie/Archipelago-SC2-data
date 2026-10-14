@@ -11284,6 +11284,7 @@
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="150"/>
         <CostResource index="Vespene" value="150"/>
+        <RepairTime value="30"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
