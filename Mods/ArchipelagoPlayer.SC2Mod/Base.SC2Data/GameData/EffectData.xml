@@ -17976,6 +17976,7 @@
     </CEffectEnumArea>
     <CEffectSet id="AP_SOAOverWatchSet">
         <ValidatorArray value="AP_SOAOverWatchLifeLimit"/>
+        <ValidatorArray value="NotUnderConstruction"/>
         <EffectArray value="AP_SOAOverWatchDamage"/>
         <EffectArray value="AP_SOAOverWatchCooldownAB"/>
     </CEffectSet>
