@@ -167,4 +167,13 @@
             </Sets>
         </Layers>
     </CFootprint>
+    <CFootprint id="Footprint3x3AddOn2x2">
+        <!-- Override -->
+        <Layers index="Check">
+            <Sets index="0">
+                <Negative index="Creep" value="0"/>
+                <Negative index="Fogged" value="1"/>
+            </Sets>
+        </Layers>
+    </CFootprint>
 </Catalog>
