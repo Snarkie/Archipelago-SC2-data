@@ -25465,6 +25465,8 @@
             <SortArray value="TSDistance"/>
         </TargetSorts>
         <ValidatorArray value="AP_ArchonSuicideTargetsInRange"/>
+        <ValidatorArray value="AP_CasterNotHighTemplarHallucination"/>
+        <ValidatorArray value="AP_CasterNotSentryHallucination"/>
         <AreaArray MaxCount="1" Radius="6" Effect="AP_ArchonSuicideLaunch"/>
     </CEffectEnumArea>
     <CEffectCreatePersistent id="AP_ArchonSuicideReveal">
