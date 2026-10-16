@@ -2073,6 +2073,11 @@
         <Find value="1"/>
         <Value value="AP_HaveSensorTowerEnhancedVision"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitCompareBehaviorCount id="AP_HaveSensorTowerRange">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="AP_SensorTowerRangeBuff"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="AP_NoFortifiedCarapace">
         <Find value="1"/>
         <Value value="AP_NotFortifiedCarapace"/>

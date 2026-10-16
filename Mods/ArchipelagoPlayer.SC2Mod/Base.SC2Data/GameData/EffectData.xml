@@ -4536,6 +4536,14 @@
         <EditorCategories value="Race:Terran"/>
         <Behavior value="AP_SensorTowerRangeBuff"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AP_SensorTowerRangeBunkerAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="AP_SensorTowerRangeBunker"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="AP_SensorTowerRangeBunkerRB">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="AP_SensorTowerRangeBunker"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="AP_MakePrecursorMerc">
         <Behavior value="AP_PrecursorMerc"/>
     </CEffectApplyBehavior>
