@@ -3072,7 +3072,11 @@ bool lib15EF4C78_gf_ZS_ForceShieldUI (int lp_index) {
     lv_unitTypeString = (UnitGetType(lib15EF4C78_gv_zS_SwarmHeroUIUnit[lp_index]));
 
     // Implementation
-    if (((lv_unitTypeString == "Tosh"))) {
+    if ((lv_unitTypeString == "Tosh")) {
+        return true;
+    }
+
+    if ((lv_unitTypeString == "Odin") && (PlayerRace(lib15EF4C78_gf_AP_GetPlayerId()) == "Prot")) {
         return true;
     }
 
