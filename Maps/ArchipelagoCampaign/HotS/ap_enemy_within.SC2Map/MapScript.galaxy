@@ -1438,7 +1438,6 @@ bool gt_FactionSwapInit_Func (bool testConds, bool runActions) {
         UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropMovementSpeed, 1.2);
         UnitSetScale(gv_tHE_ONE_QUEEN, 50.0, 50.0, 50.0);
         UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropEnergyPercent, 100.0);
-        UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropLifeMax, gv_swarmQueenLife[1]);
         UnitSetPropertyFixed(gv_tHE_ONE_QUEEN, c_unitPropLifePercent, 100.0);
         PlayerSetRace(gv_pLAYER_01_USER, libABFE498B_gv_aP_Triggers_Option_overridePlayerRace);
         lib5BD4895D_gf_AP_Core_MapConfig_setPlayerFaction(gv_pLAYER_01_USER, lib5BD4895D_gv_aP_Core_Faction_RAYNORS_RAIDERS);

@@ -1289,6 +1289,7 @@
         <ValueType Type="fixed"/>
     </Element>
     <Element Type="FunctionCall" Id="C804A842">
+        <Disabled/>
         <FunctionDef Type="FunctionDef" Library="Ntve" Id="00000087"/>
         <SubFunctionType Type="SubFuncType" Library="Ntve" Id="363CE97C"/>
         <Parameter Type="Param" Id="108A6E9D"/>
