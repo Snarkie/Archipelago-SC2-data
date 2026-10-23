@@ -8209,7 +8209,7 @@
     </CButton>
     <CButton id="AP_SummonYggdrasil">
         <Icon value="AP\Assets\Textures\btn-unit-zerg-overlord@scbw.dds"/>
-        <AlertIcon value="AP\Assets\Textures\Textures\btn-unit-zerg-overlord@scbw.dds"/>
+        <AlertIcon value="AP\Assets\Textures\btn-unit-zerg-overlord@scbw.dds"/>
         <EditorCategories value="Race:Zerg"/>
     </CButton>
     <CButton id="AP_YggdrasilPredatorNest">
